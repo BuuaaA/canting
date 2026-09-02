@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">餐盘</string>
+    <string name="widget_description">查看伙伴活力和下一餐建议</string>
+    <string name="widget_pet_sprite">伙伴状态图</string>
+</resources>

@@ -1,0 +1,13 @@
+export 'core/completion_calculator.dart';
+export 'core/dish_matcher.dart';
+export 'core/intake_calculator.dart';
+export 'core/models/completion_result.dart';
+export 'core/models/daily_intake.dart';
+export 'core/models/food_data.dart';
+export 'core/models/match_result.dart';
+export 'core/models/meal_record.dart';
+export 'core/models/portions.dart';
+export 'core/models/recommendation.dart';
+export 'core/recommendation_engine.dart';
+export 'data/database_helper.dart';
+export 'data/food_database.dart';

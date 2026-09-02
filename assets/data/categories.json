@@ -1,0 +1,227 @@
+[
+  {
+    "category_id": "rice_sauce",
+    "category_name": "酱汁拌饭类",
+    "oil_level": "extreme",
+    "oil_factor": 1.8,
+    "average_portions": {
+      "grains": 2.0,
+      "vegetables": 0.4,
+      "fruits": 0.0,
+      "protein": 1.3,
+      "protein_soy": 0.0,
+      "oil": 2.5
+    },
+    "keywords": ["拌饭", "盖饭", "盖浇饭", "卤肉饭", "黄焖鸡"]
+  },
+  {
+    "category_id": "noodle_soup",
+    "category_name": "汤面/粉类",
+    "oil_level": "mid_high",
+    "oil_factor": 1.4,
+    "average_portions": {
+      "grains": 2.2,
+      "vegetables": 0.5,
+      "fruits": 0.0,
+      "protein": 0.7,
+      "protein_soy": 0.0,
+      "oil": 1.5
+    },
+    "keywords": ["汤面", "拉面", "米线", "米粉", "小面", "螺蛳粉"]
+  },
+  {
+    "category_id": "stir_fry",
+    "category_name": "炒菜类",
+    "oil_level": "mid_high",
+    "oil_factor": 1.2,
+    "average_portions": {
+      "grains": 0.0,
+      "vegetables": 1.8,
+      "fruits": 0.0,
+      "protein": 0.4,
+      "protein_soy": 0.0,
+      "oil": 1.4
+    },
+    "keywords": ["清炒", "小炒", "炒蛋", "炒菜", "地三鲜", "炒时蔬"]
+  },
+  {
+    "category_id": "braised",
+    "category_name": "红烧/焖煮类",
+    "oil_level": "high",
+    "oil_factor": 1.6,
+    "average_portions": {
+      "grains": 0.2,
+      "vegetables": 0.4,
+      "fruits": 0.0,
+      "protein": 1.8,
+      "protein_soy": 0.0,
+      "oil": 2.2
+    },
+    "keywords": ["红烧", "焖", "炖", "啤酒鸭", "烧肉"]
+  },
+  {
+    "category_id": "fried",
+    "category_name": "油炸/干炸类",
+    "oil_level": "extreme",
+    "oil_factor": 1.3,
+    "average_portions": {
+      "grains": 0.8,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 1.8,
+      "protein_soy": 0.0,
+      "oil": 2.8
+    },
+    "keywords": ["炸鸡", "油炸", "干炸", "薯条", "鸡米花", "炸串"]
+  },
+  {
+    "category_id": "hotpot_mala",
+    "category_name": "麻辣烫/香锅类",
+    "oil_level": "high",
+    "oil_factor": 1.5,
+    "average_portions": {
+      "grains": 1.0,
+      "vegetables": 1.3,
+      "fruits": 0.0,
+      "protein": 1.3,
+      "protein_soy": 0.3,
+      "oil": 2.2
+    },
+    "keywords": ["麻辣烫", "麻辣香锅", "冒菜", "串串", "火锅"]
+  },
+  {
+    "category_id": "salad_light",
+    "category_name": "轻食沙拉类",
+    "oil_level": "low",
+    "oil_factor": 1.0,
+    "average_portions": {
+      "grains": 0.4,
+      "vegetables": 2.0,
+      "fruits": 0.0,
+      "protein": 1.4,
+      "protein_soy": 0.2,
+      "oil": 0.8
+    },
+    "keywords": ["沙拉", "轻食", "能量碗", "健康餐"]
+  },
+  {
+    "category_id": "congee_soup",
+    "category_name": "粥汤清淡类",
+    "oil_level": "low",
+    "oil_factor": 1.1,
+    "average_portions": {
+      "grains": 1.4,
+      "vegetables": 0.2,
+      "fruits": 0.0,
+      "protein": 0.4,
+      "protein_soy": 0.0,
+      "oil": 0.4
+    },
+    "keywords": ["粥", "清汤", "米糊", "疙瘩汤"]
+  },
+  {
+    "category_id": "staple_plain",
+    "category_name": "纯主食类",
+    "oil_level": "low",
+    "oil_factor": 1.0,
+    "average_portions": {
+      "grains": 2.0,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil": 0.1
+    },
+    "keywords": ["米饭", "白饭", "馒头", "花卷", "包子"]
+  },
+  {
+    "category_id": "protein_dish",
+    "category_name": "纯蛋白菜类",
+    "oil_level": "low",
+    "oil_factor": 1.1,
+    "average_portions": {
+      "grains": 0.1,
+      "vegetables": 0.2,
+      "fruits": 0.0,
+      "protein": 2.0,
+      "protein_soy": 0.0,
+      "oil": 1.2
+    },
+    "keywords": ["水煮蛋", "卤蛋", "白切鸡", "清蒸鱼", "卤味"]
+  },
+  {
+    "category_id": "breakfast_set",
+    "category_name": "早餐组合类",
+    "oil_level": "mid_high",
+    "oil_factor": 1.2,
+    "average_portions": {
+      "grains": 2.0,
+      "vegetables": 0.3,
+      "fruits": 0.0,
+      "protein": 1.0,
+      "protein_soy": 0.3,
+      "oil": 1.4
+    },
+    "keywords": ["早餐", "煎饼", "豆浆油条", "汉堡", "手抓饼"]
+  },
+  {
+    "category_id": "snack",
+    "category_name": "小吃炸品类",
+    "oil_level": "high",
+    "oil_factor": 1.4,
+    "average_portions": {
+      "grains": 1.0,
+      "vegetables": 0.2,
+      "fruits": 0.0,
+      "protein": 1.2,
+      "protein_soy": 0.0,
+      "oil": 2.2
+    },
+    "keywords": ["烤串", "小丸子", "盐酥鸡", "小吃", "烧烤"]
+  },
+  {
+    "category_id": "dessert_sweet",
+    "category_name": "甜饮甜品类",
+    "oil_level": "mid_high",
+    "oil_factor": 1.0,
+    "average_portions": {
+      "grains": 1.5,
+      "vegetables": 0.0,
+      "fruits": 0.2,
+      "protein": 0.2,
+      "protein_soy": 0.0,
+      "oil": 1.2
+    },
+    "keywords": ["奶茶", "蛋糕", "冰淇淋", "甜品", "饮料"]
+  },
+  {
+    "category_id": "fruit",
+    "category_name": "水果类",
+    "oil_level": "low",
+    "oil_factor": 1.0,
+    "average_portions": {
+      "grains": 0.0,
+      "vegetables": 0.0,
+      "fruits": 2.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil": 0.0
+    },
+    "keywords": ["水果", "果切", "果盘", "鲜果"]
+  },
+  {
+    "category_id": "combo_set",
+    "category_name": "套餐组合类",
+    "oil_level": "high",
+    "oil_factor": 1.0,
+    "average_portions": {
+      "grains": 2.5,
+      "vegetables": 0.8,
+      "fruits": 0.0,
+      "protein": 1.5,
+      "protein_soy": 0.2,
+      "oil": 2.5
+    },
+    "keywords": ["套餐", "全家桶", "便当", "商务餐", "双人餐"]
+  }
+]
