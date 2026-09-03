@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
             TodayRecords(
               meals: todayMeals,
               onMealTap: (meal) =>
-                  context.push('/record_detail?mealId=${meal.id}'),
+                  context.push('/record_detail?mealId=${meal.mealId}'),
               onDelete: state.deleteMeal,
               onAdd: () => context.push('/record_detail'),
             ),
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                 body,
                 EvolutionAnimationWidget(
                   petType: state.pet.petType,
-                  fromStage: pendingFrom!.name,
+                  fromStage: pendingFrom.name,
                   toStage: state.pet.growthStage.name,
                   petName: state.pet.petName,
                   onFinished: () {

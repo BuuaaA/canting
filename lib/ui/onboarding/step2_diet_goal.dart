@@ -1,5 +1,4 @@
 import 'package:canting/state/onboarding_draft.dart';
-import 'package:canting/ui/onboarding/step4_routine.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +20,7 @@ class _Step2DietGoalState extends State<Step2DietGoal> {
       icon: Icons.pie_chart_outline,
     ),
     (
-      value: 'more_vegetables',
+      value: 'more_veg',
       title: '多吃蔬菜',
       description: '每餐多一点新鲜蔬菜',
       icon: Icons.eco_outlined,
@@ -33,7 +32,7 @@ class _Step2DietGoalState extends State<Step2DietGoal> {
       icon: Icons.egg_alt_outlined,
     ),
     (
-      value: 'control_grains',
+      value: 'less_carb',
       title: '控制主食',
       description: '适量安排，不需要完全不吃',
       icon: Icons.rice_bowl_outlined,
@@ -79,7 +78,6 @@ class _Step2DietGoalState extends State<Step2DietGoal> {
             );
           },
         ),
-        Step4Routine(draft: widget.draft),
       ],
     );
   }

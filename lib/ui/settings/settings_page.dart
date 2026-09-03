@@ -35,11 +35,11 @@ class SettingsPage extends StatelessWidget {
                       icon: Icons.monitor_weight_outlined,
                       title: '身体数据',
                       value:
-                          '${profile?.heightCm ?? 165} cm · ${profile?.weightKg ?? 55} kg',
+                          '${_formatHeight(profile?.heightCm)} cm · ${profile?.weightKg ?? 55} kg',
                       onTap: () => _showInfoDialog(
                         context,
                         '身体数据',
-                        '身高 ${profile?.heightCm ?? 165} cm\n'
+                        '身高 ${_formatHeight(profile?.heightCm)} cm\n'
                             '体重 ${profile?.weightKg ?? 55} kg\n'
                             '年龄 ${profile?.age ?? 28} 岁',
                       ),
@@ -71,13 +71,13 @@ class SettingsPage extends StatelessWidget {
                     _SettingsTile(
                       icon: Icons.schedule,
                       title: '作息习惯',
-                      value: '早餐 ${_formatTime(profile?.breakfast)}',
+                      value: '早餐 ${_formatTime(profile?.breakfastTime)}',
                       onTap: () => _showInfoDialog(
                         context,
                         '作息习惯',
-                        '早餐 ${_formatTime(profile?.breakfast)}\n'
-                            '午餐 ${_formatTime(profile?.lunch, fallback: '12:00')}\n'
-                            '晚餐 ${_formatTime(profile?.dinner, fallback: '18:30')}',
+                        '早餐 ${_formatTime(profile?.breakfastTime)}\n'
+                            '午餐 ${_formatTime(profile?.lunchTime, fallback: '12:00')}\n'
+                            '晚餐 ${_formatTime(profile?.dinnerTime, fallback: '18:30')}',
                       ),
                     ),
                   ],
@@ -206,16 +206,16 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  static String _formatTime(TimeOfDay? value, {String fallback = '08:00'}) {
-    if (value == null) return fallback;
-    return '${value.hour.toString().padLeft(2, '0')}:'
-        '${value.minute.toString().padLeft(2, '0')}';
-  }
+  static String _formatTime(String? value, {String fallback = '08:00'}) =>
+      value ?? fallback;
+
+  static String _formatHeight(double? heightCm) =>
+      heightCm == null ? '165' : heightCm.round().toString();
 
   static String _goalLabel(String value) => switch (value) {
-    'more_vegetables' => '多吃蔬菜',
+    'more_veg' || 'more_vegetables' => '多吃蔬菜',
     'more_protein' => '多补蛋白质',
-    'control_grains' => '控制主食',
+    'less_carb' || 'control_grains' => '控制主食',
     _ => '吃得更均衡',
   };
 

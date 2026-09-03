@@ -6,13 +6,16 @@ import 'package:sqflite/sqflite.dart';
 import '../core/models/food_data.dart';
 import 'food_database.dart';
 
-/// Owns all SQLite operations for the local food catalog.
+/// Owns all SQLite operations for the local food catalog and user data.
 class DatabaseHelper {
   DatabaseHelper({DatabaseFactory? factory, this.databasePath})
     : _factory = factory ?? databaseFactory,
       assert(databasePath == null || databasePath.isNotEmpty);
 
-  static const databaseVersion = 1;
+  /// Shared instance for the running app; tests build isolated copies instead.
+  static final DatabaseHelper instance = DatabaseHelper();
+
+  static const databaseVersion = 2;
   static const defaultDatabaseName = 'canting_food.db';
 
   final DatabaseFactory _factory;
@@ -20,6 +23,9 @@ class DatabaseHelper {
   Database? _database;
 
   bool get isOpen => _database?.isOpen ?? false;
+
+  /// The open database. Throws if [initialize] has not completed.
+  Database get database => _requireDatabase();
 
   /// Opens the database and inserts [seedData] only when the dish table is empty.
   Future<void> initialize({FoodDatabase? seedData}) async {
@@ -35,6 +41,7 @@ class DatabaseHelper {
       options: OpenDatabaseOptions(
         version: databaseVersion,
         onCreate: _createSchema,
+        onUpgrade: _upgradeSchema,
       ),
     );
     _database = database;
@@ -167,6 +174,8 @@ class DatabaseHelper {
     }
   }
 
+  /// Full schema for fresh installs; runs once when the database file is
+  /// created. Must stay in sync with [_migrations].
   static Future<void> _createSchema(Database database, int version) async {
     await database.execute('''
       CREATE TABLE categories (
@@ -188,6 +197,90 @@ class DatabaseHelper {
       'CREATE INDEX dishes_category_idx ON dishes(category)',
     );
     await database.execute('CREATE INDEX dishes_name_idx ON dishes(dish_name)');
+    await _createUserDataTables(database);
+  }
+
+  /// Incremental schema changes keyed by the version they migrate TO.
+  /// To ship schema v3: bump [databaseVersion] and add `3: _migrateV2ToV3`.
+  static final _migrations = <int, Future<void> Function(Database)>{
+    2: _migrateV1ToV2,
+  };
+
+  static Future<void> _upgradeSchema(
+    Database database,
+    int oldVersion,
+    int newVersion,
+  ) async {
+    for (var version = oldVersion + 1; version <= newVersion; version++) {
+      final migration = _migrations[version];
+      if (migration != null) {
+        await migration(database);
+      }
+    }
+  }
+
+  /// v1 shipped only the food catalog; v2 adds the user-data tables without
+  /// touching existing rows.
+  static Future<void> _migrateV1ToV2(Database database) async {
+    await _createUserDataTables(database);
+  }
+
+  static Future<void> _createUserDataTables(Database database) async {
+    await database.execute('''
+      CREATE TABLE user_profiles (
+        id INTEGER PRIMARY KEY DEFAULT 1,
+        gender TEXT NOT NULL,
+        age INTEGER NOT NULL,
+        height_cm REAL NOT NULL,
+        weight_kg REAL NOT NULL,
+        diet_goal TEXT NOT NULL,
+        activity_level TEXT NOT NULL,
+        breakfast_time TEXT NOT NULL,
+        lunch_time TEXT NOT NULL,
+        dinner_time TEXT NOT NULL,
+        day_start_time TEXT NOT NULL,
+        onboarding_completed INTEGER NOT NULL DEFAULT 0,
+        daily_intake_json TEXT,
+        created_at INTEGER NOT NULL,
+        updated_at INTEGER NOT NULL,
+        CHECK (id = 1)
+      )
+    ''');
+    await database.execute('''
+      CREATE TABLE meal_records (
+        id TEXT PRIMARY KEY,
+        meal_time INTEGER NOT NULL,
+        meal_type TEXT NOT NULL,
+        record_json TEXT NOT NULL,
+        note TEXT,
+        created_at INTEGER NOT NULL,
+        updated_at INTEGER NOT NULL
+      )
+    ''');
+    await database.execute(
+      'CREATE INDEX idx_meal_time ON meal_records(meal_time)',
+    );
+    await database.execute('''
+      CREATE TABLE pet_states (
+        id INTEGER PRIMARY KEY DEFAULT 1,
+        json_data TEXT NOT NULL,
+        updated_at INTEGER NOT NULL,
+        CHECK (id = 1)
+      )
+    ''');
+    await database.execute('''
+      CREATE TABLE user_custom_dishes (
+        dish_id TEXT PRIMARY KEY,
+        dish_name TEXT NOT NULL,
+        category TEXT NOT NULL,
+        json_data TEXT NOT NULL,
+        created_at INTEGER NOT NULL,
+        updated_at INTEGER NOT NULL
+      )
+    ''');
+    await database.execute(
+      'CREATE INDEX idx_custom_dishes_name ON user_custom_dishes(dish_name)',
+    );
   }
 
   static Future<int> _dishCount(Database database) async {

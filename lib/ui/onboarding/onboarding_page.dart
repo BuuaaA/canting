@@ -5,6 +5,7 @@ import 'package:canting/ui/onboarding/step0_pet_selection.dart';
 import 'package:canting/ui/onboarding/step1_basic_info.dart';
 import 'package:canting/ui/onboarding/step2_diet_goal.dart';
 import 'package:canting/ui/onboarding/step3_activity.dart';
+import 'package:canting/ui/onboarding/step4_routine.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +19,14 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
-  static const _stepNames = ['欢迎', '身体信息', '活动水平', '饮食目标', '选择伙伴'];
+  static const _stepNames = [
+    '欢迎',
+    '身体信息',
+    '活动水平',
+    '饮食目标',
+    '作息习惯',
+    '选择伙伴',
+  ];
 
   final _controller = PageController();
   final _draft = OnboardingDraft();
@@ -39,7 +47,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-  void _next() {
+  Future<void> _next() async {
     if (_step < _stepNames.length - 1) {
       _goTo(_step + 1);
       return;
@@ -52,23 +60,24 @@ class _OnboardingPageState extends State<OnboardingPage> {
       return;
     }
 
-    context.read<AppState>().completeOnboarding(
-      setupProfile: SetupProfile(
-        gender: _draft.gender,
-        heightCm: _draft.heightCm,
-        weightKg: _draft.weightKg,
-        age: _draft.age,
-        activityLevel: _draft.activityLevel,
-        dietGoal: _draft.dietGoal,
-        breakfast: _draft.breakfast,
-        lunch: _draft.lunch,
-        dinner: _draft.dinner,
-        dayBoundaryHour: _draft.dayBoundaryHour,
-      ),
+    final appState = context.read<AppState>();
+    final guidelines = appState.guidelines;
+    if (guidelines == null) {
+      // 生产环境下 main() 启动时必定加载膳食指南 JSON；这里只在异常时兜底。
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('膳食指南数据未加载，暂时无法完成设置，请重启应用')),
+      );
+      return;
+    }
+
+    final router = GoRouter.of(context);
+    await appState.completeOnboarding(
+      profile: _draft.toProfile(guidelines: guidelines),
       petType: _draft.petType,
       petName: name,
     );
-    context.go('/home');
+    if (!mounted) return;
+    router.go('/home');
   }
 
   @override
@@ -129,6 +138,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         Step1BasicInfo(draft: _draft),
                         Step3Activity(draft: _draft),
                         Step2DietGoal(draft: _draft),
+                        Step4Routine(draft: _draft),
                         Step0PetSelection(draft: _draft),
                       ],
                     ),

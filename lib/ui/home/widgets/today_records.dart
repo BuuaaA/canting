@@ -1,4 +1,4 @@
-import 'package:canting/state/app_state.dart';
+import 'package:canting/core_engine.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ class TodayRecords extends StatelessWidget {
     required this.onAdd,
   });
 
-  final List<MockMeal> meals;
-  final ValueChanged<MockMeal> onMealTap;
+  final List<MealRecord> meals;
+  final ValueChanged<MealRecord> onMealTap;
   final ValueChanged<String> onDelete;
   final VoidCallback onAdd;
 
@@ -41,7 +41,7 @@ class TodayRecords extends StatelessWidget {
       );
     }
 
-    final sorted = [...meals]..sort((a, b) => b.time.compareTo(a.time));
+    final sorted = [...meals]..sort((a, b) => b.timestamp.compareTo(a.timestamp));
     return PixelPanel(
       padding: EdgeInsets.zero,
       child: Column(
@@ -50,7 +50,7 @@ class TodayRecords extends StatelessWidget {
             _MealRow(
               meal: sorted[index],
               onTap: () => onMealTap(sorted[index]),
-              onDelete: () => onDelete(sorted[index].id),
+              onDelete: () => onDelete(sorted[index].mealId),
             ),
             if (index != sorted.length - 1)
               const Divider(height: 1, indent: 68),
@@ -68,7 +68,7 @@ class _MealRow extends StatelessWidget {
     required this.onDelete,
   });
 
-  final MockMeal meal;
+  final MealRecord meal;
   final VoidCallback onTap;
   final VoidCallback onDelete;
 
@@ -76,7 +76,7 @@ class _MealRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Dismissible(
-      key: ValueKey(meal.id),
+      key: ValueKey(meal.mealId),
       direction: DismissDirection.endToStart,
       confirmDismiss: (_) => showDialog<bool>(
         context: context,
@@ -119,7 +119,7 @@ class _MealRow extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
-          '${_mealTypeLabel(meal.mealType)} · ${_timeLabel(meal.time)}',
+          '${_mealTypeLabel(meal.mealType)} · ${_timeLabel(meal.timestamp)}',
         ),
         trailing: const Icon(Icons.chevron_right),
       ),

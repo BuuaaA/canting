@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:canting/core_engine.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/platform/android_native_bridge.dart';
 import 'package:canting/router/app_router.dart';
@@ -11,9 +13,36 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(CantingApp(appState: AppState()));
+  final databaseHelper = DatabaseHelper.instance;
+  await databaseHelper.initialize(seedData: await _loadSeedFoodDatabase());
+  final appState = AppState(
+    databaseHelper: databaseHelper,
+    guidelines: await _loadDietaryGuidelines(),
+  );
+  await appState.loadFromDatabase();
+  runApp(CantingApp(appState: appState));
+}
+
+Future<FoodDatabase> _loadSeedFoodDatabase() async {
+  final dishesJson = await rootBundle.loadString('assets/data/dishes.json');
+  final categoriesJson = await rootBundle.loadString(
+    'assets/data/categories.json',
+  );
+  return FoodDatabase.fromJson(
+    dishesJson: dishesJson,
+    categoriesJson: categoriesJson,
+  );
+}
+
+Future<DietaryGuidelines> _loadDietaryGuidelines() async {
+  final guidelinesJson = await rootBundle.loadString(
+    'assets/data/dietary_guidelines.json',
+  );
+  return DietaryGuidelines.fromJson(
+    (jsonDecode(guidelinesJson) as Map).cast<String, dynamic>(),
+  );
 }
 
 class CantingApp extends StatefulWidget {
@@ -50,7 +79,10 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
         imageUri: imageUri,
         merchant: recognition.merchant,
         dishes: recognition.dishes
-            .map((dish) => MockDish(name: dish.name, quantity: dish.quantity))
+            .map(
+              (dish) =>
+                  MealDish(name: dish.name, quantity: dish.quantity.toDouble()),
+            )
             .toList(growable: false),
       );
     } on PlatformException catch (error) {
@@ -91,9 +123,9 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
         merchant: draft.merchant,
         dishes: draft.dishes
             .map(
-              (dish) => MockDish(
+              (dish) => MealDish(
                 name: dish.name,
-                quantity: dish.quantity,
+                quantity: dish.quantity.toDouble(),
                 portionSize: dish.portionSize,
               ),
             )

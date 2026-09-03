@@ -50,7 +50,7 @@ class _HistoryPageState extends State<HistoryPage> {
         meals: state.mealsFor(date),
         onMealTap: (meal) {
           Navigator.pop(sheetContext);
-          context.push('/record_detail?mealId=${meal.id}');
+          context.push('/record_detail?mealId=${meal.mealId}');
         },
         onAdd: () {
           Navigator.pop(sheetContext);
@@ -178,7 +178,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       for (var index = 0; index < meals.length; index++) ...[
                         ListTile(
                           onTap: () => context.push(
-                            '/record_detail?mealId=${meals[index].id}',
+                            '/record_detail?mealId=${meals[index].mealId}',
                           ),
                           leading: const PixelIconTile(
                             icon: Icons.restaurant_outlined,
@@ -191,7 +191,7 @@ class _HistoryPageState extends State<HistoryPage> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          subtitle: Text(meals[index].merchant),
+                          subtitle: Text(meals[index].merchant ?? ''),
                           trailing: const Icon(Icons.chevron_right),
                         ),
                         if (index != meals.length - 1)

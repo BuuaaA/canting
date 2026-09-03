@@ -1,4 +1,4 @@
-import 'package:canting/state/app_state.dart';
+import 'package:canting/core_engine.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +10,8 @@ class DishEditList extends StatelessWidget {
     required this.onDelete,
   });
 
-  final List<MockDish> dishes;
-  final void Function(int index, MockDish dish) onChanged;
+  final List<MealDish> dishes;
+  final void Function(int index, MealDish dish) onChanged;
   final ValueChanged<int> onDelete;
 
   @override
@@ -40,8 +40,8 @@ class _DishEditRow extends StatefulWidget {
     required this.onDelete,
   });
 
-  final MockDish dish;
-  final ValueChanged<MockDish> onChanged;
+  final MealDish dish;
+  final ValueChanged<MealDish> onChanged;
   final VoidCallback onDelete;
 
   @override

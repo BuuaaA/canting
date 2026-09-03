@@ -1,0 +1,208 @@
+{
+  "_comment": "中国居民膳食指南（2022）核心数据 - 餐盘APP使用",
+  "version": "2022",
+  "source": "中国居民膳食指南2022 - 中国营养学会",
+  
+  "food_categories": [
+    {
+      "id": "grain_tuber",
+      "name": "谷薯类",
+      "description": "谷类（含全谷物）、薯类、杂豆",
+      "is_core": true,
+      "display_priority": 1
+    },
+    {
+      "id": "vegetable",
+      "name": "蔬菜",
+      "description": "各类蔬菜，深色蔬菜应占1/2",
+      "is_core": true,
+      "display_priority": 2
+    },
+    {
+      "id": "fruit",
+      "name": "水果",
+      "description": "新鲜水果，果汁不能代替鲜果",
+      "is_core": true,
+      "display_priority": 3
+    },
+    {
+      "id": "protein",
+      "name": "蛋白质",
+      "description": "鱼、禽、蛋、瘦肉、奶类",
+      "is_core": true,
+      "display_priority": 4,
+      "sub_categories": ["meat", "fish", "egg", "dairy"]
+    },
+    {
+      "id": "soy_nut",
+      "name": "大豆坚果",
+      "description": "大豆及其制品 + 坚果（坚果为可选补充）",
+      "is_core": true,
+      "display_priority": 5,
+      "note": "大豆是主要部分，坚果适量即可，不强制每天吃"
+    },
+    {
+      "id": "oil_salt",
+      "name": "油脂盐",
+      "description": "烹调油和食盐",
+      "is_core": false,
+      "display_priority": 6
+    }
+  ],
+  
+  "daily_intake_recommendation": {
+    "_comment": "轻身体活动水平成年人，单位：g（除非另有说明）",
+    
+    "by_energy_level": {
+      "1600": {
+        "grain_tuber": { "min": 200, "max": 250, "servings": 4 },
+        "vegetable": { "min": 300, "max": 400, "servings": 4 },
+        "fruit": { "min": 200, "max": 250, "servings": 2 },
+        "protein_meat_egg": { "min": 120, "max": 140, "servings": 3 },
+        "dairy": { "min": 300, "max": 300, "servings": 2 },
+        "soy": { "min": 15, "max": 20, "servings": 1 },
+        "nut": { "min": 7, "max": 10, "servings": 1 },
+        "oil": { "min": 25, "max": 25, "servings": 2.5 },
+        "salt": { "max": 5 }
+      },
+      "1800": {
+        "grain_tuber": { "min": 225, "max": 275, "servings": 5 },
+        "vegetable": { "min": 350, "max": 450, "servings": 4.5 },
+        "fruit": { "min": 200, "max": 300, "servings": 2.5 },
+        "protein_meat_egg": { "min": 130, "max": 150, "servings": 3.5 },
+        "dairy": { "min": 300, "max": 300, "servings": 2 },
+        "soy": { "min": 15, "max": 25, "servings": 1.5 },
+        "nut": { "min": 8, "max": 10, "servings": 1 },
+        "oil": { "min": 25, "max": 25, "servings": 2.5 },
+        "salt": { "max": 5 }
+      },
+      "2000": {
+        "grain_tuber": { "min": 250, "max": 300, "servings": 5 },
+        "vegetable": { "min": 400, "max": 500, "servings": 5 },
+        "fruit": { "min": 250, "max": 350, "servings": 3 },
+        "protein_meat_egg": { "min": 140, "max": 170, "servings": 4 },
+        "dairy": { "min": 300, "max": 300, "servings": 2 },
+        "soy": { "min": 20, "max": 25, "servings": 2 },
+        "nut": { "min": 8, "max": 10, "servings": 1 },
+        "oil": { "min": 25, "max": 30, "servings": 3 },
+        "salt": { "max": 5 }
+      },
+      "2200": {
+        "grain_tuber": { "min": 275, "max": 325, "servings": 6 },
+        "vegetable": { "min": 450, "max": 500, "servings": 5 },
+        "fruit": { "min": 250, "max": 350, "servings": 3 },
+        "protein_meat_egg": { "min": 160, "max": 190, "servings": 4.5 },
+        "dairy": { "min": 300, "max": 300, "servings": 2 },
+        "soy": { "min": 20, "max": 25, "servings": 2 },
+        "nut": { "min": 8, "max": 10, "servings": 1 },
+        "oil": { "min": 25, "max": 30, "servings": 3 },
+        "salt": { "max": 5 }
+      },
+      "2400": {
+        "grain_tuber": { "min": 300, "max": 350, "servings": 6 },
+        "vegetable": { "min": 450, "max": 500, "servings": 5 },
+        "fruit": { "min": 300, "max": 400, "servings": 3.5 },
+        "protein_meat_egg": { "min": 180, "max": 200, "servings": 5 },
+        "dairy": { "min": 300, "max": 300, "servings": 2 },
+        "soy": { "min": 20, "max": 25, "servings": 2 },
+        "nut": { "min": 8, "max": 10, "servings": 1 },
+        "oil": { "min": 25, "max": 30, "servings": 3 },
+        "salt": { "max": 5 }
+      }
+    }
+  },
+  
+  "serving_reference": {
+    "_comment": "APP使用的「份」参考，用于用户感知和推荐",
+    "grain_tuber": {
+      "per_serving_grams": 50,
+      "examples": ["一小碗米饭", "一片面包", "一个小红薯"]
+    },
+    "vegetable": {
+      "per_serving_grams": 80,
+      "examples": ["一小碟青菜", "半盘炒菜"]
+    },
+    "fruit": {
+      "per_serving_grams": 100,
+      "examples": ["半个苹果", "一小把葡萄"]
+    },
+    "protein_meat_egg": {
+      "per_serving_grams": 50,
+      "examples": ["一块鸡胸肉", "一个鸡蛋"]
+    },
+    "dairy": {
+      "per_serving_grams": 150,
+      "examples": ["一杯牛奶", "一小盒酸奶"]
+    },
+    "soy": {
+      "per_serving_grams": 15,
+      "examples": ["一小碗豆腐", "一杯豆浆"]
+    },
+    "nut": {
+      "per_serving_grams": 10,
+      "examples": ["一小把花生", "两三个核桃"]
+    }
+  },
+  
+  "weekly_goals": {
+    "food_variety": 25,
+    "fish": { "servings": 2, "note": "每周最好吃鱼2次或300~500g" },
+    "nut": { "grams_min": 50, "grams_max": 70, "note": "每周50-70g，平均每天约10g" }
+  },
+  
+  "daily_goals": {
+    "food_variety": 12,
+    "water_ml": 1500,
+    "note": "每天摄入12种以上食物，饮水1500-1700ml"
+  },
+  
+  "meal_distribution": {
+    "breakfast": {
+      "energy_ratio": 0.3,
+      "food_variety": { "min": 3, "max": 5 },
+      "recommended_categories": ["grain_tuber", "protein", "fruit"],
+      "less_recommended": []
+    },
+    "lunch": {
+      "energy_ratio": 0.4,
+      "food_variety": { "min": 4, "max": 6 },
+      "recommended_categories": ["grain_tuber", "vegetable", "protein"],
+      "less_recommended": []
+    },
+    "dinner": {
+      "energy_ratio": 0.3,
+      "food_variety": { "min": 4, "max": 5 },
+      "recommended_categories": ["vegetable", "protein"],
+      "less_recommended": ["grain_tuber"]
+    }
+  },
+  
+  "food_exchange": {
+    "soy_products": {
+      "soy_25g": {
+        "soft_tofu": 145,
+        "firm_tofu": 105,
+        "tofu_silk": 50,
+        "soy_milk": 350,
+        "silken_tofu": 200,
+        "dried_tofu": 35
+      }
+    },
+    "dairy_products": {
+      "milk_100ml": {
+        "yogurt": 100,
+        "cheese": 10,
+        "milk_powder": 15
+      }
+    },
+    "grain_tuber": {
+      "rice_50g_raw": {
+        "cooked_rice": 150,
+        "noodles_raw": 75,
+        "steamed_bun": 75,
+        "sweet_potato": 125,
+        "corn": 150
+      }
+    }
+  }
+}

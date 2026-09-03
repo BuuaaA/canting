@@ -22,6 +22,17 @@ class DailyIntake {
   final double bmr;
   final double tdee;
 
+  factory DailyIntake.fromJson(Map<String, dynamic> json) => DailyIntake(
+    grains: (json['grains'] as num).toDouble(),
+    vegetables: (json['vegetables'] as num).toDouble(),
+    fruits: (json['fruits'] as num).toDouble(),
+    protein: (json['protein'] as num).toDouble(),
+    proteinSoy: (json['protein_soy'] as num).toDouble(),
+    oil: (json['oil'] as num).toDouble(),
+    bmr: (json['bmr'] as num).toDouble(),
+    tdee: (json['tdee'] as num).toDouble(),
+  );
+
   Portions get portions => Portions(
     grains: grains,
     vegetables: vegetables,

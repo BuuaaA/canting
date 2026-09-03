@@ -2,12 +2,12 @@ import 'portions.dart';
 
 class MealDish {
   const MealDish({
-    required this.name,
-    required this.quantity,
-    required this.portionSize,
-    required this.matchedDishId,
-    required this.matchConfidence,
-    required this.portions,
+    this.name = '',
+    this.quantity = 1,
+    this.portionSize = 'normal',
+    this.matchedDishId,
+    this.matchConfidence = 0,
+    this.portions = Portions.zero,
   });
 
   final String name;
@@ -16,6 +16,19 @@ class MealDish {
   final String? matchedDishId;
   final double matchConfidence;
   final Portions portions;
+
+  MealDish copyWith({
+    String? name,
+    double? quantity,
+    String? portionSize,
+  }) => MealDish(
+    name: name ?? this.name,
+    quantity: quantity ?? this.quantity,
+    portionSize: portionSize ?? this.portionSize,
+    matchedDishId: matchedDishId,
+    matchConfidence: matchConfidence,
+    portions: portions,
+  );
 
   factory MealDish.fromJson(Map<String, dynamic> json) => MealDish(
     name: json['name'] as String,
@@ -44,6 +57,7 @@ class MealRecord {
     required this.mealId,
     required this.mealType,
     required this.timestamp,
+    this.merchant,
     this.dishes = const [],
     Portions? portionsTotal,
     this.completionRate = 0,
@@ -53,6 +67,9 @@ class MealRecord {
   final String mealId;
   final String mealType;
   final DateTime timestamp;
+
+  /// Takeaway merchant name, when known; optional for manual entries.
+  final String? merchant;
   final List<MealDish> dishes;
   final Portions portionsTotal;
   final double completionRate;
@@ -67,6 +84,7 @@ class MealRecord {
       mealId: json['meal_id'] as String,
       mealType: json['meal_type'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
+      merchant: json['merchant'] as String?,
       dishes: dishes,
       portionsTotal: json['portions_total'] == null
           ? null
@@ -82,6 +100,7 @@ class MealRecord {
     'meal_id': mealId,
     'meal_type': mealType,
     'timestamp': timestamp.toIso8601String(),
+    if (merchant != null) 'merchant': merchant,
     'dishes': dishes.map((dish) => dish.toJson()).toList(growable: false),
     'portions_total': portionsTotal.toJson(),
     'completion_rate': completionRate,

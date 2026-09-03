@@ -1,4 +1,4 @@
-import 'package:canting/state/app_state.dart';
+import 'package:canting/core_engine.dart';
 import 'package:canting/ui/history/calendar_view.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +17,8 @@ class DayDetail extends StatelessWidget {
   final DateTime date;
   final double completion;
   final int? vitality;
-  final List<MockMeal> meals;
-  final ValueChanged<MockMeal> onMealTap;
+  final List<MealRecord> meals;
+  final ValueChanged<MealRecord> onMealTap;
   final VoidCallback onAdd;
 
   static const _categories = [
@@ -164,9 +164,9 @@ class DayDetail extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         subtitle: Text(
-                          '${meal.time.hour.toString().padLeft(2, '0')}:'
-                          '${meal.time.minute.toString().padLeft(2, '0')}'
-                          ' · ${meal.merchant}',
+                          '${meal.timestamp.hour.toString().padLeft(2, '0')}:'
+                          '${meal.timestamp.minute.toString().padLeft(2, '0')}'
+                          ' · ${meal.merchant ?? ''}',
                         ),
                         trailing: const Icon(Icons.chevron_right),
                       ),

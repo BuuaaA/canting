@@ -53,3 +53,6 @@ app.*.map.json
 /*.png
 /*.apk
 /ui*.xml
+
+# PDF analysis scratch (large binaries)
+/tools/

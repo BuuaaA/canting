@@ -71,6 +71,7 @@ flutter:
   assets:
     - assets/data/dishes.json
     - assets/data/categories.json
+    - assets/data/dietary_guidelines.json
     - assets/data/pet_dialogues.json
     - assets/sprites/
 

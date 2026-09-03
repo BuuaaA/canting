@@ -1,6 +1,6 @@
 import 'portions.dart';
 
-enum MatchType { exact, fuzzy, keyword, unmatched }
+enum MatchType { exact, contains, fuzzy, keyword, unmatched }
 
 /// Result of mapping one OCR dish name to the local food taxonomy.
 class MatchResult {

@@ -1,3 +1,4 @@
+import 'package:canting/core_engine.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/record/dish_edit_list.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
@@ -25,10 +26,10 @@ class RecordDetailPage extends StatefulWidget {
 
 class _RecordDetailPageState extends State<RecordDetailPage> {
   late final TextEditingController _merchantController;
-  late List<MockDish> _dishes;
+  late List<MealDish> _dishes;
   late String _mealType;
   late DateTime _mealTime;
-  MockMeal? _originalMeal;
+  MealRecord? _originalMeal;
   RecognitionDraft? _appliedRecognitionDraft;
   bool _initialized = false;
 
@@ -55,14 +56,11 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
 
     _originalMeal = widget.mealId == null
         ? null
-        : state.meals.cast<MockMeal?>().firstWhere(
-            (meal) => meal?.id == widget.mealId,
-            orElse: () => null,
-          );
+        : state.mealById(widget.mealId!);
     final now = DateTime.now();
     final baseDate = widget.initialDate ?? now;
     _mealTime =
-        _originalMeal?.time ??
+        _originalMeal?.timestamp ??
         DateTime(
           baseDate.year,
           baseDate.month,
@@ -81,8 +79,8 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
         (widget.isSharedRecognition
             ? []
             : [
-                const MockDish(name: '鸡肉杂粮饭'),
-                const MockDish(name: '清炒西兰花', portionSize: 'small'),
+                const MealDish(name: '鸡肉杂粮饭'),
+                const MealDish(name: '清炒西兰花', portionSize: 'small'),
               ]);
     _merchantController = TextEditingController(
       text:
@@ -98,7 +96,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     super.dispose();
   }
 
-  void _updateDish(int index, MockDish dish) {
+  void _updateDish(int index, MealDish dish) {
     setState(() => _dishes[index] = dish);
   }
 
@@ -149,7 +147,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     );
     controller.dispose();
     if (result != null && result.isNotEmpty) {
-      setState(() => _dishes.add(MockDish(name: result)));
+      setState(() => _dishes.add(MealDish(name: result)));
     }
   }
 
@@ -191,7 +189,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     }
   }
 
-  void _save() {
+  Future<void> _save() async {
     final merchant = _merchantController.text.trim();
     final validDishes = _dishes
         .where((dish) => dish.name.trim().isNotEmpty)
@@ -202,18 +200,20 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       return;
     }
 
-    final meal = MockMeal(
-      id: _originalMeal?.id ?? 'meal-${DateTime.now().microsecondsSinceEpoch}',
-      merchant: merchant,
+    final meal = MealRecord(
+      mealId:
+          _originalMeal?.mealId ??
+          'meal-${DateTime.now().microsecondsSinceEpoch}',
       mealType: _mealType,
-      time: _mealTime,
+      timestamp: _mealTime,
+      merchant: merchant,
       dishes: validDishes,
       completionRate: (0.45 + validDishes.length * 0.1).clamp(0.0, 0.95),
     );
     final appState = context.read<AppState>();
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
-    appState.saveMeal(meal);
+    await appState.saveMeal(meal);
     appState.clearSharedRecognition();
     router.go(widget.returnLocation);
     messenger.showSnackBar(const SnackBar(content: Text('这顿已经保存好啦')));
@@ -242,7 +242,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     if (confirmed == true && mounted) {
       final appState = context.read<AppState>();
       final router = GoRouter.of(context);
-      appState.deleteMeal(meal.id);
+      await appState.deleteMeal(meal.mealId);
       router.go(widget.returnLocation);
     }
   }

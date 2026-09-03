@@ -22,64 +22,76 @@ class _Step4RoutineState extends State<Step4Routine> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 28),
-        Text('平时几点吃饭？', style: theme.textTheme.titleLarge),
-        const SizedBox(height: 6),
-        Text(
-          '时间只用于安排温和提醒，之后可随时修改。',
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 120),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 16),
+          Text('作息习惯', style: theme.textTheme.headlineMedium),
+          const SizedBox(height: 8),
+          Text(
+            '用于安排温和的吃饭提醒，之后可随时修改。',
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
-        ),
-        const SizedBox(height: 12),
-        _TimeRow(
-          label: '早餐',
-          icon: Icons.wb_sunny_outlined,
-          value: widget.draft.breakfast,
-          onTap: () => _pickTime(
-            widget.draft.breakfast,
-            (value) => widget.draft.breakfast = value,
+          const SizedBox(height: 24),
+          Text('平时几点吃饭？', style: theme.textTheme.titleLarge),
+          const SizedBox(height: 8),
+          _TimeRow(
+            label: '早餐',
+            icon: Icons.wb_sunny_outlined,
+            value: widget.draft.breakfast,
+            onTap: () => _pickTime(
+              widget.draft.breakfast,
+              (value) => widget.draft.breakfast = value,
+            ),
           ),
-        ),
-        _TimeRow(
-          label: '午餐',
-          icon: Icons.sunny,
-          value: widget.draft.lunch,
-          onTap: () => _pickTime(
-            widget.draft.lunch,
-            (value) => widget.draft.lunch = value,
+          _TimeRow(
+            label: '午餐',
+            icon: Icons.sunny,
+            value: widget.draft.lunch,
+            onTap: () => _pickTime(
+              widget.draft.lunch,
+              (value) => widget.draft.lunch = value,
+            ),
           ),
-        ),
-        _TimeRow(
-          label: '晚餐',
-          icon: Icons.nights_stay_outlined,
-          value: widget.draft.dinner,
-          onTap: () => _pickTime(
-            widget.draft.dinner,
-            (value) => widget.draft.dinner = value,
+          _TimeRow(
+            label: '晚餐',
+            icon: Icons.nights_stay_outlined,
+            value: widget.draft.dinner,
+            onTap: () => _pickTime(
+              widget.draft.dinner,
+              (value) => widget.draft.dinner = value,
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
-        Text('一天从几点切换', style: theme.textTheme.titleMedium),
-        const SizedBox(height: 10),
-        SizedBox(
-          width: double.infinity,
-          child: SegmentedButton<int>(
-            segments: const [
-              ButtonSegment(value: 0, label: Text('0:00')),
-              ButtonSegment(value: 1, label: Text('1:00')),
-              ButtonSegment(value: 4, label: Text('4:00')),
-            ],
-            selected: {widget.draft.dayBoundaryHour},
-            onSelectionChanged: (value) {
-              setState(() => widget.draft.dayBoundaryHour = value.first);
-            },
+          const SizedBox(height: 20),
+          Text('一天从几点切换', style: theme.textTheme.titleMedium),
+          const SizedBox(height: 6),
+          Text(
+            '熬夜吃的宵夜算第二天，默认凌晨 1 点切换。',
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
-        ),
-      ],
+          const SizedBox(height: 10),
+          SizedBox(
+            width: double.infinity,
+            child: SegmentedButton<int>(
+              segments: const [
+                ButtonSegment(value: 0, label: Text('0:00')),
+                ButtonSegment(value: 1, label: Text('1:00')),
+                ButtonSegment(value: 4, label: Text('4:00')),
+              ],
+              selected: {widget.draft.dayBoundaryHour},
+              onSelectionChanged: (value) {
+                setState(() => widget.draft.dayBoundaryHour = value.first);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
