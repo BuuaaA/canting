@@ -252,7 +252,7 @@ class _WelcomeStep extends StatelessWidget {
                   SizedBox(height: 4),
                   PetSpriteWidget(
                     petType: 'cat',
-                    growthStage: 'baby',
+                    growthStage: 'egg',
                     vitalityState: 'energetic',
                     size: 92,
                   ),

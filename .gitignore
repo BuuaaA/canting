@@ -48,3 +48,8 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Local test artifacts (screenshots / UI dumps / built APK)
+/*.png
+/*.apk
+/ui*.xml

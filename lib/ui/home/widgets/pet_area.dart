@@ -222,33 +222,48 @@ class _ExpandedPetArea extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  pet.petName,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleMedium,
+            // During the expand/collapse height animation this column can be
+            // briefly taller than the box; a non-scrollable scroll view lets
+            // it clip instead of throwing a RenderFlex overflow, while the
+            // constrained box keeps the content centered when it fits.
+            child: LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        pet.petName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 5),
+                      PetDialogWidget(key: ValueKey(dialogue), text: dialogue),
+                      const SizedBox(height: 8),
+                      _SceneProgress(
+                        label: 'VIT',
+                        value: pet.vitality / 100,
+                        trailing: '${pet.vitality}',
+                        color: scheme.primary,
+                      ),
+                      const SizedBox(height: 5),
+                      _SceneProgress(
+                        label: 'GROW',
+                        value: pet.growth / growthTarget,
+                        trailing: '${pet.growth}',
+                        color: AppTheme.sun,
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 5),
-                PetDialogWidget(key: ValueKey(dialogue), text: dialogue),
-                const SizedBox(height: 8),
-                _SceneProgress(
-                  label: 'VIT',
-                  value: pet.vitality / 100,
-                  trailing: '${pet.vitality}',
-                  color: scheme.primary,
-                ),
-                const SizedBox(height: 5),
-                _SceneProgress(
-                  label: 'GROW',
-                  value: pet.growth / growthTarget,
-                  trailing: '${pet.growth}',
-                  color: AppTheme.sun,
-                ),
-              ],
+              ),
             ),
           ),
         ],

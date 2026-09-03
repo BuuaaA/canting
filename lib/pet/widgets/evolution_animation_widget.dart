@@ -77,11 +77,19 @@ class _EvolutionAnimationWidgetState extends State<EvolutionAnimationWidget>
       );
     }
 
+    // 遮罩颜色根据主题亮度自适应：浅色用半透明白，深色用半透明深蓝黑
+    // 浅色：0xD8FFFFFF = 白色 85% 不透明（原 0xEF 太亮 94%）
+    // 深色：0xE01A1F2E = 深蓝黑 88% 不透明，避免白色遮罩在暗背景上过曝刺眼
+    final brightness = Theme.of(context).brightness;
+    final overlayColor = brightness == Brightness.dark
+        ? const Color(0xE01A1F2E)
+        : const Color(0xD8FFFFFF);
+
     return IgnorePointer(
       child: SizedBox.expand(
         key: const ValueKey('evolution-animation'),
         child: ColoredBox(
-          color: const Color(0xEFFFFFFF),
+          color: overlayColor,
           child: AnimatedBuilder(
             animation: _controller,
             builder: (context, child) {

@@ -15,6 +15,7 @@ data class PetWidgetStatus(
     val todayMealCount: Int = 0,
     val todayCompletionPercent: Int = 0,
     val nextMealSummary: String = "暂无建议",
+    val petSpriteName: String? = null,
 )
 
 object PetWidgetViews {
@@ -31,7 +32,7 @@ object PetWidgetViews {
         val layoutId = if (isMedium) R.layout.widget_medium else R.layout.widget_small
 
         return RemoteViews(context.packageName, layoutId).apply {
-            setImageViewResource(R.id.widget_sprite, R.drawable.widget_pet_placeholder)
+            bindSprite(this, status.petSpriteName)
             setTextViewText(R.id.widget_vitality, "活力 ${status.vitality}")
             setTextViewText(R.id.widget_vitality_state, vitalityLabel(status.vitalityState))
             setOnClickPendingIntent(
@@ -46,7 +47,7 @@ object PetWidgetViews {
                 )
                 setTextViewText(
                     R.id.widget_completion,
-                    "今日完成度 ${status.todayCompletionPercent}%",
+                    "完成度 ${status.todayCompletionPercent}%",
                 )
                 setProgressBar(
                     R.id.widget_completion_progress,
@@ -78,8 +79,34 @@ object PetWidgetViews {
                     .optString("next_meal_summary", "暂无建议")
                     .trim()
                     .ifBlank { "暂无建议" },
+                petSpriteName = value
+                    .optString("pet_sprite_name", "")
+                    .trim()
+                    .ifBlank { null },
             )
         }.getOrDefault(PetWidgetStatus())
+    }
+
+    /**
+     * Sprite names follow `pet_<type>_<stage>_<state>_<frame>`, matching
+     * PetSpriteWidget.assetPath on the Flutter side. The widget always shows
+     * frame 0, drawn natively by [PetSpritePainter].
+     */
+    private fun bindSprite(views: RemoteViews, spriteName: String?) {
+        val parts = spriteName?.split("_").orEmpty()
+        if (parts.size < 4 || parts[0] != "pet") {
+            views.setImageViewResource(
+                R.id.widget_sprite,
+                R.drawable.widget_pet_placeholder,
+            )
+            return
+        }
+        val bitmap = PetSpritePainter.createBitmap(
+            petType = parts[1],
+            growthStage = parts[2],
+            vitalityState = parts[3],
+        )
+        views.setImageViewBitmap(R.id.widget_sprite, bitmap)
     }
 
     private fun vitalityLabel(state: String): String = when (state) {

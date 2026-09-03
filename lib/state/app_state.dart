@@ -120,9 +120,7 @@ class AppState extends ChangeNotifier {
     : _petEngine = petEngine ?? PetEngine(),
       _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge() {
     final now = DateTime.now();
-    _pet = _petEngine
-        .createPet(petType: 'cat', petName: '小挑食')
-        .copyWith(growthStage: GrowthStage.baby, growth: 68, vitality: 76);
+    _pet = _petEngine.createPet(petType: 'cat', petName: '小挑食');
     _dialogue = _petEngine.getStatusDialogue(
       petType: _pet.petType,
       state: _pet.vitalityState,
@@ -164,6 +162,7 @@ class AppState extends ChangeNotifier {
   late List<MockMeal> _meals;
   RecognitionDraft? _recognitionDraft;
   Future<void> _widgetSync = Future.value();
+  GrowthStage? _pendingEvolutionFrom;
 
   bool onboardingComplete = false;
   bool petAreaCollapsed = false;
@@ -201,6 +200,7 @@ class AppState extends ChangeNotifier {
   DateTime get selectedDate => _selectedDate;
   List<MockMeal> get meals => List.unmodifiable(_meals);
   RecognitionDraft? get recognitionDraft => _recognitionDraft;
+  GrowthStage? get pendingEvolutionFrom => _pendingEvolutionFrom;
 
   List<MockMeal> mealsFor(DateTime date) =>
       _meals
@@ -219,9 +219,7 @@ class AppState extends ChangeNotifier {
     required String petName,
   }) {
     profile = setupProfile;
-    _pet = _petEngine
-        .createPet(petType: petType, petName: petName.trim())
-        .copyWith(growthStage: GrowthStage.baby, growth: 68, vitality: 76);
+    _pet = _petEngine.createPet(petType: petType, petName: petName.trim());
     _dialogue = _petEngine.getStatusDialogue(
       petType: _pet.petType,
       state: _pet.vitalityState,
@@ -245,6 +243,7 @@ class AppState extends ChangeNotifier {
     }
     _pet = result.pet;
     _dialogue = '嘿嘿～';
+    _pendingEvolutionFrom = result.previousGrowthStage;
     _scheduleWidgetSync();
     notifyListeners();
     return true;
@@ -332,6 +331,11 @@ class AppState extends ChangeNotifier {
     _recognitionDraft = null;
   }
 
+  void clearPendingEvolution() {
+    _pendingEvolutionFrom = null;
+    notifyListeners();
+  }
+
   void saveMeal(MockMeal meal) {
     final index = _meals.indexWhere((item) => item.id == meal.id);
     if (index == -1) {
@@ -344,6 +348,7 @@ class AppState extends ChangeNotifier {
       );
       _pet = result.pet;
       _dialogue = result.dialogue;
+      _pendingEvolutionFrom = result.previousGrowthStage;
     } else {
       _meals = [..._meals]..[index] = meal;
       _dialogue = '这顿修改好啦';
@@ -426,8 +431,6 @@ class AppState extends ChangeNotifier {
         debugPrint('Unable to update Android widget: ${error.message}');
       } on MissingPluginException catch (error) {
         debugPrint('Android widget channel is unavailable: $error');
-      } catch (error) {
-        debugPrint('Unable to update Android widget: $error');
       }
     });
   }

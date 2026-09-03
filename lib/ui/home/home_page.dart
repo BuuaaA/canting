@@ -1,3 +1,4 @@
+import 'package:canting/pet/widgets/evolution_animation_widget.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/home/widgets/food_progress_list.dart';
 import 'package:canting/ui/home/widgets/greeting_text.dart';
@@ -19,6 +20,72 @@ class HomePage extends StatelessWidget {
     final state = context.watch<AppState>();
     final todayMeals = state.mealsFor(DateTime.now());
     final completion = AppState.completion;
+    final disableAnimations = MediaQuery.disableAnimationsOf(context);
+    final pendingFrom = state.pendingEvolutionFrom;
+
+    // 无障碍"移除动画"开启时，直接清除进化信号，不播放动画
+    if (disableAnimations && pendingFrom != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (context.mounted) {
+          context.read<AppState>().clearPendingEvolution();
+        }
+      });
+    }
+
+    final body = PixelBackdrop(
+      child: PixelContentWidth(
+        expandHeight: true,
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 112),
+          children: [
+            const PetArea(),
+            const SizedBox(height: 18),
+            const GreetingText(),
+            const SizedBox(height: 10),
+            SummaryCard(
+              mealCount: todayMeals.length,
+              completionByCategory: completion.byCategory,
+            ),
+            const SizedBox(height: 14),
+            NutritionRingChart(
+              overall: completion.overall,
+              values: completion.byCategory,
+            ),
+            const SizedBox(height: 22),
+            const PixelSectionHeader(
+              title: '今日任务',
+              trailing: '六类食物',
+              icon: Icons.checklist,
+            ),
+            const SizedBox(height: 12),
+            FoodProgressList(values: completion.byCategory),
+            const SizedBox(height: 26),
+            const PixelSectionHeader(
+              title: '下一餐',
+              icon: Icons.restaurant_menu,
+            ),
+            const SizedBox(height: 10),
+            RecommendationCard(onTap: () => context.push('/recommendation')),
+            const SizedBox(height: 26),
+            PixelSectionHeader(
+              title: '饮食日志',
+              trailing: '${todayMeals.length} 餐',
+              icon: Icons.menu_book_outlined,
+            ),
+            const SizedBox(height: 10),
+            TodayRecords(
+              meals: todayMeals,
+              onMealTap: (meal) =>
+                  context.push('/record_detail?mealId=${meal.id}'),
+              onDelete: state.deleteMeal,
+              onAdd: () => context.push('/record_detail'),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    final showEvolution = !disableAnimations && pendingFrom != null;
 
     return Scaffold(
       appBar: PixelAppBar(
@@ -31,58 +98,24 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: PixelBackdrop(
-        child: PixelContentWidth(
-          expandHeight: true,
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 112),
-            children: [
-              const PetArea(),
-              const SizedBox(height: 18),
-              const GreetingText(),
-              const SizedBox(height: 10),
-              SummaryCard(
-                mealCount: todayMeals.length,
-                completionByCategory: completion.byCategory,
-              ),
-              const SizedBox(height: 14),
-              NutritionRingChart(
-                overall: completion.overall,
-                values: completion.byCategory,
-              ),
-              const SizedBox(height: 22),
-              const PixelSectionHeader(
-                title: '今日任务',
-                trailing: '六类食物',
-                icon: Icons.checklist,
-              ),
-              const SizedBox(height: 12),
-              FoodProgressList(values: completion.byCategory),
-              const SizedBox(height: 26),
-              const PixelSectionHeader(
-                title: '下一餐',
-                icon: Icons.restaurant_menu,
-              ),
-              const SizedBox(height: 10),
-              RecommendationCard(onTap: () => context.push('/recommendation')),
-              const SizedBox(height: 26),
-              PixelSectionHeader(
-                title: '饮食日志',
-                trailing: '${todayMeals.length} 餐',
-                icon: Icons.menu_book_outlined,
-              ),
-              const SizedBox(height: 10),
-              TodayRecords(
-                meals: todayMeals,
-                onMealTap: (meal) =>
-                    context.push('/record_detail?mealId=${meal.id}'),
-                onDelete: state.deleteMeal,
-                onAdd: () => context.push('/record_detail'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: showEvolution
+          ? Stack(
+              children: [
+                body,
+                EvolutionAnimationWidget(
+                  petType: state.pet.petType,
+                  fromStage: pendingFrom!.name,
+                  toStage: state.pet.growthStage.name,
+                  petName: state.pet.petName,
+                  onFinished: () {
+                    if (context.mounted) {
+                      context.read<AppState>().clearPendingEvolution();
+                    }
+                  },
+                ),
+              ],
+            )
+          : body,
     );
   }
 }
