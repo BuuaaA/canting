@@ -5,6 +5,7 @@ import 'package:canting/core_engine.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/platform/android_native_bridge.dart';
 import 'package:canting/router/app_router.dart';
+import 'package:canting/services/notification_service.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,12 @@ Future<void> main() async {
     guidelines: await _loadDietaryGuidelines(),
   );
   await appState.loadFromDatabase();
+  // 本地通知基础设施（模块 13）：初始化失败不阻塞 APP 启动。
+  try {
+    await NotificationService.init();
+  } catch (error) {
+    debugPrint('Notification init failed: $error');
+  }
   runApp(CantingApp(appState: appState));
 }
 
@@ -59,6 +66,7 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   late final AndroidNativeBridge _nativeBridge = AndroidNativeBridge();
   String? _lastOpenedIOSMealID;
   bool _checkingIOSShare = false;
+  StreamSubscription<String>? _notificationTapSub;
 
   @override
   void initState() {
@@ -68,6 +76,18 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
       unawaited(_nativeBridge.initialize(onSharedImage: _handleSharedImage));
       unawaited(_openPendingIOSMeal());
     });
+    // 点击通知的跳转（模块 13）：识别成功 → 今日首页，识别失败 → 记录页。
+    _notificationTapSub = NotificationService.onTap.listen(_handleNotificationTap);
+  }
+
+  void _handleNotificationTap(String payload) {
+    switch (payload) {
+      case NotificationService.payloadFailure:
+        _router.go('/record_detail');
+      case NotificationService.payloadSuccess:
+      default:
+        _router.go('/home');
+    }
   }
 
   Future<void> _handleSharedImage(String imageUri) async {
@@ -157,6 +177,7 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    unawaited(_notificationTapSub?.cancel());
     unawaited(_nativeBridge.dispose());
     _router.dispose();
     super.dispose();

@@ -1,39 +1,55 @@
 import 'package:canting/core_engine.dart';
+import 'package:canting/pet/vitality_calculator.dart';
 import 'package:canting/ui/history/calendar_view.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 
+/// 单日详情（模块 9）：当日膳食结构 + 宠物状态 + 餐食列表（可查看/删除）。
 class DayDetail extends StatelessWidget {
   const DayDetail({
     super.key,
     required this.date,
-    required this.completion,
-    required this.vitality,
     required this.meals,
+    required this.dailyIntake,
+    required this.dayScore,
+    required this.petName,
     required this.onMealTap,
+    required this.onMealDelete,
     required this.onAdd,
   });
 
   final DateTime date;
-  final double completion;
-  final int? vitality;
   final List<MealRecord> meals;
+  final DailyIntake dailyIntake;
+  final int? dayScore;
+  final String petName;
   final ValueChanged<MealRecord> onMealTap;
+  final ValueChanged<MealRecord> onMealDelete;
   final VoidCallback onAdd;
 
   static const _categories = [
-    (label: '主食', icon: Icons.rice_bowl_outlined, factor: 0.95),
-    (label: '蔬菜', icon: Icons.eco_outlined, factor: 0.72),
-    (label: '水果', icon: Icons.apple_outlined, factor: 0.58),
-    (label: '蛋白质', icon: Icons.egg_alt_outlined, factor: 1.05),
-    (label: '大豆坚果', icon: Icons.spa_outlined, factor: 0.82),
-    (label: '油脂', icon: Icons.water_drop_outlined, factor: 1.12),
+    (key: 'grains', label: '主食', icon: Icons.rice_bowl_outlined),
+    (key: 'vegetables', label: '蔬菜', icon: Icons.eco_outlined),
+    (key: 'fruits', label: '水果', icon: Icons.apple_outlined),
+    (key: 'protein', label: '蛋白质', icon: Icons.egg_alt_outlined),
+    (key: 'protein_soy', label: '大豆坚果', icon: Icons.spa_outlined),
+    (key: 'oil', label: '油脂', icon: Icons.water_drop_outlined),
   ];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
+    final eaten = meals.fold(
+      Portions.zero,
+      (total, meal) => total + meal.portionsTotal,
+    );
+    final completion = CompletionCalculator().calculate(
+      eatenPortions: eaten,
+      dailyIntake: dailyIntake,
+    );
+    final grade = gradeForScore(dayScore);
+
     return SafeArea(
       top: false,
       child: Padding(
@@ -64,7 +80,7 @@ class DayDetail extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '${(completion * 100).round()}%',
+                        '${(completion.overall * 100).round()}%',
                         style: theme.textTheme.displaySmall?.copyWith(
                           color: scheme.primary,
                           fontWeight: FontWeight.w800,
@@ -73,7 +89,7 @@ class DayDetail extends StatelessWidget {
                       const SizedBox(width: 10),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 7),
-                        child: Text(_evaluation(completion)),
+                        child: Text(_evaluation(completion.overall)),
                       ),
                     ],
                   ),
@@ -92,10 +108,7 @@ class DayDetail extends StatelessWidget {
                               width: itemWidth,
                               label: category.label,
                               icon: category.icon,
-                              value: (completion * category.factor).clamp(
-                                0.0,
-                                1.3,
-                              ),
+                              value: completion.byCategory[category.key] ?? 0,
                             ),
                         ],
                       );
@@ -103,14 +116,14 @@ class DayDetail extends StatelessWidget {
                   ),
                   const SizedBox(height: 22),
                   PixelPanel(
-                    color: vitalityColor(vitality).withValues(alpha: 0.14),
-                    borderColor: vitalityColor(vitality),
+                    color: qualityColor(grade).withValues(alpha: 0.14),
+                    borderColor: qualityColor(grade),
                     padding: const EdgeInsets.all(15),
                     child: Row(
                       children: [
                         Icon(
                           Icons.favorite,
-                          color: vitalityColor(vitality),
+                          color: qualityColor(grade),
                           size: 28,
                         ),
                         const SizedBox(width: 12),
@@ -119,16 +132,16 @@ class DayDetail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                vitality == null
-                                    ? '这天没有活力记录'
-                                    : '平均活力 $vitality',
+                                dayScore == null
+                                    ? '$petName在等你记录'
+                                    : '$petName的饮食质量 $dayScore',
                                 style: theme.textTheme.titleMedium,
                               ),
                               const SizedBox(height: 3),
                               Text(
-                                vitality == null
-                                    ? '小挑食想你啦'
-                                    : _petDialogue(vitality!),
+                                dayScore == null
+                                    ? '这天没有记录，补录一下吧'
+                                    : _qualityLabel(grade),
                                 style: theme.textTheme.bodyMedium,
                               ),
                             ],
@@ -139,7 +152,7 @@ class DayDetail extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   const PixelSectionHeader(
-                    title: '当日记录',
+                    title: '当日餐食',
                     icon: Icons.receipt_long_outlined,
                   ),
                   const SizedBox(height: 8),
@@ -166,9 +179,14 @@ class DayDetail extends StatelessWidget {
                         subtitle: Text(
                           '${meal.timestamp.hour.toString().padLeft(2, '0')}:'
                           '${meal.timestamp.minute.toString().padLeft(2, '0')}'
-                          ' · ${meal.merchant ?? ''}',
+                          ' · ${meal.merchant ?? ''}'
+                          ' · 完成 ${(meal.completionRate * 100).round()}%',
                         ),
-                        trailing: const Icon(Icons.chevron_right),
+                        trailing: IconButton(
+                          tooltip: '删除这条记录',
+                          icon: const Icon(Icons.delete_outline),
+                          onPressed: () => onMealDelete(meal),
+                        ),
                       ),
                 ],
               ),
@@ -179,7 +197,7 @@ class DayDetail extends StatelessWidget {
               child: FilledButton.icon(
                 onPressed: onAdd,
                 icon: const Icon(Icons.add),
-                label: const Text('添加这天的记录'),
+                label: const Text('补录这天的记录'),
               ),
             ),
           ],
@@ -195,12 +213,12 @@ class DayDetail extends StatelessWidget {
     return '慢慢来，下一餐再补补';
   }
 
-  static String _petDialogue(int value) {
-    if (value >= 80) return '今天元气满满！';
-    if (value >= 50) return '今天状态不错～';
-    if (value >= 25) return '再陪陪我吧';
-    return '期待你的照顾';
-  }
+  static String _qualityLabel(DietQualityGrade grade) => switch (grade) {
+    DietQualityGrade.good => '吃得不错，继续保持～',
+    DietQualityGrade.ok => '一般般，下一餐补补',
+    DietQualityGrade.bad => '不太好，要均衡饮食哦',
+    DietQualityGrade.none => '没有记录',
+  };
 }
 
 class _CategoryChip extends StatelessWidget {

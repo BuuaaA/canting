@@ -1,3 +1,4 @@
+import 'package:canting/core_engine.dart';
 import 'package:canting/pet/widgets/evolution_animation_widget.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/home/widgets/food_progress_list.dart';
@@ -18,8 +19,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    final todayMeals = state.mealsFor(DateTime.now());
-    final completion = AppState.completion;
+    final now = DateTime.now();
+    final todayMeals = state.mealsFor(now);
+    final completion = state.completionFor(now);
+    final recommendation = state.recommendationFor(now);
+    final eaten = todayMeals.fold(
+      Portions.zero,
+      (total, meal) => total + meal.portionsTotal,
+    );
+    final target = state.dailyIntake.portions;
     final disableAnimations = MediaQuery.disableAnimationsOf(context);
     final pendingFrom = state.pendingEvolutionFrom;
 
@@ -58,14 +66,21 @@ class HomePage extends StatelessWidget {
               icon: Icons.checklist,
             ),
             const SizedBox(height: 12),
-            FoodProgressList(values: completion.byCategory),
+            FoodProgressList(
+              values: completion.byCategory,
+              current: eaten,
+              target: target,
+            ),
             const SizedBox(height: 26),
             const PixelSectionHeader(
               title: '下一餐',
               icon: Icons.restaurant_menu,
             ),
             const SizedBox(height: 10),
-            RecommendationCard(onTap: () => context.push('/recommendation')),
+            RecommendationCard(
+              recommendation: recommendation,
+              onTap: () => context.push('/recommendation'),
+            ),
             const SizedBox(height: 26),
             PixelSectionHeader(
               title: '饮食日志',
@@ -78,7 +93,7 @@ class HomePage extends StatelessWidget {
               onMealTap: (meal) =>
                   context.push('/record_detail?mealId=${meal.mealId}'),
               onDelete: state.deleteMeal,
-              onAdd: () => context.push('/record_detail'),
+              onAdd: () => context.push('/manual_add'),
             ),
           ],
         ),
@@ -96,8 +111,10 @@ class HomePage extends StatelessWidget {
             onPressed: () => context.push('/record_detail'),
             icon: const Icon(Icons.add_circle_outline),
           ),
+          const SizedBox(width: 8),
         ],
       ),
+      floatingActionButton: _AddFab(onPressed: () => _showAddSheet(context)),
       body: showEvolution
           ? Stack(
               children: [
@@ -116,6 +133,81 @@ class HomePage extends StatelessWidget {
               ],
             )
           : body,
+    );
+  }
+
+  /// 底部「+」：选择手动添加或截图识别（截图识别为 Phase 4 占位入口）。
+  void _showAddSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const PixelSectionHeader(
+                title: '添加一餐',
+                icon: Icons.add_circle_outline,
+              ),
+              const SizedBox(height: 12),
+              ListTile(
+                leading: const PixelIconTile(
+                  icon: Icons.edit_note,
+                  size: 42,
+                ),
+                title: const Text('手动添加'),
+                subtitle: const Text('搜菜名或填克重，最顺手'),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  context.push('/manual_add');
+                },
+              ),
+              ListTile(
+                leading: const PixelIconTile(
+                  icon: Icons.photo_outlined,
+                  size: 42,
+                ),
+                title: const Text('截图识别'),
+                subtitle: const Text('外卖订单截图自动记账（即将开放）'),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('截图识别马上就来，先用「手动添加」记一餐吧'),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AddFab extends StatelessWidget {
+  const _AddFab({required this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return FloatingActionButton(
+      tooltip: '记一餐',
+      heroTag: 'home-add-fab',
+      onPressed: onPressed,
+      backgroundColor: scheme.primaryContainer,
+      foregroundColor: scheme.onPrimaryContainer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(3),
+        side: BorderSide(color: scheme.outline, width: 2),
+      ),
+      child: const Icon(Icons.add, size: 30),
     );
   }
 }

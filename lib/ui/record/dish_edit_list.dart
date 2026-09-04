@@ -109,7 +109,7 @@ class _DishEditRowState extends State<_DishEditRow> {
             child: SegmentedButton<String>(
               segments: const [
                 ButtonSegment(value: 'small', label: Text('小份')),
-                ButtonSegment(value: 'normal', label: Text('正常')),
+                ButtonSegment(value: 'normal', label: Text('常规')),
                 ButtonSegment(value: 'large', label: Text('大份')),
               ],
               selected: {widget.dish.portionSize},

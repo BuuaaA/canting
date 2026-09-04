@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 本地通知（模块 13）：Android 13+ 运行时申请 POST_NOTIFICATIONS -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:label="canting"
         android:name="${applicationName}"
@@ -76,6 +78,26 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- 外卖平台跳转（Android 11+ 包可见性）：缺少这些声明时
+             canLaunchUrl 对对应 scheme 恒为 false，导致美团等跳转失效。 -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="meituanwaimai"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="imeituan"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="eleme"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <!-- Dart Uri 会把 scheme 归一化为小写，且 Android 的 scheme
+                 匹配区分大小写，因此必须用小写形式。 -->
+            <data android:scheme="openapp.jdmobile"/>
         </intent>
     </queries>
 </manifest>

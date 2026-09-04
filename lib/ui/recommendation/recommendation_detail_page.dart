@@ -1,156 +1,283 @@
+import 'package:canting/core_engine.dart';
+import 'package:canting/services/delivery_jump_service.dart';
+import 'package:canting/state/app_state.dart';
+import 'package:canting/ui/recommendation/recommended_dish_card.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 
-class RecommendationDetailPage extends StatelessWidget {
+/// 下一餐推荐详情页：推荐时间 + 餐次 + 理由 + 主推/备选菜 + 外卖跳转。
+/// 数据来自 RecommendationEngine（经 AppState.recommendationFor），
+/// 「换一批」把已展示的菜排除后再取一批。
+class RecommendationDetailPage extends StatefulWidget {
   const RecommendationDetailPage({super.key});
 
-  static const _dishes = [
-    (name: '蒜蓉西兰花', reason: '蔬菜充足，适合补上今天的缺口', icon: Icons.eco_outlined),
-    (name: '香菇青菜', reason: '口味清爽，搭配主食刚刚好', icon: Icons.ramen_dining_outlined),
-    (name: '鸡胸肉时蔬碗', reason: '同时补充蔬菜和优质蛋白质', icon: Icons.lunch_dining_outlined),
-  ];
+  @override
+  State<RecommendationDetailPage> createState() =>
+      _RecommendationDetailPageState();
+}
 
-  Future<void> _openDeliveryApp(
-    BuildContext context, {
-    required String app,
-    required String keyword,
-  }) async {
-    final uri = app == 'meituan'
-        ? Uri(
-            scheme: 'meituan',
-            host: 'waimai.meituan.com',
-            path: '/search',
-            queryParameters: {'keyword': keyword},
-          )
-        : Uri(
-            scheme: 'eleme',
-            host: 'search',
-            queryParameters: {'keyword': keyword},
-          );
-    final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
-    if (!opened && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('没有找到${app == 'meituan' ? '美团' : '饿了么'}')),
+class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
+  final DeliveryJumpService _jumpService = DeliveryJumpService();
+  List<DeliveryPlatform> _platforms = DeliveryJumpService.platforms;
+  bool _platformsLoaded = false;
+
+  /// 「换一批」已展示过的菜名：从下一批结果里排除。
+  final Set<String> _shownDishNames = {};
+
+  static const _gapLabels = {
+    'grains': '主食',
+    'vegetables': '蔬菜',
+    'fruits': '水果',
+    'protein': '蛋白质',
+    'protein_soy': '大豆坚果',
+    'oil': '油脂',
+  };
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_platformsLoaded) {
+      _platformsLoaded = true;
+      // 平台启用顺序目前是默认配置（全启用、固定优先级）；
+      // 用户可配置持久化为遗留项，接口已留好。
+      _jumpService.loadEnabledPlatforms().then((platforms) {
+        if (mounted) {
+          setState(() => _platforms = platforms);
+        }
+      });
+    }
+  }
+
+  void _refreshBatch(List<DishSuggestion> currentSuggestions) {
+    setState(() {
+      for (final suggestion in currentSuggestions) {
+        _shownDishNames.add(suggestion.dishName);
+      }
+    });
+  }
+
+  Future<void> _jump(
+    DeliveryPlatform platform,
+    String keyword,
+  ) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final result = await _jumpService.jumpToSearch(platform, keyword);
+    if (result.success && result.usedFallback) {
+      messenger.showSnackBar(
+        SnackBar(content: Text('没有找到${platform.label}，已打开网页版')),
+      );
+    } else if (!result.success) {
+      messenger.showSnackBar(
+        SnackBar(content: Text('没能打开${platform.label}，可以稍后再试')),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<AppState>();
     final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
+    final now = DateTime.now();
+    final recommendation = state.recommendationFor(
+      now,
+      excludeDishNames: _shownDishNames,
+    );
+
     return Scaffold(
       appBar: const PixelAppBar(title: '下一餐推荐', leading: BackButton()),
       body: PixelBackdrop(
         child: PixelContentWidth(
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-            children: [
-              PixelPanel(
-                color: scheme.primaryContainer,
-                borderColor: scheme.primary,
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    PixelIconTile(
-                      icon: Icons.schedule,
-                      size: 44,
-                      color: scheme.secondaryContainer,
-                    ),
-                    const SizedBox(width: 14),
-                    Expanded(
+          child: recommendation == null
+              ? ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: const [
+                    PixelPanel(
+                      padding: EdgeInsets.all(24),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('建议时间', style: theme.textTheme.labelLarge),
-                          const SizedBox(height: 3),
-                          Text('18:30 · 晚餐', style: theme.textTheme.titleLarge),
+                          Icon(Icons.restaurant_menu, size: 44),
+                          SizedBox(height: 12),
+                          Text('推荐引擎还没准备好，稍后再来看看'),
                         ],
                       ),
                     ),
                   ],
-                ),
-              ),
-              const SizedBox(height: 22),
-              Text(
-                '小挑食想吃菜菜了',
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '今天蔬菜还差一点，下面这些搭配都可以。',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: scheme.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: 24),
-              for (final dish in _dishes) ...[
-                PixelPanel(
-                  padding: const EdgeInsets.all(15),
-                  child: Row(
-                    children: [
-                      PixelIconTile(
-                        icon: dish.icon,
-                        size: 46,
-                        color: scheme.tertiaryContainer,
-                      ),
-                      const SizedBox(width: 13),
-                      Expanded(
+                )
+              : ListView(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+                  children: [
+                    _HeaderPanel(
+                      recommendation: recommendation,
+                      shortfallText: _shortfallText(state, now),
+                    ),
+                    const SizedBox(height: 22),
+                    Text('推荐菜品', style: theme.textTheme.titleLarge),
+                    const SizedBox(height: 10),
+                    ..._dishCards(recommendation),
+                    if (recommendation.primary.isEmpty &&
+                        recommendation.alternatives.isEmpty)
+                      PixelPanel(
+                        padding: const EdgeInsets.all(22),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(dish.name, style: theme.textTheme.titleMedium),
-                            const SizedBox(height: 3),
-                            Text(
-                              dish.reason,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: scheme.onSurfaceVariant,
-                              ),
+                            const Text('这一批推荐都看过了'),
+                            const SizedBox(height: 10),
+                            OutlinedButton(
+                              onPressed: () =>
+                                  setState(_shownDishNames.clear),
+                              child: const Text('重新开始推荐'),
                             ),
                           ],
                         ),
+                      )
+                    else ...[
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: OutlinedButton.icon(
+                              onPressed: () => _refreshBatch([
+                                ...recommendation.primary,
+                                ...recommendation.alternatives,
+                              ]),
+                              icon: const Icon(Icons.refresh),
+                              label: const Text('换一批推荐'),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: TextButton.icon(
+                              onPressed: () => _refreshBatch([
+                                ...recommendation.primary,
+                                ...recommendation.alternatives,
+                              ]),
+                              icon: const Icon(Icons.thumb_down_outlined),
+                              label: const Text('不感兴趣'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
+                  ],
                 ),
-                const SizedBox(height: 10),
-              ],
-              const SizedBox(height: 16),
-              Text('去外卖平台搜索', style: theme.textTheme.titleLarge),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: FilledButton.icon(
-                      onPressed: () => _openDeliveryApp(
-                        context,
-                        app: 'meituan',
-                        keyword: _dishes.first.name,
-                      ),
-                      icon: const Icon(Icons.search),
-                      label: const Text('美团'),
+        ),
+      ),
+    );
+  }
+
+  /// 顶部缺口说明：「今天蔬菜还差 1.5 份」。
+  String? _shortfallText(AppState state, DateTime now) {
+    final completion = state.completionFor(now);
+    final biggestGap = completion.biggestGap;
+    if (biggestGap == null) {
+      return null;
+    }
+    final target = state.dailyIntake.portions.valueFor(biggestGap);
+    final eaten = state.mealsFor(now).fold(
+      Portions.zero,
+      (total, meal) => total + meal.portionsTotal,
+    );
+    final shortfall = target - eaten.valueFor(biggestGap);
+    if (shortfall <= 0) {
+      return '今天${_gapLabels[biggestGap] ?? "各分类"}已经吃够啦';
+    }
+    return '今天${_gapLabels[biggestGap] ?? "各分类"}还差 ${shortfall.toStringAsFixed(1)} 份';
+  }
+
+  List<Widget> _dishCards(Recommendation recommendation) {
+    final cards = <Widget>[];
+    var index = 0;
+    for (final suggestion in [
+      ...recommendation.primary,
+      ...recommendation.alternatives,
+    ]) {
+      cards
+        ..add(
+          RecommendedDishCard(
+            suggestion: suggestion,
+            platforms: _platforms,
+            onJump: _jump,
+            isPrimary: index == 0,
+          ),
+        )
+        ..add(const SizedBox(height: 10));
+      index++;
+    }
+    return cards;
+  }
+}
+
+class _HeaderPanel extends StatelessWidget {
+  const _HeaderPanel({required this.recommendation, this.shortfallText});
+
+  final Recommendation recommendation;
+  final String? shortfallText;
+
+  static String _timeLabel(DateTime time) =>
+      '${time.hour.toString().padLeft(2, '0')}:'
+      '${time.minute.toString().padLeft(2, '0')}';
+
+  static const _mealTypeLabels = {
+    'breakfast': '早餐',
+    'lunch': '午餐',
+    'dinner': '晚餐',
+    'snack': '加餐',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    return PixelPanel(
+      color: scheme.primaryContainer,
+      borderColor: scheme.primary,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              PixelIconTile(
+                icon: Icons.schedule,
+                size: 44,
+                color: scheme.secondaryContainer,
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('建议时间', style: theme.textTheme.labelLarge),
+                    const SizedBox(height: 3),
+                    Text(
+                      '${_timeLabel(recommendation.suggestedTime)} · '
+                      '${_mealTypeLabels[recommendation.suggestedMealType] ?? "加餐"}',
+                      style: theme.textTheme.titleLarge,
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () => _openDeliveryApp(
-                        context,
-                        app: 'eleme',
-                        keyword: _dishes.first.name,
-                      ),
-                      icon: const Icon(Icons.search),
-                      label: const Text('饿了么'),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
-        ),
+          if (shortfallText != null) ...[
+            const SizedBox(height: 12),
+            Text(
+              shortfallText!,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: scheme.onPrimaryContainer,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+          const SizedBox(height: 6),
+          Text(
+            recommendation.reason,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: scheme.onPrimaryContainer.withValues(alpha: 0.85),
+            ),
+          ),
+        ],
       ),
     );
   }

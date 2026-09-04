@@ -46,22 +46,35 @@ class MealRepository {
     return rows.isEmpty ? null : _mealFromRow(rows.single);
   }
 
-  Future<void> addMeal(MealRecord meal) async {
+  Future<void> addMeal(MealRecord meal, {String? note, String? source}) async {
     final now = DateTime.now();
     await _database.insert(
       'meal_records',
-      _mealRow(meal, createdAt: now, updatedAt: now),
+      _mealRow(meal, createdAt: now, updatedAt: now, note: note, source: source),
       conflictAlgorithm: ConflictAlgorithm.abort,
     );
   }
 
-  Future<void> updateMeal(MealRecord meal) async {
+  Future<void> updateMeal(MealRecord meal, {String? note}) async {
     await _database.update(
       'meal_records',
-      _mealRow(meal, createdAt: null, updatedAt: DateTime.now()),
+      _mealRow(meal, createdAt: null, updatedAt: DateTime.now(), note: note),
       where: 'id = ?',
       whereArgs: [meal.mealId],
     );
+  }
+
+  /// Reads the user note stored in the `note` column (not part of the
+  /// module-to-module record JSON).
+  Future<String?> getNote(String mealId) async {
+    final rows = await _database.query(
+      'meal_records',
+      columns: ['note'],
+      where: 'id = ?',
+      whereArgs: [mealId],
+      limit: 1,
+    );
+    return rows.isEmpty ? null : rows.single['note'] as String?;
   }
 
   Future<void> deleteMeal(String mealId) async {
@@ -87,13 +100,22 @@ class MealRepository {
     MealRecord meal, {
     DateTime? createdAt,
     required DateTime updatedAt,
-  }) => {
-    'id': meal.mealId,
-    'meal_time': meal.timestamp.millisecondsSinceEpoch,
-    'meal_type': meal.mealType,
-    'record_json': jsonEncode(meal.toJson()),
-    'note': null,
-    if (createdAt != null) 'created_at': createdAt.millisecondsSinceEpoch,
-    'updated_at': updatedAt.millisecondsSinceEpoch,
-  };
+    String? note,
+    String? source,
+  }) {
+    // source（ocr/manual/mixed）不属于模块间 JSON 格式，作为扩展键写进
+    // record_json；MealRecord.fromJson 会忽略未知键，向后兼容。
+    final recordJson = source == null || source.isEmpty
+        ? jsonEncode(meal.toJson())
+        : jsonEncode({...meal.toJson(), 'source': source});
+    return {
+      'id': meal.mealId,
+      'meal_time': meal.timestamp.millisecondsSinceEpoch,
+      'meal_type': meal.mealType,
+      'record_json': recordJson,
+      'note': note,
+      if (createdAt != null) 'created_at': createdAt.millisecondsSinceEpoch,
+      'updated_at': updatedAt.millisecondsSinceEpoch,
+    };
+  }
 }

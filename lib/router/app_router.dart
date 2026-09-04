@@ -1,6 +1,7 @@
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/history/history_page.dart';
 import 'package:canting/ui/home/home_page.dart';
+import 'package:canting/ui/manual_add/manual_add_page.dart';
 import 'package:canting/ui/onboarding/onboarding_page.dart';
 import 'package:canting/ui/recommendation/recommendation_detail_page.dart';
 import 'package:canting/ui/record/record_detail_page.dart';
@@ -66,6 +67,10 @@ abstract final class AppRouter {
           ),
           isSharedRecognition: state.uri.queryParameters['source'] == 'share',
         ),
+      ),
+      GoRoute(
+        path: '/manual_add',
+        builder: (context, state) => const ManualAddPage(),
       ),
       GoRoute(
         path: '/recommendation',

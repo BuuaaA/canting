@@ -76,17 +76,9 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
         recognitionDraft?.dishes
             .map((dish) => dish.copyWith())
             .toList(growable: true) ??
-        (widget.isSharedRecognition
-            ? []
-            : [
-                const MealDish(name: '鸡肉杂粮饭'),
-                const MealDish(name: '清炒西兰花', portionSize: 'small'),
-              ]);
+        (widget.isSharedRecognition ? [] : []);
     _merchantController = TextEditingController(
-      text:
-          _originalMeal?.merchant ??
-          recognitionDraft?.merchant ??
-          (widget.isSharedRecognition ? '' : '示例外卖商家'),
+      text: _originalMeal?.merchant ?? recognitionDraft?.merchant ?? '',
     );
   }
 
@@ -101,51 +93,10 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _addDish() async {
-    final controller = TextEditingController();
     final result = await showDialog<String>(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: const Text('添加菜品'),
-        content: SizedBox(
-          width: 360,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: controller,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: '搜索或输入菜名',
-                  prefixIcon: Icon(Icons.search),
-                ),
-                onSubmitted: (value) =>
-                    Navigator.pop(dialogContext, value.trim()),
-              ),
-              const SizedBox(height: 12),
-              for (final suggestion in const ['蒜蓉西兰花', '时令水果', '无糖豆浆'])
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(suggestion),
-                  trailing: const Icon(Icons.add),
-                  onTap: () => Navigator.pop(dialogContext, suggestion),
-                ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('取消'),
-          ),
-          FilledButton(
-            onPressed: () =>
-                Navigator.pop(dialogContext, controller.text.trim()),
-            child: const Text('添加'),
-          ),
-        ],
-      ),
+      builder: (dialogContext) => const _DishSearchDialog(),
     );
-    controller.dispose();
     if (result != null && result.isNotEmpty) {
       setState(() => _dishes.add(MealDish(name: result)));
     }
@@ -194,26 +145,26 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     final validDishes = _dishes
         .where((dish) => dish.name.trim().isNotEmpty)
         .toList(growable: false);
-    if (merchant.isEmpty || validDishes.isEmpty) {
+    if (validDishes.isEmpty) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('请至少填写商家和一道菜')));
+          .showSnackBar(const SnackBar(content: Text('请至少添加一道菜')));
       return;
     }
 
-    final meal = MealRecord(
-      mealId:
-          _originalMeal?.mealId ??
-          'meal-${DateTime.now().microsecondsSinceEpoch}',
+    final appState = context.read<AppState>();
+    final meal = appState.buildMealRecord(
       mealType: _mealType,
       timestamp: _mealTime,
-      merchant: merchant,
       dishes: validDishes,
-      completionRate: (0.45 + validDishes.length * 0.1).clamp(0.0, 0.95),
+      merchant: merchant.isEmpty ? null : merchant,
+      mealId: _originalMeal?.mealId,
     );
-    final appState = context.read<AppState>();
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
-    await appState.saveMeal(meal);
+    await appState.saveMeal(
+      meal,
+      source: widget.isSharedRecognition ? 'ocr' : 'manual',
+    );
     appState.clearSharedRecognition();
     router.go(widget.returnLocation);
     messenger.showSnackBar(const SnackBar(content: Text('这顿已经保存好啦')));
@@ -440,5 +391,93 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     if (hour < 15) return 'lunch';
     if (hour < 21) return 'dinner';
     return 'snack';
+  }
+}
+
+/// 添加菜品对话框：实时搜索（自定义菜优先、按使用次数排序），
+/// 也可以直接用输入的菜名。
+class _DishSearchDialog extends StatefulWidget {
+  const _DishSearchDialog();
+
+  @override
+  State<_DishSearchDialog> createState() => _DishSearchDialogState();
+}
+
+class _DishSearchDialogState extends State<_DishSearchDialog> {
+  final _controller = TextEditingController();
+  List<StandardDish> _results = const [];
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Future<void> _search(String query) async {
+    final results = await context
+        .read<AppState>()
+        .searchDishesForManualAdd(query);
+    if (mounted) {
+      setState(() => _results = results);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final typedName = _controller.text.trim();
+    return AlertDialog(
+      title: const Text('添加菜品'),
+      content: SizedBox(
+        width: 360,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _controller,
+              autofocus: true,
+              decoration: const InputDecoration(
+                hintText: '搜索或输入菜名',
+                prefixIcon: Icon(Icons.search),
+              ),
+              onChanged: (value) {
+                setState(() {});
+                _search(value);
+              },
+              onSubmitted: (value) =>
+                  Navigator.pop(context, value.trim()),
+            ),
+            const SizedBox(height: 8),
+            Flexible(
+              child: _results.isEmpty
+                  ? const SizedBox.shrink()
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _results.length,
+                      itemBuilder: (context, index) => ListTile(
+                        dense: true,
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(_results[index].name),
+                        trailing: const Icon(Icons.add),
+                        onTap: () =>
+                            Navigator.pop(context, _results[index].name),
+                      ),
+                    ),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('取消'),
+        ),
+        FilledButton(
+          onPressed: typedName.isEmpty
+              ? null
+              : () => Navigator.pop(context, typedName),
+          child: const Text('添加'),
+        ),
+      ],
+    );
   }
 }

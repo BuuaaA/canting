@@ -39,4 +39,9 @@ class PetRepository {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  /// Removes the pet row (used by "清除全部数据" in settings).
+  Future<void> deletePet() async {
+    await _database.delete('pet_states');
+  }
 }

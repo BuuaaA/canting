@@ -1,5 +1,8 @@
 import 'package:canting/pet.dart';
+import 'package:canting/services/notification_service.dart';
 import 'package:canting/state/app_state.dart';
+import 'package:canting/ui/about/about_page.dart';
+import 'package:canting/ui/settings/profile_edit_page.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,49 +39,28 @@ class SettingsPage extends StatelessWidget {
                       title: '身体数据',
                       value:
                           '${_formatHeight(profile?.heightCm)} cm · ${profile?.weightKg ?? 55} kg',
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '身体数据',
-                        '身高 ${_formatHeight(profile?.heightCm)} cm\n'
-                            '体重 ${profile?.weightKg ?? 55} kg\n'
-                            '年龄 ${profile?.age ?? 28} 岁',
-                      ),
+                      onTap: profile == null ? null : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.flag_outlined,
                       title: '饮食目标',
                       value: _goalLabel(profile?.dietGoal ?? 'balanced'),
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '饮食目标',
-                        '当前目标：${_goalLabel(profile?.dietGoal ?? 'balanced')}',
-                      ),
+                      onTap: profile == null ? null : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.directions_walk,
                       title: '活动量',
                       value: _activityLabel(profile?.activityLevel ?? 'light'),
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '活动量',
-                        '当前活动水平：'
-                            '${_activityLabel(profile?.activityLevel ?? 'light')}',
-                      ),
+                      onTap: profile == null ? null : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.schedule,
                       title: '作息习惯',
                       value: '早餐 ${_formatTime(profile?.breakfastTime)}',
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '作息习惯',
-                        '早餐 ${_formatTime(profile?.breakfastTime)}\n'
-                            '午餐 ${_formatTime(profile?.lunchTime, fallback: '12:00')}\n'
-                            '晚餐 ${_formatTime(profile?.dinnerTime, fallback: '18:30')}',
-                      ),
+                      onTap: profile == null ? null : () => _openProfileEditor(context),
                     ),
                   ],
                 ),
@@ -101,6 +83,15 @@ class SettingsPage extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Column(
                   children: [
+                    SwitchListTile(
+                      secondary: const Icon(Icons.chat_bubble_outline),
+                      title: const Text('识别结果通知'),
+                      subtitle: const Text('识别成功或失败时告诉你'),
+                      value: NotificationService.recognitionEnabled,
+                      onChanged: (value) =>
+                          _toggleRecognitionNotification(context, value),
+                    ),
+                    const Divider(indent: 58),
                     SwitchListTile(
                       secondary: const Icon(Icons.notifications_outlined),
                       title: const Text('用餐提醒'),
@@ -161,10 +152,15 @@ class SettingsPage extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Column(
                   children: [
-                    const _SettingsTile(
+                    _SettingsTile(
                       icon: Icons.info_outline,
-                      title: '版本号',
-                      value: '1.0.0',
+                      title: '关于餐盘',
+                      value: 'v1.0.0',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (context) => const AboutPage(),
+                        ),
+                      ),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
@@ -174,26 +170,6 @@ class SettingsPage extends StatelessWidget {
                         context: context,
                         applicationName: '餐盘',
                         applicationVersion: '1.0.0',
-                      ),
-                    ),
-                    const Divider(indent: 58),
-                    _SettingsTile(
-                      icon: Icons.feedback_outlined,
-                      title: '意见反馈',
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '意见反馈',
-                        '感谢你的反馈。当前为 UI 开发版，反馈入口将在接入服务后开放。',
-                      ),
-                    ),
-                    const Divider(indent: 58),
-                    _SettingsTile(
-                      icon: Icons.privacy_tip_outlined,
-                      title: '隐私政策',
-                      onTap: () => _showInfoDialog(
-                        context,
-                        '隐私政策',
-                        '餐盘只使用你主动提供的身体数据与饮食记录来生成建议。',
                       ),
                     ),
                   ],
@@ -226,24 +202,40 @@ class SettingsPage extends StatelessWidget {
     _ => '轻度活动',
   };
 
-  static void _showInfoDialog(
-    BuildContext context,
-    String title,
-    String content,
-  ) {
-    showDialog<void>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: [
-          FilledButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('知道了'),
-          ),
-        ],
+  static void _openProfileEditor(BuildContext context) {
+    final state = context.read<AppState>();
+    final profile = state.profile;
+    if (profile == null) {
+      return;
+    }
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (context) => ProfileEditPage(
+          profile: profile,
+          guidelines: state.guidelines,
+          onSave: (updated) {
+            // 修改后今日结构与完成度由 AppState 重算并通知监听者。
+            return state.updateProfile(updated);
+          },
+        ),
       ),
     );
+  }
+
+  /// 切换识别结果通知开关；打开时顺带申请系统通知权限。
+  static Future<void> _toggleRecognitionNotification(
+    BuildContext context,
+    bool value,
+  ) async {
+    NotificationService.recognitionEnabled = value;
+    if (value) {
+      final granted = await NotificationService.requestPermissions();
+      if (context.mounted && !granted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('通知权限未开启，可在系统设置里打开')),
+        );
+      }
+    }
   }
 
   static void _showShareGuide(BuildContext context) {
@@ -326,8 +318,11 @@ class SettingsPage extends StatelessWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('清空所有饮食记录？'),
-        content: const Text('这项操作无法撤销，个人设置和宠物会保留。'),
+        title: const Text('清除全部数据？'),
+        content: const Text(
+          '所有餐食记录、宠物和设置都将被删除，不可恢复，'
+          '清除后会回到初始设置页重新开始。',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -335,17 +330,14 @@ class SettingsPage extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('确认清空'),
+            child: const Text('确认清除'),
           ),
         ],
       ),
     );
     if (confirmed == true) {
-      state.clearData();
-      if (context.mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('饮食记录已清空')));
-      }
+      await state.clearAllData();
+      // 档案清空后路由守卫会自动回到 onboarding 首页。
     }
   }
 }

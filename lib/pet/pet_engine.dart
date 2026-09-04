@@ -23,6 +23,10 @@ class PetStateMachine {
   static const int maximumDailyPetTaps = 3;
 
   final PetDialogues _dialogues;
+
+  /// 台词数据源（模块 7 当日台词需要 daily 区块）。
+  PetDialogues get dialogues => _dialogues;
+
   final DateTime Function() _clock;
   final String Function()? _customIdGenerator;
   int _idCounter = 0;

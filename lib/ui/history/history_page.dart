@@ -1,6 +1,9 @@
+import 'package:canting/core_engine.dart';
+import 'package:canting/pet/vitality_calculator.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/history/calendar_view.dart';
 import 'package:canting/ui/history/day_detail.dart';
+import 'package:canting/ui/history/history_stats.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,27 +18,66 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   late DateTime _visibleMonth;
+  Map<DateTime, int> _monthScores = const {};
+  List<MealRecord> _monthMealsRaw = const [];
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
     final now = DateTime.now();
     _visibleMonth = DateTime(now.year, now.month);
+    Future.microtask(_loadVisibleMonth);
+  }
+
+  bool get _isCurrentMonth {
+    final now = DateTime.now();
+    return _visibleMonth.year == now.year && _visibleMonth.month == now.month;
+  }
+
+  Future<void> _loadVisibleMonth() async {
+    final state = context.read<AppState>();
+    final start = DateTime(_visibleMonth.year, _visibleMonth.month);
+    final end = DateTime(_visibleMonth.year, _visibleMonth.month + 1);
+    try {
+      final meals = await state.queryMealsInRange(start, end);
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _monthMealsRaw = meals;
+        _monthScores = HistoryStats.dayScoresForMeals(meals, state.dailyIntake);
+        _loading = false;
+      });
+    } catch (_) {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
+    }
   }
 
   void _changeMonth(int offset) {
+    final next = DateTime(
+      _visibleMonth.year,
+      _visibleMonth.month + offset,
+    );
+    final now = DateTime.now();
+    final currentMonth = DateTime(now.year, now.month);
+    // 不能切换到未来月份。
+    if (next.isAfter(currentMonth)) {
+      return;
+    }
     setState(() {
-      _visibleMonth = DateTime(
-        _visibleMonth.year,
-        _visibleMonth.month + offset,
-      );
+      _visibleMonth = next;
+      _loading = true;
     });
+    Future.microtask(_loadVisibleMonth);
   }
 
-  void _showDay(DateTime date) {
+  Future<void> _showDay(DateTime date) async {
     final state = context.read<AppState>();
     state.selectDate(date);
-    showModalBottomSheet<void>(
+    await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
@@ -45,26 +87,71 @@ class _HistoryPageState extends State<HistoryPage> {
       ),
       builder: (sheetContext) => DayDetail(
         date: date,
-        completion: state.completionForDate(date),
-        vitality: state.vitalityForDate(date),
         meals: state.mealsFor(date),
+        dailyIntake: state.dailyIntake,
+        dayScore: _monthScores[DateTime(date.year, date.month, date.day)],
+        petName: state.pet.petName,
         onMealTap: (meal) {
           Navigator.pop(sheetContext);
           context.push('/record_detail?mealId=${meal.mealId}');
         },
+        onMealDelete: (meal) async {
+          final confirmed = await showDialog<bool>(
+            context: sheetContext,
+            builder: (dialogContext) => AlertDialog(
+              title: const Text('删除这条餐食记录？'),
+              content: const Text(
+                '删除后活力值会按记录时的规则回退，成长值不会减少。',
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(dialogContext, false),
+                  child: const Text('取消'),
+                ),
+                FilledButton(
+                  onPressed: () => Navigator.pop(dialogContext, true),
+                  child: const Text('删除'),
+                ),
+              ],
+            ),
+          );
+          if (confirmed == true) {
+            await state.deleteMeal(meal.mealId);
+          }
+        },
         onAdd: () {
           Navigator.pop(sheetContext);
+          // 模块 09：只能补录最近 7 天内的记录。
+          final now = DateTime.now();
+          final todayStart = DateTime(now.year, now.month, now.day);
+          final dayStart = DateTime(date.year, date.month, date.day);
+          final oldestAllowed = todayStart.subtract(const Duration(days: 6));
+          if (dayStart.isBefore(oldestAllowed)) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('只能补录最近 7 天内的记录')),
+            );
+            return;
+          }
           context.push('/record_detail?date=${date.toIso8601String()}');
         },
       ),
     );
+    // 删除 / 补录后刷新月度得分与周统计。
+    if (mounted) {
+      await _loadVisibleMonth();
+      if (mounted) {
+        setState(() {});
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final selected = state.selectedDate;
-    final vitality = state.vitalityForDate(selected);
+    final selectedScore =
+        _monthScores[DateTime(selected.year, selected.month, selected.day)];
+    final selectedGrade = gradeForScore(selectedScore);
     final meals = state.mealsFor(selected);
     final theme = Theme.of(context);
 
@@ -91,8 +178,8 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                   ),
                   IconButton(
-                    tooltip: '下个月',
-                    onPressed: () => _changeMonth(1),
+                    tooltip: _isCurrentMonth ? '已是当前月份' : '下个月',
+                    onPressed: _isCurrentMonth ? null : () => _changeMonth(1),
                     icon: const Icon(Icons.chevron_right),
                   ),
                 ],
@@ -100,15 +187,37 @@ class _HistoryPageState extends State<HistoryPage> {
               const SizedBox(height: 8),
               PixelPanel(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 14),
-                child: CalendarView(
-                  month: _visibleMonth,
-                  selectedDate: selected,
-                  vitalityForDate: state.vitalityForDate,
-                  onSelected: _showDay,
-                ),
+                child: _loading
+                    ? const Padding(
+                        padding: EdgeInsets.all(32),
+                        child: Center(child: CircularProgressIndicator()),
+                      )
+                    : CalendarView(
+                        month: _visibleMonth,
+                        selectedDate: selected,
+                        scoreForDate: (date) =>
+                            _monthScores[DateTime(date.year, date.month, date.day)],
+                        onSelected: (date) => _showDay(date),
+                      ),
               ),
               const SizedBox(height: 14),
-              const _VitalityLegend(),
+              const _QualityLegend(),
+              const SizedBox(height: 26),
+              PixelSectionHeader(
+                title: '本周统计',
+                icon: Icons.insights_outlined,
+              ),
+              const SizedBox(height: 9),
+              PixelPanel(
+                padding: const EdgeInsets.all(14),
+                child: _WeekStatsPanel(
+                  stats: HistoryStats.weekStats(
+                    meals: _monthMealsRaw,
+                    target: state.dailyIntake,
+                    selected: selected,
+                  ),
+                ),
+              ),
               const SizedBox(height: 26),
               Row(
                 children: [
@@ -127,8 +236,8 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               const SizedBox(height: 9),
               PixelPanel(
-                color: vitalityColor(vitality).withValues(alpha: 0.12),
-                borderColor: vitalityColor(vitality),
+                color: qualityColor(selectedGrade).withValues(alpha: 0.12),
+                borderColor: qualityColor(selectedGrade),
                 padding: const EdgeInsets.all(14),
                 onTap: () => _showDay(selected),
                 child: Row(
@@ -137,7 +246,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       width: 12,
                       height: 12,
                       decoration: BoxDecoration(
-                        color: vitalityColor(vitality),
+                        color: qualityColor(selectedGrade),
                         shape: BoxShape.circle,
                         border: Border.all(color: theme.colorScheme.outline),
                       ),
@@ -145,9 +254,9 @@ class _HistoryPageState extends State<HistoryPage> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        vitality == null
+                        selectedScore == null
                             ? '这天没有记录，伙伴在等你'
-                            : '伙伴平均活力 $vitality · ${meals.length} 餐记录',
+                            : '饮食质量 $selectedScore · ${meals.length} 餐记录',
                       ),
                     ),
                     const Icon(Icons.chevron_right),
@@ -208,17 +317,140 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 }
 
-class _VitalityLegend extends StatelessWidget {
-  const _VitalityLegend();
+class _WeekStatsPanel extends StatelessWidget {
+  const _WeekStatsPanel({required this.stats});
+
+  final WeekStats stats;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: _Metric(
+                label: '平均完成度',
+                value: '${(stats.averageCompletion * 100).round()}%',
+              ),
+            ),
+            Expanded(
+              child: _Metric(
+                label: '食物种类',
+                value: '${stats.dishVariety} 种',
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '坚果周进度 '
+                    '${stats.soyServings.toStringAsFixed(1)}/'
+                    '${stats.soyWeeklyTarget.toStringAsFixed(0)} 份',
+                    style: theme.textTheme.labelMedium,
+                  ),
+                  const SizedBox(height: 5),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(2),
+                    child: LinearProgressIndicator(
+                      value: stats.soyProgress,
+                      minHeight: 7,
+                      backgroundColor: scheme.surfaceContainerHighest,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Text('活力值趋势（一 → 日）', style: theme.textTheme.labelMedium),
+        const SizedBox(height: 6),
+        Row(
+          children: [
+            for (var index = 0; index < stats.vitalityTrend.length; index++)
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    right: index == stats.vitalityTrend.length - 1 ? 0 : 6,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: qualityColor(
+                            gradeForScore(stats.vitalityTrend[index]),
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        '${index + 1}',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _Metric extends StatelessWidget {
+  const _Metric({required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          value,
+          style: theme.textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        Text(
+          label,
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _QualityLegend extends StatelessWidget {
+  const _QualityLegend();
 
   @override
   Widget build(BuildContext context) {
     const items = [
-      (label: '元气', value: 88),
-      (label: '不错', value: 65),
-      (label: '有点蔫', value: 35),
-      (label: '期待照顾', value: 20),
-      (label: '无记录', value: null),
+      (label: '吃得不错', grade: DietQualityGrade.good),
+      (label: '一般', grade: DietQualityGrade.ok),
+      (label: '不太好', grade: DietQualityGrade.bad),
+      (label: '无记录', grade: DietQualityGrade.none),
     ];
     return Wrap(
       alignment: WrapAlignment.center,
@@ -233,7 +465,7 @@ class _VitalityLegend extends StatelessWidget {
                 width: 7,
                 height: 7,
                 decoration: BoxDecoration(
-                  color: vitalityColor(item.value),
+                  color: qualityColor(item.grade),
                   shape: BoxShape.circle,
                 ),
               ),

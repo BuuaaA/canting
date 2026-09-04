@@ -250,6 +250,26 @@ void main() {
     await pumpUiTransition(tester);
 
     expect(find.text('识别结果'), findsOneWidget);
+
+    // 记录页不再预置 Mock 菜品（模块6去Mock），保存前需先加一道菜。
+    await tester.tap(find.text('添加'));
+    await pumpUiTransition(tester);
+    expect(find.text('添加菜品'), findsOneWidget);
+
+    await tester.enterText(
+      find.descendant(
+        of: find.byType(AlertDialog),
+        matching: find.byType(TextField),
+      ),
+      '清炒土豆丝',
+    );
+    await pumpUiTransition(tester);
+    await tester.tap(
+      find.descendant(of: find.byType(AlertDialog), matching: find.text('添加')),
+    );
+    await pumpUiTransition(tester);
+    expect(find.text('清炒土豆丝'), findsOneWidget);
+
     await tester.tap(find.text('保存并更新今日结构'));
     await pumpUiTransition(tester);
     await tester.pump(const Duration(milliseconds: 500));

@@ -10,28 +10,32 @@
 | 2 | [食物数据库与菜品匹配](module-02-food-db.md) | 1 | 2h | ✅ 已完成 |
 | 3 | [营养计算与推荐引擎](module-03-engine.md) | 1, 2 | 2h | ✅ 已完成 |
 | 4 | [初始设置流程](module-04-onboarding.md) | 1 | 2h | ✅ 已完成 |
-| 5 | [首页（今日）](module-05-home.md) | 1, 2, 3, 7 | 3h | 待开发 |
-| 6 | [餐食记录](module-06-meal-record.md) | 1, 2 | 2h | 待开发 |
-| 7 | [电子宠物系统](module-07-pet.md) | 1, 3 | 3h | 待开发 |
-| 8 | [推荐详情页与外卖跳转](module-08-recommendation.md) | 3 | 2h | 待开发 |
-| 9 | [历史记录](module-09-history.md) | 1, 2, 7 | 2h | 待开发 |
-| 10 | [个人设置](module-10-settings.md) | 1, 4 | 2h | 待开发 |
-| 11 | [iOS 分享扩展 + Vision OCR](module-11-ios-ocr.md) | 1, 2 | 4h | 待开发 |
-| 12 | [Android 分享扩展 + PaddleOCR](module-12-android-ocr.md) | 1, 2 | 6h | 待开发 |
-| 13 | [本地通知](module-13-notification.md) | 1 | 2h | 待开发 |
-| 14 | [APP 内拍照识别](module-14-in-app-ocr.md) | 2, 11, 12 | 2h | 待开发 |
-| 15 | [手动添加餐食 + 用户数据反馈](module-15-manual-add.md) | 1, 2, 6 | 4h | 待开发 |
-| 16 | 联调 & 测试 & Bug 修复 | 全部 | 4h | 待开发 |
+| 5 | [首页（今日）](module-05-home.md) | 1, 2, 3, 7 | 3h | ✅ 已完成（夜间A线） |
+| 6 | [餐食记录](module-06-meal-record.md) | 1, 2 | 2h | ✅ 已完成（夜间A线） |
+| 7 | [电子宠物系统](module-07-pet.md) | 1, 3 | 3h | ✅ 已完成（夜间B线） |
+| 8 | [推荐详情页与外卖跳转](module-08-recommendation.md) | 3 | 2h | ✅ 已完成（夜间A线） |
+| 9 | [历史记录](module-09-history.md) | 1, 2, 7 | 2h | ✅ 已完成（夜间B线） |
+| 10 | [个人设置](module-10-settings.md) | 1, 4 | 2h | ✅ 已完成（夜间B线） |
+| 11 | [iOS 分享扩展 + Vision OCR](module-11-ios-ocr.md) | 1, 2 | 4h | ⏸ 待开发（需 Mac 环境验证） |
+| 12 | [Android 分享扩展 + PaddleOCR](module-12-android-ocr.md) | 1, 2 | 6h | 待开发（Phase 4） |
+| 13 | [本地通知](module-13-notification.md) | 1 | 2h | ✅ 已完成（夜间B线） |
+| 14 | [APP 内拍照识别](module-14-in-app-ocr.md) | 2, 11, 12 | 2h | 待开发（Phase 4） |
+| 15 | [手动添加餐食 + 用户数据反馈](module-15-manual-add.md) | 1, 2, 6 | 4h | ✅ 已完成（夜间A线） |
+| 16 | 联调 & 测试 & Bug 修复 | 全部 | 4h | 待开发（Phase 5） |
 
 **合计：约 43 小时**（AI 开发节奏，约 6-7 个工作日）
 
-## 当前进度（2026-09-04）
+## 当前进度（2026-09-04 晨间更新）
 
-- **Phase 1 完成**：模块 1~4，152 个测试全部通过（含膳食指南数据接入、6 步 onboarding）
-- **今晚执行**：双线并行开发 Phase 2+3 剩余模块，操作手册见 [夜间双线开发指令](../夜间双线开发指令.md)
-  - A线：模块 6 → 8 → 15 → 5
-  - B线：模块 13 → 10 → 7 → 9
-- **待办**：模块 11/12/14（识别系统，Phase 4）、模块 16（联调，Phase 5）、外卖平台设置 UI 与偏好持久化
+- **Phase 1 完成**：模块 1~4（持久化、食物库、指南接入、设置流程）
+- **Phase 2+3 完成**：双线并行夜间开发，8 个任务全部完成、零跳过，一夜新增 104 个测试
+  - 战报：`docs/night-progress-line-a.md` / `docs/night-progress-line-b.md`
+  - 当前基线：**256 个测试全部通过，flutter analyze 零问题**（已独立复核）
+- **待办**：
+  - 白天小项：外卖平台持久化+设置页UI（需加 shared_preferences）、通知开关落盘、记录页备注编辑UI、活力值两套口径抽查、京东外卖真机验证
+  - Phase 4：模块 12（Android 分享扩展+PaddleOCR）、模块 14（APP内拍照识别）
+  - Phase 5：模块 16（全链路联调）
+  - 需 Mac：模块 11（iOS 分享扩展）、iOS 通知验证
 
 ## 开发顺序建议
 
