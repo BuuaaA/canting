@@ -103,6 +103,12 @@ class AppState extends ChangeNotifier {
   /// 标准菜库快照，供推荐引擎等需要全量菜谱的模块使用。
   FoodDatabase? _foodDatabase;
 
+  /// 7 天滚动平衡台账（模块：指南重蒸馏与滚动平衡推荐引擎）。
+  /// 由 [refreshBalanceLedger] 按最近 7 天记录重建；null = 尚未计算。
+  BalanceReport? _balanceReport;
+
+  BalanceReport? get balanceReport => _balanceReport;
+
   DishMatcher? get dishMatcher => _dishMatcher;
   ServingEstimator? get servingEstimator => _servingEstimator;
 
@@ -383,10 +389,44 @@ class AppState extends ChangeNotifier {
     );
   }
 
-  /// 下一餐推荐：基于当日已记录餐食与目标缺口。
+  /// 重建 7 天滚动平衡台账（推荐引擎与宠物台词共用）。
+  /// 启动、记录/删除餐食后调用；查询失败时保留旧台账。
+  Future<void> refreshBalanceLedger() async {
+    if (!_databaseHelper.isOpen) {
+      return;
+    }
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    try {
+      final meals = await _mealRepo.getMealsByDateRange(
+        today.subtract(const Duration(days: BalanceLedger.windowDays - 1)),
+        today.add(const Duration(days: 1)),
+      );
+      final intakeByDay = <DateTime, Portions>{};
+      for (final meal in meals) {
+        final timestamp = meal.timestamp;
+        final day = DateTime(
+          timestamp.year,
+          timestamp.month,
+          timestamp.day,
+        );
+        intakeByDay[day] =
+            (intakeByDay[day] ?? Portions.zero) + meal.portionsTotal;
+      }
+      _balanceReport = BalanceLedger.compute(
+        intakeByDay: intakeByDay,
+        weeklyTarget: IntakeCalculator.weeklyTargetFromDaily(dailyIntake),
+        now: now,
+      );
+    } catch (error) {
+      debugPrint('Unable to refresh balance ledger: $error');
+    }
+  }
+
+  /// 下一餐推荐：基于当日已记录餐食、目标缺口与 7 天滚动台账。
   ///
-  /// [excludeDishNames] 供「换一批」使用：把已展示过的菜从结果里去掉，
-  /// 再从缺口最大的分类候选菜中补足到 3 道。
+  /// [excludeDishNames] 供「换一批」使用：引擎把已展示的菜从候选里
+  /// 去掉后按同样的规则补位（每槽位只取 1 道）。
   Recommendation? recommendationFor(
     DateTime date, {
     Set<String> excludeDishNames = const {},
@@ -409,79 +449,13 @@ class AppState extends ChangeNotifier {
     final rawNow = DateTime.now();
     final now = DateTime(rawNow.year, rawNow.month, rawNow.day, rawNow.hour,
         rawNow.minute);
-    final base = RecommendationEngine(foodDatabase).recommend(
+    return RecommendationEngine(foodDatabase).recommend(
       todayMeals: meals,
       dailyIntake: dailyIntake,
       now: now,
       lastMealType: lastMealType,
-    );
-    if (excludeDishNames.isEmpty) {
-      return base;
-    }
-
-    final suggestions = [
-      ...base.primary,
-      ...base.alternatives,
-    ].where((item) => !excludeDishNames.contains(item.dishName)).toList();
-
-    // 与引擎同口径的缺口排序：缺口比例大者优先补位。
-    final eaten = meals.fold(Portions.zero, (total, meal) => total + meal.portionsTotal);
-    final target = dailyIntake.portions;
-    final rankedGroups = [
-      for (final group in const [
-        'grains',
-        'vegetables',
-        'fruits',
-        'protein',
-        'protein_soy',
-      ])
-        (
-          group,
-          target.valueFor(group) <= 0
-              ? 0.0
-              : (target.valueFor(group) - eaten.valueFor(group)) /
-                    target.valueFor(group),
-        ),
-    ]..sort((left, right) => right.$2.compareTo(left.$2));
-
-    final usedNames = suggestions.map((item) => item.dishName).toSet();
-    for (final (group, _) in rankedGroups) {
-      if (suggestions.length >= 3) {
-        break;
-      }
-      final candidates = foodDatabase.dishesForNutrient(group).toList()
-        ..sort(
-          (left, right) => right.correctedPortions
-              .valueFor(group)
-              .compareTo(left.correctedPortions.valueFor(group)),
-        );
-      for (final dish in candidates) {
-        if (suggestions.length >= 3) {
-          break;
-        }
-        if (usedNames.contains(dish.name) ||
-            excludeDishNames.contains(dish.name)) {
-          continue;
-        }
-        usedNames.add(dish.name);
-        final category = foodDatabase.categoryForDish(dish)!;
-        suggestions.add(
-          DishSuggestion(
-            dishName: dish.name,
-            searchKeyword: dish.searchKeywords.firstOrNull ?? dish.name,
-            primaryCategory: group,
-            oilLevel: category.oilLevel,
-          ),
-        );
-      }
-    }
-
-    return Recommendation(
-      suggestedTime: base.suggestedTime,
-      suggestedMealType: base.suggestedMealType,
-      primary: suggestions.take(1).toList(growable: false),
-      alternatives: suggestions.skip(1).toList(growable: false),
-      reason: base.reason,
+      balance: _balanceReport,
+      excludeDishNames: excludeDishNames,
     );
   }
 
@@ -828,8 +802,20 @@ class AppState extends ChangeNotifier {
   }
 
   /// 模块 7：按当日达标情况 / 缺口 / 时段生成首页气泡默认台词。
+  /// 7 天台账有盈余衰减趋势时优先用滚动调控台词（「昨天吃得很香，
+  /// 今天咱们清爽一点？」），否则走当日场景随机文案。
   String _dailyDialogue() {
     final now = DateTime.now();
+    final ledger = _balanceReport;
+    if (ledger != null) {
+      final rolling = _petEngine.rollingBalanceDialogue(
+        report: ledger,
+        petType: _pet.petType,
+      );
+      if (rolling.isNotEmpty) {
+        return rolling;
+      }
+    }
     return PetDailyDialogue(
       dialogues: _petEngine.dialogues,
     ).pickDaily(
@@ -973,6 +959,7 @@ class AppState extends ChangeNotifier {
     }
 
     _mealsByDay[key] = isNew ? [meal, ...dayMeals] : dayMeals;
+    await refreshBalanceLedger();
     _scheduleWidgetSync();
     _scheduleMealRecordSync(meal);
     notifyListeners();
@@ -1050,6 +1037,7 @@ class AppState extends ChangeNotifier {
     }
     _mealsByDay.clear();
     profile = null;
+    _balanceReport = null;
     mealReminder = false;
     gapReminder = false;
     persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);

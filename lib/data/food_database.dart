@@ -7,6 +7,7 @@ class FoodDatabase {
   FoodDatabase({
     required Iterable<StandardDish> dishes,
     required Iterable<FoodCategory> categories,
+    this.schemaVersion = 1,
   }) : _dishes = List.unmodifiable(dishes),
        _categories = List.unmodifiable(categories) {
     _validate();
@@ -22,26 +23,51 @@ class FoodDatabase {
     }
   }
 
+  /// Seed catalog schema version from dishes.json ("schema_version", default
+  /// 1 for the legacy bare-array format). Drives database re-seeding.
+  final int schemaVersion;
+
   factory FoodDatabase.fromJson({
     required String dishesJson,
     required String categoriesJson,
   }) {
     final dishRoot = jsonDecode(dishesJson);
     final categoryRoot = jsonDecode(categoriesJson);
-    if (dishRoot is! List) {
-      throw const FormatException('dishes JSON root must be an array');
+
+    // Accept both the legacy bare array and the v2 envelope
+    // {"schema_version": 2, "dishes": [...]}.
+    final List<dynamic> dishList;
+    var schemaVersion = 1;
+    if (dishRoot is List) {
+      dishList = dishRoot;
+    } else if (dishRoot is Map) {
+      final map = dishRoot.cast<String, dynamic>();
+      schemaVersion = (map['schema_version'] as num?)?.toInt() ?? 1;
+      final dishes = map['dishes'];
+      if (dishes is! List) {
+        throw const FormatException(
+          'dishes JSON object must contain a "dishes" array',
+        );
+      }
+      dishList = dishes;
+    } else {
+      throw const FormatException(
+        'dishes JSON root must be an array or an object',
+      );
     }
+
     if (categoryRoot is! List) {
       throw const FormatException('categories JSON root must be an array');
     }
 
     return FoodDatabase(
-      dishes: dishRoot.map(
+      dishes: dishList.map(
         (item) => StandardDish.fromJson((item as Map).cast<String, dynamic>()),
       ),
       categories: categoryRoot.map(
         (item) => FoodCategory.fromJson((item as Map).cast<String, dynamic>()),
       ),
+      schemaVersion: schemaVersion,
     );
   }
 

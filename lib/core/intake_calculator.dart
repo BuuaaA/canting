@@ -1,5 +1,7 @@
+import 'balance_ledger.dart';
 import 'models/daily_intake.dart';
 import 'models/dietary_guidelines.dart';
+import 'models/portions.dart';
 
 /// Calculates a user's recommended daily food-group portions.
 ///
@@ -154,6 +156,16 @@ class IntakeCalculator {
     }
     return servingsOf(levels.last);
   }
+
+  /// 7 天周目标 = 单日目标 × 7（BalanceLedger 滚动平衡台账的输入口径）。
+  ///
+  /// 指南口径「一周内平衡即可」：台账按周目标结算盈亏，一次吃超/不足
+  /// 会通过衰减持续传导到后面几天的推荐。assets/data/dietary_guidelines.json
+  /// 的 weekly_targets 区块按 5 个能量档记录了同源的周目标值（单日 × 7），
+  /// 这里直接用含饮食目标系数（more_veg 等）调整后的单日目标换算，保证
+  /// 与用户实际目标一致。
+  static Portions weeklyTargetFromDaily(DailyIntake daily) =>
+      daily.portions.scale(BalanceLedger.windowDays.toDouble());
 
   static void _validateInputs({
     required String gender,

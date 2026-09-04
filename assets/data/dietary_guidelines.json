@@ -149,6 +149,81 @@
     "fish": { "servings": 2, "note": "每周最好吃鱼2次或300~500g" },
     "nut": { "grams_min": 50, "grams_max": 70, "note": "每周50-70g，平均每天约10g" }
   },
+
+  "weekly_targets": {
+    "_comment": "六类 7 天目标 = 单日目标份数 × 7，与 daily_intake_recommendation 同源。用于 BalanceLedger 滚动平衡台账（指南口径：平衡膳食模式指一段时间内膳食组成合理搭配即可，不要求每一餐都精确达标）。与 IntakeCalculator 目标口径一致：奶（dairy）、坚果（nut）不计入目标。",
+    "by_energy_level": {
+      "1600": {
+        "grain_tuber": { "servings": 28 },
+        "vegetable": { "servings": 28 },
+        "fruit": { "servings": 14 },
+        "protein_meat_egg": { "servings": 21 },
+        "soy": { "servings": 7 },
+        "oil": { "servings": 17.5 }
+      },
+      "1800": {
+        "grain_tuber": { "servings": 35 },
+        "vegetable": { "servings": 31.5 },
+        "fruit": { "servings": 17.5 },
+        "protein_meat_egg": { "servings": 24.5 },
+        "soy": { "servings": 10.5 },
+        "oil": { "servings": 17.5 }
+      },
+      "2000": {
+        "grain_tuber": { "servings": 35 },
+        "vegetable": { "servings": 35 },
+        "fruit": { "servings": 21 },
+        "protein_meat_egg": { "servings": 28 },
+        "soy": { "servings": 14 },
+        "oil": { "servings": 21 }
+      },
+      "2200": {
+        "grain_tuber": { "servings": 42 },
+        "vegetable": { "servings": 35 },
+        "fruit": { "servings": 21 },
+        "protein_meat_egg": { "servings": 31.5 },
+        "soy": { "servings": 14 },
+        "oil": { "servings": 21 }
+      },
+      "2400": {
+        "grain_tuber": { "servings": 42 },
+        "vegetable": { "servings": 35 },
+        "fruit": { "servings": 24.5 },
+        "protein_meat_egg": { "servings": 35 },
+        "soy": { "servings": 14 },
+        "oil": { "servings": 21 }
+      }
+    }
+  },
+
+  "whole_grain": {
+    "_comment": "指南原文：平均每天摄入谷类食物200-300g，其中全谷物和杂豆类50~150g。按谷薯每份50g换算，日下限50g = 1份/日。whole_grain 是菜品 quality_tags 标签，推荐排序中 whole_grain 优先于精白主食。",
+    "daily_min_grams": 50,
+    "daily_max_grams": 150,
+    "daily_min_servings": 1.0
+  },
+
+  "added_sugar": {
+    "_comment": "指南原文：过多摄入添加糖可增加龋齿和超重的发生风险，添加糖每日摄入不超过50g，最好控制在25g以下。V1.0 不做追踪（菜品库无添加糖数据），仅记录口径供后续版本使用。",
+    "daily_max_grams": 50,
+    "daily_ideal_max_grams": 25,
+    "tracked": false
+  },
+
+  "weekly_balance": {
+    "_comment": "指南原文：平衡膳食模式指一段时间内膳食组成中的食物种类和比例可以最大限度满足营养和健康需求——即一周内平衡即可。APP 字段化：7 天滚动窗口结算盈亏；盈余（吃超）次日衰减 50%，欠账（不足）每日衰减 20%（长期不足持续累积影响）；引擎单餐修正量限幅 ±30%，绝不推极端方案。",
+    "window_days": 7,
+    "surplus_decay": 0.5,
+    "deficit_decay": 0.2,
+    "single_meal_correction_limit": 0.3
+  },
+
+  "oil_salt_limits": {
+    "_comment": "指南原文：每天摄入烹调油25~30g、食盐不超过5g。油脂按 10g/份换算，日目标份数上界 = 30g ÷ 10g = 3.0 份。盐不追踪份数：用菜品 high_sodium 标签做代理（清淡模式下硬排除）。",
+    "oil_daily_servings_max": 3.0,
+    "salt_daily_grams_max": 5,
+    "salt_tracking": "high_sodium_tag_proxy"
+  },
   
   "daily_goals": {
     "food_variety": 12,

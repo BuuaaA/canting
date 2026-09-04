@@ -77,10 +77,21 @@ void main() {
     ].map((suggestion) => suggestion.dishName).toSet();
     expect(secondNames.intersection(shownNames), isEmpty);
     expect(secondNames, hasLength(3));
-    // 推荐时间与理由保持不变，只换菜。
+    // 推荐时间与餐次保持不变，只换菜。
     expect(second.suggestedTime, first.suggestedTime);
     expect(second.suggestedMealType, first.suggestedMealType);
-    expect(second.reason, first.reason);
+    expect(second.reason, isNotEmpty);
+    // 引擎 v2：每道推荐带槽位分类与建议份数（每槽位只取 1 道）。
+    for (final suggestion in [
+      ...second.primary,
+      ...second.alternatives,
+    ]) {
+      expect(suggestion.slotCategory, isNotNull);
+      expect(suggestion.servings, isNotNull);
+    }
+    // 注：「水果类候选不足」提示的确定性覆盖在引擎测试
+    // （recommendation_engine_test.dart）， AppState 层的槽位排序
+    // 依赖真实时钟，不在此处断言具体提示语。
   });
 
   test('推荐时间落在合理餐段（未来或餐口起点）', () {

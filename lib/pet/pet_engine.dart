@@ -463,6 +463,36 @@ class PetStateMachine {
     return _dialogues.gapDialogue(petType, completionByCategory);
   }
 
+  /// 按 7 天滚动台账趋势生成气泡台词（模块：指南重蒸馏与滚动平衡引擎）。
+  ///
+  /// 盈余衰减期给温和的清淡提示（不指责），欠账期给鼓励性提醒；
+  /// 没有值得说的趋势时返回空串（调用方回退到当日场景台词）。
+  /// 活力值仍走「最近 3 天重算」口径，与本台词无关。
+  String rollingBalanceDialogue({
+    required BalanceReport report,
+    String petType = 'cat',
+  }) {
+    final oil = report.balanceFor('oil').surplus;
+    final grains = report.balanceFor('grains').surplus;
+    final threshold = RecommendationEngine.lightSurplusThreshold;
+    if (oil >= threshold && grains >= threshold) {
+      return '昨天吃得很香，这两天咱们清爽一点？';
+    }
+    if (oil >= threshold) {
+      return '昨天吃得很香，今天咱们清爽一点？';
+    }
+    if (grains >= threshold) {
+      return '主食这两天有点多，下顿少盛点饭？';
+    }
+    if (report.balanceFor('vegetables').deficit >= 2) {
+      return '这周蔬菜欠了不少，多吃点青菜呀～';
+    }
+    if (report.balanceFor('fruits').deficit >= 2) {
+      return '好久没吃水果啦，来点水果？';
+    }
+    return '';
+  }
+
   ContinuousBehavior? checkContinuousBehavior({required PetData pet}) {
     if (pet.consecutiveNoRecordDays >= 3) {
       return ContinuousBehavior(

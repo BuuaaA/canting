@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'balance_ledger.dart';
 import '../data/food_database.dart';
 import 'models/daily_intake.dart';
 import 'models/food_data.dart';
@@ -5,7 +8,9 @@ import 'models/meal_record.dart';
 import 'models/portions.dart';
 import 'models/recommendation.dart';
 
-/// Recommends the next meal time and dishes from today's intake gaps.
+/// Recommends the next meal time and dishes from today's intake gaps,
+/// with a 7-day rolling balance ledger driving long-term convergence
+/// (指南口径：一周内平衡即可；一次不健康的影响持续传导到后面几天的推荐)。
 class RecommendationEngine {
   const RecommendationEngine(this.foodDatabase);
 
@@ -22,8 +27,49 @@ class RecommendationEngine {
     'vegetables': '蔬菜',
     'fruits': '水果',
     'protein': '动物蛋白',
-    'protein_soy': '大豆及坚果',
+    'protein_soy': '大豆坚果',
   };
+
+  /// 台账里参与清淡模式激活与主食减量的两类。
+  static const String _oilGroup = 'oil';
+  static const String _grainGroup = 'grains';
+
+  /// 台账盈余激活清淡模式的阈值（份）：油脂或谷薯盈余 ≥ 0.5 时 light。
+  /// 持续天数由盈余衰减（50%/日）决定：+2.0 → 次日 1.0 → 第三日 0.5
+  /// 仍 light → 第四日 0.25 回归 routine，即「大吃大喝后清淡两三天」。
+  static const double lightSurplusThreshold = 0.5;
+
+  /// 槽位最小缺口：剩余缺口 ≤ 0.15 份的分类不占推荐槽位。
+  static const double _minGapForSlot = 0.15;
+
+  /// 该类候选菜需至少贡献 0.5 份才算该类候选（防微量蹭位）。
+  static const double _minCandidateContribution = 0.5;
+
+  /// 推荐份数上限系数：不超过该菜该类贡献 × 1.5（不推远超缺口的大菜）。
+  static const double _maxServingFactor = 1.5;
+
+  /// 清淡模式主食减量：比常规推荐减少 30%（= 单餐修正限幅 ±30% 的上界）。
+  static const double _lightStapleReduction = 0.3;
+
+  /// 清淡模式保底小份主食的最小缺口：即使当日主食已吃超，
+  /// 晚餐仍给一个维持性小份主食槽位（份量 ≈ 0.8 × 0.7 ≈ 0.56 份）。
+  static const double _lightStapleMinGap = 0.8;
+
+  /// routine 模式下长期欠账分类的排序加成上界（0~0.3 附加分），
+  /// 让「最近一周蔬菜都欠着」的分类在同等缺口下排前面（还债轮转）。
+  static const double _deficitBoostMax = 0.3;
+
+  /// 欠账还债比例：每餐把该类结转欠账的 30% 摊进推荐份数
+  /// （「一次不足的影响持续传导到后面几天的推荐」的欠账侧传动）。
+  static const double _deficitRepayRate = 0.3;
+
+  /// 盈余反馈比例：每餐把该类结转盈余的 30% 从推荐份数中抵扣
+  /// （「一次吃超的影响持续传导到后面几天的推荐」的盈余侧传动）。
+  static const double _surplusFeedbackRate = 0.3;
+
+  /// 单餐修正限幅：任何方向的修正（还债加量 / 清淡减量）最多
+  /// 比常规推荐 ±30%，绝不推极端方案。
+  static const double _singleMealCorrectionLimit = 0.3;
 
   final FoodDatabase foodDatabase;
 
@@ -32,6 +78,8 @@ class RecommendationEngine {
     required DailyIntake dailyIntake,
     required DateTime now,
     required String lastMealType,
+    BalanceReport? balance,
+    Set<String> excludeDishNames = const {},
   }) {
     if (todayMeals.isNotEmpty &&
         !const {
@@ -56,11 +104,14 @@ class RecommendationEngine {
       now: now,
       lastMealType: lastMealType,
     );
+    final ledger = balance ?? BalanceReport.empty(asOf: now);
+    final isLight = _isLightMode(ledger);
     final rankedGroups = _rankFoodGroups(
       eaten: eaten,
       target: dailyIntake.portions,
       lastMeal: _latestMeal(todayMeals),
       mealType: timePlan.mealType,
+      ledger: ledger,
     );
 
     final previousDishNames = todayMeals
@@ -72,9 +123,45 @@ class RecommendationEngine {
       (meal) => meal.sodiumLevel == 'high',
     );
     final suggestions = <DishSuggestion>[];
+    final selectedDishes = <StandardDish>[];
     final usedDishIds = <String>{};
+    final shortageGroups = <String>[];
+    final target = dailyIntake.portions;
+    double gapOf(String group) => target.valueFor(group) - eaten.valueFor(group);
 
+    // 槽位规划：按缺口排序取前 3 个有真实缺口（> 0.15 份）的分类，
+    // 每槽位只取 1 道菜。谷类为主（指南核心原则）：主食缺口未满时，
+    // 每餐都保底一个主食槽位。清淡模式再保底：即使当日主食吃超，
+    // 也以小份维持，不让晚餐没主食。
+    final slots = <String>[];
     for (final group in rankedGroups) {
+      if (slots.length == 3) {
+        break;
+      }
+      if (gapOf(group) <= _minGapForSlot) {
+        continue;
+      }
+      slots.add(group);
+    }
+    if (!slots.contains(_grainGroup) && gapOf(_grainGroup) > _minGapForSlot) {
+      slots.insert(0, _grainGroup);
+      while (slots.length > 3) {
+        slots.removeLast();
+      }
+    }
+    if (isLight && !slots.contains(_grainGroup)) {
+      slots.insert(slots.isEmpty ? 0 : 1, _grainGroup);
+      while (slots.length > 3) {
+        slots.removeLast();
+      }
+    }
+
+    for (final group in slots) {
+      final forcedStaple =
+          isLight &&
+          group == _grainGroup &&
+          gapOf(group) <= _minGapForSlot;
+      final gap = forcedStaple ? _lightStapleMinGap : gapOf(group);
       final dish = _bestDishForGroup(
         group: group,
         mealType: timePlan.mealType,
@@ -82,23 +169,25 @@ class RecommendationEngine {
         hasHighSodiumMeal: hasHighSodiumMeal,
         previousDishNames: previousDishNames,
         usedDishIds: usedDishIds,
+        excludeDishNames: excludeDishNames,
+        isLight: isLight,
       );
       if (dish == null) {
+        // 该槽位有缺口却无菜可选（候选耗尽/全部不可推荐）：
+        // 不静默消失，记入「候选不足」提示（水果槽位由此保住）。
+        shortageGroups.add(group);
         continue;
       }
       usedDishIds.add(dish.id);
-      final category = foodDatabase.categoryForDish(dish)!;
-      suggestions.add(
-        DishSuggestion(
-          dishName: dish.name,
-          searchKeyword: dish.searchKeywords.firstOrNull ?? dish.name,
-          primaryCategory: group,
-          oilLevel: category.oilLevel,
-        ),
-      );
-      if (suggestions.length == 3) {
-        break;
-      }
+      selectedDishes.add(dish);
+      suggestions.add(_suggestionFor(
+        dish: dish,
+        group: group,
+        gap: gap,
+        isLight: isLight,
+        ledger: ledger,
+        allowRepay: !forcedStaple,
+      ));
     }
 
     // A valid seed database has candidates for every group. This fallback also
@@ -108,14 +197,28 @@ class RecommendationEngine {
         if (!usedDishIds.add(dish.id)) {
           continue;
         }
+        if (!dish.recommendable || excludeDishNames.contains(dish.name)) {
+          continue;
+        }
+        if (isLight && isJunkish(dish)) {
+          continue;
+        }
         final group = _primaryNutrient(dish);
+        final contribution = dish.correctedPortions.valueFor(group);
+        if (contribution < _minCandidateContribution) {
+          continue;
+        }
         final category = foodDatabase.categoryForDish(dish)!;
+        selectedDishes.add(dish);
         suggestions.add(
           DishSuggestion(
             dishName: dish.name,
             searchKeyword: dish.searchKeywords.firstOrNull ?? dish.name,
             primaryCategory: group,
             oilLevel: category.oilLevel,
+            slotCategory: group,
+            servings: contribution * 0.5,
+            note: '补位：建议小份',
           ),
         );
         if (suggestions.length == 3) {
@@ -125,22 +228,159 @@ class RecommendationEngine {
     }
 
     final biggestGap = rankedGroups.first;
-    final balanceNote = oilRatio > 1.2 || hasHighSodiumMeal
-        ? '；今日油盐已偏高，已优先选择较清淡菜品'
-        : '';
-    final shortIntervalNote = timePlan.shortInterval
-        ? '；距离上一餐不足2小时，暂不建议提前进食'
-        : '';
+    final allSelectedClean = selectedDishes.isNotEmpty &&
+        selectedDishes.every((dish) => !isJunkish(dish));
+    final reason = _buildReason(
+      biggestGap: biggestGap,
+      ledger: ledger,
+      isLight: isLight,
+      oilRatio: oilRatio,
+      hasHighSodiumMeal: hasHighSodiumMeal,
+      allSelectedClean: allSelectedClean,
+      shortageGroups: shortageGroups,
+      shortInterval: timePlan.shortInterval,
+    );
 
     return Recommendation(
       suggestedTime: timePlan.time,
       suggestedMealType: timePlan.mealType,
       primary: suggestions.take(1).toList(growable: false),
       alternatives: suggestions.skip(1).take(2).toList(growable: false),
-      reason:
-          '今日${_groupLabels[biggestGap]}缺口最大，下一餐优先补充'
-          '$balanceNote$shortIntervalNote',
+      reason: reason,
+      balanceMode: isLight ? BalanceMode.light : BalanceMode.routine,
     );
+  }
+
+  /// 台账 → 模式：油脂或谷薯盈余 ≥ 0.5 份时进入清淡（light）模式。
+  /// 盈余按 50%/日衰减，清淡的持续天数由衰减自然决定。
+  static bool _isLightMode(BalanceReport ledger) =>
+      ledger.balanceFor(_oilGroup).surplus >= lightSurplusThreshold ||
+      ledger.balanceFor(_grainGroup).surplus >= lightSurplusThreshold;
+
+  /// 是否「重口菜」：fried / high_sodium 标签（quality_tags 或旧库代理：
+  /// 炸物分类、高钠等级）。清淡模式硬排除这类菜；「已优先清淡」文案
+  /// 只在选出的菜全部不是重口菜时才允许出现。
+  static bool isJunkish(StandardDish dish) {
+    final tags = dish.qualityTags;
+    return tags.contains('fried') ||
+        tags.contains('high_sodium') ||
+        dish.category == 'fried' ||
+        dish.sodiumLevel == 'high';
+  }
+
+  DishSuggestion _suggestionFor({
+    required StandardDish dish,
+    required String group,
+    required double gap,
+    required bool isLight,
+    required BalanceReport ledger,
+    required bool allowRepay,
+  }) {
+    final category = foodDatabase.categoryForDish(dish)!;
+    final contribution = dish.correctedPortions.valueFor(group);
+    final routineServings = gap.clamp(0.0, contribution * _maxServingFactor);
+    var servings = routineServings;
+    String? note;
+    if (isLight &&
+        group == _grainGroup &&
+        ledger.balanceFor(_grainGroup).surplus > 0) {
+      // 清淡模式主食减量：仅当谷薯台账确有盈余时生效（比常规推荐少
+      // 30%，单餐修正限幅上界）；谷薯本就欠账时不减，避免油超日把
+      // 主食一起压垮。
+      servings = routineServings * (1 - _lightStapleReduction);
+      note = '清淡模式：主食小份（比常规少三成）';
+    } else {
+      // 台账双向修正（都在单餐 ±30% 限幅内）：
+      // - 还债：该类 7 天结转欠账的 30% 摊进本餐份数；
+      // - 盈余反馈：该类结转盈余（前些天吃超的余量）按 30% 抵扣本餐，
+      //   让「一次吃超」在后续几天持续少推该类（盈余侧传导）。
+      if (allowRepay) {
+        final balance = ledger.balanceFor(group);
+        final repay = math.min(
+          math.max(balance.deficit, 0) * _deficitRepayRate,
+          routineServings * _singleMealCorrectionLimit,
+        );
+        final surplusFeedback = math.min(
+          math.max(balance.surplus, 0) * _surplusFeedbackRate,
+          routineServings * _singleMealCorrectionLimit,
+        );
+        // 重油菜不放大：油贡献大的菜最多建议正常一份，避免推荐端
+        // 放大当日油脂摄入（油脂无独立槽位，只能靠份量约束）。
+        final oilCapFactor = dish.correctedPortions.oil >= 1.0
+            ? 1.0
+            : dish.correctedPortions.oil >= 0.6
+            ? 1.2
+            : _maxServingFactor;
+        servings = (routineServings + repay - surplusFeedback).clamp(
+          routineServings * (1 - _singleMealCorrectionLimit),
+          routineServings * (1 + _singleMealCorrectionLimit),
+        );
+        // 重油菜上限叠加在限幅带之外单独收紧（油大的菜宁小勿大）。
+        servings = math.min(servings, contribution * oilCapFactor);
+        servings = math.max(servings, 0);
+      }
+      if (servings < contribution * 0.75) {
+        note = '贴合剩余缺口，建议小份';
+      }
+    }
+    // 菜品标签用菜品自身主导分类，不用槽位分类。
+    return DishSuggestion(
+      dishName: dish.name,
+      searchKeyword: dish.searchKeywords.firstOrNull ?? dish.name,
+      primaryCategory: _primaryNutrient(dish),
+      oilLevel: category.oilLevel,
+      slotCategory: group,
+      servings: servings,
+      note: note,
+    );
+  }
+
+  String _buildReason({
+    required String biggestGap,
+    required BalanceReport ledger,
+    required bool isLight,
+    required double oilRatio,
+    required bool hasHighSodiumMeal,
+    required bool allSelectedClean,
+    required List<String> shortageGroups,
+    required bool shortInterval,
+  }) {
+    var reason = '今日${_groupLabels[biggestGap]}缺口最大，下一餐优先补充';
+
+    if (isLight) {
+      // 温和、不指责；说明影响会持续几天（滚动调控）。
+      final overs = <String>[
+        if (ledger.balanceFor(_grainGroup).surplus >= lightSurplusThreshold)
+          '主食',
+        if (ledger.balanceFor(_oilGroup).surplus >= lightSurplusThreshold)
+          '油',
+      ];
+      if (overs.length == 1) {
+        reason += '；今天${overs.first}吃超啦，'
+            '晚饭清爽一点就好～这两天咱们吃清淡点';
+      } else {
+        reason += '；今天${overs.join('和')}都吃超啦，'
+            '晚饭清爽一点就好～这两天咱们吃清淡点';
+      }
+    } else if ((oilRatio > 1.2 || hasHighSodiumMeal) && allSelectedClean) {
+      // 只有实际选出的菜全部不重口，才允许说「已优先清淡」。
+      reason += '；今日油盐已偏高，已优先选择较清淡菜品';
+    }
+
+    if (shortageGroups.isNotEmpty) {
+      final notes = [
+        for (final group in shortageGroups)
+          group == 'fruits'
+              ? '水果类候选不足，可以在记录里手动补个水果'
+              : '${_groupLabels[group]}类候选不足',
+      ];
+      reason += '；${notes.join('；')}';
+    }
+
+    if (shortInterval) {
+      reason += '；距离上一餐不足2小时，暂不建议提前进食';
+    }
+    return reason;
   }
 
   List<String> _rankFoodGroups({
@@ -148,6 +388,7 @@ class RecommendationEngine {
     required Portions target,
     required MealRecord? lastMeal,
     required String mealType,
+    required BalanceReport ledger,
   }) {
     final lastMealFoodTotal = lastMeal == null
         ? 0.0
@@ -178,7 +419,16 @@ class RecommendationEngine {
       }
 
       final mealBonus = _mealBonus(mealType, group);
-      scores[group] = gap * diversityFactor * (1 + mealBonus);
+      // 台账欠账驱动（routine 也生效）：长期不足的分类获得 0~0.15
+      // 的附加分，把「未来一个月结构收敛」的欠账还进排序。
+      var deficitBoost = 0.0;
+      final dailyTarget = targetValue / BalanceLedger.windowDays;
+      if (dailyTarget > 0) {
+        final deficit = ledger.balanceFor(group).deficit;
+        deficitBoost =
+            _deficitBoostMax * (deficit / dailyTarget).clamp(0.0, 1.0);
+      }
+      scores[group] = gap * diversityFactor * (1 + mealBonus) + deficitBoost;
     }
 
     final ranked = [..._foodGroups]
@@ -199,21 +449,48 @@ class RecommendationEngine {
     required bool hasHighSodiumMeal,
     required Set<String> previousDishNames,
     required Set<String> usedDishIds,
+    required Set<String> excludeDishNames,
+    required bool isLight,
   }) {
     StandardDish? best;
     var bestScore = double.negativeInfinity;
     for (final dish in foodDatabase.dishesForNutrient(group)) {
-      if (usedDishIds.contains(dish.id)) {
+      if (usedDishIds.contains(dish.id) ||
+          excludeDishNames.contains(dish.name)) {
+        continue;
+      }
+      // recommendable=false 的菜永远不进推荐（薯条/可乐/奶茶）。
+      if (!dish.recommendable) {
+        continue;
+      }
+      final contribution = dish.correctedPortions.valueFor(group);
+      // 该类份数 ≥ 0.5 才算该类候选（防微量蹭位）。
+      if (contribution < _minCandidateContribution) {
+        continue;
+      }
+      // 清淡模式硬规则：重口菜直接排除（不是打折）。
+      if (isLight && isJunkish(dish)) {
         continue;
       }
       final category = foodDatabase.categoryForDish(dish)!;
-      var score = dish.correctedPortions.valueFor(group);
+      var score = contribution;
 
       if (dish.tags.contains(mealType)) {
         score *= 1.2;
       }
       if (previousDishNames.contains(dish.name)) {
         score *= 0.5;
+      }
+      // 类内质量排序（routine 也生效）：
+      // whole_grain 压过精白（杂粮饭 > 白米饭），light 压过 fried。
+      if (dish.qualityTags.contains('whole_grain')) {
+        score *= 1.3;
+      }
+      if (dish.qualityTags.contains('light')) {
+        score *= 1.2;
+      }
+      if (dish.qualityTags.contains('fried') || dish.category == 'fried') {
+        score *= 0.6;
       }
       if (const {'high', 'extreme'}.contains(category.oilLevel)) {
         if (oilRatio > 1.2) {
@@ -224,6 +501,15 @@ class RecommendationEngine {
       }
       if (hasHighSodiumMeal && dish.sodiumLevel == 'high') {
         score *= 0.75;
+      }
+      // 油脂当日预算：oilRatio 越高越偏向低油菜（routine 的当日油脂
+      // 调控；跨日盈余由 light 模式与盈余反馈处理）。
+      final dishOil = dish.correctedPortions.oil;
+      if (oilRatio >= 0.6 && dishOil >= 0.8) {
+        score *= 0.7;
+      }
+      if (oilRatio >= 1.0 && dishOil >= 0.5) {
+        score *= 0.7;
       }
 
       if (score > bestScore) {

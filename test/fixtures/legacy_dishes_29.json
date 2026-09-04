@@ -1,0 +1,553 @@
+[
+  {
+    "dish_id": "hsm_rice",
+    "dish_name": "黄焖鸡米饭",
+    "aliases": ["黄焖鸡饭", "黄焖鸡套餐"],
+    "category": "rice_sauce",
+    "portions_normal": {
+      "grains": 2.0,
+      "vegetables": 0.3,
+      "fruits": 0.0,
+      "protein": 1.3,
+      "protein_soy": 0.0,
+      "oil_base": 1.6
+    },
+    "cooking_oil_ratio": 0.55,
+    "oil_factor": 1.8,
+    "sodium_level": "high",
+    "search_keywords": ["黄焖鸡", "鸡肉米饭"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "braised_pork_rice",
+    "dish_name": "卤肉饭",
+    "aliases": ["台湾卤肉饭", "卤肉盖饭"],
+    "category": "rice_sauce",
+    "portions_normal": {
+      "grains": 2.0,
+      "vegetables": 0.3,
+      "fruits": 0.0,
+      "protein": 1.2,
+      "protein_soy": 0.0,
+      "oil_base": 2.0
+    },
+    "cooking_oil_ratio": 0.35,
+    "oil_factor": 1.8,
+    "sodium_level": "high",
+    "search_keywords": ["卤肉饭", "卤肉盖饭"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "lanzhou_beef_noodle",
+    "dish_name": "兰州牛肉拉面",
+    "aliases": ["兰州拉面", "牛肉拉面"],
+    "category": "noodle_soup",
+    "portions_normal": {
+      "grains": 2.2,
+      "vegetables": 0.4,
+      "fruits": 0.0,
+      "protein": 0.8,
+      "protein_soy": 0.0,
+      "oil_base": 1.0
+    },
+    "cooking_oil_ratio": 0.65,
+    "oil_factor": 1.4,
+    "sodium_level": "high",
+    "search_keywords": ["兰州拉面", "牛肉面"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "chongqing_noodle",
+    "dish_name": "重庆小面",
+    "aliases": ["重庆麻辣小面", "豌杂小面"],
+    "category": "noodle_soup",
+    "portions_normal": {
+      "grains": 2.2,
+      "vegetables": 0.3,
+      "fruits": 0.0,
+      "protein": 0.4,
+      "protein_soy": 0.0,
+      "oil_base": 1.4
+    },
+    "cooking_oil_ratio": 0.8,
+    "oil_factor": 1.4,
+    "sodium_level": "high",
+    "search_keywords": ["重庆小面", "麻辣小面"],
+    "tags": ["breakfast", "lunch", "dinner"]
+  },
+  {
+    "dish_id": "luosifen",
+    "dish_name": "螺蛳粉",
+    "aliases": ["柳州螺蛳粉", "螺丝粉"],
+    "category": "noodle_soup",
+    "portions_normal": {
+      "grains": 2.3,
+      "vegetables": 0.5,
+      "fruits": 0.0,
+      "protein": 0.4,
+      "protein_soy": 0.2,
+      "oil_base": 1.5
+    },
+    "cooking_oil_ratio": 0.75,
+    "oil_factor": 1.4,
+    "sodium_level": "high",
+    "search_keywords": ["螺蛳粉", "柳州米粉"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "tomato_scrambled_egg",
+    "dish_name": "西红柿炒鸡蛋",
+    "aliases": ["番茄炒蛋", "西红柿炒蛋"],
+    "category": "stir_fry",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 1.0,
+      "fruits": 0.0,
+      "protein": 1.0,
+      "protein_soy": 0.0,
+      "oil_base": 1.1
+    },
+    "cooking_oil_ratio": 0.8,
+    "oil_factor": 1.2,
+    "sodium_level": "mid",
+    "search_keywords": ["番茄炒蛋", "西红柿鸡蛋"],
+    "tags": ["lunch", "dinner", "vegetables", "protein"]
+  },
+  {
+    "dish_id": "stir_fry_greens",
+    "dish_name": "清炒时蔬",
+    "aliases": ["清炒青菜", "炒时蔬", "时令蔬菜"],
+    "category": "stir_fry",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 2.0,
+      "fruits": 0.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil_base": 0.9
+    },
+    "cooking_oil_ratio": 1.0,
+    "oil_factor": 1.2,
+    "sodium_level": "mid",
+    "search_keywords": ["清炒时蔬", "炒青菜"],
+    "tags": ["lunch", "dinner", "vegetables"]
+  },
+  {
+    "dish_id": "garlic_broccoli",
+    "dish_name": "蒜蓉西兰花",
+    "aliases": ["蒜香西兰花", "清炒西兰花"],
+    "category": "stir_fry",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 2.0,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 0.0,
+      "oil_base": 0.8
+    },
+    "cooking_oil_ratio": 1.0,
+    "oil_factor": 1.2,
+    "sodium_level": "mid",
+    "search_keywords": ["西兰花", "蒜蓉西兰花"],
+    "tags": ["lunch", "dinner", "vegetables"]
+  },
+  {
+    "dish_id": "di_san_xian",
+    "dish_name": "地三鲜",
+    "aliases": ["东北地三鲜"],
+    "category": "stir_fry",
+    "portions_normal": {
+      "grains": 0.4,
+      "vegetables": 1.8,
+      "fruits": 0.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil_base": 1.8
+    },
+    "cooking_oil_ratio": 1.0,
+    "oil_factor": 1.2,
+    "sodium_level": "mid",
+    "search_keywords": ["地三鲜", "东北菜"],
+    "tags": ["lunch", "dinner", "vegetables"]
+  },
+  {
+    "dish_id": "braised_pork",
+    "dish_name": "红烧肉",
+    "aliases": ["家常红烧肉", "毛氏红烧肉"],
+    "category": "braised",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 2.0,
+      "protein_soy": 0.0,
+      "oil_base": 2.8
+    },
+    "cooking_oil_ratio": 0.3,
+    "oil_factor": 1.6,
+    "sodium_level": "high",
+    "search_keywords": ["红烧肉", "烧肉"],
+    "tags": ["lunch", "dinner", "protein"]
+  },
+  {
+    "dish_id": "braised_eggplant",
+    "dish_name": "红烧茄子",
+    "aliases": ["家常烧茄子", "烧茄子"],
+    "category": "braised",
+    "portions_normal": {
+      "grains": 0.2,
+      "vegetables": 1.8,
+      "fruits": 0.0,
+      "protein": 0.1,
+      "protein_soy": 0.0,
+      "oil_base": 2.0
+    },
+    "cooking_oil_ratio": 1.0,
+    "oil_factor": 1.6,
+    "sodium_level": "high",
+    "search_keywords": ["红烧茄子", "烧茄子"],
+    "tags": ["lunch", "dinner", "vegetables"]
+  },
+  {
+    "dish_id": "fried_chicken_combo",
+    "dish_name": "炸鸡套餐",
+    "aliases": ["炸鸡全家桶", "香辣炸鸡套餐"],
+    "category": "fried",
+    "portions_normal": {
+      "grains": 1.2,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 2.2,
+      "protein_soy": 0.0,
+      "oil_base": 2.6
+    },
+    "cooking_oil_ratio": 0.7,
+    "oil_factor": 1.3,
+    "sodium_level": "high",
+    "search_keywords": ["炸鸡", "炸鸡套餐"],
+    "tags": ["lunch", "dinner", "snack", "protein"]
+  },
+  {
+    "dish_id": "french_fries",
+    "dish_name": "薯条",
+    "aliases": ["炸薯条", "大份薯条"],
+    "category": "fried",
+    "portions_normal": {
+      "grains": 1.5,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 0.0,
+      "oil_base": 2.0
+    },
+    "cooking_oil_ratio": 0.85,
+    "oil_factor": 1.3,
+    "sodium_level": "mid",
+    "search_keywords": ["薯条", "炸薯条"],
+    "tags": ["snack", "grains"]
+  },
+  {
+    "dish_id": "malatang",
+    "dish_name": "麻辣烫",
+    "aliases": ["骨汤麻辣烫", "杨国福麻辣烫"],
+    "category": "hotpot_mala",
+    "portions_normal": {
+      "grains": 1.0,
+      "vegetables": 1.5,
+      "fruits": 0.0,
+      "protein": 1.2,
+      "protein_soy": 0.4,
+      "oil_base": 1.5
+    },
+    "cooking_oil_ratio": 0.8,
+    "oil_factor": 1.5,
+    "sodium_level": "high",
+    "search_keywords": ["麻辣烫", "自选麻辣烫"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "mala_xiangguo",
+    "dish_name": "麻辣香锅",
+    "aliases": ["自选麻辣香锅", "干锅香锅"],
+    "category": "hotpot_mala",
+    "portions_normal": {
+      "grains": 0.6,
+      "vegetables": 1.4,
+      "fruits": 0.0,
+      "protein": 1.4,
+      "protein_soy": 0.3,
+      "oil_base": 2.2
+    },
+    "cooking_oil_ratio": 0.85,
+    "oil_factor": 1.5,
+    "sodium_level": "high",
+    "search_keywords": ["麻辣香锅", "香锅"],
+    "tags": ["lunch", "dinner"]
+  },
+  {
+    "dish_id": "chicken_breast_salad",
+    "dish_name": "鸡胸肉沙拉",
+    "aliases": ["香煎鸡胸沙拉", "鸡肉轻食沙拉"],
+    "category": "salad_light",
+    "portions_normal": {
+      "grains": 0.3,
+      "vegetables": 2.0,
+      "fruits": 0.0,
+      "protein": 1.8,
+      "protein_soy": 0.0,
+      "oil_base": 0.7
+    },
+    "cooking_oil_ratio": 0.45,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["鸡胸肉沙拉", "鸡肉轻食"],
+    "tags": ["lunch", "dinner", "vegetables", "protein"]
+  },
+  {
+    "dish_id": "vegetable_salad",
+    "dish_name": "蔬菜沙拉",
+    "aliases": ["田园蔬菜沙拉", "混合蔬菜沙拉"],
+    "category": "salad_light",
+    "portions_normal": {
+      "grains": 0.2,
+      "vegetables": 2.2,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 0.0,
+      "oil_base": 0.5
+    },
+    "cooking_oil_ratio": 0.8,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["蔬菜沙拉", "田园沙拉"],
+    "tags": ["lunch", "dinner", "vegetables"]
+  },
+  {
+    "dish_id": "preserved_egg_congee",
+    "dish_name": "皮蛋瘦肉粥",
+    "aliases": ["皮蛋粥", "瘦肉粥"],
+    "category": "congee_soup",
+    "portions_normal": {
+      "grains": 1.4,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 0.6,
+      "protein_soy": 0.0,
+      "oil_base": 0.4
+    },
+    "cooking_oil_ratio": 0.25,
+    "oil_factor": 1.1,
+    "sodium_level": "mid",
+    "search_keywords": ["皮蛋瘦肉粥", "瘦肉粥"],
+    "tags": ["breakfast", "dinner", "grains"]
+  },
+  {
+    "dish_id": "millet_congee",
+    "dish_name": "小米粥",
+    "aliases": ["养胃小米粥"],
+    "category": "congee_soup",
+    "portions_normal": {
+      "grains": 1.2,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.1,
+      "protein_soy": 0.0,
+      "oil_base": 0.1
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.1,
+    "sodium_level": "low",
+    "search_keywords": ["小米粥", "杂粮粥"],
+    "tags": ["breakfast", "grains"]
+  },
+  {
+    "dish_id": "white_rice",
+    "dish_name": "白米饭",
+    "aliases": ["米饭", "白饭"],
+    "category": "staple_plain",
+    "portions_normal": {
+      "grains": 2.0,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil_base": 0.0
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["米饭", "主食"],
+    "tags": ["lunch", "dinner", "grains"]
+  },
+  {
+    "dish_id": "steamed_bun",
+    "dish_name": "馒头",
+    "aliases": ["白馒头", "老面馒头"],
+    "category": "staple_plain",
+    "portions_normal": {
+      "grains": 1.5,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.1,
+      "protein_soy": 0.0,
+      "oil_base": 0.0
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["馒头", "主食"],
+    "tags": ["breakfast", "lunch", "dinner", "grains"]
+  },
+  {
+    "dish_id": "boiled_egg",
+    "dish_name": "水煮蛋",
+    "aliases": ["白煮蛋", "煮鸡蛋"],
+    "category": "protein_dish",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 1.0,
+      "protein_soy": 0.0,
+      "oil_base": 0.5
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.1,
+    "sodium_level": "low",
+    "search_keywords": ["水煮蛋", "鸡蛋"],
+    "tags": ["breakfast", "snack", "protein"]
+  },
+  {
+    "dish_id": "white_cut_chicken",
+    "dish_name": "白切鸡",
+    "aliases": ["白斩鸡", "粤式白切鸡"],
+    "category": "protein_dish",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 2.2,
+      "protein_soy": 0.0,
+      "oil_base": 1.3
+    },
+    "cooking_oil_ratio": 0.15,
+    "oil_factor": 1.1,
+    "sodium_level": "mid",
+    "search_keywords": ["白切鸡", "白斩鸡"],
+    "tags": ["lunch", "dinner", "protein"]
+  },
+  {
+    "dish_id": "steamed_fish",
+    "dish_name": "清蒸鱼",
+    "aliases": ["清蒸鲈鱼", "蒸鱼"],
+    "category": "protein_dish",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.1,
+      "fruits": 0.0,
+      "protein": 2.0,
+      "protein_soy": 0.0,
+      "oil_base": 0.9
+    },
+    "cooking_oil_ratio": 0.25,
+    "oil_factor": 1.1,
+    "sodium_level": "mid",
+    "search_keywords": ["清蒸鱼", "清蒸鲈鱼"],
+    "tags": ["lunch", "dinner", "protein"]
+  },
+  {
+    "dish_id": "jianbing_guozi",
+    "dish_name": "煎饼果子",
+    "aliases": ["杂粮煎饼", "煎饼"],
+    "category": "breakfast_set",
+    "portions_normal": {
+      "grains": 2.0,
+      "vegetables": 0.3,
+      "fruits": 0.0,
+      "protein": 0.8,
+      "protein_soy": 0.0,
+      "oil_base": 1.2
+    },
+    "cooking_oil_ratio": 0.75,
+    "oil_factor": 1.2,
+    "sodium_level": "high",
+    "search_keywords": ["煎饼果子", "杂粮煎饼"],
+    "tags": ["breakfast", "grains", "protein"]
+  },
+  {
+    "dish_id": "soy_milk_youtiao",
+    "dish_name": "豆浆油条",
+    "aliases": ["油条豆浆套餐", "豆浆配油条"],
+    "category": "breakfast_set",
+    "portions_normal": {
+      "grains": 1.8,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 0.8,
+      "oil_base": 1.8
+    },
+    "cooking_oil_ratio": 0.8,
+    "oil_factor": 1.2,
+    "sodium_level": "mid",
+    "search_keywords": ["豆浆油条", "早餐套餐"],
+    "tags": ["breakfast", "grains", "protein_soy"]
+  },
+  {
+    "dish_id": "milk_tea",
+    "dish_name": "珍珠奶茶",
+    "aliases": ["奶茶", "波霸奶茶"],
+    "category": "dessert_sweet",
+    "portions_normal": {
+      "grains": 1.5,
+      "vegetables": 0.0,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 0.0,
+      "oil_base": 1.0
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["奶茶", "珍珠奶茶"],
+    "tags": ["snack"]
+  },
+  {
+    "dish_id": "fruit_cup",
+    "dish_name": "鲜果切",
+    "aliases": ["果切", "水果拼盘", "水果捞"],
+    "category": "fruit",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.0,
+      "fruits": 2.0,
+      "protein": 0.0,
+      "protein_soy": 0.0,
+      "oil_base": 0.0
+    },
+    "cooking_oil_ratio": 0.0,
+    "oil_factor": 1.0,
+    "sodium_level": "low",
+    "search_keywords": ["鲜果切", "水果拼盘"],
+    "tags": ["breakfast", "snack", "fruits"]
+  },
+  {
+    "dish_id": "mapo_tofu",
+    "dish_name": "麻婆豆腐",
+    "aliases": ["家常麻婆豆腐", "麻辣豆腐"],
+    "category": "braised",
+    "portions_normal": {
+      "grains": 0.0,
+      "vegetables": 0.2,
+      "fruits": 0.0,
+      "protein": 0.2,
+      "protein_soy": 1.5,
+      "oil_base": 1.4
+    },
+    "cooking_oil_ratio": 0.75,
+    "oil_factor": 1.6,
+    "sodium_level": "high",
+    "search_keywords": ["麻婆豆腐", "豆腐"],
+    "tags": ["lunch", "dinner", "protein_soy"]
+  }
+]

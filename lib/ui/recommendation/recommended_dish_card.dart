@@ -80,11 +80,22 @@ class RecommendedDishCard extends StatelessWidget {
                     const SizedBox(height: 3),
                     Text(
                       '${_categoryLabels[suggestion.primaryCategory] ?? "均衡搭配"}'
-                      ' · ${_oilLabels[suggestion.oilLevel] ?? "家常"}',
+                      ' · ${_oilLabels[suggestion.oilLevel] ?? "家常"}'
+                      '${suggestion.servings == null ? "" : " · 建议 ${suggestion.servings!.toStringAsFixed(1)} 份"}',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: scheme.onSurfaceVariant,
                       ),
                     ),
+                    if (suggestion.note != null) ...[
+                      const SizedBox(height: 3),
+                      Text(
+                        suggestion.note!,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: scheme.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),

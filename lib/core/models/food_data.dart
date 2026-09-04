@@ -54,6 +54,9 @@ class StandardDish {
     required this.sodiumLevel,
     required this.searchKeywords,
     this.tags = const [],
+    this.recommendable = true,
+    this.qualityTags = const [],
+    this.estimated = false,
   });
 
   final String id;
@@ -68,6 +71,17 @@ class StandardDish {
   final String sodiumLevel;
   final List<String> searchKeywords;
   final List<String> tags;
+
+  /// 是否可进推荐引擎候选（false = 永不推荐，如薯条/可乐/奶茶）。
+  /// 旧版菜品 JSON 缺该字段时默认 true（defensive 解析）。
+  final bool recommendable;
+
+  /// 质量标签：whole_grain / light / fried / high_sodium 等。
+  /// 推荐引擎用于类内质量排序与清淡模式硬排除；缺字段默认空表。
+  final List<String> qualityTags;
+
+  /// true = nutridata 无此菜，按配料/菜谱常识估算（AI gap-fill 标注）。
+  final bool estimated;
 
   /// Corrects only cooking oil; intrinsic fat remains unchanged.
   Portions get correctedPortions {
@@ -104,6 +118,11 @@ class StandardDish {
       sodiumLevel: json['sodium_level'] as String,
       searchKeywords: List<String>.from(json['search_keywords'] as List),
       tags: List<String>.from(json['tags'] as List? ?? const []),
+      recommendable: json['recommendable'] as bool? ?? true,
+      qualityTags: List<String>.from(
+        json['quality_tags'] as List? ?? const [],
+      ),
+      estimated: json['estimated'] as bool? ?? false,
     );
   }
 
@@ -118,5 +137,8 @@ class StandardDish {
     'sodium_level': sodiumLevel,
     'search_keywords': searchKeywords,
     'tags': tags,
+    'recommendable': recommendable,
+    'quality_tags': qualityTags,
+    'estimated': estimated,
   };
 }

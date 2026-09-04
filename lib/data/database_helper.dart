@@ -15,8 +15,11 @@ class DatabaseHelper {
   /// Shared instance for the running app; tests build isolated copies instead.
   static final DatabaseHelper instance = DatabaseHelper();
 
-  static const databaseVersion = 2;
+  static const databaseVersion = 3;
   static const defaultDatabaseName = 'canting_food.db';
+
+  /// app_meta key storing the seed catalog schema_version last imported.
+  static const seedSchemaVersionKey = 'seed_schema_version';
 
   final DatabaseFactory _factory;
   final String? databasePath;
@@ -27,7 +30,13 @@ class DatabaseHelper {
   /// The open database. Throws if [initialize] has not completed.
   Database get database => _requireDatabase();
 
-  /// Opens the database and inserts [seedData] only when the dish table is empty.
+  /// Opens the database and imports [seedData]:
+  /// - empty dish table (fresh install) → full seed via [replaceAll];
+  /// - stored seed schema_version differs from [FoodDatabase.schemaVersion]
+  ///   (app update shipped a new catalog) → incremental upsert via
+  ///   [syncSeedCatalog]; existing rows unknown to the seed are kept and
+  ///   user-data tables are never touched;
+  /// - otherwise → no-op, so per-user edits survive restarts.
   Future<void> initialize({FoodDatabase? seedData}) async {
     if (isOpen) {
       return;
@@ -46,8 +55,16 @@ class DatabaseHelper {
     );
     _database = database;
 
-    if (seedData != null && await _dishCount(database) == 0) {
-      await replaceAll(seedData);
+    if (seedData != null) {
+      final storedVersion = await _metaGet(database, seedSchemaVersionKey);
+      final seedVersion = seedData.schemaVersion.toString();
+      if (await _dishCount(database) == 0) {
+        await replaceAll(seedData);
+        await _metaSet(database, seedSchemaVersionKey, seedVersion);
+      } else if (storedVersion != seedVersion) {
+        await syncSeedCatalog(seedData);
+        await _metaSet(database, seedSchemaVersionKey, seedVersion);
+      }
     }
   }
 
@@ -129,6 +146,55 @@ class DatabaseHelper {
     });
   }
 
+  /// Incremental seed-catalog import keyed by dish_id:
+  /// - new in seed, absent in DB → inserted;
+  /// - present in both with changed fields → updated;
+  /// - present in DB, absent in seed → KEPT (rows may carry user associations);
+  /// - user_custom_dishes and other user tables are never touched.
+  /// Seed categories are upserted first so foreign-key references resolve.
+  Future<int> syncSeedCatalog(FoodDatabase data) async {
+    final database = _requireDatabase();
+    var changed = 0;
+    await database.transaction((transaction) async {
+      final batch = transaction.batch();
+      for (final category in data.categories) {
+        batch.insert(
+          'categories',
+          _categoryRow(category),
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
+      }
+
+      final existingRows = await transaction.query(
+        'dishes',
+        columns: ['dish_id', 'json_data'],
+      );
+      final existingJsonById = <String, String>{
+        for (final row in existingRows)
+          row['dish_id']! as String: row['json_data']! as String,
+      };
+
+      for (final dish in data.dishes) {
+        final row = _dishRow(dish);
+        final existingJson = existingJsonById[dish.id];
+        if (existingJson == null) {
+          batch.insert('dishes', row);
+          changed++;
+        } else if (existingJson != row['json_data']) {
+          batch.update(
+            'dishes',
+            row,
+            where: 'dish_id = ?',
+            whereArgs: [dish.id],
+          );
+          changed++;
+        }
+      }
+      await batch.commit(noResult: true);
+    });
+    return changed;
+  }
+
   Future<void> upsertCategory(FoodCategory category) async {
     await _requireDatabase().insert(
       'categories',
@@ -204,6 +270,7 @@ class DatabaseHelper {
   /// To ship schema v3: bump [databaseVersion] and add `3: _migrateV2ToV3`.
   static final _migrations = <int, Future<void> Function(Database)>{
     2: _migrateV1ToV2,
+    3: _migrateV2ToV3,
   };
 
   static Future<void> _upgradeSchema(
@@ -225,7 +292,24 @@ class DatabaseHelper {
     await _createUserDataTables(database);
   }
 
+  /// v2 → v3 adds the app_meta key-value table used to track the imported
+  /// seed schema_version; legacy v2 databases get it via IF NOT EXISTS.
+  static Future<void> _migrateV2ToV3(Database database) async {
+    await database.execute('''
+      CREATE TABLE IF NOT EXISTS app_meta (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL
+      )
+    ''');
+  }
+
   static Future<void> _createUserDataTables(Database database) async {
+    await database.execute('''
+      CREATE TABLE IF NOT EXISTS app_meta (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL
+      )
+    ''');
     await database.execute('''
       CREATE TABLE user_profiles (
         id INTEGER PRIMARY KEY DEFAULT 1,
@@ -288,6 +372,29 @@ class DatabaseHelper {
       'SELECT COUNT(*) AS count FROM dishes',
     );
     return (rows.single['count'] as num).toInt();
+  }
+
+  static Future<String?> _metaGet(Database database, String key) async {
+    final rows = await database.query(
+      'app_meta',
+      columns: ['value'],
+      where: 'key = ?',
+      whereArgs: [key],
+      limit: 1,
+    );
+    return rows.isEmpty ? null : rows.single['value'] as String?;
+  }
+
+  static Future<void> _metaSet(
+    Database database,
+    String key,
+    String value,
+  ) async {
+    await database.insert(
+      'app_meta',
+      {'key': key, 'value': value},
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   Database _requireDatabase() {
