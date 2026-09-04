@@ -500,6 +500,13 @@ class PetStateMachine {
     return -4;
   }
 
+  /// 活力值合法区间钳制（[minimumVitality, maximumVitality]）。
+  ///
+  /// 所有会改写活力值的路径（记录/删除回退/重算/衰减）都必须走这里，
+  /// 保证落在 PetData 构造器接受的区间内。
+  static int clampVitality(int value) =>
+      math.max(minimumVitality, math.min(maximumVitality, value));
+
   static int growthChangeForCompletion(double completionRate) {
     _validateCompletionRate(completionRate);
     if (completionRate >= 0.7) return 10;
@@ -664,12 +671,8 @@ class PetStateMachine {
     };
   }
 
-  static int _boundedVitality(int vitality, int change) {
-    return math.max(
-      minimumVitality,
-      math.min(maximumVitality, vitality + change),
-    );
-  }
+  static int _boundedVitality(int vitality, int change) =>
+      clampVitality(vitality + change);
 
   static bool _isSameDay(DateTime left, DateTime right) {
     return left.year == right.year &&

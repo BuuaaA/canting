@@ -49,6 +49,7 @@ class AppState extends ChangeNotifier {
     AndroidNativeBridge? androidNativeBridge,
     DatabaseHelper? databaseHelper,
     this.guidelines,
+    this.persistNotificationSwitches,
   }) : _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
        _databaseHelper = databaseHelper ?? DatabaseHelper.instance {
@@ -75,6 +76,11 @@ class AppState extends ChangeNotifier {
 
   /// 膳食指南数据，main() 启动时从 JSON 加载；测试可为 null。
   DietaryGuidelines? guidelines;
+
+  /// 提醒开关落盘回调（main 注入 SharedPreferences 实现；测试可为 null）。
+  /// setMealReminder / setGapReminder / clearData / clearAllData 变更开关时触发。
+  void Function({bool? mealReminder, bool? gapReminder})?
+  persistNotificationSwitches;
 
   late final UserRepository _userRepo = UserRepository(
     database: () => _databaseHelper.database,
@@ -265,6 +271,9 @@ class AppState extends ChangeNotifier {
     }
     return null;
   }
+
+  /// 读取记录的用户备注（meal_records.note 列，不属于模块间 JSON）。
+  Future<String?> mealNote(String mealId) => _mealRepo.getNote(mealId);
 
   List<MealRecord> mealsFor(DateTime date) {
     final key = _dayKey(date);
@@ -872,11 +881,13 @@ class AppState extends ChangeNotifier {
 
   void setMealReminder(bool value) {
     mealReminder = value;
+    persistNotificationSwitches?.call(mealReminder: value);
     notifyListeners();
   }
 
   void setGapReminder(bool value) {
     gapReminder = value;
+    persistNotificationSwitches?.call(gapReminder: value);
     notifyListeners();
   }
 
@@ -981,15 +992,19 @@ class AppState extends ChangeNotifier {
     }
     if (meal != null) {
       // 活力值按记录时的同一规则反向回退；成长值只增不减，不回退。
+      // 钳制口径与引擎一致（[15, 100]）：PetData 构造器拒绝越界值，
+      // 用 [0, 100] 会让低活力下的删除抛 RangeError。
       final delta = PetStateMachine.vitalityChangeForCompletion(
         meal.completionRate,
       );
-      if (delta != 0) {
-        _pet = _pet.copyWith(
-          vitality: math.max(0, math.min(100, _pet.vitality - delta)).toInt(),
-        );
-        await _petRepo.savePet(_pet);
-      }
+      _pet = _pet.copyWith(
+        vitality: PetStateMachine.clampVitality(_pet.vitality - delta),
+      );
+      await _petRepo.savePet(_pet);
+      // 回退后按「最近 3 天重算」口径收敛：使删除路径与启动时的重算
+      // 结果一致（当天/跨日删除的边界见模块 7 口径抽查）。窗口内已无
+      // 任何记录时重算保持不变，保留上面的回退值。
+      await refreshPetVitality();
     }
     _dialogue = '记录已删除';
     _scheduleWidgetSync();
@@ -1010,6 +1025,7 @@ class AppState extends ChangeNotifier {
     _mealsByDay.clear();
     mealReminder = false;
     gapReminder = false;
+    persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);
     _scheduleWidgetSync();
     notifyListeners();
   }
@@ -1036,6 +1052,7 @@ class AppState extends ChangeNotifier {
     profile = null;
     mealReminder = false;
     gapReminder = false;
+    persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);
     _pet = _petEngine.createPet(petType: _pet.petType, petName: '小挑食');
     _dialogue = _dailyDialogue();
     await _refreshDishMatcher();

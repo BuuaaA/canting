@@ -6,6 +6,7 @@ import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/platform/android_native_bridge.dart';
 import 'package:canting/router/app_router.dart';
 import 'package:canting/services/notification_service.dart';
+import 'package:canting/services/ocr_pipeline.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +19,26 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final databaseHelper = DatabaseHelper.instance;
   await databaseHelper.initialize(seedData: await _loadSeedFoodDatabase());
+  // 通知开关启动恢复（识别结果 / 用餐提醒 / 缺口提醒统一落盘 shared_preferences）。
+  final switches = await NotificationSwitchPrefs.load();
+  NotificationService.recognitionEnabled = switches.recognitionEnabled;
   final appState = AppState(
     databaseHelper: databaseHelper,
     guidelines: await _loadDietaryGuidelines(),
+    persistNotificationSwitches: ({bool? mealReminder, bool? gapReminder}) {
+      unawaited(
+        NotificationSwitchPrefs.save(
+          mealReminder: mealReminder,
+          gapReminder: gapReminder,
+        ),
+      );
+    },
   );
   await appState.loadFromDatabase();
+  // 提醒开关在 runApp 前直接恢复（main 里已按持久化值初始化 pet 等）。
+  appState
+    ..mealReminder = switches.mealReminder
+    ..gapReminder = switches.gapReminder;
   // 本地通知基础设施（模块 13）：初始化失败不阻塞 APP 启动。
   try {
     await NotificationService.init();
@@ -64,6 +80,8 @@ class CantingApp extends StatefulWidget {
 class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   late final GoRouter _router = AppRouter.create(widget.appState);
   late final AndroidNativeBridge _nativeBridge = AndroidNativeBridge();
+  // 分享图与 APP 内拍照/相册识别共用同一条 OCR 管线（模块 14）。
+  late final OcrPipeline _ocrPipeline = OcrPipeline(appState: widget.appState);
   String? _lastOpenedIOSMealID;
   bool _checkingIOSShare = false;
   StreamSubscription<String>? _notificationTapSub;
@@ -91,33 +109,9 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   }
 
   Future<void> _handleSharedImage(String imageUri) async {
-    widget.appState.startSharedRecognition(imageUri);
+    _ocrPipeline.begin(imageUri);
     _router.go('/record_detail?source=share');
-    try {
-      final recognition = await _nativeBridge.recognizeImage(imageUri);
-      widget.appState.completeSharedRecognition(
-        imageUri: imageUri,
-        merchant: recognition.merchant,
-        dishes: recognition.dishes
-            .map(
-              (dish) =>
-                  MealDish(name: dish.name, quantity: dish.quantity.toDouble()),
-            )
-            .toList(growable: false),
-      );
-    } on PlatformException catch (error) {
-      widget.appState.failSharedRecognition(
-        imageUri: imageUri,
-        message: error.code == 'OCR_UNAVAILABLE'
-            ? '当前设备无法使用文字识别，请手动添加菜品'
-            : '这张图没看清，请手动添加菜品',
-      );
-    } catch (_) {
-      widget.appState.failSharedRecognition(
-        imageUri: imageUri,
-        message: '这张图没看清，请手动添加菜品',
-      );
-    }
+    await _ocrPipeline.recognize(imageUri);
   }
 
   @override

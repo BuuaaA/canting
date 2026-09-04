@@ -1,4 +1,5 @@
 import 'package:canting/pet.dart';
+import 'package:canting/services/delivery_jump_service.dart';
 import 'package:canting/services/notification_service.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/about/about_page.dart';
@@ -110,6 +111,10 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 26),
+              const _SectionTitle('外卖平台'),
+              const SizedBox(height: 9),
+              const _DeliveryPlatformSection(),
               const SizedBox(height: 26),
               const _SectionTitle('快捷记录'),
               const SizedBox(height: 9),
@@ -228,6 +233,7 @@ class SettingsPage extends StatelessWidget {
     bool value,
   ) async {
     NotificationService.recognitionEnabled = value;
+    await NotificationSwitchPrefs.save(recognition: value);
     if (value) {
       final granted = await NotificationService.requestPermissions();
       if (context.mounted && !granted) {
@@ -413,6 +419,116 @@ class _SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PixelSectionHeader(title: text);
+  }
+}
+
+/// 外卖平台设置（模块 10）：开关控制启用，上移/下移调整跳转优先级。
+/// 配置经 [DeliveryPlatformPrefsStore] 落盘，推荐页跳转时读取同一份。
+class _DeliveryPlatformSection extends StatefulWidget {
+  const _DeliveryPlatformSection();
+
+  @override
+  State<_DeliveryPlatformSection> createState() =>
+      _DeliveryPlatformSectionState();
+}
+
+class _DeliveryPlatformSectionState extends State<_DeliveryPlatformSection> {
+  static const _store = DeliveryPlatformPrefsStore();
+  static final _labelOf = {
+    for (final platform in DeliveryJumpService.platforms)
+      platform.id: platform.label,
+  };
+
+  List<DeliveryPlatformSetting>? _settings;
+
+  @override
+  void initState() {
+    super.initState();
+    _store.loadSettings().then((settings) {
+      if (mounted) {
+        setState(() => _settings = settings);
+      }
+    });
+  }
+
+  Future<void> _update(List<DeliveryPlatformSetting> settings) async {
+    setState(() => _settings = settings);
+    try {
+      await _store.saveSettings(settings);
+    } catch (error) {
+      debugPrint('Unable to save delivery platform config: $error');
+    }
+  }
+
+  void _toggle(int index, bool value) {
+    final settings = [..._settings!];
+    settings[index] = DeliveryPlatformSetting(
+      id: settings[index].id,
+      enabled: value,
+    );
+    _update(settings);
+  }
+
+  void _move(int index, int offset) {
+    final target = index + offset;
+    if (target < 0 || target >= _settings!.length) {
+      return;
+    }
+    final settings = [..._settings!];
+    final item = settings.removeAt(index);
+    settings.insert(target, item);
+    _update(settings);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = _settings;
+    if (settings == null) {
+      return const PixelPanel(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      );
+    }
+    return PixelPanel(
+      padding: EdgeInsets.zero,
+      child: Column(
+        children: [
+          for (var index = 0; index < settings.length; index++) ...[
+            if (index > 0) const Divider(indent: 58),
+            ListTile(
+              leading: const Icon(Icons.moped_outlined),
+              title: Text(_labelOf[settings[index].id] ?? settings[index].id),
+              subtitle: settings[index].enabled
+                  ? const Text('推荐跳转会优先用它')
+                  : const Text('已停用，不在推荐页展示'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    tooltip: '上移',
+                    onPressed: index == 0
+                        ? null
+                        : () => _move(index, -1),
+                    icon: const Icon(Icons.arrow_upward_outlined),
+                  ),
+                  IconButton(
+                    tooltip: '下移',
+                    onPressed: index == settings.length - 1
+                        ? null
+                        : () => _move(index, 1),
+                    icon: const Icon(Icons.arrow_downward_outlined),
+                  ),
+                  Switch(
+                    value: settings[index].enabled,
+                    onChanged: (value) => _toggle(index, value),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
   }
 }
 

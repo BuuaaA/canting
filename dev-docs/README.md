@@ -17,25 +17,31 @@
 | 9 | [历史记录](module-09-history.md) | 1, 2, 7 | 2h | ✅ 已完成（夜间B线） |
 | 10 | [个人设置](module-10-settings.md) | 1, 4 | 2h | ✅ 已完成（夜间B线） |
 | 11 | [iOS 分享扩展 + Vision OCR](module-11-ios-ocr.md) | 1, 2 | 4h | ⏸ 待开发（需 Mac 环境验证） |
-| 12 | [Android 分享扩展 + PaddleOCR](module-12-android-ocr.md) | 1, 2 | 6h | 待开发（Phase 4） |
+| 12 | [Android 分享扩展 + PaddleOCR](module-12-android-ocr.md) | 1, 2 | 6h | ✅ 已完成（Phase 4，沿用 MVP 的 ML Kit 方案） |
 | 13 | [本地通知](module-13-notification.md) | 1 | 2h | ✅ 已完成（夜间B线） |
-| 14 | [APP 内拍照识别](module-14-in-app-ocr.md) | 2, 11, 12 | 2h | 待开发（Phase 4） |
+| 14 | [APP 内拍照识别](module-14-in-app-ocr.md) | 2, 11, 12 | 2h | ✅ 已完成（Phase 4） |
 | 15 | [手动添加餐食 + 用户数据反馈](module-15-manual-add.md) | 1, 2, 6 | 4h | ✅ 已完成（夜间A线） |
 | 16 | 联调 & 测试 & Bug 修复 | 全部 | 4h | 待开发（Phase 5） |
 
 **合计：约 43 小时**（AI 开发节奏，约 6-7 个工作日）
 
-## 当前进度（2026-09-04 晨间更新）
+## 当前进度（2026-09-04 下午更新）
 
 - **Phase 1 完成**：模块 1~4（持久化、食物库、指南接入、设置流程）
 - **Phase 2+3 完成**：双线并行夜间开发，8 个任务全部完成、零跳过，一夜新增 104 个测试
   - 战报：`docs/night-progress-line-a.md` / `docs/night-progress-line-b.md`
-  - 当前基线：**256 个测试全部通过，flutter analyze 零问题**（已独立复核）
+- **Phase 4 + 白天小项完成**（2026-09-04）：
+  - 模块 12：Android 分享→OCR→保存全链路（技术决策：沿用 MVP 的 ML Kit，不引入 PaddleOCR；通知简化为保存成功确认）
+  - 模块 14：APP 内拍照/相册识别（image_picker，复用同一识别管线）
+  - 白天小项：外卖平台持久化+设置页UI、通知开关落盘、记录页备注编辑、活力值口径收敛（修复删除越界崩溃）
+  - 模块 12 文档中 PaddleOCR 方案已被否决，实际实现见 `lib/services/ocr_pipeline.dart`
+  - E2E 实测通过（模拟器）：冷/热两条分享路径、3 道菜识别、保存落库、首页结构刷新、通知展示
+  - 当前基线：**296 个测试全部通过（+35）、flutter analyze 零问题**（合并后独立复核）
 - **待办**：
-  - 白天小项：外卖平台持久化+设置页UI（需加 shared_preferences）、通知开关落盘、记录页备注编辑UI、活力值两套口径抽查、京东外卖真机验证
-  - Phase 4：模块 12（Android 分享扩展+PaddleOCR）、模块 14（APP内拍照识别）
   - Phase 5：模块 16（全链路联调）
+  - 真机验收：京东外卖跳转、真实订单截图识别、通知到达
   - 需 Mac：模块 11（iOS 分享扩展）、iOS 通知验证
+  - 已知行为：×100 类三位数量提取器只取两位（已记录，低频）
 
 ## 开发顺序建议
 

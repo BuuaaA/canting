@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// 一条本地通知的展示内容与点击载荷。
 ///
@@ -191,6 +192,34 @@ class NotificationService {
     await _show(buildFailureContent());
   }
 
+  /// OCR 来源记录保存成功后的确认通知（模块 14 技术决策 3）：
+  /// 菜名 + 宠物当日对话台词，走 [showRecognitionSuccess] 且受
+  /// recognitionEnabled 开关控制；平台通道异常静默吞掉，不阻塞保存流程。
+  ///
+  /// [mealType] 传记录里的英文编码（breakfast/lunch/dinner/snack），
+  /// 内部映射为中文餐次。识别失败路径不调用本方法（不发通知）。
+  static Future<void> showOcrSaveSuccess({
+    required String mealType,
+    required String dishName,
+    required String petText,
+  }) async {
+    const labels = {
+      'breakfast': '早餐',
+      'lunch': '午餐',
+      'dinner': '晚餐',
+      'snack': '加餐',
+    };
+    try {
+      await showRecognitionSuccess(
+        mealType: labels[mealType] ?? '加餐',
+        dishName: dishName,
+        petText: petText,
+      );
+    } catch (_) {
+      // 通知失败不影响保存结果。
+    }
+  }
+
   static Future<void> _show(NotificationContent content) async {
     if (!_initialized) {
       await init();
@@ -223,4 +252,57 @@ class NotificationService {
 
   /// 仅供测试：模拟一次通知点击。
   static void emitTapForTest(String payload) => _tapController.add(payload);
+}
+
+/// 三个通知开关的持久化（shared_preferences）：
+/// 识别结果（[NotificationService.recognitionEnabled]）、
+/// 用餐提醒与缺口提醒（AppState.mealReminder / gapReminder）。
+class NotificationSwitchPrefs {
+  NotificationSwitchPrefs._();
+
+  static const _recognitionKey = 'notification_recognition_enabled';
+  static const _mealReminderKey = 'notification_meal_reminder';
+  static const _gapReminderKey = 'notification_gap_reminder';
+
+  /// 读取全部开关；未落盘的键返回默认值（识别通知开，提醒关）。
+  static Future<NotificationSwitchSnapshot> load() async {
+    final prefs = await SharedPreferences.getInstance();
+    return NotificationSwitchSnapshot(
+      recognitionEnabled:
+          prefs.getBool(_recognitionKey) ?? NotificationService.recognitionEnabled,
+      mealReminder: prefs.getBool(_mealReminderKey) ?? false,
+      gapReminder: prefs.getBool(_gapReminderKey) ?? false,
+    );
+  }
+
+  /// 保存传入的非空开关（只写变化项，互不影响）。
+  static Future<void> save({
+    bool? recognition,
+    bool? mealReminder,
+    bool? gapReminder,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (recognition != null) {
+      await prefs.setBool(_recognitionKey, recognition);
+    }
+    if (mealReminder != null) {
+      await prefs.setBool(_mealReminderKey, mealReminder);
+    }
+    if (gapReminder != null) {
+      await prefs.setBool(_gapReminderKey, gapReminder);
+    }
+  }
+}
+
+/// 通知开关快照（启动恢复用）。
+class NotificationSwitchSnapshot {
+  const NotificationSwitchSnapshot({
+    required this.recognitionEnabled,
+    required this.mealReminder,
+    required this.gapReminder,
+  });
+
+  final bool recognitionEnabled;
+  final bool mealReminder;
+  final bool gapReminder;
 }

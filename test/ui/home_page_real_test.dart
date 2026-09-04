@@ -149,7 +149,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('底部「+」弹出选择，截图识别为占位提示', (tester) async {
+  testWidgets('底部「+」弹出三项：拍照识别 / 相册选择 / 手动添加（模块 14）', (
+    tester,
+  ) async {
     final (state, helper) = await _buildState();
     addTearDown(helper.close);
 
@@ -161,12 +163,10 @@ void main() {
 
     // 首页空状态按钮和弹层入口都叫「手动添加」，共 2 处。
     expect(find.text('手动添加'), findsNWidgets(2));
-    expect(find.text('截图识别'), findsOneWidget);
-
-    await tester.tap(find.text('截图识别'));
-    await pumpUiTransition(tester);
-
-    expect(find.textContaining('截图识别马上就来'), findsOneWidget);
+    expect(find.text('拍照识别'), findsOneWidget);
+    expect(find.text('相册选择'), findsOneWidget);
+    // Phase 3 的「截图识别」占位入口已被真实识别入口取代。
+    expect(find.text('截图识别'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 

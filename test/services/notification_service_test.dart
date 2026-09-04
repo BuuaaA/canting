@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:canting/services/notification_service.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -83,6 +84,62 @@ void main() {
 
       expect(received1, [NotificationService.payloadFailure]);
       expect(received2, [NotificationService.payloadFailure]);
+    });
+  });
+
+  group('通知开关持久化（NotificationSwitchPrefs）', () {
+    setUp(() {
+      SharedPreferences.setMockInitialValues({});
+    });
+
+    test('未落盘时 load 返回默认值：识别通知开、提醒关', () async {
+      final snapshot = await NotificationSwitchPrefs.load();
+
+      expect(snapshot.recognitionEnabled, isTrue);
+      expect(snapshot.mealReminder, isFalse);
+      expect(snapshot.gapReminder, isFalse);
+    });
+
+    test('save 之后 load 原样读回三个开关', () async {
+      await NotificationSwitchPrefs.save(
+        recognition: false,
+        mealReminder: true,
+        gapReminder: true,
+      );
+
+      final snapshot = await NotificationSwitchPrefs.load();
+
+      expect(snapshot.recognitionEnabled, isFalse);
+      expect(snapshot.mealReminder, isTrue);
+      expect(snapshot.gapReminder, isTrue);
+    });
+
+    test('save 只写传入的开关，互不影响', () async {
+      await NotificationSwitchPrefs.save(recognition: false);
+      await NotificationSwitchPrefs.save(mealReminder: true);
+
+      final snapshot = await NotificationSwitchPrefs.load();
+
+      expect(snapshot.recognitionEnabled, isFalse);
+      expect(snapshot.mealReminder, isTrue);
+      expect(snapshot.gapReminder, isFalse);
+    });
+
+    test('重启模拟：重新 load 恢复上一次的开关状态', () async {
+      NotificationService.recognitionEnabled = false;
+      await NotificationSwitchPrefs.save(
+        mealReminder: true,
+        gapReminder: true,
+      );
+
+      // 模拟进程重启：内存开关回到默认，再从 prefs 恢复。
+      NotificationService.resetForTest();
+      final snapshot = await NotificationSwitchPrefs.load();
+      NotificationService.recognitionEnabled = snapshot.recognitionEnabled;
+
+      expect(NotificationService.recognitionEnabled, isTrue);
+      expect(snapshot.mealReminder, isTrue);
+      expect(snapshot.gapReminder, isTrue);
     });
   });
 }

@@ -8,9 +8,11 @@ import 'package:canting/ui/home/widgets/pet_area.dart';
 import 'package:canting/ui/home/widgets/recommendation_card.dart';
 import 'package:canting/ui/home/widgets/summary_card.dart';
 import 'package:canting/ui/home/widgets/today_records.dart';
+import 'package:canting/ui/ocr/in_app_ocr_launcher.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -72,10 +74,7 @@ class HomePage extends StatelessWidget {
               target: target,
             ),
             const SizedBox(height: 26),
-            const PixelSectionHeader(
-              title: '下一餐',
-              icon: Icons.restaurant_menu,
-            ),
+            const PixelSectionHeader(title: '下一餐', icon: Icons.restaurant_menu),
             const SizedBox(height: 10),
             RecommendationCard(
               recommendation: recommendation,
@@ -136,7 +135,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// 底部「+」：选择手动添加或截图识别（截图识别为 Phase 4 占位入口）。
+  /// 底部「+」：拍照识别 / 相册选择 / 手动添加（模块 14）。
   void _showAddSheet(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
@@ -144,44 +143,57 @@ class HomePage extends StatelessWidget {
       builder: (sheetContext) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const PixelSectionHeader(
-                title: '添加一餐',
-                icon: Icons.add_circle_outline,
-              ),
-              const SizedBox(height: 12),
-              ListTile(
-                leading: const PixelIconTile(
-                  icon: Icons.edit_note,
-                  size: 42,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const PixelSectionHeader(
+                  title: '添加一餐',
+                  icon: Icons.add_circle_outline,
                 ),
-                title: const Text('手动添加'),
-                subtitle: const Text('搜菜名或填克重，最顺手'),
-                onTap: () {
-                  Navigator.pop(sheetContext);
-                  context.push('/manual_add');
-                },
-              ),
-              ListTile(
-                leading: const PixelIconTile(
-                  icon: Icons.photo_outlined,
-                  size: 42,
+                const SizedBox(height: 12),
+                ListTile(
+                  leading: const PixelIconTile(
+                    icon: Icons.photo_camera_outlined,
+                    size: 42,
+                  ),
+                  title: const Text('拍照识别'),
+                  subtitle: const Text('拍下这餐，自动记菜品'),
+                  onTap: () {
+                    Navigator.pop(sheetContext);
+                    InAppOcrLauncher.pickAndRecognize(
+                      context,
+                      ImageSource.camera,
+                    );
+                  },
                 ),
-                title: const Text('截图识别'),
-                subtitle: const Text('外卖订单截图自动记账（即将开放）'),
-                onTap: () {
-                  Navigator.pop(sheetContext);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('截图识别马上就来，先用「手动添加」记一餐吧'),
-                    ),
-                  );
-                },
-              ),
-            ],
+                ListTile(
+                  leading: const PixelIconTile(
+                    icon: Icons.photo_outlined,
+                    size: 42,
+                  ),
+                  title: const Text('相册选择'),
+                  subtitle: const Text('外卖订单截图自动记账'),
+                  onTap: () {
+                    Navigator.pop(sheetContext);
+                    InAppOcrLauncher.pickAndRecognize(
+                      context,
+                      ImageSource.gallery,
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: const PixelIconTile(icon: Icons.edit_note, size: 42),
+                  title: const Text('手动添加'),
+                  subtitle: const Text('搜菜名或填克重，最顺手'),
+                  onTap: () {
+                    Navigator.pop(sheetContext);
+                    context.push('/manual_add');
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -133,4 +133,54 @@ void main() {
       );
     });
   });
+
+  group('AppState 通知开关落盘（shared_preferences 回调）', () {
+    test('setMealReminder / setGapReminder 触发对应开关的持久化回调', () async {
+      final (state, helper) = await _buildState();
+      addTearDown(helper.close);
+
+      final persisted = <({bool? mealReminder, bool? gapReminder})>[];
+      state.persistNotificationSwitches = ({
+        bool? mealReminder,
+        bool? gapReminder,
+      }) {
+        persisted.add((mealReminder: mealReminder, gapReminder: gapReminder));
+      };
+
+      state.setMealReminder(true);
+      state.setGapReminder(true);
+      state.setMealReminder(false);
+
+      expect(state.mealReminder, isFalse);
+      expect(state.gapReminder, isTrue);
+      expect(persisted, [
+        (mealReminder: true, gapReminder: null),
+        (mealReminder: null, gapReminder: true),
+        (mealReminder: false, gapReminder: null),
+      ]);
+    });
+
+    test('clearAllData 把两个提醒开关的关闭状态落盘', () async {
+      final (state, helper) = await _buildState();
+      addTearDown(helper.close);
+
+      final persisted = <({bool? mealReminder, bool? gapReminder})>[];
+      state.persistNotificationSwitches = ({
+        bool? mealReminder,
+        bool? gapReminder,
+      }) {
+        persisted.add((mealReminder: mealReminder, gapReminder: gapReminder));
+      };
+
+      state.setMealReminder(true);
+      state.setGapReminder(true);
+      persisted.clear();
+
+      await state.clearAllData();
+
+      expect(state.mealReminder, isFalse);
+      expect(state.gapReminder, isFalse);
+      expect(persisted, [(mealReminder: false, gapReminder: false)]);
+    });
+  });
 }

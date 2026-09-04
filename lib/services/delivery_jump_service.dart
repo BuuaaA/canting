@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// 外卖平台定义：URL scheme + H5 兜底链接 + 品牌色。
@@ -64,6 +65,91 @@ class DefaultDeliveryPlatformConfig implements DeliveryPlatformConfigStore {
   }
 }
 
+/// 设置页用的单个平台配置项：平台 id + 启用状态；列表顺序即展示/跳转顺序。
+class DeliveryPlatformSetting {
+  const DeliveryPlatformSetting({required this.id, required this.enabled});
+
+  final String id;
+  final bool enabled;
+}
+
+/// 基于 SharedPreferences 的平台配置持久化（设置页 + 跳转共用）。
+///
+/// 落盘两个键：完整展示顺序（含停用项）与停用集合。[loadOrderedPlatformIds]
+/// 返回其中启用的平台（保持顺序），即 [DeliveryJumpService.loadEnabledPlatforms]
+/// 跳转时实际使用的配置。读取失败（如测试环境无插件）时回退默认配置。
+class DeliveryPlatformPrefsStore implements DeliveryPlatformConfigStore {
+  const DeliveryPlatformPrefsStore();
+
+  static const _orderKey = 'delivery_platform_order';
+  static const _disabledKey = 'delivery_platform_disabled';
+
+  static List<DeliveryPlatformSetting> _defaultSettings() => [
+    for (final platform in DeliveryJumpService.platforms)
+      DeliveryPlatformSetting(id: platform.id, enabled: true),
+  ];
+
+  /// 完整配置（含停用平台），按用户排序；新平台（App 更新新增）追加在末尾。
+  Future<List<DeliveryPlatformSetting>> loadSettings() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final order = prefs.getStringList(_orderKey) ?? const [];
+      final disabled =
+          (prefs.getStringList(_disabledKey) ?? const []).toSet();
+      final knownIds = DeliveryJumpService.allPlatformIds;
+      final orderedIds = [
+        ...order.where(knownIds.contains),
+        ...knownIds.where((id) => !order.contains(id)),
+      ];
+      if (orderedIds.isEmpty) {
+        return _defaultSettings();
+      }
+      return [
+        for (final id in orderedIds)
+          DeliveryPlatformSetting(id: id, enabled: !disabled.contains(id)),
+      ];
+    } catch (_) {
+      return _defaultSettings();
+    }
+  }
+
+  /// 保存完整配置（顺序 + 启用状态）。
+  Future<void> saveSettings(List<DeliveryPlatformSetting> settings) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_orderKey, [
+      for (final setting in settings) setting.id,
+    ]);
+    await prefs.setStringList(_disabledKey, [
+      for (final setting in settings)
+        if (!setting.enabled) setting.id,
+    ]);
+  }
+
+  @override
+  Future<List<String>> loadOrderedPlatformIds() async => [
+    for (final setting in await loadSettings())
+      if (setting.enabled) setting.id,
+  ];
+
+  @override
+  Future<void> saveOrderedPlatformIds(List<String> ids) async {
+    // 传入列表决定启用集合与启用顺序；未列出的平台视为停用，
+    // 保持原有相对顺序排在末尾。
+    final enabled = ids.toSet();
+    final settings = await loadSettings();
+    final byId = {
+      for (final setting in settings) setting.id: setting,
+    };
+    await saveSettings([
+      for (final id in ids)
+        if (byId.containsKey(id)) DeliveryPlatformSetting(id: id, enabled: true),
+      for (final setting in settings)
+        if (!enabled.contains(setting.id))
+          DeliveryPlatformSetting(id: setting.id, enabled: false),
+    ]);
+  }
+}
+
 typedef _UriCanLaunch = Future<bool> Function(Uri uri);
 typedef _UriLaunch = Future<bool> Function(Uri uri, {LaunchMode mode});
 
@@ -119,7 +205,7 @@ class DeliveryJumpService {
   static List<String> get allPlatformIds =>
       platforms.map((platform) => platform.id).toList();
 
-  /// 当前启用的平台（按配置顺序）。今晚的默认配置=全启用+固定顺序。
+  /// 当前启用的平台（按配置顺序）；调用方注入的 [configStore] 决定来源。
   Future<List<DeliveryPlatform>> loadEnabledPlatforms() async {
     final ids = await configStore.loadOrderedPlatformIds();
     final byId = {for (final platform in platforms) platform.id: platform};

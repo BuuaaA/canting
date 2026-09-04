@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:canting/core_engine.dart';
+import 'package:canting/services/notification_service.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/record/dish_edit_list.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
@@ -26,6 +29,7 @@ class RecordDetailPage extends StatefulWidget {
 
 class _RecordDetailPageState extends State<RecordDetailPage> {
   late final TextEditingController _merchantController;
+  late final TextEditingController _noteController;
   late List<MealDish> _dishes;
   late String _mealType;
   late DateTime _mealTime;
@@ -80,11 +84,22 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     _merchantController = TextEditingController(
       text: _originalMeal?.merchant ?? recognitionDraft?.merchant ?? '',
     );
+    // 备注（meal_records.note 列）：编辑已有记录时异步读库回填。
+    _noteController = TextEditingController();
+    final mealId = widget.mealId;
+    if (mealId != null) {
+      context.read<AppState>().mealNote(mealId).then((note) {
+        if (mounted && note != null && _noteController.text.isEmpty) {
+          _noteController.text = note;
+        }
+      });
+    }
   }
 
   @override
   void dispose() {
     _merchantController.dispose();
+    _noteController.dispose();
     super.dispose();
   }
 
@@ -159,15 +174,28 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       merchant: merchant.isEmpty ? null : merchant,
       mealId: _originalMeal?.mealId,
     );
+    final note = _noteController.text.trim();
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
     await appState.saveMeal(
       meal,
+      note: note.isEmpty ? null : note,
       source: widget.isSharedRecognition ? 'ocr' : 'manual',
     );
     appState.clearSharedRecognition();
     router.go(widget.returnLocation);
     messenger.showSnackBar(const SnackBar(content: Text('这顿已经保存好啦')));
+    if (widget.isSharedRecognition) {
+      // 模块 13/14：OCR 来源记录保存成功后发确认通知（菜名 + 宠物台词），
+      // 受 recognitionEnabled 开关控制；识别失败路径不发通知。
+      unawaited(
+        NotificationService.showOcrSaveSuccess(
+          mealType: _mealType,
+          dishName: validDishes.first.name,
+          petText: appState.petDialogue,
+        ),
+      );
+    }
   }
 
   Future<void> _delete() async {
@@ -356,6 +384,20 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
                   onChanged: _updateDish,
                   onDelete: (index) => setState(() => _dishes.removeAt(index)),
                 ),
+              const SizedBox(height: 26),
+              const PixelSectionHeader(
+                title: '备注',
+                icon: Icons.notes_outlined,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _noteController,
+                maxLines: 3,
+                textInputAction: TextInputAction.done,
+                decoration: const InputDecoration(
+                  hintText: '记一句：这顿吃得怎么样？',
+                ),
+              ),
             ],
           ),
         ),

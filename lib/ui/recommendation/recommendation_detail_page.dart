@@ -39,8 +39,7 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     super.didChangeDependencies();
     if (!_platformsLoaded) {
       _platformsLoaded = true;
-      // 平台启用顺序目前是默认配置（全启用、固定优先级）；
-      // 用户可配置持久化为遗留项，接口已留好。
+      // 平台启用集合与顺序来自用户配置（设置页可改，SharedPreferences 落盘）。
       _jumpService.loadEnabledPlatforms().then((platforms) {
         if (mounted) {
           setState(() => _platforms = platforms);
