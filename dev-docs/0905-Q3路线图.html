@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>餐盘 Canting V1 发布路线图</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f9fa;color:#202124;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}.roadmap{max-width:1180px;margin:auto;padding:36px 42px 80px}.header{border-bottom:2px solid #1a73e8;padding-bottom:18px;margin-bottom:24px}.header h1{margin:0 0 8px;font-size:28px}.meta{display:flex;gap:20px;flex-wrap:wrap;color:#5f6368;font-size:14px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.kpi,.card{background:#fff;border:1px solid #e8eaed;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.kpi{padding:16px;text-align:center}.kpi strong{display:block;color:#1a73e8;font-size:26px}.kpi span{font-size:13px;color:#5f6368}.nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e8eaed;padding:9px 0;margin-bottom:20px}.nav a{display:inline-block;text-decoration:none;color:#5f6368;padding:4px 10px;font-size:13px}.nav a:hover{color:#1a73e8;background:#e8f0fe;border-radius:4px}.card{padding:22px;margin:0 0 20px}.card h2{font-size:18px;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid #f0f0f0}.card h3{font-size:15px;margin:18px 0 8px}table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;background:#f8f9fa;color:#5f6368;padding:9px 11px;border-bottom:2px solid #e8eaed}td{padding:9px 11px;border-bottom:1px solid #f0f0f0;vertical-align:top}.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px}.p0{background:#fce8e6;color:#c5221f}.p1{background:#e8f0fe;color:#1a73e8}.p2{background:#f1f3f4;color:#5f6368}.active{background:#fef7e0;color:#b06000}.done{background:#e6f4ea;color:#137333}.gantt{min-width:760px}.ghead,.grow{display:grid;grid-template-columns:210px repeat(4,1fr);align-items:center}.ghead div{font-size:12px;color:#5f6368;text-align:center;border-bottom:2px solid #e8eaed;padding:6px}.ghead div:first-child{text-align:left}.grow{min-height:42px;border-bottom:1px solid #f0f0f0}.glabel{font-size:13px}.bar{height:24px;border-radius:4px;color:#fff;font-size:11px;padding:3px 7px;overflow:hidden;white-space:nowrap}.blue{background:#1a73e8}.green{background:#34a853}.gold{background:#fbbc04;color:#333}.red{background:#ea4335}.purple{background:#9c27b0}.timeline{display:grid;grid-template-columns:120px 1fr}.date{border-right:2px solid #1a73e8;text-align:right;padding:12px;color:#5f6368;font-size:13px}.ms{padding:12px 16px}.ms b{font-size:14px}.metric{display:inline-block;margin:5px 4px 0 0;padding:2px 7px;background:#e8f0fe;color:#1a73e8;border-radius:4px;font-size:12px}.buffer{display:flex;height:38px;border-radius:6px;overflow:hidden}.buffer span{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}.b1{width:70%;background:#1a73e8;color:white}.b2{width:20%;background:#fbbc04}.b3{width:10%;background:#34a853;color:white}.risk-high{color:#c5221f;font-weight:600}.note{background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px 14px;font-size:14px}.doc-fab{position:fixed;right:28px;bottom:28px;width:50px;height:50px;border:0;border-radius:50%;background:#1a73e8;color:#fff;box-shadow:0 4px 12px rgba(26,115,232,.4);cursor:pointer;font-size:21px}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.2s}.panel{position:fixed;top:0;right:-540px;width:540px;max-width:92vw;height:100vh;background:#fff;box-shadow:-4px 0 16px rgba(0,0,0,.12);transition:.25s;display:flex;flex-direction:column}.overlay.open{opacity:1;pointer-events:auto}.panel.open{right:0}.panel-head{padding:15px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between}.panel-head button{margin-left:6px;padding:6px 10px;border:1px solid #ddd;background:#fff;border-radius:4px;cursor:pointer}.panel pre{padding:20px;margin:0;white-space:pre-wrap;overflow:auto;font:13px/1.7 Consolas,monospace}.link{color:#1a73e8}@media(max-width:760px){.roadmap{padding:18px}.kpis{grid-template-columns:repeat(2,1fr)}.scroll{overflow:auto}}@media print{.doc-fab,.overlay,.panel,.nav{display:none}.roadmap{padding:10px}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="roadmap">
+  <header class="header">
+    <h1>餐盘 Canting · V1 发布路线图</h1>
+    <div class="meta"><span>版本 v1.0</span><span>日期 2026-09-05</span><span>产品经理 Codex</span><span>开发团队 Trae Code / CodeBuddy</span><span>目标周期 4 周（含 7 天封闭测试）</span></div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi"><strong>7</strong><span>交付阶段</span></div>
+    <div class="kpi"><strong>8–13</strong><span>预计开发日</span></div>
+    <div class="kpi"><strong>20%</strong><span>风险缓冲</span></div>
+    <div class="kpi"><strong>4</strong><span>高风险项</span></div>
+  </section>
+
+  <nav class="nav"><a href="#goals">目标</a><a href="#gantt">时间线</a><a href="#milestones">里程碑</a><a href="#deps">依赖</a><a href="#capacity">产能</a><a href="#risks">风险</a><a href="#buffer">缓冲</a><a href="#change">变更</a></nav>
+
+  <section class="card" id="goals">
+    <h2>V1 目标</h2>
+    <table><tr><th>目标</th><th>关键结果</th><th>优先级</th><th>阶段</th></tr>
+      <tr><td>建立可信发布基线</td><td>未提交改动归属清晰；静态检查和完整测试全绿</td><td><span class="tag p0">P0</span></td><td>P0</td></tr>
+      <tr><td>本地识别闭环可用</td><td>未知不记零；用户纠正可复用；无网络完整可用</td><td><span class="tag p0">P0</span></td><td>P1–P4</td></tr>
+      <tr><td>推荐安全且不漂移</td><td>高风险食品主动推荐数为 0；规则可解释、可版本化</td><td><span class="tag p0">P0</span></td><td>P3</td></tr>
+      <tr><td>Android 可发布</td><td>小米真机核心链路和 Widget 通过；发布包可安装升级</td><td><span class="tag p0">P0</span></td><td>P5–P6</td></tr>
+    </table>
+    <p class="note">V1 不加入 AI、联网查询、社区、后台订单监控和 iOS 发布。详细开发 Prompt 见同目录 <b>canting_V1_roadmap_and_prompts_20260905.md</b>。</p>
+  </section>
+
+  <section class="card" id="gantt">
+    <h2>四周甘特概览</h2>
+    <div class="scroll"><div class="gantt">
+      <div class="ghead"><div>阶段</div><div>W1</div><div>W2</div><div>W3</div><div>W4</div></div>
+      <div class="grow"><div class="glabel">P0 基线冻结</div><div class="bar blue">审计 / 回归</div><div></div><div></div><div></div></div>
+      <div class="grow"><div class="glabel">P1 数据管线</div><div class="bar green">原料验收 / 蒸馏</div><div></div><div></div><div></div></div>
+      <div class="grow"><div class="glabel">P2 本地纠错飞轮</div><div></div><div class="bar blue">画像 / 迁移 / UI</div><div></div><div></div></div>
+      <div class="grow"><div class="glabel">P3 安全推荐 7/28天</div><div></div><div class="bar purple">策略 / 暴露提醒</div><div></div><div></div></div>
+      <div class="grow"><div class="glabel">P4 真实识别验收</div><div></div><div></div><div class="bar green">Fixture / OCR</div><div></div></div>
+      <div class="grow"><div class="glabel">P5 Android 发布质量</div><div></div><div></div><div class="bar gold">真机 / 包体 / Widget</div><div></div></div>
+      <div class="grow"><div class="glabel">P6 封闭测试与封版</div><div></div><div></div><div></div><div class="bar red">7 天测试 / 修复</div></div>
+    </div></div>
+  </section>
+
+  <section class="card" id="milestones">
+    <h2>里程碑</h2>
+    <div class="timeline"><div class="date">W1</div><div class="ms"><b>M1：代码与数据基线可信</b> <span class="tag active">进行前置</span><br><span class="metric">340/340 测试基线</span><span class="metric">爬虫原料完成并验收</span></div></div>
+    <div class="timeline"><div class="date">W2</div><div class="ms"><b>M2：本地个性化闭环可用</b> <span class="tag p1">未开始</span><br><span class="metric">未知不记零</span><span class="metric">用户纠正可复用</span><span class="metric">规则不被改写</span></div></div>
+    <div class="timeline"><div class="date">W3</div><div class="ms"><b>M3：Android Release Candidate</b> <span class="tag p1">未开始</span><br><span class="metric">小米真机通过</span><span class="metric">Widget 可发现</span><span class="metric">包体有证据</span></div></div>
+    <div class="timeline"><div class="date">W4</div><div class="ms"><b>M4：V1 封版候选</b> <span class="tag p1">未开始</span><br><span class="metric">P0/P1 清零</span><span class="metric">危险主动推荐为 0</span></div></div>
+  </section>
+
+  <section class="card" id="deps">
+    <h2>依赖关系与关键路径</h2>
+    <p><b class="risk-high">关键路径：</b>P0 冻结 → 爬虫结束 → P1 数据验收 → P2 本地语义 → P3 安全推荐 → P4 真实识别 → P5 真机发布 → P6 封版。</p>
+    <table><tr><th>依赖</th><th>类型</th><th>处理</th></tr>
+      <tr><td>Nutradata 爬虫完成</td><td>外部/数据</td><td>未完成时只准备管线和 fixture，不消费增量文件</td></tr>
+      <tr><td>未提交共享文件</td><td>资源冲突</td><td>先 P0 归属审计，禁止多个 Agent 重叠写入</td></tr>
+      <tr><td>小米真机</td><td>设备</td><td>P5 必须由用户配合验证，模拟器不能替代</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="capacity">
+    <h2>产能模型</h2>
+    <table><tr><th>角色</th><th>职责</th><th>可用产能假设</th><th>护栏</th></tr>
+      <tr><td>产品 Owner</td><td>最终决策、真机操作</td><td>关键节点参与</td><td>每阶段只需一次验收决策</td></tr>
+      <tr><td>Codex 产品经理</td><td>范围、Prompt、验收</td><td>阶段间审查</td><td>不直接扩大开发范围</td></tr>
+      <tr><td>Trae/CodeBuddy</td><td>实现、测试、交接</td><td>约 8–13 开发日</td><td>一次只执行一个阶段</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="risks">
+    <h2>风险矩阵</h2>
+    <table><tr><th>风险</th><th>概率</th><th>影响</th><th>等级</th><th>缓解/预案</th></tr>
+      <tr><td>原始数据可访问但不可再分发</td><td>中</td><td>高</td><td><span class="tag p0">高</span></td><td>raw 留仓库外；许可未确认时只发布自有派生标签和人工集</td></tr>
+      <tr><td>低置信度匹配被自动接受</td><td>高</td><td>高</td><td><span class="tag p0">高</span></td><td>集中阈值；中低置信度确认；未知绝不记零</td></tr>
+      <tr><td>多 Agent 覆盖未提交改动</td><td>中</td><td>高</td><td><span class="tag p0">高</span></td><td>P0 冻结；文件归属；阶段串行交接</td></tr>
+      <tr><td>模拟器通过但小米失败</td><td>中</td><td>高</td><td><span class="tag p0">高</span></td><td>内置 OCR 暂不替换；真机矩阵覆盖 Widget/分享/升级</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="buffer"><h2>缓冲策略</h2><div class="buffer"><span class="b1">确定性需求 70%</span><span class="b2">风险缓冲 20%</span><span class="b3">弹性 10%</span></div><p>弹性项只包含文案微调和低风险体验改进。AI、社区和 iOS 不得占用 V1 缓冲。</p></section>
+
+  <section class="card" id="change"><h2>变更记录</h2><table><tr><th>版本</th><th>日期</th><th>变更</th></tr><tr><td>v1.0</td><td>2026-09-05</td><td>基于当前代码、Trae 产物和爬虫进度重建 V1 发布路线图</td></tr></table></section>
+</main>
+
+<button class="doc-fab" id="fab" title="路线图文档">▤</button><div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel"><div class="panel-head"><b>路线图摘要</b><div><button id="copy">复制 Markdown</button><button id="close">关闭</button></div></div><pre id="doc"></pre></aside>
+<script>
+const md=`# 餐盘 Canting V1 发布路线图
+
+> 2026-09-05 | 产品经理：Codex | 开发：Trae Code / CodeBuddy
+
+## 阶段
+
+| 阶段 | 目标 | 完成门槛 |
+|---|---|---|
+| P0 | 冻结与基线 | 改动归属清晰，测试全绿 |
+| P1 | Nutradata 管线 | raw/distilled 分层，质量与许可报告 |
+| P2 | 本地纠错飞轮 | 未知可纠正，下次复用 |
+| P3 | 安全推荐 | 高风险不主动推荐，7/28天可解释 |
+| P4 | 真实识别验收 | 无静默错误，fixture 可回归 |
+| P5 | Android 发布质量 | 小米真机、Widget、包体通过 |
+| P6 | 封闭测试 | P0/P1 清零，V1 封版 |
+
+关键路径：P0 → 爬虫结束 → P1 → P2 → P3 → P4 → P5 → P6。
+
+详细 Prompt：canting_V1_roadmap_and_prompts_20260905.md`;
+const panel=document.getElementById('panel'),overlay=document.getElementById('overlay');document.getElementById('doc').textContent=md;function open(){panel.classList.add('open');overlay.classList.add('open')}function close(){panel.classList.remove('open');overlay.classList.remove('open')}document.getElementById('fab').onclick=open;document.getElementById('close').onclick=close;overlay.onclick=close;document.getElementById('copy').onclick=async e=>{await navigator.clipboard.writeText(md);e.target.textContent='已复制';setTimeout(()=>e.target.textContent='复制 Markdown',1500)};
+</script>
+</body>
+</html>
