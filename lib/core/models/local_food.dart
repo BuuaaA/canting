@@ -47,6 +47,8 @@ class OrderSpec {
   static const sugarTerms = {
     '无糖': 'none',
     '低糖': 'low',
+    '三分糖': 'low',
+    '正常糖': 'regular',
     '常规糖': 'regular',
     '高糖': 'high',
   };
@@ -67,8 +69,9 @@ class OrderSpec {
     cup: _read(raw, cupTerms),
     size: _read(raw, sizeTerms),
   );
-  static String productName(String raw) =>
-      raw.replaceAll(RegExp(r'无糖|低糖|常规糖|高糖|小杯|中杯|大杯|小份|正常份|大份'), '').trim();
+  static String productName(String raw) => raw
+      .replaceAll(RegExp(r'无糖|低糖|三分糖|正常糖|常规糖|高糖|小杯|中杯|大杯|小份|正常份|大份'), '')
+      .trim();
   bool conflicts(OrderSpec other) =>
       (sugar != 'unknown' &&
           other.sugar != 'unknown' &&

@@ -39,6 +39,7 @@ class MainActivity : FlutterActivity() {
                 }
             }
         }
+        SharedImageStore.sweep(applicationContext)
         ocrService = OCRService(applicationContext)
         ocrChannel = MethodChannel(
             flutterEngine.dartExecutor.binaryMessenger,
@@ -50,6 +51,10 @@ class MainActivity : FlutterActivity() {
                         call.argument<String>("imageUri"),
                         result,
                     )
+                    "releaseImage" -> {
+                        call.argument<String>("imageUri")?.let { SharedImageStore.release(applicationContext, Uri.parse(it)) }
+                        result.success(null)
+                    }
                     "getOcrStatus" -> result.success(
                         mapOf(
                             "available" to (ocrService?.isAvailable == true),
@@ -167,6 +172,7 @@ class MainActivity : FlutterActivity() {
                         "fullText" to recognition.fullText,
                         "engine" to recognition.engine,
                         "merchant" to recognition.merchant,
+                        "warnings" to recognition.warnings,
                         "lines" to recognition.lines.map { line ->
                             mapOf(
                                 "text" to line.text,
@@ -180,6 +186,7 @@ class MainActivity : FlutterActivity() {
                             mapOf(
                                 "name" to dish.name,
                                 "quantity" to dish.quantity,
+                                "requiresConfirmation" to dish.requiresConfirmation,
                             )
                         },
                     ),

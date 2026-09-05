@@ -1,0 +1,8 @@
+{
+  "command": "gradlew.bat :app:testDebugUnitTest --offline",
+  "cwd": "D:\\dev\\canting\\android",
+  "started_at": "2026-09-05T13:02:06.862737+00:00",
+  "ended_at": "2026-09-05T13:02:29.146995+00:00",
+  "exit_code": 1,
+  "log": "baseline-replay.log"
+}

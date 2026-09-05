@@ -40,6 +40,7 @@ class ShareActivity : Activity() {
     }
 
     private fun copyToAppCache(sourceUri: Uri): Uri {
+        SharedImageStore.sweep(this)
         val directory = File(cacheDir, SHARED_IMAGE_DIRECTORY).apply { mkdirs() }
         val extension = MimeTypeMap.getSingleton()
             .getExtensionFromMimeType(contentResolver.getType(sourceUri))
@@ -47,6 +48,7 @@ class ShareActivity : Activity() {
             ?: "jpg"
         val destination = File(directory, "${UUID.randomUUID()}.$extension")
 
+        try {
         contentResolver.openInputStream(sourceUri).use { input ->
             requireNotNull(input) { "The shared image cannot be opened" }
             FileOutputStream(destination).use { output ->
@@ -64,6 +66,10 @@ class ShareActivity : Activity() {
             }
         }
 
+        } catch (error: Exception) {
+            destination.delete()
+            throw error
+        }
         return FileProvider.getUriForFile(
             this,
             FILE_PROVIDER_AUTHORITY,

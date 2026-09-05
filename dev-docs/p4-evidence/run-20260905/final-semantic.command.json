@@ -1,0 +1,8 @@
+{
+  "command": "flutter test --no-pub test/state/p4_semantic_replay_test.dart --reporter expanded",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:15:18.190457+00:00",
+  "ended_at": "2026-09-05T13:15:24.174162+00:00",
+  "exit_code": 0,
+  "log": "final-semantic.log"
+}

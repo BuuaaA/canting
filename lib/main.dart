@@ -122,6 +122,12 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   }
 
   Future<void> _handleSharedImage(String imageUri) async {
+    if (!mounted ||
+        !await widget.appState.mayReplaceRecognition() ||
+        !mounted) {
+      await _nativeBridge.releaseImage(imageUri);
+      return;
+    }
     _ocrPipeline.begin(imageUri);
     _router.go('/record_detail?source=share');
     await _ocrPipeline.recognize(imageUri);

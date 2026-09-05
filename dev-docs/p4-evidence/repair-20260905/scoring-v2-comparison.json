@@ -1,0 +1,174 @@
+{
+  "reason": "R3 uses the same per-item v2 quantities for quantity accuracy and the union of auto-accept errors; old source/output kept unchanged. Current production uncertain items are not automatic errors.",
+  "same_input_files": {
+    "baseline-parser.tsv": "c1abdd8557c8146d358f363f650950c5268758aa523b92ee0f7aadd8a3e194f6",
+    "parser-actual.tsv": "f40789e19a8448d6357e758fcb3333af09b911217b71017bd74ab5a24bf3ac05",
+    "baseline-semantic.json": "bb266f367a2a662e2dccb68fa3840d0542dee2642c85f81e597fabdcca0982c0"
+  },
+  "comparison": {
+    "baseline": {
+      "quantity_accuracy": {
+        "prior": {
+          "numerator": 4,
+          "denominator": 6,
+          "value": 0.6666666666666666,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "quantity",
+            "spec",
+            "unknown"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 4,
+          "denominator": 6,
+          "value": 0.6666666666666666,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "quantity",
+            "spec",
+            "unknown"
+          ]
+        }
+      },
+      "high_confidence_wrong_auto_accept": {
+        "prior": {
+          "numerator": 0,
+          "denominator": 3,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "meal"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 0,
+          "denominator": 3,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "meal"
+          ]
+        }
+      },
+      "dangerous_auto_accept": {
+        "prior": {
+          "numerator": 0,
+          "denominator": 7,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "meal",
+            "quantity",
+            "spec",
+            "typo",
+            "unknown"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 0,
+          "denominator": 7,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "meal",
+            "quantity",
+            "spec",
+            "typo",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "after": {
+      "quantity_accuracy": {
+        "prior": {
+          "numerator": 5,
+          "denominator": 6,
+          "value": 0.8333333333333334,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "quantity",
+            "spec",
+            "unknown"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 5,
+          "denominator": 6,
+          "value": 0.8333333333333334,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "quantity",
+            "spec",
+            "unknown"
+          ]
+        }
+      },
+      "high_confidence_wrong_auto_accept": {
+        "prior": {
+          "numerator": 0,
+          "denominator": 3,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "meal"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 0,
+          "denominator": 3,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "meal"
+          ]
+        }
+      },
+      "dangerous_auto_accept": {
+        "prior": {
+          "numerator": 0,
+          "denominator": 7,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "meal",
+            "quantity",
+            "spec",
+            "typo",
+            "unknown"
+          ]
+        },
+        "recomputed_v2": {
+          "numerator": 0,
+          "denominator": 7,
+          "value": 0.0,
+          "status": "measured",
+          "sample_ids": [
+            "cake",
+            "different_specs",
+            "meal",
+            "quantity",
+            "spec",
+            "typo",
+            "unknown"
+          ]
+        }
+      }
+    }
+  }
+}

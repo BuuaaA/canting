@@ -24,6 +24,8 @@ import 'package:flutter/services.dart';
 class RecognitionDraft {
   const RecognitionDraft({
     required this.imageUri,
+    this.requestId = 0,
+    this.warning,
     this.merchant = '',
     this.dishes = const [],
     this.isLoading = true,
@@ -31,6 +33,8 @@ class RecognitionDraft {
   });
 
   final String imageUri;
+  final int requestId;
+  final String? warning;
   final String merchant;
   final List<MealDish> dishes;
   final bool isLoading;
@@ -43,6 +47,8 @@ class RecognitionDraft {
     String? error,
   }) => RecognitionDraft(
     imageUri: imageUri,
+    requestId: requestId,
+    warning: warning,
     merchant: merchant ?? this.merchant,
     dishes: dishes ?? this.dishes,
     isLoading: isLoading ?? this.isLoading,
@@ -1021,8 +1027,30 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  int _recognitionSequence = 0;
+  bool recognitionEdited = false;
+  Future<bool> Function()? confirmRecognitionReplacement;
+  void markRecognitionEdited() {
+    recognitionEdited = true;
+    // Manual editing invalidates in-flight callbacks without discarding the page.
+    if (_recognitionDraft?.isLoading == true) {
+      _recognitionDraft = _recognitionDraft!.copyWith(isLoading: false);
+      notifyListeners();
+    }
+  }
+
+  Future<bool> mayReplaceRecognition() async {
+    final confirm = confirmRecognitionReplacement;
+    if (confirm != null) return await confirm();
+    return !recognitionEdited;
+  }
+
   void startSharedRecognition(String imageUri) {
-    _recognitionDraft = RecognitionDraft(imageUri: imageUri);
+    recognitionEdited = false;
+    _recognitionDraft = RecognitionDraft(
+      imageUri: imageUri,
+      requestId: ++_recognitionSequence,
+    );
     notifyListeners();
   }
 
@@ -1030,10 +1058,19 @@ class AppState extends ChangeNotifier {
     required String imageUri,
     required String merchant,
     required List<MealDish> dishes,
+    int? requestId,
+    String? warning,
   }) {
-    if (_recognitionDraft?.imageUri != imageUri) return;
+    if (_recognitionDraft?.imageUri != imageUri ||
+        _recognitionDraft?.isLoading != true ||
+        recognitionEdited ||
+        (requestId != null && _recognitionDraft?.requestId != requestId)) {
+      return;
+    }
     _recognitionDraft = RecognitionDraft(
       imageUri: imageUri,
+      requestId: _recognitionDraft!.requestId,
+      warning: warning,
       merchant: merchant,
       dishes: List.unmodifiable(
         dishes.map((d) => resolveFood(d, brand: merchant)),
@@ -1046,17 +1083,26 @@ class AppState extends ChangeNotifier {
   void failSharedRecognition({
     required String imageUri,
     required String message,
+    int? requestId,
   }) {
-    if (_recognitionDraft?.imageUri != imageUri) return;
+    if (_recognitionDraft?.imageUri != imageUri ||
+        _recognitionDraft?.isLoading != true ||
+        recognitionEdited ||
+        (requestId != null && _recognitionDraft?.requestId != requestId)) {
+      return;
+    }
     _recognitionDraft = RecognitionDraft(
       imageUri: imageUri,
+      requestId: _recognitionDraft!.requestId,
       isLoading: false,
       error: message,
     );
     notifyListeners();
   }
 
-  void clearSharedRecognition() {
+  void clearSharedRecognition({int? requestId}) {
+    if (requestId != null && _recognitionDraft?.requestId != requestId) return;
+    recognitionEdited = false;
     _recognitionDraft = null;
   }
 

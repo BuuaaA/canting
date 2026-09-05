@@ -1,0 +1,8 @@
+{
+  "command": "adb -s emulator-5554 install -r build/app/outputs/flutter-apk/app-debug.apk",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:21:26.698862+00:00",
+  "ended_at": "2026-09-05T13:21:28.756456+00:00",
+  "exit_code": 0,
+  "log": "install-final.log"
+}

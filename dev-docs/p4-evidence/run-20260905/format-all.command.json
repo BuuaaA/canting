@@ -1,0 +1,27 @@
+{
+  "command": [
+    "dart",
+    "format",
+    "lib/core/models/local_food.dart",
+    "lib/main.dart",
+    "lib/platform/android_native_bridge.dart",
+    "lib/services/ocr_pipeline.dart",
+    "lib/state/app_state.dart",
+    "lib/ui/ocr/in_app_ocr_launcher.dart",
+    "lib/ui/record/record_detail_page.dart",
+    "test/core/p3_audit_test.dart",
+    "test/core/p4_specs_test.dart",
+    "test/core/recommendation_engine_test.dart",
+    "test/state/p3_feedback_flow_test.dart",
+    "test/state/p4_race_test.dart",
+    "test/state/p4_semantic_replay_test.dart",
+    "test/ui/ocr/in_app_ocr_launcher_test.dart",
+    "test/ui/p3_production_pages_test.dart",
+    "tool/p4_native_smoke.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:23:58.509653+00:00",
+  "ended_at": "2026-09-05T13:24:00.832885+00:00",
+  "exit_code": 0,
+  "log": "format-all.log"
+}

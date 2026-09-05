@@ -22,10 +22,13 @@ data class OcrRecognitionResult(
     val merchant: String,
     val dishes: List<ExtractedDish>,
     val engine: String,
+    val warnings: List<String>,
 )
 
 class OCRService(private val context: Context) {
     private var recognizer: TextRecognizer? = null
+    private var inFlight = 0
+    private var closing = false
 
     val isAvailable: Boolean
         get() = runCatching {
@@ -37,28 +40,55 @@ class OCRService(private val context: Context) {
         onSuccess: (OcrRecognitionResult) -> Unit,
         onFailure: (Exception) -> Unit,
     ) {
-        if (!isAvailable) {
-            onFailure(IllegalStateException("ML Kit Chinese text recognition is unavailable"))
+        SharedImageStore.sweep(context)
+        SharedImageStore.retain(context, imageUri)
+        fun failed(error: Exception) {
+            SharedImageStore.release(context, imageUri, finished = true)
+            onFailure(error)
+        }
+        if (closing || !isAvailable) {
+            failed(IllegalStateException("ML Kit Chinese text recognition is unavailable"))
             return
         }
 
         val inputImage = runCatching {
             InputImage.fromFilePath(context, imageUri)
         }.getOrElse {
-            onFailure(it as? Exception ?: IllegalStateException(it.message, it))
+            failed(it as? Exception ?: IllegalStateException(it.message, it))
             return
         }
 
-        val client = recognizer ?: TextRecognition.getClient(
+        val client = runCatching { recognizer ?: TextRecognition.getClient(
             ChineseTextRecognizerOptions.Builder().build(),
-        ).also { recognizer = it }
+        ).also { recognizer = it } }.getOrElse {
+            failed(it as? Exception ?: IllegalStateException(it))
+            return
+        }
 
-        client.process(inputImage)
-            .addOnSuccessListener { text -> onSuccess(toResult(text)) }
-            .addOnFailureListener(onFailure)
+        inFlight++
+        try {
+            client.process(inputImage).addOnCompleteListener { task ->
+                try {
+                    if (task.isSuccessful) onSuccess(toResult(task.result))
+                    else onFailure(task.exception ?: IllegalStateException("OCR failed"))
+                } finally {
+                    SharedImageStore.release(context, imageUri, finished = true)
+                    inFlight--
+                    if (closing && inFlight == 0) closeClient()
+                }
+            }
+        } catch (error: Exception) {
+            inFlight--
+            failed(error)
+        }
     }
 
     fun close() {
+        closing = true
+        if (inFlight == 0) closeClient()
+    }
+
+    private fun closeClient() {
         recognizer?.close()
         recognizer = null
     }
@@ -84,6 +114,7 @@ class OCRService(private val context: Context) {
             merchant = extracted.merchant,
             dishes = extracted.dishes,
             engine = ML_KIT_ENGINE,
+            warnings = extracted.warnings,
         )
     }
 

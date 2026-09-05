@@ -554,19 +554,20 @@ void main() {
       }
       // P3 explicitly changes cold-start quantity assumptions and safe candidates.
       // Preserve the original diagnostic instead of adjusting any health targets.
-      File('dev-docs/p3-evidence/legacy-convergence-diagnostic.json')
-          .writeAsStringSync(
-            const JsonEncoder.withIndent('  ').convert({
-              'seed': 42,
-              'old_assertion': 'every 7-day window within target +/-20%',
-              'passes_old_assertion': failures.isEmpty,
-              'deviations': failures,
-              'daily_inputs': {
-                for (final e in intakeByDay.entries)
-                  e.key.toIso8601String(): e.value.toJson(),
-              },
-            }),
-          );
+      File(
+        'dev-docs/p4-evidence/repair-20260905/legacy-convergence-diagnostic.json',
+      ).writeAsStringSync(
+        const JsonEncoder.withIndent('  ').convert({
+          'seed': 42,
+          'old_assertion': 'every 7-day window within target +/-20%',
+          'passes_old_assertion': failures.isEmpty,
+          'deviations': failures,
+          'daily_inputs': {
+            for (final e in intakeByDay.entries)
+              e.key.toIso8601String(): e.value.toJson(),
+          },
+        }),
+      );
       expect(intakeByDay.length, 30);
       for (final p in intakeByDay.values) {
         expect(p.byCategory.values.every((v) => v.isFinite && v >= 0), true);

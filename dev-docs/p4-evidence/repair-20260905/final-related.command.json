@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "test",
+    "--no-pub",
+    "--concurrency=1",
+    "test/state/p4_review_regression_test.dart",
+    "test/state/p4_race_test.dart",
+    "test/ui/record/brand_context_review_test.dart",
+    "test/data/local_food_flow_test.dart",
+    "--reporter",
+    "expanded"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T14:11:11.950777+00:00",
+  "ended_at": "2026-09-05T14:11:29.211335+00:00",
+  "exit_code": 0,
+  "log": "final-related.log"
+}

@@ -1,0 +1,8 @@
+{
+  "command": "dart format lib/services/ocr_pipeline.dart lib/state/app_state.dart lib/ui/record/record_detail_page.dart lib/main.dart lib/ui/ocr/in_app_ocr_launcher.dart lib/platform/android_native_bridge.dart test/state/p4_race_test.dart",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:06:15.189780+00:00",
+  "ended_at": "2026-09-05T13:06:17.793327+00:00",
+  "exit_code": 0,
+  "log": "format-refine.log"
+}

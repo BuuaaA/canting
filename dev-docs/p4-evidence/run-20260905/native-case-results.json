@@ -1,0 +1,220 @@
+[
+  {
+    "case_id": "native_synthetic_01",
+    "source_kind": "synthetic_image",
+    "run_kind": "native_ocr",
+    "platform": "synthetic",
+    "layout": "single_column_text",
+    "scenario_tags": [
+      "S03",
+      "S04",
+      "S05",
+      "S06"
+    ],
+    "repeat": 1,
+    "duration_ms": 485,
+    "primary_text_recall": {
+      "correct": 23,
+      "substitutions": 3,
+      "deletions": 0,
+      "insertions": 0,
+      "numerator": 23,
+      "denominator": 26,
+      "value": 0.8846153846153846,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ],
+      "expected_normalized": "青青糯山无糖小杯×1香辣鸡腿堡×1奶油蛋糕30寸×1",
+      "actual_normalized": "青貴糯山无糖小杯x1香辣鸡腿堡×1奶油蛋糕30寸x1"
+    },
+    "whole_text_recall": {
+      "correct": 28,
+      "substitutions": 3,
+      "deletions": 0,
+      "insertions": 0,
+      "numerator": 28,
+      "denominator": 31,
+      "value": 0.9032258064516129,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ],
+      "expected_normalized": "青青糯山无糖小杯×1香辣鸡腿堡×1奶油蛋糕30寸×1配送费3元",
+      "actual_normalized": "青貴糯山无糖小杯x1香辣鸡腿堡×1奶油蛋糕30寸x1配送费3元"
+    },
+    "product_recall": {
+      "numerator": 2,
+      "denominator": 3,
+      "value": 0.6666666666666666,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ]
+    },
+    "error": null,
+    "actual": {
+      "fullText": "青貴糯山无糖小杯x1\n香辣鸡腿堡 ×1\n奶油蛋糕30寸x1\n配送费 3元",
+      "engine": "mlkit_chinese",
+      "merchant": "",
+      "warnings": [],
+      "lines": [
+        {
+          "text": "青貴糯山无糖小杯x1",
+          "left": 42,
+          "top": 64,
+          "right": 426,
+          "bottom": 102
+        },
+        {
+          "text": "香辣鸡腿堡 ×1",
+          "left": 42,
+          "top": 137,
+          "right": 285,
+          "bottom": 175
+        },
+        {
+          "text": "奶油蛋糕30寸x1",
+          "left": 42,
+          "top": 210,
+          "right": 331,
+          "bottom": 248
+        },
+        {
+          "text": "配送费 3元",
+          "left": 41,
+          "top": 281,
+          "right": 231,
+          "bottom": 322
+        }
+      ],
+      "dishes": [
+        {
+          "name": "青貴糯山无糖小杯",
+          "quantity": 1,
+          "requiresConfirmation": false
+        },
+        {
+          "name": "香辣鸡腿堡",
+          "quantity": 1,
+          "requiresConfirmation": false
+        },
+        {
+          "name": "奶油蛋糕30寸",
+          "quantity": 1,
+          "requiresConfirmation": false
+        }
+      ]
+    },
+    "failure_note": "Marketing name character substitution retained as unknown; x vs multiplication sign counted as substitution under fixed normalization."
+  },
+  {
+    "case_id": "native_synthetic_01",
+    "source_kind": "synthetic_image",
+    "run_kind": "native_ocr",
+    "platform": "synthetic",
+    "layout": "single_column_text",
+    "scenario_tags": [
+      "S03",
+      "S04",
+      "S05",
+      "S06"
+    ],
+    "repeat": 2,
+    "duration_ms": 115,
+    "primary_text_recall": {
+      "correct": 23,
+      "substitutions": 3,
+      "deletions": 0,
+      "insertions": 0,
+      "numerator": 23,
+      "denominator": 26,
+      "value": 0.8846153846153846,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ],
+      "expected_normalized": "青青糯山无糖小杯×1香辣鸡腿堡×1奶油蛋糕30寸×1",
+      "actual_normalized": "青貴糯山无糖小杯x1香辣鸡腿堡×1奶油蛋糕30寸x1"
+    },
+    "whole_text_recall": {
+      "correct": 28,
+      "substitutions": 3,
+      "deletions": 0,
+      "insertions": 0,
+      "numerator": 28,
+      "denominator": 31,
+      "value": 0.9032258064516129,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ],
+      "expected_normalized": "青青糯山无糖小杯×1香辣鸡腿堡×1奶油蛋糕30寸×1配送费3元",
+      "actual_normalized": "青貴糯山无糖小杯x1香辣鸡腿堡×1奶油蛋糕30寸x1配送费3元"
+    },
+    "product_recall": {
+      "numerator": 2,
+      "denominator": 3,
+      "value": 0.6666666666666666,
+      "status": "measured",
+      "sample_ids": [
+        "native_synthetic_01"
+      ]
+    },
+    "error": null,
+    "actual": {
+      "fullText": "青貴糯山无糖小杯x1\n香辣鸡腿堡 ×1\n奶油蛋糕30寸x1\n配送费 3元",
+      "engine": "mlkit_chinese",
+      "merchant": "",
+      "warnings": [],
+      "lines": [
+        {
+          "text": "青貴糯山无糖小杯x1",
+          "left": 42,
+          "top": 64,
+          "right": 426,
+          "bottom": 102
+        },
+        {
+          "text": "香辣鸡腿堡 ×1",
+          "left": 42,
+          "top": 137,
+          "right": 285,
+          "bottom": 175
+        },
+        {
+          "text": "奶油蛋糕30寸x1",
+          "left": 42,
+          "top": 210,
+          "right": 331,
+          "bottom": 248
+        },
+        {
+          "text": "配送费 3元",
+          "left": 41,
+          "top": 281,
+          "right": 231,
+          "bottom": 322
+        }
+      ],
+      "dishes": [
+        {
+          "name": "青貴糯山无糖小杯",
+          "quantity": 1,
+          "requiresConfirmation": false
+        },
+        {
+          "name": "香辣鸡腿堡",
+          "quantity": 1,
+          "requiresConfirmation": false
+        },
+        {
+          "name": "奶油蛋糕30寸",
+          "quantity": 1,
+          "requiresConfirmation": false
+        }
+      ]
+    },
+    "failure_note": "Marketing name character substitution retained as unknown; x vs multiplication sign counted as substitution under fixed normalization."
+  }
+]

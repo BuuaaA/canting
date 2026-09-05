@@ -1,0 +1,223 @@
+{
+  "frozen_at": "2026-09-05T13:11:41.502173+00:00",
+  "note": "Additional field annotation frozen before first semantic replay; parser repair already used names-only repair set. No independent holdout. Category unknown when no reliable identity. No-added-sugar remains unknown in existing enums.",
+  "reviewer_status": "not_independently_reviewed",
+  "cases": {
+    "unknown": [
+      {
+        "category": "unknown",
+        "sugar": "none",
+        "cup": "small",
+        "size": "unknown"
+      }
+    ],
+    "typo": [
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      }
+    ],
+    "fees": [],
+    "spec": [
+      {
+        "category": "unknown",
+        "sugar": "low",
+        "cup": "large",
+        "size": "unknown"
+      }
+    ],
+    "cake": [
+      {
+        "category": "dessert",
+        "sugar": "unknown",
+        "cup": "not_applicable",
+        "size": "unknown"
+      },
+      {
+        "category": "dessert",
+        "sugar": "unknown",
+        "cup": "not_applicable",
+        "size": "small"
+      }
+    ],
+    "quantity": [
+      {
+        "category": "grains",
+        "sugar": "not_applicable",
+        "cup": "not_applicable",
+        "size": "unknown"
+      }
+    ],
+    "meal": [
+      {
+        "category": "burger",
+        "sugar": "not_applicable",
+        "cup": "not_applicable",
+        "size": "unknown"
+      },
+      {
+        "category": "beverage",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "not_applicable"
+      },
+      {
+        "category": "unknown",
+        "sugar": "not_applicable",
+        "cup": "not_applicable",
+        "size": "unknown"
+      }
+    ],
+    "different_specs": [
+      {
+        "category": "milk_tea",
+        "sugar": "none",
+        "cup": "small",
+        "size": "unknown"
+      },
+      {
+        "category": "milk_tea",
+        "sugar": "regular",
+        "cup": "large",
+        "size": "unknown"
+      }
+    ],
+    "empty": [],
+    "limit": [
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      },
+      {
+        "category": "unknown",
+        "sugar": "unknown",
+        "cup": "unknown",
+        "size": "unknown"
+      }
+    ]
+  }
+}

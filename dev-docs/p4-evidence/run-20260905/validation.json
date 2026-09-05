@@ -1,0 +1,824 @@
+{
+  "collected_at": "2026-09-05T13:37:52.798654+00:00",
+  "baseline": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "current_head": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "git_status": "## main...origin/main [ahead 8]\n M android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt\n M android/app/src/main/kotlin/com/canting/canting/MainActivity.kt\n M android/app/src/main/kotlin/com/canting/canting/OCRService.kt\n M android/app/src/main/kotlin/com/canting/canting/ShareActivity.kt\n M lib/core/models/local_food.dart\n M lib/main.dart\n M lib/platform/android_native_bridge.dart\n M lib/services/ocr_pipeline.dart\n M lib/state/app_state.dart\n M lib/ui/ocr/in_app_ocr_launcher.dart\n M lib/ui/record/record_detail_page.dart\n M test/core/p3_audit_test.dart\n M test/core/recommendation_engine_test.dart\n M test/state/p3_feedback_flow_test.dart\n M test/ui/ocr/in_app_ocr_launcher_test.dart\n M test/ui/p3_production_pages_test.dart\n?? .gitattributes\n?? android/app/src/main/kotlin/com/canting/canting/SharedImageStore.kt\n?? android/app/src/test/kotlin/com/canting/canting/P4ParserTest.kt\n?? android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt\n?? dev-docs/p4-changes.json\n?? dev-docs/p4-device-checklist.md\n?? dev-docs/p4-evidence/\n?? dev-docs/p4-recognition-acceptance.md\n?? scripts/p4/\n?? test/core/p4_specs_test.dart\n?? test/fixtures/recognition_acceptance/\n?? test/state/p4_race_test.dart\n?? test/state/p4_semantic_replay_test.dart\n?? tool/p4_native_smoke.dart",
+  "commands": [
+    {
+      "command": "flutter analyze --no-pub",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:24:02.976483+00:00",
+      "ended_at": "2026-09-05T13:24:16.197174+00:00",
+      "exit_code": 0,
+      "log": "analyze-final.log"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:02:43.179216+00:00",
+      "ended_at": "2026-09-05T13:03:31.213286+00:00",
+      "exit_code": 1,
+      "log": "analyze-first.log"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:18:35.474054+00:00",
+      "ended_at": "2026-09-05T13:18:47.140716+00:00",
+      "exit_code": 1,
+      "log": "analyze-last.log"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:14:17.321660+00:00",
+      "ended_at": "2026-09-05T13:14:29.419925+00:00",
+      "exit_code": 0,
+      "log": "analyze-second.log"
+    },
+    {
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T12:59:38.046045+00:00",
+      "ended_at": "2026-09-05T13:00:51.365987+00:00",
+      "exit_code": 1,
+      "log": "baseline-kotlin.log"
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_race_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T12:59:07.396058+00:00",
+      "ended_at": "2026-09-05T12:59:31.946099+00:00",
+      "exit_code": 1,
+      "log": "baseline-race.log",
+      "passed": 2,
+      "failed": 2,
+      "skipped": 0
+    },
+    {
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T13:02:06.862737+00:00",
+      "ended_at": "2026-09-05T13:02:29.146995+00:00",
+      "exit_code": 1,
+      "log": "baseline-replay.log"
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_semantic_replay_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:15:11.773927+00:00",
+      "ended_at": "2026-09-05T13:15:18.086654+00:00",
+      "exit_code": 0,
+      "log": "baseline-semantic-corrected.log",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_semantic_replay_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:11:51.325000+00:00",
+      "ended_at": "2026-09-05T13:11:59.510929+00:00",
+      "exit_code": 0,
+      "log": "baseline-semantic.log",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub test/core/p4_specs_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:12:39.493568+00:00",
+      "ended_at": "2026-09-05T13:12:45.684900+00:00",
+      "exit_code": 1,
+      "log": "baseline-spec.log",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    {
+      "command": "flutter build apk --debug --no-pub --target tool/p4_native_smoke.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:19:40.643134+00:00",
+      "ended_at": "2026-09-05T13:20:03.932376+00:00",
+      "exit_code": 0,
+      "log": "build-final.log"
+    },
+    {
+      "command": "flutter build apk --debug --no-pub --target tool/p4_native_smoke.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:25:37.640824+00:00",
+      "ended_at": "2026-09-05T13:26:00.259465+00:00",
+      "exit_code": 0,
+      "log": "build-frozen.log"
+    },
+    {
+      "command": "flutter build apk --debug --no-pub --target tool/p4_native_smoke.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:08:55.713758+00:00",
+      "ended_at": "2026-09-05T13:09:31.853791+00:00",
+      "exit_code": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "adb devices -l",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:02:42.944586+00:00",
+      "ended_at": "2026-09-05T13:02:43.091766+00:00",
+      "exit_code": 0,
+      "log": "devices.log"
+    },
+    {
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T13:13:42.204332+00:00",
+      "ended_at": "2026-09-05T13:14:03.837674+00:00",
+      "exit_code": 0,
+      "log": "final-kotlin.log"
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_semantic_replay_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:15:18.190457+00:00",
+      "ended_at": "2026-09-05T13:15:24.174162+00:00",
+      "exit_code": 0,
+      "log": "final-semantic.log",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_native_result.json"
+      ],
+      "started_at": "2026-09-05T13:13:41.290495+00:00",
+      "ended_at": "2026-09-05T13:13:41.416229+00:00",
+      "exit_code": 0,
+      "log": "native-result.json",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_synthetic_input.png"
+      ],
+      "started_at": "2026-09-05T13:13:41.416229+00:00",
+      "ended_at": "2026-09-05T13:13:41.480391+00:00",
+      "exit_code": 0,
+      "log": "native-input.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "screencap",
+        "-p"
+      ],
+      "started_at": "2026-09-05T13:13:41.480391+00:00",
+      "ended_at": "2026-09-05T13:13:41.858603+00:00",
+      "exit_code": 0,
+      "log": "emulator-production-page.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "getprop",
+        "ro.build.version.release"
+      ],
+      "started_at": "2026-09-05T13:13:41.858603+00:00",
+      "ended_at": "2026-09-05T13:13:41.928817+00:00",
+      "exit_code": 0,
+      "log": "device-system.txt",
+      "stderr": ""
+    },
+    {
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T13:03:57.399696+00:00",
+      "ended_at": "2026-09-05T13:04:23.763157+00:00",
+      "exit_code": 0,
+      "log": "fixed-kotlin.log"
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_race_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:01:37.044024+00:00",
+      "ended_at": "2026-09-05T13:01:44.136673+00:00",
+      "exit_code": 0,
+      "log": "fixed-race.log",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": [
+        "dart",
+        "format",
+        "lib/core/models/local_food.dart",
+        "lib/main.dart",
+        "lib/platform/android_native_bridge.dart",
+        "lib/services/ocr_pipeline.dart",
+        "lib/state/app_state.dart",
+        "lib/ui/ocr/in_app_ocr_launcher.dart",
+        "lib/ui/record/record_detail_page.dart",
+        "test/core/p3_audit_test.dart",
+        "test/core/p4_specs_test.dart",
+        "test/core/recommendation_engine_test.dart",
+        "test/state/p3_feedback_flow_test.dart",
+        "test/state/p4_race_test.dart",
+        "test/state/p4_semantic_replay_test.dart",
+        "test/ui/ocr/in_app_ocr_launcher_test.dart",
+        "test/ui/p3_production_pages_test.dart",
+        "tool/p4_native_smoke.dart"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:23:58.509653+00:00",
+      "ended_at": "2026-09-05T13:24:00.832885+00:00",
+      "exit_code": 0,
+      "log": "format-all.log"
+    },
+    {
+      "command": [
+        "dart",
+        "format",
+        "--output=none",
+        "--set-exit-if-changed",
+        "lib/core/models/local_food.dart",
+        "lib/main.dart",
+        "lib/platform/android_native_bridge.dart",
+        "lib/services/ocr_pipeline.dart",
+        "lib/state/app_state.dart",
+        "lib/ui/ocr/in_app_ocr_launcher.dart",
+        "lib/ui/record/record_detail_page.dart",
+        "test/core/p3_audit_test.dart",
+        "test/core/p4_specs_test.dart",
+        "test/core/recommendation_engine_test.dart",
+        "test/state/p3_feedback_flow_test.dart",
+        "test/state/p4_race_test.dart",
+        "test/state/p4_semantic_replay_test.dart",
+        "test/ui/ocr/in_app_ocr_launcher_test.dart",
+        "test/ui/p3_production_pages_test.dart",
+        "tool/p4_native_smoke.dart"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:24:00.832885+00:00",
+      "ended_at": "2026-09-05T13:24:02.903864+00:00",
+      "exit_code": 0,
+      "log": "format-check.log"
+    },
+    {
+      "command": "dart format lib/services/ocr_pipeline.dart lib/state/app_state.dart lib/ui/record/record_detail_page.dart lib/main.dart lib/ui/ocr/in_app_ocr_launcher.dart lib/platform/android_native_bridge.dart test/state/p4_race_test.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:18:33.157935+00:00",
+      "ended_at": "2026-09-05T13:18:35.378670+00:00",
+      "exit_code": 0,
+      "log": "format-last.log"
+    },
+    {
+      "command": "dart format lib/services/ocr_pipeline.dart lib/state/app_state.dart lib/ui/record/record_detail_page.dart lib/main.dart lib/ui/ocr/in_app_ocr_launcher.dart lib/platform/android_native_bridge.dart test/state/p4_race_test.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:04:25.276826+00:00",
+      "ended_at": "2026-09-05T13:04:27.893053+00:00",
+      "exit_code": 0,
+      "log": "format-native.log"
+    },
+    {
+      "command": "dart format lib/services/ocr_pipeline.dart lib/state/app_state.dart lib/ui/record/record_detail_page.dart lib/main.dart lib/ui/ocr/in_app_ocr_launcher.dart lib/platform/android_native_bridge.dart test/state/p4_race_test.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:06:15.189780+00:00",
+      "ended_at": "2026-09-05T13:06:17.793327+00:00",
+      "exit_code": 0,
+      "log": "format-refine.log"
+    },
+    {
+      "command": "dart format lib/services/ocr_pipeline.dart lib/state/app_state.dart lib/ui/record/record_detail_page.dart lib/main.dart lib/ui/ocr/in_app_ocr_launcher.dart lib/platform/android_native_bridge.dart test/state/p4_race_test.dart",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:01:34.494661+00:00",
+      "ended_at": "2026-09-05T13:01:36.932235+00:00",
+      "exit_code": 0,
+      "log": "format.log"
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:24:16.302464+00:00",
+      "ended_at": "2026-09-05T13:24:52.316508+00:00",
+      "exit_code": 0,
+      "log": "full-final.log",
+      "passed": 476,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:04:27.987247+00:00",
+      "ended_at": "2026-09-05T13:04:57.841051+00:00",
+      "exit_code": 1,
+      "log": "full-first.log",
+      "passed": 463,
+      "failed": 5,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:06:17.890067+00:00",
+      "ended_at": "2026-09-05T13:06:49.580437+00:00",
+      "exit_code": 1,
+      "log": "full-second.log",
+      "passed": 464,
+      "failed": 4,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:16:09.983801+00:00",
+      "ended_at": "2026-09-05T13:16:33.808939+00:00",
+      "exit_code": 0,
+      "log": "full-third.log",
+      "passed": 475,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "adb -s emulator-5554 install -r build/app/outputs/flutter-apk/app-debug.apk",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:21:26.698862+00:00",
+      "ended_at": "2026-09-05T13:21:28.756456+00:00",
+      "exit_code": 0,
+      "log": "install-final.log"
+    },
+    {
+      "command": "adb -s emulator-5554 install -r build/app/outputs/flutter-apk/app-debug.apk",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:26:00.418057+00:00",
+      "ended_at": "2026-09-05T13:26:02.528059+00:00",
+      "exit_code": 0,
+      "log": "install-frozen.log"
+    },
+    {
+      "command": "adb -s emulator-5554 install -r build/app/outputs/flutter-apk/app-debug.apk",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:10:36.692567+00:00",
+      "ended_at": "2026-09-05T13:10:39.603309+00:00",
+      "exit_code": 0,
+      "log": "install.log"
+    },
+    {
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T13:21:29.503850+00:00",
+      "ended_at": "2026-09-05T13:21:50.741610+00:00",
+      "exit_code": 0,
+      "log": "kotlin-final-boundaries.log"
+    },
+    {
+      "command": "adb -s emulator-5554 shell am start -S -n com.canting.canting/.MainActivity",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:21:28.874033+00:00",
+      "ended_at": "2026-09-05T13:21:29.352480+00:00",
+      "exit_code": 0,
+      "log": "launch-final.log"
+    },
+    {
+      "command": "adb -s emulator-5554 shell am start -S -n com.canting.canting/.MainActivity",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:26:02.674433+00:00",
+      "ended_at": "2026-09-05T13:26:03.119464+00:00",
+      "exit_code": 0,
+      "log": "launch-frozen.log"
+    },
+    {
+      "command": "adb -s emulator-5554 shell am start -S -n com.canting.canting/.MainActivity",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:10:39.743169+00:00",
+      "ended_at": "2026-09-05T13:10:40.173801+00:00",
+      "exit_code": 0,
+      "log": "launch.log"
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_native_result.json"
+      ],
+      "started_at": "2026-09-05T13:28:46.596605+00:00",
+      "ended_at": "2026-09-05T13:28:46.692067+00:00",
+      "exit_code": 0,
+      "log": "native-result.json",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_synthetic_input.png"
+      ],
+      "started_at": "2026-09-05T13:28:46.692067+00:00",
+      "ended_at": "2026-09-05T13:28:46.749749+00:00",
+      "exit_code": 0,
+      "log": "native-input.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "screencap",
+        "-p"
+      ],
+      "started_at": "2026-09-05T13:28:46.749749+00:00",
+      "ended_at": "2026-09-05T13:28:46.995152+00:00",
+      "exit_code": 0,
+      "log": "emulator-production-page.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "getprop",
+        "ro.build.version.release"
+      ],
+      "started_at": "2026-09-05T13:28:46.995152+00:00",
+      "ended_at": "2026-09-05T13:28:47.052297+00:00",
+      "exit_code": 0,
+      "log": "device-system.txt",
+      "stderr": ""
+    },
+    {
+      "command": "flutter test --no-pub test/state/p4_race_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:22:15.895644+00:00",
+      "ended_at": "2026-09-05T13:22:24.336560+00:00",
+      "exit_code": 0,
+      "log": "race-final.log",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub test/ui/ocr/in_app_ocr_launcher_test.dart test/state/p4_race_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:10:06.452151+00:00",
+      "ended_at": "2026-09-05T13:10:19.622929+00:00",
+      "exit_code": 1,
+      "log": "related-fourth.log",
+      "passed": 14,
+      "failed": 1,
+      "skipped": 0
+    },
+    {
+      "command": "flutter test --no-pub test/ui/ocr/in_app_ocr_launcher_test.dart test/state/p4_race_test.dart --reporter expanded",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:07:56.900114+00:00",
+      "ended_at": "2026-09-05T13:08:09.486809+00:00",
+      "exit_code": 1,
+      "log": "related-third.log",
+      "passed": 11,
+      "failed": 4,
+      "skipped": 0
+    },
+    {
+      "command": "flutter --version",
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T13:28:47.380342+00:00",
+      "ended_at": "2026-09-05T13:28:50.223003+00:00",
+      "exit_code": 0,
+      "log": "version.log"
+    }
+  ],
+  "final_checks": {
+    "flutter_passed": 476,
+    "flutter_failed": 0,
+    "analyze": "No issues found",
+    "format": "16 files, 0 changed",
+    "kotlin": {
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0
+    },
+    "diff": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--cached",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "command": "git diff --no-index --check -- NUL <each untracked path>",
+        "checked_paths": [
+          ".gitattributes",
+          "android/app/src/main/kotlin/com/canting/canting/SharedImageStore.kt",
+          "android/app/src/test/kotlin/com/canting/canting/P4ParserTest.kt",
+          "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+          "dev-docs/p4-changes.json",
+          "dev-docs/p4-device-checklist.md",
+          "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.DishNameExtractorTest.xml",
+          "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ParserTest.xml",
+          "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ReplayTest.xml",
+          "dev-docs/p4-evidence/run-20260905/acceptance-matrix.json",
+          "dev-docs/p4-evidence/run-20260905/analyze-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/analyze-first.command.json",
+          "dev-docs/p4-evidence/run-20260905/analyze-last.command.json",
+          "dev-docs/p4-evidence/run-20260905/analyze-second.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-kotlin.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-parser.tsv",
+          "dev-docs/p4-evidence/run-20260905/baseline-race.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-replay.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-semantic-corrected.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-semantic.command.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-semantic.json",
+          "dev-docs/p4-evidence/run-20260905/baseline-spec.command.json",
+          "dev-docs/p4-evidence/run-20260905/build-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/build-frozen-sources.json",
+          "dev-docs/p4-evidence/run-20260905/build-frozen.command.json",
+          "dev-docs/p4-evidence/run-20260905/build.command.json",
+          "dev-docs/p4-evidence/run-20260905/candidate-audit.json",
+          "dev-docs/p4-evidence/run-20260905/case-results.json",
+          "dev-docs/p4-evidence/run-20260905/component-recommendation-28d.png",
+          "dev-docs/p4-evidence/run-20260905/component-recommendation-7d.png",
+          "dev-docs/p4-evidence/run-20260905/component-save-prompt.png",
+          "dev-docs/p4-evidence/run-20260905/device-system.txt",
+          "dev-docs/p4-evidence/run-20260905/devices.command.json",
+          "dev-docs/p4-evidence/run-20260905/diff-check-initial.json",
+          "dev-docs/p4-evidence/run-20260905/diff-check.json",
+          "dev-docs/p4-evidence/run-20260905/emulator-production-page.png",
+          "dev-docs/p4-evidence/run-20260905/failures.json",
+          "dev-docs/p4-evidence/run-20260905/feedback-events.json",
+          "dev-docs/p4-evidence/run-20260905/final-kotlin.command.json",
+          "dev-docs/p4-evidence/run-20260905/final-semantic.command.json",
+          "dev-docs/p4-evidence/run-20260905/first-emulator-production-page.png",
+          "dev-docs/p4-evidence/run-20260905/first-native-collection.command.json",
+          "dev-docs/p4-evidence/run-20260905/first-native-input.png",
+          "dev-docs/p4-evidence/run-20260905/first-native-result.json",
+          "dev-docs/p4-evidence/run-20260905/fixed-kotlin.command.json",
+          "dev-docs/p4-evidence/run-20260905/fixed-race.command.json",
+          "dev-docs/p4-evidence/run-20260905/format-all.command.json",
+          "dev-docs/p4-evidence/run-20260905/format-check.command.json",
+          "dev-docs/p4-evidence/run-20260905/format-last.command.json",
+          "dev-docs/p4-evidence/run-20260905/format-native.command.json",
+          "dev-docs/p4-evidence/run-20260905/format-refine.command.json",
+          "dev-docs/p4-evidence/run-20260905/format.command.json",
+          "dev-docs/p4-evidence/run-20260905/full-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/full-first.command.json",
+          "dev-docs/p4-evidence/run-20260905/full-second.command.json",
+          "dev-docs/p4-evidence/run-20260905/full-third.command.json",
+          "dev-docs/p4-evidence/run-20260905/install-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/install-frozen.command.json",
+          "dev-docs/p4-evidence/run-20260905/install.command.json",
+          "dev-docs/p4-evidence/run-20260905/invalid-semantic-no-guidelines.json",
+          "dev-docs/p4-evidence/run-20260905/kotlin-final-boundaries.command.json",
+          "dev-docs/p4-evidence/run-20260905/launch-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/launch-frozen.command.json",
+          "dev-docs/p4-evidence/run-20260905/launch.command.json",
+          "dev-docs/p4-evidence/run-20260905/legacy-convergence-diagnostic.json",
+          "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-28d.png",
+          "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-7d.png",
+          "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-save-prompt.png",
+          "dev-docs/p4-evidence/run-20260905/legacy-rerun-simulation.json",
+          "dev-docs/p4-evidence/run-20260905/metrics.json",
+          "dev-docs/p4-evidence/run-20260905/native-case-results.json",
+          "dev-docs/p4-evidence/run-20260905/native-collection.command.json",
+          "dev-docs/p4-evidence/run-20260905/native-input.png",
+          "dev-docs/p4-evidence/run-20260905/native-result.json",
+          "dev-docs/p4-evidence/run-20260905/parser-actual.tsv",
+          "dev-docs/p4-evidence/run-20260905/race-final.command.json",
+          "dev-docs/p4-evidence/run-20260905/related-fourth.command.json",
+          "dev-docs/p4-evidence/run-20260905/related-third.command.json",
+          "dev-docs/p4-evidence/run-20260905/semantic-actual.json",
+          "dev-docs/p4-evidence/run-20260905/semantic-freeze.json",
+          "dev-docs/p4-evidence/run-20260905/simulation.json",
+          "dev-docs/p4-evidence/run-20260905/validation.json",
+          "dev-docs/p4-evidence/run-20260905/version.command.json",
+          "dev-docs/p4-recognition-acceptance.md",
+          "scripts/p4/metrics.py",
+          "scripts/p4/native_metrics.py",
+          "scripts/p4/run.py",
+          "test/core/p4_specs_test.dart",
+          "test/fixtures/recognition_acceptance/README.md",
+          "test/fixtures/recognition_acceptance/cake.input.json",
+          "test/fixtures/recognition_acceptance/cake.labels.json",
+          "test/fixtures/recognition_acceptance/different_specs.input.json",
+          "test/fixtures/recognition_acceptance/different_specs.labels.json",
+          "test/fixtures/recognition_acceptance/empty.input.json",
+          "test/fixtures/recognition_acceptance/empty.labels.json",
+          "test/fixtures/recognition_acceptance/fees.input.json",
+          "test/fixtures/recognition_acceptance/fees.labels.json",
+          "test/fixtures/recognition_acceptance/limit.input.json",
+          "test/fixtures/recognition_acceptance/limit.labels.json",
+          "test/fixtures/recognition_acceptance/manifest.json",
+          "test/fixtures/recognition_acceptance/manifest.text-v1.frozen.json",
+          "test/fixtures/recognition_acceptance/meal.input.json",
+          "test/fixtures/recognition_acceptance/meal.labels.json",
+          "test/fixtures/recognition_acceptance/native-manifest.json",
+          "test/fixtures/recognition_acceptance/quantity-labels-v2.json",
+          "test/fixtures/recognition_acceptance/quantity.input.json",
+          "test/fixtures/recognition_acceptance/quantity.labels.json",
+          "test/fixtures/recognition_acceptance/semantic-labels-v1.json",
+          "test/fixtures/recognition_acceptance/spec.input.json",
+          "test/fixtures/recognition_acceptance/spec.labels.json",
+          "test/fixtures/recognition_acceptance/typo.input.json",
+          "test/fixtures/recognition_acceptance/typo.labels.json",
+          "test/fixtures/recognition_acceptance/unknown.input.json",
+          "test/fixtures/recognition_acceptance/unknown.labels.json",
+          "test/state/p4_race_test.dart",
+          "test/state/p4_semantic_replay_test.dart",
+          "tool/p4_native_smoke.dart"
+        ],
+        "status": "pass",
+        "raw_exit_code_note": "git --no-index returns 1 for content differences from NUL, including clean new files; only errors or whitespace diagnostics fail this check",
+        "errors": []
+      }
+    ]
+  },
+  "native": {
+    "device": "emulator-5554",
+    "android": "14",
+    "architecture": "x86_64",
+    "entrypoint": "tool/p4_native_smoke.dart",
+    "apk_sha256": "cb59d6922cae6296cbf82c93a00677f41f40af1c5e532c10f1ab99f8428c9b4f",
+    "apk_bytes": 213288381,
+    "source_snapshot": "build-frozen-sources.json",
+    "source_hashes_match_current": true,
+    "actual_results": "native-result.json",
+    "source_kind": "synthetic_image",
+    "real_image_count": 0,
+    "physical_device": "not_run",
+    "airplane_mode": "not_run"
+  },
+  "p3_frozen_evidence": [
+    {
+      "path": "dev-docs/p3-evidence/a-before.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-final.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-initial.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-second.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/audit-test.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/b-before.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/c-before.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/candidate-audit.json",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-recommendation-28d.png",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-recommendation-7d.png",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-save-prompt.png",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/edges.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/feedback-events.json",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/feedback-flow.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/flutter-final.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/flutter-pre-review.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/format-final.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/format.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/full-initial.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/legacy-convergence-diagnostic.json",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/r1-component.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/r1-format-final.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/related-second.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/related-third.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/simulation.json",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-final.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-initial.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-second.txt",
+      "matches": true
+    },
+    {
+      "path": "dev-docs/p3-evidence/validation.json",
+      "matches": true
+    }
+  ],
+  "notes": [
+    "related-working.log records a wrong-cwd execution failure, not a business assertion failure.",
+    "First semantic run missing guidelines is invalid and explicitly excluded; corrected baseline recorded.",
+    "P3 auto-generated test artifacts were restored byte-for-byte; new outputs redirected to P4.",
+    "Intermediate native smoke capture was overwritten before the frozen build. First and final raw captures remain; final scored repeats are both retained.",
+    "flutter --version command succeeded; wrapper printing encountered console encoding error after writing log and command metadata."
+  ]
+}

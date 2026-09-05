@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -191,6 +193,15 @@ void _clearNotificationMock(WidgetTester tester) {
   );
 }
 
+class _DeferredPicker extends ImagePickerPlatform {
+  final pending = Completer<XFile?>();
+  @override
+  Future<XFile?> getImageFromSource({
+    required ImageSource source,
+    ImagePickerOptions options = const ImagePickerOptions(),
+  }) => pending.future;
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -268,6 +279,14 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('拍照识别'));
     await tester.pump();
+    // File copying now uses real asynchronous IO outside the fake clock.
+    for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.text('获取图片失败，请重试'), findsOneWidget);
@@ -303,6 +322,14 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('相册选择'));
+    await tester.pump();
+    // File copying now uses real asynchronous IO outside the fake clock.
+    for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
@@ -370,6 +397,14 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('相册选择'));
     await tester.pump();
+    // File copying now uses real asynchronous IO outside the fake clock.
+    for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.text('识别结果'), findsOneWidget);
@@ -393,6 +428,14 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('拍照识别'));
+    await tester.pump();
+    // File copying now uses real asynchronous IO outside the fake clock.
+    for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
@@ -439,6 +482,14 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('相册选择'));
     await tester.pump();
+    // File copying now uses real asynchronous IO outside the fake clock.
+    for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
     await tester.tap(find.text('保存并更新今日结构'));
@@ -456,4 +507,46 @@ void main() {
     expect(rows, hasLength(1));
     expect(notifications.shown, isEmpty); // 开关关闭：不发通知
   });
+  test(
+    'oversized copy rejects before creating a leftover and preserves source',
+    () async {
+      final source = File(_writeFakeImage());
+      source.writeAsBytesSync(List.filled(25 * 1024 * 1024 + 1, 0));
+      final cache = _tempCacheDir();
+      await expectLater(
+        InAppOcrLauncher.copyIntoSharedImages(source.path, cacheDir: cache),
+        throwsA(isA<FileSystemException>()),
+      );
+      expect(source.existsSync(), true);
+      expect(
+        Directory(p.join(cache.path, 'shared_images')).listSync(),
+        isEmpty,
+      );
+    },
+  );
+  testWidgets(
+    'picker completion after entry disposal never navigates or creates a draft',
+    (t) async {
+      final (state, helper) = await _buildState();
+      addTearDown(helper.close);
+      final original = ImagePickerPlatform.instance;
+      final picker = _DeferredPicker();
+      ImagePickerPlatform.instance = picker;
+      addTearDown(() => ImagePickerPlatform.instance = original);
+      await t.pumpWidget(CantingApp(appState: state));
+      await t.pump(const Duration(milliseconds: 300));
+      final context = t.element(find.byTooltip('记一餐'));
+      final pending = InAppOcrLauncher.pickAndRecognize(
+        context,
+        ImageSource.gallery,
+      );
+      await t.pumpWidget(const SizedBox());
+      picker.pending.complete(XFile(_writeFakeImage()));
+      await pending;
+      await t.pump();
+      expect(state.recognitionDraft, isNull);
+      expect(await helper.database.query('meal_records'), isEmpty);
+      expect(t.takeException(), isNull);
+    },
+  );
 }

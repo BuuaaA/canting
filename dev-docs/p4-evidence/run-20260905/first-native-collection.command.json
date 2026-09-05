@@ -1,0 +1,68 @@
+{
+  "commands": [
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_native_result.json"
+      ],
+      "started_at": "2026-09-05T13:13:41.290495+00:00",
+      "ended_at": "2026-09-05T13:13:41.416229+00:00",
+      "exit_code": 0,
+      "log": "native-result.json",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "run-as",
+        "com.canting.canting",
+        "cat",
+        "app_flutter/p4_synthetic_input.png"
+      ],
+      "started_at": "2026-09-05T13:13:41.416229+00:00",
+      "ended_at": "2026-09-05T13:13:41.480391+00:00",
+      "exit_code": 0,
+      "log": "native-input.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "exec-out",
+        "screencap",
+        "-p"
+      ],
+      "started_at": "2026-09-05T13:13:41.480391+00:00",
+      "ended_at": "2026-09-05T13:13:41.858603+00:00",
+      "exit_code": 0,
+      "log": "emulator-production-page.png",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "getprop",
+        "ro.build.version.release"
+      ],
+      "started_at": "2026-09-05T13:13:41.858603+00:00",
+      "ended_at": "2026-09-05T13:13:41.928817+00:00",
+      "exit_code": 0,
+      "log": "device-system.txt",
+      "stderr": ""
+    }
+  ]
+}

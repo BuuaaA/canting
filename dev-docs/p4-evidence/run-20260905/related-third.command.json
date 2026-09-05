@@ -1,0 +1,8 @@
+{
+  "command": "flutter test --no-pub test/ui/ocr/in_app_ocr_launcher_test.dart test/state/p4_race_test.dart --reporter expanded",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:07:56.900114+00:00",
+  "ended_at": "2026-09-05T13:08:09.486809+00:00",
+  "exit_code": 1,
+  "log": "related-third.log"
+}

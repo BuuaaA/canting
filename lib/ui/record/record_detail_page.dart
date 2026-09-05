@@ -1,3 +1,5 @@
+import 'package:canting/ui/ocr/in_app_ocr_launcher.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:canting/ui/record/exposure_prompt.dart';
 
 import 'food_confirmation_sheet.dart';
@@ -42,17 +44,112 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   RecognitionDraft? _appliedRecognitionDraft;
   bool _initialized = false;
   bool _saving = false;
+  bool _dirty = false;
+  bool _allowExit = false;
+  bool _replacementPromptOpen = false;
+  AppState? _state;
+  Future<bool> _confirmReplace() async {
+    if (!mounted || _saving || _replacementPromptOpen) return false;
+    if (!_dirty) return true;
+    _replacementPromptOpen = true;
+    try {
+      return await showDialog<bool>(
+            context: context,
+            builder: (c) => AlertDialog(
+              title: const Text('替换当前未保存内容？'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(c, false),
+                  child: const Text('继续编辑'),
+                ),
+                FilledButton(
+                  onPressed: () => Navigator.pop(c, true),
+                  child: const Text('替换'),
+                ),
+              ],
+            ),
+          ) ??
+          false;
+    } finally {
+      _replacementPromptOpen = false;
+    }
+  }
+
+  void _markDirty() {
+    _dirty = true;
+    if (widget.isSharedRecognition) _state?.markRecognitionEdited();
+  }
+
+  Future<void> _exit() async {
+    if (_saving) return;
+    if (_dirty) {
+      final discard = await showDialog<bool>(
+        context: context,
+        builder: (c) => AlertDialog(
+          title: const Text('放弃未保存内容？'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(c, false),
+              child: const Text('继续编辑'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(c, true),
+              child: const Text('放弃'),
+            ),
+          ],
+        ),
+      );
+      if (discard != true || !mounted) return;
+    }
+    if (!mounted) return;
+    _state?.clearSharedRecognition(
+      requestId: _appliedRecognitionDraft?.requestId,
+    );
+    setState(() => _allowExit = true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final router = GoRouter.of(context);
+      if (router.canPop()) {
+        router.pop();
+      } else {
+        router.go(widget.returnLocation);
+      }
+    });
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final state = context.watch<AppState>();
+    _state = state;
+    if (widget.isSharedRecognition) {
+      state.confirmRecognitionReplacement = _confirmReplace;
+    }
     final recognitionDraft = widget.isSharedRecognition
         ? state.recognitionDraft
         : null;
     if (_initialized) {
       if (recognitionDraft != null &&
           !identical(recognitionDraft, _appliedRecognitionDraft)) {
+        if (_dirty &&
+            recognitionDraft.requestId == _appliedRecognitionDraft?.requestId) {
+          return;
+        }
+        if (recognitionDraft.requestId != _appliedRecognitionDraft?.requestId) {
+          _noteController.clear();
+          _originalMeal = null;
+          final now = DateTime.now();
+          final date = widget.initialDate ?? now;
+          _mealTime = DateTime(
+            date.year,
+            date.month,
+            date.day,
+            now.hour,
+            now.minute,
+          );
+          _mealType = _mealTypeFor(_mealTime.hour);
+        }
+        _dirty = false;
         _appliedRecognitionDraft = recognitionDraft;
         _merchantController.text = recognitionDraft.merchant;
         _dishes = recognitionDraft.dishes
@@ -104,12 +201,20 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
 
   @override
   void dispose() {
+    if (widget.isSharedRecognition &&
+        _state?.confirmRecognitionReplacement == _confirmReplace) {
+      _state?.confirmRecognitionReplacement = null;
+      _state?.clearSharedRecognition(
+        requestId: _appliedRecognitionDraft?.requestId,
+      );
+    }
     _merchantController.dispose();
     _noteController.dispose();
     super.dispose();
   }
 
   void _updateDish(int index, MealDish dish) {
+    _markDirty();
     final old = _dishes[index];
     setState(
       () => _dishes[index] = old.name == dish.name
@@ -122,6 +227,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   void _merchantChanged(String value) {
+    _markDirty();
     final state = context.read<AppState>();
     setState(() {
       _dishes = _dishes
@@ -131,11 +237,16 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _addDish() async {
+    final requestId = _appliedRecognitionDraft?.requestId;
     final result = await showDialog<String>(
       context: context,
       builder: (dialogContext) => const _DishSearchDialog(),
     );
-    if (result != null && result.isNotEmpty) {
+    if (result != null &&
+        result.isNotEmpty &&
+        mounted &&
+        requestId == _appliedRecognitionDraft?.requestId) {
+      _markDirty();
       setState(
         () => _dishes.add(
           context.read<AppState>().resolveFood(
@@ -148,6 +259,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _classify(int index) async {
+    final requestId = _appliedRecognitionDraft?.requestId;
     final dish = _dishes[index];
     final observation =
         dish.food ??
@@ -165,7 +277,10 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       observation,
       rawName: dish.name,
     );
-    if (result != null && mounted) {
+    if (result != null &&
+        mounted &&
+        requestId == _appliedRecognitionDraft?.requestId) {
+      _markDirty();
       setState(
         () => _dishes[index] = MealDish(
           name: dish.name,
@@ -179,13 +294,17 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _pickDate() async {
+    final requestId = _appliedRecognitionDraft?.requestId;
     final result = await showDatePicker(
       context: context,
       firstDate: DateTime(2020),
       lastDate: DateTime.now().add(const Duration(days: 1)),
       initialDate: _mealTime,
     );
-    if (result != null) {
+    if (result != null &&
+        mounted &&
+        requestId == _appliedRecognitionDraft?.requestId) {
+      _markDirty();
       setState(() {
         _mealTime = DateTime(
           result.year,
@@ -199,11 +318,15 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _pickTime() async {
+    final requestId = _appliedRecognitionDraft?.requestId;
     final result = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.fromDateTime(_mealTime),
     );
-    if (result != null) {
+    if (result != null &&
+        mounted &&
+        requestId == _appliedRecognitionDraft?.requestId) {
+      _markDirty();
       setState(() {
         _mealTime = DateTime(
           _mealTime.year,
@@ -228,6 +351,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       return;
     }
 
+    setState(() => _saving = true);
     final unresolved = validDishes
         .where((d) => !d.contributionsKnown && d.food?.confirmed != true)
         .length;
@@ -251,7 +375,10 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
           ],
         ),
       );
-      if (keep != true || !mounted) return;
+      if (keep != true || !mounted) {
+        if (mounted) setState(() => _saving = false);
+        return;
+      }
     }
     setState(() => _saving = true);
     final appState = context.read<AppState>();
@@ -336,188 +463,223 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
         : null;
     final recognitionLoading = recognitionDraft?.isLoading ?? false;
     final recognitionError = recognitionDraft?.error;
-    return Scaffold(
-      appBar: PixelAppBar(
-        title: _originalMeal == null ? '识别结果' : '记录详情',
-        leading: const BackButton(),
-        actions: [
-          if (_originalMeal != null)
-            IconButton(
-              tooltip: '删除记录',
-              onPressed: _delete,
-              icon: const Icon(Icons.delete_outline),
-            ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: PixelBackdrop(
-        child: PixelContentWidth(
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 120),
-            children: [
-              PixelPanel(
-                color: recognitionError == null
-                    ? theme.colorScheme.primaryContainer
-                    : theme.colorScheme.errorContainer,
-                borderColor: recognitionError == null
-                    ? theme.colorScheme.primary
-                    : theme.colorScheme.error,
-                padding: const EdgeInsets.all(12),
-                child: Row(
+    return PopScope(
+      canPop: _allowExit,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) unawaited(_exit());
+      },
+      child: Scaffold(
+        appBar: PixelAppBar(
+          title: _originalMeal == null ? '识别结果' : '记录详情',
+          leading: BackButton(onPressed: _exit),
+          actions: [
+            if (_originalMeal != null)
+              IconButton(
+                tooltip: '删除记录',
+                onPressed: _delete,
+                icon: const Icon(Icons.delete_outline),
+              ),
+            const SizedBox(width: 8),
+          ],
+        ),
+        body: PixelBackdrop(
+          child: PixelContentWidth(
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 120),
+              children: [
+                PixelPanel(
+                  color: recognitionError == null
+                      ? theme.colorScheme.primaryContainer
+                      : theme.colorScheme.errorContainer,
+                  borderColor: recognitionError == null
+                      ? theme.colorScheme.primary
+                      : theme.colorScheme.error,
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      PixelIconTile(
+                        icon: recognitionLoading
+                            ? Icons.hourglass_top
+                            : recognitionError == null
+                            ? Icons.check
+                            : Icons.image_not_supported_outlined,
+                        size: 38,
+                        color: recognitionError == null
+                            ? theme.colorScheme.secondaryContainer
+                            : theme.colorScheme.errorContainer,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              recognitionLoading
+                                  ? '正在识别'
+                                  : recognitionError == null
+                                  ? '识别完成'
+                                  : '识别失败',
+                              style: theme.textTheme.titleSmall,
+                            ),
+                            Text(
+                              recognitionLoading
+                                  ? '正在读取图片中的菜单文字'
+                                  : recognitionError ??
+                                        recognitionDraft?.warning ??
+                                        (_dishes.isEmpty
+                                            ? '没有识别出菜品，请手动添加'
+                                            : '找到 ${_dishes.length} 道菜，请核对菜名和分量'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (widget.isSharedRecognition &&
+                    !recognitionLoading &&
+                    (recognitionError != null || _dishes.isEmpty))
+                  Wrap(
+                    children: [
+                      TextButton(
+                        onPressed: () => InAppOcrLauncher.pickAndRecognize(
+                          context,
+                          ImageSource.gallery,
+                        ),
+                        child: const Text('重选图片'),
+                      ),
+                      TextButton(
+                        onPressed: _addDish,
+                        child: const Text('手动添加'),
+                      ),
+                    ],
+                  ),
+                const SizedBox(height: 24),
+                const PixelSectionHeader(
+                  title: '订单信息',
+                  icon: Icons.storefront_outlined,
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _merchantController,
+                  onChanged: _merchantChanged,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.storefront_outlined),
+                    hintText: '商家名称',
+                  ),
+                ),
+                const SizedBox(height: 22),
+                Text('餐次', style: theme.textTheme.titleMedium),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: SegmentedButton<String>(
+                    segments: const [
+                      ButtonSegment(value: 'breakfast', label: Text('早餐')),
+                      ButtonSegment(value: 'lunch', label: Text('午餐')),
+                      ButtonSegment(value: 'dinner', label: Text('晚餐')),
+                      ButtonSegment(value: 'snack', label: Text('加餐')),
+                    ],
+                    selected: {_mealType},
+                    onSelectionChanged: (value) {
+                      _markDirty();
+                      setState(() => _mealType = value.first);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
                   children: [
-                    PixelIconTile(
-                      icon: recognitionLoading
-                          ? Icons.hourglass_top
-                          : recognitionError == null
-                          ? Icons.check
-                          : Icons.image_not_supported_outlined,
-                      size: 38,
-                      color: recognitionError == null
-                          ? theme.colorScheme.secondaryContainer
-                          : theme.colorScheme.errorContainer,
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: _pickDate,
+                        icon: const Icon(Icons.calendar_today_outlined),
+                        label: Text(
+                          '${_mealTime.year}-${_mealTime.month.toString().padLeft(2, '0')}-'
+                          '${_mealTime.day.toString().padLeft(2, '0')}',
+                        ),
+                      ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            recognitionLoading
-                                ? '正在识别'
-                                : recognitionError == null
-                                ? '识别完成'
-                                : '识别失败',
-                            style: theme.textTheme.titleSmall,
-                          ),
-                          Text(
-                            recognitionLoading
-                                ? '正在读取图片中的菜单文字'
-                                : recognitionError ??
-                                      '找到 ${_dishes.length} 道菜，请核对菜名和分量',
-                          ),
-                        ],
+                      child: OutlinedButton.icon(
+                        onPressed: _pickTime,
+                        icon: const Icon(Icons.schedule),
+                        label: Text(
+                          '${_mealTime.hour.toString().padLeft(2, '0')}:'
+                          '${_mealTime.minute.toString().padLeft(2, '0')}',
+                        ),
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 24),
-              const PixelSectionHeader(
-                title: '订单信息',
-                icon: Icons.storefront_outlined,
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _merchantController,
-                onChanged: _merchantChanged,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.storefront_outlined),
-                  hintText: '商家名称',
-                ),
-              ),
-              const SizedBox(height: 22),
-              Text('餐次', style: theme.textTheme.titleMedium),
-              const SizedBox(height: 8),
-              SizedBox(
-                width: double.infinity,
-                child: SegmentedButton<String>(
-                  segments: const [
-                    ButtonSegment(value: 'breakfast', label: Text('早餐')),
-                    ButtonSegment(value: 'lunch', label: Text('午餐')),
-                    ButtonSegment(value: 'dinner', label: Text('晚餐')),
-                    ButtonSegment(value: 'snack', label: Text('加餐')),
+                const SizedBox(height: 26),
+                Row(
+                  children: [
+                    const Expanded(
+                      child: PixelSectionHeader(
+                        title: '菜品与分量',
+                        icon: Icons.restaurant_menu,
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: _addDish,
+                      icon: const Icon(Icons.add),
+                      label: const Text('添加'),
+                    ),
                   ],
-                  selected: {_mealType},
-                  onSelectionChanged: (value) {
-                    setState(() => _mealType = value.first);
-                  },
                 ),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: _pickDate,
-                      icon: const Icon(Icons.calendar_today_outlined),
-                      label: Text(
-                        '${_mealTime.year}-${_mealTime.month.toString().padLeft(2, '0')}-'
-                        '${_mealTime.day.toString().padLeft(2, '0')}',
-                      ),
-                    ),
+                const SizedBox(height: 10),
+                if (_dishes.isEmpty)
+                  const PixelPanel(
+                    padding: EdgeInsets.all(24),
+                    child: Center(child: Text('点击添加，记录本餐商品')),
+                  )
+                else
+                  DishEditList(
+                    dishes: _dishes,
+                    onChanged: _updateDish,
+                    onClassify: _classify,
+                    onDelete: (index) {
+                      _markDirty();
+                      setState(() => _dishes.removeAt(index));
+                    },
                   ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: _pickTime,
-                      icon: const Icon(Icons.schedule),
-                      label: Text(
-                        '${_mealTime.hour.toString().padLeft(2, '0')}:'
-                        '${_mealTime.minute.toString().padLeft(2, '0')}',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 26),
-              Row(
-                children: [
-                  const Expanded(
-                    child: PixelSectionHeader(
-                      title: '菜品与分量',
-                      icon: Icons.restaurant_menu,
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: _addDish,
-                    icon: const Icon(Icons.add),
-                    label: const Text('添加'),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              if (_dishes.isEmpty)
-                const PixelPanel(
-                  padding: EdgeInsets.all(24),
-                  child: Center(child: Text('没有识别出菜品，请手动添加')),
-                )
-              else
-                DishEditList(
-                  dishes: _dishes,
-                  onChanged: _updateDish,
-                  onClassify: _classify,
-                  onDelete: (index) => setState(() => _dishes.removeAt(index)),
+                const SizedBox(height: 26),
+                const PixelSectionHeader(
+                  title: '备注',
+                  icon: Icons.notes_outlined,
                 ),
-              const SizedBox(height: 26),
-              const PixelSectionHeader(title: '备注', icon: Icons.notes_outlined),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _noteController,
-                maxLines: 3,
-                textInputAction: TextInputAction.done,
-                decoration: const InputDecoration(hintText: '记一句：这顿吃得怎么样？'),
-              ),
-            ],
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _noteController,
+                  onChanged: (_) => _markDirty(),
+                  maxLines: 3,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(hintText: '记一句：这顿吃得怎么样？'),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      bottomNavigationBar: DecoratedBox(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          border: Border(
-            top: BorderSide(color: theme.colorScheme.outline, width: 2),
+        bottomNavigationBar: DecoratedBox(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            border: Border(
+              top: BorderSide(color: theme.colorScheme.outline, width: 2),
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: PixelContentWidth(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
-              child: SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  onPressed: _saving || recognitionLoading ? null : _save,
-                  icon: const Icon(Icons.save_outlined),
-                  label: Text(_saving ? '正在保存' : '保存并更新今日结构'),
+          child: SafeArea(
+            child: PixelContentWidth(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    onPressed: _saving || recognitionLoading ? null : _save,
+                    icon: const Icon(Icons.save_outlined),
+                    label: Text(_saving ? '正在保存' : '保存并更新今日结构'),
+                  ),
                 ),
               ),
             ),

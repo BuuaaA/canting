@@ -1,0 +1,27 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "git diff --no-index --check NUL <each untracked path>",
+    "status": "pass",
+    "errors": [],
+    "note": "--no-index status1 means content differs; whitespace diagnostics assessed separately; raw evidence attributes retained."
+  }
+]

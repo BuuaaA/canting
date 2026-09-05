@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:canting/services/ocr_pipeline.dart';
+import 'package:canting/platform/android_native_bridge.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,6 +24,8 @@ abstract final class InAppOcrLauncher {
   static const _fileProviderAuthority = 'com.canting.fileprovider';
   static const _sharedImageDirName = 'shared_images';
 
+  static bool _picking = false;
+
   /// 从相机或相册取一张图并进入识别流程。
   ///
   /// 用户取消不提示；取图/复制失败给出模块 14 文案，并提供
@@ -31,6 +34,16 @@ abstract final class InAppOcrLauncher {
     BuildContext context,
     ImageSource source,
   ) async {
+    if (_picking) return;
+    _picking = true;
+    try {
+      await _pick(context, source);
+    } finally {
+      _picking = false;
+    }
+  }
+
+  static Future<void> _pick(BuildContext context, ImageSource source) async {
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
     final appState = context.read<AppState>();
@@ -40,10 +53,10 @@ abstract final class InAppOcrLauncher {
       final picked = await ImagePicker().pickImage(source: source);
       pickedPath = picked?.path;
     } catch (_) {
-      _showPickFailure(messenger, router);
+      if (context.mounted) _showPickFailure(messenger, router);
       return;
     }
-    if (pickedPath == null) {
+    if (!context.mounted || pickedPath == null) {
       return; // 用户取消选图，不是错误。
     }
 
@@ -51,23 +64,33 @@ abstract final class InAppOcrLauncher {
     try {
       imageUri = await copyIntoSharedImages(pickedPath);
     } catch (_) {
-      _showPickFailure(messenger, router);
+      if (context.mounted) _showPickFailure(messenger, router);
       return;
     }
 
+    if (!context.mounted ||
+        !await appState.mayReplaceRecognition() ||
+        !context.mounted) {
+      await AndroidNativeBridge().releaseImage(imageUri);
+      return;
+    }
+    final replacing = appState.recognitionDraft != null;
     final pipeline = OcrPipeline(appState: appState);
     pipeline.begin(imageUri);
     // push 而不是 go：从首页弹层进入，压栈返回时回到原页面；
     // 与手动添加入口的跳转方式保持一致。
-    router.push('/record_detail?source=share');
+    if (replacing) {
+      router.go('/record_detail?source=share');
+    } else {
+      router.push('/record_detail?source=share');
+    }
     unawaited(pipeline.recognize(imageUri));
   }
 
   /// 把选中的图片复制进 `cacheDir/shared_images/`，返回可交给原生
   /// recognizeImage 的 FileProvider content:// URI。
   ///
-  /// 复制用同步 IO：截图/照片量级小、耗时可忽略，且能保证进入识别页
-  /// 前 URI 指向的文件一定就绪（与 ShareActivity 的同步复制一致）。
+  /// 异步流式复制，限制 25 MiB；失败删除本次未完成副本。
   /// [cacheDir] 供测试注入；默认取系统缓存目录。
   static Future<String> copyIntoSharedImages(
     String sourcePath, {
@@ -77,7 +100,7 @@ abstract final class InAppOcrLauncher {
     final directory = Directory(
       p.join(resolvedCacheDir.path, _sharedImageDirName),
     );
-    directory.createSync(recursive: true);
+    await directory.create(recursive: true);
 
     final extension = p.extension(sourcePath).replaceFirst('.', '');
     final safeExtension = RegExp(r'^[a-zA-Z0-9]+$').hasMatch(extension)
@@ -89,7 +112,29 @@ abstract final class InAppOcrLauncher {
         '${DateTime.now().microsecondsSinceEpoch}.$safeExtension',
       ),
     );
-    File(sourcePath).copySync(destination.path);
+    try {
+      final source = File(sourcePath);
+      if (await source.length() > 25 * 1024 * 1024) {
+        throw const FileSystemException('Image too large');
+      }
+      final sink = destination.openWrite();
+      var bytes = 0;
+      try {
+        await for (final chunk in source.openRead()) {
+          bytes += chunk.length;
+          if (bytes > 25 * 1024 * 1024) {
+            throw const FileSystemException('Image too large');
+          }
+          sink.add(chunk);
+        }
+        await sink.flush();
+      } finally {
+        await sink.close();
+      }
+    } catch (_) {
+      if (await destination.exists()) await destination.delete();
+      rethrow;
+    }
 
     return 'content://$_fileProviderAuthority/$_sharedImageDirName/'
         '${destination.uri.pathSegments.last}';

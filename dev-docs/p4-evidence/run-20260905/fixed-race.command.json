@@ -1,0 +1,8 @@
+{
+  "command": "flutter test --no-pub test/state/p4_race_test.dart --reporter expanded",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:01:37.044024+00:00",
+  "ended_at": "2026-09-05T13:01:44.136673+00:00",
+  "exit_code": 0,
+  "log": "fixed-race.log"
+}

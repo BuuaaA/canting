@@ -1,0 +1,130 @@
+[
+  {
+    "id": "A01",
+    "status": "部分通过",
+    "evidence": "分享桥接/相册fake见完整回归；真实系统入口未测",
+    "device_status": "not_run",
+    "steps": "从系统图库分享脱敏图，再在App分别选相册/拍照；取消、拒绝权限后返回",
+    "expected": "进入同一识别页；取消无餐食；失败可手动添加"
+  },
+  {
+    "id": "A02",
+    "status": "组件通过",
+    "evidence": "shared_recognition_flow、brand_context_review、p4_race",
+    "device_status": "not_run",
+    "steps": "打开高/中/低及未知案例；修改或明确保留未知后保存",
+    "expected": "中低不静默确认，原名/来源保留，实际查库"
+  },
+  {
+    "id": "A03",
+    "status": "部分通过",
+    "evidence": "P4ParserTest、fees/empty文字回放和空页测试",
+    "device_status": "not_run",
+    "steps": "分别识别纯费用、空、部分未知图",
+    "expected": "费用不自动成餐，未知不消失，空页可恢复"
+  },
+  {
+    "id": "A04",
+    "status": "组件通过",
+    "evidence": "p4_race和in_app_ocr_launcher超时测试",
+    "device_status": "not_run",
+    "steps": "令OCR超过5秒后手改，再使旧回调返回",
+    "expected": "错误可恢复，旧回调无覆盖、无餐食"
+  },
+  {
+    "id": "A05",
+    "status": "组件及原生并发通过",
+    "evidence": "p4_race 8项和native-result concurrent",
+    "device_status": "not_run",
+    "steps": "同图与异图交错发起；快速重复取图",
+    "expected": "当前请求唯一有效，保存只落一次"
+  },
+  {
+    "id": "A06",
+    "status": "组件通过",
+    "evidence": "p4_race和picker disposal测试",
+    "device_status": "not_run",
+    "steps": "取图中退出；识别中返回；手改后新图选择继续/替换",
+    "expected": "退出不跳回，取消保留编辑，旧回调失效"
+  },
+  {
+    "id": "A07",
+    "status": "部分通过",
+    "evidence": "Kotlin26项；跨行、重复规格、数量、截断回放",
+    "device_status": "not_run",
+    "steps": "真实套餐/加料和双栏图；超过20商品",
+    "expected": "不明确项待确认，不双计；超过上限可见提示"
+  },
+  {
+    "id": "A08",
+    "status": "组件/规格通过",
+    "evidence": "p4_specs、local_food_flow及完整回归",
+    "device_status": "not_run",
+    "steps": "分别用三分糖/正常糖/无糖/不另外加糖与大小杯",
+    "expected": "原文保留；新规格优先；不额外加糖不是零总糖"
+  },
+  {
+    "id": "A09",
+    "status": "部分通过",
+    "evidence": "cake文字与合成图native；P2保存测试",
+    "device_status": "not_run",
+    "steps": "30寸与小份巴斯克确认后查看摘要",
+    "expected": "尺寸不作个人食用量；未知不补零"
+  },
+  {
+    "id": "A10",
+    "status": "SQLite/组件通过",
+    "evidence": "local_food_flow重开实际SQLite；brand_context_review",
+    "device_status": "not_run",
+    "steps": "确认同品牌保存，强杀再启动；换品牌/清空/明确单品品牌",
+    "expected": "同品牌复用，当前规格优先；跨品牌不串"
+  },
+  {
+    "id": "A11",
+    "status": "存储回归通过",
+    "evidence": "local_food_flow",
+    "device_status": "not_run",
+    "steps": "编辑/删除记忆后用相同名及错字识别",
+    "expected": "更新生效，错字不乱套记忆"
+  },
+  {
+    "id": "A12",
+    "status": "组件/事务通过",
+    "evidence": "double save、local_food_flow事务故障、P3反馈",
+    "device_status": "not_run",
+    "steps": "连续保存、模拟DB失败、重试和取消",
+    "expected": "记录/记忆/奖励原子且不重复"
+  },
+  {
+    "id": "A13",
+    "status": "P3组件回归通过",
+    "evidence": "p3_production_pages、p3_feedback_flow",
+    "device_status": "not_run",
+    "steps": "已知+未知混合餐保存，重复风险餐",
+    "expected": "首页/历史/摘要刷新，未知不补偿，提醒不重复"
+  },
+  {
+    "id": "A14",
+    "status": "P2/P3回归通过",
+    "evidence": "完整回归的迁移、export/clear/历史快照",
+    "device_status": "not_run",
+    "steps": "编辑历史、重开库、导出、清除测试专用数据",
+    "expected": "历史快照与凭证保持；清除事务完整"
+  },
+  {
+    "id": "A15",
+    "status": "部分通过",
+    "evidence": "native-result、oversized copy test",
+    "device_status": "not_run",
+    "steps": "成功/损坏/取消/替换/超时后列shared_images；强杀再启动",
+    "expected": "只删自建副本；在用不删，源图哈希不变；残留按24h/100项规则"
+  },
+  {
+    "id": "A16",
+    "status": "not_run",
+    "evidence": "无真实脱敏图、未执行飞行模式",
+    "device_status": "not_run",
+    "steps": "目标真机飞行模式下分享真实脱敏图，纠正保存，重启",
+    "expected": "原生到SQLite本地完成，无联网恢复提示"
+  }
+]

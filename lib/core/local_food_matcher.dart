@@ -16,6 +16,24 @@ class LocalFoodMatcher {
             previous.merchantContext == brand)) {
       return input;
     }
+    // Changing merchant context cannot resolve parser ambiguity. Keep the
+    // original line and this order's specs until the user explicitly confirms.
+    if (previous?.matchedBy == 'parser_uncertain' && !previous!.confirmed) {
+      return MealDish(
+        name: input.name,
+        quantity: input.quantity,
+        portionSize: input.portionSize,
+        contributionsKnown: false,
+        food: FoodObservation(
+          facts: FoodFacts(brand: brand, name: previous.facts.name),
+          rawName: previous.rawName,
+          spec: previous.spec,
+          matchedBy: 'parser_uncertain',
+          brandOrigin: 'merchant',
+          merchantContext: brand,
+        ),
+      );
+    }
     // Re-decide identity, retaining only this order's inputs, never its old category.
     final resolved = _resolve(
       input,

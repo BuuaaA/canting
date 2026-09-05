@@ -1,0 +1,8 @@
+{
+  "command": "adb -s emulator-5554 shell am start -S -n com.canting.canting/.MainActivity",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:26:02.674433+00:00",
+  "ended_at": "2026-09-05T13:26:03.119464+00:00",
+  "exit_code": 0,
+  "log": "launch-frozen.log"
+}

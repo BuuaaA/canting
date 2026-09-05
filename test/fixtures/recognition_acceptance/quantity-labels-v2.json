@@ -1,0 +1,60 @@
+{
+  "version": "2",
+  "created_at": "2026-09-05T13:21:06.898024+00:00",
+  "reviewer_status": "not_independently_reviewed",
+  "reason": "Audit correction based on visible input: missing quantity is inferred, not explicit 1. The literal 100 is annotated as 100 even though production safely requires review. Original labels retained unchanged; apply this separate quantity scoring annotation to both phases.",
+  "previous_rule": "labels quantity field default 1 included inferred values and excluded out-of-range case",
+  "cases": {
+    "unknown": [
+      1
+    ],
+    "typo": [
+      null
+    ],
+    "fees": [],
+    "spec": [
+      2
+    ],
+    "cake": [
+      1,
+      null
+    ],
+    "quantity": [
+      100
+    ],
+    "meal": [
+      null,
+      null,
+      null
+    ],
+    "different_specs": [
+      1,
+      2
+    ],
+    "empty": [],
+    "limit": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+}

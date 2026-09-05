@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "test",
+    "--no-pub",
+    "--concurrency=1",
+    "test/state/p4_review_regression_test.dart",
+    "--reporter",
+    "expanded"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T14:13:28.779456+00:00",
+  "ended_at": "2026-09-05T14:13:38.129313+00:00",
+  "exit_code": 0,
+  "log": "verified-probe.log"
+}

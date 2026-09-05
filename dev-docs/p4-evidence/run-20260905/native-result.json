@@ -1,0 +1,385 @@
+{
+  "input_sha256_before_ocr": "d975b8fe4bf9cae24abb77537456d8a7c00ee71b258e8a28d6474651f958135d",
+  "frozen_at_before_ocr": "2026-09-05T13:26:05.838991Z",
+  "stale_copy_exists": false,
+  "recent_copy_preserved_by_sweep": true,
+  "cancelled_recent_copy_exists": false,
+  "concurrent_native_results": [
+    [
+      "青貴糯山无糖小杯",
+      "香辣鸡腿堡",
+      "奶油蛋糕30寸"
+    ],
+    [
+      "青貴糯山无糖小杯",
+      "香辣鸡腿堡",
+      "奶油蛋糕30寸"
+    ]
+  ],
+  "concurrent_copy_exists": false,
+  "source_kind": "synthetic_image",
+  "run_kind": "native_ocr",
+  "fixture_note": "Developer authored text raster; no real platform screenshot. Labels fixed in source before rendering.",
+  "results": [
+    {
+      "repeat": 1,
+      "source_kind": "synthetic_image",
+      "run_kind": "native_ocr",
+      "input_lines": [
+        "青青糯山 无糖 小杯 ×1",
+        "香辣鸡腿堡 ×1",
+        "奶油蛋糕30寸 ×1",
+        "配送费 3元"
+      ],
+      "raw": {
+        "fullText": "青貴糯山无糖小杯x1\n香辣鸡腿堡 ×1\n奶油蛋糕30寸x1\n配送费 3元",
+        "engine": "mlkit_chinese",
+        "merchant": "",
+        "warnings": [],
+        "lines": [
+          {
+            "text": "青貴糯山无糖小杯x1",
+            "left": 42,
+            "top": 64,
+            "right": 426,
+            "bottom": 102
+          },
+          {
+            "text": "香辣鸡腿堡 ×1",
+            "left": 42,
+            "top": 137,
+            "right": 285,
+            "bottom": 175
+          },
+          {
+            "text": "奶油蛋糕30寸x1",
+            "left": 42,
+            "top": 210,
+            "right": 331,
+            "bottom": 248
+          },
+          {
+            "text": "配送费 3元",
+            "left": 41,
+            "top": 281,
+            "right": 231,
+            "bottom": 322
+          }
+        ],
+        "dishes": [
+          {
+            "name": "青貴糯山无糖小杯",
+            "quantity": 1,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "香辣鸡腿堡",
+            "quantity": 1,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "奶油蛋糕30寸",
+            "quantity": 1,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      "duration_ms": 485,
+      "error": null,
+      "dishes": [
+        {
+          "name": "青貴糯山无糖小杯",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": null,
+          "match_confidence": null,
+          "match_score": null,
+          "estimated": false,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": null,
+          "portions": null,
+          "contributions_known": false,
+          "food": {
+            "facts": {
+              "brand": "",
+              "name": "青貴糯山",
+              "category": "unknown",
+              "preparation": "unknown",
+              "sauce": "unknown"
+            },
+            "spec": {
+              "sugar": "none",
+              "cup": "small",
+              "size": "unknown"
+            },
+            "suggestion": null,
+            "confirmed": false,
+            "confirmed_at": null,
+            "raw_name": "青貴糯山无糖小杯",
+            "brand_origin": "merchant",
+            "merchant_context": "",
+            "matched_by": "unmatched",
+            "decision": "manual",
+            "candidate_name": null,
+            "source": "unmatched",
+            "confidence": null,
+            "contributions": null,
+            "portion_range": null,
+            "estimated": false,
+            "knowledge_snapshot": null,
+            "schema_version": 1,
+            "policy_version": "local-food-v1"
+          }
+        },
+        {
+          "name": "香辣鸡腿堡",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": "chicken_burger",
+          "match_confidence": null,
+          "match_score": 1.0,
+          "estimated": true,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": "chicken_burger",
+          "portions": {
+            "grains": 1.5,
+            "vegetables": 0.15,
+            "fruits": 0.0,
+            "protein": 1.6,
+            "protein_soy": 0.0,
+            "oil": 2.86
+          },
+          "contributions_known": true
+        },
+        {
+          "name": "奶油蛋糕30寸",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": null,
+          "match_confidence": null,
+          "match_score": null,
+          "estimated": false,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": null,
+          "portions": null,
+          "contributions_known": false,
+          "food": {
+            "facts": {
+              "brand": "",
+              "name": "奶油蛋糕30寸",
+              "category": "unknown",
+              "preparation": "unknown",
+              "sauce": "unknown"
+            },
+            "spec": {
+              "sugar": "unknown",
+              "cup": "unknown",
+              "size": "unknown"
+            },
+            "suggestion": null,
+            "confirmed": false,
+            "confirmed_at": null,
+            "raw_name": "奶油蛋糕30寸",
+            "brand_origin": "merchant",
+            "merchant_context": "",
+            "matched_by": "contains",
+            "decision": "candidate",
+            "candidate_name": "奶油蛋糕",
+            "source": "contains",
+            "confidence": null,
+            "contributions": null,
+            "portion_range": null,
+            "estimated": false,
+            "knowledge_snapshot": null,
+            "schema_version": 1,
+            "policy_version": "local-food-v1"
+          }
+        }
+      ],
+      "copy_exists_after_native": false,
+      "original_exists": true
+    },
+    {
+      "repeat": 2,
+      "source_kind": "synthetic_image",
+      "run_kind": "native_ocr",
+      "input_lines": [
+        "青青糯山 无糖 小杯 ×1",
+        "香辣鸡腿堡 ×1",
+        "奶油蛋糕30寸 ×1",
+        "配送费 3元"
+      ],
+      "raw": {
+        "fullText": "青貴糯山无糖小杯x1\n香辣鸡腿堡 ×1\n奶油蛋糕30寸x1\n配送费 3元",
+        "engine": "mlkit_chinese",
+        "merchant": "",
+        "warnings": [],
+        "lines": [
+          {
+            "text": "青貴糯山无糖小杯x1",
+            "left": 42,
+            "top": 64,
+            "right": 426,
+            "bottom": 102
+          },
+          {
+            "text": "香辣鸡腿堡 ×1",
+            "left": 42,
+            "top": 137,
+            "right": 285,
+            "bottom": 175
+          },
+          {
+            "text": "奶油蛋糕30寸x1",
+            "left": 42,
+            "top": 210,
+            "right": 331,
+            "bottom": 248
+          },
+          {
+            "text": "配送费 3元",
+            "left": 41,
+            "top": 281,
+            "right": 231,
+            "bottom": 322
+          }
+        ],
+        "dishes": [
+          {
+            "name": "青貴糯山无糖小杯",
+            "quantity": 1,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "香辣鸡腿堡",
+            "quantity": 1,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "奶油蛋糕30寸",
+            "quantity": 1,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      "duration_ms": 115,
+      "error": null,
+      "dishes": [
+        {
+          "name": "青貴糯山无糖小杯",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": null,
+          "match_confidence": null,
+          "match_score": null,
+          "estimated": false,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": null,
+          "portions": null,
+          "contributions_known": false,
+          "food": {
+            "facts": {
+              "brand": "",
+              "name": "青貴糯山",
+              "category": "unknown",
+              "preparation": "unknown",
+              "sauce": "unknown"
+            },
+            "spec": {
+              "sugar": "none",
+              "cup": "small",
+              "size": "unknown"
+            },
+            "suggestion": null,
+            "confirmed": false,
+            "confirmed_at": null,
+            "raw_name": "青貴糯山无糖小杯",
+            "brand_origin": "merchant",
+            "merchant_context": "",
+            "matched_by": "unmatched",
+            "decision": "manual",
+            "candidate_name": null,
+            "source": "unmatched",
+            "confidence": null,
+            "contributions": null,
+            "portion_range": null,
+            "estimated": false,
+            "knowledge_snapshot": null,
+            "schema_version": 1,
+            "policy_version": "local-food-v1"
+          }
+        },
+        {
+          "name": "香辣鸡腿堡",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": "chicken_burger",
+          "match_confidence": null,
+          "match_score": 1.0,
+          "estimated": true,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": "chicken_burger",
+          "portions": {
+            "grains": 1.5,
+            "vegetables": 0.15,
+            "fruits": 0.0,
+            "protein": 1.6,
+            "protein_soy": 0.0,
+            "oil": 2.86
+          },
+          "contributions_known": true
+        },
+        {
+          "name": "奶油蛋糕30寸",
+          "quantity": 1.0,
+          "portion_size": "normal",
+          "matched_dish_id": null,
+          "match_confidence": null,
+          "match_score": null,
+          "estimated": false,
+          "contribution_unit": "food_group_servings",
+          "contribution_source": null,
+          "portions": null,
+          "contributions_known": false,
+          "food": {
+            "facts": {
+              "brand": "",
+              "name": "奶油蛋糕30寸",
+              "category": "unknown",
+              "preparation": "unknown",
+              "sauce": "unknown"
+            },
+            "spec": {
+              "sugar": "unknown",
+              "cup": "unknown",
+              "size": "unknown"
+            },
+            "suggestion": null,
+            "confirmed": false,
+            "confirmed_at": null,
+            "raw_name": "奶油蛋糕30寸",
+            "brand_origin": "merchant",
+            "merchant_context": "",
+            "matched_by": "contains",
+            "decision": "candidate",
+            "candidate_name": "奶油蛋糕",
+            "source": "contains",
+            "confidence": null,
+            "contributions": null,
+            "portion_range": null,
+            "estimated": false,
+            "knowledge_snapshot": null,
+            "schema_version": 1,
+            "policy_version": "local-food-v1"
+          }
+        }
+      ],
+      "copy_exists_after_native": false,
+      "original_exists": true
+    }
+  ],
+  "invalid_image_error": "PlatformException(OCR_FAILED, The image Uri could not be resolved., IOException, null)",
+  "invalid_copy_exists": false,
+  "external_original_preserved": true,
+  "meal_rows": 0
+}

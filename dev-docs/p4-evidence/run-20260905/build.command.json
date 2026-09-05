@@ -1,0 +1,8 @@
+{
+  "command": "flutter build apk --debug --no-pub --target tool/p4_native_smoke.dart",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:08:55.713758+00:00",
+  "ended_at": "2026-09-05T13:09:31.853791+00:00",
+  "exit_code": 0,
+  "log": "build.log"
+}

@@ -1,0 +1,4424 @@
+{
+  "scope": "synthetic mechanisms only, not evidence of user improvement",
+  "scenarios": [
+    {
+      "scenario": "persistent_imbalance",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "persistent_imbalance-0",
+          "meal_type": "lunch",
+          "timestamp": "2026-03-01T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.1509254559779745,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.604147972536122,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-2",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-27T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.661681015787065,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.220991359888764,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-4",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-25T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.790440332152335,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.160572044787127,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-6",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-23T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.411557013735587,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.172612398088435,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-8",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-21T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.205858821196226,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.574119202253248,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-10",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-19T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.825121471157618,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.345189323010747,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-12",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-17T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.88896694796939,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.119329197436949,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-14",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-15T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.546759135475479,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.893213401648909,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-16",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-13T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.557043548689349,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.428568109592813,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-18",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-11T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.678501392273936,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.780927905433991,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-20",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-09T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.775093125381963,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.195377510758899,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-22",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-07T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.7011407830528515,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.358092495208552,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-24",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-05T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.484997146675572,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.5042783722898285,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-26",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-03T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.370344151733378,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "persistent_imbalance-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.117669242257338,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 4.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 7,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 38.00031519486498,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 28.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 28,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 153.52351887645045,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 112.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "基于已记录餐食的估算、比例缺口及餐次/多样性加成，实际首推蔬菜类搭配；7天台账仅使用可估算的记录日；近期已记录餐食中主食估算偏多，晚饭清爽一点就好～这两天咱们吃清淡点",
+        "reasonCodes": [
+          "recorded_structure_7d",
+          "selected_vegetables"
+        ],
+        "dishes": [
+          {
+            "name": "蒸南瓜",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": 4.68
+          },
+          {
+            "name": "椰子",
+            "slotCategory": "fruits",
+            "primaryCategory": "fruits",
+            "servings": 3.9
+          },
+          {
+            "name": "糙米饭",
+            "slotCategory": "grains",
+            "primaryCategory": "grains",
+            "servings": 0.5599999999999999
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "balanced",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "balanced-0",
+          "meal_type": "lunch",
+          "timestamp": "2026-03-01T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-2",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-27T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-4",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-25T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-6",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-23T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-8",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-21T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-10",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-19T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-12",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-17T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-14",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-15T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-16",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-13T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-18",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-11T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-20",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-09T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-22",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-07T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-24",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-05T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-26",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-03T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "balanced-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 7,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 35.0,
+          "vegetables": 35.0,
+          "fruits": 21.0,
+          "protein": 28.0,
+          "protein_soy": 14.0,
+          "oil": 21.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 28,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 140.0,
+          "vegetables": 140.0,
+          "fruits": 84.0,
+          "protein": 112.0,
+          "protein_soy": 56.0,
+          "oil": 84.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "基于已记录餐食的估算、比例缺口及餐次/多样性加成，实际首推蔬菜类搭配；7天台账仅使用可估算的记录日",
+        "reasonCodes": [
+          "recorded_structure_7d",
+          "selected_vegetables"
+        ],
+        "dishes": [
+          {
+            "name": "西红柿炒鸡蛋",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": 0.5
+          },
+          {
+            "name": "清炒时蔬",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": 1.0
+          },
+          {
+            "name": "蒜蓉西兰花",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "missing",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "missing-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "missing-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 3,
+        "partialDays": 0,
+        "missingDays": 4,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 15.0,
+          "vegetables": 15.0,
+          "fruits": 9.0,
+          "protein": 12.0,
+          "protein_soy": 6.0,
+          "oil": 9.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 14,
+        "partialDays": 0,
+        "missingDays": 14,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 70.0,
+          "vegetables": 70.0,
+          "fruits": 42.0,
+          "protein": 56.0,
+          "protein_soy": 28.0,
+          "oil": 42.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "记录不足，暂不判断缺口；以下为常规搭配建议，不按未知摄入补偿。",
+        "reasonCodes": [
+          "insufficient_record_coverage",
+          "selected_vegetables"
+        ],
+        "dishes": [
+          {
+            "name": "蒸南瓜",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": null
+          },
+          {
+            "name": "羊肉泡馍",
+            "slotCategory": "protein",
+            "primaryCategory": "protein",
+            "servings": null
+          },
+          {
+            "name": "糙米饭",
+            "slotCategory": "grains",
+            "primaryCategory": "grains",
+            "servings": null
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "unknown",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "unknown-0",
+          "meal_type": "lunch",
+          "timestamp": "2026-03-01T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-2",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-27T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-4",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-25T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-6",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-23T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-8",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-21T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-10",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-19T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-12",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-17T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-14",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-15T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-16",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-13T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-18",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-11T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-20",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-09T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-22",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-07T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-24",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-05T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-26",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-03T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "unknown-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [
+            {
+              "name": "unknown",
+              "quantity": 1.0,
+              "portion_size": "normal",
+              "matched_dish_id": null,
+              "match_confidence": null,
+              "match_score": null,
+              "estimated": false,
+              "contribution_unit": "food_group_servings",
+              "contribution_source": null,
+              "portions": null,
+              "contributions_known": false,
+              "food": {
+                "facts": {
+                  "brand": "",
+                  "name": "unknown",
+                  "category": "unknown",
+                  "preparation": "unknown",
+                  "sauce": "unknown"
+                },
+                "spec": {
+                  "sugar": "unknown",
+                  "cup": "unknown",
+                  "size": "unknown"
+                },
+                "suggestion": null,
+                "confirmed": false,
+                "confirmed_at": null,
+                "raw_name": "",
+                "brand_origin": "legacy_unknown",
+                "merchant_context": "",
+                "matched_by": "manual",
+                "decision": "manual",
+                "candidate_name": null,
+                "source": "manual",
+                "confidence": null,
+                "contributions": null,
+                "portion_range": null,
+                "estimated": false,
+                "knowledge_snapshot": null,
+                "schema_version": 1,
+                "policy_version": "local-food-v1"
+              }
+            }
+          ],
+          "portions_total": {
+            "grains": 0.0,
+            "vegetables": 0.0,
+            "fruits": 0.0,
+            "protein": 0.0,
+            "protein_soy": 0.0,
+            "oil": 0.0
+          },
+          "total_scope": "known_subtotal",
+          "structure_complete": false,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 7,
+        "partialDays": 7,
+        "missingDays": 0,
+        "unknownItemCount": 7,
+        "knownSubtotal": {
+          "grains": 0.0,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 28,
+        "partialDays": 28,
+        "missingDays": 0,
+        "unknownItemCount": 28,
+        "knownSubtotal": {
+          "grains": 0.0,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "记录不足，暂不判断缺口；以下为常规搭配建议，不按未知摄入补偿。",
+        "reasonCodes": [
+          "insufficient_record_coverage",
+          "selected_vegetables"
+        ],
+        "dishes": [
+          {
+            "name": "蒸南瓜",
+            "slotCategory": "vegetables",
+            "primaryCategory": "vegetables",
+            "servings": null
+          },
+          {
+            "name": "羊肉泡馍",
+            "slotCategory": "protein",
+            "primaryCategory": "protein",
+            "servings": null
+          },
+          {
+            "name": "糙米饭",
+            "slotCategory": "grains",
+            "primaryCategory": "grains",
+            "servings": null
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "exhausted",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "exhausted-0",
+          "meal_type": "lunch",
+          "timestamp": "2026-03-01T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-2",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-27T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-4",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-25T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-6",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-23T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-8",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-21T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-10",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-19T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-12",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-17T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-14",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-15T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-16",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-13T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-18",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-11T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-20",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-09T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-22",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-07T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-24",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-05T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-26",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-03T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "exhausted-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 7,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 35.0,
+          "vegetables": 35.0,
+          "fruits": 21.0,
+          "protein": 28.0,
+          "protein_soy": 14.0,
+          "oil": 21.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 28,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 140.0,
+          "vegetables": 140.0,
+          "fruits": 84.0,
+          "protein": 112.0,
+          "protein_soy": 56.0,
+          "oil": 84.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "可推荐候选不足；可考虑主食、蔬菜与蛋白类的常规搭配，不指定商品。",
+        "reasonCodes": [
+          "recorded_structure_7d",
+          "insufficient_candidates",
+          "generic_structure_advice"
+        ],
+        "dishes": []
+      }
+    },
+    {
+      "scenario": "risk_conflict",
+      "seed": 42,
+      "inputs": [
+        {
+          "meal_id": "risk_conflict-0",
+          "meal_type": "lunch",
+          "timestamp": "2026-03-01T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-1",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-28T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-2",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-27T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-3",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-26T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-4",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-25T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-5",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-24T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-6",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-23T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-7",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-22T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-8",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-21T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-9",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-20T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-10",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-19T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-11",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-18T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-12",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-17T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-13",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-16T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-14",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-15T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-15",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-14T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-16",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-13T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-17",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-12T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-18",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-11T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-19",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-10T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-20",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-09T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-21",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-08T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-22",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-07T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-23",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-06T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-24",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-05T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-25",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-04T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-26",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-03T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        },
+        {
+          "meal_id": "risk_conflict-27",
+          "meal_type": "lunch",
+          "timestamp": "2026-02-02T12:00:00.000",
+          "dishes": [],
+          "portions_total": {
+            "grains": 5.0,
+            "vegetables": 5.0,
+            "fruits": 3.0,
+            "protein": 4.0,
+            "protein_soy": 2.0,
+            "oil": 3.0
+          },
+          "total_scope": "complete",
+          "structure_complete": true,
+          "completion_rate": 0.0,
+          "sodium_level": "mid"
+        }
+      ],
+      "window7": {
+        "windowStart": "2026-02-23T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 7,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 35.0,
+          "vegetables": 35.0,
+          "fruits": 21.0,
+          "protein": 28.0,
+          "protein_soy": 14.0,
+          "oil": 21.0
+        },
+        "dataStatus": "ready"
+      },
+      "window28": {
+        "windowStart": "2026-02-02T00:00:00.000",
+        "windowEnd": "2026-03-02T00:00:00.000",
+        "asOf": "2026-03-01T18:00:00.000",
+        "recordedDays": 28,
+        "partialDays": 0,
+        "missingDays": 0,
+        "unknownItemCount": 0,
+        "knownSubtotal": {
+          "grains": 140.0,
+          "vegetables": 140.0,
+          "fruits": 84.0,
+          "protein": 112.0,
+          "protein_soy": 56.0,
+          "oil": 84.0
+        },
+        "dataStatus": "ready"
+      },
+      "recommendation_built": {
+        "reason": "可推荐候选不足；可考虑主食、蔬菜与蛋白类的常规搭配，不指定商品。",
+        "reasonCodes": [
+          "recorded_structure_7d",
+          "insufficient_candidates",
+          "generic_structure_advice"
+        ],
+        "dishes": []
+      }
+    }
+  ],
+  "performance": {
+    "host": "windows",
+    "mode": "flutter test JIT",
+    "candidate_count": 1004,
+    "audit_microseconds": 15258,
+    "history_records": 2800,
+    "window_rebuilds": 10,
+    "elapsed_microseconds": 306360
+  }
+}

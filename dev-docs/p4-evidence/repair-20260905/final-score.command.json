@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\Python312\\python.exe",
+    "scripts/p4/metrics.py"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T14:12:49.136875+00:00",
+  "ended_at": "2026-09-05T14:12:49.243631+00:00",
+  "exit_code": 0,
+  "log": "final-score.log"
+}

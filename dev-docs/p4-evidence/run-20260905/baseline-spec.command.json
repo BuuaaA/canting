@@ -1,0 +1,8 @@
+{
+  "command": "flutter test --no-pub test/core/p4_specs_test.dart --reporter expanded",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:12:39.493568+00:00",
+  "ended_at": "2026-09-05T13:12:45.684900+00:00",
+  "exit_code": 1,
+  "log": "baseline-spec.log"
+}

@@ -1,0 +1,374 @@
+{
+  "baseline": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "current_head": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "collected_at": "2026-09-05T14:15:30.573794+00:00",
+  "commands": [
+    {
+      "command": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "scripts/p4/test_metrics.py"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:09:18.798098+00:00",
+      "ended_at": "2026-09-05T14:09:18.903283+00:00",
+      "exit_code": 0,
+      "log": "after-metrics.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "test/state/p4_review_regression_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:09:13.022486+00:00",
+      "ended_at": "2026-09-05T14:09:18.731115+00:00",
+      "exit_code": 0,
+      "log": "after-probe.log",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "scripts/p4/test_metrics.py"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:08:35.762855+00:00",
+      "ended_at": "2026-09-05T14:08:35.881240+00:00",
+      "exit_code": 1,
+      "log": "before-metrics.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "test/state/p4_review_regression_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:08:29.967412+00:00",
+      "ended_at": "2026-09-05T14:08:35.691917+00:00",
+      "exit_code": 1,
+      "log": "before-probe.log",
+      "passed": 8,
+      "failed": 2
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "test/state/p4_review_regression_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:10:24.499255+00:00",
+      "ended_at": "2026-09-05T14:10:34.080139+00:00",
+      "exit_code": 1,
+      "log": "expanded-probe.log",
+      "passed": 18,
+      "failed": 1
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "analyze",
+        "--no-pub"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:11:29.276444+00:00",
+      "ended_at": "2026-09-05T14:11:35.744326+00:00",
+      "exit_code": 1,
+      "log": "final-analyze.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:11:35.808294+00:00",
+      "ended_at": "2026-09-05T14:12:49.069656+00:00",
+      "exit_code": 0,
+      "log": "final-full.log",
+      "passed": 495,
+      "failed": 0
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "test/state/p4_review_regression_test.dart",
+        "test/state/p4_race_test.dart",
+        "test/ui/record/brand_context_review_test.dart",
+        "test/data/local_food_flow_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:11:11.950777+00:00",
+      "ended_at": "2026-09-05T14:11:29.211335+00:00",
+      "exit_code": 0,
+      "log": "final-related.log",
+      "passed": 45,
+      "failed": 0
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "scripts/p4/metrics.py"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:12:49.136875+00:00",
+      "ended_at": "2026-09-05T14:12:49.243631+00:00",
+      "exit_code": 0,
+      "log": "final-score.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "format",
+        "--output=none",
+        "--set-exit-if-changed",
+        "lib/core/local_food_matcher.dart",
+        "lib/core/models/local_food.dart",
+        "lib/main.dart",
+        "lib/platform/android_native_bridge.dart",
+        "lib/services/ocr_pipeline.dart",
+        "lib/state/app_state.dart",
+        "lib/ui/ocr/in_app_ocr_launcher.dart",
+        "lib/ui/record/record_detail_page.dart",
+        "test/core/p3_audit_test.dart",
+        "test/core/recommendation_engine_test.dart",
+        "test/state/p3_feedback_flow_test.dart",
+        "test/ui/ocr/in_app_ocr_launcher_test.dart",
+        "test/ui/p3_production_pages_test.dart",
+        "test/core/p4_specs_test.dart",
+        "test/state/p4_race_test.dart",
+        "test/state/p4_review_regression_test.dart",
+        "test/state/p4_semantic_replay_test.dart",
+        "tool/p4_native_smoke.dart"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:11:11.609364+00:00",
+      "ended_at": "2026-09-05T14:11:11.892941+00:00",
+      "exit_code": 0,
+      "log": "format-check.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "format",
+        "lib/core/local_food_matcher.dart",
+        "lib/core/models/local_food.dart",
+        "lib/main.dart",
+        "lib/platform/android_native_bridge.dart",
+        "lib/services/ocr_pipeline.dart",
+        "lib/state/app_state.dart",
+        "lib/ui/ocr/in_app_ocr_launcher.dart",
+        "lib/ui/record/record_detail_page.dart",
+        "test/core/p3_audit_test.dart",
+        "test/core/recommendation_engine_test.dart",
+        "test/state/p3_feedback_flow_test.dart",
+        "test/ui/ocr/in_app_ocr_launcher_test.dart",
+        "test/ui/p3_production_pages_test.dart",
+        "test/core/p4_specs_test.dart",
+        "test/state/p4_race_test.dart",
+        "test/state/p4_review_regression_test.dart",
+        "test/state/p4_semantic_replay_test.dart",
+        "tool/p4_native_smoke.dart"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:11:11.325492+00:00",
+      "ended_at": "2026-09-05T14:11:11.609364+00:00",
+      "exit_code": 0,
+      "log": "format.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "analyze",
+        "--no-pub"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:13:38.378681+00:00",
+      "ended_at": "2026-09-05T14:13:44.753778+00:00",
+      "exit_code": 0,
+      "log": "verified-analyze.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "scripts/p4/test_metrics.py"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:13:38.199489+00:00",
+      "ended_at": "2026-09-05T14:13:38.306963+00:00",
+      "exit_code": 0,
+      "log": "verified-metrics.log"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "test/state/p4_review_regression_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T14:13:28.779456+00:00",
+      "ended_at": "2026-09-05T14:13:38.129313+00:00",
+      "exit_code": 0,
+      "log": "verified-probe.log",
+      "passed": 19,
+      "failed": 0
+    }
+  ],
+  "format": {
+    "command": [
+      "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+      "format",
+      "--output=none",
+      "--set-exit-if-changed",
+      "lib/core/local_food_matcher.dart",
+      "lib/core/models/local_food.dart",
+      "lib/main.dart",
+      "lib/platform/android_native_bridge.dart",
+      "lib/services/ocr_pipeline.dart",
+      "lib/state/app_state.dart",
+      "lib/ui/ocr/in_app_ocr_launcher.dart",
+      "lib/ui/record/record_detail_page.dart",
+      "test/core/p3_audit_test.dart",
+      "test/core/p4_specs_test.dart",
+      "test/core/recommendation_engine_test.dart",
+      "test/state/p3_feedback_flow_test.dart",
+      "test/state/p4_race_test.dart",
+      "test/state/p4_review_regression_test.dart",
+      "test/state/p4_semantic_replay_test.dart",
+      "test/ui/ocr/in_app_ocr_launcher_test.dart",
+      "test/ui/p3_production_pages_test.dart",
+      "tool/p4_native_smoke.dart"
+    ],
+    "status": "passed",
+    "log": "format-final.log"
+  },
+  "diff_checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": "git diff --no-index --check NUL <each untracked path>",
+      "status": "pass",
+      "errors": [],
+      "note": "--no-index status1 means content differs; whitespace diagnostics assessed separately; raw evidence attributes retained."
+    }
+  ],
+  "repair_paths_relative_to_previous_132": [
+    "dev-docs/p4-evidence/repair-20260905/after-metrics.command.json",
+    "dev-docs/p4-evidence/repair-20260905/after-probe.command.json",
+    "dev-docs/p4-evidence/repair-20260905/baseline-parser.tsv",
+    "dev-docs/p4-evidence/repair-20260905/baseline-semantic.json",
+    "dev-docs/p4-evidence/repair-20260905/before-metrics.command.json",
+    "dev-docs/p4-evidence/repair-20260905/before-probe.command.json",
+    "dev-docs/p4-evidence/repair-20260905/candidate-audit.json",
+    "dev-docs/p4-evidence/repair-20260905/case-results.json",
+    "dev-docs/p4-evidence/repair-20260905/component-recommendation-28d.png",
+    "dev-docs/p4-evidence/repair-20260905/component-recommendation-7d.png",
+    "dev-docs/p4-evidence/repair-20260905/component-save-prompt.png",
+    "dev-docs/p4-evidence/repair-20260905/expanded-probe.command.json",
+    "dev-docs/p4-evidence/repair-20260905/failures.json",
+    "dev-docs/p4-evidence/repair-20260905/feedback-events.json",
+    "dev-docs/p4-evidence/repair-20260905/final-analyze.command.json",
+    "dev-docs/p4-evidence/repair-20260905/final-full.command.json",
+    "dev-docs/p4-evidence/repair-20260905/final-related.command.json",
+    "dev-docs/p4-evidence/repair-20260905/final-score.command.json",
+    "dev-docs/p4-evidence/repair-20260905/format-check.command.json",
+    "dev-docs/p4-evidence/repair-20260905/format.command.json",
+    "dev-docs/p4-evidence/repair-20260905/legacy-convergence-diagnostic.json",
+    "dev-docs/p4-evidence/repair-20260905/metrics.json",
+    "dev-docs/p4-evidence/repair-20260905/parser-actual.tsv",
+    "dev-docs/p4-evidence/repair-20260905/previous-changes.json",
+    "dev-docs/p4-evidence/repair-20260905/previous-report.md",
+    "dev-docs/p4-evidence/repair-20260905/scoring-v2-comparison.json",
+    "dev-docs/p4-evidence/repair-20260905/semantic-actual.json",
+    "dev-docs/p4-evidence/repair-20260905/simulation.json",
+    "dev-docs/p4-evidence/repair-20260905/verified-analyze.command.json",
+    "dev-docs/p4-evidence/repair-20260905/verified-metrics.command.json",
+    "dev-docs/p4-evidence/repair-20260905/verified-probe.command.json",
+    "dev-docs/p4-recognition-acceptance.md",
+    "lib/core/local_food_matcher.dart",
+    "lib/services/ocr_pipeline.dart",
+    "lib/ui/record/record_detail_page.dart",
+    "scripts/p4/metrics.py",
+    "scripts/p4/test_metrics.py",
+    "test/core/p3_audit_test.dart",
+    "test/core/recommendation_engine_test.dart",
+    "test/fixtures/recognition_acceptance/README.md",
+    "test/state/p3_feedback_flow_test.dart",
+    "test/state/p4_review_regression_test.dart",
+    "test/state/p4_semantic_replay_test.dart",
+    "test/ui/p3_production_pages_test.dart"
+  ],
+  "previous_P4_evidence_unchanged": {
+    "count": 77,
+    "hashes_match": true
+  },
+  "P3_frozen_evidence": {
+    "count": 29,
+    "hashes_match": true
+  },
+  "native_files_unchanged": true,
+  "native_tests_this_revision": "not_run; no native changes",
+  "physical_device": "not_run",
+  "conclusion": "R1-R3 corrected, pending product review; real inputs/device coverage remain partial"
+}

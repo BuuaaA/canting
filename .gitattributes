@@ -1,0 +1,4 @@
+# P4 raw evidence preserves tool-emitted whitespace and empty TSV columns.
+dev-docs/p4-evidence/**/*.log -whitespace
+dev-docs/p4-evidence/**/*.tsv -whitespace
+dev-docs/p4-evidence/**/*.txt -whitespace

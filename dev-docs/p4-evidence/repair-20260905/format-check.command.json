@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "format",
+    "--output=none",
+    "--set-exit-if-changed",
+    "lib/core/local_food_matcher.dart",
+    "lib/core/models/local_food.dart",
+    "lib/main.dart",
+    "lib/platform/android_native_bridge.dart",
+    "lib/services/ocr_pipeline.dart",
+    "lib/state/app_state.dart",
+    "lib/ui/ocr/in_app_ocr_launcher.dart",
+    "lib/ui/record/record_detail_page.dart",
+    "test/core/p3_audit_test.dart",
+    "test/core/recommendation_engine_test.dart",
+    "test/state/p3_feedback_flow_test.dart",
+    "test/ui/ocr/in_app_ocr_launcher_test.dart",
+    "test/ui/p3_production_pages_test.dart",
+    "test/core/p4_specs_test.dart",
+    "test/state/p4_race_test.dart",
+    "test/state/p4_review_regression_test.dart",
+    "test/state/p4_semantic_replay_test.dart",
+    "tool/p4_native_smoke.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T14:11:11.609364+00:00",
+  "ended_at": "2026-09-05T14:11:11.892941+00:00",
+  "exit_code": 0,
+  "log": "format-check.log"
+}

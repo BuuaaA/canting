@@ -1,0 +1,8 @@
+{
+  "command": "flutter test --no-pub --reporter expanded",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:16:09.983801+00:00",
+  "ended_at": "2026-09-05T13:16:33.808939+00:00",
+  "exit_code": 0,
+  "log": "full-third.log"
+}

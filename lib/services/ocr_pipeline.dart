@@ -1,3 +1,5 @@
+import 'package:canting/core/models/local_food.dart';
+
 import 'dart:async';
 
 import 'package:canting/core_engine.dart';
@@ -30,28 +32,53 @@ class OcrPipeline {
     String imageUri, {
     Duration timeout = const Duration(seconds: 5),
   }) async {
+    final draft = _appState.recognitionDraft;
+    if (draft == null || draft.imageUri != imageUri || !draft.isLoading) return;
+    final requestId = draft.requestId;
     try {
       final recognition = await _bridge
           .recognizeImage(imageUri)
           .timeout(timeout);
       _appState.completeSharedRecognition(
         imageUri: imageUri,
+        requestId: requestId,
         merchant: recognition.merchant,
+        warning: recognition.warnings.isEmpty
+            ? null
+            : recognition.warnings.join("；"),
         dishes: recognition.dishes
             .map(
-              (dish) =>
-                  MealDish(name: dish.name, quantity: dish.quantity.toDouble()),
+              (dish) => MealDish(
+                name: dish.name,
+                quantity: dish.quantity.toDouble(),
+                contributionsKnown: !dish.requiresConfirmation,
+                food: dish.requiresConfirmation
+                    ? FoodObservation(
+                        facts: FoodFacts(
+                          brand: recognition.merchant,
+                          name: dish.name,
+                        ),
+                        brandOrigin: 'merchant',
+                        merchantContext: recognition.merchant,
+                        rawName: dish.name,
+                        spec: OrderSpec.parse(dish.name),
+                        matchedBy: 'parser_uncertain',
+                      )
+                    : null,
+              ),
             )
             .toList(growable: false),
       );
     } on TimeoutException {
       _appState.failSharedRecognition(
         imageUri: imageUri,
+        requestId: requestId,
         message: '识别有点慢，图片可能太复杂，试试手动添加吧',
       );
     } on PlatformException catch (error) {
       _appState.failSharedRecognition(
         imageUri: imageUri,
+        requestId: requestId,
         message: error.code == 'OCR_UNAVAILABLE'
             ? '当前设备无法使用文字识别，请手动添加菜品'
             : '这张图没看清，请手动添加菜品',
@@ -59,6 +86,7 @@ class OcrPipeline {
     } catch (_) {
       _appState.failSharedRecognition(
         imageUri: imageUri,
+        requestId: requestId,
         message: '这张图没看清，请手动添加菜品',
       );
     }

@@ -1,0 +1,5778 @@
+{
+  "schema_version": 2,
+  "run_id": "repair-20260905",
+  "scoring_version": "v2-item-quantity-union",
+  "normalization": "exact frozen product text; only parser declared whitespace/quantity/price normalization. No fuzzy identity correction.",
+  "repeat_consistent": true,
+  "independent_holdout": false,
+  "real_images": 0,
+  "groups": {
+    "baseline": {
+      "all": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "source_kind:manual_text": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "platform:unknown": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "layout:manual_lines": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "split:repair": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "run_kind:text_replay": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 29,
+            "denominator": 33,
+            "value": 0.8787878787878788,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 3,
+            "denominator": 32,
+            "value": 0.09375,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 6,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 23,
+            "denominator": 26,
+            "value": 0.8846153846153846,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 27,
+            "denominator": 31,
+            "value": 0.8709677419354839,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 29,
+            "denominator": 32,
+            "value": 0.90625,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S01": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S02": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 1,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S03": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 2,
+        "metrics": {
+          "product_recall": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S04": {
+        "case_count": 1,
+        "unique_image_count": 0,
+        "product_count": 3,
+        "metrics": {
+          "product_recall": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S05": {
+        "case_count": 1,
+        "unique_image_count": 0,
+        "product_count": 2,
+        "metrics": {
+          "product_recall": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S06": {
+        "case_count": 3,
+        "unique_image_count": 0,
+        "product_count": 4,
+        "metrics": {
+          "product_recall": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 2,
+            "denominator": 5,
+            "value": 0.4,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 2,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 5,
+            "denominator": 5,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S07": {
+        "case_count": 3,
+        "unique_image_count": 0,
+        "product_count": 4,
+        "metrics": {
+          "product_recall": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 1,
+            "denominator": 4,
+            "value": 0.25,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 2,
+            "denominator": 3,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 1,
+            "denominator": 2,
+            "value": 0.5,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 3,
+            "denominator": 4,
+            "value": 0.75,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S08": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 22,
+        "metrics": {
+          "product_recall": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 20,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 22,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 20,
+            "denominator": 20,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:美团": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:淘宝闪购/饿了么": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:京东外卖": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      }
+    },
+    "after": {
+      "all": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "source_kind:manual_text": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "platform:unknown": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "layout:manual_lines": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "split:repair": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "run_kind:text_replay": {
+        "case_count": 10,
+        "unique_image_count": 0,
+        "product_count": 33,
+        "metrics": {
+          "product_recall": {
+            "numerator": 31,
+            "denominator": 33,
+            "value": 0.9393939393939394,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 31,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 5,
+            "denominator": 6,
+            "value": 0.8333333333333334,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "quantity",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 7,
+            "value": 0.2857142857142857,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 24,
+            "denominator": 26,
+            "value": 0.9230769230769231,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "limit",
+              "meal",
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 29,
+            "denominator": 31,
+            "value": 0.9354838709677419,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 33,
+            "value": 0.09090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 28,
+            "denominator": 31,
+            "value": 0.9032258064516129,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "limit",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 7,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake",
+              "different_specs",
+              "meal",
+              "quantity",
+              "spec",
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S01": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S02": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 1,
+        "metrics": {
+          "product_recall": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S03": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 2,
+        "metrics": {
+          "product_recall": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S04": {
+        "case_count": 1,
+        "unique_image_count": 0,
+        "product_count": 3,
+        "metrics": {
+          "product_recall": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "auto_accept_coverage": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "meal"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S05": {
+        "case_count": 1,
+        "unique_image_count": 0,
+        "product_count": 2,
+        "metrics": {
+          "product_recall": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "size_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "cake"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S06": {
+        "case_count": 3,
+        "unique_image_count": 0,
+        "product_count": 4,
+        "metrics": {
+          "product_recall": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 2,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "spec",
+              "unknown"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S07": {
+        "case_count": 3,
+        "unique_image_count": 0,
+        "product_count": 4,
+        "metrics": {
+          "product_recall": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 2,
+            "denominator": 3,
+            "value": 0.6666666666666666,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity"
+            ]
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity"
+            ]
+          },
+          "category_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "sugar_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 2,
+            "denominator": 2,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs"
+            ]
+          },
+          "cup_expected_unknown": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "typo"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 4,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 4,
+            "denominator": 4,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "different_specs",
+              "quantity",
+              "typo"
+            ]
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "scenario:S08": {
+        "case_count": 2,
+        "unique_image_count": 0,
+        "product_count": 22,
+        "metrics": {
+          "product_recall": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 20,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 22,
+            "value": 0.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "unknown_rate": {
+            "numerator": 20,
+            "denominator": 20,
+            "value": 1.0,
+            "status": "measured",
+            "sample_ids": [
+              "limit"
+            ]
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:美团": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:淘宝闪购/饿了么": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      },
+      "real_platform:京东外卖": {
+        "case_count": 0,
+        "unique_image_count": 0,
+        "product_count": 0,
+        "metrics": {
+          "product_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "product_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "quantity_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "category_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "sugar_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "cup_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_accuracy": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "size_expected_unknown": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "high_confidence_wrong_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "auto_accept_coverage": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "unknown_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "dangerous_auto_accept": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "ocr_text_recall": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          },
+          "restart_reuse": {
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "status": "not_measured",
+            "sample_ids": []
+          }
+        }
+      }
+    }
+  },
+  "unmeasured": [
+    "real platform image accuracy",
+    "process kill restart",
+    "system share and camera permissions"
+  ],
+  "restart_evidence": "Full regression local_food_flow_test opens actual SQLite again; not counted as dataset cases.",
+  "excluded_invalid_run": "invalid-semantic-no-guidelines.json: evaluator lacked guidelines, matcher was not initialized; superseded by baseline-semantic-corrected.log."
+}

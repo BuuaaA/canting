@@ -258,7 +258,8 @@ void main() {
       RecordWindow.build(history, days: 28, asOf: now).knownDays;
     }
     watch.stop();
-    final dir = Directory('dev-docs/p3-evidence')..createSync(recursive: true);
+    final dir = Directory('dev-docs/p4-evidence/repair-20260905')
+      ..createSync(recursive: true);
     File('${dir.path}/candidate-audit.json').writeAsStringSync(
       const JsonEncoder.withIndent('  ').convert({
         'policyVersion': RecommendationSafety.version,

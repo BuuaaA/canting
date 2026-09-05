@@ -6,13 +6,20 @@ import 'package:flutter/services.dart';
 typedef SharedImageHandler = Future<void> Function(String imageUri);
 
 class NativeRecognizedDish {
-  const NativeRecognizedDish({required this.name, required this.quantity});
+  const NativeRecognizedDish({
+    required this.name,
+    required this.quantity,
+    this.requiresConfirmation = false,
+  });
+
+  final bool requiresConfirmation;
 
   final String name;
   final int quantity;
 
   factory NativeRecognizedDish.fromMap(Map<Object?, Object?> map) {
     return NativeRecognizedDish(
+      requiresConfirmation: map['requiresConfirmation'] == true,
       name: map['name'] as String? ?? '',
       quantity: (map['quantity'] as num?)?.toInt() ?? 1,
     );
@@ -21,12 +28,14 @@ class NativeRecognizedDish {
 
 class NativeOcrResult {
   const NativeOcrResult({
+    this.warnings = const [],
     required this.fullText,
     required this.engine,
     required this.merchant,
     required this.dishes,
   });
 
+  final List<String> warnings;
   final String fullText;
   final String engine;
   final String merchant;
@@ -35,6 +44,7 @@ class NativeOcrResult {
   factory NativeOcrResult.fromMap(Map<Object?, Object?> map) {
     final rawDishes = map['dishes'] as List<Object?>? ?? const [];
     return NativeOcrResult(
+      warnings: (map['warnings'] as List? ?? []).whereType<String>().toList(),
       fullText: map['fullText'] as String? ?? '',
       engine: map['engine'] as String? ?? 'unknown',
       merchant: map['merchant'] as String? ?? '',
@@ -105,6 +115,16 @@ class AndroidNativeBridge {
       throw const FormatException('Android OCR returned no result');
     }
     return NativeOcrResult.fromMap(result);
+  }
+
+  Future<void> releaseImage(String uri) async {
+    try {
+      await _ocrChannel.invokeMethod<void>('releaseImage', {'imageUri': uri});
+    } on MissingPluginException {
+      /* Host tests and old native hosts. */
+    } on PlatformException {
+      /* Residual cleanup retries at next native entry. */
+    }
   }
 
   Future<bool> savePetStatus(Map<String, Object?> status) async {

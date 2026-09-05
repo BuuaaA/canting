@@ -1,0 +1,790 @@
+[
+  {
+    "case_id": "spec",
+    "phase": "baseline",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 0,
+        "expected": "青青糯山三分糖大杯"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 0,
+        "actual": "青青糯山"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 1,
+        "actual": "三分糖大杯"
+      },
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 2,
+        "actual": null
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 0,
+        "expected": "low",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 0,
+        "expected": "large",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "phase": "baseline",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "phase": "baseline",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 0,
+        "expected": "米饭×100"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 0,
+        "actual": "米饭0"
+      },
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 100,
+        "actual": null
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "grains",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "phase": "baseline",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 1,
+        "expected": "regular",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "limit",
+    "phase": "baseline",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 20,
+        "expected": "未知商品21号"
+      },
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 21,
+        "expected": "未知商品22号"
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "spec",
+    "phase": "baseline",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 0,
+        "expected": "青青糯山三分糖大杯"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 0,
+        "actual": "青青糯山"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 1,
+        "actual": "三分糖大杯"
+      },
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 2,
+        "actual": null
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 0,
+        "expected": "low",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 0,
+        "expected": "large",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "phase": "baseline",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "phase": "baseline",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 0,
+        "expected": "米饭×100"
+      },
+      {
+        "layer": "parser",
+        "kind": "unmatched_output",
+        "actual_index": 0,
+        "actual": "米饭0"
+      },
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 100,
+        "actual": null
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "grains",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 0,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "phase": "baseline",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 1,
+        "expected": "regular",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "limit",
+    "phase": "baseline",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 20,
+        "expected": "未知商品21号"
+      },
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 21,
+        "expected": "未知商品22号"
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "phase": "after",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "phase": "after",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 100,
+        "actual": 1.0
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "grains",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "phase": "after",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "limit",
+    "phase": "after",
+    "repeat": 1,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 20,
+        "expected": "未知商品21号"
+      },
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 21,
+        "expected": "未知商品22号"
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "phase": "after",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "dessert",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "phase": "after",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "quantity_mismatch",
+        "expected_index": 0,
+        "expected": 100,
+        "actual": 1.0
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "grains",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "phase": "after",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 0,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 1,
+        "expected": "milk_tea",
+        "actual": "unknown",
+        "detected": true
+      }
+    ]
+  },
+  {
+    "case_id": "limit",
+    "phase": "after",
+    "repeat": 2,
+    "errors": [
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 20,
+        "expected": "未知商品21号"
+      },
+      {
+        "layer": "parser",
+        "kind": "missing",
+        "expected_index": 21,
+        "expected": "未知商品22号"
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "category",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "sugar",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "cup",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 20,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      },
+      {
+        "layer": "semantic",
+        "field": "size",
+        "expected_index": 21,
+        "expected": "unknown",
+        "actual": "unknown",
+        "detected": false
+      }
+    ]
+  }
+]

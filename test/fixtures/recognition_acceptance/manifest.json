@@ -1,0 +1,287 @@
+{
+  "dataset_version": "p4-text-v1",
+  "frozen_at": "2026-09-05T12:58:33.395262+00:00",
+  "source_kind": "manual_text",
+  "real_image_count": 0,
+  "independent_holdout": false,
+  "cases": [
+    {
+      "case_id": "unknown",
+      "family_id": "unknown",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S03",
+        "S06"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "unknown.input.json",
+          "sha256": "956b5e5fb26211295f7295c09ec913bb781a90411e09168999990a10d0d93f9f"
+        },
+        {
+          "path": "unknown.labels.json",
+          "sha256": "8305cdda40477d301002513821b793acdfe72204055e48957623e05568db9f9f"
+        }
+      ]
+    },
+    {
+      "case_id": "typo",
+      "family_id": "typo",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S03",
+        "S07"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "typo.input.json",
+          "sha256": "b6789d052345469084282aa33d85058a5bbeef248c663a525dbaa891606aeb03"
+        },
+        {
+          "path": "typo.labels.json",
+          "sha256": "f6f31da235abf7e7253193b65910ba4d6a4490b5917f691fdbd14d8f675d86e8"
+        }
+      ]
+    },
+    {
+      "case_id": "fees",
+      "family_id": "fees",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S02"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "fees.input.json",
+          "sha256": "789bc057c5892681a021ea8d51a6c363fd45fa0230161545902747541c858a8e"
+        },
+        {
+          "path": "fees.labels.json",
+          "sha256": "4a7ca9a7b128d2c38b0b5d3f0a7a17ada17736aae01a7c486915c87d6efd37e2"
+        }
+      ]
+    },
+    {
+      "case_id": "spec",
+      "family_id": "spec",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S02",
+        "S06"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "spec.input.json",
+          "sha256": "87b06628d2c16e57e7dc8caa19d5ad19f9ef91c496d82e16c76a853485fee1a8"
+        },
+        {
+          "path": "spec.labels.json",
+          "sha256": "cb3e8469e3a106aeeb6c15909ff9386ccb231c2889015577eaf2f682e42b8793"
+        }
+      ]
+    },
+    {
+      "case_id": "cake",
+      "family_id": "cake",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S05"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "cake.input.json",
+          "sha256": "b260d70aad33a199b7d92676496d1ae51aeafaa79cc23cf914a9e4d96db56c08"
+        },
+        {
+          "path": "cake.labels.json",
+          "sha256": "2b70a6c39d75503e5b3ebc2c7108bbee1e10f4616439a4138dc2a54cf9abd997"
+        }
+      ]
+    },
+    {
+      "case_id": "quantity",
+      "family_id": "quantity",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S07"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "quantity.input.json",
+          "sha256": "16dac5f1aa4d02fb933d6b0020f30aaa8cf54ea0cd2cf49b705a15ab41a1c9c6"
+        },
+        {
+          "path": "quantity.labels.json",
+          "sha256": "9ba475c92c2c535c02e09e72e53a422e8dedec7d3fc90c87ba03ed7311dc2fb1"
+        }
+      ]
+    },
+    {
+      "case_id": "meal",
+      "family_id": "meal",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S04"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "meal.input.json",
+          "sha256": "64f4fa19a1187a7aef01270c7ab3be332378a47325e6d13b8796b5097a22d79e"
+        },
+        {
+          "path": "meal.labels.json",
+          "sha256": "5430c7ce4c0f0483a2e62f31b9a3c7f35950237f6a4517c0bb3f7bf293731e7f"
+        }
+      ]
+    },
+    {
+      "case_id": "different_specs",
+      "family_id": "different_specs",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S06",
+        "S07"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "different_specs.input.json",
+          "sha256": "55c0881f90d050f117b35a0fc97c1035965870af843998f76cc137cafa175974"
+        },
+        {
+          "path": "different_specs.labels.json",
+          "sha256": "c42dfbd1b3ba61f1f0ec8f076c7c15426bbed4e025a72586f8f64f9613412458"
+        }
+      ]
+    },
+    {
+      "case_id": "empty",
+      "family_id": "empty",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S08"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "empty.input.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+        },
+        {
+          "path": "empty.labels.json",
+          "sha256": "4a7ca9a7b128d2c38b0b5d3f0a7a17ada17736aae01a7c486915c87d6efd37e2"
+        }
+      ]
+    },
+    {
+      "case_id": "limit",
+      "family_id": "limit",
+      "platform": "unknown",
+      "layout": "manual_lines",
+      "scenario_tags": [
+        "S08"
+      ],
+      "source_kind": "manual_text",
+      "split": "repair",
+      "source_note": "Developer authored fictional text; not transcribed from platform screenshots",
+      "usage_basis": "authored for local testing",
+      "redaction_review": "no personal data",
+      "label_version": "1",
+      "reviewer_status": "not_independently_reviewed",
+      "input_refs": [
+        {
+          "path": "limit.input.json",
+          "sha256": "345c92a6e383cf0076b610b4f0bfa2f29bc2b5eeca31e51edb6ff38480211a63"
+        },
+        {
+          "path": "limit.labels.json",
+          "sha256": "8175e85de3843b760d541e2aef340a3524327550f184a284bf9d27d5a2d5f5cd"
+        }
+      ]
+    }
+  ],
+  "additional_manifests": [
+    "native-manifest.json"
+  ],
+  "additional_annotations": [
+    {
+      "path": "semantic-labels-v1.json",
+      "sha256": "1b046f83921671a26ade1177e82831e257abb914ad6c420c4e52788d25a6e002"
+    },
+    {
+      "path": "quantity-labels-v2.json",
+      "sha256": "fce32af82f8a7ba502758c2a44e412c80ca565240a744d4944d7d198fd952410"
+    }
+  ],
+  "annotation_history": "quantity-labels-v2.json documents corrected explicit-only denominator; original labels retained. All labels still await independent review."
+}

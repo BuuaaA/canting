@@ -1,0 +1,8 @@
+{
+  "command": "flutter analyze --no-pub",
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T13:18:35.474054+00:00",
+  "ended_at": "2026-09-05T13:18:47.140716+00:00",
+  "exit_code": 1,
+  "log": "analyze-last.log"
+}

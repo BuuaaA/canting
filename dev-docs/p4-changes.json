@@ -1,0 +1,1355 @@
+{
+  "baseline": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "current_head": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "git_status": "## main...origin/main [ahead 8]\n M android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt\n M android/app/src/main/kotlin/com/canting/canting/MainActivity.kt\n M android/app/src/main/kotlin/com/canting/canting/OCRService.kt\n M android/app/src/main/kotlin/com/canting/canting/ShareActivity.kt\n M lib/core/local_food_matcher.dart\n M lib/core/models/local_food.dart\n M lib/main.dart\n M lib/platform/android_native_bridge.dart\n M lib/services/ocr_pipeline.dart\n M lib/state/app_state.dart\n M lib/ui/ocr/in_app_ocr_launcher.dart\n M lib/ui/record/record_detail_page.dart\n M test/core/p3_audit_test.dart\n M test/core/recommendation_engine_test.dart\n M test/state/p3_feedback_flow_test.dart\n M test/ui/ocr/in_app_ocr_launcher_test.dart\n M test/ui/p3_production_pages_test.dart\n?? .gitattributes\n?? android/app/src/main/kotlin/com/canting/canting/SharedImageStore.kt\n?? android/app/src/test/kotlin/com/canting/canting/P4ParserTest.kt\n?? android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt\n?? dev-docs/p4-changes.json\n?? dev-docs/p4-device-checklist.md\n?? dev-docs/p4-evidence/\n?? dev-docs/p4-recognition-acceptance.md\n?? scripts/p4/\n?? test/core/p4_specs_test.dart\n?? test/fixtures/recognition_acceptance/\n?? test/state/p4_race_test.dart\n?? test/state/p4_review_regression_test.dart\n?? test/state/p4_semantic_replay_test.dart\n?? tool/p4_native_smoke.dart",
+  "created_at": "2026-09-05T14:15:37.820019+00:00",
+  "manifest_excludes_itself": true,
+  "revision": "R1-R3",
+  "previous_manifest": "dev-docs/p4-evidence/repair-20260905/previous-changes.json",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "status": "added",
+      "old_path": null,
+      "new_path": ".gitattributes",
+      "sha256": "f5ade1a4260670447812766eb96d2008ce16b2e89eba0606ffa68de233c3379c",
+      "bytes": 205
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt",
+      "status": "modified",
+      "old_path": "android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt",
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt",
+      "sha256": "3766faa8ba3d788c29790b4992ae5cc8702c4023f5edca1ce0f7d4c160ab7037",
+      "bytes": 6576
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/MainActivity.kt",
+      "status": "modified",
+      "old_path": "android/app/src/main/kotlin/com/canting/canting/MainActivity.kt",
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/MainActivity.kt",
+      "sha256": "b6d86bd70a2027dbfec07572fe5ac0504579b6c76566cd904e589abed44d7bca",
+      "bytes": 8657
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/OCRService.kt",
+      "status": "modified",
+      "old_path": "android/app/src/main/kotlin/com/canting/canting/OCRService.kt",
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/OCRService.kt",
+      "sha256": "f3fc07b084ba2d79ea7fac8834da1858261c8fce401430edb43841ceb8a78fc5",
+      "bytes": 4013
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/ShareActivity.kt",
+      "status": "modified",
+      "old_path": "android/app/src/main/kotlin/com/canting/canting/ShareActivity.kt",
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/ShareActivity.kt",
+      "sha256": "551fcf3ca684e60ef228f9292dde2c9f29027c263e7f64ecaf31993ba2ec65f5",
+      "bytes": 4001
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/SharedImageStore.kt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/SharedImageStore.kt",
+      "sha256": "c391863b544f4f43afb561025d9228a3bd72623137661c10a6084261d0407ee5",
+      "bytes": 2266
+    },
+    {
+      "path": "android/app/src/test/kotlin/com/canting/canting/P4ParserTest.kt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/test/kotlin/com/canting/canting/P4ParserTest.kt",
+      "sha256": "7bc2fedd6920199203a25a61d4aa554b63a3d76e43ad3ee139bc3653c5dc5b96",
+      "bytes": 1448
+    },
+    {
+      "path": "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+      "sha256": "28990fd7bdac79c500608c3c2c9801069490244f26c964755dc90b1d677339cd",
+      "bytes": 1680
+    },
+    {
+      "path": "dev-docs/p4-device-checklist.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-device-checklist.md",
+      "sha256": "88500f798bad6840e5e25019f66ec2017fa2ad04e212dff81ccde38b09ff06ab",
+      "bytes": 4445
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/after-metrics.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/after-metrics.command.json",
+      "sha256": "10176c1297170c2064a4fc81b58ef608779dd25c44fecd8d7a144db90e9815e0",
+      "bytes": 294
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/after-probe.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/after-probe.command.json",
+      "sha256": "f438332f2d05a1d7a73bc9b6a52fbf7766104c60f93b04cf70baa377635a8da6",
+      "bytes": 478
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/baseline-parser.tsv",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/baseline-parser.tsv",
+      "sha256": "c1abdd8557c8146d358f363f650950c5268758aa523b92ee0f7aadd8a3e194f6",
+      "bytes": 1794
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/baseline-semantic.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/baseline-semantic.json",
+      "sha256": "bb266f367a2a662e2dccb68fa3840d0542dee2642c85f81e597fabdcca0982c0",
+      "bytes": 162408
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/before-metrics.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/before-metrics.command.json",
+      "sha256": "baaf209e9dadcbafd5381b49c4ca49496643e0a10453d60f8dcec72a994ec10d",
+      "bytes": 295
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/before-probe.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/before-probe.command.json",
+      "sha256": "866e508b410a2c9abe6025a53c8f677e0881973d663f81f6ab2f3f087e135749",
+      "bytes": 479
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/candidate-audit.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/candidate-audit.json",
+      "sha256": "937fd59c3fc87d79b229150cf80de8d0e023b23d8fa7429a5d628debc27b5c84",
+      "bytes": 702857
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/case-results.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/case-results.json",
+      "sha256": "4c34dbc30b9d62bde19a1ab660056195498f1ebdb2cc6a96b42c047cbd95ba97",
+      "bytes": 289979
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/component-recommendation-28d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/component-recommendation-28d.png",
+      "sha256": "64e9192f9af652957a7c9316f80afd0e966de7cb3838358698bad332f7945a70",
+      "bytes": 118529
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/component-recommendation-7d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/component-recommendation-7d.png",
+      "sha256": "31b49073263ad08a5c662378c8fff7dca7bc211ae931d3dfdc10e7148def3a1b",
+      "bytes": 104316
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/component-save-prompt.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/component-save-prompt.png",
+      "sha256": "ae6909f566e055b75b61d44f816df49447b1d444aff54631fbbbf3b1fbe7db35",
+      "bytes": 77554
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/diff-check.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/diff-check.json",
+      "sha256": "d20ce44ad6ecb6d41e86067514d1e7e4ff8fc52435aede9bf5676263ab2ccdef",
+      "bytes": 529
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/expanded-probe.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/expanded-probe.command.json",
+      "sha256": "4ce7fe777d991cbde3e8389bb7ffd88b38b0149bf8d0d5ec2c899fabf854d16a",
+      "bytes": 481
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/failures.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/failures.json",
+      "sha256": "824a595c7fe08e4b5c48c8de7d9f8415049f161ea35e7c7cd3f62032262eb1b5",
+      "bytes": 18047
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/feedback-events.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/feedback-events.json",
+      "sha256": "3cfd43626905ebed16670be81da096c761d9a2f7d0ac9d3e4bde77378666dfdd",
+      "bytes": 358
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/final-analyze.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/final-analyze.command.json",
+      "sha256": "2bf5ed32caac8b04caaab23530b7696502e7ecd87602e2d0d686018695c8072b",
+      "bytes": 373
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/final-full.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/final-full.command.json",
+      "sha256": "32e16a36324038af4c8ba11c334163979e600837b4b2bd662562f965d42bb31d",
+      "bytes": 427
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/final-related.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/final-related.command.json",
+      "sha256": "2e71460cbcec8f61e7a263480a2d6f09cdbddf56356da5ed0aa7b2420d9085af",
+      "bytes": 615
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/final-score.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/final-score.command.json",
+      "sha256": "13570a5400b0269968a22c132b43954207556a82eab3728b5350b51b6cc5aca6",
+      "bytes": 287
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/format-check.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/format-check.command.json",
+      "sha256": "9ad6ecbba4d88e79f4774b4ef3e54417fdb6d3153a69e8ba7f92c96c53a72924",
+      "bytes": 1075
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/format.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/format.command.json",
+      "sha256": "df40bf0f7d91db6adb1e59d19d135c8f5eb3d4fb857fece6c629366eba30a8eb",
+      "bytes": 1017
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/legacy-convergence-diagnostic.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/legacy-convergence-diagnostic.json",
+      "sha256": "d374215ddda05a7915f41a1c52ca907408298fc5ca99f8fb73b34d23728a36c5",
+      "bytes": 6580
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/metrics.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/metrics.json",
+      "sha256": "3daefa063b35af0350f93a8a5856e5f5dd923c5e11a5df26ec324fd492e59589",
+      "bytes": 159387
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/parser-actual.tsv",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/parser-actual.tsv",
+      "sha256": "f40789e19a8448d6357e758fcb3333af09b911217b71017bd74ab5a24bf3ac05",
+      "bytes": 2164
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/previous-changes.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/previous-changes.json",
+      "sha256": "2c7883866df62c011f61db6b9852249ac1508d4c5349683873ff104364f7519b",
+      "bytes": 44701
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/previous-report.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/previous-report.md",
+      "sha256": "24ac6ecffb07504ee12a1a88b5cd1514c4b556a04d0df176edf97f50b7d7068b",
+      "bytes": 10657
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/scoring-v2-comparison.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/scoring-v2-comparison.json",
+      "sha256": "ad5c15d46ccc47c938af630b5a80abd83cf704d97959afa95352cf2626e507b1",
+      "bytes": 4445
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/semantic-actual.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/semantic-actual.json",
+      "sha256": "edd428ec3b73187be195642ec297ca7259dd8a9da8ea9a3055d149cb76601ae8",
+      "bytes": 162320
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/simulation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/simulation.json",
+      "sha256": "43aa454e36a13de0732974c282ff031273b5076835e66fd0c1dec6961a3e989a",
+      "bytes": 135246
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/validation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/validation.json",
+      "sha256": "58ea914c61ce401e09a2382f5be01987cfa8bfe305c2ddb016440a49e72c3ca7",
+      "bytes": 13184
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/verified-analyze.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/verified-analyze.command.json",
+      "sha256": "4da95d1eb7367bae8b718610240bccba95c1df44204b397f07e91d23497d1722",
+      "bytes": 376
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/verified-metrics.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/verified-metrics.command.json",
+      "sha256": "7c1f002f76ca331257cbbedea62aab0ab0e84fe3a6240b79e484de6ab9e4de39",
+      "bytes": 297
+    },
+    {
+      "path": "dev-docs/p4-evidence/repair-20260905/verified-probe.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/repair-20260905/verified-probe.command.json",
+      "sha256": "963929d25e1d07f7b79423e85daed601000a588c298d227010b350eb9fcde3e8",
+      "bytes": 481
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.DishNameExtractorTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.DishNameExtractorTest.xml",
+      "sha256": "76d6aaafbe8ff384d03a5a1bd32924b65390364b00e173f53ab6ba61425db3c3",
+      "bytes": 2694
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ParserTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ParserTest.xml",
+      "sha256": "6e2889b65871c984e9ae52823746889f3d4fcd0a80c5923baf41a9b73eec69bf",
+      "bytes": 888
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ReplayTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/TEST-com.canting.canting.P4ReplayTest.xml",
+      "sha256": "9a46c45befad55ba05bf06dbe7d9cb612b0c16d33bd5103847892968376253de",
+      "bytes": 424
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/acceptance-matrix.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/acceptance-matrix.json",
+      "sha256": "090738dc2d819caa48b05abedd02389a6b0181d284ab1b8301af62267ffea81d",
+      "bytes": 5024
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/analyze-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/analyze-final.command.json",
+      "sha256": "ca6a3f9ce1dae935198c7d80196a6eb16034e738ac929e877c7f17a9afb27015",
+      "bytes": 231
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/analyze-first.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/analyze-first.command.json",
+      "sha256": "1738f64070611be8ccde9c5e96b3222b9293cde1af9793ff316547dcf1b4c2a5",
+      "bytes": 231
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/analyze-last.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/analyze-last.command.json",
+      "sha256": "2e8e780db9e761170155f608f93798a6ba728779d6b1c414c30f346ed6fb52c5",
+      "bytes": 230
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/analyze-second.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/analyze-second.command.json",
+      "sha256": "6e8dfee2753525225780d833ab5f422699feb6d54eca6d15306020ef82b6166e",
+      "bytes": 232
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-kotlin.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-kotlin.command.json",
+      "sha256": "0466cc9a97a9417b4263e6c33cf9712abeba9ab414aedfedba252c7f112f076a",
+      "bytes": 262
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-parser.tsv",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-parser.tsv",
+      "sha256": "c1abdd8557c8146d358f363f650950c5268758aa523b92ee0f7aadd8a3e194f6",
+      "bytes": 1794
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-race.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-race.command.json",
+      "sha256": "5f6f2d24b9f72366fa867a4f0438e6cd6ebb041c2e45c6e37bdc7dca3cfd571a",
+      "bytes": 277
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-replay.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-replay.command.json",
+      "sha256": "a12c6298160dca6cb9b5a34300b1ac7b59482a61f647569f555ca0f2fcd9af2e",
+      "bytes": 262
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-semantic-corrected.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-semantic-corrected.command.json",
+      "sha256": "949ea553663722b10c0ea8661c5ef8b8b1cbdabd23769fbda10939e84abe9297",
+      "bytes": 302
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-semantic.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-semantic.command.json",
+      "sha256": "643022e7aa21e2bfc55e7e9bdd287c2cef59140d2eb2d8efcead97305ae65b9c",
+      "bytes": 292
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-semantic.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-semantic.json",
+      "sha256": "bb266f367a2a662e2dccb68fa3840d0542dee2642c85f81e597fabdcca0982c0",
+      "bytes": 162408
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/baseline-spec.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/baseline-spec.command.json",
+      "sha256": "ad598d8d9474dc5154a1625eb40944edbce0f18135329edba2bb5f17168f2f89",
+      "bytes": 277
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/build-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/build-final.command.json",
+      "sha256": "1d0d455528f75834491a747fcb1da9835e615d2eee428b205a2ddf2c5b8ba0db",
+      "bytes": 274
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/build-frozen-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/build-frozen-sources.json",
+      "sha256": "ded1b6c3ce5b0c4ed87f3305a5bdacac78e7869ad1ac158bd55f49612aba76c8",
+      "bytes": 11036
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/build-frozen.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/build-frozen.command.json",
+      "sha256": "1c98c248830a449685bcb138079244450eb2d4a7e718dfbde082f310bc3c97b7",
+      "bytes": 275
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/build.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/build.command.json",
+      "sha256": "f0296d1e3d412d10c7a3e54f28301ac6b5d76caeaad94328cff6ca29dd312663",
+      "bytes": 268
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/candidate-audit.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/candidate-audit.json",
+      "sha256": "937fd59c3fc87d79b229150cf80de8d0e023b23d8fa7429a5d628debc27b5c84",
+      "bytes": 702857
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/case-results.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/case-results.json",
+      "sha256": "4c34dbc30b9d62bde19a1ab660056195498f1ebdb2cc6a96b42c047cbd95ba97",
+      "bytes": 289979
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/component-recommendation-28d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/component-recommendation-28d.png",
+      "sha256": "64e9192f9af652957a7c9316f80afd0e966de7cb3838358698bad332f7945a70",
+      "bytes": 118529
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/component-recommendation-7d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/component-recommendation-7d.png",
+      "sha256": "31b49073263ad08a5c662378c8fff7dca7bc211ae931d3dfdc10e7148def3a1b",
+      "bytes": 104316
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/component-save-prompt.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/component-save-prompt.png",
+      "sha256": "1d4f6b772dea257c7e587c33ebfbb2b90f701f577c604f39c244478438933442",
+      "bytes": 77547
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/device-system.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/device-system.txt",
+      "sha256": "d91a915db080736443c7b2fa55b70a31d2e4cddb9182844bb91e04897b9d4598",
+      "bytes": 4
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/devices.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/devices.command.json",
+      "sha256": "0748b70395a90fa9e37157b6179f052e79c6619fdc341b019a5d4d4599ce027c",
+      "bytes": 215
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/diff-check-initial.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/diff-check-initial.json",
+      "sha256": "dd1b4b4bc9f941635fc9ad0fd844c699bef482bfd34f233ce70c64735f260016",
+      "bytes": 25952
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/diff-check.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/diff-check.json",
+      "sha256": "141c05ce89ab7ad6d6b60deaa9559d21a6fa0b24edcce4a263ae04b0e1846054",
+      "bytes": 8383
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/emulator-production-page.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/emulator-production-page.png",
+      "sha256": "014b9daffe5faa61d3e0a68503b0e788fdcdc1bd9d3858fc2c495865048f9ab2",
+      "bytes": 176282
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/failures.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/failures.json",
+      "sha256": "824a595c7fe08e4b5c48c8de7d9f8415049f161ea35e7c7cd3f62032262eb1b5",
+      "bytes": 18047
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/feedback-events.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/feedback-events.json",
+      "sha256": "3cfd43626905ebed16670be81da096c761d9a2f7d0ac9d3e4bde77378666dfdd",
+      "bytes": 358
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/final-kotlin.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/final-kotlin.command.json",
+      "sha256": "cd055b532eb84becd5be1286cf3858bc8eab7c535e10350f8f7a4d0eb64e7376",
+      "bytes": 259
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/final-semantic.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/final-semantic.command.json",
+      "sha256": "81c48d8222708aa7d5bd9bb1a373afc43e0a77321ade78659f2e4a5967afc4e0",
+      "bytes": 289
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/first-emulator-production-page.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/first-emulator-production-page.png",
+      "sha256": "12d1d43b41f93aeb5cc74a2e094dfeb3992188068cc8de4f03a61f3a183c95b8",
+      "bytes": 175128
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/first-native-collection.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/first-native-collection.command.json",
+      "sha256": "48743cf7e212e2d582af42770b2f573c3e7168425c6b7ba3b3ed614aaed598ec",
+      "bytes": 1602
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/first-native-input.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/first-native-input.png",
+      "sha256": "d975b8fe4bf9cae24abb77537456d8a7c00ee71b258e8a28d6474651f958135d",
+      "bytes": 34146
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/first-native-result.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/first-native-result.json",
+      "sha256": "6612b700c1348c93f906098c4c5f8c30c72ec5d06c9073fabd95dbd6d138c599",
+      "bytes": 10870
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/fixed-kotlin.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/fixed-kotlin.command.json",
+      "sha256": "05e3ed831ac4a949821bc91e5c6f3bb3bd59e8fa3e8f6b1381d0f516c7db469b",
+      "bytes": 259
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/fixed-race.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/fixed-race.command.json",
+      "sha256": "d10eec0386cb7f709d29efebe2f1518ac536bd3cb10f62c6a7eee4f7e710c471",
+      "bytes": 274
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format-all.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format-all.command.json",
+      "sha256": "31c2de5ecfdb642c8b4cfbc5e5bb8b104fadf99c05a60c514535746bbfe57e07",
+      "bytes": 892
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format-check.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format-check.command.json",
+      "sha256": "1d4492104ca7804274d7d90c0fe4b4be1f9771cd670f9242641b8f23d41c6816",
+      "bytes": 946
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format-last.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format-last.command.json",
+      "sha256": "c0a0d298d84b66733fd9648423285b7b6e53473012cc4f946cb247ba80707784",
+      "bytes": 429
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format-native.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format-native.command.json",
+      "sha256": "226a183fa4808e83932b4f9e4ae2af65bcc0e22e05f57c17ac2a6cb88a121ce5",
+      "bytes": 431
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format-refine.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format-refine.command.json",
+      "sha256": "aff667d25b93f714982a23c9f2825d8d04a96ba617afa5e28a028efd43a828fd",
+      "bytes": 431
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/format.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/format.command.json",
+      "sha256": "a3cc5d763f7d2f9f359d714b6cf7ca4c54ef42138ca9846e0cf07d3fc9bb6971",
+      "bytes": 424
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/full-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/full-final.command.json",
+      "sha256": "04e6cc997595b22daad5aa5d0c9e675aaf8b95c90f985bfc582c1a72967ed2e5",
+      "bytes": 245
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/full-first.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/full-first.command.json",
+      "sha256": "22368f6caa934c353e91b0015cfb1d4d2a0b40300b136ccf7eb7b05f1dc954ae",
+      "bytes": 245
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/full-second.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/full-second.command.json",
+      "sha256": "a0d5d7d5768d5d42612ffba4b40ad67c7fb186f2a3593ca48ce8b8e7948f030a",
+      "bytes": 246
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/full-third.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/full-third.command.json",
+      "sha256": "d6514f34caa4f36c094db32656a0192b219c9762aa1b649f8de2d2d4358b49e0",
+      "bytes": 245
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/install-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/install-final.command.json",
+      "sha256": "e522253c348b6aff25bbf84919c6d62e08cfbc3976a4f2eb5fe1474e2c673080",
+      "bytes": 282
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/install-frozen.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/install-frozen.command.json",
+      "sha256": "4ac090385fce425334d6f48a36d045483643f82a805e7c1778548d244b7be938",
+      "bytes": 283
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/install.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/install.command.json",
+      "sha256": "9a0b55a14dff28c47e8cb5ae84300a77491f34a931d9b55b80edec471c9987ff",
+      "bytes": 276
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/invalid-semantic-no-guidelines.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/invalid-semantic-no-guidelines.json",
+      "sha256": "2f3256391e6f5307f42cf271ab2e509e1f9d78a0b5b8763b8eca2f7231004e1a",
+      "bytes": 171180
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/kotlin-final-boundaries.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/kotlin-final-boundaries.command.json",
+      "sha256": "221e08e2df0043e76a95bc5e81ad8874598f5847f6058fcfd33ad24f9cb974b8",
+      "bytes": 270
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/launch-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/launch-final.command.json",
+      "sha256": "5b764d5069891c724ac7d656fbe24cd7239045aae31183d0e51933b38cb1fc2d",
+      "bytes": 281
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/launch-frozen.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/launch-frozen.command.json",
+      "sha256": "11b6ab9b1291fd1d1514d149d0016377b6a74b2c831eb58a0459603dc0308c06",
+      "bytes": 282
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/launch.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/launch.command.json",
+      "sha256": "259afd9e01e6120c251c5948a35acf0ae59a9d385f1ab7a90d3e57dee1e6e015",
+      "bytes": 275
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/legacy-convergence-diagnostic.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/legacy-convergence-diagnostic.json",
+      "sha256": "d374215ddda05a7915f41a1c52ca907408298fc5ca99f8fb73b34d23728a36c5",
+      "bytes": 6580
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-28d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-28d.png",
+      "sha256": "64e9192f9af652957a7c9316f80afd0e966de7cb3838358698bad332f7945a70",
+      "bytes": 118529
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-7d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-recommendation-7d.png",
+      "sha256": "31b49073263ad08a5c662378c8fff7dca7bc211ae931d3dfdc10e7148def3a1b",
+      "bytes": 104316
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-save-prompt.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-component-save-prompt.png",
+      "sha256": "57386eb6ee59198dd523dba0c554368ed1bc6a55ae1bd37110b373f7ebdfaab2",
+      "bytes": 78740
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-simulation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/legacy-rerun-simulation.json",
+      "sha256": "1fe67f167c7e03b05ffbae28815b037ceb36d3a1671fe2d73bbe467f57c59d06",
+      "bytes": 135246
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/metrics.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/metrics.json",
+      "sha256": "feaaa8d041141420592e1d49d4e6a9a4f4afac2d8bb05ceee7a64911cb4249e4",
+      "bytes": 166566
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/native-case-results.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/native-case-results.json",
+      "sha256": "b0ff1d9f3b9afff462d8b2d46fe62f987cf37545f5d1ff8d0ce1427b3af6f61a",
+      "bytes": 6097
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/native-collection.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/native-collection.command.json",
+      "sha256": "66ba4092b688fcea35898f488429046561c53d1133c3ad501b703bd6835291a5",
+      "bytes": 1602
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/native-input.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/native-input.png",
+      "sha256": "d975b8fe4bf9cae24abb77537456d8a7c00ee71b258e8a28d6474651f958135d",
+      "bytes": 34146
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/native-result.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/native-result.json",
+      "sha256": "cf3e4aadc3135eb58c51245ee99fb24ed4c444eaa0948ac8951d2a73372ac19c",
+      "bytes": 11405
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/parser-actual.tsv",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/parser-actual.tsv",
+      "sha256": "f40789e19a8448d6357e758fcb3333af09b911217b71017bd74ab5a24bf3ac05",
+      "bytes": 2164
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/race-final.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/race-final.command.json",
+      "sha256": "b9381f690237757af5cab799c793e62c19b805275046a1c6cb374961b15aeeb8",
+      "bytes": 274
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/related-fourth.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/related-fourth.command.json",
+      "sha256": "2e9d1c9ad62b60d112a516157b299261c43a8e83ab674e3a25df1d90e6ab437d",
+      "bytes": 320
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/related-third.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/related-third.command.json",
+      "sha256": "1cd4afa86f6524e305e03b895145ecc9e31eaa13d7da18cf730ff54438d3ad02",
+      "bytes": 319
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/semantic-actual.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/semantic-actual.json",
+      "sha256": "edd428ec3b73187be195642ec297ca7259dd8a9da8ea9a3055d149cb76601ae8",
+      "bytes": 162320
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/semantic-freeze.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/semantic-freeze.json",
+      "sha256": "76380f3100bd73b82e5ac30bd7a373261e0c2d4e793a307bb6b2287a47c43dba",
+      "bytes": 180
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/simulation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/simulation.json",
+      "sha256": "4317094069cf4df80ac2d2c25962142c9e0f88f62b377da8508288d5524a200e",
+      "bytes": 135246
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/validation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/validation.json",
+      "sha256": "fb069cf32d7d13beb7e8189c6794635044c848e187f549844a5d78e5767084bc",
+      "bytes": 32463
+    },
+    {
+      "path": "dev-docs/p4-evidence/run-20260905/version.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-evidence/run-20260905/version.command.json",
+      "sha256": "0df3ab06bdeace861046c1e5b99aa3c2f08b96c0ee8ea7a75b5e17a51feefdbc",
+      "bytes": 218
+    },
+    {
+      "path": "dev-docs/p4-recognition-acceptance.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p4-recognition-acceptance.md",
+      "sha256": "5df729bce57d106a59f78d79e31e4e73a966015258a4dfb4f25390b8da911cb9",
+      "bytes": 5326
+    },
+    {
+      "path": "lib/core/local_food_matcher.dart",
+      "status": "modified",
+      "old_path": "lib/core/local_food_matcher.dart",
+      "new_path": "lib/core/local_food_matcher.dart",
+      "sha256": "3254f6b21014ca8d6fd460368d767fb0c8704ed87f518ae3f884cd2e9bb3a3bf",
+      "bytes": 8042
+    },
+    {
+      "path": "lib/core/models/local_food.dart",
+      "status": "modified",
+      "old_path": "lib/core/models/local_food.dart",
+      "new_path": "lib/core/models/local_food.dart",
+      "sha256": "4fdb6ddba703493a673e7aea3868bd1cd354d594ac79988bff5f9d71959ca835",
+      "bytes": 8424
+    },
+    {
+      "path": "lib/main.dart",
+      "status": "modified",
+      "old_path": "lib/main.dart",
+      "new_path": "lib/main.dart",
+      "sha256": "6bf7d410f60f1780f64f49179a14f43926398bdc2e9519535683e94c20b09ed0",
+      "bytes": 7782
+    },
+    {
+      "path": "lib/platform/android_native_bridge.dart",
+      "status": "modified",
+      "old_path": "lib/platform/android_native_bridge.dart",
+      "new_path": "lib/platform/android_native_bridge.dart",
+      "sha256": "6a1e13244592041df9adac54692644924a49a7fff93b09a854037ee5d9348e82",
+      "bytes": 5592
+    },
+    {
+      "path": "lib/services/ocr_pipeline.dart",
+      "status": "modified",
+      "old_path": "lib/services/ocr_pipeline.dart",
+      "new_path": "lib/services/ocr_pipeline.dart",
+      "sha256": "9c8f8f4b67244f5093b65fb3d288474daf0caa9bd0acc5837aec94f2f557978c",
+      "bytes": 3794
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "status": "modified",
+      "old_path": "lib/state/app_state.dart",
+      "new_path": "lib/state/app_state.dart",
+      "sha256": "a081a7d6f7553bc8e65a029bdb2df5a2d39f7e10b4123f651ed3042643a7d2ab",
+      "bytes": 49622
+    },
+    {
+      "path": "lib/ui/ocr/in_app_ocr_launcher.dart",
+      "status": "modified",
+      "old_path": "lib/ui/ocr/in_app_ocr_launcher.dart",
+      "new_path": "lib/ui/ocr/in_app_ocr_launcher.dart",
+      "sha256": "9a6d0acd43b822a4e9c8f40f9ccf9c54b411419cc5347d166aee79602b1b40d3",
+      "bytes": 5357
+    },
+    {
+      "path": "lib/ui/record/record_detail_page.dart",
+      "status": "modified",
+      "old_path": "lib/ui/record/record_detail_page.dart",
+      "new_path": "lib/ui/record/record_detail_page.dart",
+      "sha256": "41acb1dd28def55e7c59b27d80b3071983a2e5a873faaaead054712c99eaf137",
+      "bytes": 27072
+    },
+    {
+      "path": "scripts/p4/metrics.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p4/metrics.py",
+      "sha256": "7f4b81e4c02a1b1832f409ff68e4617586c18850249ac1c325b085458c3ca7b5",
+      "bytes": 7077
+    },
+    {
+      "path": "scripts/p4/native_metrics.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p4/native_metrics.py",
+      "sha256": "d2a3a88475cb30e248cbc22ebb5051559fe2c6c3ae09ad63f779c26e85367e86",
+      "bytes": 3921
+    },
+    {
+      "path": "scripts/p4/run.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p4/run.py",
+      "sha256": "c7e17eca81ae88bdbab8f0bd98ce0cea8479b4ae4a37c0c15cfa3654d9dee575",
+      "bytes": 2610
+    },
+    {
+      "path": "scripts/p4/test_metrics.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p4/test_metrics.py",
+      "sha256": "9c8c0e82995b24b1e7cfbb24c9b73fe078b1972d49b7af1342b98215131bf83d",
+      "bytes": 1792
+    },
+    {
+      "path": "test/core/p3_audit_test.dart",
+      "status": "modified",
+      "old_path": "test/core/p3_audit_test.dart",
+      "new_path": "test/core/p3_audit_test.dart",
+      "sha256": "8b69e27e13f6034c764b954a71cf8a43a0be0456d330adc62bb7ae153f185e77",
+      "bytes": 9785
+    },
+    {
+      "path": "test/core/p4_specs_test.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/core/p4_specs_test.dart",
+      "sha256": "db3371c219df396fa11ef36a89c34730fe4d11dfd6af04ba60f1c2755d61fa3f",
+      "bytes": 564
+    },
+    {
+      "path": "test/core/recommendation_engine_test.dart",
+      "status": "modified",
+      "old_path": "test/core/recommendation_engine_test.dart",
+      "new_path": "test/core/recommendation_engine_test.dart",
+      "sha256": "f6d77c09b91c425279df23b32122108b0af67e2ce64c598694714266b844db98",
+      "bytes": 38369
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/README.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/README.md",
+      "sha256": "ddd47bf53a5891767d9a0450883b51f8a5b4b613bc52cb79caacfbe79e14602d",
+      "bytes": 2987
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/cake.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/cake.input.json",
+      "sha256": "b260d70aad33a199b7d92676496d1ae51aeafaa79cc23cf914a9e4d96db56c08",
+      "bytes": 55
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/cake.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/cake.labels.json",
+      "sha256": "2b70a6c39d75503e5b3ebc2c7108bbee1e10f4616439a4138dc2a54cf9abd997",
+      "bytes": 142
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/different_specs.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/different_specs.input.json",
+      "sha256": "55c0881f90d050f117b35a0fc97c1035965870af843998f76cc137cafa175974",
+      "bytes": 64
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/different_specs.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/different_specs.labels.json",
+      "sha256": "c42dfbd1b3ba61f1f0ec8f076c7c15426bbed4e025a72586f8f64f9613412458",
+      "bytes": 149
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/empty.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/empty.input.json",
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "bytes": 4
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/empty.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/empty.labels.json",
+      "sha256": "4a7ca9a7b128d2c38b0b5d3f0a7a17ada17736aae01a7c486915c87d6efd37e2",
+      "bytes": 70
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/fees.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/fees.input.json",
+      "sha256": "789bc057c5892681a021ea8d51a6c363fd45fa0230161545902747541c858a8e",
+      "bytes": 80
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/fees.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/fees.labels.json",
+      "sha256": "4a7ca9a7b128d2c38b0b5d3f0a7a17ada17736aae01a7c486915c87d6efd37e2",
+      "bytes": 70
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/limit.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/limit.input.json",
+      "sha256": "345c92a6e383cf0076b610b4f0bfa2f29bc2b5eeca31e51edb6ff38480211a63",
+      "bytes": 524
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/limit.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/limit.labels.json",
+      "sha256": "8175e85de3843b760d541e2aef340a3524327550f184a284bf9d27d5a2d5f5cd",
+      "bytes": 815
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/manifest.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/manifest.json",
+      "sha256": "c8490472b6ad4fdffbe614b2000c751fe6b20dbe3ba73588b56cf1ae1c7ddb71",
+      "bytes": 9517
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/manifest.text-v1.frozen.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/manifest.text-v1.frozen.json",
+      "sha256": "57e3eaa775e97aa8d311a0de8ef03410aaf4b8b7c1c6d2567ae68c6b3ba0517b",
+      "bytes": 8968
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/meal.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/meal.input.json",
+      "sha256": "64f4fa19a1187a7aef01270c7ab3be332378a47325e6d13b8796b5097a22d79e",
+      "bytes": 53
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/meal.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/meal.labels.json",
+      "sha256": "5430c7ce4c0f0483a2e62f31b9a3c7f35950237f6a4517c0bb3f7bf293731e7f",
+      "bytes": 154
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/native-manifest.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/native-manifest.json",
+      "sha256": "c1d4c562fe89b0bb95c6105540f2bf59717f1781b3623f904ab8f2d80d3113ad",
+      "bytes": 1112
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/quantity-labels-v2.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/quantity-labels-v2.json",
+      "sha256": "fce32af82f8a7ba502758c2a44e412c80ca565240a744d4944d7d198fd952410",
+      "bytes": 1188
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/quantity.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/quantity.input.json",
+      "sha256": "16dac5f1aa4d02fb933d6b0020f30aaa8cf54ea0cd2cf49b705a15ab41a1c9c6",
+      "bytes": 23
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/quantity.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/quantity.labels.json",
+      "sha256": "9ba475c92c2c535c02e09e72e53a422e8dedec7d3fc90c87ba03ed7311dc2fb1",
+      "bytes": 103
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/semantic-labels-v1.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/semantic-labels-v1.json",
+      "sha256": "1b046f83921671a26ade1177e82831e257abb914ad6c420c4e52788d25a6e002",
+      "bytes": 5071
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/spec.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/spec.input.json",
+      "sha256": "87b06628d2c16e57e7dc8caa19d5ad19f9ef91c496d82e16c76a853485fee1a8",
+      "bytes": 57
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/spec.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/spec.labels.json",
+      "sha256": "cb3e8469e3a106aeeb6c15909ff9386ccb231c2889015577eaf2f682e42b8793",
+      "bytes": 120
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/typo.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/typo.input.json",
+      "sha256": "b6789d052345469084282aa33d85058a5bbeef248c663a525dbaa891606aeb03",
+      "bytes": 24
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/typo.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/typo.labels.json",
+      "sha256": "f6f31da235abf7e7253193b65910ba4d6a4490b5917f691fdbd14d8f675d86e8",
+      "bytes": 105
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/unknown.input.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/unknown.input.json",
+      "sha256": "956b5e5fb26211295f7295c09ec913bb781a90411e09168999990a10d0d93f9f",
+      "bytes": 42
+    },
+    {
+      "path": "test/fixtures/recognition_acceptance/unknown.labels.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/fixtures/recognition_acceptance/unknown.labels.json",
+      "sha256": "8305cdda40477d301002513821b793acdfe72204055e48957623e05568db9f9f",
+      "bytes": 117
+    },
+    {
+      "path": "test/state/p3_feedback_flow_test.dart",
+      "status": "modified",
+      "old_path": "test/state/p3_feedback_flow_test.dart",
+      "new_path": "test/state/p3_feedback_flow_test.dart",
+      "sha256": "2681eedcd038073001c5dd094eb867ff2224f064ac760cc8e391b0bcc13a7e5d",
+      "bytes": 11996
+    },
+    {
+      "path": "test/state/p4_race_test.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/state/p4_race_test.dart",
+      "sha256": "7c90f2b8ea1e927907ac8468b54064b35565b8d13362ac19e817e39da121a60f",
+      "bytes": 8951
+    },
+    {
+      "path": "test/state/p4_review_regression_test.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/state/p4_review_regression_test.dart",
+      "sha256": "157f3da30ef8a5ea318175c5402af840c1bd49e864bba40e6acb30cd06a2e34c",
+      "bytes": 20212
+    },
+    {
+      "path": "test/state/p4_semantic_replay_test.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/state/p4_semantic_replay_test.dart",
+      "sha256": "0a2b2b3f888a7a613a8da87ea60dd827e62226b7c52e48610f2a92db6fbb9848",
+      "bytes": 3212
+    },
+    {
+      "path": "test/ui/ocr/in_app_ocr_launcher_test.dart",
+      "status": "modified",
+      "old_path": "test/ui/ocr/in_app_ocr_launcher_test.dart",
+      "new_path": "test/ui/ocr/in_app_ocr_launcher_test.dart",
+      "sha256": "9be4fdb704087eb71c8accea9192bbc3aa11759b24f8d2c64d80d8000bbb32d7",
+      "bytes": 19515
+    },
+    {
+      "path": "test/ui/p3_production_pages_test.dart",
+      "status": "modified",
+      "old_path": "test/ui/p3_production_pages_test.dart",
+      "new_path": "test/ui/p3_production_pages_test.dart",
+      "sha256": "633dd77f3860a68b3d737dd21e98d0995c3d58b9719d385567838410a4a86a19",
+      "bytes": 13398
+    },
+    {
+      "path": "tool/p4_native_smoke.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "tool/p4_native_smoke.dart",
+      "sha256": "16fcbe9f538f556b781e9b8d6fd386f3932a068b49b3974004334f52da3bc640",
+      "bytes": 7549
+    }
+  ]
+}
