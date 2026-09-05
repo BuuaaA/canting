@@ -160,21 +160,19 @@ void main() {
         merchant: draft.merchant,
       );
 
-      // 匹配发生在 Dart 侧（buildMealRecord → DishMatcher），
-      // 不直接采用 Kotlin 端原始字符串。
+      // P2: approximate/branded OCR stays a candidate until explicitly confirmed.
       final dish = meal.dishes.single;
-      expect(dish.matchedDishId, isNotNull);
-      expect(dish.matchConfidence, 0.8); // 包含匹配固定置信度
-      expect(
-        dish.portions.byCategory.values.any((value) => value != 0),
-        isTrue,
-      );
+      expect(dish.matchedDishId, isNull);
+      expect(dish.contributionsKnown, isFalse);
+      expect(dish.food!.candidateName, isNotNull);
+      expect(dish.toJson()['portions'], isNull);
 
       await state.saveMeal(meal, source: 'ocr');
       final record = await _recordRow(helper, meal.mealId);
       expect(record['source'], 'ocr');
       expect(record['merchant'], '美团外卖·黄焖鸡米饭');
-      expect((record['dishes'] as List).single['matched_dish_id'], isNotNull);
+      expect((record['dishes'] as List).single['matched_dish_id'], isNull);
+      expect(record['structure_complete'], false);
     });
 
     test('保存路径优先命中用户自定义菜品', () async {
@@ -272,6 +270,11 @@ void main() {
       await tester.tap(find.text('保存并更新今日结构'));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 300));
+      if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+        await tester.tap(find.text('明确保留未知并保存'));
+      }
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
       await tester.pump();
       // go_router 16.3：根/壳导航共用 GlobalObjectKey(navigatorKey.hashCode)，
       // 「go 进入 + go 返回」同帧互换根级页面时会撞出重复 key；
@@ -288,7 +291,8 @@ void main() {
       final record = (jsonDecode(rows.single['record_json']! as String) as Map)
           .cast<String, dynamic>();
       expect(record['source'], 'ocr');
-      expect((record['dishes'] as List).single['matched_dish_id'], isNotNull);
+      expect((record['dishes'] as List).single['matched_dish_id'], isNull);
+      expect(record['structure_complete'], false);
     });
 
     testWidgets('原生 OCR 失败 → 页面错误提示，手动补菜后仍可保存 source=ocr', (tester) async {
@@ -355,6 +359,11 @@ void main() {
       await tester.pump();
 
       await tester.tap(find.text('保存并更新今日结构'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
+      if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+        await tester.tap(find.text('明确保留未知并保存'));
+      }
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 300));
       await tester.pump();

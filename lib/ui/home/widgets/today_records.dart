@@ -41,7 +41,8 @@ class TodayRecords extends StatelessWidget {
       );
     }
 
-    final sorted = [...meals]..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+    final sorted = [...meals]
+      ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
     return PixelPanel(
       padding: EdgeInsets.zero,
       child: Column(
@@ -119,7 +120,7 @@ class _MealRow extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
-          '${_mealTypeLabel(meal.mealType)} · ${_timeLabel(meal.timestamp)}',
+          '${_mealTypeLabel(meal.mealType)} · ${_timeLabel(meal.timestamp)}${meal.structureComplete ? "" : " · 估算不完整"}',
         ),
         trailing: const Icon(Icons.chevron_right),
       ),

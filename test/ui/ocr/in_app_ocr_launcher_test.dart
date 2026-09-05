@@ -323,6 +323,11 @@ void main() {
     await tester.tap(find.text('保存并更新今日结构'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();
 
     expect(find.text('餐盘 · 今日'), findsOneWidget);
@@ -437,6 +442,11 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
 
     await tester.tap(find.text('保存并更新今日结构'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();

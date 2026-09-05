@@ -1,3 +1,5 @@
+import 'local_food_page.dart';
+
 import 'package:canting/pet.dart';
 import 'package:canting/services/delivery_jump_service.dart';
 import 'package:canting/services/notification_service.dart';
@@ -40,28 +42,36 @@ class SettingsPage extends StatelessWidget {
                       title: '身体数据',
                       value:
                           '${_formatHeight(profile?.heightCm)} cm · ${profile?.weightKg ?? 55} kg',
-                      onTap: profile == null ? null : () => _openProfileEditor(context),
+                      onTap: profile == null
+                          ? null
+                          : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.flag_outlined,
                       title: '饮食目标',
                       value: _goalLabel(profile?.dietGoal ?? 'balanced'),
-                      onTap: profile == null ? null : () => _openProfileEditor(context),
+                      onTap: profile == null
+                          ? null
+                          : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.directions_walk,
                       title: '活动量',
                       value: _activityLabel(profile?.activityLevel ?? 'light'),
-                      onTap: profile == null ? null : () => _openProfileEditor(context),
+                      onTap: profile == null
+                          ? null
+                          : () => _openProfileEditor(context),
                     ),
                     const Divider(indent: 58),
                     _SettingsTile(
                       icon: Icons.schedule,
                       title: '作息习惯',
                       value: '早餐 ${_formatTime(profile?.breakfastTime)}',
-                      onTap: profile == null ? null : () => _openProfileEditor(context),
+                      onTap: profile == null
+                          ? null
+                          : () => _openProfileEditor(context),
                     ),
                   ],
                 ),
@@ -134,6 +144,15 @@ class SettingsPage extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Column(
                   children: [
+                    _SettingsTile(
+                      icon: Icons.book_outlined,
+                      title: '本机商品记忆',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => const LocalFoodPage(),
+                        ),
+                      ),
+                    ),
                     _SettingsTile(
                       icon: Icons.download_outlined,
                       title: '导出数据',
@@ -237,9 +256,8 @@ class SettingsPage extends StatelessWidget {
     if (value) {
       final granted = await NotificationService.requestPermissions();
       if (context.mounted && !granted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('通知权限未开启，可在系统设置里打开')),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('通知权限未开启，可在系统设置里打开')));
       }
     }
   }
@@ -292,8 +310,10 @@ class SettingsPage extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.data_object),
                 title: const Text('复制 JSON 数据'),
-                onTap: () {
-                  Clipboard.setData(ClipboardData(text: state.exportJson()));
+                onTap: () async {
+                  final data = await state.exportAllJson();
+                  await Clipboard.setData(ClipboardData(text: data));
+                  if (!context.mounted || !sheetContext.mounted) return;
                   Navigator.pop(sheetContext);
                   ScaffoldMessenger.of(
                     context,
@@ -506,9 +526,7 @@ class _DeliveryPlatformSectionState extends State<_DeliveryPlatformSection> {
                 children: [
                   IconButton(
                     tooltip: '上移',
-                    onPressed: index == 0
-                        ? null
-                        : () => _move(index, -1),
+                    onPressed: index == 0 ? null : () => _move(index, -1),
                     icon: const Icon(Icons.arrow_upward_outlined),
                   ),
                   IconButton(

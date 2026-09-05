@@ -26,8 +26,8 @@ class DishNameExtractorTest {
         assertEquals("邻里小馆", result.merchant)
         assertEquals(
             listOf(
-                ExtractedDish(name = "黄焖鸡米饭", quantity = 2),
-                ExtractedDish(name = "清炒时蔬", quantity = 1),
+                ExtractedDish(name = "黄焖鸡米饭（大份）", quantity = 2),
+                ExtractedDish(name = "清炒时蔬-微辣", quantity = 1),
             ),
             result.dishes,
         )
@@ -155,9 +155,9 @@ class DishNameExtractorTest {
     // ---------- 括号/口味后缀清理 ----------
 
     @Test
-    fun bracketSpecSuffixIsCleaned() {
+    fun bracketSpecSuffixIsPreserved() {
         val result = extract("黄焖鸡米饭（大份）")
-        assertEquals(listOf("黄焖鸡米饭"), names(result))
+        assertEquals(listOf("黄焖鸡米饭（大份）"), names(result))
     }
 
     @Test
@@ -166,10 +166,7 @@ class DishNameExtractorTest {
             "麻辣香锅(微辣) ×1",
             "麻辣香锅-中辣",
         )
-        // 两种写法清理后是同一道菜，数量合并。
-        val dish = result.dishes.filter { it.name == "麻辣香锅" }
-        assertEquals(1, dish.size)
-        assertEquals(2, dish.single().quantity)
+        assertEquals(listOf("麻辣香锅(微辣)", "麻辣香锅-中辣"), names(result))
     }
 
     @Test
@@ -188,4 +185,10 @@ class DishNameExtractorTest {
         )
         assertEquals(listOf("青椒肉丝"), names(result))
     }
+    @Test
+    fun preservesOrderSpecsAndCakeDimensions() {
+        assertEquals(listOf("青青糯山无糖小杯", "奶油蛋糕30寸", "巴斯克小份"),
+            names(extract("青青糯山 无糖 小杯 ¥18", "奶油蛋糕30寸 ￥800", "巴斯克 小份 ×1")))
+    }
+
 }

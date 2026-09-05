@@ -1,0 +1,310 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/state/meal_reward_review_test.dart
+00:00 +0: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:00 +1: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:00 +1: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:00 +2: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+00:00 +3: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +3: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +4: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+00:00 +4: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +4: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +5: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+00:00 +6: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+00:00 +6: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +6: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +6: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +7: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +7: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +7: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +8: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +8: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +8: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +8: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +8: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +9: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +9: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +10: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains actual reward and repeat deletion is idempotent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +11: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +11: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains actual reward and repeat deletion is idempotent
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +11: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains explicitly suppressed reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +12: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +12: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains explicitly suppressed reward
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +14: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +15: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +16: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +16: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +17: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +17: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +17: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +17: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +18: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +18: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +18: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +19: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +19: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +20: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +20: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +20: D:/dev/canting/test/data/local_food_flow_test.dart: missing specs remain unknown; last order is suggestion only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +20: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +21: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +21: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +21: D:/dev/canting/test/data/local_food_flow_test.dart: missing specs remain unknown; last order is suggestion only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +22: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +22: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +23: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:00 +23: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +23: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +24: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +24: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +25: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +25: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +25: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +25: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 concurrent repeated deletion reverses only once
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +26: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +26: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 concurrent repeated deletion reverses only once
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +26: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +27: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +27: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +28: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +28: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +28: D:/dev/canting/test/data/local_food_flow_test.dart: cake dimensions never become eaten portion
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +29: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +29: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 editing and export retain receipt; legacy edit stays absent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +30: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +30: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 editing and export retain receipt; legacy edit stays absent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +30: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed save cannot leave meal or reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +31: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +31: D:/dev/canting/test/data/local_food_flow_test.dart: mixed known and unknown preserves every row and known subtotal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +32: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +32: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 old v4 JSON remains unchanged on open, has no invented reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +33: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +33: D:/dev/canting/test/data/local_food_flow_test.dart: memory edits and delete affect future only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +34: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +34: D:/dev/canting/test/data/local_food_flow_test.dart: failed memory write rolls back meal and in-memory state
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +35: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +35: D:/dev/canting/test/data/local_food_flow_test.dart: export includes all persisted meals after restart; clear is atomic
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +36: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +36: D:/dev/canting/test/data/local_food_flow_test.dart: v3 migration preserves historical JSON exactly
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +37: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +38: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:01 +38: D:/dev/canting/test/data/local_food_flow_test.dart: decision policy exact positive, fuzzy/keyword negative and empty boundary
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:02 +39: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:02 +40: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:02 +40: D:/dev/canting/test/data/local_food_flow_test.dart: known row portion edit rescales once while original snapshot remains unchanged
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:02 +41: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+R1 widget evidence no-memory merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: none, cup: small, size: unknown}
+00:02 +42: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: other-category
+R1 widget evidence other-category merchant=品牌乙 brand=品牌乙 category=coffee spec={sugar: none, cup: small, size: unknown}
+00:02 +43: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: clear
+R1 widget evidence clear merchant= brand= category=unknown spec={sugar: none, cup: small, size: unknown}
+00:02 +44: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: explicit-brand
+R1 widget evidence explicit-brand merchant=品牌乙 brand=单品品牌 category=milk_tea spec={sugar: none, cup: small, size: unknown}
+00:03 +45: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: preserve-unresolved
+R1 widget evidence preserve-unresolved merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: none, cup: small, size: unknown}
+00:03 +46: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: edited-spec
+R1 widget evidence edited-spec merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: low, cup: unknown, size: unknown}
+00:04 +47: All tests passed!

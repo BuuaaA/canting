@@ -10,12 +10,12 @@ import '../pet/pet_data.dart';
 /// (vitality decay, evolution history, streaks), and explicit columns would
 /// need a schema migration for every new field.
 class PetRepository {
-  PetRepository({required Database Function() database})
+  PetRepository({required DatabaseExecutor Function() database})
     : _databaseGetter = database;
 
-  final Database Function() _databaseGetter;
+  final DatabaseExecutor Function() _databaseGetter;
 
-  Database get _database => _databaseGetter();
+  DatabaseExecutor get _database => _databaseGetter();
 
   Future<PetData?> getPet() async {
     final rows = await _database.query('pet_states', limit: 1);
@@ -29,15 +29,11 @@ class PetRepository {
   }
 
   Future<void> savePet(PetData pet) async {
-    await _database.insert(
-      'pet_states',
-      {
-        'id': 1,
-        'json_data': jsonEncode(pet.toJson()),
-        'updated_at': DateTime.now().millisecondsSinceEpoch,
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await _database.insert('pet_states', {
+      'id': 1,
+      'json_data': jsonEncode(pet.toJson()),
+      'updated_at': DateTime.now().millisecondsSinceEpoch,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   /// Removes the pet row (used by "清除全部数据" in settings).

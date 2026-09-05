@@ -5,9 +5,11 @@ class SummaryCard extends StatelessWidget {
   const SummaryCard({
     super.key,
     required this.mealCount,
+    this.structureComplete = true,
     required this.completionByCategory,
   });
 
+  final bool structureComplete;
   final int mealCount;
   final Map<String, double> completionByCategory;
 
@@ -55,6 +57,7 @@ class SummaryCard extends StatelessWidget {
   }
 
   String _summary() {
+    if (!structureComplete) return '已记录，饮食结构估算不完整';
     if (mealCount == 0) {
       return '今天还没记录，截个外卖订单图分享给餐盘吧';
     }

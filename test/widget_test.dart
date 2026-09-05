@@ -38,10 +38,8 @@ UserProfile _testProfile() {
 /// Loads the real dietary-guidelines asset the same way main() does.
 DietaryGuidelines _loadGuidelines() => DietaryGuidelines.fromJson(
   (jsonDecode(
-        File('assets/data/dietary_guidelines.json').readAsStringSync(),
-      )
-      as Map)
-      .cast<String, dynamic>(),
+    File('assets/data/dietary_guidelines.json').readAsStringSync(),
+  ) as Map).cast<String, dynamic>(),
 );
 
 /// Builds an [AppState] backed by an in-memory SQLite database so persistence
@@ -53,10 +51,7 @@ Future<(AppState, DatabaseHelper)> _buildState({bool onboarded = false}) async {
     databasePath: inMemoryDatabasePath,
   );
   await helper.initialize();
-  final state = AppState(
-    databaseHelper: helper,
-    guidelines: _loadGuidelines(),
-  );
+  final state = AppState(databaseHelper: helper, guidelines: _loadGuidelines());
   await state.loadFromDatabase();
   if (onboarded) {
     await state.completeOnboarding(
@@ -178,13 +173,7 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump();
 
-    for (final title in [
-      '身体信息',
-      '活动水平',
-      '饮食目标',
-      '作息习惯',
-      '选择伙伴',
-    ]) {
+    for (final title in ['身体信息', '活动水平', '饮食目标', '作息习惯', '选择伙伴']) {
       await tester.tap(
         find.text('开始设置').evaluate().isNotEmpty
             ? find.text('开始设置')
@@ -271,6 +260,11 @@ void main() {
     expect(find.text('清炒土豆丝'), findsOneWidget);
 
     await tester.tap(find.text('保存并更新今日结构'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
     await pumpUiTransition(tester);
     await tester.pump(const Duration(milliseconds: 500));
     await tester.pump();
@@ -278,7 +272,7 @@ void main() {
     expect(find.text('餐盘 · 今日'), findsOneWidget);
     expect(find.text('识别结果'), findsNothing);
     expect(state.mealsFor(DateTime.now()), hasLength(initialMealCount + 1));
-    expect(find.text('这顿已经保存好啦'), findsOneWidget);
+    expect(find.text('已记录，饮食结构估算不完整'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 }

@@ -48,6 +48,7 @@ class DayDetail extends StatelessWidget {
       eatenPortions: eaten,
       dailyIntake: dailyIntake,
     );
+    final complete = meals.every((m) => m.structureComplete);
     final grade = gradeForScore(dayScore);
 
     return SafeArea(
@@ -89,10 +90,13 @@ class DayDetail extends StatelessWidget {
                       const SizedBox(width: 10),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 7),
-                        child: Text(_evaluation(completion.overall)),
+                        child: Text(
+                          complete ? _evaluation(completion.overall) : '估算不完整',
+                        ),
                       ),
                     ],
                   ),
+                  if (!complete) const Text('已记录，饮食结构估算不完整。以下仅为已知贡献小计。'),
                   const SizedBox(height: 18),
                   LayoutBuilder(
                     builder: (context, constraints) {
@@ -132,14 +136,18 @@ class DayDetail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                dayScore == null
+                                !complete
+                                    ? '饮食质量暂不评价'
+                                    : dayScore == null
                                     ? '$petName在等你记录'
                                     : '$petName的饮食质量 $dayScore',
                                 style: theme.textTheme.titleMedium,
                               ),
                               const SizedBox(height: 3),
                               Text(
-                                dayScore == null
+                                !complete
+                                    ? '含未知贡献商品'
+                                    : dayScore == null
                                     ? '这天没有记录，补录一下吧'
                                     : _qualityLabel(grade),
                                 style: theme.textTheme.bodyMedium,
@@ -180,7 +188,7 @@ class DayDetail extends StatelessWidget {
                           '${meal.timestamp.hour.toString().padLeft(2, '0')}:'
                           '${meal.timestamp.minute.toString().padLeft(2, '0')}'
                           ' · ${meal.merchant ?? ''}'
-                          ' · 完成 ${(meal.completionRate * 100).round()}%',
+                          ' · ${meal.structureComplete ? "完成 ${(meal.completionRate * 100).round()}%" : "估算不完整"}',
                         ),
                         trailing: IconButton(
                           tooltip: '删除这条记录',

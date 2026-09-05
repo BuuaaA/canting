@@ -85,7 +85,7 @@ class DishMatcher {
     var fuzzySimilarity = 0.0;
     for (final dish in [..._customDishes, ...foodDatabase.dishes]) {
       for (final candidate in [dish.name, ...dish.aliases]) {
-        final similarity = _similarity(
+        final similarity = nameSimilarity(
           normalizedInput,
           FoodDatabase.normalizeDishName(candidate),
         );
@@ -210,7 +210,7 @@ class DishMatcher {
     portionsNormal: Portions.zero,
   );
 
-  static double _similarity(String left, String right) {
+  static double nameSimilarity(String left, String right) {
     if (left == right) {
       return 1;
     }

@@ -1,0 +1,176 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/state/meal_reward_review_test.dart
+00:00 +0: R2 uncredited complete meal deletion never subtracts vitality
+00:00 +0 -1: R2 uncredited complete meal deletion never subtracts vitality [E]
+  Expected: <60>
+    Actual: <50>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +0 -1: R2 credited meal normal deletion preserves growth
+00:00 +0 -1: R2 uncredited complete meal deletion never subtracts vitality
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +0 -1: R2 credited meal normal deletion preserves growth
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +1 -1: R2 restart retains actual reward and repeat deletion is idempotent
+00:00 +1 -1: R2 credited meal normal deletion preserves growth
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +1 -1: R2 restart retains actual reward and repeat deletion is idempotent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -1: R2 restart retains explicitly suppressed reward
+00:00 +2 -1: R2 restart retains actual reward and repeat deletion is idempotent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -1: R2 restart retains explicitly suppressed reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -2: R2 restart retains explicitly suppressed reward [E]
+  Expected: <60>
+    Actual: <50>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -2: R2 edit known to unknown retains original reward receipt
+00:00 +2 -2: R2 restart retains explicitly suppressed reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +2 -2: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -3: R2 edit known to unknown retains original reward receipt [E]
+  Expected: <60>
+    Actual: <70>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -3: R2 edit unknown to known must not manufacture reward
+00:00 +2 -3: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +2 -3: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -4: R2 edit unknown to known must not manufacture reward [E]
+  Expected: <60>
+    Actual: <50>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -4: R2 reverse actual capped change rather than nominal reward
+00:00 +2 -4: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +2 -4: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -5: R2 reverse actual capped change rather than nominal reward [E]
+  Expected: <98>
+    Actual: <90>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -5: R2 negative actual change reverses symmetrically
+00:00 +2 -5: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2 -5: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3 -5: R2 failed deletion on pet_states rolls back DB and memory
+00:00 +3 -5: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3 -6: R2 failed deletion on pet_states rolls back DB and memory [E]
+  Expected: '[{"id":"fail","meal_time":1788592285639,"meal_type":"lunch","record_json":"{\\"meal_id\\":\\"fail\\",\\"meal_type\\":\\"lunch\\",\\"timestamp\\":\\"2026-09-05T15:11:25.639676\\",\\"dishes\\":[{\\"name\\":\\"合成餐\\",\\"quantity\\":1.0,\\"portion_size\\":\\"normal\\",\\"matched_dish_id\\":null,\\"match_confidence\\":null,\\"match_score\\":0.0,\\"estimated\\":true,\\"contribution_unit\\":\\"food_group_servings\\",\\"contribution_source\\":\\"legacy_or_manual\\",\\"portions\\":{\\"grains\\":2.0,\\"vegetables\\":2.0,\\"fruits\\":0.0,\\"protein\\":2.0,\\"protein_soy\\":0.0,\\"oil\\":0.0},\\"contributions_known\\":true}],\\"portions_total\\":{\\"grains\\":2.0,\\"vegetables\\":2.0,\\"fruits\\":0.0,\\"protein\\":2.0,\\"protein_soy\\":0.0,\\"oil\\":0.0},\\"total_scope\\":\\"complete\\",\\"structure_complete\\":true,\\"completion_rate\\":0.8,\\"sodium_level\\":\\"mid\\"}","note":null,"created_at":1788592285641,"updated_at":1788592285641}]'
+    Actual: '[]'
+     Which: is different.
+            Expected: [{"id":"fai ...
+              Actual: []
+                       ^
+             Differ at offset 1
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 60:7        main.<fn>
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3 -6: R2 failed deletion on meal_records rolls back DB and memory
+00:00 +3 -6: R2 failed deletion on pet_states rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +3 -6: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +4 -6: R2 failed save cannot leave meal or reward
+00:00 +4 -6: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +4 -6: R2 failed save cannot leave meal or reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +5 -6: R2 old v4 JSON remains unchanged on open, has no invented reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +5 -7: R2 old v4 JSON remains unchanged on open, has no invented reward [E]
+  Expected: <60>
+    Actual: <50>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\meal_reward_review_test.dart 22:88       main.unchangedDelete
+  
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +5 -7: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+  D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+  D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+  D:/dev/canting/test/state/meal_reward_review_test.dart: R2 old v4 JSON remains unchanged on open, has no invented reward
+  ... and 3 more

@@ -119,7 +119,7 @@ void main() {
     await helper.initialize(
       seedData: seed.withKnowledgePackage(syntheticPackage('synthetic-v1')),
     );
-    expect(await helper.database.getVersion(), 3);
+    expect(await helper.database.getVersion(), DatabaseHelper.databaseVersion);
     expect(
       (await helper.loadKnowledgePackage())!.contentVersion,
       'synthetic-v1',

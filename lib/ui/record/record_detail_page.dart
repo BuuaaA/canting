@@ -1,3 +1,6 @@
+import 'food_confirmation_sheet.dart';
+import '../../core/models/local_food.dart';
+
 import 'dart:async';
 
 import 'package:canting/core_engine.dart';
@@ -36,6 +39,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   MealRecord? _originalMeal;
   RecognitionDraft? _appliedRecognitionDraft;
   bool _initialized = false;
+  bool _saving = false;
 
   @override
   void didChangeDependencies() {
@@ -104,7 +108,24 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   void _updateDish(int index, MealDish dish) {
-    setState(() => _dishes[index] = dish);
+    final old = _dishes[index];
+    setState(
+      () => _dishes[index] = old.name == dish.name
+          ? dish
+          : context.read<AppState>().resolveFood(
+              MealDish(name: dish.name, quantity: dish.quantity),
+              brand: _merchantController.text.trim(),
+            ),
+    );
+  }
+
+  void _merchantChanged(String value) {
+    final state = context.read<AppState>();
+    setState(() {
+      _dishes = _dishes
+          .map((dish) => state.resolveFood(dish, brand: value.trim()))
+          .toList();
+    });
   }
 
   Future<void> _addDish() async {
@@ -113,7 +134,45 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       builder: (dialogContext) => const _DishSearchDialog(),
     );
     if (result != null && result.isNotEmpty) {
-      setState(() => _dishes.add(MealDish(name: result)));
+      setState(
+        () => _dishes.add(
+          context.read<AppState>().resolveFood(
+            MealDish(name: result),
+            brand: _merchantController.text.trim(),
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> _classify(int index) async {
+    final dish = _dishes[index];
+    final observation =
+        dish.food ??
+        FoodObservation(
+          facts: FoodFacts(
+            brand: _merchantController.text.trim(),
+            name: OrderSpec.productName(dish.name),
+          ),
+          spec: OrderSpec.parse(dish.name),
+          brandOrigin: 'merchant',
+          merchantContext: _merchantController.text.trim(),
+        );
+    final result = await showFoodConfirmation(
+      context,
+      observation,
+      rawName: dish.name,
+    );
+    if (result != null && mounted) {
+      setState(
+        () => _dishes[index] = MealDish(
+          name: dish.name,
+          quantity: dish.quantity,
+          portionSize: dish.portionSize,
+          food: result,
+          contributionsKnown: false,
+        ),
+      );
     }
   }
 
@@ -156,6 +215,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
   }
 
   Future<void> _save() async {
+    if (_saving) return;
     final merchant = _merchantController.text.trim();
     final validDishes = _dishes
         .where((dish) => dish.name.trim().isNotEmpty)
@@ -166,6 +226,32 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
       return;
     }
 
+    final unresolved = validDishes
+        .where((d) => !d.contributionsKnown && d.food?.confirmed != true)
+        .length;
+    if (unresolved > 0) {
+      final keep = await showDialog<bool>(
+        context: context,
+        builder: (c) => AlertDialog(
+          title: const Text('保留待确认商品？'),
+          content: Text(
+            '$unresolved 项尚未确认，将保留原名和未知字段。本餐估算不完整。也可以返回逐项归类，或明确删除不吃的商品。',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(c, false),
+              child: const Text('返回归类'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(c, true),
+              child: const Text('明确保留未知并保存'),
+            ),
+          ],
+        ),
+      );
+      if (keep != true || !mounted) return;
+    }
+    setState(() => _saving = true);
     final appState = context.read<AppState>();
     final meal = appState.buildMealRecord(
       mealType: _mealType,
@@ -177,14 +263,27 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     final note = _noteController.text.trim();
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
-    await appState.saveMeal(
-      meal,
-      note: note.isEmpty ? null : note,
-      source: widget.isSharedRecognition ? 'ocr' : 'manual',
-    );
+    try {
+      await appState.saveMeal(
+        meal,
+        note: note.isEmpty ? null : note,
+        source: widget.isSharedRecognition ? 'ocr' : 'manual',
+      );
+    } catch (e) {
+      if (mounted) {
+        setState(() => _saving = false);
+        messenger.showSnackBar(SnackBar(content: Text('保存失败，草稿已保留：$e')));
+      }
+      return;
+    }
+    if (!mounted) return;
     appState.clearSharedRecognition();
     router.go(widget.returnLocation);
-    messenger.showSnackBar(const SnackBar(content: Text('这顿已经保存好啦')));
+    messenger.showSnackBar(
+      SnackBar(
+        content: Text(meal.structureComplete ? '这顿已经保存好啦' : '已记录，饮食结构估算不完整'),
+      ),
+    );
     if (widget.isSharedRecognition) {
       // 模块 13/14：OCR 来源记录保存成功后发确认通知（菜名 + 宠物台词），
       // 受 recognitionEnabled 开关控制；识别失败路径不发通知。
@@ -307,6 +406,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
               const SizedBox(height: 8),
               TextField(
                 controller: _merchantController,
+                onChanged: _merchantChanged,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.storefront_outlined),
                   hintText: '商家名称',
@@ -382,21 +482,17 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
                 DishEditList(
                   dishes: _dishes,
                   onChanged: _updateDish,
+                  onClassify: _classify,
                   onDelete: (index) => setState(() => _dishes.removeAt(index)),
                 ),
               const SizedBox(height: 26),
-              const PixelSectionHeader(
-                title: '备注',
-                icon: Icons.notes_outlined,
-              ),
+              const PixelSectionHeader(title: '备注', icon: Icons.notes_outlined),
               const SizedBox(height: 8),
               TextField(
                 controller: _noteController,
                 maxLines: 3,
                 textInputAction: TextInputAction.done,
-                decoration: const InputDecoration(
-                  hintText: '记一句：这顿吃得怎么样？',
-                ),
+                decoration: const InputDecoration(hintText: '记一句：这顿吃得怎么样？'),
               ),
             ],
           ),
@@ -416,9 +512,9 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: FilledButton.icon(
-                  onPressed: _save,
+                  onPressed: _saving || recognitionLoading ? null : _save,
                   icon: const Icon(Icons.save_outlined),
-                  label: const Text('保存并更新今日结构'),
+                  label: Text(_saving ? '正在保存' : '保存并更新今日结构'),
                 ),
               ),
             ),
@@ -456,9 +552,9 @@ class _DishSearchDialogState extends State<_DishSearchDialog> {
   }
 
   Future<void> _search(String query) async {
-    final results = await context
-        .read<AppState>()
-        .searchDishesForManualAdd(query);
+    final results = await context.read<AppState>().searchDishesForManualAdd(
+      query,
+    );
     if (mounted) {
       setState(() => _results = results);
     }
@@ -485,8 +581,7 @@ class _DishSearchDialogState extends State<_DishSearchDialog> {
                 setState(() {});
                 _search(value);
               },
-              onSubmitted: (value) =>
-                  Navigator.pop(context, value.trim()),
+              onSubmitted: (value) => Navigator.pop(context, value.trim()),
             ),
             const SizedBox(height: 8),
             Flexible(

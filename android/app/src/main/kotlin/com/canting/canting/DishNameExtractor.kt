@@ -12,14 +12,10 @@ data class DishExtractionResult(
 
 object DishNameExtractor {
     private val quantityPattern = Regex("""(?:×|x|X)\s*(\d{1,2})""")
-    private val pricePattern = Regex("""(?:[¥￥]\s*)?\d+(?:\.\d{1,2})?\s*(?:元)?""")
+    private val pricePattern = Regex("""[¥￥]\s*\d+(?:\.\d{1,2})?|\d+(?:\.\d{1,2})?\s*元""")
     private val purePricePattern = Regex("""^\s*(?:[¥￥]\s*)?\d+(?:\.\d{1,2})?\s*(?:元)?\s*$""")
     private val phonePattern = Regex("""(?:\+?86[- ]?)?1\d{10}|0\d{2,3}[- ]?\d{7,8}""")
     private val timePattern = Regex("""\b(?:[01]?\d|2[0-3]):[0-5]\d\b""")
-    private val bracketSuffixPattern =
-        Regex("""[（(][^）)]*(?:大份|小份|中份|规格|微辣|辣|不辣|加料)[^）)]*[）)]""")
-    private val flavorSuffixPattern =
-        Regex("""\s*[-—·]\s*(?:微辣|中辣|重辣|不辣|少油|少盐|大份|小份|中份).*$""")
     private val surroundingSymbols = Regex("""^[\s·•●▪■□✓✔★☆_\-—:：]+|[\s·•●▪■□✓✔★☆_\-—:：]+$""")
     private val whitespacePattern = Regex("""\s+""")
     private val meaningfulTextPattern = Regex("""[\p{L}]""")
@@ -108,8 +104,6 @@ object DishNameExtractor {
     private fun cleanDishName(line: String): String {
         return line
             .replace(quantityPattern, "")
-            .replace(bracketSuffixPattern, "")
-            .replace(flavorSuffixPattern, "")
             .replace(pricePattern, "")
             .replace(surroundingSymbols, "")
             .replace(whitespacePattern, "")

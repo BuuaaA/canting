@@ -1,0 +1,20 @@
+{
+  "device": "sdk_gphone64_x86_64",
+  "type": "Android emulator, real Flutter UI and SQLite, synthetic isolated data",
+  "airplane_mode": "1",
+  "wifi_on": "0",
+  "mobile_data": "0",
+  "history_rows_unchanged_after_memory_edit_and_delete": true,
+  "meal_count": 3,
+  "memory_count_before": 2,
+  "memory_count_after": 1,
+  "native_ocr_names": [
+    "青責糯山无糖小杯",
+    "白斩鸡",
+    "奶油蛋糕30寸"
+  ],
+  "limitations": [
+    "OCR typo was retained as uncertain; not a real screenshot accuracy benchmark",
+    "OS photo picker and system share are covered by existing mocked channel tests, not this emulator harness"
+  ]
+}

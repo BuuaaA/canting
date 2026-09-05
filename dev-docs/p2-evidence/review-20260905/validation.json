@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-09-05T07:19:00.579846+00:00",
+  "head": "6e0a0b88fd10e38cf1c9dc09a48b16ee611b3b9e",
+  "branch": "main",
+  "flutter_tests": 425,
+  "related_tests": 47,
+  "new_tests": 21,
+  "independent_r2_tests": 1,
+  "r1_before": {
+    "passed": 1,
+    "failed": 5
+  },
+  "r2_initial_before": {
+    "passed": 5,
+    "failed": 7
+  },
+  "checks": [
+    {
+      "command": "dart format --output=none --set-exit-if-changed lib/core/models/local_food.dart lib/core/local_food_matcher.dart lib/ui/record/record_detail_page.dart lib/ui/record/food_confirmation_sheet.dart lib/core/models/meal_record.dart lib/state/app_state.dart test/ui/record/brand_context_review_test.dart test/state/meal_reward_review_test.dart test/state/app_state_pet_test.dart",
+      "result": "pass",
+      "log": "dev-docs\\p2-evidence\\review-20260905\\format.txt",
+      "sha256": "3e980184b229cee3540dfd2b7713ebf9df4298d153c8dba38a2cb60a3cea5759"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "result": "pass",
+      "log": "dev-docs\\p2-evidence\\review-20260905\\analyze.txt",
+      "sha256": "fd87be63403976db59af4985c4f88a89f67ef726be63cab1f5b977e1897d29a2"
+    },
+    {
+      "command": "flutter test --no-pub test/state/meal_reward_review_test.dart test/state/app_state_pet_test.dart test/ui/record/brand_context_review_test.dart test/data/local_food_flow_test.dart test/core/local_food_knowledge_match_test.dart test/ui/food_confirmation_test.dart --reporter expanded",
+      "result": "pass",
+      "log": "dev-docs\\p2-evidence\\review-20260905\\related.txt",
+      "sha256": "1eca6d90a0263ba9b8b3423de4955956bf639c7d22bc055ef31cb6900503056f"
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "result": "pass",
+      "log": "dev-docs\\p2-evidence\\review-20260905\\regression.txt",
+      "sha256": "3ecdcf64ff1bbfc16a2eb59564e475967911b2b99bd6640087b224c098df8bc0"
+    },
+    {
+      "command": "flutter test --no-pub C:/Users/gxy20/Documents/ChatGPT/代码审核/p2_review_probe_test.dart --plain-name \"deleting an uncredited complete meal must not change vitality\" --reporter expanded",
+      "result": "pass",
+      "log": "dev-docs\\p2-evidence\\review-20260905\\independent.txt",
+      "sha256": "4ebe4ef6fb365cdaf242a5507578752f5cedce8b802dfebae850443377e2a47e"
+    }
+  ],
+  "diff_check_exit": 0,
+  "r1_evidence_type": "Production RecordDetailPage widget interaction, not emulator or physical device",
+  "native_changed_this_review": false,
+  "kotlin_rerun": false,
+  "original_probe_sha256": "878daa0d6c258b7220f8a0439d4448ee5e8a34d01ca35250a03452bafa7e9822",
+  "unchanged_catalog_sha256": "7cdef0bd03f4df72270020b0b42a67be4aa119049ebdfb3b88eec5acc368079a",
+  "unexpected_baseline_changes": [],
+  "git_status": "## main...origin/main [ahead 6]\n M android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt\n M android/app/src/test/kotlin/com/canting/canting/DishNameExtractorTest.kt\n M lib/core/dish_matcher.dart\n M lib/core/models/match_result.dart\n M lib/core/models/meal_record.dart\n M lib/data/database_helper.dart\n M lib/data/meal_repository.dart\n M lib/data/pet_repository.dart\n M lib/state/app_state.dart\n M lib/ui/history/day_detail.dart\n M lib/ui/history/history_page.dart\n M lib/ui/history/history_stats.dart\n M lib/ui/home/home_page.dart\n M lib/ui/home/widgets/summary_card.dart\n M lib/ui/home/widgets/today_records.dart\n M lib/ui/record/dish_edit_list.dart\n M lib/ui/record/record_detail_page.dart\n M lib/ui/settings/settings_page.dart\n M test/core/dish_matcher_test.dart\n M test/data/food_knowledge_sync_test.dart\n M test/state/app_state_pet_test.dart\n M test/state/shared_recognition_flow_test.dart\n M test/ui/ocr/in_app_ocr_launcher_test.dart\n M test/ui/record/record_detail_note_test.dart\n M test/widget_test.dart\n?? dev-docs/p2-evidence/\n?? dev-docs/p2-local-food-profile-acceptance.md\n?? dev-docs/p2-local-food-profile-changes.json\n?? lib/core/local_food_matcher.dart\n?? lib/core/models/local_food.dart\n?? lib/data/local_food_repository.dart\n?? lib/ui/record/food_confirmation_sheet.dart\n?? lib/ui/settings/local_food_page.dart\n?? scripts/p2/\n?? test/core/local_food_knowledge_match_test.dart\n?? test/data/local_food_flow_test.dart\n?? test/state/meal_reward_review_test.dart\n?? test/ui/food_confirmation_test.dart\n?? test/ui/record/brand_context_review_test.dart\n?? tool/p2_emulator_smoke.dart",
+  "staged_files": [],
+  "committed": false
+}

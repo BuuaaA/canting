@@ -34,10 +34,8 @@ UserProfile _profile() {
 
 DietaryGuidelines _guidelines() => DietaryGuidelines.fromJson(
   (jsonDecode(
-        File('assets/data/dietary_guidelines.json').readAsStringSync(),
-      )
-      as Map)
-      .cast<String, dynamic>(),
+    File('assets/data/dietary_guidelines.json').readAsStringSync(),
+  ) as Map).cast<String, dynamic>(),
 );
 
 Future<(AppState, DatabaseHelper)> _buildState() async {
@@ -133,6 +131,11 @@ void main() {
     await tester.tap(find.text('保存并更新今日结构'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();
 
     final mealId = state.mealsFor(DateTime.now()).single.mealId;
@@ -164,6 +167,11 @@ void main() {
     await tester.tap(find.text('保存并更新今日结构'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();
 
     expect(await state.mealNote(mealId), '下次多放醋');
@@ -189,6 +197,11 @@ void main() {
     await tester.enterText(_noteFieldFinder(), '');
     await tester.pump();
     await tester.tap(find.text('保存并更新今日结构'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    if (find.text('明确保留未知并保存').evaluate().isNotEmpty) {
+      await tester.tap(find.text('明确保留未知并保存'));
+    }
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();

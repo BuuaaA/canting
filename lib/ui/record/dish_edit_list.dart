@@ -1,3 +1,5 @@
+import 'food_confirmation_sheet.dart';
+
 import 'package:canting/core_engine.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +10,13 @@ class DishEditList extends StatelessWidget {
     required this.dishes,
     required this.onChanged,
     required this.onDelete,
+    this.onClassify,
   });
 
   final List<MealDish> dishes;
   final void Function(int index, MealDish dish) onChanged;
   final ValueChanged<int> onDelete;
+  final ValueChanged<int>? onClassify;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,7 @@ class DishEditList extends StatelessWidget {
             dish: dishes[index],
             onChanged: (dish) => onChanged(index, dish),
             onDelete: () => onDelete(index),
+            onClassify: onClassify == null ? null : () => onClassify!(index),
           ),
           if (index != dishes.length - 1) const SizedBox(height: 12),
         ],
@@ -38,11 +43,13 @@ class _DishEditRow extends StatefulWidget {
     required this.dish,
     required this.onChanged,
     required this.onDelete,
+    this.onClassify,
   });
 
   final MealDish dish;
   final ValueChanged<MealDish> onChanged;
   final VoidCallback onDelete;
+  final VoidCallback? onClassify;
 
   @override
   State<_DishEditRow> createState() => _DishEditRowState();
@@ -103,23 +110,42 @@ class _DishEditRowState extends State<_DishEditRow> {
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          SizedBox(
-            width: double.infinity,
-            child: SegmentedButton<String>(
-              segments: const [
-                ButtonSegment(value: 'small', label: Text('小份')),
-                ButtonSegment(value: 'normal', label: Text('常规')),
-                ButtonSegment(value: 'large', label: Text('大份')),
-              ],
-              selected: {widget.dish.portionSize},
-              onSelectionChanged: (value) {
-                widget.onChanged(
-                  widget.dish.copyWith(portionSize: value.first),
-                );
-              },
+          if (widget.onClassify != null)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                widget.dish.food == null
+                    ? '已匹配，可修改归类'
+                    : '${foodCategories[widget.dish.food!.facts.category] ?? "未知"} · ${widget.dish.food!.confirmed
+                          ? "已确认"
+                          : widget.dish.food!.matchedBy == "local_exact"
+                          ? "已复用类别，规格待确认"
+                          : "点击归类 / 确认候选"}',
+              ),
+              subtitle: Text(
+                widget.dish.contributionsKnown ? '使用内置份量估算' : '已记录，饮食结构估算不完整',
+              ),
+              trailing: const Icon(Icons.expand_more),
+              onTap: widget.onClassify,
             ),
-          ),
+          const SizedBox(height: 12),
+          if (widget.dish.food == null)
+            SizedBox(
+              width: double.infinity,
+              child: SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'small', label: Text('小份')),
+                  ButtonSegment(value: 'normal', label: Text('常规')),
+                  ButtonSegment(value: 'large', label: Text('大份')),
+                ],
+                selected: {widget.dish.portionSize},
+                onSelectionChanged: (value) {
+                  widget.onChanged(
+                    widget.dish.copyWith(portionSize: value.first),
+                  );
+                },
+              ),
+            ),
         ],
       ),
     );

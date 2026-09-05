@@ -1,0 +1,291 @@
+{
+  "p1_commit": "6e0a0b88fd10e38cf1c9dc09a48b16ee611b3b9e",
+  "note": "P2 worktree only; excludes this manifest own hash; no raw source, accounts or build artifacts",
+  "files": [
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/DishNameExtractor.kt",
+      "sha256": "51541b7f23b5910a5c0c7341e1b29dabb3f24d648cb337219c2f9e831a0b4f20",
+      "bytes": 4252
+    },
+    {
+      "path": "android/app/src/test/kotlin/com/canting/canting/DishNameExtractorTest.kt",
+      "sha256": "b5ef7aabe3975599103a5b9140ea8be20a2f597c91c62d4a54d2845f2f407635",
+      "bytes": 6321
+    },
+    {
+      "path": "dev-docs/p2-evidence/01-mixed-results.png",
+      "sha256": "d8c36d5a03785644737a5a14f2e4dafa57ac4180157127f607e7331f87fe85c5",
+      "bytes": 166727
+    },
+    {
+      "path": "dev-docs/p2-evidence/02-unknown-classification.png",
+      "sha256": "04749cf6655d051670c4d5573fa6c78ff234875498d03df62ee08ca1f01e68d5",
+      "bytes": 130019
+    },
+    {
+      "path": "dev-docs/p2-evidence/03-first-confirmation.png",
+      "sha256": "09b733f7320517b34884c05d0e6433a0593a990d1f05ddcc17aca16e55062919",
+      "bytes": 156248
+    },
+    {
+      "path": "dev-docs/p2-evidence/04-reuse-after-restart.png",
+      "sha256": "e974e47fb759fd213fb05d4bcf0331f48e65842edc2df3e23df06b71f95339b0",
+      "bytes": 170048
+    },
+    {
+      "path": "dev-docs/p2-evidence/05-missing-specs-remain-unknown.png",
+      "sha256": "81ac0c84708323285fb73d8b5b4b7cdc0775747c55f3575297a9616c6fdec2d4",
+      "bytes": 194391
+    },
+    {
+      "path": "dev-docs/p2-evidence/06-current-spec-overrides-history.png",
+      "sha256": "3df21c5e9eabc2d7b58f60924d3d96ac6d9a5908210cdd05773ae93f4d41c7ae",
+      "bytes": 207071
+    },
+    {
+      "path": "dev-docs/p2-evidence/07-memory-management.png",
+      "sha256": "cfe03f6922a33575d48948a2e76ea23ac77fb1b4f0b6747f1419d8a43b08b78d",
+      "bytes": 118420
+    },
+    {
+      "path": "dev-docs/p2-evidence/08-native-offline-ocr.png",
+      "sha256": "20b6798a5c2cce84b9e72e57e7522afffda780c6ffe1d6e1e956f3ef396975f9",
+      "bytes": 172790
+    },
+    {
+      "path": "dev-docs/p2-evidence/09-cake-consumption-confirmation.png",
+      "sha256": "8c19709f2a589364342767aeec2a4f3e02679a768f5d1f323e593dded6ae5485",
+      "bytes": 187947
+    },
+    {
+      "path": "dev-docs/p2-evidence/10-explicitly-preserve-unresolved.png",
+      "sha256": "e0ac0931bd074408cc10fcfe3e8ea3da3b7654a9ceff0080b9549ed9adbeb8d6",
+      "bytes": 167497
+    },
+    {
+      "path": "dev-docs/p2-evidence/11-edit-memory.png",
+      "sha256": "033e83ad1ecbe8785350acd1d54ea9208adabdbf21f513e7da2bdc63bf876c01",
+      "bytes": 128553
+    },
+    {
+      "path": "dev-docs/p2-evidence/12-delete-memory-confirmation.png",
+      "sha256": "138454e4ed7a27c0c509a2f6f83533f1c60db79ab78b43b61debedc3c65ac4b8",
+      "bytes": 164359
+    },
+    {
+      "path": "dev-docs/p2-evidence/TEST-com.canting.canting.DishNameExtractorTest.xml",
+      "sha256": "c8688f16c054b15e1a428a69699d84b0cb9cfb9877fc4e8f057de65d97d57ce4",
+      "bytes": 2692
+    },
+    {
+      "path": "dev-docs/p2-evidence/analyze.txt",
+      "sha256": "26335bf82d84a0397dbed017b22a1ac11ea34205e8354a30feb1b7bed5a626e8",
+      "bytes": 202
+    },
+    {
+      "path": "dev-docs/p2-evidence/emulator-build.txt",
+      "sha256": "e191eaf7142c1179b97dc1a46e1d64274e7bd3337619e1d97fcb9790fc430527",
+      "bytes": 936
+    },
+    {
+      "path": "dev-docs/p2-evidence/emulator-export-after.json",
+      "sha256": "1a0b425e0c169417b50bd3b189e46776c6ce192b91bd2f96d5b0f926fbc0c9fa",
+      "bytes": 7691
+    },
+    {
+      "path": "dev-docs/p2-evidence/emulator-export-before.json",
+      "sha256": "cf997431ad347822440291b52fe18b8c65583420ca546ad1b8e4783010efe8b5",
+      "bytes": 8341
+    },
+    {
+      "path": "dev-docs/p2-evidence/emulator-verification.json",
+      "sha256": "74c24d0f00f6ef7ae1104e6676715d09289be81b2432307027b78f240390c3c3",
+      "bytes": 661
+    },
+    {
+      "path": "dev-docs/p2-evidence/format.txt",
+      "sha256": "45ad268cce689b288ff8da472caa04e28b7a653ed9c17f4fc709b99c78da8e64",
+      "bytes": 49
+    },
+    {
+      "path": "dev-docs/p2-evidence/kotlin.txt",
+      "sha256": "ff3e1cc2ad4754c7c01e024ed5f70c00282953def39a4485b42813d0f1987970",
+      "bytes": 18861
+    },
+    {
+      "path": "dev-docs/p2-evidence/regression.txt",
+      "sha256": "014d2ad6d7e52a55f87b7e53bffca0e1d7721eec2f1a30f65c95b833de9c07b0",
+      "bytes": 104642
+    },
+    {
+      "path": "dev-docs/p2-evidence/validation.json",
+      "sha256": "d60cdaea4c43dea5f65c784589f4a96e0f00f6973c55b40a99f984b180abb0b1",
+      "bytes": 3441
+    },
+    {
+      "path": "dev-docs/p2-local-food-profile-acceptance.md",
+      "sha256": "aec2a2e0522fd21d485198fe098884200e4aaa8204ca46362505b08c89334a1f",
+      "bytes": 13483
+    },
+    {
+      "path": "lib/core/dish_matcher.dart",
+      "sha256": "5f1c18a74c7322be68720b24bd43fd8ba098c0b48d1730744e0de2861b98aeb0",
+      "bytes": 8617
+    },
+    {
+      "path": "lib/core/local_food_matcher.dart",
+      "sha256": "f677e8ab2211ce382f2e37302161d264ff4a3da78a995c0404e843ee3f79b0e7",
+      "bytes": 6720
+    },
+    {
+      "path": "lib/core/models/local_food.dart",
+      "sha256": "65d13f91d24bff92f5e752a3779f6c39441599f1369aed17d99127948b0b5919",
+      "bytes": 7373
+    },
+    {
+      "path": "lib/core/models/match_result.dart",
+      "sha256": "a516dc7484c0c68b0db7863091d2f325d4778e1dc6e6930cc60a48d902aeeb08",
+      "bytes": 929
+    },
+    {
+      "path": "lib/core/models/meal_record.dart",
+      "sha256": "3fae30d12465350fc1d0b5808321e1a65a30f78b4953b3fb94508c920910dda5",
+      "bytes": 5400
+    },
+    {
+      "path": "lib/data/database_helper.dart",
+      "sha256": "045ddb681931aa8626d744c30c20b5da367f72214e6ea41b8a787ceaa9f9e4e1",
+      "bytes": 15559
+    },
+    {
+      "path": "lib/data/local_food_repository.dart",
+      "sha256": "e4733daa8aa7fd7fbf9bfd9ba72a4d7cbd156dea02b232a863457d43b31bc0cf",
+      "bytes": 2659
+    },
+    {
+      "path": "lib/data/meal_repository.dart",
+      "sha256": "8a58382c3f33cb1aeaccc444de38e05e28820c4ae0fed5679c8de6190fa6c1af",
+      "bytes": 3897
+    },
+    {
+      "path": "lib/data/pet_repository.dart",
+      "sha256": "832031bf6c11bf6f076dee7f766ea884867efbb2a8827ac80eece077600f0656",
+      "bytes": 1339
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "sha256": "9b38058b845cf90fd4a9be63eea72eb4f96344ea5dd583a95a127160d11139ba",
+      "bytes": 42025
+    },
+    {
+      "path": "lib/ui/history/day_detail.dart",
+      "sha256": "abea7e9d194a33497cf18f35a17ec90ee42a56544469dce415cba562210b9913",
+      "bytes": 10784
+    },
+    {
+      "path": "lib/ui/history/history_page.dart",
+      "sha256": "c9c4656c12827c564a587b234b09d11528c0aa2d175ce83a9a00c65b962d8038",
+      "bytes": 16609
+    },
+    {
+      "path": "lib/ui/history/history_stats.dart",
+      "sha256": "cb716c5e3a36a8ffb0574cc864c56125d49831160b423a265949d664314c9313",
+      "bytes": 4565
+    },
+    {
+      "path": "lib/ui/home/home_page.dart",
+      "sha256": "3163442dc82317a44eef599e35f7efe60d9961078bae3a640893002ecd8bf5a1",
+      "bytes": 8344
+    },
+    {
+      "path": "lib/ui/home/widgets/summary_card.dart",
+      "sha256": "713080c8812abf19be4ba6a5c849cdc807aee07ddc039098015fa655465ec4f3",
+      "bytes": 2408
+    },
+    {
+      "path": "lib/ui/home/widgets/today_records.dart",
+      "sha256": "05e21052f5a7a6560ba8418ef818050ec486fc81e82a7d906557207866a5edc4",
+      "bytes": 4473
+    },
+    {
+      "path": "lib/ui/record/dish_edit_list.dart",
+      "sha256": "979ab60eba00fd1a10f66b147dbeb5caa0fda20e036c2b10e1ad5d6968a8e9d8",
+      "bytes": 4884
+    },
+    {
+      "path": "lib/ui/record/food_confirmation_sheet.dart",
+      "sha256": "6394ff92c01dabce4b7ee5c032137142b9561a4faa33c7639f8da4b978f99cbe",
+      "bytes": 7843
+    },
+    {
+      "path": "lib/ui/record/record_detail_page.dart",
+      "sha256": "a78964ed5200fe72b64b39c3c5032785ae82e98636fa72632b6f9953782bcfc7",
+      "bytes": 20692
+    },
+    {
+      "path": "lib/ui/settings/local_food_page.dart",
+      "sha256": "142ed962a8b2509644dce3f6eb49c7b9ace9a1bf65c54fc6a8871a6b3c51b90f",
+      "bytes": 5100
+    },
+    {
+      "path": "lib/ui/settings/settings_page.dart",
+      "sha256": "0c7ca505ac320cb3935d9c0cba63171bf0244d17e10cb7537e3d276b16ef5d46",
+      "bytes": 20685
+    },
+    {
+      "path": "scripts/p2/collect_evidence.py",
+      "sha256": "4eefa86ebf0b877af76f2917d054d0c890fcb5d7f7fecb646249ad8c2fb06ee6",
+      "bytes": 3918
+    },
+    {
+      "path": "test/core/dish_matcher_test.dart",
+      "sha256": "9b5f9b6e01475422f3350ebdfdc34c6102f073209226be725fbddb7d139e51ef",
+      "bytes": 6431
+    },
+    {
+      "path": "test/core/local_food_knowledge_match_test.dart",
+      "sha256": "61c7b1a563743fff789509262136a6e1f4b3e6d174ea0719e39dd26464990f94",
+      "bytes": 4003
+    },
+    {
+      "path": "test/data/food_knowledge_sync_test.dart",
+      "sha256": "f858c4468c1509b62c89e7b8e4bb688a9eb0f00674093b8bbdff869e4ad4ac51",
+      "bytes": 7696
+    },
+    {
+      "path": "test/data/local_food_flow_test.dart",
+      "sha256": "5003fc4e5c1c986c1ac2a651f68698ee5090904638f9eaac0d223d11c243899d",
+      "bytes": 11015
+    },
+    {
+      "path": "test/state/shared_recognition_flow_test.dart",
+      "sha256": "fa0d98babe81f90e233d94babf4fb301e7285502de6df5984736f5c49f1d3b58",
+      "bytes": 14594
+    },
+    {
+      "path": "test/ui/food_confirmation_test.dart",
+      "sha256": "adc90f90b928d1b3201e7ff4921ff6d1db2a36edd05cfa04e8b03fe4e32ffd94",
+      "bytes": 2765
+    },
+    {
+      "path": "test/ui/ocr/in_app_ocr_launcher_test.dart",
+      "sha256": "bf0782b0d5f5c3d42f7ebcbb161f5d6a5ff2ea7134e632ea43c4d93b1629be0a",
+      "bytes": 16015
+    },
+    {
+      "path": "test/ui/record/record_detail_note_test.dart",
+      "sha256": "df8ef25a6b92aed67ba94463cd6afde7a9a4bc0fd891085ac39eaf435f8758fa",
+      "bytes": 7114
+    },
+    {
+      "path": "test/widget_test.dart",
+      "sha256": "ffd8b6795dc9dbf97ab0b68ead1d00ce884abd5c858461566677a1e7eee8cfe5",
+      "bytes": 10345
+    },
+    {
+      "path": "tool/p2_emulator_smoke.dart",
+      "sha256": "7dcd586297085becf23ea6c28b2bc1c67cb2f7f62d9ad7ad0fb8dc39d974911d",
+      "bytes": 6123
+    }
+  ]
+}

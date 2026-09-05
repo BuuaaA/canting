@@ -1,3 +1,4 @@
+import 'local_food.dart';
 import 'portions.dart';
 
 enum MatchType { exact, contains, fuzzy, keyword, unmatched }
@@ -25,5 +26,6 @@ class MatchResult {
   final Portions portionsNormal;
 
   bool get isMatched => matchedDishId != null || matchType == MatchType.keyword;
-  bool get shouldAutoAdd => confidence >= 0.5;
+  bool get shouldAutoAdd =>
+      FoodMatchPolicy.decisionFor(matchType.name) == FoodDecision.autoFill;
 }

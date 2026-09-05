@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "user_food_profiles": [
+    {
+      "match_key": "[\"\",\"青青糯山\"]",
+      "json_data": "{\"facts\":{\"brand\":\"\",\"name\":\"青青糯山\",\"category\":\"milk_tea\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"last_spec_suggestion\":{\"sugar\":\"none\",\"cup\":\"small\",\"size\":\"unknown\"},\"raw_names\":[\"青青糯山\",\"青青糯山 无糖 小杯\"],\"created_at\":\"2026-09-05T06:25:44.318254\",\"updated_at\":\"2026-09-05T06:29:21.230663\",\"use_count\":2,\"source\":\"user_confirmed\",\"confirmation_scope\":[\"category\"],\"confidence\":null,\"matched_by\":\"brand_name_exact\",\"schema_version\":1,\"policy_version\":\"local-food-v1\"}"
+    },
+    {
+      "match_key": "[\"\",\"奶油蛋糕30寸\"]",
+      "json_data": "{\"facts\":{\"brand\":\"\",\"name\":\"奶油蛋糕30寸\",\"category\":\"dessert\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"last_spec_suggestion\":{\"sugar\":\"notApplicable\",\"cup\":\"notApplicable\",\"size\":\"unknown\"},\"raw_names\":[\"奶油蛋糕30寸\"],\"created_at\":\"2026-09-05T06:35:34.137572\",\"updated_at\":\"2026-09-05T06:35:34.137572\",\"use_count\":1,\"source\":\"user_confirmed\",\"confirmation_scope\":[\"category\"],\"confidence\":null,\"matched_by\":\"brand_name_exact\",\"schema_version\":1,\"policy_version\":\"local-food-v1\"}"
+    }
+  ],
+  "user_custom_dishes": [],
+  "meal_records": [
+    {
+      "id": "meal-1788589544307276",
+      "meal_time": 1788589440000,
+      "meal_type": "breakfast",
+      "record_json": "{\"meal_id\":\"meal-1788589544307276\",\"meal_type\":\"breakfast\",\"timestamp\":\"2026-09-05T06:24:00.000\",\"dishes\":[{\"name\":\"青青糯山\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":null,\"match_confidence\":null,\"estimated\":false,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":null,\"portions\":null,\"contributions_known\":false,\"food\":{\"facts\":{\"brand\":\"\",\"name\":\"青青糯山\",\"category\":\"milk_tea\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"spec\":{\"sugar\":\"regular\",\"cup\":\"large\",\"size\":\"unknown\"},\"suggestion\":null,\"confirmed\":true,\"confirmed_at\":\"2026-09-05T06:25:41.525493\",\"raw_name\":\"青青糯山\",\"matched_by\":\"user_edit\",\"decision\":\"autoFill\",\"candidate_name\":null,\"source\":\"user_confirmed\",\"confidence\":null,\"contributions\":null,\"portion_range\":null,\"estimated\":false,\"schema_version\":1,\"policy_version\":\"local-food-v1\"}},{\"name\":\"白斩鸡\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":\"white_cut_chicken\",\"match_confidence\":1.0,\"estimated\":true,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":\"white_cut_chicken\",\"portions\":{\"grains\":0.0,\"vegetables\":0.1,\"fruits\":0.0,\"protein\":2.2,\"protein_soy\":0.0,\"oil\":1.3195000000000001},\"contributions_known\":true}],\"portions_total\":{\"grains\":0.0,\"vegetables\":0.1,\"fruits\":0.0,\"protein\":2.2,\"protein_soy\":0.0,\"oil\":1.3195000000000001},\"total_scope\":\"known_subtotal\",\"structure_complete\":false,\"completion_rate\":0.0,\"sodium_level\":\"mid\",\"source\":\"ocr\"}",
+      "note": null,
+      "created_at": 1788589544312,
+      "updated_at": 1788589544312
+    },
+    {
+      "id": "meal-1788589761187529",
+      "meal_time": 1788589740000,
+      "meal_type": "breakfast",
+      "record_json": "{\"meal_id\":\"meal-1788589761187529\",\"meal_type\":\"breakfast\",\"timestamp\":\"2026-09-05T06:29:00.000\",\"dishes\":[{\"name\":\"青青糯山 无糖 小杯\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":null,\"match_confidence\":null,\"estimated\":false,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":null,\"portions\":null,\"contributions_known\":false,\"food\":{\"facts\":{\"brand\":\"\",\"name\":\"青青糯山\",\"category\":\"milk_tea\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"spec\":{\"sugar\":\"none\",\"cup\":\"small\",\"size\":\"unknown\"},\"suggestion\":null,\"confirmed\":true,\"confirmed_at\":\"2026-09-05T06:29:18.371860\",\"raw_name\":\"青青糯山 无糖 小杯\",\"matched_by\":\"user_edit\",\"decision\":\"autoFill\",\"candidate_name\":null,\"source\":\"user_confirmed\",\"confidence\":null,\"contributions\":null,\"portion_range\":null,\"estimated\":false,\"schema_version\":1,\"policy_version\":\"local-food-v1\"}}],\"portions_total\":{\"grains\":0.0,\"vegetables\":0.0,\"fruits\":0.0,\"protein\":0.0,\"protein_soy\":0.0,\"oil\":0.0},\"total_scope\":\"known_subtotal\",\"structure_complete\":false,\"completion_rate\":0.0,\"sodium_level\":\"mid\",\"source\":\"ocr\"}",
+      "note": null,
+      "created_at": 1788589761191,
+      "updated_at": 1788589761191
+    },
+    {
+      "id": "meal-1788590134071315",
+      "meal_time": 1788590040000,
+      "meal_type": "breakfast",
+      "record_json": "{\"meal_id\":\"meal-1788590134071315\",\"meal_type\":\"breakfast\",\"timestamp\":\"2026-09-05T06:34:00.000\",\"dishes\":[{\"name\":\"青責糯山无糖小杯\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":null,\"match_confidence\":null,\"match_score\":null,\"estimated\":false,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":null,\"portions\":null,\"contributions_known\":false,\"food\":{\"facts\":{\"brand\":\"\",\"name\":\"青責糯山\",\"category\":\"unknown\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"spec\":{\"sugar\":\"none\",\"cup\":\"small\",\"size\":\"unknown\"},\"suggestion\":null,\"confirmed\":false,\"confirmed_at\":null,\"raw_name\":\"青責糯山无糖小杯\",\"matched_by\":\"unmatched\",\"decision\":\"manual\",\"candidate_name\":null,\"source\":\"unmatched\",\"confidence\":null,\"contributions\":null,\"portion_range\":null,\"estimated\":false,\"knowledge_snapshot\":null,\"schema_version\":1,\"policy_version\":\"local-food-v1\"}},{\"name\":\"白斩鸡\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":\"white_cut_chicken\",\"match_confidence\":null,\"match_score\":1.0,\"estimated\":true,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":\"white_cut_chicken\",\"portions\":{\"grains\":0.0,\"vegetables\":0.1,\"fruits\":0.0,\"protein\":2.2,\"protein_soy\":0.0,\"oil\":1.3195000000000001},\"contributions_known\":true},{\"name\":\"奶油蛋糕30寸\",\"quantity\":1.0,\"portion_size\":\"normal\",\"matched_dish_id\":null,\"match_confidence\":null,\"match_score\":null,\"estimated\":false,\"contribution_unit\":\"food_group_servings\",\"contribution_source\":null,\"portions\":null,\"contributions_known\":false,\"food\":{\"facts\":{\"brand\":\"\",\"name\":\"奶油蛋糕30寸\",\"category\":\"dessert\",\"preparation\":\"unknown\",\"sauce\":\"unknown\"},\"spec\":{\"sugar\":\"notApplicable\",\"cup\":\"notApplicable\",\"size\":\"unknown\"},\"suggestion\":null,\"confirmed\":true,\"confirmed_at\":\"2026-09-05T06:35:27.976994\",\"raw_name\":\"奶油蛋糕30寸\",\"matched_by\":\"user_edit\",\"decision\":\"autoFill\",\"candidate_name\":null,\"source\":\"user_confirmed\",\"confidence\":null,\"contributions\":null,\"portion_range\":null,\"estimated\":false,\"knowledge_snapshot\":null,\"schema_version\":1,\"policy_version\":\"local-food-v1\"}}],\"portions_total\":{\"grains\":0.0,\"vegetables\":0.1,\"fruits\":0.0,\"protein\":2.2,\"protein_soy\":0.0,\"oil\":1.3195000000000001},\"total_scope\":\"known_subtotal\",\"structure_complete\":false,\"completion_rate\":0.0,\"sodium_level\":\"mid\",\"source\":\"ocr\"}",
+      "note": null,
+      "created_at": 1788590134125,
+      "updated_at": 1788590134125
+    }
+  ],
+  "user_profiles": [],
+  "pet_states": [
+    {
+      "id": 1,
+      "json_data": "{\"pet_id\":\"default\",\"pet_type\":\"cat\",\"pet_name\":\"小挑食\",\"growth_stage\":\"egg\",\"vitality\":60,\"growth\":0,\"last_vitality_update\":\"2026-09-05T06:23:08.564426\",\"last_meal_time\":null,\"last_pet_tap_time\":null,\"last_offline_decay_check\":\"2026-09-05T06:26:25.551626\",\"last_daily_login\":null,\"pet_tap_count_date\":null,\"created_at\":\"2026-09-05T06:23:08.564426\",\"evolved_at\":null,\"consecutive_good_meals\":0,\"consecutive_bad_meals\":0,\"consecutive_no_record_days\":0,\"pet_taps_today\":0,\"today_meal_count\":0,\"today_completion_rate\":0.0,\"next_meal_summary\":null}",
+      "updated_at": 1788590134141
+    }
+  ]
+}

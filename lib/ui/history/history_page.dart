@@ -57,10 +57,7 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   void _changeMonth(int offset) {
-    final next = DateTime(
-      _visibleMonth.year,
-      _visibleMonth.month + offset,
-    );
+    final next = DateTime(_visibleMonth.year, _visibleMonth.month + offset);
     final now = DateTime.now();
     final currentMonth = DateTime(now.year, now.month);
     // 不能切换到未来月份。
@@ -100,9 +97,7 @@ class _HistoryPageState extends State<HistoryPage> {
             context: sheetContext,
             builder: (dialogContext) => AlertDialog(
               title: const Text('删除这条餐食记录？'),
-              content: const Text(
-                '删除后活力值会按记录时的规则回退，成长值不会减少。',
-              ),
+              content: const Text('删除后活力值会按记录时的规则回退，成长值不会减少。'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(dialogContext, false),
@@ -127,9 +122,8 @@ class _HistoryPageState extends State<HistoryPage> {
           final dayStart = DateTime(date.year, date.month, date.day);
           final oldestAllowed = todayStart.subtract(const Duration(days: 6));
           if (dayStart.isBefore(oldestAllowed)) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('只能补录最近 7 天内的记录')),
-            );
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('只能补录最近 7 天内的记录')));
             return;
           }
           context.push('/record_detail?date=${date.toIso8601String()}');
@@ -196,17 +190,18 @@ class _HistoryPageState extends State<HistoryPage> {
                         month: _visibleMonth,
                         selectedDate: selected,
                         scoreForDate: (date) =>
-                            _monthScores[DateTime(date.year, date.month, date.day)],
+                            _monthScores[DateTime(
+                              date.year,
+                              date.month,
+                              date.day,
+                            )],
                         onSelected: (date) => _showDay(date),
                       ),
               ),
               const SizedBox(height: 14),
               const _QualityLegend(),
               const SizedBox(height: 26),
-              PixelSectionHeader(
-                title: '本周统计',
-                icon: Icons.insights_outlined,
-              ),
+              PixelSectionHeader(title: '本周统计', icon: Icons.insights_outlined),
               const SizedBox(height: 9),
               PixelPanel(
                 padding: const EdgeInsets.all(14),
@@ -338,10 +333,7 @@ class _WeekStatsPanel extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: _Metric(
-                label: '食物种类',
-                value: '${stats.dishVariety} 种',
-              ),
+              child: _Metric(label: '食物种类', value: '${stats.dishVariety} 种'),
             ),
           ],
         ),

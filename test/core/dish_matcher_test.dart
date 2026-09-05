@@ -54,7 +54,7 @@ void main() {
       expect(result.category, 'rice_sauce');
       expect(result.matchType, MatchType.keyword);
       expect(result.confidence, 0.5);
-      expect(result.shouldAutoAdd, isTrue);
+      expect(result.shouldAutoAdd, isFalse);
     });
 
     test('marks unknown and blank inputs as unmatched', () {
@@ -97,8 +97,7 @@ void main() {
     setUpAll(() {
       database = FoodDatabase.fromJson(
         dishesJson: File('assets/data/dishes.json').readAsStringSync(),
-        categoriesJson: File('assets/data/categories.json')
-            .readAsStringSync(),
+        categoriesJson: File('assets/data/categories.json').readAsStringSync(),
       );
     });
 

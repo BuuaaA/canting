@@ -9,12 +9,12 @@ import '../core_engine.dart';
 /// Queryable columns (`meal_time`, `meal_type`) are stored alongside the full
 /// record JSON so date filters never need to parse JSON.
 class MealRepository {
-  MealRepository({required Database Function() database})
+  MealRepository({required DatabaseExecutor Function() database})
     : _databaseGetter = database;
 
-  final Database Function() _databaseGetter;
+  final DatabaseExecutor Function() _databaseGetter;
 
-  Database get _database => _databaseGetter();
+  DatabaseExecutor get _database => _databaseGetter();
 
   /// All meals on the natural day containing [date], newest first.
   Future<List<MealRecord>> getMealsByDate(DateTime date) async {
@@ -50,7 +50,13 @@ class MealRepository {
     final now = DateTime.now();
     await _database.insert(
       'meal_records',
-      _mealRow(meal, createdAt: now, updatedAt: now, note: note, source: source),
+      _mealRow(
+        meal,
+        createdAt: now,
+        updatedAt: now,
+        note: note,
+        source: source,
+      ),
       conflictAlgorithm: ConflictAlgorithm.abort,
     );
   }
@@ -90,11 +96,9 @@ class MealRepository {
     await _database.delete('meal_records');
   }
 
-  MealRecord _mealFromRow(Map<String, Object?> row) =>
-      MealRecord.fromJson(
-        (jsonDecode(row['record_json']! as String) as Map)
-            .cast<String, dynamic>(),
-      );
+  MealRecord _mealFromRow(Map<String, Object?> row) => MealRecord.fromJson(
+    (jsonDecode(row['record_json']! as String) as Map).cast<String, dynamic>(),
+  );
 
   Map<String, Object?> _mealRow(
     MealRecord meal, {

@@ -54,9 +54,12 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 10),
             SummaryCard(
               mealCount: todayMeals.length,
+              structureComplete: state.structureCompleteFor(now),
               completionByCategory: completion.byCategory,
             ),
             const SizedBox(height: 14),
+            if (!state.structureCompleteFor(now))
+              const Text('以下仅为已知贡献小计，不能判断今日是否达标'),
             NutritionRingChart(
               overall: completion.overall,
               values: completion.byCategory,

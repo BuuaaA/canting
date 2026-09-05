@@ -11,10 +11,8 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 DietaryGuidelines _guidelines() => DietaryGuidelines.fromJson(
   (jsonDecode(
-        File('assets/data/dietary_guidelines.json').readAsStringSync(),
-      )
-      as Map)
-      .cast<String, dynamic>(),
+    File('assets/data/dietary_guidelines.json').readAsStringSync(),
+  ) as Map).cast<String, dynamic>(),
 );
 
 UserProfile _profile() {
@@ -60,10 +58,7 @@ Future<(AppState, DatabaseHelper)> _buildState() async {
     databasePath: inMemoryDatabasePath,
   );
   await helper.initialize();
-  final state = AppState(
-    databaseHelper: helper,
-    guidelines: _guidelines(),
-  );
+  final state = AppState(databaseHelper: helper, guidelines: _guidelines());
   await state.loadFromDatabase();
   await state.completeOnboarding(
     profile: _profile(),
@@ -163,7 +158,9 @@ void main() {
       mealId: id,
       mealType: 'lunch',
       timestamp: time,
-      dishes: const [MealDish(name: '测试菜', quantity: 1, portions: fullPortions)],
+      dishes: const [
+        MealDish(name: '测试菜', quantity: 1, portions: fullPortions),
+      ],
       completionRate: 1,
     );
 
@@ -180,13 +177,17 @@ void main() {
       addTearDown(helper.close);
 
       final petRepo = PetRepository(database: () => helper.database);
-      final mealRepo = MealRepository(database: () => helper.database);
 
       // completion=1.0 的记录落在 3 天窗口之外，避免启动重算改写活力值。
       final now = DateTime.now();
-      final longAgo = DateTime(now.year, now.month, now.day)
-          .subtract(const Duration(days: 10));
-      await mealRepo.addMeal(fullMeal('old-good', longAgo.add(const Duration(hours: 12))));
+      final longAgo = DateTime(
+        now.year,
+        now.month,
+        now.day,
+      ).subtract(const Duration(days: 10));
+      await state.saveMeal(
+        fullMeal('old-good', longAgo.add(const Duration(hours: 12))),
+      );
 
       // 直接把活力值压到 16（模拟其它路径如离线衰减已经消耗掉余量），
       // 重新 loadFromDatabase 载入该状态（窗口内无记录 → 重算保持不变）。
@@ -198,7 +199,7 @@ void main() {
       await reloaded.loadFromDatabase();
       expect(reloaded.pet.vitality, 16);
 
-      // 删除 completion=1.0 的记录：规则回退 -10。旧实现按 [0,100] 钳制
+      // 删除已有实际 +10 凭证的记录：回退 -10。旧实现按 [0,100] 钳制
       // 会得到 6，PetData 构造器（合法区间 [15,100]）直接抛 RangeError。
       await reloaded.deleteMeal('old-good');
 
@@ -260,9 +261,7 @@ void main() {
         mealId: id,
         mealType: 'lunch',
         timestamp: time,
-        dishes: [
-          MealDish(name: '测试菜', quantity: 1, portions: halfPortions),
-        ],
+        dishes: [MealDish(name: '测试菜', quantity: 1, portions: halfPortions)],
         completionRate: 1,
       );
 
@@ -308,7 +307,12 @@ void main() {
       await state.saveMeal(
         fullMeal(
           't-1',
-          DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 12),
+          DateTime(
+            DateTime.now().year,
+            DateTime.now().month,
+            DateTime.now().day,
+            12,
+          ),
         ),
       );
       expect(state.pet.vitality, 70);

@@ -1,3 +1,7 @@
+import 'package:canting/core/models/local_food.dart';
+import 'package:canting/core/local_food_matcher.dart';
+import 'package:canting/data/local_food_repository.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
@@ -95,6 +99,44 @@ class AppState extends ChangeNotifier {
     database: () => _databaseHelper.database,
   );
 
+  late final LocalFoodRepository _localFoodRepo = LocalFoodRepository(
+    () => _databaseHelper.database,
+  );
+  List<LocalFoodProfile> _localFoods = [];
+  List<LocalFoodProfile> get localFoods => List.unmodifiable(_localFoods);
+  MealDish resolveFood(MealDish dish, {String brand = ''}) =>
+      LocalFoodMatcher(_dishMatcher, _localFoods).resolve(dish, brand: brand);
+  bool structureCompleteFor(DateTime date) =>
+      mealsFor(date).every((m) => m.structureComplete);
+  Future<void> editLocalFood(String oldKey, LocalFoodProfile value) async {
+    await _localFoodRepo.edit(oldKey, value);
+    _localFoods = await _localFoodRepo.all();
+    notifyListeners();
+  }
+
+  Future<void> deleteLocalFood(String key) async {
+    await _localFoodRepo.delete(key);
+    _localFoods = await _localFoodRepo.all();
+    notifyListeners();
+  }
+
+  Future<String> exportAllJson() async {
+    final db = _databaseHelper.database;
+    return db.transaction(
+      (txn) async => const JsonEncoder.withIndent('  ').convert({
+        'schema_version': 2,
+        for (final table in [
+          'user_food_profiles',
+          'user_custom_dishes',
+          'meal_records',
+          'user_profiles',
+          'pet_states',
+        ])
+          table: await txn.query(table),
+      }),
+    );
+  }
+
   /// 菜品匹配引擎：标准菜库 + 用户自定义菜品（自定义优先）。
   /// 在 loadFromDatabase 中装配；未加载或缺少膳食指南数据时为 null。
   DishMatcher? _dishMatcher;
@@ -155,6 +197,7 @@ class AppState extends ChangeNotifier {
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.
   Future<void> loadFromDatabase() async {
+    _localFoods = await _localFoodRepo.all();
     profile = await _userRepo.getProfile();
     final persistedPet = await _petRepo.getPet();
     if (persistedPet != null) {
@@ -189,52 +232,55 @@ class AppState extends ChangeNotifier {
       return;
     }
     final reference = now ?? DateTime.now();
-    final todayStart = DateTime(reference.year, reference.month, reference.day);
-    final start = todayStart.subtract(const Duration(days: 2));
     try {
-      final meals = await _mealRepo.getMealsByDateRange(
-        start,
-        todayStart.add(const Duration(days: 1)),
-      );
-      final mealsByDay = <DateTime, List<MealRecord>>{};
-      for (final meal in meals) {
-        final timestamp = meal.timestamp;
-        final day = DateTime(
-          timestamp.year,
-          timestamp.month,
-          timestamp.day,
-        );
-        mealsByDay.putIfAbsent(day, () => []).add(meal);
-      }
-      if (mealsByDay.isEmpty) {
-        return;
-      }
-      final scores = mealsByDay.values
-          .map(
-            (dayMeals) => VitalityCalculator.scoreDay(
-              eaten: dayMeals.fold(
-                Portions.zero,
-                (total, meal) => total + meal.portionsTotal,
-              ),
-              target: target,
-              mealCount: dayMeals.length,
-            ),
-          )
-          .toList(growable: false);
-      final vitality = VitalityCalculator.vitalityFromDailyScores(scores);
+      final vitality = await _recentVitality(_mealRepo, reference);
       if (vitality == null || vitality == _pet.vitality) {
         return;
       }
-      _pet = _pet.copyWith(
-        vitality: vitality,
-        lastVitalityUpdate: reference,
-      );
+      _pet = _pet.copyWith(vitality: vitality, lastVitalityUpdate: reference);
       await _petRepo.savePet(_pet);
       _scheduleWidgetSync();
       notifyListeners();
     } catch (error) {
       debugPrint('Unable to refresh pet vitality: $error');
     }
+  }
+
+  Future<int?> _recentVitality(
+    MealRepository mealsRepository,
+    DateTime reference,
+  ) async {
+    final target = profile?.dailyIntake;
+    if (target == null) return null;
+    final todayStart = DateTime(reference.year, reference.month, reference.day);
+    final start = todayStart.subtract(const Duration(days: 2));
+    final meals = await mealsRepository.getMealsByDateRange(
+      start,
+      todayStart.add(const Duration(days: 1)),
+    );
+    final mealsByDay = <DateTime, List<MealRecord>>{};
+    for (final meal in meals) {
+      final timestamp = meal.timestamp;
+      final day = DateTime(timestamp.year, timestamp.month, timestamp.day);
+      mealsByDay.putIfAbsent(day, () => []).add(meal);
+    }
+    if (mealsByDay.isEmpty) {
+      return null;
+    }
+    final scores = mealsByDay.values
+        .where((dayMeals) => dayMeals.every((m) => m.structureComplete))
+        .map(
+          (dayMeals) => VitalityCalculator.scoreDay(
+            eaten: dayMeals.fold(
+              Portions.zero,
+              (total, meal) => total + meal.portionsTotal,
+            ),
+            target: target,
+            mealCount: dayMeals.length,
+          ),
+        )
+        .toList(growable: false);
+    return VitalityCalculator.vitalityFromDailyScores(scores);
   }
 
   /// 重新装配 DishMatcher 和 ServingEstimator（标准菜库 + 最新自定义菜品）。
@@ -259,10 +305,7 @@ class AppState extends ChangeNotifier {
   }
 
   void _applyOfflineDecay() {
-    final result = _petEngine.checkOfflineDecay(
-      pet: _pet,
-      now: DateTime.now(),
-    );
+    final result = _petEngine.checkOfflineDecay(pet: _pet, now: DateTime.now());
     if (result.wasApplied || result.vitalityChange != 0) {
       _pet = result.pet;
       unawaited(_persistPet());
@@ -308,7 +351,8 @@ class AppState extends ChangeNotifier {
     }
   }
 
-  static String _dayKey(DateTime date) => '${date.year}-${date.month}-${date.day}';
+  static String _dayKey(DateTime date) =>
+      '${date.year}-${date.month}-${date.day}';
 
   /// 模块 9：按区间只读查询餐食记录（[start, end)），供历史页
   /// 日历 / 周统计一次取整月数据使用，不写入本地缓存。
@@ -319,10 +363,8 @@ class AppState extends ChangeNotifier {
   /// 当日真实完成度：已记录份数 ÷ 每日目标（IntakeCalculator 结果）。
   /// 没有记录时各分类均为 0，整体完成度也为 0。
   CompletionResult completionFor(DateTime date) {
-    final eaten = mealsFor(date).fold(
-      Portions.zero,
-      (total, meal) => total + meal.portionsTotal,
-    );
+    final eaten = mealsFor(date)
+        .fold(Portions.zero, (total, meal) => total + meal.portionsTotal);
     return CompletionCalculator().calculate(
       eatenPortions: eaten,
       dailyIntake: dailyIntake,
@@ -341,51 +383,41 @@ class AppState extends ChangeNotifier {
     String? merchant,
     String? mealId,
   }) {
-    final matcher = _dishMatcher;
     final resolvedDishes = dishes
         .where((dish) => dish.name.trim().isNotEmpty)
         .map((dish) {
+          if (dish.food != null || !dish.contributionsKnown) return dish;
           final hasPortions = dish.portions.byCategory.values.any(
             (value) => value != 0,
           );
-          if (matcher == null || hasPortions) {
-            return dish;
-          }
-          final match = matcher.match([dish.name.trim()]).single;
-          return MealDish(
-            name: dish.name,
-            quantity: dish.quantity,
-            portionSize: dish.portionSize,
-            matchedDishId: match.matchedDishId,
-            matchConfidence: match.confidence,
-            portions: matcher.calculatePortions(match, dish.portionSize),
-          );
+          if (hasPortions || dish.matchedDishId != null) return dish;
+          return resolveFood(dish, brand: merchant ?? '');
         })
         .toList(growable: false);
     final meal = MealRecord(
-      mealId:
-          mealId ?? 'meal-${DateTime.now().microsecondsSinceEpoch}',
+      mealId: mealId ?? 'meal-${DateTime.now().microsecondsSinceEpoch}',
       mealType: mealType,
       timestamp: timestamp,
       merchant: merchant,
       dishes: resolvedDishes,
     );
-    final dayEaten = mealsFor(timestamp).fold(
-      Portions.zero,
-      (total, item) => total + item.portionsTotal,
-    );
+    final dayEaten = mealsFor(timestamp)
+        .fold(Portions.zero, (total, item) => total + item.portionsTotal);
     return MealRecord(
       mealId: meal.mealId,
       mealType: meal.mealType,
       timestamp: meal.timestamp,
       merchant: meal.merchant,
       dishes: meal.dishes,
-      completionRate: CompletionCalculator()
-          .calculate(
-            eatenPortions: dayEaten + meal.portionsTotal,
-            dailyIntake: dailyIntake,
-          )
-          .overall,
+      completionRate:
+          !meal.structureComplete || !structureCompleteFor(timestamp)
+          ? 0
+          : CompletionCalculator()
+                .calculate(
+                  eatenPortions: dayEaten + meal.portionsTotal,
+                  dailyIntake: dailyIntake,
+                )
+                .overall,
     );
   }
 
@@ -405,11 +437,7 @@ class AppState extends ChangeNotifier {
       final intakeByDay = <DateTime, Portions>{};
       for (final meal in meals) {
         final timestamp = meal.timestamp;
-        final day = DateTime(
-          timestamp.year,
-          timestamp.month,
-          timestamp.day,
-        );
+        final day = DateTime(timestamp.year, timestamp.month, timestamp.day);
         intakeByDay[day] =
             (intakeByDay[day] ?? Portions.zero) + meal.portionsTotal;
       }
@@ -447,8 +475,13 @@ class AppState extends ChangeNotifier {
     // 归整到分钟：同一分钟内的多次调用（如「换一批」）得到相同的
     // suggestedTime，展示层本来就只显示到分钟。
     final rawNow = DateTime.now();
-    final now = DateTime(rawNow.year, rawNow.month, rawNow.day, rawNow.hour,
-        rawNow.minute);
+    final now = DateTime(
+      rawNow.year,
+      rawNow.month,
+      rawNow.day,
+      rawNow.hour,
+      rawNow.minute,
+    );
     return RecommendationEngine(foodDatabase).recommend(
       todayMeals: meals,
       dailyIntake: dailyIntake,
@@ -490,7 +523,8 @@ class AppState extends ChangeNotifier {
     return [
       ...sortedCustom,
       ...standard.where(
-        (dish) => !seenNames.contains(FoodDatabase.normalizeDishName(dish.name)),
+        (dish) =>
+            !seenNames.contains(FoodDatabase.normalizeDishName(dish.name)),
       ),
     ];
   }
@@ -557,13 +591,13 @@ class AppState extends ChangeNotifier {
       return null;
     }
     final match = matcher.match([name]).single;
+    if (!match.shouldAutoAdd) return null;
     final id = match.matchedDishId;
     if (id == null) {
       return null;
     }
-    final base = _foodDatabase?.dishes
-            .where((dish) => dish.id == id)
-            .firstOrNull ??
+    final base =
+        _foodDatabase?.dishes.where((dish) => dish.id == id).firstOrNull ??
         await _customDishRepo.getDishById(id);
     if (base == null) {
       return null;
@@ -632,7 +666,9 @@ class AppState extends ChangeNotifier {
                 vegetables: appCategory == 'vegetables' ? estimate.servings : 0,
                 fruits: appCategory == 'fruits' ? estimate.servings : 0,
                 protein: appCategory == 'protein' ? estimate.servings : 0,
-                proteinSoy: appCategory == 'protein_soy' ? estimate.servings : 0,
+                proteinSoy: appCategory == 'protein_soy'
+                    ? estimate.servings
+                    : 0,
                 oil: appCategory == 'oil' ? estimate.servings : 0,
               ),
             );
@@ -652,7 +688,11 @@ class AppState extends ChangeNotifier {
         }
       }
     }
-    return _categoryFallbackLink(dishName, grams: grams, categoryId: categoryId);
+    return _categoryFallbackLink(
+      dishName,
+      grams: grams,
+      categoryId: categoryId,
+    );
   }
 
   /// 详细模式：份数 → 克重（与 [resolveManualServings] 同源反向）。
@@ -726,9 +766,7 @@ class AppState extends ChangeNotifier {
         continue;
       }
       final gramsPerServing =
-          guidelines.gramsPerServingFor(
-            _appCategoryToGuideline(entry.key),
-          ) ??
+          guidelines.gramsPerServingFor(_appCategoryToGuideline(entry.key)) ??
           10;
       total += entry.value * gramsPerServing;
     }
@@ -736,16 +774,16 @@ class AppState extends ChangeNotifier {
   }
 
   /// APP 内部分类 id → 膳食指南分类 id（与 ServingEstimator 同映射）。
-  static String _appCategoryToGuideline(String appCategory) => switch (
-      appCategory) {
-    'grains' => 'grain_tuber',
-    'vegetables' => 'vegetable',
-    'fruits' => 'fruit',
-    'protein' => 'protein_meat_egg',
-    'protein_soy' => 'soy',
-    'oil' => 'oil',
-    _ => appCategory,
-  };
+  static String _appCategoryToGuideline(String appCategory) =>
+      switch (appCategory) {
+        'grains' => 'grain_tuber',
+        'vegetables' => 'vegetable',
+        'fruits' => 'fruit',
+        'protein' => 'protein_meat_egg',
+        'protein_soy' => 'soy',
+        'oil' => 'oil',
+        _ => appCategory,
+      };
 
   /// 膳食指南分类 id → APP 内部分类 id；奶/坚果等无归属的分类返回 null
   /// （与 IntakeCalculator「不进目标」口径一致）。
@@ -816,9 +854,7 @@ class AppState extends ChangeNotifier {
         return rolling;
       }
     }
-    return PetDailyDialogue(
-      dialogues: _petEngine.dialogues,
-    ).pickDaily(
+    return PetDailyDialogue(dialogues: _petEngine.dialogues).pickDaily(
       petType: _pet.petType,
       completionByCategory: completionFor(now).byCategory,
       mealCount: mealsFor(now).length,
@@ -891,7 +927,9 @@ class AppState extends ChangeNotifier {
     _recognitionDraft = RecognitionDraft(
       imageUri: imageUri,
       merchant: merchant,
-      dishes: List.unmodifiable(dishes),
+      dishes: List.unmodifiable(
+        dishes.map((d) => resolveFood(d, brand: merchant)),
+      ),
       isLoading: false,
     );
     notifyListeners();
@@ -920,12 +958,28 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> saveMeal(MealRecord meal, {String? note, String? source}) async {
+    await _ensureMealsLoaded(meal.timestamp);
     final key = _dayKey(meal.timestamp);
     final dayMeals = [...(_mealsByDay[key] ?? const <MealRecord>[])];
     final index = dayMeals.indexWhere((item) => item.mealId == meal.mealId);
-    final isNew = index == -1;
-
+    final existing = await _mealRepo.getMealById(meal.mealId);
+    final isNew = existing == null;
+    // Caller-supplied snapshots cannot manufacture or replace reward receipts.
+    var effect = existing?.petEffect;
     if (isNew) {
+      effect = MealPetEffect(
+        evaluated: false,
+        vitalityDelta: 0,
+        recordedAt: DateTime.now(),
+      );
+    }
+
+    var nextPet = _pet;
+    var nextDialogue = _dialogue;
+    GrowthStage? nextEvolution = _pendingEvolutionFrom;
+    if (isNew &&
+        meal.structureComplete &&
+        dayMeals.every((m) => m.structureComplete)) {
       // 当日真实膳食结构（含本餐），供宠物引擎评估这餐的质量。
       final dayEaten = dayMeals.fold(
         Portions.zero,
@@ -941,23 +995,62 @@ class AppState extends ChangeNotifier {
         completionByCategory: dayCompletion.byCategory,
         mealId: meal.mealId,
       );
-      _pet = result.pet;
-      _dialogue = result.dialogue;
-      _pendingEvolutionFrom = result.previousGrowthStage;
+      final mealLog = result.logs.firstWhere(
+        (log) => log.relatedMealId == meal.mealId && log.isActiveMealEffect,
+      );
+      effect = MealPetEffect(
+        evaluated: true,
+        vitalityDelta: mealLog.changeValue,
+        recordedAt: mealLog.timestamp,
+      );
+      nextPet = result.pet;
+      nextDialogue = result.dialogue;
+      nextEvolution = result.previousGrowthStage;
+    } else if (!isNew) {
+      if (index >= 0) {
+        dayMeals[index] = meal;
+      } else {
+        dayMeals.add(meal);
+      }
+      nextDialogue = '这顿修改好啦';
     } else {
-      dayMeals[index] = meal;
-      _dialogue = '这顿修改好啦';
+      nextDialogue = '已记录，饮食结构估算不完整';
     }
 
-    if (isNew) {
-      await _mealRepo.addMeal(meal, note: note, source: source);
-    } else {
-      await _mealRepo.updateMeal(meal, note: note);
+    meal = meal.withPetEffect(effect);
+    if (!isNew) {
+      final editedIndex = dayMeals.indexWhere((m) => m.mealId == meal.mealId);
+      dayMeals[editedIndex] = meal;
     }
-    if (isNew) {
-      await _petRepo.savePet(_pet);
-    }
+    await _databaseHelper.database.transaction((txn) async {
+      final meals = MealRepository(database: () => txn);
+      if (isNew) {
+        await meals.addMeal(meal, note: note, source: source);
+      } else {
+        await meals.updateMeal(meal, note: note);
+      }
+      // Existing snapshots never rewrite personal memory on a plain history save.
+      if (isNew) {
+        for (final dish in meal.dishes) {
+          if (dish.food != null) {
+            await LocalFoodRepository.remember(txn, dish.food!);
+          }
+        }
+      }
+      if (isNew) await PetRepository(database: () => txn).savePet(nextPet);
+    });
+    _pet = nextPet;
+    _dialogue = nextDialogue;
+    _pendingEvolutionFrom = nextEvolution;
+    _localFoods = await _localFoodRepo.all();
 
+    for (final otherKey in _mealsByDay.keys.toList()) {
+      if (otherKey != key) {
+        _mealsByDay[otherKey] = _mealsByDay[otherKey]!
+            .where((m) => m.mealId != meal.mealId)
+            .toList();
+      }
+    }
     _mealsByDay[key] = isNew ? [meal, ...dayMeals] : dayMeals;
     await refreshBalanceLedger();
     _scheduleWidgetSync();
@@ -966,32 +1059,41 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> deleteMeal(String id) async {
-    // 先取出记录：删除后要按它记录时的规则回退活力值。
-    final meal = mealById(id) ?? await _mealRepo.getMealById(id);
-    await _mealRepo.deleteMeal(id);
-    for (final entry in _mealsByDay.entries) {
-      if (entry.value.any((meal) => meal.mealId == id)) {
-        _mealsByDay[entry.key] = entry.value
-            .where((meal) => meal.mealId != id)
-            .toList(growable: false);
-        break;
+    // Authoritative read and all writes share a transaction. A second delete is a no-op.
+    final updatedPet = await _databaseHelper.database.transaction((txn) async {
+      final meals = MealRepository(database: () => txn);
+      final meal = await meals.getMealById(id);
+      if (meal == null) return null;
+      final pets = PetRepository(database: () => txn);
+      var next = await pets.getPet() ?? _pet;
+      await meals.deleteMeal(id);
+      final effect = meal.petEffect;
+      if (effect?.evaluated == true) {
+        next = next.copyWith(
+          vitality: PetStateMachine.clampVitality(
+            next.vitality - effect!.vitalityDelta,
+          ),
+        );
       }
-    }
-    if (meal != null) {
-      // 活力值按记录时的同一规则反向回退；成长值只增不减，不回退。
-      // 钳制口径与引擎一致（[15, 100]）：PetData 构造器拒绝越界值，
-      // 用 [0, 100] 会让低活力下的删除抛 RangeError。
-      final delta = PetStateMachine.vitalityChangeForCompletion(
-        meal.completionRate,
-      );
-      _pet = _pet.copyWith(
-        vitality: PetStateMachine.clampVitality(_pet.vitality - delta),
-      );
-      await _petRepo.savePet(_pet);
-      // 回退后按「最近 3 天重算」口径收敛：使删除路径与启动时的重算
-      // 结果一致（当天/跨日删除的边界见模块 7 口径抽查）。窗口内已无
-      // 任何记录时重算保持不变，保留上面的回退值。
-      await refreshPetVitality();
+      // Keep the established legacy recalculation; never fabricate a legacy reward.
+      // An explicitly suppressed new effect must not cause quality evaluation on delete.
+      if (effect?.evaluated == true ||
+          (effect == null && meal.structureComplete)) {
+        final now = DateTime.now();
+        final recalculated = await _recentVitality(meals, now);
+        if (recalculated != null && recalculated != next.vitality) {
+          next = next.copyWith(vitality: recalculated, lastVitalityUpdate: now);
+        }
+      }
+      await pets.savePet(next);
+      return next;
+    });
+    if (updatedPet == null) return;
+    _pet = updatedPet;
+    for (final key in _mealsByDay.keys.toList()) {
+      _mealsByDay[key] = _mealsByDay[key]!
+          .where((meal) => meal.mealId != id)
+          .toList(growable: false);
     }
     _dialogue = '记录已删除';
     _scheduleWidgetSync();
@@ -999,6 +1101,7 @@ class AppState extends ChangeNotifier {
   }
 
   String exportJson() => const JsonEncoder.withIndent('  ').convert({
+    'local_food_profiles': _localFoods.map((p) => p.toJson()).toList(),
     'profile': profile?.toJson(),
     'pet': _pet.toJson(),
     'meals': _mealsByDay.values
@@ -1029,12 +1132,19 @@ class AppState extends ChangeNotifier {
   /// 清除全部数据（模块 10 数据管理）：餐食记录、宠物、个人档案、
   /// 自定义菜品全部删除，回到 onboarding 首页重新设置。
   Future<void> clearAllData() async {
-    await _mealRepo.deleteAllMeals();
-    await _petRepo.deletePet();
-    if (_databaseHelper.isOpen) {
-      await _databaseHelper.database.delete('user_profiles');
-      await _databaseHelper.database.delete('user_custom_dishes');
-    }
+    await _databaseHelper.database.transaction((txn) async {
+      for (final table in [
+        'meal_records',
+        'pet_states',
+        'user_profiles',
+        'user_custom_dishes',
+        'user_food_profiles',
+      ]) {
+        await txn.delete(table);
+      }
+    });
+    _localFoods = [];
+    _recognitionDraft = null;
     _mealsByDay.clear();
     profile = null;
     _balanceReport = null;
@@ -1061,7 +1171,10 @@ class AppState extends ChangeNotifier {
     final status = <String, Object?>{
       ..._pet.toWidgetJson(),
       'today_meal_count': todayMeals.length,
-      'today_completion_rate': averageCompletion,
+      'today_completion_rate': todayMeals.every((m) => m.structureComplete)
+          ? averageCompletion
+          : null,
+      'structure_complete': todayMeals.every((m) => m.structureComplete),
       'next_meal_summary': _pet.nextMealSummary ?? '$dinnerTime 补蔬菜',
     };
 
@@ -1095,11 +1208,13 @@ class AppState extends ChangeNotifier {
               'quantity': dish.quantity,
               'portion_size': dish.portionSize,
               'matched_dish_id': dish.matchedDishId,
-              'match_confidence': dish.matchConfidence,
+              'match_confidence': null,
+              'match_score': dish.food == null ? dish.matchConfidence : null,
             },
           )
           .toList(growable: false),
-      'completion_rate': meal.completionRate,
+      'completion_rate': meal.structureComplete ? meal.completionRate : null,
+      'structure_complete': meal.structureComplete,
       'sodium_level': meal.sodiumLevel,
     };
     _widgetSync = _widgetSync.then((_) async {

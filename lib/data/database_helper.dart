@@ -16,7 +16,7 @@ class DatabaseHelper {
   /// Shared instance for the running app; tests build isolated copies instead.
   static final DatabaseHelper instance = DatabaseHelper();
 
-  static const databaseVersion = 3;
+  static const databaseVersion = 4;
   static const defaultDatabaseName = 'canting_food.db';
 
   /// app_meta key storing the seed catalog schema_version last imported.
@@ -311,6 +311,7 @@ class DatabaseHelper {
     );
     await database.execute('CREATE INDEX dishes_name_idx ON dishes(dish_name)');
     await _createUserDataTables(database);
+    await _createLocalFoodProfiles(database);
   }
 
   /// Incremental schema changes keyed by the version they migrate TO.
@@ -318,7 +319,14 @@ class DatabaseHelper {
   static final _migrations = <int, Future<void> Function(Database)>{
     2: _migrateV1ToV2,
     3: _migrateV2ToV3,
+    4: _createLocalFoodProfiles,
   };
+
+  static Future<void> _createLocalFoodProfiles(Database database) async {
+    await database.execute(
+      'CREATE TABLE IF NOT EXISTS user_food_profiles (match_key TEXT PRIMARY KEY, json_data TEXT NOT NULL)',
+    );
+  }
 
   static Future<void> _upgradeSchema(
     Database database,

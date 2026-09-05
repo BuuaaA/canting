@@ -1,0 +1,72 @@
+{
+  "head": "6e0a0b88fd10e38cf1c9dc09a48b16ee611b3b9e",
+  "note": "R1/R2 only; baseline copied before edits; source/acceptance/collector files below, evidence logs separately hashed in validation.json",
+  "files": [
+    {
+      "path": "lib/core/models/local_food.dart",
+      "before_sha256": "65d13f91d24bff92f5e752a3779f6c39441599f1369aed17d99127948b0b5919",
+      "after_sha256": "a9b36e095824d320ea31f727bf1c56ff083ec8f1068b1276652c8de28157a125",
+      "bytes": 8341
+    },
+    {
+      "path": "lib/core/local_food_matcher.dart",
+      "before_sha256": "f677e8ab2211ce382f2e37302161d264ff4a3da78a995c0404e843ee3f79b0e7",
+      "after_sha256": "d11647d4ff4d9780c805faf9207d7aec20a797ae38645c3c8da4c0b8e6f3acab",
+      "bytes": 7330
+    },
+    {
+      "path": "lib/ui/record/record_detail_page.dart",
+      "before_sha256": "a78964ed5200fe72b64b39c3c5032785ae82e98636fa72632b6f9953782bcfc7",
+      "after_sha256": "258ee806df27cfc7d3be562228bb577f017672e782dc5ea7d3358dad63404115",
+      "bytes": 21075
+    },
+    {
+      "path": "lib/ui/record/food_confirmation_sheet.dart",
+      "before_sha256": "6394ff92c01dabce4b7ee5c032137142b9561a4faa33c7639f8da4b978f99cbe",
+      "after_sha256": "61963135f66e21eb21303dcdf5f258c3d8e61b9de04f2e56401ddb455c4cdd0e",
+      "bytes": 7943
+    },
+    {
+      "path": "lib/core/models/meal_record.dart",
+      "before_sha256": "3fae30d12465350fc1d0b5808321e1a65a30f78b4953b3fb94508c920910dda5",
+      "after_sha256": "7c4bcd472c4f8a98d6e437a9e5a145cd9425ff9b4c2eb28d9388f3abaea7b39d",
+      "bytes": 6901
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "before_sha256": "9b38058b845cf90fd4a9be63eea72eb4f96344ea5dd583a95a127160d11139ba",
+      "after_sha256": "4b6d5aef305f9e772a802efc76311160ddf33fb091f228bfaa686a2951976f88",
+      "bytes": 43242
+    },
+    {
+      "path": "test/ui/record/brand_context_review_test.dart",
+      "before_sha256": null,
+      "after_sha256": "6faafc2963f68a5093709fc288e8596f5c88ea7beb0ca99c92c2c649962e47b8",
+      "bytes": 7411
+    },
+    {
+      "path": "test/state/meal_reward_review_test.dart",
+      "before_sha256": null,
+      "after_sha256": "a66a4fa8cdc63ff1d63a6c26aaf4fde1427a01cc13003516893949f8e481ee4c",
+      "bytes": 9376
+    },
+    {
+      "path": "test/state/app_state_pet_test.dart",
+      "before_sha256": "b8b9af10c8de793ea37efa9d50cc92e45602ae2a43994674e0197bb74f351567",
+      "after_sha256": "daee8f6506d158a245795862afa892bd42ba05f7ca2e7623105e84d09b8a0552",
+      "bytes": 10913
+    },
+    {
+      "path": "dev-docs/p2-local-food-profile-acceptance.md",
+      "before_sha256": "aec2a2e0522fd21d485198fe098884200e4aaa8204ca46362505b08c89334a1f",
+      "after_sha256": "3c5be22ed5343ebb930f691180887f6512c4be191dd85a2d672d76c8f179870b",
+      "bytes": 22580
+    },
+    {
+      "path": "scripts/p2/collect_review_evidence.py",
+      "before_sha256": null,
+      "after_sha256": "45a4f1717688c91217a4002c9d4d51d4b3d8b775dbf9cbce62fa537902e7a1fa",
+      "bytes": 5512
+    }
+  ]
+}

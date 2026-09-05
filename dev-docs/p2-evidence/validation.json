@@ -1,0 +1,91 @@
+{
+  "recorded_at": "2026-09-05T06:44:46.937977+00:00",
+  "p1_commit": "6e0a0b88fd10e38cf1c9dc09a48b16ee611b3b9e",
+  "flutter_tests_passed": 404,
+  "checks": [
+    {
+      "name": "format",
+      "command": "dart format --output=none --set-exit-if-changed <P2 changed Dart files>",
+      "result": "pass",
+      "verification": "success marker in preserved command log",
+      "log": "dev-docs\\p2-evidence\\format.txt",
+      "log_sha256": "45ad268cce689b288ff8da472caa04e28b7a653ed9c17f4fc709b99c78da8e64",
+      "log_updated_at": "2026-09-05T06:41:27.058856+00:00"
+    },
+    {
+      "name": "analyze",
+      "command": "flutter analyze --no-pub",
+      "result": "pass",
+      "verification": "success marker in preserved command log",
+      "log": "dev-docs\\p2-evidence\\analyze.txt",
+      "log_sha256": "26335bf82d84a0397dbed017b22a1ac11ea34205e8354a30feb1b7bed5a626e8",
+      "log_updated_at": "2026-09-05T06:41:39.926200+00:00"
+    },
+    {
+      "name": "regression",
+      "command": "flutter test --no-pub --reporter expanded",
+      "result": "pass",
+      "verification": "success marker in preserved command log",
+      "log": "dev-docs\\p2-evidence\\regression.txt",
+      "log_sha256": "014d2ad6d7e52a55f87b7e53bffca0e1d7721eec2f1a30f65c95b833de9c07b0",
+      "log_updated_at": "2026-09-05T06:42:05.522244+00:00"
+    },
+    {
+      "name": "kotlin",
+      "command": "gradlew.bat :app:testDebugUnitTest --offline",
+      "result": "pass",
+      "verification": "success marker in preserved command log",
+      "log": "dev-docs\\p2-evidence\\kotlin.txt",
+      "log_sha256": "ff3e1cc2ad4754c7c01e024ed5f70c00282953def39a4485b42813d0f1987970",
+      "log_updated_at": "2026-09-05T06:40:40.395006+00:00"
+    },
+    {
+      "name": "emulator-build",
+      "command": "flutter build apk --debug --no-pub -t tool/p2_emulator_smoke.dart",
+      "result": "pass",
+      "verification": "success marker in preserved command log",
+      "log": "dev-docs\\p2-evidence\\emulator-build.txt",
+      "log_sha256": "e191eaf7142c1179b97dc1a46e1d64274e7bd3337619e1d97fcb9790fc430527",
+      "log_updated_at": "2026-09-05T06:32:28.955835+00:00"
+    },
+    {
+      "name": "diff-check",
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "kotlin_junit": [
+    {
+      "name": "com.canting.canting.DishNameExtractorTest",
+      "tests": "20",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-05T06:40:39.846Z",
+      "hostname": "BUUAAA",
+      "time": "0.04"
+    }
+  ],
+  "unchanged_catalog_sha256": "7cdef0bd03f4df72270020b0b42a67be4aa119049ebdfb3b88eec5acc368079a",
+  "p2_committed": false,
+  "emulator": {
+    "device": "sdk_gphone64_x86_64",
+    "type": "Android emulator, real Flutter UI and SQLite, synthetic isolated data",
+    "airplane_mode": "1",
+    "wifi_on": "0",
+    "mobile_data": "0",
+    "history_rows_unchanged_after_memory_edit_and_delete": true,
+    "meal_count": 3,
+    "memory_count_before": 2,
+    "memory_count_after": 1,
+    "native_ocr_names": [
+      "青責糯山无糖小杯",
+      "白斩鸡",
+      "奶油蛋糕30寸"
+    ],
+    "limitations": [
+      "OCR typo was retained as uncertain; not a real screenshot accuracy benchmark",
+      "OS photo picker and system share are covered by existing mocked channel tests, not this emulator harness"
+    ]
+  }
+}

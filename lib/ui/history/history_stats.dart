@@ -51,6 +51,7 @@ class HistoryStats {
           )
           .add(meal);
     }
+    byDay.removeWhere((day, items) => items.any((m) => !m.structureComplete));
     return byDay.map(
       (day, dayMeals) => MapEntry(
         day,
@@ -94,7 +95,8 @@ class HistoryStats {
     for (final meal in meals) {
       final timestamp = meal.timestamp;
       final day = DateTime(timestamp.year, timestamp.month, timestamp.day);
-      final inWeek = !day.isBefore(weekStart) &&
+      final inWeek =
+          !day.isBefore(weekStart) &&
           day.isBefore(weekStart.add(const Duration(days: 7)));
       if (inWeek) {
         mealsByDay.putIfAbsent(day, () => []).add(meal);
@@ -119,7 +121,9 @@ class HistoryStats {
     for (var offset = 0; offset < 7; offset++) {
       final day = weekStart.add(Duration(days: offset));
       final dayMeals = mealsByDay[day];
-      if (dayMeals == null || dayMeals.isEmpty) {
+      if (dayMeals == null ||
+          dayMeals.isEmpty ||
+          dayMeals.any((m) => !m.structureComplete)) {
         continue;
       }
       trend[offset] = VitalityCalculator.scoreDay(
