@@ -1,3 +1,6 @@
+import 'package:canting/core/exposure.dart';
+import 'package:canting/data/exposure_repository.dart';
+import 'package:canting/core/record_window.dart';
 import 'package:canting/core/models/local_food.dart';
 import 'package:canting/core/local_food_matcher.dart';
 import 'package:canting/data/local_food_repository.dart';
@@ -53,8 +56,10 @@ class AppState extends ChangeNotifier {
     AndroidNativeBridge? androidNativeBridge,
     DatabaseHelper? databaseHelper,
     this.guidelines,
+    DateTime Function()? clock,
     this.persistNotificationSwitches,
-  }) : _petEngine = petEngine ?? PetEngine(),
+  }) : clock = clock ?? DateTime.now,
+       _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
        _databaseHelper = databaseHelper ?? DatabaseHelper.instance {
     _pet = _petEngine.createPet(petType: 'cat', petName: '小挑食');
@@ -73,6 +78,33 @@ class AppState extends ChangeNotifier {
     bmr: 1450,
     tdee: 1740,
   );
+
+  late final ExposureRepository _exposureRepo = ExposureRepository(
+    () => _databaseHelper.database,
+  );
+  Future<Map<String, dynamic>> exposurePreferences() =>
+      _exposureRepo.preferences();
+  Future<void> saveExposurePreferences(Map<String, dynamic> prefs) =>
+      _exposureRepo.savePreferences(prefs);
+  Future<void> clearExposurePreferences() => _exposureRepo.clearPreferences();
+  final DateTime Function() clock;
+  final Map<String, RecordWindow> _windows = {};
+  final Set<String> _windowLoads = {};
+  final Map<String, Completer<void>> _windowWaiters = {};
+  int dataRevision = 0;
+  bool _disposed = false;
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  RecordWindow? windowFor(DateTime date, int days) =>
+      _windows['${_dayKey(date)}:$days'];
+  Future<void> resumeRecords() async {
+    _mealsByDay.clear();
+    await refreshBalanceLedger();
+  }
 
   final PetEngine _petEngine;
   final AndroidNativeBridge _androidNativeBridge;
@@ -125,6 +157,11 @@ class AppState extends ChangeNotifier {
     return db.transaction(
       (txn) async => const JsonEncoder.withIndent('  ').convert({
         'schema_version': 2,
+        'p3_exposure_state': await txn.query(
+          'app_meta',
+          where: 'key LIKE ?',
+          whereArgs: ['p3.exposure.%'],
+        ),
         for (final table in [
           'user_food_profiles',
           'user_custom_dishes',
@@ -211,6 +248,7 @@ class AppState extends ChangeNotifier {
       await refreshPetVitality();
     }
     await _refreshDishMatcher();
+    await refreshBalanceLedger();
     if (onboardingComplete) {
       await _ensureMealsLoaded(DateTime.now());
     }
@@ -393,6 +431,29 @@ class AppState extends ChangeNotifier {
           if (hasPortions || dish.matchedDishId != null) return dish;
           return resolveFood(dish, brand: merchant ?? '');
         })
+        .map((dish) {
+          if (mealId != null ||
+              dish.food != null ||
+              dish.riskEvidence != null ||
+              dish.matchedDishId == null) {
+            return dish;
+          }
+          final source = _foodDatabase?.findDishById(dish.matchedDishId!);
+          if (source == null) return dish;
+          return MealDish.fromJson({
+            ...dish.toJson(),
+            'risk_evidence': {
+              'identity': source.id,
+              'source': 'legacy_catalog_snapshot',
+              'policy_version': 'p3-v1',
+              'tags': [
+                ...source.qualityTags,
+                if (source.category == 'fried') 'fried',
+              ],
+              'category': source.category,
+            },
+          });
+        })
         .toList(growable: false);
     final meal = MealRecord(
       mealId: mealId ?? 'meal-${DateTime.now().microsecondsSinceEpoch}',
@@ -422,32 +483,64 @@ class AppState extends ChangeNotifier {
   }
 
   /// 重建 7 天滚动平衡台账（推荐引擎与宠物台词共用）。
-  /// 启动、记录/删除餐食后调用；查询失败时保留旧台账。
-  Future<void> refreshBalanceLedger() async {
-    if (!_databaseHelper.isOpen) {
+  /// 启动、记录/删除餐食后调用；查询失败标记 error 并取消补偿。
+  Future<void> refreshBalanceLedger({DateTime? reference}) async {
+    _windows.clear();
+    _balanceReport = null;
+    dataRevision++;
+    await loadRecordWindows(reference ?? clock());
+  }
+
+  Future<void> loadRecordWindows(DateTime reference) async {
+    final key = _dayKey(reference);
+    final pending = _windowWaiters[key];
+    if (pending != null) {
+      await pending.future;
+      if (windowFor(reference, 7) == null) await loadRecordWindows(reference);
       return;
     }
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
+    _windowLoads.add(key);
+    _windowWaiters[key] = Completer<void>();
+    final revision = dataRevision;
+    final today = localDay(reference);
     try {
       final meals = await _mealRepo.getMealsByDateRange(
-        today.subtract(const Duration(days: BalanceLedger.windowDays - 1)),
-        today.add(const Duration(days: 1)),
+        DateTime(today.year, today.month, today.day - 27),
+        DateTime(today.year, today.month, today.day + 1),
       );
-      final intakeByDay = <DateTime, Portions>{};
-      for (final meal in meals) {
-        final timestamp = meal.timestamp;
-        final day = DateTime(timestamp.year, timestamp.month, timestamp.day);
-        intakeByDay[day] =
-            (intakeByDay[day] ?? Portions.zero) + meal.portionsTotal;
+      if (revision != dataRevision) return;
+      for (final days in [7, 28]) {
+        _windows['$key:$days'] = RecordWindow.build(
+          meals,
+          days: days,
+          asOf: reference,
+        );
       }
-      _balanceReport = BalanceLedger.compute(
-        intakeByDay: intakeByDay,
-        weeklyTarget: IntakeCalculator.weeklyTargetFromDaily(dailyIntake),
-        now: now,
-      );
-    } catch (error) {
-      debugPrint('Unable to refresh balance ledger: $error');
+      _mealsByDay[key] = meals
+          .where((m) => localDay(m.timestamp) == today)
+          .toList();
+      if (today == localDay(clock())) {
+        _balanceReport = BalanceLedger.compute(
+          intakeByDay: _windows['$key:7']!.knownDays,
+          weeklyTarget: IntakeCalculator.weeklyTargetFromDaily(dailyIntake),
+          now: reference,
+        );
+      }
+    } catch (_) {
+      if (revision != dataRevision) return;
+      for (final days in [7, 28]) {
+        _windows['$key:$days'] = RecordWindow.build(
+          [],
+          days: days,
+          asOf: reference,
+          status: 'error',
+        );
+      }
+      _balanceReport = null;
+    } finally {
+      _windowLoads.remove(key);
+      _windowWaiters.remove(key)?.complete();
+      if (!_disposed) notifyListeners();
     }
   }
 
@@ -463,7 +556,15 @@ class AppState extends ChangeNotifier {
     if (foodDatabase == null) {
       return null;
     }
-    final meals = mealsFor(date);
+    final window = windowFor(date, 7);
+    if (window == null && !_windowLoads.contains(_dayKey(date))) {
+      scheduleMicrotask(() => loadRecordWindows(date));
+    }
+    final meals =
+        window?.meals
+            .where((m) => localDay(m.timestamp) == localDay(date))
+            .toList() ??
+        <MealRecord>[];
     final lastMealType = meals.isEmpty
         ? ''
         : meals
@@ -474,7 +575,7 @@ class AppState extends ChangeNotifier {
               .mealType;
     // 归整到分钟：同一分钟内的多次调用（如「换一批」）得到相同的
     // suggestedTime，展示层本来就只显示到分钟。
-    final rawNow = DateTime.now();
+    final rawNow = clock();
     final now = DateTime(
       rawNow.year,
       rawNow.month,
@@ -487,7 +588,14 @@ class AppState extends ChangeNotifier {
       dailyIntake: dailyIntake,
       now: now,
       lastMealType: lastMealType,
-      balance: _balanceReport,
+      balance: window == null
+          ? null
+          : BalanceLedger.compute(
+              intakeByDay: window.knownDays,
+              weeklyTarget: IntakeCalculator.weeklyTargetFromDaily(dailyIntake),
+              now: date,
+            ),
+      dataAvailable: window?.dataStatus == 'ready',
       excludeDishNames: excludeDishNames,
     );
   }
@@ -957,7 +1065,31 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> saveMeal(MealRecord meal, {String? note, String? source}) async {
+  final Map<String, Future<ExposurePrompt?>> _savingMeals = {};
+  Future<ExposurePrompt?> saveMeal(
+    MealRecord meal, {
+    String? note,
+    String? source,
+  }) async {
+    final pending = _savingMeals[meal.mealId];
+    if (pending != null) {
+      await pending;
+      return null;
+    }
+    final future = _saveMeal(meal, note: note, source: source);
+    _savingMeals[meal.mealId] = future;
+    try {
+      return await future;
+    } finally {
+      _savingMeals.remove(meal.mealId);
+    }
+  }
+
+  Future<ExposurePrompt?> _saveMeal(
+    MealRecord meal, {
+    String? note,
+    String? source,
+  }) async {
     await _ensureMealsLoaded(meal.timestamp);
     final key = _dayKey(meal.timestamp);
     final dayMeals = [...(_mealsByDay[key] ?? const <MealRecord>[])];
@@ -1056,6 +1188,14 @@ class AppState extends ChangeNotifier {
     _scheduleWidgetSync();
     _scheduleMealRecordSync(meal);
     notifyListeners();
+    if (isNew) {
+      try {
+        return await _exposureRepo.claim(meal, clock());
+      } catch (_) {
+        return null;
+      } // Reminder failure cannot turn a committed meal into a failed save.
+    }
+    return null;
   }
 
   Future<void> deleteMeal(String id) async {
@@ -1096,6 +1236,7 @@ class AppState extends ChangeNotifier {
           .toList(growable: false);
     }
     _dialogue = '记录已删除';
+    await refreshBalanceLedger();
     _scheduleWidgetSync();
     notifyListeners();
   }
@@ -1113,6 +1254,7 @@ class AppState extends ChangeNotifier {
   Future<void> clearData() async {
     await _mealRepo.deleteAllMeals();
     _mealsByDay.clear();
+    await refreshBalanceLedger();
     mealReminder = false;
     gapReminder = false;
     persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);
@@ -1125,6 +1267,7 @@ class AppState extends ChangeNotifier {
   Future<void> updateProfile(UserProfile updated) async {
     profile = updated;
     await _userRepo.saveProfile(updated);
+    await refreshBalanceLedger();
     _scheduleWidgetSync();
     notifyListeners();
   }
@@ -1133,6 +1276,11 @@ class AppState extends ChangeNotifier {
   /// 自定义菜品全部删除，回到 onboarding 首页重新设置。
   Future<void> clearAllData() async {
     await _databaseHelper.database.transaction((txn) async {
+      await txn.delete(
+        'app_meta',
+        where: 'key LIKE ?',
+        whereArgs: ['p3.exposure.%'],
+      );
       for (final table in [
         'meal_records',
         'pet_states',
@@ -1148,6 +1296,8 @@ class AppState extends ChangeNotifier {
     _mealsByDay.clear();
     profile = null;
     _balanceReport = null;
+    _windows.clear();
+    dataRevision++;
     mealReminder = false;
     gapReminder = false;
     persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);
@@ -1175,7 +1325,11 @@ class AppState extends ChangeNotifier {
           ? averageCompletion
           : null,
       'structure_complete': todayMeals.every((m) => m.structureComplete),
-      'next_meal_summary': _pet.nextMealSummary ?? '$dinnerTime 补蔬菜',
+      'next_meal_summary':
+          !todayMeals.isNotEmpty ||
+              !todayMeals.every((m) => m.structureComplete)
+          ? '$dinnerTime 常规搭配，记录不足'
+          : '$dinnerTime 基于已记录餐食估算建议',
     };
 
     _widgetSync = _widgetSync.then((_) async {

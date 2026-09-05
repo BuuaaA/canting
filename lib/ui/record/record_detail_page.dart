@@ -1,3 +1,5 @@
+import 'package:canting/ui/record/exposure_prompt.dart';
+
 import 'food_confirmation_sheet.dart';
 import '../../core/models/local_food.dart';
 
@@ -264,11 +266,12 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
     try {
-      await appState.saveMeal(
+      final prompt = await appState.saveMeal(
         meal,
         note: note.isEmpty ? null : note,
         source: widget.isSharedRecognition ? 'ocr' : 'manual',
       );
+      if (mounted) await showExposurePrompt(context, appState, prompt);
     } catch (e) {
       if (mounted) {
         setState(() => _saving = false);

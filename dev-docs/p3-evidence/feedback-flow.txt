@@ -1,0 +1,56 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/state/p3_feedback_flow_test.dart
+00:00 +0: real save restart edit date move delete rebuilds windows and keeps snapshot/receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +1: mute exact expiry survives restart export clear and never changes current spec
+00:00 +1: real save restart edit date move delete rebuilds windows and keeps snapshot/receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +1: mute exact expiry survives restart export clear and never changes current spec
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: concurrent same ID save at most one prompt, failed save never counts
+00:00 +2: mute exact expiry survives restart export clear and never changes current spec
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +2: concurrent same ID save at most one prompt, failed save never counts
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +3: reminder persistence failure never rolls back successful meal
+00:00 +3: concurrent same ID save at most one prompt, failed save never counts
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:00 +3: reminder persistence failure never rolls back successful meal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:00 +4: database failure marks error and removes stale ledger
+00:00 +4: reminder persistence failure never rolls back successful meal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:01 +4: database failure marks error and removes stale ledger
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +5: All tests passed!

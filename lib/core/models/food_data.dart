@@ -1,4 +1,5 @@
 import 'food_knowledge.dart';
+import '../recommendation_safety.dart';
 import 'portions.dart';
 
 /// A level-1 takeaway-food category.
@@ -59,6 +60,7 @@ class StandardDish {
     this.qualityTags = const [],
     this.estimated = false,
     this.knowledge,
+    this.candidateFacts,
   });
 
   final String id;
@@ -87,6 +89,7 @@ class StandardDish {
 
   /// Null means legacy/unavailable, never implicitly reviewed or sourced.
   final FoodKnowledge? knowledge;
+  final CandidateFacts? candidateFacts;
   String get knowledgeSource => knowledge?.sourceType ?? 'unknown';
   String get knowledgeReviewStatus => knowledge?.reviewStatus ?? 'unknown';
   String get sugarLevel => knowledge?.sugarLevel ?? 'unknown';
@@ -143,6 +146,11 @@ class StandardDish {
 
     return StandardDish(
       knowledge: knowledge,
+      candidateFacts: json['candidate_facts'] is Map
+          ? CandidateFacts.fromJson(
+              Map<String, dynamic>.from(json['candidate_facts'] as Map),
+            )
+          : null,
       id: json['dish_id'] as String,
       name: json['dish_name'] as String,
       aliases: List<String>.from(json['aliases'] as List),
@@ -163,6 +171,7 @@ class StandardDish {
 
   Map<String, dynamic> toJson() => {
     if (knowledge != null) 'knowledge': knowledge!.toJson(),
+    if (candidateFacts != null) 'candidate_facts': candidateFacts!.toJson(),
     'dish_id': id,
     'dish_name': name,
     'aliases': aliases,

@@ -1,3 +1,4 @@
+import 'package:canting/ui/history/record_summary_panel.dart';
 import 'package:canting/core_engine.dart';
 import 'package:canting/services/delivery_jump_service.dart';
 import 'package:canting/state/app_state.dart';
@@ -25,15 +26,6 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   /// 「换一批」已展示过的菜名：从下一批结果里排除。
   final Set<String> _shownDishNames = {};
 
-  static const _gapLabels = {
-    'grains': '主食',
-    'vegetables': '蔬菜',
-    'fruits': '水果',
-    'protein': '蛋白质',
-    'protein_soy': '大豆坚果',
-    'oil': '油脂',
-  };
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -56,10 +48,7 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     });
   }
 
-  Future<void> _jump(
-    DeliveryPlatform platform,
-    String keyword,
-  ) async {
+  Future<void> _jump(DeliveryPlatform platform, String keyword) async {
     final messenger = ScaffoldMessenger.of(context);
     final result = await _jumpService.jumpToSearch(platform, keyword);
     if (result.success && result.usedFallback) {
@@ -106,6 +95,7 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
               : ListView(
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                   children: [
+                    const RecordSummaryPanel(),
                     _HeaderPanel(
                       recommendation: recommendation,
                       shortfallText: _shortfallText(state, now),
@@ -120,13 +110,14 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
                         padding: const EdgeInsets.all(22),
                         child: Column(
                           children: [
-                            const Text('这一批推荐都看过了'),
+                            const Text('可推荐候选不足，暂不提供具体商品'),
                             const SizedBox(height: 10),
-                            OutlinedButton(
-                              onPressed: () =>
-                                  setState(_shownDishNames.clear),
-                              child: const Text('重新开始推荐'),
-                            ),
+                            if (_shownDishNames.isNotEmpty)
+                              OutlinedButton(
+                                onPressed: () =>
+                                    setState(_shownDishNames.clear),
+                                child: const Text('重新开始推荐'),
+                              ),
                           ],
                         ),
                       )
@@ -167,21 +158,7 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
 
   /// 顶部缺口说明：「今天蔬菜还差 1.5 份」。
   String? _shortfallText(AppState state, DateTime now) {
-    final completion = state.completionFor(now);
-    final biggestGap = completion.biggestGap;
-    if (biggestGap == null) {
-      return null;
-    }
-    final target = state.dailyIntake.portions.valueFor(biggestGap);
-    final eaten = state.mealsFor(now).fold(
-      Portions.zero,
-      (total, meal) => total + meal.portionsTotal,
-    );
-    final shortfall = target - eaten.valueFor(biggestGap);
-    if (shortfall <= 0) {
-      return '今天${_gapLabels[biggestGap] ?? "各分类"}已经吃够啦';
-    }
-    return '今天${_gapLabels[biggestGap] ?? "各分类"}还差 ${shortfall.toStringAsFixed(1)} 份';
+    return '仅基于已记录餐食估算，不代表全天摄入；候选先通过安全过滤。';
   }
 
   List<Widget> _dishCards(Recommendation recommendation) {

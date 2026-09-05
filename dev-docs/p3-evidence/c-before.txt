@@ -1,0 +1,39 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/core/p3_exposure_test.dart
+test/core/p3_exposure_test.dart:2:8: Error: Error when reading 'lib/core/exposure.dart': 系统找不到指定的文件。
+import 'package:canting/core/exposure.dart';
+       ^
+test/core/p3_exposure_test.dart:11:11: Error: Undefined name 'Exposure'.
+   expect(Exposure.counts([first])['sugary_drink'],1);
+          ^^^^^^^^
+test/core/p3_exposure_test.dart:12:11: Error: Undefined name 'Exposure'.
+   expect(Exposure.counts([first,drink('b','low',d)])['sugary_drink'],2);
+          ^^^^^^^^
+test/core/p3_exposure_test.dart:16:10: Error: Undefined name 'Exposure'.
+  expect(Exposure.counts([drink('a','none',DateTime(2026)),drink('b','unknown',DateTime(2026))]),isEmpty);
+         ^^^^^^^^
+test/core/p3_exposure_test.dart:20:10: Error: Undefined name 'Exposure'.
+  expect(Exposure.families(meal),isEmpty);
+         ^^^^^^^^
+00:00 +0 -1: loading D:/dev/canting/test/core/p3_exposure_test.dart [E]
+  Failed to load "D:/dev/canting/test/core/p3_exposure_test.dart":
+  Compilation failed for testPath=D:/dev/canting/test/core/p3_exposure_test.dart: test/core/p3_exposure_test.dart:2:8: Error: Error when reading 'lib/core/exposure.dart': 系统找不到指定的文件。
+  import 'package:canting/core/exposure.dart';
+         ^
+  test/core/p3_exposure_test.dart:11:11: Error: Undefined name 'Exposure'.
+     expect(Exposure.counts([first])['sugary_drink'],1);
+            ^^^^^^^^
+  test/core/p3_exposure_test.dart:12:11: Error: Undefined name 'Exposure'.
+     expect(Exposure.counts([first,drink('b','low',d)])['sugary_drink'],2);
+            ^^^^^^^^
+  test/core/p3_exposure_test.dart:16:10: Error: Undefined name 'Exposure'.
+    expect(Exposure.counts([drink('a','none',DateTime(2026)),drink('b','unknown',DateTime(2026))]),isEmpty);
+           ^^^^^^^^
+  test/core/p3_exposure_test.dart:20:10: Error: Undefined name 'Exposure'.
+    expect(Exposure.families(meal),isEmpty);
+           ^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/core/p3_exposure_test.dart: loading D:/dev/canting/test/core/p3_exposure_test.dart

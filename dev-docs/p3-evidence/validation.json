@@ -1,0 +1,327 @@
+{
+  "collected_at": "2026-09-05T08:28:50.815259+00:00",
+  "baseline": "d7077e221bab45226ba0a16a881588418d61460a",
+  "head": "d7077e221bab45226ba0a16a881588418d61460a",
+  "git_status": [
+    "## main...origin/main [ahead 7]",
+    " M lib/core/balance_ledger.dart",
+    " M lib/core/models/food_data.dart",
+    " M lib/core/models/meal_record.dart",
+    " M lib/core/models/recommendation.dart",
+    " M lib/core/recommendation_engine.dart",
+    " M lib/main.dart",
+    " M lib/state/app_state.dart",
+    " M lib/ui/history/history_page.dart",
+    " M lib/ui/home/widgets/recommendation_card.dart",
+    " M lib/ui/manual_add/manual_add_page.dart",
+    " M lib/ui/recommendation/recommendation_detail_page.dart",
+    " M lib/ui/record/food_confirmation_sheet.dart",
+    " M lib/ui/record/record_detail_page.dart",
+    " M lib/ui/settings/settings_page.dart",
+    " M test/core/recommendation_engine_test.dart",
+    " M test/state/recommendation_state_test.dart",
+    " M test/ui/home_page_real_test.dart",
+    "?? dev-docs/p3-changes.json",
+    "?? dev-docs/p3-evidence/",
+    "?? dev-docs/p3-recommendation-acceptance.md",
+    "?? lib/core/exposure.dart",
+    "?? lib/core/recommendation_safety.dart",
+    "?? lib/core/record_window.dart",
+    "?? lib/data/exposure_repository.dart",
+    "?? lib/ui/history/record_summary_panel.dart",
+    "?? lib/ui/record/exposure_prompt.dart",
+    "?? scripts/p3/",
+    "?? test/core/p3_audit_test.dart",
+    "?? test/core/p3_exposure_test.dart",
+    "?? test/core/p3_safety_test.dart",
+    "?? test/core/p3_window_test.dart",
+    "?? test/state/p3_feedback_flow_test.dart",
+    "?? test/ui/p3_production_pages_test.dart"
+  ],
+  "staged_paths": [],
+  "commands": [
+    {
+      "command": "dart format --output=none --set-exit-if-changed <changed Dart paths>",
+      "result": "Formatted 29 files (0 changed) in 0.17 seconds.",
+      "exit_code": 0
+    },
+    {
+      "command": "dart format --output=none --set-exit-if-changed lib/ui/history/record_summary_panel.dart test/ui/p3_production_pages_test.dart",
+      "result": "Formatted 2 files (0 changed) in 0.02 seconds.",
+      "exit_code": 0
+    },
+    {
+      "command": "flutter test --no-pub test/ui/p3_production_pages_test.dart --reporter expanded",
+      "passed": 7,
+      "exit_code": 0,
+      "log": "r1-component.txt"
+    },
+    {
+      "command": "flutter analyze --no-pub",
+      "result": "No issues found",
+      "exit_code": 0,
+      "log": "analyze-final.txt"
+    },
+    {
+      "command": "flutter test --no-pub --reporter expanded",
+      "passed": 464,
+      "exit_code": 0,
+      "log": "flutter-final.txt"
+    }
+  ],
+  "diff_checks": [
+    {
+      "scope": "tracked diff",
+      "exit_code": 0
+    },
+    {
+      "scope": "dev-docs/p3-evidence/a-before.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/analyze-final.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/analyze-initial.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/analyze-second.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/audit-test.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/b-before.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/c-before.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/candidate-audit.json",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/component-recommendation-28d.png",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/component-recommendation-7d.png",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/component-save-prompt.png",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/edges.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/feedback-events.json",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/feedback-flow.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/flutter-final.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/flutter-pre-review.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/format-final.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/format.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/full-initial.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/legacy-convergence-diagnostic.json",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/r1-component.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/r1-format-final.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/related-second.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/related-third.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/simulation.json",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/ui-final.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/ui-initial.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/ui-second.txt",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-evidence/validation.json",
+      "exit_code": 1
+    },
+    {
+      "scope": "dev-docs/p3-recommendation-acceptance.md",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/core/exposure.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/core/recommendation_safety.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/core/record_window.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/data/exposure_repository.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/ui/history/record_summary_panel.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "lib/ui/record/exposure_prompt.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "scripts/p3/collect_evidence.py",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/core/p3_audit_test.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/core/p3_exposure_test.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/core/p3_safety_test.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/core/p3_window_test.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/state/p3_feedback_flow_test.dart",
+      "exit_code": 1
+    },
+    {
+      "scope": "test/ui/p3_production_pages_test.dart",
+      "exit_code": 1
+    }
+  ],
+  "frozen_files_unchanged": {
+    "AGENTS.md": true,
+    "assets/data/dishes.json": true,
+    "assets/data/categories.json": true,
+    "assets/data/dietary_guidelines.json": true,
+    "dev-docs/p2-local-food-profile-acceptance.md": true,
+    "dev-docs/p2-evidence/01-mixed-results.png": true,
+    "dev-docs/p2-evidence/02-unknown-classification.png": true,
+    "dev-docs/p2-evidence/03-first-confirmation.png": true,
+    "dev-docs/p2-evidence/04-reuse-after-restart.png": true,
+    "dev-docs/p2-evidence/05-missing-specs-remain-unknown.png": true,
+    "dev-docs/p2-evidence/06-current-spec-overrides-history.png": true,
+    "dev-docs/p2-evidence/07-memory-management.png": true,
+    "dev-docs/p2-evidence/08-native-offline-ocr.png": true,
+    "dev-docs/p2-evidence/09-cake-consumption-confirmation.png": true,
+    "dev-docs/p2-evidence/10-explicitly-preserve-unresolved.png": true,
+    "dev-docs/p2-evidence/11-edit-memory.png": true,
+    "dev-docs/p2-evidence/12-delete-memory-confirmation.png": true,
+    "dev-docs/p2-evidence/TEST-com.canting.canting.DishNameExtractorTest.xml": true,
+    "dev-docs/p2-evidence/analyze.txt": true,
+    "dev-docs/p2-evidence/emulator-build.txt": true,
+    "dev-docs/p2-evidence/emulator-export-after.json": true,
+    "dev-docs/p2-evidence/emulator-export-before.json": true,
+    "dev-docs/p2-evidence/emulator-verification.json": true,
+    "dev-docs/p2-evidence/format.txt": true,
+    "dev-docs/p2-evidence/kotlin.txt": true,
+    "dev-docs/p2-evidence/regression.txt": true,
+    "dev-docs/p2-evidence/review-20260905/analyze.txt": true,
+    "dev-docs/p2-evidence/review-20260905/baseline-changes.json": true,
+    "dev-docs/p2-evidence/review-20260905/changes.json": true,
+    "dev-docs/p2-evidence/review-20260905/format.txt": true,
+    "dev-docs/p2-evidence/review-20260905/independent.txt": true,
+    "dev-docs/p2-evidence/review-20260905/r1-before.txt": true,
+    "dev-docs/p2-evidence/review-20260905/r2-before.txt": true,
+    "dev-docs/p2-evidence/review-20260905/regression.txt": true,
+    "dev-docs/p2-evidence/review-20260905/related.txt": true,
+    "dev-docs/p2-evidence/review-20260905/validation.json": true,
+    "dev-docs/p2-evidence/validation.json": true
+  },
+  "candidate_counts": {
+    "ineligible": 430,
+    "eligible": 569,
+    "conditional": 5
+  },
+  "constructed_exclusion_leaks": 0,
+  "screenshots": {
+    "kind": "Flutter widget test, 1080x2400, host font for evidence only",
+    "paths": [
+      "component-recommendation-28d.png",
+      "component-recommendation-7d.png",
+      "component-save-prompt.png"
+    ]
+  },
+  "host": "Windows-11-10.0.26200-SP0",
+  "r1_review": {
+    "status": "corrected",
+    "approved_copy": "仅展示已记录餐食结构，暂不判断改善趋势；28天差额不分摊到下一餐。",
+    "complete_28d_assertion": {
+      "recordedDays": 28,
+      "partialDays": 0,
+      "missingDays": 0,
+      "unknownItemCount": 0
+    },
+    "preserved_component_states": [
+      "empty",
+      "partial",
+      "error"
+    ]
+  },
+  "normalization": "P3 text tool transcripts normalize trailing whitespace only; P2 files untouched",
+  "known_limitations": [
+    "legacy 30-day +/-20% convergence assertion no longer holds; full negative diagnostic retained",
+    "No device/native/system share acceptance in P3",
+    "Six-category model and legacy proxy evidence are incomplete health knowledge"
+  ],
+  "commit_or_push": false,
+  "next_phase_started": false
+}

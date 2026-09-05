@@ -52,9 +52,8 @@ Future<(AppState, DatabaseHelper)> _buildState() async {
   sqfliteFfiInit();
   final dishesJson = File('assets/data/dishes.json').readAsStringSync();
   final categoriesJson = File('assets/data/categories.json').readAsStringSync();
-  final guidelinesJson = File(
-    'assets/data/dietary_guidelines.json',
-  ).readAsStringSync();
+  final guidelinesJson = File('assets/data/dietary_guidelines.json')
+      .readAsStringSync();
   final helper = DatabaseHelper(
     factory: databaseFactoryFfiNoIsolate,
     databasePath: inMemoryDatabasePath,
@@ -88,10 +87,7 @@ Widget _wrap(WidgetTester tester, AppState state) {
   final router = GoRouter(
     initialLocation: '/home',
     routes: [
-      GoRoute(
-        path: '/home',
-        builder: (context, state) => const HomePage(),
-      ),
+      GoRoute(path: '/home', builder: (context, state) => const HomePage()),
       GoRoute(
         path: '/manual_add',
         builder: (context, state) => const ManualAddPage(),
@@ -149,9 +145,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('底部「+」弹出三项：拍照识别 / 相册选择 / 手动添加（模块 14）', (
-    tester,
-  ) async {
+  testWidgets('底部「+」弹出三项：拍照识别 / 相册选择 / 手动添加（模块 14）', (tester) async {
     final (state, helper) = await _buildState();
     addTearDown(helper.close);
 
@@ -193,7 +187,7 @@ void main() {
     await tester.pumpWidget(_wrap(tester, state));
     await pumpUiTransition(tester);
 
-    await tester.tap(find.textContaining('补一补'));
+    await tester.tap(find.textContaining('下一餐可选'));
     await pumpUiTransition(tester);
 
     expect(find.text('下一餐推荐'), findsOneWidget);

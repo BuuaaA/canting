@@ -1,0 +1,5 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/core/p3_audit_test.dart
+00:00 +0: independent exclusion oracle covers all slots, modes, swap and fallback at 0/1/2 safe candidates
+00:00 +1: formal catalog audit and fixed-input 7/28-day simulations
+00:00 +2: All tests passed!

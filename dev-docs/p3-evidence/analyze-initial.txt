@@ -1,0 +1,32 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Analyzing canting...
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\exposure.dart:31:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\exposure.dart:35:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\exposure.dart:37:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\exposure.dart:42:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\exposure.dart:44:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:107:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:119:11 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:123:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:126:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:129:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:131:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:133:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:140:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:144:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:149:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:158:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:160:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:168:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:170:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\core\recommendation_safety.dart:175:7 - curly_braces_in_flow_control_structures
+   info - Unnecessary braces in a string interpolation. Try removing the braces - lib\core\record_window.dart:72:8 - unnecessary_brace_in_string_interps
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\data\exposure_repository.dart:49:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\data\exposure_repository.dart:84:11 - curly_braces_in_flow_control_structures
+warning - Unused import: 'package:canting/core_engine.dart'. Try removing the import directive - lib\ui\history\history_page.dart:2:8 - unused_import
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\record\exposure_prompt.dart:35:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\record\exposure_prompt.dart:43:9 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - lib\ui\record\exposure_prompt.dart:118:9 - curly_braces_in_flow_control_structures
+
+27 issues found. (ran in 7.4s)

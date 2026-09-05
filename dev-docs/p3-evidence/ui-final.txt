@@ -1,0 +1,13 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/ui/p3_production_pages_test.dart
+00:00 +0: (setUpAll)
+00:00 +0: production record save presents one dismissible prompt after SQLite commit; preference leaves sugar unchanged
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:01 +1: production recommendation switches 7/28, shows partial coverage and preferences are editable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:02 +2: real recommendation page renders 0 safe cards and never unsafe fallback
+00:02 +3: real recommendation page renders 1 safe cards and never unsafe fallback
+00:02 +4: real recommendation page renders 2 safe cards and never unsafe fallback
+00:02 +5: (tearDownAll)
+00:02 +5: All tests passed!

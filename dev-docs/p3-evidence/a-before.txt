@@ -1,0 +1,135 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/core/p3_safety_test.dart
+test/core/p3_safety_test.dart:2:8: Error: Error when reading 'lib/core/recommendation_safety.dart': 系统找不到指定的文件。
+import 'package:canting/core/recommendation_safety.dart';
+       ^
+test/core/p3_safety_test.dart:6:99: Error: Type 'CandidateFacts' not found.
+StandardDish sample({String name = '米饭', List<String> tags = const [], bool recommendable = true, CandidateFacts? facts}) => StandardDish(
+                                                                                          ^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:6:99: Error: 'CandidateFacts' isn't a type.
+StandardDish sample({String name = '米饭', List<String> tags = const [], bool recommendable = true, CandidateFacts? facts}) => StandardDish(
+                                                                                          ^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:10:32: Error: No named parameter with the name 'candidateFacts'.
+ recommendable: recommendable, candidateFacts: facts);
+                               ^^^^^^^^^^^^^^
+lib/core/models/food_data.dart:47:9: Context: Found this candidate, but the arguments don't match.
+  const StandardDish({
+        ^^^^^^^^^^^^
+test/core/p3_safety_test.dart:14:18: Error: Undefined name 'RecommendationSafety'.
+  final result = RecommendationSafety.evaluate(sample(), category);
+                 ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:15:30: Error: Undefined name 'Eligibility'.
+  expect(result.eligibility, Eligibility.eligible);
+                             ^^^^^^^^^^^
+test/core/p3_safety_test.dart:20:11: Error: Undefined name 'RecommendationSafety'.
+   expect(RecommendationSafety.evaluate(sample(tags: [tag,'light']), category).eligibility, Eligibility.ineligible);
+          ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:20:93: Error: Undefined name 'Eligibility'.
+   expect(RecommendationSafety.evaluate(sample(tags: [tag,'light']), category).eligibility, Eligibility.ineligible);
+                                                                                          ^^^^^^^^^^^
+test/core/p3_safety_test.dart:24:10: Error: Undefined name 'RecommendationSafety'.
+  expect(RecommendationSafety.evaluate(sample(name: '非油炸汉堡'), category).eligibility, Eligibility.conditional);
+         ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:24:86: Error: Undefined name 'Eligibility'.
+  expect(RecommendationSafety.evaluate(sample(name: '非油炸汉堡'), category).eligibility, Eligibility.conditional);
+                                                                                     ^^^^^^^^^^^
+test/core/p3_safety_test.dart:25:10: Error: Undefined name 'RecommendationSafety'.
+  expect(RecommendationSafety.evaluate(sample(name: '无糖奶茶'), category).eligibility, Eligibility.conditional);
+         ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:25:85: Error: Undefined name 'Eligibility'.
+  expect(RecommendationSafety.evaluate(sample(name: '无糖奶茶'), category).eligibility, Eligibility.conditional);
+                                                                                    ^^^^^^^^^^^
+test/core/p3_safety_test.dart:28:17: Error: Method not found: 'CandidateFacts'.
+  const facts = CandidateFacts(identity: 'sample', source: 'test fixture only', nonFriedProtein: true, grains: true, vegetables: true, sauce: 'none');
+                ^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:29:10: Error: Undefined name 'RecommendationSafety'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts), category).eligibility, Eligibility.eligible);
+         ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:29:97: Error: Undefined name 'Eligibility'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts), category).eligibility, Eligibility.eligible);
+                                                                                          ^^^^^^^^^^^
+test/core/p3_safety_test.dart:30:10: Error: Undefined name 'RecommendationSafety'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts, tags:['fried']), category).eligibility, Eligibility.ineligible);
+         ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:30:113: Error: Undefined name 'Eligibility'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts, tags:['fried']), category).eligibility, Eligibility.ineligible);
+                                                                                          ^^^^^^^^^^^
+test/core/p3_safety_test.dart:31:72: Error: Couldn't find constructor 'CandidateFacts'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+                                                                       ^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:31:10: Error: Undefined name 'RecommendationSafety'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+         ^^^^^^^^^^^^^^^^^^^^
+test/core/p3_safety_test.dart:31:195: Error: Undefined name 'Eligibility'.
+  expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+                                                                                          ^^^^^^^^^^^
+00:00 +0 -1: loading D:/dev/canting/test/core/p3_safety_test.dart [E]
+  Failed to load "D:/dev/canting/test/core/p3_safety_test.dart":
+  Compilation failed for testPath=D:/dev/canting/test/core/p3_safety_test.dart: test/core/p3_safety_test.dart:2:8: Error: Error when reading 'lib/core/recommendation_safety.dart': 系统找不到指定的文件。
+  import 'package:canting/core/recommendation_safety.dart';
+         ^
+  test/core/p3_safety_test.dart:6:99: Error: Type 'CandidateFacts' not found.
+  StandardDish sample({String name = '米饭', List<String> tags = const [], bool recommendable = true, CandidateFacts? facts}) => StandardDish(
+                                                                                                    ^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:6:99: Error: 'CandidateFacts' isn't a type.
+  StandardDish sample({String name = '米饭', List<String> tags = const [], bool recommendable = true, CandidateFacts? facts}) => StandardDish(
+                                                                                                    ^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:10:32: Error: No named parameter with the name 'candidateFacts'.
+   recommendable: recommendable, candidateFacts: facts);
+                                 ^^^^^^^^^^^^^^
+  lib/core/models/food_data.dart:47:9: Context: Found this candidate, but the arguments don't match.
+    const StandardDish({
+          ^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:14:18: Error: Undefined name 'RecommendationSafety'.
+    final result = RecommendationSafety.evaluate(sample(), category);
+                   ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:15:30: Error: Undefined name 'Eligibility'.
+    expect(result.eligibility, Eligibility.eligible);
+                               ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:20:11: Error: Undefined name 'RecommendationSafety'.
+     expect(RecommendationSafety.evaluate(sample(tags: [tag,'light']), category).eligibility, Eligibility.ineligible);
+            ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:20:93: Error: Undefined name 'Eligibility'.
+     expect(RecommendationSafety.evaluate(sample(tags: [tag,'light']), category).eligibility, Eligibility.ineligible);
+                                                                                              ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:24:10: Error: Undefined name 'RecommendationSafety'.
+    expect(RecommendationSafety.evaluate(sample(name: '非油炸汉堡'), category).eligibility, Eligibility.conditional);
+           ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:24:86: Error: Undefined name 'Eligibility'.
+    expect(RecommendationSafety.evaluate(sample(name: '非油炸汉堡'), category).eligibility, Eligibility.conditional);
+                                                                                       ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:25:10: Error: Undefined name 'RecommendationSafety'.
+    expect(RecommendationSafety.evaluate(sample(name: '无糖奶茶'), category).eligibility, Eligibility.conditional);
+           ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:25:85: Error: Undefined name 'Eligibility'.
+    expect(RecommendationSafety.evaluate(sample(name: '无糖奶茶'), category).eligibility, Eligibility.conditional);
+                                                                                      ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:28:17: Error: Method not found: 'CandidateFacts'.
+    const facts = CandidateFacts(identity: 'sample', source: 'test fixture only', nonFriedProtein: true, grains: true, vegetables: true, sauce: 'none');
+                  ^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:29:10: Error: Undefined name 'RecommendationSafety'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts), category).eligibility, Eligibility.eligible);
+           ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:29:97: Error: Undefined name 'Eligibility'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts), category).eligibility, Eligibility.eligible);
+                                                                                                  ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:30:10: Error: Undefined name 'RecommendationSafety'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts, tags:['fried']), category).eligibility, Eligibility.ineligible);
+           ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:30:113: Error: Undefined name 'Eligibility'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: facts, tags:['fried']), category).eligibility, Eligibility.ineligible);
+                                                                                                                  ^^^^^^^^^^^
+  test/core/p3_safety_test.dart:31:72: Error: Couldn't find constructor 'CandidateFacts'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+                                                                         ^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:31:10: Error: Undefined name 'RecommendationSafety'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+           ^^^^^^^^^^^^^^^^^^^^
+  test/core/p3_safety_test.dart:31:195: Error: Undefined name 'Eligibility'.
+    expect(RecommendationSafety.evaluate(sample(name: '汉堡', facts: const CandidateFacts(identity:'sample', source:'test', nonFriedProtein:true, grains:true, sauce:'none')), category).eligibility, Eligibility.conditional);
+                                                                                                                                                                                                    ^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/core/p3_safety_test.dart: loading D:/dev/canting/test/core/p3_safety_test.dart

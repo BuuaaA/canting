@@ -1,3 +1,5 @@
+import 'package:canting/ui/record/exposure_prompt.dart';
+
 import 'local_food_page.dart';
 
 import 'package:canting/pet.dart';
@@ -138,6 +140,17 @@ class SettingsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 26),
+              PixelPanel(
+                child: _SettingsTile(
+                  icon: Icons.notifications_none,
+                  title: '记录后的温和提醒',
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => ExposurePreferencesPage(state: state),
+                    ),
+                  ),
+                ),
+              ),
               const _SectionTitle('数据管理'),
               const SizedBox(height: 9),
               PixelPanel(

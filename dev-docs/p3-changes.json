@@ -1,0 +1,306 @@
+{
+  "baseline": "d7077e221bab45226ba0a16a881588418d61460a",
+  "manifest_excludes_itself": true,
+  "files": [
+    {
+      "path": "dev-docs/p3-evidence/a-before.txt",
+      "sha256": "25daac30aa6d680949235702a69a41d63661a7ab61891d2b337b8eb566e63715",
+      "bytes": 12175
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-final.txt",
+      "sha256": "ec994ffc8186b0d2dce5e7362c11eb0285c548810997e5448c73634a52dd4088",
+      "bytes": 159
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-initial.txt",
+      "sha256": "f72f568e03ea83c99a000e14f3077a5cc23b7c102d332c9140b92135d00d9288",
+      "bytes": 5041
+    },
+    {
+      "path": "dev-docs/p3-evidence/analyze-second.txt",
+      "sha256": "2c722ee7d76b69d11abac0c613aad57ba71e43395e41ca05a5f5d05090bbcbf9",
+      "bytes": 353
+    },
+    {
+      "path": "dev-docs/p3-evidence/audit-test.txt",
+      "sha256": "c737c3a753050d1e14bda8126bfb393fcf6312f9309c3df108efa43978fb95e9",
+      "bytes": 373
+    },
+    {
+      "path": "dev-docs/p3-evidence/b-before.txt",
+      "sha256": "ea3cb279df4267c7956219629d6e55ebabf87aa9d0f17db46f8a39ff2adb5b22",
+      "bytes": 2073
+    },
+    {
+      "path": "dev-docs/p3-evidence/c-before.txt",
+      "sha256": "d176497415ce3350155bac99531ee12be24d3dce805bc93cbc3e8abd5a592291",
+      "bytes": 2257
+    },
+    {
+      "path": "dev-docs/p3-evidence/candidate-audit.json",
+      "sha256": "937fd59c3fc87d79b229150cf80de8d0e023b23d8fa7429a5d628debc27b5c84",
+      "bytes": 702857
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-recommendation-28d.png",
+      "sha256": "6a0ce28e73d8188a64da8e3f947ef9e96742c5ec3726d443e18d8f2e94d76628",
+      "bytes": 118369
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-recommendation-7d.png",
+      "sha256": "67868bfe4073bfa1396598b1efb3a5a1022fab600970941660e1cadfb0e82599",
+      "bytes": 104040
+    },
+    {
+      "path": "dev-docs/p3-evidence/component-save-prompt.png",
+      "sha256": "ef73106532b50e627122fb932ba151e58771c25c459d7b60c9e381166cbee0cb",
+      "bytes": 77625
+    },
+    {
+      "path": "dev-docs/p3-evidence/edges.txt",
+      "sha256": "c80c861ea974e017c045befacccb260233c37c5af01427a5291ff70531cab077",
+      "bytes": 14894
+    },
+    {
+      "path": "dev-docs/p3-evidence/feedback-events.json",
+      "sha256": "3cfd43626905ebed16670be81da096c761d9a2f7d0ac9d3e4bde77378666dfdd",
+      "bytes": 358
+    },
+    {
+      "path": "dev-docs/p3-evidence/feedback-flow.txt",
+      "sha256": "ec38b05a09f43960160e0bac5a2968dbe2b09c1c551535c5539759626ecb4fda",
+      "bytes": 7086
+    },
+    {
+      "path": "dev-docs/p3-evidence/flutter-final.txt",
+      "sha256": "b1c9d7c054e75986e88161ceb907aa507529f74dafaf13883fd930f833486666",
+      "bytes": 145175
+    },
+    {
+      "path": "dev-docs/p3-evidence/flutter-pre-review.txt",
+      "sha256": "669528907a1f5546d203f1c58db81690aeb16feae89281d98a2938f9483198fc",
+      "bytes": 144579
+    },
+    {
+      "path": "dev-docs/p3-evidence/format-final.txt",
+      "sha256": "fad4b2117cda0fb219aadbda8c55b54e0a483da8346c54dba38e34d3173e7858",
+      "bytes": 49
+    },
+    {
+      "path": "dev-docs/p3-evidence/format.txt",
+      "sha256": "c037a064079dea9fe4509a85866373d58026a6146e5966288e34364ca77f3871",
+      "bytes": 225
+    },
+    {
+      "path": "dev-docs/p3-evidence/full-initial.txt",
+      "sha256": "60578d9ecf0524f82291f290546359a649443bd52e0aabb38a920fc569ae9ee6",
+      "bytes": 142850
+    },
+    {
+      "path": "dev-docs/p3-evidence/legacy-convergence-diagnostic.json",
+      "sha256": "d374215ddda05a7915f41a1c52ca907408298fc5ca99f8fb73b34d23728a36c5",
+      "bytes": 6580
+    },
+    {
+      "path": "dev-docs/p3-evidence/r1-component.txt",
+      "sha256": "04d0b9e38dfe8d755e89f9458209d389a30a5d364ba3103b8de1135fefe20547",
+      "bytes": 1357
+    },
+    {
+      "path": "dev-docs/p3-evidence/r1-format-final.txt",
+      "sha256": "5992cf2445f2e5d9b1278a90c801bf529073f97f1498c16b936a06275812cbcd",
+      "bytes": 48
+    },
+    {
+      "path": "dev-docs/p3-evidence/related-second.txt",
+      "sha256": "4a9c535097ae1153780b3d889c5b4a4da76a8a930f194f8dbbaf0264ad9e15b7",
+      "bytes": 12848
+    },
+    {
+      "path": "dev-docs/p3-evidence/related-third.txt",
+      "sha256": "fd63bd9b69957ba127d3459e612df2b1e34e72f6b8a2246d29aed29e1f1197f5",
+      "bytes": 5862
+    },
+    {
+      "path": "dev-docs/p3-evidence/simulation.json",
+      "sha256": "10ac5967d2797cb3690eb2a10a3eddbb39d9c5087846d821670444e291051850",
+      "bytes": 135246
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-final.txt",
+      "sha256": "4c25c99d65bb824ec66dcebba0572dc91c346cf2424c4aeb5cfa4ee3296fb59a",
+      "bytes": 1158
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-initial.txt",
+      "sha256": "eca803204e80b2e5d5d6e970a44d6111d48fac626dfeb0fcde82b5fc45598eff",
+      "bytes": 1567
+    },
+    {
+      "path": "dev-docs/p3-evidence/ui-second.txt",
+      "sha256": "f0dff566b2753fb21c18161624c4e362f6acc2fb543bb3ae0055486a98dfc5a6",
+      "bytes": 862
+    },
+    {
+      "path": "dev-docs/p3-evidence/validation.json",
+      "sha256": "360c04950e0983ca03a1178814db3b40acab601e70a90b9c94575f4485285319",
+      "bytes": 10334
+    },
+    {
+      "path": "dev-docs/p3-recommendation-acceptance.md",
+      "sha256": "d695f502d587785854273e781bf2e1925b5cdd694f50ea4dc9bd5a434fbb32f4",
+      "bytes": 13362
+    },
+    {
+      "path": "lib/core/balance_ledger.dart",
+      "sha256": "46bebbc3c5af057a6fd61f58b83dbf21a160963a49a6b4ca95eadb1b3ebb3784",
+      "bytes": 6253
+    },
+    {
+      "path": "lib/core/exposure.dart",
+      "sha256": "2e7c49aa0dcf9cdcaae035a73793a01b8e55ee90192f418abf06f04eeb8142d3",
+      "bytes": 2736
+    },
+    {
+      "path": "lib/core/models/food_data.dart",
+      "sha256": "976b083b1eb16aa3563e6a2c95b9cefa46033f77b2ca6e5f74abf7de690522ea",
+      "bytes": 6631
+    },
+    {
+      "path": "lib/core/models/meal_record.dart",
+      "sha256": "7f51cc5d4dc761b6a9889f48e08ec85b5dce2579af1e9151b3fce80bbb899586",
+      "bytes": 7295
+    },
+    {
+      "path": "lib/core/models/recommendation.dart",
+      "sha256": "8d72cb2e8dc8b192f910862c33bd4cbbdfd96db0ea1895a2498bbf885b5c37af",
+      "bytes": 1835
+    },
+    {
+      "path": "lib/core/recommendation_engine.dart",
+      "sha256": "7cb7433a048a37945e21e166beeace9e88819d6ff070a6dbd11f390838037ed5",
+      "bytes": 27383
+    },
+    {
+      "path": "lib/core/recommendation_safety.dart",
+      "sha256": "d32e2a3df24b4a17b88839667ee48593f1b1ad16e5f5359415e3bdde42819335",
+      "bytes": 8035
+    },
+    {
+      "path": "lib/core/record_window.dart",
+      "sha256": "88971302d3873c0ee1245c3daad751e3197cf209070341903ede358fd2bb0ece",
+      "bytes": 3024
+    },
+    {
+      "path": "lib/data/exposure_repository.dart",
+      "sha256": "741f751d3d2278597a0151b320408704001e041e62ac143dab62c0dcb1aa427e",
+      "bytes": 3145
+    },
+    {
+      "path": "lib/main.dart",
+      "sha256": "b43e8d07d226becbe5152d930f9a179981b0c6b536a2d3be60b5e38ef68c2294",
+      "bytes": 7608
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "sha256": "33766e2117b9b87ccec19c1f5441f493c6d3902935180cb36a76a486ed9db630",
+      "bytes": 48103
+    },
+    {
+      "path": "lib/ui/history/history_page.dart",
+      "sha256": "af1dd10ec266048963bb38ce6b87d0ccc3bfc1af16aaec731f22a1c1ed459307",
+      "bytes": 12621
+    },
+    {
+      "path": "lib/ui/history/record_summary_panel.dart",
+      "sha256": "44e00c862b483a1e42432edac1067bf2d8a08d21af56ea3075c014b01079a00b",
+      "bytes": 3709
+    },
+    {
+      "path": "lib/ui/home/widgets/recommendation_card.dart",
+      "sha256": "7adf3c52a2ddd5fd3f61f207d1e445aaf5e484119417bf75cb0b12bd02fe7774",
+      "bytes": 4130
+    },
+    {
+      "path": "lib/ui/manual_add/manual_add_page.dart",
+      "sha256": "f6b1c5545b8768d6ec7eb2ae05639d0a897ef8ed4428668bab716f96b3271123",
+      "bytes": 19985
+    },
+    {
+      "path": "lib/ui/recommendation/recommendation_detail_page.dart",
+      "sha256": "ca09bd70586300599a83680466fafd323fed8d5724459e666b0186b6d8054830",
+      "bytes": 9548
+    },
+    {
+      "path": "lib/ui/record/exposure_prompt.dart",
+      "sha256": "1b76ebfaca899da793fed2401d6c1e44747f3242a84fa720417f602b21931fe6",
+      "bytes": 6570
+    },
+    {
+      "path": "lib/ui/record/food_confirmation_sheet.dart",
+      "sha256": "a01bbad1e14ac0ff4fc3e63a8ddb6a119e7bd901c4b1e2a977cd470c34d2812f",
+      "bytes": 7973
+    },
+    {
+      "path": "lib/ui/record/record_detail_page.dart",
+      "sha256": "5fb3dc6d20886a354493f41e2d471cf7b65804c40a202468de9c776b59c04b7f",
+      "bytes": 21223
+    },
+    {
+      "path": "lib/ui/settings/settings_page.dart",
+      "sha256": "21931cc085beb8f828617347bfec543de76b1087cbe2e93003c2cd530b9b198e",
+      "bytes": 21184
+    },
+    {
+      "path": "scripts/p3/collect_evidence.py",
+      "sha256": "56a48806b0e7fbab973b1091e0c06b0cc9151c17b040265ea72a47413b135949",
+      "bytes": 4868
+    },
+    {
+      "path": "test/core/p3_audit_test.dart",
+      "sha256": "581ffde8c6072d87799f53063e7db6fff903714ca04cfb7a8e8003046381d1b6",
+      "bytes": 9761
+    },
+    {
+      "path": "test/core/p3_exposure_test.dart",
+      "sha256": "83d6cfcf62d733e6ec0b2448c713af9797e3f823b045c950405c8e55d0aea5c9",
+      "bytes": 1850
+    },
+    {
+      "path": "test/core/p3_safety_test.dart",
+      "sha256": "b20cba37ceb4a772ed90635069d59324f03b4e788f1c766164046117f3ec1564",
+      "bytes": 3082
+    },
+    {
+      "path": "test/core/p3_window_test.dart",
+      "sha256": "8b4757d20e4e22e9af92945b4ec9d526467252994a919a76ad9fbaa9770e96c1",
+      "bytes": 3156
+    },
+    {
+      "path": "test/core/recommendation_engine_test.dart",
+      "sha256": "c4707123264b4c1df629520b9129bc65f719210310dd8ac0cc13f7fbc13eb429",
+      "bytes": 38390
+    },
+    {
+      "path": "test/state/p3_feedback_flow_test.dart",
+      "sha256": "3b28175d11472ccc0b9234de0d9ad2a4fa774587ea1fc000f71fa89096a3204a",
+      "bytes": 11918
+    },
+    {
+      "path": "test/state/recommendation_state_test.dart",
+      "sha256": "a7874d472a16980df0490a528eb9e6522f87a9f3737b28378cd58b2a1353f100",
+      "bytes": 3601
+    },
+    {
+      "path": "test/ui/home_page_real_test.dart",
+      "sha256": "a9c90bcecf390879515e768e8c5becac40980d5371a23b28733baf911eb9659b",
+      "bytes": 6864
+    },
+    {
+      "path": "test/ui/p3_production_pages_test.dart",
+      "sha256": "5b030af7338dea7bf6a2ba1d0c9536992e79bf545affa02a2e054619652d48b6",
+      "bytes": 13382
+    }
+  ]
+}

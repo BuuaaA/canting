@@ -10,12 +10,16 @@ class MealDish {
     this.matchConfidence = 0,
     Portions portions = Portions.zero,
     this.food,
+    this.riskEvidence,
     this.contributionsKnown = true,
     // Public name is retained for existing callers; unknown values cannot be read as scalars.
     // ignore: prefer_initializing_formals
   }) : _portions = portions;
 
   final FoodObservation? food;
+
+  /// Facts captured from an exact legacy candidate at save time, never a live lookup.
+  final Map<String, dynamic>? riskEvidence;
   final bool contributionsKnown;
   final String name;
   final double quantity;
@@ -47,6 +51,7 @@ class MealDish {
           )
         : _portions,
     food: food ?? this.food,
+    riskEvidence: riskEvidence,
     contributionsKnown: contributionsKnown,
   );
 
@@ -57,6 +62,9 @@ class MealDish {
   };
 
   factory MealDish.fromJson(Map<String, dynamic> json) => MealDish(
+    riskEvidence: json['risk_evidence'] is Map
+        ? Map<String, dynamic>.unmodifiable(json['risk_evidence'] as Map)
+        : null,
     name: json['name'] as String,
     quantity: (json['quantity'] as num).toDouble(),
     portionSize: json['portion_size'] as String,
@@ -91,6 +99,7 @@ class MealDish {
     'portions': contributionsKnown ? _portions.toJson() : null,
     'contributions_known': contributionsKnown,
     if (food != null) 'food': food!.toJson(),
+    if (riskEvidence != null) 'risk_evidence': riskEvidence,
   };
 }
 

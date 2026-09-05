@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'balance_ledger.dart';
+import 'recommendation_safety.dart';
 import '../data/food_database.dart';
 import 'models/daily_intake.dart';
 import 'models/food_data.dart';
@@ -72,6 +73,12 @@ class RecommendationEngine {
   static const double _singleMealCorrectionLimit = 0.3;
 
   final FoodDatabase foodDatabase;
+  EligibilityDecision decisionFor(StandardDish dish) =>
+      RecommendationSafety.evaluate(
+        dish,
+        foodDatabase.categoryForDish(dish),
+        knowledgeOverride: foodDatabase.findKnowledgeById(dish.id),
+      );
 
   Recommendation recommend({
     required List<MealRecord> todayMeals,
@@ -79,6 +86,7 @@ class RecommendationEngine {
     required DateTime now,
     required String lastMealType,
     BalanceReport? balance,
+    bool dataAvailable = true,
     Set<String> excludeDishNames = const {},
   }) {
     if (todayMeals.isNotEmpty &&
@@ -95,6 +103,10 @@ class RecommendationEngine {
       );
     }
 
+    final coverageKnown =
+        dataAvailable &&
+        todayMeals.isNotEmpty &&
+        todayMeals.every((m) => m.structureComplete);
     final eaten = todayMeals.fold(
       Portions.zero,
       (total, meal) => total + meal.portionsTotal,
@@ -104,15 +116,27 @@ class RecommendationEngine {
       now: now,
       lastMealType: lastMealType,
     );
-    final ledger = balance ?? BalanceReport.empty(asOf: now);
+    final ledger = coverageKnown
+        ? (balance ?? BalanceReport.empty(asOf: now))
+        : BalanceReport.empty(asOf: now);
     final isLight = _isLightMode(ledger);
-    final rankedGroups = _rankFoodGroups(
-      eaten: eaten,
-      target: dailyIntake.portions,
-      lastMeal: _latestMeal(todayMeals),
-      mealType: timePlan.mealType,
-      ledger: ledger,
-    );
+    final rankedGroups = !coverageKnown
+        ? ([..._foodGroups]..sort((a, b) {
+            final order = _mealBonus(
+              timePlan.mealType,
+              b,
+            ).compareTo(_mealBonus(timePlan.mealType, a));
+            return order == 0
+                ? _foodGroups.indexOf(a).compareTo(_foodGroups.indexOf(b))
+                : order;
+          }))
+        : _rankFoodGroups(
+            eaten: coverageKnown ? eaten : dailyIntake.portions,
+            target: dailyIntake.portions,
+            lastMeal: coverageKnown ? _latestMeal(todayMeals) : null,
+            mealType: timePlan.mealType,
+            ledger: ledger,
+          );
 
     final previousDishNames = todayMeals
         .expand((meal) => meal.dishes)
@@ -127,7 +151,8 @@ class RecommendationEngine {
     final usedDishIds = <String>{};
     final shortageGroups = <String>[];
     final target = dailyIntake.portions;
-    double gapOf(String group) => target.valueFor(group) - eaten.valueFor(group);
+    double gapOf(String group) =>
+        coverageKnown ? target.valueFor(group) - eaten.valueFor(group) : 1;
 
     // 槽位规划：按缺口排序取前 3 个有真实缺口（> 0.15 份）的分类，
     // 每槽位只取 1 道菜。谷类为主（指南核心原则）：主食缺口未满时，
@@ -144,7 +169,8 @@ class RecommendationEngine {
       slots.add(group);
     }
     if (!slots.contains(_grainGroup) && gapOf(_grainGroup) > _minGapForSlot) {
-      slots.insert(0, _grainGroup);
+      if (slots.length == 3) slots.removeLast();
+      slots.add(_grainGroup);
       while (slots.length > 3) {
         slots.removeLast();
       }
@@ -156,11 +182,12 @@ class RecommendationEngine {
       }
     }
 
+    slots.sort(
+      (a, b) => rankedGroups.indexOf(a).compareTo(rankedGroups.indexOf(b)),
+    );
     for (final group in slots) {
       final forcedStaple =
-          isLight &&
-          group == _grainGroup &&
-          gapOf(group) <= _minGapForSlot;
+          isLight && group == _grainGroup && gapOf(group) <= _minGapForSlot;
       final gap = forcedStaple ? _lightStapleMinGap : gapOf(group);
       final dish = _bestDishForGroup(
         group: group,
@@ -180,14 +207,16 @@ class RecommendationEngine {
       }
       usedDishIds.add(dish.id);
       selectedDishes.add(dish);
-      suggestions.add(_suggestionFor(
-        dish: dish,
-        group: group,
-        gap: gap,
-        isLight: isLight,
-        ledger: ledger,
-        allowRepay: !forcedStaple,
-      ));
+      suggestions.add(
+        _suggestionFor(
+          dish: dish,
+          group: group,
+          gap: gap,
+          isLight: isLight,
+          ledger: ledger,
+          allowRepay: !forcedStaple,
+        ),
+      );
     }
 
     // A valid seed database has candidates for every group. This fallback also
@@ -197,7 +226,8 @@ class RecommendationEngine {
         if (!usedDishIds.add(dish.id)) {
           continue;
         }
-        if (!dish.recommendable || excludeDishNames.contains(dish.name)) {
+        if (decisionFor(dish).eligibility != Eligibility.eligible ||
+            excludeDishNames.contains(dish.name)) {
           continue;
         }
         if (isLight && isJunkish(dish)) {
@@ -227,10 +257,12 @@ class RecommendationEngine {
       }
     }
 
-    final biggestGap = rankedGroups.first;
-    final allSelectedClean = selectedDishes.isNotEmpty &&
+    final biggestGap =
+        suggestions.firstOrNull?.slotCategory ?? rankedGroups.first;
+    final allSelectedClean =
+        selectedDishes.isNotEmpty &&
         selectedDishes.every((dish) => !isJunkish(dish));
-    final reason = _buildReason(
+    var reason = _buildReason(
       biggestGap: biggestGap,
       ledger: ledger,
       isLight: isLight,
@@ -241,12 +273,43 @@ class RecommendationEngine {
       shortInterval: timePlan.shortInterval,
     );
 
+    if (!coverageKnown) reason = '记录不足，暂不判断缺口；以下为常规搭配建议，不按未知摄入补偿。';
+    if (suggestions.length < 3) reason += '；可推荐候选不足（${suggestions.length}道）';
+    if (!coverageKnown && shortageGroups.isNotEmpty) {
+      reason +=
+          '；${shortageGroups.map((g) => '${_groupLabels[g]}类候选不足').join('；')}';
+    }
+    if (suggestions.isEmpty) reason = '可推荐候选不足；可考虑主食、蔬菜与蛋白类的常规搭配，不指定商品。';
+    final output = coverageKnown
+        ? suggestions
+        : suggestions
+              .map(
+                (s) => DishSuggestion(
+                  dishName: s.dishName,
+                  searchKeyword: s.searchKeyword,
+                  primaryCategory: s.primaryCategory,
+                  oilLevel: s.oilLevel,
+                  slotCategory: s.slotCategory,
+                  note: '常规搭配，不推算补偿份数',
+                ),
+              )
+              .toList();
     return Recommendation(
       suggestedTime: timePlan.time,
       suggestedMealType: timePlan.mealType,
-      primary: suggestions.take(1).toList(growable: false),
-      alternatives: suggestions.skip(1).take(2).toList(growable: false),
+      primary: output.take(1).toList(growable: false),
+      alternatives: output.skip(1).take(2).toList(growable: false),
       reason: reason,
+      reasonCodes: [
+        if (!coverageKnown)
+          'insufficient_record_coverage'
+        else
+          'recorded_structure_7d',
+        if (suggestions.length < 3) 'insufficient_candidates',
+        if (suggestions.isEmpty) 'generic_structure_advice',
+        if (suggestions.isNotEmpty)
+          'selected_${suggestions.first.slotCategory}',
+      ],
       balanceMode: isLight ? BalanceMode.light : BalanceMode.routine,
     );
   }
@@ -345,21 +408,23 @@ class RecommendationEngine {
     required List<String> shortageGroups,
     required bool shortInterval,
   }) {
-    var reason = '今日${_groupLabels[biggestGap]}缺口最大，下一餐优先补充';
+    var reason =
+        '基于已记录餐食的估算、比例缺口及餐次/多样性加成，实际首推${_groupLabels[biggestGap]}类搭配；7天台账仅使用可估算的记录日';
 
     if (isLight) {
       // 温和、不指责；说明影响会持续几天（滚动调控）。
       final overs = <String>[
         if (ledger.balanceFor(_grainGroup).surplus >= lightSurplusThreshold)
           '主食',
-        if (ledger.balanceFor(_oilGroup).surplus >= lightSurplusThreshold)
-          '油',
+        if (ledger.balanceFor(_oilGroup).surplus >= lightSurplusThreshold) '油',
       ];
       if (overs.length == 1) {
-        reason += '；今天${overs.first}吃超啦，'
+        reason +=
+            '；近期已记录餐食中${overs.first}估算偏多，'
             '晚饭清爽一点就好～这两天咱们吃清淡点';
       } else {
-        reason += '；今天${overs.join('和')}都吃超啦，'
+        reason +=
+            '；近期已记录餐食中${overs.join('和')}估算偏多，'
             '晚饭清爽一点就好～这两天咱们吃清淡点';
       }
     } else if ((oilRatio > 1.2 || hasHighSodiumMeal) && allSelectedClean) {
@@ -460,7 +525,7 @@ class RecommendationEngine {
         continue;
       }
       // recommendable=false 的菜永远不进推荐（薯条/可乐/奶茶）。
-      if (!dish.recommendable) {
+      if (decisionFor(dish).eligibility != Eligibility.eligible) {
         continue;
       }
       final contribution = dish.correctedPortions.valueFor(group);

@@ -16,12 +16,10 @@ void main() {
 
   setUp(() async {
     final dishesJson = await File('assets/data/dishes.json').readAsString();
-    final categoriesJson = await File(
-      'assets/data/categories.json',
-    ).readAsString();
-    final guidelinesJson = await File(
-      'assets/data/dietary_guidelines.json',
-    ).readAsString();
+    final categoriesJson = await File('assets/data/categories.json')
+        .readAsString();
+    final guidelinesJson = await File('assets/data/dietary_guidelines.json')
+        .readAsString();
 
     helper = DatabaseHelper(
       factory: databaseFactoryFfi,
@@ -82,12 +80,9 @@ void main() {
     expect(second.suggestedMealType, first.suggestedMealType);
     expect(second.reason, isNotEmpty);
     // 引擎 v2：每道推荐带槽位分类与建议份数（每槽位只取 1 道）。
-    for (final suggestion in [
-      ...second.primary,
-      ...second.alternatives,
-    ]) {
+    for (final suggestion in [...second.primary, ...second.alternatives]) {
       expect(suggestion.slotCategory, isNotNull);
-      expect(suggestion.servings, isNotNull);
+      expect(suggestion.servings, isNull); // P3: this date has no records.
     }
     // 注：「水果类候选不足」提示的确定性覆盖在引擎测试
     // （recommendation_engine_test.dart）， AppState 层的槽位排序
@@ -97,9 +92,12 @@ void main() {
   test('推荐时间落在合理餐段（未来或餐口起点）', () {
     final recommendation = appState.recommendationFor(DateTime.now())!;
     expect(
-      const {'breakfast', 'lunch', 'dinner', 'snack'}.contains(
-        recommendation.suggestedMealType,
-      ),
+      const {
+        'breakfast',
+        'lunch',
+        'dinner',
+        'snack',
+      }.contains(recommendation.suggestedMealType),
       isTrue,
     );
   });

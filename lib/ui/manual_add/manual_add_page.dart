@@ -1,3 +1,4 @@
+import 'package:canting/ui/record/exposure_prompt.dart';
 import 'package:canting/core_engine.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
@@ -188,9 +189,8 @@ class _ManualAddPageState extends State<ManualAddPage> {
                   categoryId: _categoryId,
                 ));
       if (link == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('算不出这份的份数：请选择分类并填写克重')),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('算不出这份的份数：请选择分类并填写克重')));
         return;
       }
       // 详细模式的克重就是绝对量，分量固定按常规记，避免再乘系数。
@@ -215,13 +215,14 @@ class _ManualAddPageState extends State<ManualAddPage> {
         timestamp: DateTime.now(),
         dishes: [dish],
       );
-      await state.saveMeal(
+      final prompt = await state.saveMeal(
         meal,
         note: _noteController.text.trim().isEmpty
             ? null
             : _noteController.text.trim(),
         source: 'manual',
       );
+      if (mounted) await showExposurePrompt(context, state, prompt);
       await state.registerManualDish(
         name: name,
         portionSize: registeredPortion,
@@ -308,10 +309,7 @@ class _ManualAddPageState extends State<ManualAddPage> {
                   onRemove: _clearSelection,
                 )
               else if (_results.isNotEmpty)
-                _SearchResults(
-                  results: _results,
-                  onSelect: _selectDish,
-                )
+                _SearchResults(results: _results, onSelect: _selectDish)
               else if (_searchController.text.trim().isNotEmpty)
                 PixelPanel(
                   padding: const EdgeInsets.all(14),
@@ -404,7 +402,8 @@ class _SearchResults extends StatelessWidget {
           itemCount: results.length,
           itemBuilder: (context, index) {
             final dish = results[index];
-            final isCustom = dish.id.startsWith('custom') ||
+            final isCustom =
+                dish.id.startsWith('custom') ||
                 dish.searchKeywords.contains(dish.name);
             return ListTile(
               dense: true,
@@ -415,16 +414,16 @@ class _SearchResults extends StatelessWidget {
                   if (isCustom) '常用',
                   if (dish.tags.contains('homemade')) '自制',
                   dish.tags
-                      .where((tag) => const {
-                            'breakfast',
-                            'lunch',
-                            'dinner',
-                          }.contains(tag))
+                      .where(
+                        (tag) => const {
+                          'breakfast',
+                          'lunch',
+                          'dinner',
+                        }.contains(tag),
+                      )
                       .map((tag) => _mealTypeLabelOf(tag))
                       .join('、'),
-                ]
-                    .where((part) => part.isNotEmpty)
-                    .join(' · '),
+                ].where((part) => part.isNotEmpty).join(' · '),
                 style: theme.textTheme.labelSmall?.copyWith(
                   color: scheme.onSurfaceVariant,
                 ),
@@ -562,9 +561,7 @@ class _DetailedSection extends StatelessWidget {
           const SizedBox(height: 14),
           DropdownButtonFormField<String>(
             initialValue: categoryId,
-            decoration: const InputDecoration(
-              labelText: '菜品分类（库外的菜选一个）',
-            ),
+            decoration: const InputDecoration(labelText: '菜品分类（库外的菜选一个）'),
             items: [
               for (final category in categories)
                 DropdownMenuItem(

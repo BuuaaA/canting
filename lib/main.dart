@@ -84,18 +84,31 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   late final OcrPipeline _ocrPipeline = OcrPipeline(appState: widget.appState);
   String? _lastOpenedIOSMealID;
   bool _checkingIOSShare = false;
+  Timer? _calendarTimer;
+  DateTime _recordDay = DateTime.now();
   StreamSubscription<String>? _notificationTapSub;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _calendarTimer = Timer.periodic(const Duration(minutes: 1), (_) {
+      final now = DateTime.now();
+      if (now.year != _recordDay.year ||
+          now.month != _recordDay.month ||
+          now.day != _recordDay.day) {
+        _recordDay = now;
+        unawaited(widget.appState.resumeRecords());
+      }
+    });
     WidgetsBinding.instance.addPostFrameCallback((_) {
       unawaited(_nativeBridge.initialize(onSharedImage: _handleSharedImage));
       unawaited(_openPendingIOSMeal());
     });
     // 点击通知的跳转（模块 13）：识别成功 → 今日首页，识别失败 → 记录页。
-    _notificationTapSub = NotificationService.onTap.listen(_handleNotificationTap);
+    _notificationTapSub = NotificationService.onTap.listen(
+      _handleNotificationTap,
+    );
   }
 
   void _handleNotificationTap(String payload) {
@@ -117,6 +130,7 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
+      unawaited(widget.appState.resumeRecords());
       unawaited(_openPendingIOSMeal());
     }
   }
@@ -170,6 +184,7 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _calendarTimer?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     unawaited(_notificationTapSub?.cancel());
     unawaited(_nativeBridge.dispose());

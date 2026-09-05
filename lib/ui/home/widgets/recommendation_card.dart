@@ -41,10 +41,10 @@ class RecommendationCard extends StatelessWidget {
     final timeText = recommendation == null
         ? '准备中'
         : '${_timeLabel(recommendation.suggestedTime)} · '
-            '${_mealTypeLabels[recommendation.suggestedMealType] ?? "加餐"}';
+              '${_mealTypeLabels[recommendation.suggestedMealType] ?? "加餐"}';
     final title = primary == null
         ? '看看下一餐吃什么'
-        : '补一补${_categoryLabels[primary.primaryCategory] ?? "搭配"}';
+        : '下一餐可选${_categoryLabels[primary.primaryCategory] ?? "搭配"}';
 
     return PixelPanel(
       onTap: onTap,
@@ -84,9 +84,7 @@ class RecommendationCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  recommendation == null
-                      ? '记录引擎装配好了就给你出主意'
-                      : title,
+                  recommendation == null ? '记录引擎装配好了就给你出主意' : title,
                   style: theme.textTheme.titleMedium,
                 ),
                 const SizedBox(height: 3),
@@ -94,8 +92,8 @@ class RecommendationCard extends StatelessWidget {
                   recommendation == null
                       ? '先去记一笔今天吃的吧'
                       : (recommendation.reason.isEmpty
-                          ? '按今天的缺口挑的搭配'
-                          : recommendation.reason),
+                            ? '按今天的缺口挑的搭配'
+                            : recommendation.reason),
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: scheme.onSurfaceVariant,
                   ),

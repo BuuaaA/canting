@@ -1,0 +1,19 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/ui/p3_production_pages_test.dart
+test/ui/p3_production_pages_test.dart:50:62: Error: The method 'getAllMeals' isn't defined for the type 'MealRepository'.
+ - 'MealRepository' is from 'package:canting/data/meal_repository.dart' ('lib/data/meal_repository.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'getAllMeals'.
+  final meals=await MealRepository(database:()=>db.database).getAllMeals();
+                                                             ^^^^^^^^^^^
+00:00 +0 -1: loading D:/dev/canting/test/ui/p3_production_pages_test.dart [E]
+  Failed to load "D:/dev/canting/test/ui/p3_production_pages_test.dart":
+  Compilation failed for testPath=D:/dev/canting/test/ui/p3_production_pages_test.dart: test/ui/p3_production_pages_test.dart:50:62: Error: The method 'getAllMeals' isn't defined for the type 'MealRepository'.
+   - 'MealRepository' is from 'package:canting/data/meal_repository.dart' ('lib/data/meal_repository.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'getAllMeals'.
+    final meals=await MealRepository(database:()=>db.database).getAllMeals();
+                                                               ^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/ui/p3_production_pages_test.dart: loading D:/dev/canting/test/ui/p3_production_pages_test.dart

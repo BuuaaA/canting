@@ -7,6 +7,7 @@ const foodCategories = {
   'milk_tea': '奶茶',
   'coffee': '咖啡',
   'beverage': '其他饮品',
+  'alcohol': '酒精饮品',
   'burger': '汉堡',
   'sandwich': '三明治',
   'dessert': '甜品',

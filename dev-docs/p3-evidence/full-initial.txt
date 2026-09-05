@@ -1,0 +1,1077 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/core/balance_ledger_test.dart
+00:00 +0: D:/dev/canting/test/core/balance_ledger_test.dart: 盈余衰减曲线（吃超次日衰减 50%） day1 油吃超 2 份 → day2 余 1.0 → day3 余 0.5 → day4 余 0.25
+00:00 +1: D:/dev/canting/test/core/balance_ledger_test.dart: 盈余衰减曲线（吃超次日衰减 50%） 盈余与欠账不共存于同一类（当日净额单向）
+00:00 +2: D:/dev/canting/test/core/balance_ledger_test.dart: 欠账衰减曲线（不足每日衰减 20%） day1 蔬菜少 3 份 → day2 余 2.4 → day3 余 1.92
+00:00 +3: D:/dev/canting/test/core/balance_ledger_test.dart: 欠账衰减曲线（不足每日衰减 20%） 长期不足持续累积（衰减慢于新增）
+00:00 +4: D:/dev/canting/test/core/balance_ledger_test.dart: 对冲与滚动窗口 昨日欠账被今日吃超部分偿还（先衰减后偿还）
+00:00 +5: D:/dev/canting/test/core/balance_ledger_test.dart: 对冲与滚动窗口 跨周滚动窗口滑动：8 天前的大吃大喝完全滑出
+00:00 +6: D:/dev/canting/test/core/balance_ledger_test.dart: 对冲与滚动窗口 窗口外的摄入键被忽略，缺失的窗口内日期按 0 处理
+00:00 +7: D:/dev/canting/test/core/balance_ledger_test.dart: 空数据与健壮性 空摄入表 → 全零台账
+00:00 +8: D:/dev/canting/test/core/balance_ledger_test.dart: 空数据与健壮性 日目标 = 周目标 ÷ 7（油 17.5/7 = 2.5）
+00:00 +9: D:/dev/canting/test/core/balance_ledger_test.dart: 空数据与健壮性 浮点尾数不外溢（-0.0 / 尘埃值归零）
+00:00 +10: D:/dev/canting/test/core/balance_ledger_test.dart: BalanceReport 便捷接口 balanceFor 未知分类返回零值，empty 工厂为中性台账
+00:00 +11: D:/dev/canting/test/core/balance_ledger_test.dart: BalanceReport 便捷接口 台账收敛性：均匀达标饮食 7 天后台账归零（数学性质冒烟）
+00:00 +12: D:/dev/canting/test/core/completion_calculator_test.dart: CompletionCalculator averages all six capped category completion rates
+00:00 +13: D:/dev/canting/test/core/completion_calculator_test.dart: CompletionCalculator caps overconsumption at one and reports no gap when complete
+00:00 +14: D:/dev/canting/test/core/completion_calculator_test.dart: CompletionCalculator caps overall completion at 70% when one group is below 30%
+00:00 +15: D:/dev/canting/test/core/completion_calculator_test.dart: CompletionCalculator rejects a sodium value outside the MVP levels
+00:00 +16: D:/dev/canting/test/core/dish_matcher_test.dart: (setUpAll)
+00:00 +16: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher matches standard names and aliases exactly after normalization
+00:00 +17: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher uses contains matching for OCR suffix noise
+00:00 +18: D:/dev/canting/test/core/intake_calculator_test.dart: (setUpAll)
+00:00 +19: D:/dev/canting/test/core/intake_calculator_test.dart: (setUpAll)
+00:00 +20: D:/dev/canting/test/core/intake_calculator_test.dart: (setUpAll)
+00:00 +21: D:/dev/canting/test/core/intake_calculator_test.dart: (setUpAll)
+00:00 +21: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher applies portion-size factors to all corrected portions
+00:00 +22: D:/dev/canting/test/core/intake_calculator_test.dart: IntakeCalculator uses the Mifflin-St Jeor formula and clamps to the 2400kcal tier
+00:00 +23: D:/dev/canting/test/core/intake_calculator_test.dart: IntakeCalculator uses the Mifflin-St Jeor formula and clamps to the 2400kcal tier
+00:00 +24: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (setUpAll)
+00:00 +25: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (setUpAll)
+00:00 +26: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (setUpAll)
+00:00 +27: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (setUpAll)
+00:00 +28: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (setUpAll)
+00:00 +28: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes a custom dish with the same name wins over the catalog
+00:00 +29: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes a custom dish is matched by its alias
+00:00 +30: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes a custom dish wins contains matching with OCR suffix noise
+00:00 +31: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes a custom dish wins fuzzy matching on equal similarity
+00:00 +32: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes custom dishes do not interfere with keyword fallback
+00:00 +33: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes a matcher without custom dishes still finds catalog dishes
+00:00 +34: D:/dev/canting/test/core/dish_matcher_test.dart: DishMatcher with user custom dishes (tearDownAll)
+00:00 +34: D:/dev/canting/test/core/dish_matcher_test.dart: (tearDownAll)
+00:01 +34: D:/dev/canting/test/core/local_food_knowledge_match_test.dart: explicit exact specification selects variant and preserves interval source
+00:01 +35: D:/dev/canting/test/core/local_food_knowledge_match_test.dart: missing or contradictory specification does not choose a variant
+00:01 +36: D:/dev/canting/test/core/local_food_knowledge_match_test.dart: a brand cannot silently consume an unbranded knowledge recipe
+00:01 +37: D:/dev/canting/test/core/p3_exposure_test.dart: low counts first occurrence and repeats only across meal IDs
+00:01 +38: D:/dev/canting/test/core/p3_exposure_test.dart: low counts first occurrence and repeats only across meal IDs
+00:01 +39: D:/dev/canting/test/core/p3_exposure_test.dart: regular counts first occurrence and repeats only across meal IDs
+00:01 +40: D:/dev/canting/test/core/p3_exposure_test.dart: high counts first occurrence and repeats only across meal IDs
+00:01 +41: D:/dev/canting/test/core/p3_exposure_test.dart: none/unknown do not assert added sugar
+00:01 +42: D:/dev/canting/test/core/p3_exposure_test.dart: burger does not imply fried
+00:01 +43: D:/dev/canting/test/core/p3_safety_test.dart: legacy low risk remains eligible without claiming review
+00:01 +44: D:/dev/canting/test/core/p3_safety_test.dart: light cannot override fried
+00:01 +45: D:/dev/canting/test/core/p3_safety_test.dart: light cannot override high_sodium
+00:01 +46: D:/dev/canting/test/core/p3_safety_test.dart: light cannot override high_oil
+00:01 +47: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +48: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +49: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +50: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +51: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +52: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +53: D:/dev/canting/test/core/p3_window_test.dart: calendar windows include leap day and exclude end boundary
+00:01 +54: D:/dev/canting/test/core/p3_window_test.dart: unknown is partial and never a ledger zero
+00:01 +55: D:/dev/canting/test/core/p3_window_test.dart: empty 28 days means insufficient, not 100 percent
+00:01 +56: D:/dev/canting/test/core/recommendation_engine_test.dart: (setUpAll)
+00:01 +56: D:/dev/canting/test/core/recommendation_engine_test.dart: 排序与候选过滤 杂粮饭与白米饭同时候选时杂粮饭排前（whole_grain 压过精白）
+00:01 +56 -1: D:/dev/canting/test/core/recommendation_engine_test.dart: 排序与候选过滤 杂粮饭与白米饭同时候选时杂粮饭排前（whole_grain 压过精白） [E]
+  Expected: a numeric value within <1e-9> of <3.0>
+    Actual: <null>
+     Which: not an <Instance of 'num'>
+
+  package:matcher                                 expect
+  test\core\recommendation_engine_test.dart 57:7  main.<fn>.<fn>
+
+00:01 +56 -1: D:/dev/canting/test/core/recommendation_engine_test.dart: 排序与候选过滤 recommendable=false 的菜在任何模式下都不出现（属性测试）
+00:01 +57 -1: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +57 -2: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +57 -2: D:/dev/canting/test/core/recommendation_engine_test.dart: 排序与候选过滤 清淡模式硬排除 fried/high_sodium 标签菜（即使 recommendable） [E]
+  Expected: 'light'
+    Actual: 'routine'
+     Which: is different.
+            Expected: light
+              Actual: routine
+                      ^
+             Differ at offset 0
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 117:7  main.<fn>.<fn>
+
+00:01 +58 -2: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +59 -2: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +59 -3: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +59 -3: D:/dev/canting/test/core/recommendation_engine_test.dart: 单日场景：中午炸鸡汉堡薯条可乐 文案温和提示油/主食超标，滚动调控，无欺骗性「已优先清淡」 [E]
+  Expected: contains '今天主食和油都吃超啦'
+    Actual: '基于已记录餐食的估算、比例缺口及餐次/多样性加成，实际首推蔬菜类搭配；7天台账仅使用可估算的记录日；近期已记录餐食中主食和油估算偏多，晚饭清爽一点就好～这两天咱们吃清淡点'
+     Which: does not contain '今天主食和油都吃超啦'
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 240:7  main.<fn>.<fn>
+
+00:01 +59 -4: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +59 -4: D:/dev/canting/test/core/recommendation_engine_test.dart: 滚动场景：大吃大喝的影响持续传导 Day1 晚 → Day2（无记录）→ Day3 保持 light，主食减量 [E]
+  Expected: 'light'
+    Actual: 'routine'
+     Which: is different.
+            Expected: light
+              Actual: routine
+                      ^
+             Differ at offset 0
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 292:7  main.<fn>.<fn>
+
+00:01 +60 -4: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +61 -4: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +61 -5: D:/dev/canting/test/core/serving_estimator_test.dart: (setUpAll)
+00:01 +61 -5: D:/dev/canting/test/core/recommendation_engine_test.dart: 文案规则 水果槽位候选耗尽时显示「水果类候选不足」提示 [E]
+  Expected: contains '水果类候选不足'
+    Actual: '记录不足，暂不判断缺口；以下为常规搭配建议，不按未知摄入补偿。'
+     Which: does not contain '水果类候选不足'
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 373:7  main.<fn>.<fn>
+
+00:01 +61 -5: D:/dev/canting/test/core/recommendation_engine_test.dart: 清淡主食限幅 light 模式主食推荐份数恰好比 routine 少 30%（不超过限幅）
+00:01 +62 -5: D:/dev/canting/test/core/recommendation_engine_test.dart: 清淡主食限幅 light 模式主食推荐份数恰好比 routine 少 30%（不超过限幅）
+00:01 +62 -6: D:/dev/canting/test/core/serving_estimator_test.dart: estimateServings (重量 → 份数) handles fractional servings
+00:01 +62 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 清淡主食限幅 light 模式主食推荐份数恰好比 routine 少 30%（不超过限幅） [E]
+  Expected: 'light'
+    Actual: 'routine'
+     Which: is different.
+            Expected: light
+              Actual: routine
+                      ^
+             Differ at offset 0
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 406:7  main.<fn>.<fn>
+
+00:01 +63 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +64 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +65 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +66 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +67 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +68 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +69 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +70 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +71 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +72 -6: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+00:01 +72 -7: D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20% [E]
+  Expected: empty
+    Actual: [
+              '窗口 day20~26 protein 均值 2.40 目标区间 [3.2, 4.8]',
+              '窗口 day21~27 protein 均值 2.40 目标区间 [3.2, 4.8]',
+              '窗口 day22~28 protein 均值 2.40 目标区间 [3.2, 4.8]',
+              '窗口 day23~29 protein 均值 2.40 目标区间 [3.2, 4.8]',
+              '窗口 day24~30 protein 均值 2.40 目标区间 [3.2, 4.8]'
+            ]
+  窗口 day20~26 protein 均值 2.40 目标区间 [3.2, 4.8]
+  窗口 day21~27 protein 均值 2.40 目标区间 [3.2, 4.8]
+  窗口 day22~28 protein 均值 2.40 目标区间 [3.2, 4.8]
+  窗口 day23~29 protein 均值 2.40 目标区间 [3.2, 4.8]
+  窗口 day24~30 protein 均值 2.40 目标区间 [3.2, 4.8]
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 528:7  main.<fn>.<fn>
+
+00:01 +72 -7: D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 换一批后新卡的分类来自新菜品自身数据，不继承槽位或旧卡标签
+00:01 +72 -8: D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 换一批后新卡的分类来自新菜品自身数据，不继承槽位或旧卡标签 [E]
+  Expected: '香辣炸鸡排'
+    Actual: '水煮蛋'
+     Which: is different.
+            Expected: 香辣炸鸡排
+              Actual: 水煮蛋
+                      ^
+             Differ at offset 0
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 591:7  main.<fn>.<fn>
+
+00:01 +72 -8: D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 水果是最大有效缺口且有合格候选时，首个槽位为水果且菜品主导类别为 fruits
+00:01 +73 -8: D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 主食缺口未满时主食槽位按设计置首，水果最大缺口槽位仍保留且标签正确
+00:01 +73 -9: D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 主食缺口未满时主食槽位按设计置首，水果最大缺口槽位仍保留且标签正确 [E]
+  Expected: contains '今日水果缺口最大'
+    Actual: '基于已记录餐食的估算、比例缺口及餐次/多样性加成，实际首推水果类搭配；7天台账仅使用可估算的记录日'
+     Which: does not contain '今日水果缺口最大'
+
+  package:matcher                                  expect
+  test\core\recommendation_engine_test.dart 671:7  main.<fn>.<fn>
+
+00:01 +73 -9: D:/dev/canting/test/core/recommendation_engine_test.dart: (tearDownAll)
+00:01 +73 -9: D:/dev/canting/test/data/database_helper_test.dart: (setUpAll)
+00:02 +73 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper creates tables and imports seed data on first open
+00:02 +74 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper does not overwrite existing rows when initialized again
+00:02 +75 -9: D:/dev/canting/test/data/database_migration_test.dart: (setUpAll)
+00:02 +75 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper searches persisted aliases and keywords
+00:02 +76 -9: D:/dev/canting/test/data/database_migration_test.dart: migrates a v1 database to v2 without losing catalog rows
+00:02 +77 -9: D:/dev/canting/test/data/database_migration_test.dart: migrates a v1 database to v2 without losing catalog rows
+00:02 +78 -9: D:/dev/canting/test/data/dietary_guidelines_test.dart: (setUpAll)
+00:02 +79 -9: D:/dev/canting/test/data/dietary_guidelines_test.dart: (setUpAll)
+00:02 +79 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +80 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +81 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +82 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +83 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +84 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +85 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper rejects a dish whose category has not been saved
+00:02 +86 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +87 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +88 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +89 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +90 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +91 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +92 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +93 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +94 -9: D:/dev/canting/test/data/database_helper_test.dart: DatabaseHelper requires initialization before any query
+00:02 +95 -9: D:/dev/canting/test/data/database_helper_test.dart: (tearDownAll)
+00:02 +95 -9: D:/dev/canting/test/data/dishes_schema_test.dart: (setUpAll)
+00:02 +95 -9: D:/dev/canting/test/data/dishes_schema_test.dart: 顶层为 {schema_version: 2, dishes: [...]} 信封
+00:02 +96 -9: D:/dev/canting/test/data/dishes_schema_test.dart: FoodDatabase.fromJson 解析对象根并携带 schemaVersion=2
+00:02 +97 -9: D:/dev/canting/test/data/dishes_schema_test.dart: 所有菜必有 dish_id/dish_name/recommendable/quality_tags/portions_normal
+00:02 +98 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:02 +99 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +100 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +101 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +102 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +103 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +104 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +105 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +106 -9: D:/dev/canting/test/data/food_database_test.dart: (setUpAll)
+00:03 +106 -9: D:/dev/canting/test/data/food_database_test.dart: FoodDatabase loads the complete category taxonomy and at least 20 dishes
+00:03 +107 -9: D:/dev/canting/test/data/food_database_test.dart: FoodDatabase normalizes spaces, punctuation, and letter case for exact lookup
+00:03 +108 -9: D:/dev/canting/test/data/food_database_test.dart: FoodDatabase searches names, aliases, and takeaway keywords
+00:03 +109 -9: D:/dev/canting/test/data/food_database_test.dart: FoodDatabase corrects only the cooking-oil share
+00:03 +110 -9: D:/dev/canting/test/data/food_database_test.dart: FoodDatabase sorts nutrient queries from largest contribution to smallest
+00:03 +111 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +112 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +113 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +114 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +115 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +116 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +117 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +118 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +119 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +120 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +121 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +122 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +123 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +124 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +125 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +126 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +127 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +128 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +129 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +130 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +131 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +132 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +133 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +134 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +135 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +136 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +137 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +138 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +139 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +140 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: initialize conflict rolls back legacy updates too and permits reopen
+00:03 +141 -9: D:/dev/canting/test/data/food_knowledge_test.dart: shared contract: unknown is not zero
+00:03 +142 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +143 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +144 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +145 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +146 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +147 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +148 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +149 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +150 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +151 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: v2 storage upgrade and synthetic package preserve every user field
+00:03 +152 -9: D:/dev/canting/test/data/local_food_flow_test.dart: (setUpAll)
+00:03 +152 -9: D:/dev/canting/test/data/food_knowledge_sync_test.dart: content update with same schema, idempotence, conflict and all user rows survive
+00:03 +153 -9: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:03 +154 -9: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +154 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 搜索排序 自定义菜在前、按使用次数降序，同名标准菜去重
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +154 -9: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +155 -9: D:/dev/canting/test/data/local_food_flow_test.dart: unknown classification survives restart; explicit specs win; history immutable
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +156 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 搜索排序 自定义菜在前、按使用次数降序，同名标准菜去重
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +157 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 搜索排序 自定义菜在前、按使用次数降序，同名标准菜去重
+00:04 +158 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +158 -9: D:/dev/canting/test/data/local_food_flow_test.dart: missing specs remain unknown; last order is suggestion only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +159 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +159 -9: D:/dev/canting/test/data/local_food_flow_test.dart: missing specs remain unknown; last order is suggestion only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +160 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +160 -9: D:/dev/canting/test/data/local_food_flow_test.dart: missing specs remain unknown; last order is suggestion only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +161 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +162 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +163 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +163 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 搜索排序 空查询返回空列表
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +164 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +165 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +165 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 搜索排序 空查询返回空列表
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +166 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +167 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+00:04 +168 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+00:04 +168 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +169 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+00:04 +169 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 小份按 0.8 缩放标准份数
+Unable to load meals for 2026-9-4: SqfliteFfiException(error, Bad state: This database has already been closed}) DatabaseException(Bad state: This database has already been closed) sql 'SELECT * FROM meal_records WHERE meal_time >= ? AND meal_time < ? ORDER BY meal_time DESC' args [1788451200000, 1788537600000] {details: {database: {path: :memory:, id: 1, readOnly: false, singleInstance: false}}}
+00:04 +170 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +170 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 食物交换份：米饭 300g = 2 份谷薯，反向回到 300g
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +170 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +171 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+00:04 +172 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+00:04 +172 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 食物交换份：米饭 300g = 2 份谷薯，反向回到 300g
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +173 -9: D:/dev/canting/test/data/local_food_flow_test.dart: brands and missing brand do not overwrite each other
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +174 -9: D:/dev/canting/test/data/seed_migration_test.dart: (setUpAll)
+00:04 +175 -9: D:/dev/canting/test/data/seed_migration_test.dart: (setUpAll)
+00:04 +176 -9: D:/dev/canting/test/data/seed_migration_test.dart: (setUpAll)
+00:04 +177 -9: D:/dev/canting/test/data/seed_migration_test.dart: (setUpAll)
+00:04 +178 -9: D:/dev/canting/test/data/seed_migration_test.dart: (setUpAll)
+00:04 +178 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+00:04 +179 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+00:04 +179 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 匹配菜品：克重与份数按同源基准往返一致
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +180 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +181 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+00:04 +182 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+00:04 +182 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 匹配菜品：克重与份数按同源基准往返一致
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +183 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+00:04 +184 -9: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+00:04 +184 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 大份按 1.3 缩放标准份数
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Unable to load meals for 2026-9-4: SqfliteFfiException(error, Bad state: This database has already been closed}) DatabaseException(Bad state: This database has already been closed) sql 'SELECT * FROM meal_records WHERE meal_time >= ? AND meal_time < ? ORDER BY meal_time DESC' args [1788451200000, 1788537600000] {details: {database: {path: :memory:, id: 2, readOnly: false, singleInstance: false}}}
+00:04 +184 -9: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:04 +184 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 新菜按分类兜底：克重换算出份数并给出结构
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:04 +184 -9: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +184 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 常规份保持标准份数，空菜名被过滤
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +185 -9: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+00:05 +185 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 新菜按分类兜底：克重换算出份数并给出结构
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +186 -9: D:/dev/canting/test/data/local_food_flow_test.dart: burger and dessert save with null contribution and no recommendation mutation
+00:05 +186 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 常规份保持标准份数，空菜名被过滤
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Unable to load meals for 2026-9-4: SqfliteFfiException(error, Bad state: This database has already been closed}) DatabaseException(Bad state: This database has already been closed) sql 'SELECT * FROM meal_records WHERE meal_time >= ? AND meal_time < ? ORDER BY meal_time DESC' args [1788451200000, 1788537600000] {details: {database: {path: :memory:, id: 3, readOnly: false, singleInstance: false}}}
+00:05 +187 -9: D:/dev/canting/test/data/seed_migration_test.dart: 旧版 29 道库升级：菜数变为新库数量，用户数据无损
+00:05 +187 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 非正数克重直接拒绝
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +188 -9: D:/dev/canting/test/data/seed_migration_test.dart: 旧版 29 道库升级：菜数变为新库数量，用户数据无损
+00:05 +188 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 克重↔份数联动 非正数克重直接拒绝
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +188 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 已带份数的菜（手填）不被匹配结果覆盖
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +189 -9: D:/dev/canting/test/data/seed_migration_test.dart: 旧版 29 道库升级：菜数变为新库数量，用户数据无损
+00:05 +189 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 分量系数 已带份数的菜（手填）不被匹配结果覆盖
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Unable to load meals for 2026-9-4: SqfliteFfiException(error, Bad state: This database has already been closed}) DatabaseException(Bad state: This database has already been closed) sql 'SELECT * FROM meal_records WHERE meal_time >= ? AND meal_time < ? ORDER BY meal_time DESC' args [1788451200000, 1788537600000] {details: {database: {path: :memory:, id: 4, readOnly: false, singleInstance: false}}}
+00:05 +190 -9: D:/dev/canting/test/data/local_food_flow_test.dart: cake dimensions never become eaten portion
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +190 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 新菜名登记进自定义表，累计使用次数并记住分量偏好
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +190 -9: D:/dev/canting/test/data/local_food_flow_test.dart: cake dimensions never become eaten portion
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +191 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +191 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 新菜名登记进自定义表，累计使用次数并记住分量偏好
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +191 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 完成度 完成度来自当日真实结构，介于 0 和 1 之间
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +191 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +192 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +193 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +193 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: buildMealRecord 完成度 完成度来自当日真实结构，介于 0 和 1 之间
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Unable to load meals for 2026-9-4: SqfliteFfiException(error, Bad state: This database has already been closed}) DatabaseException(Bad state: This database has already been closed) sql 'SELECT * FROM meal_records WHERE meal_time >= ? AND meal_time < ? ORDER BY meal_time DESC' args [1788451200000, 1788537600000] {details: {database: {path: :memory:, id: 5, readOnly: false, singleInstance: false}}}
+00:05 +194 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +195 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +196 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +197 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +198 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +199 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +199 -9: D:/dev/canting/test/data/local_food_flow_test.dart: mixed known and unknown preserves every row and known subtotal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +200 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +201 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +202 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +202 -9: D:/dev/canting/test/data/local_food_flow_test.dart: mixed known and unknown preserves every row and known subtotal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +203 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +203 -9: D:/dev/canting/test/data/local_food_flow_test.dart: mixed known and unknown preserves every row and known subtotal
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +204 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +205 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +205 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 标准库的菜登记为同内容副本，不改变匹配结果
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +205 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 记录新餐后活力值上升，删除后按同一规则回退，成长值不回退
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +205 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 标准库的菜登记为同内容副本，不改变匹配结果
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +206 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +206 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 记录新餐后活力值上升，删除后按同一规则回退，成长值不回退
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +207 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +207 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 记录新餐后活力值上升，删除后按同一规则回退，成长值不回退
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +208 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +208 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 记录新餐后活力值上升，删除后按同一规则回退，成长值不回退
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +209 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +210 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +211 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +211 -9: D:/dev/canting/test/data/local_food_flow_test.dart: memory edits and delete affect future only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +212 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +213 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +213 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 手动添加落库并刷新当日数据，备注与来源可读回
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +213 -9: D:/dev/canting/test/data/local_food_flow_test.dart: memory edits and delete affect future only
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +213 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 删除当日最后一条记录后当日结构归零
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +214 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +214 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 手动添加落库并刷新当日数据，备注与来源可读回
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +214 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 删除当日最后一条记录后当日结构归零
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +214 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 手动添加落库并刷新当日数据，备注与来源可读回
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +214 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 删除当日最后一条记录后当日结构归零
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +214 -9: D:/dev/canting/test/data/manual_add_flow_test.dart: 登记与落库 手动添加落库并刷新当日数据，备注与来源可读回
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:05 +215 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +215 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 删除当日最后一条记录后当日结构归零
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +216 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +216 -9: D:/dev/canting/test/data/local_food_flow_test.dart: failed memory write rolls back meal and in-memory state
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +217 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +217 -9: D:/dev/canting/test/data/local_food_flow_test.dart: failed memory write rolls back meal and in-memory state
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +218 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +219 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +220 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +220 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 跨日期添加落在对应日期，不影响今天
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:05 +221 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +222 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +223 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:05 +224 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:06 +224 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 跨日期添加落在对应日期，不影响今天
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +225 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:06 +225 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 跨日期添加落在对应日期，不影响今天
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +225 -9: D:/dev/canting/test/data/local_food_flow_test.dart: export includes all persisted meals after restart; clear is atomic
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +225 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 同一餐重复添加两条记录互相独立
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +225 -9: D:/dev/canting/test/data/local_food_flow_test.dart: export includes all persisted meals after restart; clear is atomic
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +225 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 同一餐重复添加两条记录互相独立
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +226 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:06 +226 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 同一餐重复添加两条记录互相独立
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +226 -9: D:/dev/canting/test/data/local_food_flow_test.dart: export includes all persisted meals after restart; clear is atomic
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +227 -9: D:/dev/canting/test/pet/evolution_animation_widget_test.dart: EvolutionAnimationWidget shows the old stage during the first half
+00:06 +227 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 备注和来源写入独立列，读回一致
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +228 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +229 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +230 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +231 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +231 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 备注和来源写入独立列，读回一致
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +232 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +232 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 备注和来源写入独立列，读回一致
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +233 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +233 -9: D:/dev/canting/test/data/meal_record_flow_test.dart: 保存与删除联动 备注和来源写入独立列，读回一致
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +234 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +235 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +236 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +237 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +237 -9: D:/dev/canting/test/data/local_food_flow_test.dart: v3 migration preserves historical JSON exactly
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +238 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +238 -9: D:/dev/canting/test/data/local_food_flow_test.dart: v3 migration preserves historical JSON exactly
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:06 +239 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +239 -9: D:/dev/canting/test/data/local_food_flow_test.dart: v3 migration preserves historical JSON exactly
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +240 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +241 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +242 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +243 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +244 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +245 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +246 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +247 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +248 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +249 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +250 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +251 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +252 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +253 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +254 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +254 -9: D:/dev/canting/test/data/local_food_flow_test.dart: decision policy exact positive, fuzzy/keyword negative and empty boundary
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +255 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +256 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +257 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +258 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +259 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +260 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +261 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +261 -9: D:/dev/canting/test/data/local_food_flow_test.dart: decision policy exact positive, fuzzy/keyword negative and empty boundary
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +262 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +263 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +264 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +265 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +266 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +267 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +268 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +269 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +270 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +271 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +271 -9: D:/dev/canting/test/data/local_food_flow_test.dart: known row portion edit rescales once while original snapshot remains unchanged
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:06 +272 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +273 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +274 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +275 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +276 -9: D:/dev/canting/test/pet/pet_dialog_widget_test.dart: PetDialogWidget shows the supplied pet dialogue immediately
+00:06 +277 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +278 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +279 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +280 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +281 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +282 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +283 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +284 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +285 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +286 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +287 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +288 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +289 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +290 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +291 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +292 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +293 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +294 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +295 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +296 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +297 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +298 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +299 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +300 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +301 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +302 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +303 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +304 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +305 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +306 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget uses a fixed-size color placeholder for missing sprites
+00:07 +307 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget advances one frame every 200 milliseconds
+00:07 +308 -9: D:/dev/canting/test/pet/pet_sprite_widget_test.dart: PetSpriteWidget keeps frame zero when animation is disabled
+00:07 +309 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 美团外卖 scheme：meituanwaimai:// + query 参数
+00:07 +310 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 美团 APP scheme：imeituan:// + q 参数
+00:07 +311 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 饿了么 scheme：eleme://search?keyword=
+00:07 +312 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 京东外卖 scheme：openapp.jdmobile://virtual?params={json}
+00:07 +313 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 H5 兜底链接与文档一致
+00:07 +314 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: URL 构造 未知平台 id 抛出 ArgumentError
+00:07 +315 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: jumpToSearch 跳转逻辑 已安装：拉起 scheme 链接，走外部应用模式
+00:07 +316 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: jumpToSearch 跳转逻辑 未安装：canLaunch 为 false 时回落 H5 链接
+00:07 +317 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: jumpToSearch 跳转逻辑 scheme 拉起失败（返回 false）时也回落 H5
+00:07 +318 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: 平台配置 默认配置：全部启用、固定优先级
+00:07 +319 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: 平台配置 注入的自定义配置决定启用平台与顺序
+00:07 +320 -9: D:/dev/canting/test/services/delivery_jump_service_test.dart: 平台配置 配置里的未知平台 id 被忽略
+00:07 +321 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） 未落盘时返回默认配置：四平台全启用、固定优先级
+00:07 +322 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） saveSettings 落盘后 loadSettings 原样读回（顺序 + 启用状态）
+00:07 +323 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） loadOrderedPlatformIds 只返回启用平台并保持顺序
+00:07 +324 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） 存储里的未知平台 id 被忽略，新平台 id 追加到末尾
+00:07 +325 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） saveOrderedPlatformIds：未列出的平台视为停用并保持原有相对顺序
+00:07 +326 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） 跳转服务注入 prefs store 后按用户配置返回启用平台
+00:07 +327 -9: D:/dev/canting/test/services/delivery_platform_prefs_store_test.dart: DeliveryPlatformPrefsStore（外卖平台配置持久化） prefs 不可用时回退默认配置（不抛异常）
+00:08 +328 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知内容构造 识别成功通知：标题带餐次、正文为菜名 · 宠物台词
+00:08 +329 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知内容构造 识别成功通知：宠物台词为空时正文只有菜名
+00:08 +330 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知内容构造 识别失败通知：固定文案与失败载荷
+00:08 +331 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知内容构造 成功与失败使用不同的点击载荷
+00:08 +332 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关状态 默认开启识别结果通知
+00:08 +333 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关状态 关闭后开关状态保持
+00:08 +334 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关状态 重置后恢复默认开启
+00:08 +335 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知点击事件流 广播流会把载荷发给所有监听者
+00:08 +336 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关持久化（NotificationSwitchPrefs） 未落盘时 load 返回默认值：识别通知开、提醒关
+00:08 +337 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关持久化（NotificationSwitchPrefs） save 之后 load 原样读回三个开关
+00:08 +338 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关持久化（NotificationSwitchPrefs） save 只写传入的开关，互不影响
+00:08 +339 -9: D:/dev/canting/test/services/notification_service_test.dart: 通知开关持久化（NotificationSwitchPrefs） 重启模拟：重新 load 恢复上一次的开关状态
+00:08 +340 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+00:08 +341 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+00:08 +341 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +342 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+00:08 +342 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +342 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +342 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +342 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +343 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+00:08 +343 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +343 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天没有记录 → 活力值保持不变（交给离线衰减）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +343 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +343 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +343 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +344 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+00:08 +344 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +344 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +344 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +345 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+00:08 +345 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +345 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +345 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +345 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +345 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +346 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +346 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +346 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 最近 3 天吃得均衡 → 活力值按饮食质量重算
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +346 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +347 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） clearAllData 清空记录、宠物、档案与自定义菜品
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） clearAllData 清空记录、宠物、档案与自定义菜品
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_pet_test.dart: AppState.refreshPetVitality（模块 7 活力值） 吃得很差的日子会拉低活力值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +347 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +348 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +348 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +348 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +348 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） updateProfile 落库并可重新加载
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +348 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） clearAllData 清空记录、宠物、档案与自定义菜品
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +349 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +349 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 个人设置（模块 10） clearAllData 清空记录、宠物、档案与自定义菜品
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +349 -9: D:/dev/canting/test/state/app_state_settings_test.dart: AppState 通知开关落盘（shared_preferences 回调） setMealReminder / setGapReminder 触发对应开关的持久化回调
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +349 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 删除回退不会把活力值打到合法下限以下（此前 [0,100] 钳制会越界崩溃）
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +350 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +350 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 当天删除全部记录后，删除路径与 3 天重算收敛到同一值
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +351 -9: D:/dev/canting/test/state/app_state_pet_test.dart: 活力值口径抽查：删除回退 vs 3 天重算（模块 7 边界） 跨日删除昨天的记录后，同样收敛到重算口径
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:08 +352 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +353 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 无排除项时返回引擎原始推荐（1 主推 + 2 备选）
+00:09 +353 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 uncredited complete meal deletion never subtracts vitality
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +353 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +354 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 无排除项时返回引擎原始推荐（1 主推 + 2 备选）
+00:09 +354 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 credited meal normal deletion preserves growth
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +354 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 无排除项时返回引擎原始推荐（1 主推 + 2 备选）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +354 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains actual reward and repeat deletion is idempotent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +355 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 无排除项时返回引擎原始推荐（1 主推 + 2 备选）
+00:09 +355 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains actual reward and repeat deletion is idempotent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +356 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains explicitly suppressed reward
+00:09 +356 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 无排除项时返回引擎原始推荐（1 主推 + 2 备选）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +356 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains actual reward and repeat deletion is idempotent
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:09 +356 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains explicitly suppressed reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +357 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 换一批：已展示的菜不再出现，补足到 3 道
+00:09 +357 -9: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 restart retains explicitly suppressed reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:09 +357 -9: D:/dev/canting/test/state/recommendation_state_test.dart: 换一批：已展示的菜不再出现，补足到 3 道
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +357 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+00:09 +357 -10: D:/dev/canting/test/state/recommendation_state_test.dart: 换一批：已展示的菜不再出现，补足到 3 道 [E]
+  Expected: not null
+    Actual: <null>
+
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\state\recommendation_state_test.dart 90:7      main.<fn>
+
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +357 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +358 -10: D:/dev/canting/test/state/recommendation_state_test.dart: 推荐时间落在合理餐段（未来或餐口起点）
+00:09 +358 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit known to unknown retains original reward receipt
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:09 +358 -10: D:/dev/canting/test/state/recommendation_state_test.dart: 推荐时间落在合理餐段（未来或餐口起点）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +359 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+00:09 +359 -10: D:/dev/canting/test/state/recommendation_state_test.dart: 推荐时间落在合理餐段（未来或餐口起点）
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +359 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +360 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 reverse actual capped change rather than nominal reward
+00:09 +360 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 edit unknown to known must not manufacture reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:09 +360 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +361 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 negative actual change reverses symmetrically
+00:09 +361 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 reverse actual capped change rather than nominal reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +361 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +362 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+00:09 +362 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 negative actual change reverses symmetrically
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +362 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +363 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on pet_states rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:09 +363 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +364 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 concurrent repeated deletion reverses only once
+00:10 +364 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed deletion on meal_records rolls back DB and memory
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +364 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 concurrent repeated deletion reverses only once
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +365 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+00:10 +365 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 concurrent repeated deletion reverses only once
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +366 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+00:10 +366 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 分享识别状态机（start/complete/fail/clear） start 后处于加载中，无菜无商家
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +367 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+00:10 +367 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 分享识别状态机（start/complete/fail/clear） 图片 URI 不一致的 complete/fail 请求被忽略
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +368 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+00:10 +368 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 分享识别状态机（start/complete/fail/clear） 识别失败写入错误信息并结束加载
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +369 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+00:10 +369 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 分享识别状态机（start/complete/fail/clear） clearSharedRecognition 清空草稿
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +369 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +370 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +370 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 with profile and scored prior day, suppressed deletion does not recalculate
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +370 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 editing and export retain receipt; legacy edit stays absent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +371 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +371 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 editing and export retain receipt; legacy edit stays absent
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:10 +372 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +373 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +374 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +375 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +376 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +376 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed save cannot leave meal or reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +377 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +377 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 failed save cannot leave meal or reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +378 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +379 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +380 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +381 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +382 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +383 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +383 -10: D:/dev/canting/test/state/meal_reward_review_test.dart: R2 old v4 JSON remains unchanged on open, has no invented reward
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:10 +384 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+00:10 +385 -10: D:/dev/canting/test/ui/food_confirmation_test.dart: unknown can be classified without nutrition; explicit sugar survives suggestion
+00:10 +385 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） OCR 菜名经 DishMatcher 匹配后保存，record_json 带 source=ocr
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android shared data channel is unavailable: MissingPluginException(No implementation found for method saveMealRecord on channel com.canting.app/pet)
+00:10 +386 -10: D:/dev/canting/test/ui/food_confirmation_test.dart: unknown can be classified without nutrition; explicit sugar survives suggestion
+00:10 +386 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: 识别结果 → 保存（source=ocr 落库） 保存路径优先命中用户自定义菜品
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+Android widget channel is unavailable: MissingPluginException(No implementation found for method savePetStatus on channel com.canting.app/pet)
+00:11 +387 -10: D:/dev/canting/test/ui/food_confirmation_test.dart: unknown can be classified without nutrition; explicit sugar survives suggestion
+00:11 +388 -10: D:/dev/canting/test/ui/food_confirmation_test.dart: unknown can be classified without nutrition; explicit sugar survives suggestion
+00:12 +389 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:12 +390 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +391 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +392 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +393 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +394 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +395 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +396 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +397 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:13 +398 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:14 +399 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:14 +400 -10: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:14 +400 -10: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 设置页展示四个外卖平台，默认全启用、固定顺序
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile: ListTile(onTap: Closure: () => void)
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 0.9961, green: 0.9686, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:14 +400 -11: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:14 +400 -11: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 设置页展示四个外卖平台，默认全启用、固定顺序 [E]
+  Test failed. See exception logs above.
+  The test description was: 设置页展示四个外卖平台，默认全启用、固定顺序
+
+00:14 +401 -11: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） onSharedImage → 识别完成 → 页面展示 → 保存落库 source=ocr
+00:14 +402 -11: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:14 +403 -11: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+00:15 +404 -11: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: no-memory
+R1 widget evidence no-memory merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: none, cup: small, size: unknown}
+00:15 +405 -11: D:/dev/canting/test/ui/record/record_detail_note_test.dart: 新记录：备注默认为空，保存时写入 note 列
+00:15 +405 -11: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 停用京东外卖后落盘，跳转服务只返回剩余启用平台
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile: ListTile(onTap: Closure: () => void)
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 0.9961, green: 0.9686, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:15 +405 -12: D:/dev/canting/test/ui/record/record_detail_note_test.dart: 新记录：备注默认为空，保存时写入 note 列
+00:15 +405 -12: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 停用京东外卖后落盘，跳转服务只返回剩余启用平台 [E]
+  Test failed. See exception logs above.
+  The test description was: 停用京东外卖后落盘，跳转服务只返回剩余启用平台
+
+00:15 +406 -12: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:15 +407 -12: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:16 +407 -12: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 上移京东外卖后落盘新顺序，跳转顺序随之变化
+══╡ EXCEPTION CAUGHT BY FLUTTER FRAMEWORK ╞═════════════════════════════════════════════════════════
+The following assertion was thrown:
+ListTile background color or ink splashes may be invisible.
+The ListTile is wrapped in a ColoredBox that has a background color. Because ListTile paints its
+background and ink splashes on the nearest Material ancestor, this ColoredBox will hide those
+effects.
+To fix this, wrap the ListTile in its own Material widget, or remove the background color from the
+intermediate ColoredBox.
+
+ListTile: ListTile(onTap: Closure: () => void)
+ColoredBox:
+  ColoredBox(color: Color(alpha: 1.0000, red: 0.9961, green: 0.9686, blue: 1.0000, colorSpace: ColorSpace.sRGB))
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:16 +407 -13: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:16 +407 -13: D:/dev/canting/test/ui/settings/delivery_platform_settings_test.dart: 上移京东外卖后落盘新顺序，跳转顺序随之变化 [E]
+  Test failed. See exception logs above.
+  The test description was: 上移京东外卖后落盘新顺序，跳转顺序随之变化
+
+00:16 +408 -13: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:16 +409 -13: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:16 +410 -13: D:/dev/canting/test/widget_test.dart: first launch shows the six-step setup flow
+00:16 +411 -13: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） 原生 OCR 失败 → 页面错误提示，手动补菜后仍可保存 source=ocr
+00:16 +411 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: other-category
+R1 widget evidence other-category merchant=品牌乙 brand=品牌乙 category=coffee spec={sugar: none, cup: small, size: unknown}
+00:16 +412 -13: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） 原生 OCR 失败 → 页面错误提示，手动补菜后仍可保存 source=ocr
+00:16 +413 -13: D:/dev/canting/test/state/shared_recognition_flow_test.dart: Dart 侧分享链路端到端（原生桥 → 识别页 → 保存） 原生 OCR 失败 → 页面错误提示，手动补菜后仍可保存 source=ocr
+00:16 +414 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 相册选图 → 复制包装 → 识别完成 → 保存 source=ocr 并发确认通知
+00:16 +415 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 相册选图 → 复制包装 → 识别完成 → 保存 source=ocr 并发确认通知
+00:16 +416 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 相册选图 → 复制包装 → 识别完成 → 保存 source=ocr 并发确认通知
+00:16 +417 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 相册选图 → 复制包装 → 识别完成 → 保存 source=ocr 并发确认通知
+00:16 +418 -13: D:/dev/canting/test/widget_test.dart: completing setup persists the profile with guideline targets
+00:17 +418 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: clear
+R1 widget evidence clear merchant= brand= category=unknown spec={sugar: none, cup: small, size: unknown}
+00:17 +419 -13: D:/dev/canting/test/widget_test.dart: completing setup persists the profile with guideline targets
+00:17 +420 -13: D:/dev/canting/test/widget_test.dart: completing setup persists the profile with guideline targets
+00:17 +421 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: explicit-brand
+R1 widget evidence explicit-brand merchant=品牌乙 brand=单品品牌 category=milk_tea spec={sugar: none, cup: small, size: unknown}
+00:17 +422 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别超时（5 秒）→ 提示太慢并给手动添加建议
+00:17 +423 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别超时（5 秒）→ 提示太慢并给手动添加建议
+00:17 +424 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: preserve-unresolved
+00:18 +425 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: preserve-unresolved
+R1 widget evidence preserve-unresolved merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: none, cup: small, size: unknown}
+00:18 +426 -13: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别通知开关关闭时保存成功但不发通知
+00:18 +427 -13: D:/dev/canting/test/widget_test.dart: main pages fit an iPhone SE-sized viewport
+00:18 +428 -13: D:/dev/canting/test/ui/record/brand_context_review_test.dart: R1 real record page: edited-spec
+R1 widget evidence edited-spec merchant=品牌乙 brand=品牌乙 category=unknown spec={sugar: low, cup: unknown, size: unknown}
+00:18 +429 -13: D:/dev/canting/test/widget_test.dart: saving a recognized meal returns to home
+00:19 +430 -13: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/core/recommendation_engine_test.dart: 30 天仿真（核心验收） 随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%
+  D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 主食缺口未满时主食槽位按设计置首，水果最大缺口槽位仍保留且标签正确
+  D:/dev/canting/test/core/recommendation_engine_test.dart: P0 基线回归：换一批标签与水果槽位（确定性） 换一批后新卡的分类来自新菜品自身数据，不继承槽位或旧卡标签
+  D:/dev/canting/test/core/recommendation_engine_test.dart: 单日场景：中午炸鸡汉堡薯条可乐 文案温和提示油/主食超标，滚动调控，无欺骗性「已优先清淡」
+  ... and 9 more

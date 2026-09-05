@@ -1,4 +1,4 @@
-import 'package:canting/core_engine.dart';
+import 'package:canting/ui/history/record_summary_panel.dart';
 import 'package:canting/pet/vitality_calculator.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/history/calendar_view.dart';
@@ -19,8 +19,17 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   late DateTime _visibleMonth;
   Map<DateTime, int> _monthScores = const {};
-  List<MealRecord> _monthMealsRaw = const [];
   bool _loading = true;
+  int _revision = -1;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final revision = context.watch<AppState>().dataRevision;
+    if (_revision != revision) {
+      _revision = revision;
+      Future.microtask(_loadVisibleMonth);
+    }
+  }
 
   @override
   void initState() {
@@ -45,7 +54,6 @@ class _HistoryPageState extends State<HistoryPage> {
         return;
       }
       setState(() {
-        _monthMealsRaw = meals;
         _monthScores = HistoryStats.dayScoresForMeals(meals, state.dailyIntake);
         _loading = false;
       });
@@ -201,18 +209,7 @@ class _HistoryPageState extends State<HistoryPage> {
               const SizedBox(height: 14),
               const _QualityLegend(),
               const SizedBox(height: 26),
-              PixelSectionHeader(title: '本周统计', icon: Icons.insights_outlined),
-              const SizedBox(height: 9),
-              PixelPanel(
-                padding: const EdgeInsets.all(14),
-                child: _WeekStatsPanel(
-                  stats: HistoryStats.weekStats(
-                    meals: _monthMealsRaw,
-                    target: state.dailyIntake,
-                    selected: selected,
-                  ),
-                ),
-              ),
+              RecordSummaryPanel(date: selected),
               const SizedBox(height: 26),
               Row(
                 children: [
@@ -308,127 +305,6 @@ class _HistoryPageState extends State<HistoryPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _WeekStatsPanel extends StatelessWidget {
-  const _WeekStatsPanel({required this.stats});
-
-  final WeekStats stats;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: _Metric(
-                label: '平均完成度',
-                value: '${(stats.averageCompletion * 100).round()}%',
-              ),
-            ),
-            Expanded(
-              child: _Metric(label: '食物种类', value: '${stats.dishVariety} 种'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '坚果周进度 '
-                    '${stats.soyServings.toStringAsFixed(1)}/'
-                    '${stats.soyWeeklyTarget.toStringAsFixed(0)} 份',
-                    style: theme.textTheme.labelMedium,
-                  ),
-                  const SizedBox(height: 5),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(2),
-                    child: LinearProgressIndicator(
-                      value: stats.soyProgress,
-                      minHeight: 7,
-                      backgroundColor: scheme.surfaceContainerHighest,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        Text('活力值趋势（一 → 日）', style: theme.textTheme.labelMedium),
-        const SizedBox(height: 6),
-        Row(
-          children: [
-            for (var index = 0; index < stats.vitalityTrend.length; index++)
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    right: index == stats.vitalityTrend.length - 1 ? 0 : 6,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: qualityColor(
-                            gradeForScore(stats.vitalityTrend[index]),
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        '${index + 1}',
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: scheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _Metric extends StatelessWidget {
-  const _Metric({required this.label, required this.value});
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          value,
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        Text(
-          label,
-          style: theme.textTheme.labelMedium?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-          ),
-        ),
-      ],
     );
   }
 }

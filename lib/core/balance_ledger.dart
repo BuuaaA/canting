@@ -99,7 +99,7 @@ class BalanceLedger {
   /// 计算以 [now] 所在日为末日的 7 天滚动台账。
   ///
   /// [intakeByDay]：日期（仅取年月日）→ 当日六类摄入份数；窗口外的键
-  /// 自动忽略，窗口内缺失的日期视为 0 摄入（空数据天）。
+  /// 自动忽略；缺失或贡献不完整日不传入，不产生新的盈亏。
   /// [weeklyTarget]：六类 7 天目标份数（= 单日目标 × 7，IntakeCalculator
   /// 的周目标口径），日目标 = 周目标 ÷ 7。
   static BalanceReport compute({
@@ -158,6 +158,5 @@ class BalanceLedger {
   }
 
   /// 清理浮点尾数（1e-9 以下视为 0），避免 -0.0 与尘埃值外溢。
-  static double _clean(double value) =>
-      value.abs() < _epsilon ? 0 : value;
+  static double _clean(double value) => value.abs() < _epsilon ? 0 : value;
 }

@@ -1,0 +1,6 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Analyzing canting...
+
+   info - Statements in an if should be enclosed in a block. Try wrapping the statement in a block - test\core\recommendation_engine_test.dart:442:50 - curly_braces_in_flow_control_structures
+
+1 issue found. (ran in 6.4s)

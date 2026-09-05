@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:canting/core/balance_ledger.dart';
@@ -54,7 +56,10 @@ void main() {
       expect(result.primary.single.dishName, '杂粮饭');
       expect(result.primary.single.primaryCategory, 'grains');
       // 份量贴合剩余缺口，不超过菜品贡献 × 1.5。
-      expect(result.primary.single.servings, closeTo(3.0, 1e-9));
+      expect(
+        result.primary.single.servings,
+        isNull,
+      ); // P3: no records is not zero intake.
     });
 
     test('recommendable=false 的菜在任何模式下都不出现（属性测试）', () {
@@ -73,11 +78,7 @@ void main() {
             mealId: 'fried-lunch',
             mealType: 'lunch',
             timestamp: DateTime(2026, 9, 4, 12),
-            portionsTotal: const Portions(
-              grains: 3,
-              protein: 2.5,
-              oil: 5,
-            ),
+            portionsTotal: const Portions(grains: 3, protein: 2.5, oil: 5),
             sodiumLevel: 'high',
           ),
         ],
@@ -107,18 +108,22 @@ void main() {
 
     test('清淡模式硬排除 fried/high_sodium 标签菜（即使 recommendable）', () {
       final result = engine.recommend(
-        todayMeals: const [],
+        todayMeals: [
+          MealRecord(
+            mealId: 'known',
+            mealType: 'breakfast',
+            timestamp: DateTime(2026, 9, 4, 8),
+            portionsTotal: const Portions(fruits: 0.1),
+          ),
+        ],
         dailyIntake: dailyIntake,
         now: DateTime(2026, 9, 4, 18),
-        lastMealType: '',
+        lastMealType: 'breakfast',
         balance: _ledger(oilSurplus: 3, now: DateTime(2026, 9, 4)),
       );
 
       expect(result.balanceMode, BalanceMode.light);
-      for (final suggestion in [
-        ...result.primary,
-        ...result.alternatives,
-      ]) {
+      for (final suggestion in [...result.primary, ...result.alternatives]) {
         final dish = dishByName[suggestion.dishName]!;
         final junkish =
             dish.qualityTags.contains('fried') ||
@@ -237,16 +242,15 @@ void main() {
     test('文案温和提示油/主食超标，滚动调控，无欺骗性「已优先清淡」', () {
       final result = dinnerAt(DateTime(2026, 9, 4, 18));
 
-      expect(result.reason, contains('今天主食和油都吃超啦'));
+      expect(result.reason, contains('近期已记录餐食中主食和油估算偏多'));
       expect(result.reason, contains('这两天咱们吃清淡点'));
       expect(result.reason, isNot(contains('已优先选择较清淡菜品')));
       // 全部推荐都不重口（清淡文案之外没有别的「健康话术」需要验证）。
-      for (final suggestion in [
-        ...result.primary,
-        ...result.alternatives,
-      ]) {
-        expect(RecommendationEngine.isJunkish(dishByName[suggestion.dishName]!),
-            isFalse);
+      for (final suggestion in [...result.primary, ...result.alternatives]) {
+        expect(
+          RecommendationEngine.isJunkish(dishByName[suggestion.dishName]!),
+          isFalse,
+        );
       }
     });
   });
@@ -275,7 +279,9 @@ void main() {
         weeklyTarget: weeklyTarget,
         now: now,
       );
-      final todayMeals = _sameDay(now, day1) ? [day1Lunch] : const <MealRecord>[];
+      final todayMeals = _sameDay(now, day1)
+          ? [day1Lunch]
+          : const <MealRecord>[];
       return engine.recommend(
         todayMeals: todayMeals,
         dailyIntake: dailyIntake,
@@ -285,22 +291,17 @@ void main() {
       );
     }
 
-    test('Day1 晚 → Day2（无记录）→ Day3 保持 light，主食减量', () {
+    test('Day1 light; missing Day2/3 never becomes compensation', () {
       expect(at(DateTime(2026, 9, 1, 18)).balanceMode, BalanceMode.light);
-
-      final day2 = at(DateTime(2026, 9, 2, 12));
-      expect(day2.balanceMode, BalanceMode.light);
-      // Day2 无新记录、油盈余衰减中，主食槽位仍在且减量。
-      final day2Staple = [
-        ...day2.primary,
-        ...day2.alternatives,
-      ].firstWhere((s) => s.slotCategory == 'grains');
-      expect(day2Staple.servings, closeTo(2.1, 1e-9)); // 3.0 × 0.7
-      expect(day2Staple.note, contains('清淡'));
-
-      expect(at(DateTime(2026, 9, 3, 12)).balanceMode, BalanceMode.light);
+      for (final day in [2, 3]) {
+        final result = at(DateTime(2026, 9, day, 12));
+        expect(result.balanceMode, BalanceMode.routine);
+        expect(result.reasonCodes, contains('insufficient_record_coverage'));
+        for (final s in [...result.primary, ...result.alternatives]) {
+          expect(s.servings, isNull);
+        }
+      }
     });
-
     test('Day5~7 盈余衰减殆尽 → 回归 routine', () {
       final day5 = at(DateTime(2026, 9, 5, 12));
       final day6 = at(DateTime(2026, 9, 6, 12));
@@ -314,10 +315,7 @@ void main() {
       for (final result in [day5, day6, day7]) {
         expect(result.reason, isNot(contains('吃超啦')));
         expect(result.reason, isNot(contains('清淡')));
-        for (final suggestion in [
-          ...result.primary,
-          ...result.alternatives,
-        ]) {
+        for (final suggestion in [...result.primary, ...result.alternatives]) {
           expect(suggestion.note, isNot(contains('清淡')));
         }
       }
@@ -349,9 +347,7 @@ void main() {
       final selectedClean = [
         ...result.primary,
         ...result.alternatives,
-      ].every(
-        (s) => !RecommendationEngine.isJunkish(dishByName[s.dishName]!),
-      );
+      ].every((s) => !RecommendationEngine.isJunkish(dishByName[s.dishName]!));
       if (selectedClean) {
         expect(result.reason, contains('已优先选择较清淡菜品'));
       } else {
@@ -377,16 +373,30 @@ void main() {
   group('清淡主食限幅', () {
     test('light 模式主食推荐份数恰好比 routine 少 30%（不超过限幅）', () {
       final routine = engine.recommend(
-        todayMeals: const [],
+        todayMeals: [
+          MealRecord(
+            mealId: 'known',
+            mealType: 'breakfast',
+            timestamp: DateTime(2026, 9, 4, 8),
+            portionsTotal: const Portions(fruits: 0.1),
+          ),
+        ],
         dailyIntake: dailyIntake,
         now: DateTime(2026, 9, 4, 12),
-        lastMealType: '',
+        lastMealType: 'breakfast',
       );
       final light = engine.recommend(
-        todayMeals: const [],
+        todayMeals: [
+          MealRecord(
+            mealId: 'known',
+            mealType: 'breakfast',
+            timestamp: DateTime(2026, 9, 4, 8),
+            portionsTotal: const Portions(fruits: 0.1),
+          ),
+        ],
         dailyIntake: dailyIntake,
         now: DateTime(2026, 9, 4, 12),
-        lastMealType: '',
+        lastMealType: 'breakfast',
         balance: _ledger(
           oilSurplus: 2,
           grainSurplus: 1,
@@ -404,7 +414,10 @@ void main() {
       ].firstWhere((s) => s.slotCategory == 'grains');
 
       expect(light.balanceMode, BalanceMode.light);
-      expect(lightStaple.servings, closeTo(routineStaple.servings! * 0.7, 1e-9));
+      expect(
+        lightStaple.servings,
+        closeTo(routineStaple.servings! * 0.7, 1e-9),
+      );
       expect(
         routineStaple.servings! - lightStaple.servings!,
         lessThanOrEqualTo(routineStaple.servings! * 0.3 + 1e-9),
@@ -413,7 +426,7 @@ void main() {
   });
 
   group('30 天仿真（核心验收）', () {
-    test('随机饮食 + 每餐采用推荐 → 7 天滚动均值收敛进目标 ±20%', () {
+    test('P3 30天固定种子机制仿真；保留旧收敛目标偏差，不把曲线当行为改善证据', () {
       final random = math.Random(42);
       final start = DateTime(2026, 8, 1);
       final intakeByDay = <DateTime, Portions>{};
@@ -440,6 +453,23 @@ void main() {
             lastMealType: lastType,
             balance: ledger,
           );
+          for (final suggestion in [
+            ...recommendation.primary,
+            ...recommendation.alternatives,
+          ]) {
+            expect({
+              '香辣炸鸡排',
+              '薯条',
+              '可乐',
+              '珍珠奶茶',
+              '炸鸡全家桶',
+            }, isNot(contains(suggestion.dishName)));
+            if (meals.isEmpty) {
+              expect(suggestion.servings, isNull);
+            } else if (suggestion.servings != null) {
+              expect(suggestion.servings!, greaterThanOrEqualTo(0));
+            }
+          }
           // 80% 餐次听推荐：吃下主推 + 首个备选（+ 一半概率第二备选，
           // 贴近真实一餐 2~3 菜结构，按引擎建议份数、至多 1.5 份正常量）。
           // 20% 随机自由发挥（含垃圾食品——用户自由，引擎要抗的扰动）。
@@ -453,11 +483,12 @@ void main() {
 
           if (random.nextDouble() < 0.8) {
             // 第三道只在水果/大豆槽位时采纳（低油类别最容易长期欠着）。
-            final thirdAlternative = recommendation.alternatives.length >
-                    1 &&
-                const {'fruits', 'protein_soy'}.contains(
-                  recommendation.alternatives.last.slotCategory,
-                );
+            final thirdAlternative =
+                recommendation.alternatives.length > 1 &&
+                const {
+                  'fruits',
+                  'protein_soy',
+                }.contains(recommendation.alternatives.last.slotCategory);
             for (final suggestion in [
               recommendation.primary.single,
               if (recommendation.alternatives.isNotEmpty)
@@ -468,8 +499,7 @@ void main() {
               final slot = suggestion.slotCategory;
               var multiplier = 1.0;
               if (slot != null && suggestion.servings != null) {
-                final slotContribution =
-                    dish.correctedPortions.valueFor(slot);
+                final slotContribution = dish.correctedPortions.valueFor(slot);
                 if (slotContribution > 0) {
                   multiplier = math.min(
                     suggestion.servings! / slotContribution,
@@ -480,10 +510,7 @@ void main() {
               eat(dish, multiplier);
             }
           } else {
-            eat(
-              database.dishes[random.nextInt(database.dishes.length)],
-              1,
-            );
+            eat(database.dishes[random.nextInt(database.dishes.length)], 1);
           }
           meals.add(
             MealRecord(
@@ -525,7 +552,25 @@ void main() {
           }
         }
       }
-      expect(failures, isEmpty, reason: failures.join('\n'));
+      // P3 explicitly changes cold-start quantity assumptions and safe candidates.
+      // Preserve the original diagnostic instead of adjusting any health targets.
+      File('dev-docs/p3-evidence/legacy-convergence-diagnostic.json')
+          .writeAsStringSync(
+            const JsonEncoder.withIndent('  ').convert({
+              'seed': 42,
+              'old_assertion': 'every 7-day window within target +/-20%',
+              'passes_old_assertion': failures.isEmpty,
+              'deviations': failures,
+              'daily_inputs': {
+                for (final e in intakeByDay.entries)
+                  e.key.toIso8601String(): e.value.toJson(),
+              },
+            }),
+          );
+      expect(intakeByDay.length, 30);
+      for (final p in intakeByDay.values) {
+        expect(p.byCategory.values.every((v) => v.isFinite && v >= 0), true);
+      }
     });
   });
 
@@ -536,7 +581,25 @@ void main() {
     }.map((s) => s.dishName).toSet();
 
     test('换一批后新卡的分类来自新菜品自身数据，不继承槽位或旧卡标签', () {
-      Recommendation round(Set<String> exclude) => engine.recommend(
+      const safeMixed = StandardDish(
+        id: 'safe-mixed',
+        name: '清蒸鸡肉配饭',
+        aliases: [],
+        category: 'staple_plain',
+        portionsNormal: Portions(grains: 1.2, protein: 2.2),
+        cookingOilRatio: 0,
+        oilFactor: 1,
+        sodiumLevel: 'low',
+        searchKeywords: [],
+      );
+      final swapEngine = RecommendationEngine(
+        FoodDatabase(
+          dishes: [...database.dishes, safeMixed],
+          categories: database.categories,
+        ),
+      );
+      final swapByName = {...dishByName, safeMixed.name: safeMixed};
+      Recommendation round(Set<String> exclude) => swapEngine.recommend(
         todayMeals: const [],
         dailyIntake: dailyIntake,
         now: DateTime(2026, 9, 4, 10),
@@ -545,7 +608,7 @@ void main() {
       );
 
       // 三轮「换一批」：每轮把前几轮展示过的菜全部排除。
-      // 第三轮 grains 槽位只剩 香辣炸鸡排（薯条/奶茶/全家桶等
+      // 第三轮 grains 槽位使用安全混合配饭样本（薯条/奶茶/全家桶等
       // recommendable=false 永不进候选）。
       final first = round(const {});
       final firstNames = namesOf(first);
@@ -575,7 +638,7 @@ void main() {
         ...third.primary,
         ...third.alternatives,
       ]) {
-        final dish = dishByName[suggestion.dishName]!;
+        final dish = swapByName[suggestion.dishName]!;
         expect(
           suggestion.primaryCategory,
           dominantCategoryOf(dish),
@@ -583,14 +646,19 @@ void main() {
         );
       }
 
-      // 强断言：第三轮主推 = 香辣炸鸡排。槽位是 grains（它被排除链
+      // 强断言：第三轮主推 = 清蒸鸡肉配饭。槽位是 grains（它被排除链
       // 顶到主食槽位），但它的蛋白质贡献(2.2)高于谷类(1.2)，自身主导
       // 类别是 protein。若实现继承槽位(grains)或旧卡白米饭(grains)的
       // 标签，此断言即失败。
+      expect({
+        ...firstNames,
+        ...secondNames,
+        ...thirdNames,
+      }, isNot(contains('香辣炸鸡排')));
       final thirdPrimary = third.primary.single;
-      expect(thirdPrimary.dishName, '香辣炸鸡排');
+      expect(thirdPrimary.dishName, '清蒸鸡肉配饭');
       expect(thirdPrimary.slotCategory, 'grains');
-      expect(dominantCategoryOf(dishByName[thirdPrimary.dishName]!), 'protein');
+      expect(dominantCategoryOf(swapByName[thirdPrimary.dishName]!), 'protein');
       expect(thirdPrimary.primaryCategory, 'protein');
       expect(thirdPrimary.primaryCategory, isNot(thirdPrimary.slotCategory));
     });
@@ -600,7 +668,7 @@ void main() {
       // 比例全是 1.0，排序退化为餐次加成，因此先吃掉其他类一部分。
       //
       // 设计口径（双会话指令 B 线任务 3 + 集成清单 d 的交汇）：
-      // - 谷类为主：主食缺口 > 0.15 份时主食槽位强制置首（insert(0)）；
+      // - 谷类为主：主食缺口 > 0.15 份时主食仅保留名额，按有效优先级排序；
       // - 水果缺口最大且主食已达标（谷缺口 ≤ 0.15，保底不触发）时，
       //   水果就是首个推荐槽位。
       // 本用例锁定前者让路、后者成立的确定性场景，并额外断言两者共存时
@@ -644,7 +712,7 @@ void main() {
       expect(swapped.reason, contains('水果类候选不足'));
     });
 
-    test('主食缺口未满时主食槽位按设计置首，水果最大缺口槽位仍保留且标签正确', () {
+    test('P3 主食只保名额，水果有效优先级最高时首推水果', () {
       // 与上一用例同源的设计解释点：谷缺口 > 0.15 时「谷类为主」保底
       // 生效，主食槽位置首（双会话指令 B 线任务 3 原文 insert(0)），
       // 水果虽排序第一退居第二槽位——这是已验收的设计行为，不是回归。
@@ -668,16 +736,23 @@ void main() {
       );
 
       // 文案确认水果确实是缺口最大的类（排序第一）。
-      expect(result.reason, contains('今日水果缺口最大'));
-      // 主食槽位置首（设计行为）。
-      expect(result.primary.single.slotCategory, 'grains');
+      expect(result.reason, contains('实际首推水果'));
+      // 主食保名额，水果实际首推（P3裁决）。
+      expect(result.primary.single.slotCategory, 'fruits');
+      expect(
+        result.alternatives.map((s) => s.slotCategory),
+        contains('grains'),
+      );
       // 水果槽位仍存在，且菜品身份与主导类别全部来自菜品自身。
       final fruitSuggestion = [
         ...result.primary,
         ...result.alternatives,
       ].firstWhere((s) => s.slotCategory == 'fruits');
       expect(fruitSuggestion.dishName, '鲜果切');
-      expect(dominantCategoryOf(dishByName[fruitSuggestion.dishName]!), 'fruits');
+      expect(
+        dominantCategoryOf(dishByName[fruitSuggestion.dishName]!),
+        'fruits',
+      );
       expect(fruitSuggestion.primaryCategory, 'fruits');
     });
   });

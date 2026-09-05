@@ -1,0 +1,33 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/core/p3_window_test.dart
+test/core/p3_window_test.dart:2:8: Error: Error when reading 'lib/core/record_window.dart': 系统找不到指定的文件。
+import 'package:canting/core/record_window.dart';
+       ^
+test/core/p3_window_test.dart:8:11: Error: Undefined name 'RecordWindow'.
+  final w=RecordWindow.build([
+          ^^^^^^^^^^^^
+test/core/p3_window_test.dart:18:11: Error: Undefined name 'RecordWindow'.
+  final w=RecordWindow.build([MealRecord(mealId:'unknown',mealType:'lunch',timestamp:day,dishes:[MealDish(name:'未知',contributionsKnown:false)])],days:7,asOf:day);
+          ^^^^^^^^^^^^
+test/core/p3_window_test.dart:22:11: Error: Undefined name 'RecordWindow'.
+  final w=RecordWindow.build([],days:28,asOf:DateTime(2026,1,1));
+          ^^^^^^^^^^^^
+00:00 +0 -1: loading D:/dev/canting/test/core/p3_window_test.dart [E]
+  Failed to load "D:/dev/canting/test/core/p3_window_test.dart":
+  Compilation failed for testPath=D:/dev/canting/test/core/p3_window_test.dart: test/core/p3_window_test.dart:2:8: Error: Error when reading 'lib/core/record_window.dart': 系统找不到指定的文件。
+  import 'package:canting/core/record_window.dart';
+         ^
+  test/core/p3_window_test.dart:8:11: Error: Undefined name 'RecordWindow'.
+    final w=RecordWindow.build([
+            ^^^^^^^^^^^^
+  test/core/p3_window_test.dart:18:11: Error: Undefined name 'RecordWindow'.
+    final w=RecordWindow.build([MealRecord(mealId:'unknown',mealType:'lunch',timestamp:day,dishes:[MealDish(name:'未知',contributionsKnown:false)])],days:7,asOf:day);
+            ^^^^^^^^^^^^
+  test/core/p3_window_test.dart:22:11: Error: Undefined name 'RecordWindow'.
+    final w=RecordWindow.build([],days:28,asOf:DateTime(2026,1,1));
+            ^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  D:/dev/canting/test/core/p3_window_test.dart: loading D:/dev/canting/test/core/p3_window_test.dart

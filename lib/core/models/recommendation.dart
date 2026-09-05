@@ -35,6 +35,8 @@ class Recommendation {
     required this.alternatives,
     required this.reason,
     this.balanceMode = BalanceMode.routine,
+    this.reasonCodes = const [],
+    this.policyVersion = 'p3-v1',
   });
 
   final DateTime suggestedTime;
@@ -42,6 +44,8 @@ class Recommendation {
   final List<DishSuggestion> primary;
   final List<DishSuggestion> alternatives;
   final String reason;
+  final List<String> reasonCodes;
+  final String policyVersion;
 
   /// 本次推荐的平衡模式：routine（常规）/ light（清淡）。
   /// light 由 7 天滚动台账盈余激活，用于文案与测试断言。
