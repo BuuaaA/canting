@@ -1,0 +1,8 @@
+{
+  "candidate_count": 5,
+  "same_debug_certificate_as_beta": true,
+  "apk_network_permissions_absent": true,
+  "aab_jar_verified": true,
+  "current_source_matches_all_candidate_builds": true,
+  "source_drift": []
+}

@@ -1,0 +1,5 @@
+Formatted lib/state/app_state.dart
+Formatted lib/data/custom_dish_repository.dart
+Formatted lib/ui/about/about_page.dart
+Formatted test/data/ponytail_regression_test.dart
+Formatted 8 files (4 changed) in 0.13 seconds.

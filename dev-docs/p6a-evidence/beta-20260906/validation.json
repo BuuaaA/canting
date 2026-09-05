@@ -1,0 +1,27 @@
+{
+  "stage": "0.9.0-beta candidate, pending independent PM review",
+  "timestamp": "2026-09-05T16:17:58.585128+00:00",
+  "flutter_tests": 500,
+  "kotlin": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_match": true,
+  "pet_unchanged": true,
+  "device_tests": "not_run",
+  "files": {
+    "canting-0.9.0-beta-arm64.apk": "1fb4a88e9331e45939c6abc46e8a318466688f77f242c00f6fa8ee223fe0e807",
+    "canting-0.9.0-beta-universal.apk": "ed16e84934aabb6b7caef418c9ed3d2995d512aca03c5882aab8318fe3ae9c2f",
+    "feedback-template.md": "8ed5153c40e3c34d9f61b246d409dfccf3d9012645e7c0260eeecbf2936f3134",
+    "icon-previews.png": "0d27645ce2055143101d3811a540c24bd90f28171049937828d6fa7d531e952d",
+    "known-limitations.md": "dbd31ee62b3f1b44e1f9c719af98278aa0a3f1c9e0854886455c6d1ab8f56af2",
+    "p5-device-checklist.md": "a34412dc1d2319df80aa8a8dd118b7babdd54c3fcc268c3535ccd6a8526853d2",
+    "package-analysis.json": "9b8ae335929fe85e68e93d783eb9419deb9d0501a1371a83058d803ff6ea94e2",
+    "package-info.md": "9d9a9323bb89c285bf92df44defc326e7f16edc1d2bc05a8181fc9ef5ec1ecac",
+    "RELEASE-NOTES.md": "cfead44ea0b68438ecd3f17ce0b7ada691fdbbe5945574b344daaefd65ff2311",
+    "SHA256SUMS.txt": "5cc8c3885e176facdae0998e8f3024e9dd33277714a87de9a7113b748aa95444",
+    "START-HERE.md": "eef948f37f6c6579339289348d97f210104d51d9df4e011126ee0bf16dd2d999"
+  }
+}

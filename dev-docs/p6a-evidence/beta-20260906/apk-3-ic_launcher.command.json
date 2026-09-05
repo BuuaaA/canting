@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "xmltree",
+    "D:\\dev\\canting\\build\\p6a-artifacts\\beta-20260906\\split\\app-arm64-v8a-release.apk",
+    "--file",
+    "res/BW.xml"
+  ],
+  "started_at": "2026-09-05T16:17:57.040559+00:00",
+  "ended_at": "2026-09-05T16:17:57.069564+00:00",
+  "exit_code": 0
+}

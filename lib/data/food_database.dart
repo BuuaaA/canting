@@ -104,13 +104,20 @@ class FoodDatabase {
   FoodCategory? categoryForDish(StandardDish dish) =>
       findCategoryById(dish.category);
 
-  List<StandardDish> search(String query) {
-    final normalizedQuery = normalizeDishName(query);
+  List<StandardDish> search(String query) =>
+      searchCatalog(_dishes, normalizeDishName(query));
+
+  /// Shared by in-memory, standard SQLite and custom SQLite catalog searches.
+  /// The caller normalizes once; results preserve the source catalog order.
+  static List<StandardDish> searchCatalog(
+    Iterable<StandardDish> dishes,
+    String normalizedQuery,
+  ) {
     if (normalizedQuery.isEmpty) {
       return const [];
     }
 
-    return _dishes
+    return dishes
         .where((dish) {
           final terms = [
             dish.name,

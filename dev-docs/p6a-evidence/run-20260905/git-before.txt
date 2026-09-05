@@ -1,0 +1,26 @@
+## main...origin/main [ahead 9]
+ M .gitattributes
+ M android/app/src/main/AndroidManifest.xml
+ M android/app/src/main/kotlin/com/canting/canting/PetWidgetViews.kt
+ M android/app/src/main/res/layout/widget_medium.xml
+ M android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt
+ M lib/main.dart
+ M lib/state/app_state.dart
+ M lib/ui/settings/settings_page.dart
+ M test/core/p3_audit_test.dart
+ M test/core/recommendation_engine_test.dart
+ M test/state/p3_feedback_flow_test.dart
+ M test/state/p4_semantic_replay_test.dart
+ M test/ui/p3_production_pages_test.dart
+?? android/app/src/main/kotlin/com/canting/canting/PetWidgetCompletion.kt
+?? android/app/src/main/res/xml/backup_rules.xml
+?? android/app/src/main/res/xml/data_extraction_rules.xml
+?? android/app/src/test/kotlin/com/canting/canting/PetWidgetCompletionTest.kt
+?? dev-docs/android-release-candidate-report.md
+?? dev-docs/p5-changes.json
+?? dev-docs/p5-device-checklist.md
+?? dev-docs/p5-evidence/
+?? dev-docs/p6a-evidence/
+?? scripts/p5/
+?? test/state/p5_widget_sync_test.dart
+?? test/support/

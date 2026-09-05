@@ -4,7 +4,7 @@ import java.io.File
 import java.util.Base64
 class P4ReplayTest {
  @Test fun replayFrozenInputsTwice() {
-  val out=File("../../dev-docs/p4-evidence/run-20260905/parser-actual.tsv")
+  val out=File(System.getenv("CANTING_TEST_EVIDENCE_DIR") ?: "build/test-evidence", "parser-actual.tsv")
   out.parentFile?.mkdirs()
   out.writeText("")
   fun emit(id:String, lines:List<String>, repeat:Int) {

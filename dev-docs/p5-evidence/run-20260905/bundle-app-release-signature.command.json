@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:/Program Files/Android/Android Studio/jbr/bin/jarsigner.exe",
+    "-verify",
+    "-verbose",
+    "-certs",
+    "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+  ],
+  "exit_code": 0,
+  "log": "bundle-app-release-signature.txt"
+}

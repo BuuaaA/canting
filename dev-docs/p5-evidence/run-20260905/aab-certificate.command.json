@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\keytool.exe",
+    "-J-Duser.language=en",
+    "-J-Duser.country=US",
+    "-printcert",
+    "-jarfile",
+    "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+  ],
+  "exit_code": 0,
+  "log": "aab-certificate.txt"
+}

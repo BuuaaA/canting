@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="活力 60"
+            android:text="记录待更新"
             android:textColor="#173C2A"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -39,8 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:text="状态不错"
+            android:maxLines="2"
+            android:text="打开餐盘更新今日记录"
             android:textColor="#53635A"
             android:textSize="11sp" />
     </LinearLayout>

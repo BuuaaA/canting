@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "build",
+    "apk",
+    "--release",
+    "--no-pub",
+    "--target",
+    "lib/main.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T15:12:30.627738+00:00",
+  "ended_at": "2026-09-05T15:17:39.363520+00:00",
+  "exit_code": 1,
+  "log": "baseline.txt"
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "xmltree",
+    "D:\\dev\\canting\\build\\p6a-artifacts\\run-20260905\\universal\\app-release.apk",
+    "--file",
+    "res/0K.xml"
+  ],
+  "started_at": "2026-09-05T16:08:50.391969+00:00",
+  "ended_at": "2026-09-05T16:08:50.420807+00:00",
+  "exit_code": 0
+}

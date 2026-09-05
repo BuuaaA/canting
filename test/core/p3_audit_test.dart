@@ -1,3 +1,5 @@
+import '../support/evidence.dart';
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -258,8 +260,7 @@ void main() {
       RecordWindow.build(history, days: 28, asOf: now).knownDays;
     }
     watch.stop();
-    final dir = Directory('dev-docs/p4-evidence/repair-20260905')
-      ..createSync(recursive: true);
+    final dir = Directory(evidencePath('.'))..createSync(recursive: true);
     File('${dir.path}/candidate-audit.json').writeAsStringSync(
       const JsonEncoder.withIndent('  ').convert({
         'policyVersion': RecommendationSafety.version,

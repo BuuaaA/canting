@@ -1,0 +1,32 @@
+[
+  {
+    "path": "lib\\data\\custom_dish_repository.dart",
+    "before_lines": 207,
+    "after_lines": 172
+  },
+  {
+    "path": "lib\\data\\database_helper.dart",
+    "before_lines": 486,
+    "after_lines": 472
+  },
+  {
+    "path": "lib\\data\\food_database.dart",
+    "before_lines": 187,
+    "after_lines": 194
+  },
+  {
+    "path": "lib\\state\\app_state.dart",
+    "before_lines": 1478,
+    "after_lines": 1477
+  },
+  {
+    "path": "lib\\core\\models\\portions.dart",
+    "before_lines": 106,
+    "after_lines": 99
+  },
+  {
+    "path": "lib\\ui\\about\\about_page.dart",
+    "before_lines": 103,
+    "after_lines": 108
+  }
+]

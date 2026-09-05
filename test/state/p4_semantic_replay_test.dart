@@ -1,3 +1,5 @@
+import '../support/evidence.dart';
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -80,7 +82,7 @@ void main() {
           });
         }
       }
-      File('dev-docs/p4-evidence/repair-20260905/semantic-actual.json')
+      File(evidencePath('semantic-actual.json'))
           .writeAsStringSync(const JsonEncoder.withIndent('  ').convert(rows));
       expect(rows.length, 40);
       state.dispose();

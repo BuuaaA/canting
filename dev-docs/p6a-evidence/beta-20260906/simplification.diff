@@ -1,0 +1,297 @@
+--- lib\data\custom_dish_repository.dart (P6-A)
++++ lib\data\custom_dish_repository.dart (beta)
+@@ -40,60 +40,18 @@
+     if (normalizedQuery.isEmpty) {
+       return const [];
+     }
+-    final dishes = await getAllDishes();
+-    return dishes
+-        .where((dish) {
+-          final terms = [
+-            dish.name,
+-            ...dish.aliases,
+-            ...dish.searchKeywords,
+-          ].map(FoodDatabase.normalizeDishName);
+-          return terms.any(
+-            (term) =>
+-                term.contains(normalizedQuery) ||
+-                normalizedQuery.contains(term),
+-          );
+-        })
+-        .toList(growable: false);
++    return FoodDatabase.searchCatalog(await getAllDishes(), normalizedQuery);
+   }
+ 
+-  Future<void> upsertDish(StandardDish dish) async {
+-    final database = _database;
+-    final now = DateTime.now();
+-    final categoryRows = await database.query(
+-      'categories',
+-      columns: ['category_id'],
+-      where: 'category_id = ?',
+-      whereArgs: [dish.category],
+-      limit: 1,
+-    );
+-    if (categoryRows.isEmpty) {
+-      throw StateError(
+-        'Cannot save custom dish ${dish.id}: '
+-        'category ${dish.category} is missing',
+-      );
+-    }
+-    await database.insert(
+-      'user_custom_dishes',
+-      {
+-        'dish_id': dish.id,
+-        'dish_name': dish.name,
+-        'category': dish.category,
+-        'json_data': jsonEncode(dish.toJson()),
+-        'created_at': now.millisecondsSinceEpoch,
+-        'updated_at': now.millisecondsSinceEpoch,
+-      },
+-      conflictAlgorithm: ConflictAlgorithm.replace,
+-    );
+-  }
++  Future<void> upsertDish(StandardDish dish) => _upsertDish(dish);
+ 
+   Future<bool> deleteDish(String id) async =>
+       await _database.delete(
+-            'user_custom_dishes',
+-            where: 'dish_id = ?',
+-            whereArgs: [id],
+-          ) >
+-          0;
++        'user_custom_dishes',
++        where: 'dish_id = ?',
++        whereArgs: [id],
++      ) >
++      0;
+ 
+   /// 自定义菜的使用数据：使用次数 + 分量偏好。
+   ///
+@@ -114,9 +72,8 @@
+           normalized) {
+         continue;
+       }
+-      final json =
+-          (jsonDecode(row['json_data']! as String) as Map)
+-              .cast<String, dynamic>();
++      final json = (jsonDecode(row['json_data']! as String) as Map)
++          .cast<String, dynamic>();
+       return CustomDishUsage(
+         dish: StandardDish.fromJson(json),
+         usageCount: (json[_usageCountKey] as num?)?.toInt() ?? 0,
+@@ -135,8 +92,8 @@
+     return {
+       for (final row in rows)
+         FoodDatabase.normalizeDishName(row['dish_name']! as String):
+-            ((jsonDecode(row['json_data']! as String)
+-                        as Map)[_usageCountKey] as num?)
++            ((jsonDecode(row['json_data']! as String) as Map)[_usageCountKey]
++                    as num?)
+                 ?.toInt() ??
+             0,
+     };
+@@ -147,6 +104,16 @@
+   Future<void> upsertDishWithMeta(
+     StandardDish dish, {
+     required int usageCount,
++    String? preferredPortion,
++  }) => _upsertDish(
++    dish,
++    usageCount: usageCount,
++    preferredPortion: preferredPortion,
++  );
++
++  Future<void> _upsertDish(
++    StandardDish dish, {
++    int? usageCount,
+     String? preferredPortion,
+   }) async {
+     final database = _database;
+@@ -164,22 +131,20 @@
+         'category ${dish.category} is missing',
+       );
+     }
+-    await database.insert(
+-      'user_custom_dishes',
+-      {
+-        'dish_id': dish.id,
+-        'dish_name': dish.name,
+-        'category': dish.category,
+-        'json_data': jsonEncode({
+-          ...dish.toJson(),
++    await database.insert('user_custom_dishes', {
++      'dish_id': dish.id,
++      'dish_name': dish.name,
++      'category': dish.category,
++      'json_data': jsonEncode({
++        ...dish.toJson(),
++        if (usageCount != null) ...{
+           _usageCountKey: usageCount,
+           _preferredPortionKey: ?preferredPortion,
+-        }),
+-        'created_at': now.millisecondsSinceEpoch,
+-        'updated_at': now.millisecondsSinceEpoch,
+-      },
+-      conflictAlgorithm: ConflictAlgorithm.replace,
+-    );
++        },
++      }),
++      'created_at': now.millisecondsSinceEpoch,
++      'updated_at': now.millisecondsSinceEpoch,
++    }, conflictAlgorithm: ConflictAlgorithm.replace);
+   }
+ 
+   static StandardDish _dishFromRow(Map<String, Object?> row) =>
+--- lib\data\database_helper.dart (P6-A)
++++ lib\data\database_helper.dart (beta)
+@@ -146,21 +146,7 @@
+     if (normalizedQuery.isEmpty) {
+       return const [];
+     }
+-    final dishes = await getAllDishes();
+-    return dishes
+-        .where((dish) {
+-          final terms = [
+-            dish.name,
+-            ...dish.aliases,
+-            ...dish.searchKeywords,
+-          ].map(FoodDatabase.normalizeDishName);
+-          return terms.any(
+-            (term) =>
+-                term.contains(normalizedQuery) ||
+-                normalizedQuery.contains(term),
+-          );
+-        })
+-        .toList(growable: false);
++    return FoodDatabase.searchCatalog(await getAllDishes(), normalizedQuery);
+   }
+ 
+   Future<void> replaceAll(FoodDatabase data) async {
+--- lib\data\food_database.dart (P6-A)
++++ lib\data\food_database.dart (beta)
+@@ -104,13 +104,20 @@
+   FoodCategory? categoryForDish(StandardDish dish) =>
+       findCategoryById(dish.category);
+ 
+-  List<StandardDish> search(String query) {
+-    final normalizedQuery = normalizeDishName(query);
++  List<StandardDish> search(String query) =>
++      searchCatalog(_dishes, normalizeDishName(query));
++
++  /// Shared by in-memory, standard SQLite and custom SQLite catalog searches.
++  /// The caller normalizes once; results preserve the source catalog order.
++  static List<StandardDish> searchCatalog(
++    Iterable<StandardDish> dishes,
++    String normalizedQuery,
++  ) {
+     if (normalizedQuery.isEmpty) {
+       return const [];
+     }
+ 
+-    return _dishes
++    return dishes
+         .where((dish) {
+           final terms = [
+             dish.name,
+--- lib\state\app_state.dart (P6-A)
++++ lib\state\app_state.dart (beta)
+@@ -1365,6 +1365,10 @@
+   void _scheduleWidgetSync() {
+     final now = clock();
+     final todayMeals = mealsFor(now);
++    final structureComplete = todayMeals.every(
++      (meal) => meal.structureComplete,
++    );
++    final recordWindow = windowFor(now, 7);
+     final averageCompletion = todayMeals.isEmpty
+         ? 0.0
+         : todayMeals
+@@ -1375,19 +1379,14 @@
+     final status = <String, Object?>{
+       ..._pet.toWidgetJson(),
+       // A missing/failed record window must never certify an empty current day.
+-      'record_date':
+-          windowFor(now, 7) == null || windowFor(now, 7)?.dataStatus == 'error'
++      'record_date': recordWindow == null || recordWindow.dataStatus == 'error'
+           ? null
+           : '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}',
+       'record_utc_offset_minutes': now.timeZoneOffset.inMinutes,
+       'today_meal_count': todayMeals.length,
+-      'today_completion_rate': todayMeals.every((m) => m.structureComplete)
+-          ? averageCompletion
+-          : null,
+-      'structure_complete': todayMeals.every((m) => m.structureComplete),
+-      'next_meal_summary':
+-          !todayMeals.isNotEmpty ||
+-              !todayMeals.every((m) => m.structureComplete)
++      'today_completion_rate': structureComplete ? averageCompletion : null,
++      'structure_complete': structureComplete,
++      'next_meal_summary': todayMeals.isEmpty || !structureComplete
+           ? '$dinnerTime 常规搭配，记录不足'
+           : '$dinnerTime 基于已记录餐食估算建议',
+     };
+--- lib\core\models\portions.dart (P6-A)
++++ lib\core\models\portions.dart (beta)
+@@ -67,14 +67,7 @@
+     'oil_base': oil,
+   };
+ 
+-  Map<String, double> get byCategory => {
+-    'grains': grains,
+-    'vegetables': vegetables,
+-    'fruits': fruits,
+-    'protein': protein,
+-    'protein_soy': proteinSoy,
+-    'oil': oil,
+-  };
++  Map<String, double> get byCategory => toJson();
+ 
+   double valueFor(String category) => switch (category) {
+     'grains' => grains,
+--- lib\ui\about\about_page.dart (P6-A)
++++ lib\ui\about\about_page.dart (beta)
+@@ -3,7 +3,7 @@
+ 
+ /// 关于页（模块 10）：版本号、产品简介、开源许可与数据来源。
+ class AboutPage extends StatelessWidget {
+-  const AboutPage({super.key, this.version = '1.0.0'});
++  const AboutPage({super.key, this.version = '0.9.0-beta'});
+ 
+   final String version;
+ 
+@@ -27,15 +27,20 @@
+                       size: 56,
+                     ),
+                     const SizedBox(height: 12),
+-                    Text('餐盘', style: Theme.of(context).textTheme.headlineSmall),
++                    Text(
++                      '餐盘',
++                      style: Theme.of(context).textTheme.headlineSmall,
++                    ),
+                     const SizedBox(height: 4),
+-                    Text('v$version', style: Theme.of(context).textTheme.bodyMedium),
++                    Text(
++                      'v$version',
++                      style: Theme.of(context).textTheme.bodyMedium,
++                    ),
+                     const SizedBox(height: 8),
+                     Text(
+                       '记录每一餐，看看吃得均不均衡',
+-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+-                        color: scheme.onSurfaceVariant,
+-                      ),
++                      style: Theme.of(context).textTheme.bodyMedium
++                          ?.copyWith(color: scheme.onSurfaceVariant),
+                     ),
+                   ],
+                 ),
+@@ -89,7 +94,7 @@
+                     ListTile(
+                       leading: const Icon(Icons.feedback_outlined),
+                       title: const Text('意见反馈'),
+-                      subtitle: const Text('当前为 UI 开发版，反馈入口后续开放'),
++                      subtitle: const Text('当前为内部测试版，请通过项目 GitHub Issue 反馈'),
+                     ),
+                   ],
+                 ),

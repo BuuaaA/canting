@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "badging",
+    "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk"
+  ],
+  "exit_code": 0,
+  "log": "baseline-offline-app-release-badging.txt"
+}

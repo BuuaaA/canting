@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "badging",
+    "D:\\dev\\canting\\canting_v0.1.0-beta.apk"
+  ],
+  "exit_code": 0,
+  "log": "old-beta-badging.txt"
+}

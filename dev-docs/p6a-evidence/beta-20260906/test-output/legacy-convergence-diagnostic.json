@@ -1,0 +1,264 @@
+{
+  "seed": 42,
+  "old_assertion": "every 7-day window within target +/-20%",
+  "passes_old_assertion": false,
+  "deviations": [
+    "窗口 day20~26 vegetables 均值 2.86 目标区间 [4.0, 6.0]",
+    "窗口 day20~26 protein 均值 2.00 目标区间 [3.2, 4.8]",
+    "窗口 day20~26 oil 均值 1.94 目标区间 [2.4000000000000004, 3.5999999999999996]",
+    "窗口 day21~27 vegetables 均值 2.86 目标区间 [4.0, 6.0]",
+    "窗口 day21~27 protein 均值 2.00 目标区间 [3.2, 4.8]",
+    "窗口 day21~27 oil 均值 1.94 目标区间 [2.4000000000000004, 3.5999999999999996]",
+    "窗口 day22~28 vegetables 均值 2.86 目标区间 [4.0, 6.0]",
+    "窗口 day22~28 protein 均值 2.00 目标区间 [3.2, 4.8]",
+    "窗口 day22~28 oil 均值 1.94 目标区间 [2.4000000000000004, 3.5999999999999996]",
+    "窗口 day23~29 vegetables 均值 2.86 目标区间 [4.0, 6.0]",
+    "窗口 day23~29 protein 均值 2.00 目标区间 [3.2, 4.8]",
+    "窗口 day23~29 oil 均值 1.94 目标区间 [2.4000000000000004, 3.5999999999999996]",
+    "窗口 day24~30 vegetables 均值 2.86 目标区间 [4.0, 6.0]",
+    "窗口 day24~30 protein 均值 2.06 目标区间 [3.2, 4.8]",
+    "窗口 day24~30 oil 均值 1.96 目标区间 [2.4000000000000004, 3.5999999999999996]"
+  ],
+  "daily_inputs": {
+    "2026-08-01T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-02T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-03T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-04T00:00:00.000": {
+      "grains": 2.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 1.5,
+      "oil": 1.7730000000000001
+    },
+    "2026-08-05T00:00:00.000": {
+      "grains": 3.2,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 4.2,
+      "protein_soy": 0.0,
+      "oil": 4.619
+    },
+    "2026-08-06T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-07T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-08T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-09T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-10T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-11T00:00:00.000": {
+      "grains": 2.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 4.0,
+      "protein_soy": 0.0,
+      "oil": 2.136
+    },
+    "2026-08-12T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-13T00:00:00.000": {
+      "grains": 3.0,
+      "vegetables": 5.4,
+      "fruits": 3.0,
+      "protein": 2.4,
+      "protein_soy": 1.5,
+      "oil": 3.0576
+    },
+    "2026-08-14T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-15T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-16T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-17T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-18T00:00:00.000": {
+      "grains": 3.0,
+      "vegetables": 2.0,
+      "fruits": 3.0,
+      "protein": 2.4,
+      "protein_soy": 2.25,
+      "oil": 2.2055999999999996
+    },
+    "2026-08-19T00:00:00.000": {
+      "grains": 3.2,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 4.2,
+      "protein_soy": 0.0,
+      "oil": 4.619
+    },
+    "2026-08-20T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-21T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-22T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-23T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-24T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-25T00:00:00.000": {
+      "grains": 2.0,
+      "vegetables": 2.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 2.073
+    },
+    "2026-08-26T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-27T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-28T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-29T00:00:00.000": {
+      "grains": 5.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.0,
+      "protein_soy": 2.25,
+      "oil": 1.923
+    },
+    "2026-08-30T00:00:00.000": {
+      "grains": 3.0,
+      "vegetables": 3.0,
+      "fruits": 3.0,
+      "protein": 2.4,
+      "protein_soy": 2.25,
+      "oil": 2.0556
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:canting/ui/record/exposure_prompt.dart';
 
 import 'local_food_page.dart';
@@ -489,7 +490,9 @@ class _DeliveryPlatformSectionState extends State<_DeliveryPlatformSection> {
     try {
       await _store.saveSettings(settings);
     } catch (error) {
-      debugPrint('Unable to save delivery platform config: $error');
+      if (kDebugMode) {
+        debugPrint('Unable to save delivery platform config: $error');
+      }
     }
   }
 

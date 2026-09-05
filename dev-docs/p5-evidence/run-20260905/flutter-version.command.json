@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "--version",
+    "--machine"
+  ],
+  "exit_code": 0,
+  "log": "flutter-version.txt"
+}

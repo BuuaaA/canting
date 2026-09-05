@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "xmltree",
+    "D:\\dev\\canting\\canting_v0.1.0-beta.apk",
+    "--file",
+    "AndroidManifest.xml"
+  ],
+  "exit_code": 0,
+  "log": "old-beta-manifest.txt"
+}

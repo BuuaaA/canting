@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -43,7 +45,9 @@ Future<void> main() async {
   try {
     await NotificationService.init();
   } catch (error) {
-    debugPrint('Notification init failed: $error');
+    if (kDebugMode) {
+      debugPrint('Notification init failed: $error');
+    }
   }
   runApp(CantingApp(appState: appState));
 }
@@ -174,15 +178,23 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
         final acknowledged = await IOSNativeBridge.instance
             .acknowledgeSharedMeal(draft.mealId);
         if (!acknowledged) {
-          debugPrint('Shared meal acknowledgement did not match the meal ID');
+          if (kDebugMode) {
+            debugPrint('Shared meal acknowledgement did not match the meal ID');
+          }
         }
       } on PlatformException catch (error) {
-        debugPrint('Unable to acknowledge iOS shared meal: ${error.message}');
+        if (kDebugMode) {
+          debugPrint('Unable to acknowledge iOS shared meal: ${error.message}');
+        }
       }
     } on PlatformException catch (error) {
-      debugPrint('Unable to open iOS shared meal: ${error.message}');
+      if (kDebugMode) {
+        debugPrint('Unable to open iOS shared meal: ${error.message}');
+      }
     } catch (error) {
-      debugPrint('Unable to parse iOS shared meal: $error');
+      if (kDebugMode) {
+        debugPrint('Unable to parse iOS shared meal: $error');
+      }
     } finally {
       _checkingIOSShare = false;
     }

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "analyze",
+    "--no-pub"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T15:21:25.262422+00:00",
+  "ended_at": "2026-09-05T15:21:31.566500+00:00",
+  "exit_code": 0,
+  "log": "analyze-2.txt"
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "C:/flutter/bin/cache/flutter_tools.snapshot",
+    "--no-version-check",
+    "test",
+    "--no-pub",
+    "--concurrency=1",
+    "test/state/p6a_widget_date_test.dart",
+    "test/state/p5_widget_sync_test.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T15:58:59.000814+00:00",
+  "ended_at": "2026-09-05T15:59:03.302385+00:00",
+  "exit_code": 0,
+  "log": "widget-2.txt"
+}

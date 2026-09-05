@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "xmltree",
+    "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+    "--file",
+    "AndroidManifest.xml"
+  ],
+  "exit_code": 0,
+  "log": "split-app-arm64-v8a-release-manifest.txt"
+}

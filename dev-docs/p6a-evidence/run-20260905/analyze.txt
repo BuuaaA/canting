@@ -1,0 +1,11 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Analyzing canting...                                            
+
+warning - The asset file 'assets/data/dishes.json' doesn't exist. Try creating the file or fixing the path to the file - dev-docs\p6a-evidence\run-20260905\before\pubspec.yaml:79:7 - asset_does_not_exist
+warning - The asset file 'assets/data/categories.json' doesn't exist. Try creating the file or fixing the path to the file - dev-docs\p6a-evidence\run-20260905\before\pubspec.yaml:80:7 - asset_does_not_exist
+warning - The asset file 'assets/data/dietary_guidelines.json' doesn't exist. Try creating the file or fixing the path to the file - dev-docs\p6a-evidence\run-20260905\before\pubspec.yaml:81:7 - asset_does_not_exist
+warning - The asset file 'assets/data/pet_dialogues.json' doesn't exist. Try creating the file or fixing the path to the file - dev-docs\p6a-evidence\run-20260905\before\pubspec.yaml:82:7 - asset_does_not_exist
+warning - The asset directory 'assets/sprites/' doesn't exist. Try creating the directory or fixing the path to the directory - dev-docs\p6a-evidence\run-20260905\before\pubspec.yaml:83:7 - asset_directory_does_not_exist
+   info - The import of 'dart:async' is unnecessary because all of the used elements are also provided by the import of 'package:flutter_test/flutter_test.dart'. Try removing the import directive - test\state\p6a_widget_date_test.dart:1:8 - unnecessary_import
+
+6 issues found. (ran in 6.2s)

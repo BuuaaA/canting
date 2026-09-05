@@ -1,0 +1,87 @@
+{
+  "checks": [
+    {
+      "name": "P4 frozen raw bytes unchanged",
+      "passed": true,
+      "detail": {
+        "count": 136,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "P2/P3 tracked evidence unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Production no INTERNET or ACCESS_NETWORK_STATE",
+      "passed": true,
+      "detail": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.VIBRATE",
+        "com.canting.canting.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ]
+    },
+    {
+      "name": "Package identity preserved",
+      "passed": true,
+      "detail": "com.canting.canting"
+    },
+    {
+      "name": "Backup explicitly disabled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Both backup formats declared",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": ".PetWidgetProvider is private",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": ".SharedDataProvider is private",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "androidx.core.content.FileProvider is private",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "backup_rules.xml covers all data domains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "data_extraction_rules.xml covers all data domains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Widget binds tested unknown model and hides unknown progress",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lib/main.dart diagnostic calls guarded",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "lib/state/app_state.dart diagnostic calls guarded",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "lib/ui/settings/settings_page.dart diagnostic calls guarded",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "passed": true
+}

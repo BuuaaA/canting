@@ -67,14 +67,7 @@ class Portions {
     'oil_base': oil,
   };
 
-  Map<String, double> get byCategory => {
-    'grains': grains,
-    'vegetables': vegetables,
-    'fruits': fruits,
-    'protein': protein,
-    'protein_soy': proteinSoy,
-    'oil': oil,
-  };
+  Map<String, double> get byCategory => toJson();
 
   double valueFor(String category) => switch (category) {
     'grains' => grains,

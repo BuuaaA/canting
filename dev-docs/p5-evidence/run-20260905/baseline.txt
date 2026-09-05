@@ -1,0 +1,50 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Running Gradle task 'assembleRelease'...                        
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/gxy20/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Font asset "CupertinoIcons.ttf" was tree-shaken, reducing it from 257628 to 848 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 14256 bytes (99.1% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+The message received from the daemon indicates that the daemon has disappeared.
+Build request sent: Build{id=63eb1790-a471-4f2e-a813-b6984365f232, currentDir=D:\dev\canting\android}
+Attempting to read last messages from the daemon log...
+Daemon pid: 51628
+  log file: D:\.gradle\daemon\9.3.1\daemon-51628.out.log
+----- Last 20 lines from daemon log file - daemon-51628.out.log -----
+2026-09-05T23:12:40.910+0800 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: Build{id=63eb1790-a471-4f2e-a813-b6984365f232, currentDir=D:\dev\canting\android} with connection: socket connection from /127.0.0.1:64811 to /127.0.0.1:64812.
+2026-09-05T23:12:40.911+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: started DaemonCommandExecution[command = Build{id=63eb1790-a471-4f2e-a813-b6984365f232, currentDir=D:\dev\canting\android}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:64811 to /127.0.0.1:64812] after 0.0015333333333333334 minutes of idle
+2026-09-05T23:12:40.912+0800 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Marking the daemon as busy, address: [d005810f-84e8-4149-b9fb-3d6304f21a67 port:64811, addresses:[localhost/127.0.0.1]]
+2026-09-05T23:12:40.912+0800 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [d005810f-84e8-4149-b9fb-3d6304f21a67 port:64811, addresses:[localhost/127.0.0.1]]
+2026-09-05T23:12:40.913+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2026-09-05T23:12:40.913+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2026-09-05T23:12:40.914+0800 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2026-09-05T23:12:40.915+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+2026-09-05T23:12:40.915+0800 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2026-09-05T23:12:40.915+0800 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=63eb1790-a471-4f2e-a813-b6984365f232, currentDir=D:\dev\canting\android}. Dispatching build started information...
+2026-09-05T23:12:40.915+0800 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 48: dispatching org.gradle.launcher.daemon.protocol.BuildStarted@15584112
+2026-09-05T23:12:40.917+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: [PATH, USERDOMAIN_ROAMINGPROFILE, GRADLE_OPTS, PROCESSOR_LEVEL, SYSTEMDRIVE, GIT_PAGER, ALLUSERSPROFILE, CODEX_MCP_NODE_PATH, PROCESSOR_ARCHITECTURE, PUB_HOSTED_URL, ANDROID_HOME, DRIVERDATA, GH_PAGER, PROGRAMFILES, CODEX_APP_TOOLS_PIPE_PATH, COLORTERM, PSMODULEPATH, NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S, PROGRAMDATA, DIRNAME, USERNAME, CMD_LINE_ARGS, CODEX_INTERNAL_ORIGINATOR_OVERRIDE, ONEDRIVE, APP_HOME, CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE, CODEX_SANDBOX_NETWORK_DISABLED, PATHEXT, PAGER, DASH__TOOL, CODEX_HOME, CODEX_PERMISSION_PROFILE, WINDIR, LOG_FORMAT, HOMEPATH, LC_ALL, PROCESSOR_IDENTIFIER, PUBLIC, FLUTTER_STORAGE_BASE_URL, LC_CTYPE, CODEX_SESSION_ID, _SKIP, DASH__SUPPRESS_ANALYTICS, LOCALAPPDATA, CHROME_EXECUTABLE, COMMONPROGRAMFILES(X86), USERDOMAIN, LOGONSERVER, JAVA_HOME, PROMPT, RUST_LOG, PROGRAMFILES(X86), TERM, LANG, APPDATA, PROGRAMW6432, SYSTEMROOT, JAVA_EXE, CODEX_THREAD_ID, RTOOLS44_HOME, NO_COLOR, CODEX_CI, OS, COMMONPROGRAMW6432, COMPUTERNAME, PYTHONIOENCODING, COMMONPROGRAMFILES, COMSPEC, ANDROID_USER_HOME, PROCESSOR_REVISION, CLASSPATH, APP_BASE_NAME, =D:, TEMP, FLUTTER_ALREADY_LOCKED, HOMEDRIVE, USERPROFILE, TMP, NUMBER_OF_PROCESSORS]
+2026-09-05T23:12:40.927+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+2026-09-05T23:12:40.927+0800 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 51628). The daemon log file: D:\.gradle\daemon\9.3.1\daemon-51628.out.log
+2026-09-05T23:12:40.936+0800 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting build in new daemon [memory: 8 GiB]
+2026-09-05T23:12:40.939+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+2026-09-05T23:12:40.939+0800 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=01ac0eb3-5100-4973-a1f6-8ce37d9dcde7,javaHome=D:\Yugongyipan\Program Files\Android\Android Studio\jbr,javaVersion=25,javaVendor=JetBrains s.r.o.,daemonRegistryDir=D:\.gradle\daemon,pid=51628,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=4G,-XX:ReservedCodeCacheSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx8G,-Dfile.encoding=UTF-8,-Duser.country=CN,-Duser.language=zh,-Duser.variant]
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+Font asset "CupertinoIcons.ttf" was tree-shaken, reducing it from 257628 to 848 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 14256 bytes (99.1% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.----- End of the daemon log -----
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+Running Gradle task 'assembleRelease'...                          307.8s
+Gradle task assembleRelease failed with exit code 1

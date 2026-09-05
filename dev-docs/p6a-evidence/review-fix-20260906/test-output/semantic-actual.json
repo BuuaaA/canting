@@ -1,0 +1,5530 @@
+[
+  {
+    "case_id": "unknown",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青青糯山无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "typo",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青責糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青責糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青責糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "fees",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": []
+  },
+  {
+    "case_id": "spec",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青青糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "三分糖大杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "low",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "三分糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "奶油蛋糕30寸",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶油蛋糕30寸",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶油蛋糕30寸",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "奶油蛋糕",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "小份巴斯克",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "巴斯克",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "small"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "小份巴斯克",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "米饭0",
+        "quantity": 10.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "米饭0",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "米饭0",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "白米饭",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "meal",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "香辣鸡腿堡",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "chicken_burger",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "chicken_burger",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.15,
+          "fruits": 0.0,
+          "protein": 1.6,
+          "protein_soy": 0.0,
+          "oil": 2.86
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "可乐",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "cola",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "cola",
+        "portions": {
+          "grains": 0.82,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "薯条",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "french_fries",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "french_fries",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.2,
+          "protein_soy": 0.0,
+          "oil": 2.51
+        },
+        "contributions_known": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "奶茶无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "奶茶正常糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "regular",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶正常糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "empty",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": []
+  },
+  {
+    "case_id": "limit",
+    "repeat": 1,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "未知商品1号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品1号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品1号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品2号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品2号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品2号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品3号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品3号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品3号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品4号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品4号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品4号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品5号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品5号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品5号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品6号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品6号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品6号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品7号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品7号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品7号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品8号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品8号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品8号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品9号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品9号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品9号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品10号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品10号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品10号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品11号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品11号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品11号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品12号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品12号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品12号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品13号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品13号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品13号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品14号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品14号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品14号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品15号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品15号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品15号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品16号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品16号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品16号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品17号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品17号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品17号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品18号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品18号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品18号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品19号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品19号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品19号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品20号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品20号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品20号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "unknown",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青青糯山无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "typo",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青責糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青責糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青責糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "fees",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": []
+  },
+  {
+    "case_id": "spec",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "青青糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "三分糖大杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "low",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "三分糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "奶油蛋糕30寸",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶油蛋糕30寸",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶油蛋糕30寸",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "奶油蛋糕",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "小份巴斯克",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "巴斯克",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "small"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "小份巴斯克",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "米饭0",
+        "quantity": 10.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "米饭0",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "米饭0",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "白米饭",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "meal",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "香辣鸡腿堡",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "chicken_burger",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "chicken_burger",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.15,
+          "fruits": 0.0,
+          "protein": 1.6,
+          "protein_soy": 0.0,
+          "oil": 2.86
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "可乐",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "cola",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "cola",
+        "portions": {
+          "grains": 0.82,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "薯条",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "french_fries",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "french_fries",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.2,
+          "protein_soy": 0.0,
+          "oil": 2.51
+        },
+        "contributions_known": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "奶茶无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "奶茶正常糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "regular",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶正常糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "empty",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": []
+  },
+  {
+    "case_id": "limit",
+    "repeat": 2,
+    "parser_phase": "baseline-parser",
+    "actual": [
+      {
+        "name": "未知商品1号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品1号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品1号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品2号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品2号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品2号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品3号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品3号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品3号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品4号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品4号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品4号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品5号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品5号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品5号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品6号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品6号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品6号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品7号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品7号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品7号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品8号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品8号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品8号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品9号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品9号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品9号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品10号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品10号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品10号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品11号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品11号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品11号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品12号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品12号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品12号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品13号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品13号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品13号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品14号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品14号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品14号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品15号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品15号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品15号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品16号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品16号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品16号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品17号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品17号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品17号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品18号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品18号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品18号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品19号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品19号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品19号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品20号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品20号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品20号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "unknown",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青青糯山无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "typo",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青責糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青責糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青責糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "fees",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": []
+  },
+  {
+    "case_id": "spec",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青青糯山三分糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "low",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山三分糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "奶油蛋糕30寸",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶油蛋糕30寸",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶油蛋糕30寸",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "奶油蛋糕",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "小份巴斯克",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "巴斯克",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "small"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "小份巴斯克",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "米饭×100",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "米饭×100",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "米饭×100",
+          "brand_origin": "legacy_unknown",
+          "merchant_context": "",
+          "matched_by": "parser_uncertain",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "parser_uncertain",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "meal",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "香辣鸡腿堡",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "chicken_burger",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "chicken_burger",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.15,
+          "fruits": 0.0,
+          "protein": 1.6,
+          "protein_soy": 0.0,
+          "oil": 2.86
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "可乐",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "cola",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "cola",
+        "portions": {
+          "grains": 0.82,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "薯条",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "french_fries",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "french_fries",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.2,
+          "protein_soy": 0.0,
+          "oil": 2.51
+        },
+        "contributions_known": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "奶茶无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "奶茶正常糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "regular",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶正常糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "empty",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": []
+  },
+  {
+    "case_id": "limit",
+    "repeat": 1,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "未知商品1号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品1号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品1号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品2号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品2号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品2号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品3号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品3号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品3号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品4号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品4号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品4号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品5号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品5号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品5号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品6号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品6号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品6号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品7号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品7号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品7号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品8号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品8号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品8号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品9号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品9号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品9号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品10号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品10号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品10号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品11号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品11号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品11号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品12号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品12号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品12号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品13号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品13号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品13号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品14号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品14号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品14号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品15号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品15号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品15号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品16号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品16号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品16号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品17号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品17号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品17号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品18号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品18号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品18号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品19号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品19号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品19号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品20号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品20号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品20号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "unknown",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青青糯山无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "typo",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青責糯山",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青責糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青責糯山",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "fees",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": []
+  },
+  {
+    "case_id": "spec",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "青青糯山三分糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "青青糯山",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "low",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "青青糯山三分糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "cake",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "奶油蛋糕30寸",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶油蛋糕30寸",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶油蛋糕30寸",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "奶油蛋糕",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "小份巴斯克",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "巴斯克",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "small"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "小份巴斯克",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "quantity",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "米饭×100",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "米饭×100",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "米饭×100",
+          "brand_origin": "legacy_unknown",
+          "merchant_context": "",
+          "matched_by": "parser_uncertain",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "parser_uncertain",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "meal",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "香辣鸡腿堡",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "chicken_burger",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "chicken_burger",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.15,
+          "fruits": 0.0,
+          "protein": 1.6,
+          "protein_soy": 0.0,
+          "oil": 2.86
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "可乐",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "cola",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "cola",
+        "portions": {
+          "grains": 0.82,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.0,
+          "protein_soy": 0.0,
+          "oil": 0.0
+        },
+        "contributions_known": true
+      },
+      {
+        "name": "薯条",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": "french_fries",
+        "match_confidence": null,
+        "match_score": 1.0,
+        "estimated": true,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": "french_fries",
+        "portions": {
+          "grains": 1.5,
+          "vegetables": 0.0,
+          "fruits": 0.0,
+          "protein": 0.2,
+          "protein_soy": 0.0,
+          "oil": 2.51
+        },
+        "contributions_known": true
+      }
+    ]
+  },
+  {
+    "case_id": "different_specs",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "奶茶无糖小杯",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "none",
+            "cup": "small",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶无糖小杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "奶茶正常糖大杯",
+        "quantity": 2.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "奶茶",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "regular",
+            "cup": "large",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "奶茶正常糖大杯",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "contains",
+          "decision": "candidate",
+          "candidate_name": "珍珠奶茶",
+          "source": "contains",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "empty",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": []
+  },
+  {
+    "case_id": "limit",
+    "repeat": 2,
+    "parser_phase": "parser-actual",
+    "actual": [
+      {
+        "name": "未知商品1号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品1号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品1号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品2号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品2号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品2号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品3号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品3号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品3号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品4号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品4号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品4号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品5号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品5号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品5号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品6号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品6号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品6号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品7号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品7号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品7号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品8号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品8号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品8号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品9号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品9号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品9号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品10号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品10号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品10号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品11号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品11号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品11号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品12号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品12号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品12号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品13号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品13号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品13号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品14号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品14号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品14号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品15号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品15号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品15号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品16号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品16号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品16号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品17号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品17号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品17号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品18号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品18号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品18号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品19号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品19号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品19号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      },
+      {
+        "name": "未知商品20号",
+        "quantity": 1.0,
+        "portion_size": "normal",
+        "matched_dish_id": null,
+        "match_confidence": null,
+        "match_score": null,
+        "estimated": false,
+        "contribution_unit": "food_group_servings",
+        "contribution_source": null,
+        "portions": null,
+        "contributions_known": false,
+        "food": {
+          "facts": {
+            "brand": "",
+            "name": "未知商品20号",
+            "category": "unknown",
+            "preparation": "unknown",
+            "sauce": "unknown"
+          },
+          "spec": {
+            "sugar": "unknown",
+            "cup": "unknown",
+            "size": "unknown"
+          },
+          "suggestion": null,
+          "confirmed": false,
+          "confirmed_at": null,
+          "raw_name": "未知商品20号",
+          "brand_origin": "merchant",
+          "merchant_context": "",
+          "matched_by": "unmatched",
+          "decision": "manual",
+          "candidate_name": null,
+          "source": "unmatched",
+          "confidence": null,
+          "contributions": null,
+          "portion_range": null,
+          "estimated": false,
+          "knowledge_snapshot": null,
+          "schema_version": 1,
+          "policy_version": "local-food-v1"
+        }
+      }
+    ]
+  }
+]

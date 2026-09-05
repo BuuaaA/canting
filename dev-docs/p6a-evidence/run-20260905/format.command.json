@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "format",
+    "lib/state/app_state.dart",
+    "test/state/p6a_widget_date_test.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T15:58:23.017779+00:00",
+  "ended_at": "2026-09-05T15:58:23.349487+00:00",
+  "exit_code": 0,
+  "log": "format.txt"
+}

@@ -1,0 +1,9 @@
+warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/main.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/ui/settings/settings_page.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/core/p3_audit_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/core/recommendation_engine_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/state/p3_feedback_flow_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/state/p4_semantic_replay_test.dart', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/ui/p3_production_pages_test.dart', LF will be replaced by CRLF the next time Git touches it

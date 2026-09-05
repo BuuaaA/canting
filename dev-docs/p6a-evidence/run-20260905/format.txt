@@ -1,0 +1,3 @@
+Formatted lib/state/app_state.dart
+Formatted test/state/p6a_widget_date_test.dart
+Formatted 2 files (2 changed) in 0.04 seconds.

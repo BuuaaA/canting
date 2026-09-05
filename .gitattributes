@@ -2,3 +2,11 @@
 dev-docs/p4-evidence/**/*.log -whitespace
 dev-docs/p4-evidence/**/*.tsv -whitespace
 dev-docs/p4-evidence/**/*.txt -whitespace
+
+# P5 raw command output preserves tool-emitted whitespace.
+dev-docs/p5-evidence/**/*.txt -whitespace
+dev-docs/p5-evidence/**/*.tsv -whitespace
+
+# Preserve P5/P6 frozen evidence bytes, including native CRLF and raw output.
+dev-docs/p5-evidence/** -text -whitespace
+dev-docs/p6a-evidence/** -text -whitespace

@@ -1,0 +1,20 @@
+{
+  "split": {
+    "manifest": "dev-docs\\p6a-evidence\\beta-20260906\\split-sources.json",
+    "files_checked": 145,
+    "mismatches": [],
+    "manifest_sha256": "fdabc0d538f9c2d2dce6ed9b1550807f2472d8dbfa11316a8ce3585a61d6a139"
+  },
+  "universal": {
+    "manifest": "dev-docs\\p6a-evidence\\beta-20260906\\universal-sources.json",
+    "files_checked": 145,
+    "mismatches": [],
+    "manifest_sha256": "fdabc0d538f9c2d2dce6ed9b1550807f2472d8dbfa11316a8ce3585a61d6a139"
+  },
+  "apk_sha256": {
+    "canting-0.9.0-beta-arm64.apk": "1fb4a88e9331e45939c6abc46e8a318466688f77f242c00f6fa8ee223fe0e807",
+    "canting-0.9.0-beta-universal.apk": "ed16e84934aabb6b7caef418c9ed3d2995d512aca03c5882aab8318fe3ae9c2f"
+  },
+  "app_state_sha256": "a92c857f6459ec59ecf6aad23b0a08e813941ee852e2fd1366286d22ccd09a69",
+  "release_document_copies_match": true
+}

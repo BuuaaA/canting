@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.canting.canting.DishNameExtractorTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-09-05T16:13:43.663Z" hostname="BUUAAA" time="0.038">
+  <properties/>
+  <testcase name="extractsMerchantDishNamesAndQuantities" classname="com.canting.canting.DishNameExtractorTest" time="0.02"/>
+  <testcase name="blankAfterCleaningIsNotADish" classname="com.canting.canting.DishNameExtractorTest" time="0.003"/>
+  <testcase name="lineWithoutMerchantTermIsNotMerchant" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="bracketSpecSuffixIsPreserved" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="preservesOrderSpecsAndCakeDimensions" classname="com.canting.canting.DishNameExtractorTest" time="0.001"/>
+  <testcase name="mergesRepeatedDishLines" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="noQuantityMarkerDefaultsToOne" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="orderNumberLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="purePriceLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.001"/>
+  <testcase name="merchantNameIsCleanedFromDecorSymbols" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="merchantLineIsNotCountedAsDish" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="quantityTakesAtMostTwoDigits" classname="com.canting.canting.DishNameExtractorTest" time="0.001"/>
+  <testcase name="addressAndInvoiceLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="priceOnDishLineIsStripped" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="timeLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.001"/>
+  <testcase name="feeAndSummaryLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="halfWidthBracketAndFlavorSuffixAreCleaned" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <testcase name="outputIsCappedAt20Dishes" classname="com.canting.canting.DishNameExtractorTest" time="0.005"/>
+  <testcase name="tooShortOrTooLongNamesAreRejected" classname="com.canting.canting.DishNameExtractorTest" time="0.001"/>
+  <testcase name="phoneLinesAreFiltered" classname="com.canting.canting.DishNameExtractorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

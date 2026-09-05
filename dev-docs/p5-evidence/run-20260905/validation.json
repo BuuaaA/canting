@@ -1,0 +1,593 @@
+{
+  "status": "partial",
+  "baseline": "6f1286daafa6d9e4d282bb0dabaf0a9db59cb317",
+  "P3_commit": "ef1613c5f47fe089be6afbcd4ba491bccfbd0e82",
+  "P4_committed_paths": 169,
+  "head": "6f1286daafa6d9e4d282bb0dabaf0a9db59cb317",
+  "collected_at": "2026-09-05T15:32:00.317415+00:00",
+  "flutter_tests": {
+    "passed": 496,
+    "failed": 0,
+    "log": "full.txt",
+    "scope": "Host components and SQLite, not device"
+  },
+  "native_tests": [
+    {
+      "suite": "com.canting.canting.DishNameExtractorTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.canting.canting.P4ParserTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.canting.canting.P4ReplayTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.canting.canting.PetWidgetCompletionTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "configuration": {
+    "checks": [
+      {
+        "name": "P4 frozen raw bytes unchanged",
+        "passed": true,
+        "detail": {
+          "count": 136,
+          "mismatches": []
+        }
+      },
+      {
+        "name": "P2/P3 tracked evidence unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Production no INTERNET or ACCESS_NETWORK_STATE",
+        "passed": true,
+        "detail": [
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.VIBRATE",
+          "com.canting.canting.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ]
+      },
+      {
+        "name": "Package identity preserved",
+        "passed": true,
+        "detail": "com.canting.canting"
+      },
+      {
+        "name": "Backup explicitly disabled",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Both backup formats declared",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": ".PetWidgetProvider is private",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": ".SharedDataProvider is private",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "androidx.core.content.FileProvider is private",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "backup_rules.xml covers all data domains",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "data_extraction_rules.xml covers all data domains",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Widget binds tested unknown model and hides unknown progress",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "lib/main.dart diagnostic calls guarded",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "lib/state/app_state.dart diagnostic calls guarded",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "lib/ui/settings/settings_page.dart diagnostic calls guarded",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "passed": true
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\keytool.exe",
+        "-J-Duser.language=en",
+        "-J-Duser.country=US",
+        "-printcert",
+        "-jarfile",
+        "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+      ],
+      "exit_code": 0,
+      "log": "aab-certificate.txt"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\jarsigner.exe",
+        "-J-Duser.language=en",
+        "-J-Duser.country=US",
+        "-verify",
+        "-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+      ],
+      "exit_code": 0,
+      "log": "aab-signature-english.txt"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "analyze",
+        "--no-pub"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T15:21:25.262422+00:00",
+      "ended_at": "2026-09-05T15:21:31.566500+00:00",
+      "exit_code": 0,
+      "log": "analyze-2.txt"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "analyze",
+        "--no-pub"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T15:20:44.191148+00:00",
+      "ended_at": "2026-09-05T15:20:52.033394+00:00",
+      "exit_code": 1,
+      "log": "analyze.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "baseline-offline-app-release-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "baseline-offline-app-release-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "baseline-offline-app-release-signature.txt"
+    },
+    {
+      "command": [
+        "D:/dev/canting/android/gradlew.bat",
+        ":app:assembleRelease",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G",
+        "-Ptarget=lib/main.dart",
+        "-Ptarget-platform=android-arm,android-arm64,android-x64",
+        "-Ptree-shake-icons=true"
+      ],
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T15:18:00.987714+00:00",
+      "ended_at": "2026-09-05T15:19:48.139587+00:00",
+      "exit_code": 0,
+      "log": "baseline-offline.txt"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "build",
+        "apk",
+        "--release",
+        "--no-pub",
+        "--target",
+        "lib/main.dart"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T15:12:30.627738+00:00",
+      "ended_at": "2026-09-05T15:17:39.363520+00:00",
+      "exit_code": 1,
+      "log": "baseline.txt"
+    },
+    {
+      "command": [
+        "C:/Program Files/Android/Android Studio/jbr/bin/jarsigner.exe",
+        "-verify",
+        "-verbose",
+        "-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+      ],
+      "exit_code": 0,
+      "log": "bundle-app-release-signature.txt"
+    },
+    {
+      "command": [
+        "D:/dev/canting/android/gradlew.bat",
+        ":app:bundleRelease",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G",
+        "-Ptarget=lib/main.dart",
+        "-Ptarget-platform=android-arm,android-arm64,android-x64",
+        "-Ptree-shake-icons=true"
+      ],
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T15:27:50.009784+00:00",
+      "ended_at": "2026-09-05T15:29:23.686963+00:00",
+      "exit_code": 0,
+      "log": "bundle.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+        "devices",
+        "-l"
+      ],
+      "exit_code": 0,
+      "log": "devices.txt"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "--version",
+        "--machine"
+      ],
+      "exit_code": 0,
+      "log": "flutter-version.txt"
+    },
+    {
+      "command": [
+        "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+        "C:/flutter/bin/cache/flutter_tools.snapshot",
+        "--no-version-check",
+        "test",
+        "--no-pub",
+        "--concurrency=1",
+        "--reporter",
+        "expanded"
+      ],
+      "cwd": "D:\\dev\\canting",
+      "started_at": "2026-09-05T15:21:31.655190+00:00",
+      "ended_at": "2026-09-05T15:22:42.400195+00:00",
+      "exit_code": 0,
+      "log": "full.txt"
+    },
+    {
+      "command": [
+        "C:/Program Files/Android/Android Studio/jbr/bin/java.exe",
+        "-version"
+      ],
+      "exit_code": 0,
+      "log": "java-version.txt"
+    },
+    {
+      "command": [
+        "D:/dev/canting/android/gradlew.bat",
+        ":app:testDebugUnitTest",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G"
+      ],
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T15:23:30.019911+00:00",
+      "ended_at": "2026-09-05T15:24:29.226389+00:00",
+      "exit_code": 0,
+      "log": "kotlin.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\canting_v0.1.0-beta.apk"
+      ],
+      "exit_code": 0,
+      "log": "old-beta-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\canting_v0.1.0-beta.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "old-beta-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\canting_v0.1.0-beta.apk"
+      ],
+      "exit_code": 0,
+      "log": "old-beta-signature.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-arm64-v8a-release-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "split-app-arm64-v8a-release-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-arm64-v8a-release-signature.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-armeabi-v7a-release-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "split-app-armeabi-v7a-release-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-armeabi-v7a-release-signature.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-x86_64-release-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "split-app-x86_64-release-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "split-app-x86_64-release-signature.txt"
+    },
+    {
+      "command": [
+        "D:/dev/canting/android/gradlew.bat",
+        ":app:assembleRelease",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G",
+        "-Ptarget=lib/main.dart",
+        "-Ptarget-platform=android-arm,android-arm64,android-x64",
+        "-Ptree-shake-icons=true",
+        "-Psplit-per-abi=true"
+      ],
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T15:26:28.472456+00:00",
+      "ended_at": "2026-09-05T15:27:49.642301+00:00",
+      "exit_code": 0,
+      "log": "split.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "universal-app-release-badging.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "log": "universal-app-release-manifest.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk"
+      ],
+      "exit_code": 0,
+      "log": "universal-app-release-signature.txt"
+    },
+    {
+      "command": [
+        "D:/dev/canting/android/gradlew.bat",
+        ":app:assembleRelease",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G",
+        "-Ptarget=lib/main.dart",
+        "-Ptarget-platform=android-arm,android-arm64,android-x64",
+        "-Ptree-shake-icons=true"
+      ],
+      "cwd": "D:\\dev\\canting\\android",
+      "started_at": "2026-09-05T15:24:29.483472+00:00",
+      "ended_at": "2026-09-05T15:26:28.077121+00:00",
+      "exit_code": 0,
+      "log": "universal.txt"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "D:\\dev\\canting\\canting_v0.1.0-beta.apk",
+      "bytes": 88805734,
+      "sha256": "27a0ef8380a57a82b7266bff3a1798f232080d3c1df4074239faf39b1805987a"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk",
+      "bytes": 92934376,
+      "sha256": "d078b0086fc1f3c185f9eb9255eecf72106283d84aac25f9020fed4e92e36cc0"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+      "bytes": 35438713,
+      "sha256": "316ee514478f16750839f32697e9c5689bbf8ceeca72a9f2a4202a8921f6f0d2"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk",
+      "bytes": 28813207,
+      "sha256": "0a5430db8eef535addec2b9329ef7bccf98d312afde6425a90249fa1ba4baa82"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk",
+      "bytes": 37540378,
+      "sha256": "517ae1aed65c9778da93a7b61fb48795da152c27ba3973166b6c09fbc45c19c2"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk",
+      "bytes": 92935480,
+      "sha256": "1b71753060f62a2d1b67c0620caa8d8b678965b00fb3d8d7b64cc556463d5c34"
+    },
+    {
+      "path": "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab",
+      "bytes": 74044411,
+      "sha256": "cd38d39e77edf5a6e935a988e2c218ea992c20a35aedad7dcdc2e8b561f59464"
+    }
+  ],
+  "not_run": [
+    "Xiaomi device tests",
+    "actual beta upgrade/data retention on Android",
+    "real-redacted platform images",
+    "no-GMS native release OCR",
+    "Widget launcher discovery/add/resize/reboot/tap",
+    "OEM backup enforcement",
+    "final approved icon",
+    "production signing"
+  ],
+  "first_attempts": {
+    "baseline.txt": "Manually interrupted own Gradle daemon during Lint external version query. Retried successfully with --offline; not an unexplained crash.",
+    "analyze.txt": "10 lint infos in new log guards/import; corrected, analyze-2 passed."
+  },
+  "evidence_boundary": "No claims of real-device, genuine screenshot or release approval. Historical P4 metrics remain historical."
+}

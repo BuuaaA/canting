@@ -1,0 +1,3834 @@
+Binary APK
+Package name=com.canting.canting id=7f
+  type anim id=01 entryCount=14
+    resource 0x7f01000a anim/abc_tooltip_enter
+      () (file) res/gR.xml type=XML
+    resource 0x7f01000b anim/abc_tooltip_exit
+      () (file) res/vZ.xml type=XML
+    resource 0x7f01000c anim/btn_checkbox_to_checked_box_inner_merged_animation
+      () (file) res/h4.xml type=XML
+    resource 0x7f01000d anim/btn_checkbox_to_checked_box_outer_merged_animation
+      () (file) res/qx.xml type=XML
+    resource 0x7f01000e anim/btn_checkbox_to_checked_icon_null_animation
+      () (file) res/u0.xml type=XML
+    resource 0x7f01000f anim/btn_checkbox_to_unchecked_box_inner_merged_animation
+      () (file) res/Ke.xml type=XML
+    resource 0x7f010010 anim/btn_checkbox_to_unchecked_check_path_merged_animation
+      () (file) res/kj.xml type=XML
+    resource 0x7f010011 anim/btn_checkbox_to_unchecked_icon_null_animation
+      () (file) res/M7.xml type=XML
+    resource 0x7f010012 anim/btn_radio_to_off_mtrl_dot_group_animation
+      () (file) res/qz.xml type=XML
+    resource 0x7f010013 anim/btn_radio_to_off_mtrl_ring_outer_animation
+      () (file) res/K5.xml type=XML
+    resource 0x7f010014 anim/btn_radio_to_off_mtrl_ring_outer_path_animation
+      () (file) res/9T2.xml type=XML
+    resource 0x7f010015 anim/btn_radio_to_on_mtrl_dot_group_animation
+      () (file) res/Lf.xml type=XML
+    resource 0x7f010016 anim/btn_radio_to_on_mtrl_ring_outer_animation
+      () (file) res/9T1.xml type=XML
+    resource 0x7f010017 anim/btn_radio_to_on_mtrl_ring_outer_path_animation
+      () (file) res/Zg.xml type=XML
+  type attr id=03 entryCount=240
+    resource 0x7f030000 attr/actionBarDivider
+      () (attr) type=reference
+    resource 0x7f030001 attr/actionBarItemBackground
+      () (attr) type=reference
+    resource 0x7f030002 attr/actionBarPopupTheme
+      () (attr) type=reference
+    resource 0x7f030003 attr/actionBarSize
+      () (attr) type=dimension|enum size=1
+        wrap_content(0x7f0800f9)=0x00000000
+    resource 0x7f030004 attr/actionBarSplitStyle
+      () (attr) type=reference
+    resource 0x7f030005 attr/actionBarStyle
+      () (attr) type=reference
+    resource 0x7f030006 attr/actionBarTabBarStyle
+      () (attr) type=reference
+    resource 0x7f030007 attr/actionBarTabStyle
+      () (attr) type=reference
+    resource 0x7f030008 attr/actionBarTabTextStyle
+      () (attr) type=reference
+    resource 0x7f030009 attr/actionBarTheme
+      () (attr) type=reference
+    resource 0x7f03000a attr/actionBarWidgetTheme
+      () (attr) type=reference
+    resource 0x7f03000b attr/actionButtonStyle
+      () (attr) type=reference
+    resource 0x7f03000c attr/actionDropDownStyle
+      () (attr) type=reference
+    resource 0x7f03000e attr/actionMenuTextAppearance
+      () (attr) type=reference
+    resource 0x7f03000f attr/actionMenuTextColor
+      () (attr) type=reference|color
+    resource 0x7f030010 attr/actionModeBackground
+      () (attr) type=reference
+    resource 0x7f030011 attr/actionModeCloseButtonStyle
+      () (attr) type=reference
+    resource 0x7f030012 attr/actionModeCloseContentDescription
+      () (attr) type=string
+    resource 0x7f030013 attr/actionModeCloseDrawable
+      () (attr) type=reference
+    resource 0x7f030014 attr/actionModeCopyDrawable
+      () (attr) type=reference
+    resource 0x7f030015 attr/actionModeCutDrawable
+      () (attr) type=reference
+    resource 0x7f030016 attr/actionModeFindDrawable
+      () (attr) type=reference
+    resource 0x7f030017 attr/actionModePasteDrawable
+      () (attr) type=reference
+    resource 0x7f030018 attr/actionModePopupWindowStyle
+      () (attr) type=reference
+    resource 0x7f030019 attr/actionModeSelectAllDrawable
+      () (attr) type=reference
+    resource 0x7f03001a attr/actionModeShareDrawable
+      () (attr) type=reference
+    resource 0x7f03001b attr/actionModeSplitBackground
+      () (attr) type=reference
+    resource 0x7f03001c attr/actionModeStyle
+      () (attr) type=reference
+    resource 0x7f03001d attr/actionModeTheme
+      () (attr) type=reference
+    resource 0x7f03001e attr/actionModeWebSearchDrawable
+      () (attr) type=reference
+    resource 0x7f03001f attr/actionOverflowButtonStyle
+      () (attr) type=reference
+    resource 0x7f030020 attr/actionOverflowMenuStyle
+      () (attr) type=reference
+    resource 0x7f030024 attr/activityChooserViewStyle
+      () (attr) type=reference
+    resource 0x7f030026 attr/adjustable
+      () (attr) type=boolean
+    resource 0x7f030027 attr/alertDialogButtonGroupStyle
+      () (attr) type=reference
+    resource 0x7f030028 attr/alertDialogCenterButtons
+      () (attr) type=boolean
+    resource 0x7f030029 attr/alertDialogStyle
+      () (attr) type=reference
+    resource 0x7f03002a attr/alertDialogTheme
+      () (attr) type=reference
+    resource 0x7f03002b attr/allowDividerAbove
+      () (attr) type=boolean
+    resource 0x7f03002d attr/allowDividerBelow
+      () (attr) type=boolean
+    resource 0x7f03002f attr/alpha
+      () (attr) type=float
+    resource 0x7f030035 attr/autoCompleteTextViewStyle
+      () (attr) type=reference
+    resource 0x7f030036 attr/autoSizeMaxTextSize
+      () (attr) type=dimension
+    resource 0x7f030037 attr/autoSizeMinTextSize
+      () (attr) type=dimension
+    resource 0x7f030038 attr/autoSizePresetSizes
+      () (attr) type=reference
+    resource 0x7f030039 attr/autoSizeStepGranularity
+      () (attr) type=dimension
+    resource 0x7f03003a attr/autoSizeTextType
+      () (attr) type=enum size=2
+        none(0x7f08008b)=0x00000000
+        uniform(0x7f0800e5)=0x00000001
+    resource 0x7f03003e attr/backgroundTint
+      () (attr) type=color
+    resource 0x7f03003f attr/backgroundTintMode
+      () (attr) type=enum size=6
+        src_over(0x7f0800bd)=0x00000003
+        src_in(0x7f0800bc)=0x00000005
+        src_atop(0x7f0800bb)=0x00000009
+        multiply(0x7f080089)=0x0000000e
+        screen(0x7f0800a2)=0x0000000f
+        add(0x7f08003b)=0x00000010
+    resource 0x7f030041 attr/borderlessButtonStyle
+      () (attr) type=reference
+    resource 0x7f030042 attr/buttonBarButtonStyle
+      () (attr) type=reference
+    resource 0x7f030043 attr/buttonBarNegativeButtonStyle
+      () (attr) type=reference
+    resource 0x7f030044 attr/buttonBarNeutralButtonStyle
+      () (attr) type=reference
+    resource 0x7f030045 attr/buttonBarPositiveButtonStyle
+      () (attr) type=reference
+    resource 0x7f030046 attr/buttonBarStyle
+      () (attr) type=reference
+    resource 0x7f03004c attr/buttonStyle
+      () (attr) type=reference
+    resource 0x7f03004d attr/buttonStyleSmall
+      () (attr) type=reference
+    resource 0x7f030050 attr/checkBoxPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f030054 attr/checkboxStyle
+      () (attr) type=reference
+    resource 0x7f030055 attr/checkedTextViewStyle
+      () (attr) type=reference
+    resource 0x7f030058 attr/closeIcon
+      () (attr) type=reference
+    resource 0x7f03005d attr/colorAccent
+      () (attr) type=color
+    resource 0x7f03005e attr/colorBackgroundFloating
+      () (attr) type=color
+    resource 0x7f03005f attr/colorButtonNormal
+      () (attr) type=color
+    resource 0x7f030060 attr/colorControlActivated
+      () (attr) type=color
+    resource 0x7f030061 attr/colorControlHighlight
+      () (attr) type=color
+    resource 0x7f030062 attr/colorControlNormal
+      () (attr) type=color
+    resource 0x7f030063 attr/colorError
+      () (attr) type=reference|color
+    resource 0x7f030064 attr/colorPrimary
+      () (attr) type=color
+    resource 0x7f030065 attr/colorPrimaryDark
+      () (attr) type=color
+    resource 0x7f030067 attr/colorSwitchThumbNormal
+      () (attr) type=color
+    resource 0x7f030068 attr/commitIcon
+      () (attr) type=reference
+    resource 0x7f030070 attr/controlBackground
+      () (attr) type=reference
+    resource 0x7f030073 attr/defaultQueryHint
+      () (attr) type=string
+    resource 0x7f030074 attr/defaultValue
+      () (attr) type=reference|string|integer|boolean|float
+    resource 0x7f030075 attr/dependency
+      () (attr) type=string
+    resource 0x7f030076 attr/dialogCornerRadius
+      () (attr) type=dimension
+    resource 0x7f030077 attr/dialogIcon
+      () (attr) type=reference
+    resource 0x7f030078 attr/dialogLayout
+      () (attr) type=reference
+    resource 0x7f030079 attr/dialogMessage
+      () (attr) type=string
+    resource 0x7f03007a attr/dialogPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f03007b attr/dialogPreferredPadding
+      () (attr) type=dimension
+    resource 0x7f03007c attr/dialogTheme
+      () (attr) type=reference
+    resource 0x7f03007d attr/dialogTitle
+      () (attr) type=string
+    resource 0x7f03007e attr/disableDependentsState
+      () (attr) type=boolean
+    resource 0x7f030080 attr/divider
+      () (attr) type=reference
+    resource 0x7f030081 attr/dividerHorizontal
+      () (attr) type=reference
+    resource 0x7f030082 attr/dividerPadding
+      () (attr) type=dimension
+    resource 0x7f030083 attr/dividerVertical
+      () (attr) type=reference
+    resource 0x7f030084 attr/drawableBottomCompat
+      () (attr) type=reference
+    resource 0x7f030085 attr/drawableEndCompat
+      () (attr) type=reference
+    resource 0x7f030086 attr/drawableLeftCompat
+      () (attr) type=reference
+    resource 0x7f030087 attr/drawableRightCompat
+      () (attr) type=reference
+    resource 0x7f030089 attr/drawableStartCompat
+      () (attr) type=reference
+    resource 0x7f03008a attr/drawableTint
+      () (attr) type=color
+    resource 0x7f03008b attr/drawableTintMode
+      () (attr) type=enum size=6
+        src_over(0x7f0800bd)=0x00000003
+        src_in(0x7f0800bc)=0x00000005
+        src_atop(0x7f0800bb)=0x00000009
+        multiply(0x7f080089)=0x0000000e
+        screen(0x7f0800a2)=0x0000000f
+        add(0x7f08003b)=0x00000010
+    resource 0x7f03008c attr/drawableTopCompat
+      () (attr) type=reference
+    resource 0x7f03008e attr/dropDownListViewStyle
+      () (attr) type=reference
+    resource 0x7f03008f attr/dropdownListPreferredItemHeight
+      () (attr) type=dimension
+    resource 0x7f030090 attr/dropdownPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f030091 attr/editTextBackground
+      () (attr) type=reference
+    resource 0x7f030092 attr/editTextColor
+      () (attr) type=reference|color
+    resource 0x7f030093 attr/editTextPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f030094 attr/editTextStyle
+      () (attr) type=reference
+    resource 0x7f030096 attr/emojiCompatEnabled
+      () (attr) type=boolean
+    resource 0x7f030097 attr/enableCopying
+      () (attr) type=boolean
+    resource 0x7f030098 attr/enabled
+      () (attr) type=boolean
+    resource 0x7f030099 attr/entries
+      () (attr) type=reference
+    resource 0x7f03009a attr/entryValues
+      () (attr) type=reference
+    resource 0x7f03009c attr/fastScrollEnabled
+      () (attr) type=boolean
+    resource 0x7f03009d attr/fastScrollHorizontalThumbDrawable
+      () (attr) type=reference
+    resource 0x7f03009e attr/fastScrollHorizontalTrackDrawable
+      () (attr) type=reference
+    resource 0x7f03009f attr/fastScrollVerticalThumbDrawable
+      () (attr) type=reference
+    resource 0x7f0300a0 attr/fastScrollVerticalTrackDrawable
+      () (attr) type=reference
+    resource 0x7f0300a4 attr/firstBaselineToTopHeight
+      () (attr) type=dimension
+    resource 0x7f0300a5 attr/font
+      () (attr) type=reference
+    resource 0x7f0300a6 attr/fontFamily
+      () (attr) type=string
+    resource 0x7f0300a7 attr/fontProviderAuthority
+      () (attr) type=string
+    resource 0x7f0300a8 attr/fontProviderCerts
+      () (attr) type=reference
+    resource 0x7f0300a9 attr/fontProviderFallbackQuery
+      () (attr) type=string
+    resource 0x7f0300aa attr/fontProviderFetchStrategy
+      () (attr) type=enum size=2
+        blocking(0x7f080048)=0x00000000
+        async(0x7f080045)=0x00000001
+    resource 0x7f0300ab attr/fontProviderFetchTimeout
+      () (attr) type=integer|enum size=1
+        forever(0x7f08006d)=0xffffffff
+    resource 0x7f0300ac attr/fontProviderPackage
+      () (attr) type=string
+    resource 0x7f0300ad attr/fontProviderQuery
+      () (attr) type=string
+    resource 0x7f0300ae attr/fontProviderSystemFontFamily
+      () (attr) type=string
+    resource 0x7f0300af attr/fontStyle
+      () (attr) type=enum size=2
+        normal(0x7f08008c)=0x00000000
+        italic(0x7f08007c)=0x00000001
+    resource 0x7f0300b0 attr/fontVariationSettings
+      () (attr) type=string
+    resource 0x7f0300b1 attr/fontWeight
+      () (attr) type=integer
+    resource 0x7f0300b2 attr/fragment
+      () (attr) type=string
+    resource 0x7f0300b4 attr/goIcon
+      () (attr) type=reference
+    resource 0x7f0300b7 attr/homeAsUpIndicator
+      () (attr) type=reference
+    resource 0x7f0300b9 attr/icon
+      () (attr) type=reference
+    resource 0x7f0300ba attr/iconSpaceReserved
+      () (attr) type=boolean
+    resource 0x7f0300bd attr/iconifiedByDefault
+      () (attr) type=boolean
+    resource 0x7f0300c0 attr/imageButtonStyle
+      () (attr) type=reference
+    resource 0x7f0300c3 attr/initialExpandedChildrenCount
+      () (attr) type=integer
+    resource 0x7f0300c5 attr/isPreferenceVisible
+      () (attr) type=boolean
+    resource 0x7f0300c7 attr/key
+      () (attr) type=string
+    resource 0x7f0300c9 attr/lStar
+      () (attr) type=float
+    resource 0x7f0300ca attr/lastBaselineToBottomHeight
+      () (attr) type=dimension
+    resource 0x7f0300cb attr/layout
+      () (attr) type=reference
+    resource 0x7f0300cc attr/layoutManager
+      () (attr) type=string
+    resource 0x7f0300d3 attr/lineHeight
+      () (attr) type=dimension
+    resource 0x7f0300d4 attr/listChoiceBackgroundIndicator
+      () (attr) type=reference
+    resource 0x7f0300d5 attr/listChoiceIndicatorMultipleAnimated
+      () (attr) type=reference
+    resource 0x7f0300d6 attr/listChoiceIndicatorSingleAnimated
+      () (attr) type=reference
+    resource 0x7f0300d7 attr/listDividerAlertDialog
+      () (attr) type=reference
+    resource 0x7f0300da attr/listMenuViewStyle
+      () (attr) type=reference
+    resource 0x7f0300db attr/listPopupWindowStyle
+      () (attr) type=reference
+    resource 0x7f0300dc attr/listPreferredItemHeight
+      () (attr) type=dimension
+    resource 0x7f0300dd attr/listPreferredItemHeightLarge
+      () (attr) type=dimension
+    resource 0x7f0300de attr/listPreferredItemHeightSmall
+      () (attr) type=dimension
+    resource 0x7f0300df attr/listPreferredItemPaddingEnd
+      () (attr) type=dimension
+    resource 0x7f0300e0 attr/listPreferredItemPaddingLeft
+      () (attr) type=dimension
+    resource 0x7f0300e1 attr/listPreferredItemPaddingRight
+      () (attr) type=dimension
+    resource 0x7f0300e2 attr/listPreferredItemPaddingStart
+      () (attr) type=dimension
+    resource 0x7f0300e6 attr/maxHeight
+      () (attr) type=dimension
+    resource 0x7f0300e7 attr/maxWidth
+      () (attr) type=dimension
+    resource 0x7f0300e8 attr/measureWithLargestChild
+      () (attr) type=boolean
+    resource 0x7f0300ea attr/min
+      () (attr) type=integer
+    resource 0x7f0300ef attr/negativeButtonText
+      () (attr) type=string
+    resource 0x7f0300f2 attr/order
+      () (attr) type=integer
+    resource 0x7f0300f3 attr/orderingFromXml
+      () (attr) type=boolean
+    resource 0x7f0300f9 attr/panelBackground
+      () (attr) type=reference
+    resource 0x7f0300fa attr/panelMenuListTheme
+      () (attr) type=reference
+    resource 0x7f0300fb attr/panelMenuListWidth
+      () (attr) type=dimension
+    resource 0x7f0300fc attr/persistent
+      () (attr) type=boolean
+    resource 0x7f0300fe attr/popupMenuStyle
+      () (attr) type=reference
+    resource 0x7f030100 attr/popupWindowStyle
+      () (attr) type=reference
+    resource 0x7f030101 attr/positiveButtonText
+      () (attr) type=string
+    resource 0x7f030102 attr/preferenceCategoryStyle
+      () (attr) type=reference
+    resource 0x7f030109 attr/preferenceScreenStyle
+      () (attr) type=reference
+    resource 0x7f03010a attr/preferenceStyle
+      () (attr) type=reference
+    resource 0x7f030110 attr/queryBackground
+      () (attr) type=reference
+    resource 0x7f030111 attr/queryHint
+      () (attr) type=string
+    resource 0x7f030113 attr/radioButtonStyle
+      () (attr) type=reference
+    resource 0x7f030114 attr/ratingBarStyle
+      () (attr) type=reference
+    resource 0x7f030115 attr/ratingBarStyleIndicator
+      () (attr) type=reference
+    resource 0x7f030116 attr/ratingBarStyleSmall
+      () (attr) type=reference
+    resource 0x7f030117 attr/reverseLayout
+      () (attr) type=boolean
+    resource 0x7f030119 attr/searchHintIcon
+      () (attr) type=reference
+    resource 0x7f03011a attr/searchIcon
+      () (attr) type=reference
+    resource 0x7f03011b attr/searchViewStyle
+      () (attr) type=reference
+    resource 0x7f03011e attr/seekBarIncrement
+      () (attr) type=integer
+    resource 0x7f03011f attr/seekBarPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f030120 attr/seekBarStyle
+      () (attr) type=reference
+    resource 0x7f030121 attr/selectable
+      () (attr) type=boolean
+    resource 0x7f030122 attr/selectableItemBackground
+      () (attr) type=reference
+    resource 0x7f030123 attr/selectableItemBackgroundBorderless
+      () (attr) type=reference
+    resource 0x7f030125 attr/shouldDisableView
+      () (attr) type=boolean
+    resource 0x7f030127 attr/showDividers
+      () (attr) type=flags size=4
+        none(0x7f08008b)=0x00000000
+        beginning(0x7f080047)=0x00000001
+        middle(0x7f080088)=0x00000002
+        end(0x7f080066)=0x00000004
+    resource 0x7f030128 attr/showSeekBarValue
+      () (attr) type=boolean
+    resource 0x7f03012c attr/singleLineTitle
+      () (attr) type=boolean
+    resource 0x7f03012d attr/spanCount
+      () (attr) type=integer
+    resource 0x7f03012f attr/spinnerDropDownItemStyle
+      () (attr) type=reference
+    resource 0x7f030130 attr/spinnerStyle
+      () (attr) type=reference
+    resource 0x7f03013a attr/stackFromEnd
+      () (attr) type=boolean
+    resource 0x7f03013f attr/submitBackground
+      () (attr) type=reference
+    resource 0x7f030144 attr/suggestionRowLayout
+      () (attr) type=reference
+    resource 0x7f030145 attr/summary
+      () (attr) type=string
+    resource 0x7f030146 attr/summaryOff
+      () (attr) type=string
+    resource 0x7f030147 attr/summaryOn
+      () (attr) type=string
+    resource 0x7f03014a attr/switchPreferenceCompatStyle
+      () (attr) type=reference
+    resource 0x7f03014b attr/switchPreferenceStyle
+      () (attr) type=reference
+    resource 0x7f03014c attr/switchStyle
+      () (attr) type=reference
+    resource 0x7f03014e attr/switchTextOff
+      () (attr) type=string
+    resource 0x7f03014f attr/switchTextOn
+      () (attr) type=string
+    resource 0x7f030151 attr/textAllCaps
+      () (attr) type=reference|boolean
+    resource 0x7f030152 attr/textAppearanceLargePopupMenu
+      () (attr) type=reference
+    resource 0x7f030153 attr/textAppearanceListItem
+      () (attr) type=reference
+    resource 0x7f030154 attr/textAppearanceListItemSecondary
+      () (attr) type=reference
+    resource 0x7f030155 attr/textAppearanceListItemSmall
+      () (attr) type=reference
+    resource 0x7f030156 attr/textAppearancePopupMenuHeader
+      () (attr) type=reference
+    resource 0x7f030157 attr/textAppearanceSearchResultSubtitle
+      () (attr) type=reference
+    resource 0x7f030158 attr/textAppearanceSearchResultTitle
+      () (attr) type=reference
+    resource 0x7f030159 attr/textAppearanceSmallPopupMenu
+      () (attr) type=reference
+    resource 0x7f03015a attr/textColorAlertDialogListItem
+      () (attr) type=reference|color
+    resource 0x7f03015b attr/textColorSearchUrl
+      () (attr) type=reference|color
+    resource 0x7f03015c attr/textLocale
+      () (attr) type=string
+    resource 0x7f030167 attr/title
+      () (attr) type=string
+    resource 0x7f030171 attr/toolbarNavigationButtonStyle
+      () (attr) type=reference
+    resource 0x7f030172 attr/toolbarStyle
+      () (attr) type=reference
+    resource 0x7f030173 attr/tooltipForegroundColor
+      () (attr) type=reference|color
+    resource 0x7f030174 attr/tooltipFrameBackground
+      () (attr) type=reference
+    resource 0x7f030179 attr/ttcIndex
+      () (attr) type=integer
+    resource 0x7f03017a attr/updatesContinuously
+      () (attr) type=boolean
+    resource 0x7f03017b attr/useSimpleSummaryProvider
+      () (attr) type=boolean
+    resource 0x7f03017c attr/viewInflaterClass
+      () (attr) type=string
+    resource 0x7f03017d attr/voiceIcon
+      () (attr) type=reference
+    resource 0x7f03017e attr/widgetLayout
+      () (attr) type=reference
+    resource 0x7f03017f attr/windowActionBar
+      () (attr) type=boolean
+    resource 0x7f030180 attr/windowActionBarOverlay
+      () (attr) type=boolean
+    resource 0x7f030181 attr/windowActionModeOverlay
+      () (attr) type=boolean
+    resource 0x7f030182 attr/windowFixedHeightMajor
+      () (attr) type=dimension|fraction
+    resource 0x7f030183 attr/windowFixedHeightMinor
+      () (attr) type=dimension|fraction
+    resource 0x7f030184 attr/windowFixedWidthMajor
+      () (attr) type=dimension|fraction
+    resource 0x7f030185 attr/windowFixedWidthMinor
+      () (attr) type=dimension|fraction
+    resource 0x7f030186 attr/windowMinWidthMajor
+      () (attr) type=dimension|fraction
+    resource 0x7f030187 attr/windowMinWidthMinor
+      () (attr) type=dimension|fraction
+    resource 0x7f030188 attr/windowNoTitle
+      () (attr) type=boolean
+  type color id=05 entryCount=9
+    resource 0x7f050013 color/abc_tint_btn_checkable
+      () (file) res/color-v23/abc_tint_btn_checkable.xml type=XML
+    resource 0x7f050014 color/abc_tint_default
+      () (file) res/color-v23/abc_tint_default.xml type=XML
+    resource 0x7f050015 color/abc_tint_edittext
+      () (file) res/color-v23/abc_tint_edittext.xml type=XML
+    resource 0x7f050016 color/abc_tint_seek_thumb
+      () (file) res/color-v23/abc_tint_seek_thumb.xml type=XML
+    resource 0x7f050017 color/abc_tint_spinner
+      () (file) res/color-v23/abc_tint_spinner.xml type=XML
+    resource 0x7f050018 color/abc_tint_switch_track
+      () (file) res/color-v23/abc_tint_switch_track.xml type=XML
+    resource 0x7f05002d color/call_notification_answer_color
+      () #ff1d873b
+    resource 0x7f05002e color/call_notification_decline_color
+      () #ffd93025
+    resource 0x7f05002f color/canting_icon_background
+      () #fffcf6d7
+  type dimen id=06 entryCount=28
+    resource 0x7f060012 dimen/abc_button_inset_horizontal_material
+      () @dimen/abc_control_inset_material
+    resource 0x7f060013 dimen/abc_button_inset_vertical_material
+      () 6.000000dp
+    resource 0x7f060014 dimen/abc_button_padding_horizontal_material
+      () 8.000000dp
+    resource 0x7f060015 dimen/abc_button_padding_vertical_material
+      () @dimen/abc_control_padding_material
+    resource 0x7f060018 dimen/abc_control_corner_material
+      () 2.000000dp
+    resource 0x7f060019 dimen/abc_control_inset_material
+      () 4.000000dp
+    resource 0x7f06001a dimen/abc_control_padding_material
+      () 4.000000dp
+    resource 0x7f060029 dimen/abc_dropdownitem_icon_width
+      () 32.000000dp
+    resource 0x7f06002a dimen/abc_dropdownitem_text_padding_left
+      () 8.000000dp
+    resource 0x7f06002b dimen/abc_dropdownitem_text_padding_right
+      () 8.000000dp
+    resource 0x7f06002c dimen/abc_edit_text_inset_bottom_material
+      () 7.000000dp
+    resource 0x7f06002d dimen/abc_edit_text_inset_horizontal_material
+      () 4.000000dp
+    resource 0x7f06002e dimen/abc_edit_text_inset_top_material
+      () 10.000000dp
+    resource 0x7f060035 dimen/abc_progress_bar_height_material
+      () 4.000000dp
+    resource 0x7f060036 dimen/abc_search_view_preferred_height
+      () 48.000000dp
+    resource 0x7f060037 dimen/abc_search_view_preferred_width
+      () 320.000000dp
+    resource 0x7f06003b dimen/abc_star_big
+      () 48.000000dp
+    resource 0x7f06003c dimen/abc_star_medium
+      () 36.000000dp
+    resource 0x7f06003d dimen/abc_star_small
+      () 16.000000dp
+    resource 0x7f060058 dimen/compat_notification_large_icon_max_height
+      () 320.000000dp
+    resource 0x7f060059 dimen/compat_notification_large_icon_max_width
+      () 320.000000dp
+    resource 0x7f060084 dimen/tooltip_horizontal_padding
+      () 16.000000dp
+    resource 0x7f060085 dimen/tooltip_margin
+      () 8.000000dp
+    resource 0x7f060086 dimen/tooltip_precise_anchor_extra_offset
+      () 8.000000dp
+    resource 0x7f060087 dimen/tooltip_precise_anchor_threshold
+      () 96.000000dp
+    resource 0x7f060088 dimen/tooltip_vertical_padding
+      () 6.500000dp
+    resource 0x7f060089 dimen/tooltip_y_offset_non_touch
+      () 0.000000dp
+    resource 0x7f06008a dimen/tooltip_y_offset_touch
+      () 16.000000dp
+  type drawable id=07 entryCount=72
+    resource 0x7f070000 drawable/abc_ab_share_pack_mtrl_alpha
+      (mdpi) (file) res/0c.9.png type=PNG
+      (hdpi) (file) res/5D.9.png type=PNG
+      (xhdpi) (file) res/JJ.9.png type=PNG
+      (xxhdpi) (file) res/op.9.png type=PNG
+    resource 0x7f070002 drawable/abc_btn_borderless_material
+      () (file) res/xj.xml type=XML
+    resource 0x7f070003 drawable/abc_btn_check_material
+      () (file) res/sA.xml type=XML
+    resource 0x7f070004 drawable/abc_btn_check_material_anim
+      () (file) res/oP.xml type=XML
+    resource 0x7f070005 drawable/abc_btn_check_to_on_mtrl_000
+      (mdpi) (file) res/w_.png type=PNG
+      (hdpi) (file) res/6t.png type=PNG
+      (xhdpi) (file) res/-B.png type=PNG
+      (xxhdpi) (file) res/FW.png type=PNG
+      (xxxhdpi) (file) res/pk.png type=PNG
+    resource 0x7f070006 drawable/abc_btn_check_to_on_mtrl_015
+      (mdpi) (file) res/tS.png type=PNG
+      (hdpi) (file) res/dY.png type=PNG
+      (xhdpi) (file) res/d3.png type=PNG
+      (xxhdpi) (file) res/9z.png type=PNG
+      (xxxhdpi) (file) res/tG.png type=PNG
+    resource 0x7f070007 drawable/abc_btn_colored_material
+      () (file) res/Eg.xml type=XML
+    resource 0x7f070008 drawable/abc_btn_default_mtrl_shape
+      () (file) res/9T.xml type=XML
+    resource 0x7f070009 drawable/abc_btn_radio_material
+      () (file) res/Jl.xml type=XML
+    resource 0x7f07000a drawable/abc_btn_radio_material_anim
+      () (file) res/kn.xml type=XML
+    resource 0x7f07000b drawable/abc_btn_radio_to_on_mtrl_000
+      (mdpi) (file) res/zE.png type=PNG
+      (hdpi) (file) res/7i.png type=PNG
+      (xhdpi) (file) res/o_.png type=PNG
+      (xxhdpi) (file) res/Gf.png type=PNG
+      (xxxhdpi) (file) res/j4.png type=PNG
+    resource 0x7f07000c drawable/abc_btn_radio_to_on_mtrl_015
+      (mdpi) (file) res/eR.png type=PNG
+      (hdpi) (file) res/RV.png type=PNG
+      (xhdpi) (file) res/Th.png type=PNG
+      (xxhdpi) (file) res/nf.png type=PNG
+      (xxxhdpi) (file) res/8h.png type=PNG
+    resource 0x7f07000d drawable/abc_btn_switch_to_on_mtrl_00001
+      (mdpi) (file) res/ut.9.png type=PNG
+      (hdpi) (file) res/h7.9.png type=PNG
+      (xhdpi) (file) res/io.9.png type=PNG
+      (xxhdpi) (file) res/zV.9.png type=PNG
+      (xxxhdpi) (file) res/NA.9.png type=PNG
+    resource 0x7f07000e drawable/abc_btn_switch_to_on_mtrl_00012
+      (mdpi) (file) res/fM.9.png type=PNG
+      (hdpi) (file) res/G2.9.png type=PNG
+      (xhdpi) (file) res/1J.9.png type=PNG
+      (xxhdpi) (file) res/qD.9.png type=PNG
+      (xxxhdpi) (file) res/MF.9.png type=PNG
+    resource 0x7f07000f drawable/abc_cab_background_internal_bg
+      () (file) res/YW.xml type=XML
+    resource 0x7f070010 drawable/abc_cab_background_top_material
+      () (file) res/27.xml type=XML
+    resource 0x7f070011 drawable/abc_cab_background_top_mtrl_alpha
+      (mdpi) (file) res/K_.9.png type=PNG
+      (hdpi) (file) res/sg.9.png type=PNG
+      (xhdpi) (file) res/BL.9.png type=PNG
+      (xxhdpi) (file) res/gj.9.png type=PNG
+    resource 0x7f070013 drawable/abc_dialog_material_background
+      () (file) res/tL.xml type=XML
+      (watch) (file) res/7N.xml type=XML
+    resource 0x7f070014 drawable/abc_edit_text_material
+      () (file) res/GK.xml type=XML
+    resource 0x7f070018 drawable/abc_ic_commit_search_api_mtrl_alpha
+      (mdpi) (file) res/_q.png type=PNG
+      (hdpi) (file) res/Wh.png type=PNG
+      (xhdpi) (file) res/iO.png type=PNG
+      (xxhdpi) (file) res/kp.png type=PNG
+    resource 0x7f07001a drawable/abc_ic_menu_copy_mtrl_am_alpha
+      () (file) res/ZL.xml type=XML
+    resource 0x7f07001b drawable/abc_ic_menu_cut_mtrl_alpha
+      () (file) res/GD.xml type=XML
+    resource 0x7f07001d drawable/abc_ic_menu_paste_mtrl_am_alpha
+      () (file) res/Qd.xml type=XML
+    resource 0x7f07001e drawable/abc_ic_menu_selectall_mtrl_alpha
+      () (file) res/cm.xml type=XML
+    resource 0x7f07001f drawable/abc_ic_menu_share_mtrl_alpha
+      () (file) res/Qt.xml type=XML
+    resource 0x7f070025 drawable/abc_list_divider_mtrl_alpha
+      (mdpi) (file) res/hZ.9.png type=PNG
+      (hdpi) (file) res/ej.9.png type=PNG
+      (xhdpi) (file) res/jS.9.png type=PNG
+      (xxhdpi) (file) res/1e.9.png type=PNG
+    resource 0x7f070030 drawable/abc_menu_hardkey_panel_mtrl_mult
+      (mdpi) (file) res/33.9.png type=PNG
+      (hdpi) (file) res/Pa.9.png type=PNG
+      (xhdpi) (file) res/uL.9.png type=PNG
+      (xxhdpi) (file) res/Li.9.png type=PNG
+    resource 0x7f070031 drawable/abc_popup_background_mtrl_mult
+      (mdpi) (file) res/Nk.9.png type=PNG
+      (hdpi) (file) res/rj.9.png type=PNG
+      (xhdpi) (file) res/IX.9.png type=PNG
+      (xxhdpi) (file) res/1I.9.png type=PNG
+    resource 0x7f070032 drawable/abc_ratingbar_indicator_material
+      () (file) res/aW.xml type=XML
+    resource 0x7f070033 drawable/abc_ratingbar_material
+      () (file) res/XW.xml type=XML
+    resource 0x7f070034 drawable/abc_ratingbar_small_material
+      () (file) res/QZ.xml type=XML
+    resource 0x7f070035 drawable/abc_scrubber_control_off_mtrl_alpha
+      (mdpi) (file) res/BM.png type=PNG
+      (hdpi) (file) res/4k.png type=PNG
+      (xhdpi) (file) res/m0.png type=PNG
+      (xxhdpi) (file) res/NG.png type=PNG
+    resource 0x7f070036 drawable/abc_scrubber_control_to_pressed_mtrl_000
+      (mdpi) (file) res/2d.png type=PNG
+      (hdpi) (file) res/Wz.png type=PNG
+      (xhdpi) (file) res/dW.png type=PNG
+      (xxhdpi) (file) res/s0.png type=PNG
+      (xxxhdpi) (file) res/KM.png type=PNG
+    resource 0x7f070037 drawable/abc_scrubber_control_to_pressed_mtrl_005
+      (mdpi) (file) res/qp.png type=PNG
+      (hdpi) (file) res/ly.png type=PNG
+      (xhdpi) (file) res/ar.png type=PNG
+      (xxhdpi) (file) res/49.png type=PNG
+      (xxxhdpi) (file) res/Pb.png type=PNG
+    resource 0x7f070038 drawable/abc_scrubber_primary_mtrl_alpha
+      (mdpi) (file) res/YG.9.png type=PNG
+      (hdpi) (file) res/gt.9.png type=PNG
+      (xhdpi) (file) res/kJ.9.png type=PNG
+      (xxhdpi) (file) res/62.9.png type=PNG
+    resource 0x7f070039 drawable/abc_scrubber_track_mtrl_alpha
+      (mdpi) (file) res/xR.9.png type=PNG
+      (hdpi) (file) res/uj.9.png type=PNG
+      (xhdpi) (file) res/tZ.9.png type=PNG
+      (xxhdpi) (file) res/nI.9.png type=PNG
+    resource 0x7f07003a drawable/abc_seekbar_thumb_material
+      () (file) res/j3.xml type=XML
+    resource 0x7f07003b drawable/abc_seekbar_tick_mark_material
+      () (file) res/Xx.xml type=XML
+    resource 0x7f07003c drawable/abc_seekbar_track_material
+      () (file) res/bL.xml type=XML
+    resource 0x7f07003d drawable/abc_spinner_mtrl_am_alpha
+      (mdpi) (file) res/Tj.9.png type=PNG
+      (ldrtl-mdpi) (file) res/eT.9.png type=PNG
+      (hdpi) (file) res/7I.9.png type=PNG
+      (ldrtl-hdpi) (file) res/mm.9.png type=PNG
+      (xhdpi) (file) res/aU.9.png type=PNG
+      (ldrtl-xhdpi) (file) res/z9.9.png type=PNG
+      (xxhdpi) (file) res/gZ.9.png type=PNG
+      (ldrtl-xxhdpi) (file) res/7o.9.png type=PNG
+      (xxxhdpi) (file) res/7C.9.png type=PNG
+      (ldrtl-xxxhdpi) (file) res/wL.9.png type=PNG
+    resource 0x7f07003e drawable/abc_spinner_textfield_background_material
+      () (file) res/nT.xml type=XML
+    resource 0x7f07003f drawable/abc_star_black_48dp
+      () (file) res/cL.xml type=XML
+    resource 0x7f070040 drawable/abc_star_half_black_48dp
+      () (file) res/9P.xml type=XML
+    resource 0x7f070041 drawable/abc_switch_thumb_material
+      () (file) res/7H.xml type=XML
+    resource 0x7f070042 drawable/abc_switch_track_mtrl_alpha
+      (mdpi) (file) res/yg.9.png type=PNG
+      (hdpi) (file) res/iR.9.png type=PNG
+      (xhdpi) (file) res/KH.9.png type=PNG
+      (xxhdpi) (file) res/d5.9.png type=PNG
+      (xxxhdpi) (file) res/7_.9.png type=PNG
+    resource 0x7f070043 drawable/abc_tab_indicator_material
+      () (file) res/In.xml type=XML
+    resource 0x7f070044 drawable/abc_tab_indicator_mtrl_alpha
+      (mdpi) (file) res/i6.9.png type=PNG
+      (hdpi) (file) res/BG.9.png type=PNG
+      (xhdpi) (file) res/lP.9.png type=PNG
+      (xxhdpi) (file) res/uu.9.png type=PNG
+      (xxxhdpi) (file) res/Gt.9.png type=PNG
+    resource 0x7f070045 drawable/abc_text_cursor_material
+      () (file) res/XK.xml type=XML
+    resource 0x7f070046 drawable/abc_text_select_handle_left_mtrl
+      (mdpi) (file) res/H-.png type=PNG
+      (hdpi) (file) res/te.png type=PNG
+      (xhdpi) (file) res/Wr.png type=PNG
+      (xxhdpi) (file) res/Z8.png type=PNG
+      (xxxhdpi) (file) res/u3.png type=PNG
+    resource 0x7f070047 drawable/abc_text_select_handle_middle_mtrl
+      (mdpi) (file) res/EP.png type=PNG
+      (hdpi) (file) res/5U.png type=PNG
+      (xhdpi) (file) res/g-.png type=PNG
+      (xxhdpi) (file) res/jW.png type=PNG
+    resource 0x7f070048 drawable/abc_text_select_handle_right_mtrl
+      (mdpi) (file) res/xH.png type=PNG
+      (hdpi) (file) res/2P.png type=PNG
+      (xhdpi) (file) res/-N.png type=PNG
+      (xxhdpi) (file) res/UR.png type=PNG
+      (xxxhdpi) (file) res/MQ.png type=PNG
+    resource 0x7f070049 drawable/abc_textfield_activated_mtrl_alpha
+      (mdpi) (file) res/vz.9.png type=PNG
+      (hdpi) (file) res/Yw.9.png type=PNG
+      (xhdpi) (file) res/QJ.9.png type=PNG
+      (xxhdpi) (file) res/No.9.png type=PNG
+    resource 0x7f07004a drawable/abc_textfield_default_mtrl_alpha
+      (mdpi) (file) res/D_.9.png type=PNG
+      (hdpi) (file) res/9X.9.png type=PNG
+      (xhdpi) (file) res/9N.9.png type=PNG
+      (xxhdpi) (file) res/EA.9.png type=PNG
+    resource 0x7f07004b drawable/abc_textfield_search_activated_mtrl_alpha
+      (mdpi) (file) res/Su.9.png type=PNG
+      (hdpi) (file) res/DL.9.png type=PNG
+      (xhdpi) (file) res/yH.9.png type=PNG
+      (xxhdpi) (file) res/X4.9.png type=PNG
+    resource 0x7f07004c drawable/abc_textfield_search_default_mtrl_alpha
+      (mdpi) (file) res/ps.9.png type=PNG
+      (hdpi) (file) res/9n.9.png type=PNG
+      (xhdpi) (file) res/NZ.9.png type=PNG
+      (xxhdpi) (file) res/yY.9.png type=PNG
+    resource 0x7f07004d drawable/abc_textfield_search_material
+      () (file) res/4u.xml type=XML
+    resource 0x7f07004e drawable/abc_vector_test
+      () (file) res/hq.xml type=XML
+    resource 0x7f07004f drawable/btn_checkbox_checked_mtrl
+      () (file) res/80.xml type=XML
+    resource 0x7f070050 drawable/btn_checkbox_checked_to_unchecked_mtrl_animation
+      () (file) res/rW.xml type=XML
+    resource 0x7f070051 drawable/btn_checkbox_unchecked_mtrl
+      () (file) res/U8.xml type=XML
+    resource 0x7f070052 drawable/btn_checkbox_unchecked_to_checked_mtrl_animation
+      () (file) res/6Q.xml type=XML
+    resource 0x7f070053 drawable/btn_radio_off_mtrl
+      () (file) res/Nu.xml type=XML
+    resource 0x7f070054 drawable/btn_radio_off_to_on_mtrl_animation
+      () (file) res/A4.xml type=XML
+    resource 0x7f070055 drawable/btn_radio_on_mtrl
+      () (file) res/Ol.xml type=XML
+    resource 0x7f070056 drawable/btn_radio_on_to_off_mtrl_animation
+      () (file) res/rx.xml type=XML
+    resource 0x7f070057 drawable/common_full_open_on_phone
+      (hdpi) (file) res/ZI.png type=PNG
+      (xhdpi) (file) res/iQ.png type=PNG
+    resource 0x7f07006d drawable/ic_call_answer
+      () (file) res/bX.xml type=XML
+    resource 0x7f07006f drawable/ic_call_answer_video
+      () (file) res/WU.xml type=XML
+    resource 0x7f070071 drawable/ic_call_decline
+      () (file) res/x4.xml type=XML
+    resource 0x7f070073 drawable/launch_background
+      () (file) res/Zn.xml type=XML
+    resource 0x7f070085 drawable/widget_background
+      () (file) res/wK.xml type=XML
+    resource 0x7f070086 drawable/widget_pet_placeholder
+      () (file) res/0y.xml type=XML
+  type id id=08 entryCount=250
+    resource 0x7f080000 id/ALT
+      () (id)
+    resource 0x7f080001 id/CTRL
+      () (id)
+    resource 0x7f080002 id/FUNCTION
+      () (id)
+    resource 0x7f080003 id/META
+      () (id)
+    resource 0x7f080004 id/SHIFT
+      () (id)
+    resource 0x7f080005 id/SYM
+      () (id)
+    resource 0x7f080006 id/accessibility_action_clickable_span
+      () (id)
+    resource 0x7f080007 id/accessibility_custom_action_0
+      () (id)
+    resource 0x7f080008 id/accessibility_custom_action_1
+      () (id)
+    resource 0x7f080009 id/accessibility_custom_action_10
+      () (id)
+    resource 0x7f08000a id/accessibility_custom_action_11
+      () (id)
+    resource 0x7f08000b id/accessibility_custom_action_12
+      () (id)
+    resource 0x7f08000c id/accessibility_custom_action_13
+      () (id)
+    resource 0x7f08000d id/accessibility_custom_action_14
+      () (id)
+    resource 0x7f08000e id/accessibility_custom_action_15
+      () (id)
+    resource 0x7f08000f id/accessibility_custom_action_16
+      () (id)
+    resource 0x7f080010 id/accessibility_custom_action_17
+      () (id)
+    resource 0x7f080011 id/accessibility_custom_action_18
+      () (id)
+    resource 0x7f080012 id/accessibility_custom_action_19
+      () (id)
+    resource 0x7f080013 id/accessibility_custom_action_2
+      () (id)
+    resource 0x7f080014 id/accessibility_custom_action_20
+      () (id)
+    resource 0x7f080015 id/accessibility_custom_action_21
+      () (id)
+    resource 0x7f080016 id/accessibility_custom_action_22
+      () (id)
+    resource 0x7f080017 id/accessibility_custom_action_23
+      () (id)
+    resource 0x7f080018 id/accessibility_custom_action_24
+      () (id)
+    resource 0x7f080019 id/accessibility_custom_action_25
+      () (id)
+    resource 0x7f08001a id/accessibility_custom_action_26
+      () (id)
+    resource 0x7f08001b id/accessibility_custom_action_27
+      () (id)
+    resource 0x7f08001c id/accessibility_custom_action_28
+      () (id)
+    resource 0x7f08001d id/accessibility_custom_action_29
+      () (id)
+    resource 0x7f08001e id/accessibility_custom_action_3
+      () (id)
+    resource 0x7f08001f id/accessibility_custom_action_30
+      () (id)
+    resource 0x7f080020 id/accessibility_custom_action_31
+      () (id)
+    resource 0x7f080021 id/accessibility_custom_action_4
+      () (id)
+    resource 0x7f080022 id/accessibility_custom_action_5
+      () (id)
+    resource 0x7f080023 id/accessibility_custom_action_6
+      () (id)
+    resource 0x7f080024 id/accessibility_custom_action_7
+      () (id)
+    resource 0x7f080025 id/accessibility_custom_action_8
+      () (id)
+    resource 0x7f080026 id/accessibility_custom_action_9
+      () (id)
+    resource 0x7f080027 id/action0
+      () (id)
+    resource 0x7f080028 id/action_bar
+      () (id)
+    resource 0x7f080029 id/action_bar_activity_content
+      () (id)
+    resource 0x7f08002a id/action_bar_container
+      () (id)
+    resource 0x7f08002b id/action_bar_root
+      () (id)
+    resource 0x7f08002c id/action_bar_spinner
+      () (id)
+    resource 0x7f08002d id/action_bar_subtitle
+      () (id)
+    resource 0x7f08002e id/action_bar_title
+      () (id)
+    resource 0x7f08002f id/action_container
+      () (id)
+    resource 0x7f080030 id/action_context_bar
+      () (id)
+    resource 0x7f080031 id/action_divider
+      () (id)
+    resource 0x7f080032 id/action_image
+      () (id)
+    resource 0x7f080033 id/action_menu_divider
+      () (id)
+    resource 0x7f080034 id/action_menu_presenter
+      () (id)
+    resource 0x7f080035 id/action_mode_bar
+      () (id)
+    resource 0x7f080036 id/action_mode_bar_stub
+      () (id)
+    resource 0x7f080037 id/action_mode_close_button
+      () (id)
+    resource 0x7f080038 id/action_text
+      () (id)
+    resource 0x7f080039 id/actions
+      () (id)
+    resource 0x7f08003a id/activity_chooser_view_content
+      () (id)
+    resource 0x7f08003b id/add
+      () (id)
+    resource 0x7f08003c id/adjacent
+      () (id)
+    resource 0x7f08003d id/adjust_height
+      () (id)
+    resource 0x7f08003e id/adjust_width
+      () (id)
+    resource 0x7f08003f id/alertTitle
+      () (id)
+    resource 0x7f080040 id/all
+      () (id)
+    resource 0x7f080041 id/always
+      () (id)
+    resource 0x7f080042 id/alwaysAllow
+      () (id)
+    resource 0x7f080043 id/alwaysDisallow
+      () (id)
+    resource 0x7f080044 id/androidx_window_activity_scope
+      () (id)
+    resource 0x7f080045 id/async
+      () (id)
+    resource 0x7f080046 id/auto
+      () (id)
+    resource 0x7f080047 id/beginning
+      () (id)
+    resource 0x7f080048 id/blocking
+      () (id)
+    resource 0x7f080049 id/bottom
+      () (id)
+    resource 0x7f08004a id/bottomToTop
+      () (id)
+    resource 0x7f08004b id/browser_actions_header_text
+      () (id)
+    resource 0x7f08004c id/browser_actions_menu_item_icon
+      () (id)
+    resource 0x7f08004d id/browser_actions_menu_item_text
+      () (id)
+    resource 0x7f08004e id/browser_actions_menu_items
+      () (id)
+    resource 0x7f08004f id/browser_actions_menu_view
+      () (id)
+    resource 0x7f080050 id/buttonPanel
+      () (id)
+    resource 0x7f080051 id/cancel_action
+      () (id)
+    resource 0x7f080052 id/center
+      () (id)
+    resource 0x7f080053 id/center_horizontal
+      () (id)
+    resource 0x7f080054 id/center_vertical
+      () (id)
+    resource 0x7f080055 id/checkbox
+      () (id)
+    resource 0x7f080056 id/checked
+      () (id)
+    resource 0x7f080057 id/chronometer
+      () (id)
+    resource 0x7f080058 id/clip_horizontal
+      () (id)
+    resource 0x7f080059 id/clip_vertical
+      () (id)
+    resource 0x7f08005a id/collapseActionView
+      () (id)
+    resource 0x7f08005b id/content
+      () (id)
+    resource 0x7f08005c id/contentPanel
+      () (id)
+    resource 0x7f08005d id/custom
+      () (id)
+    resource 0x7f08005e id/customPanel
+      () (id)
+    resource 0x7f08005f id/dark
+      () (id)
+    resource 0x7f080060 id/decor_content_parent
+      () (id)
+    resource 0x7f080061 id/default_activity_button
+      () (id)
+    resource 0x7f080062 id/dialog_button
+      () (id)
+    resource 0x7f080063 id/disableHome
+      () (id)
+    resource 0x7f080064 id/edit_query
+      () (id)
+    resource 0x7f080065 id/edit_text_id
+      () (id)
+    resource 0x7f080066 id/end
+      () (id)
+    resource 0x7f080067 id/end_padder
+      () (id)
+    resource 0x7f080068 id/expand_activities_button
+      () (id)
+    resource 0x7f080069 id/expanded_menu
+      () (id)
+    resource 0x7f08006a id/fill
+      () (id)
+    resource 0x7f08006b id/fill_horizontal
+      () (id)
+    resource 0x7f08006c id/fill_vertical
+      () (id)
+    resource 0x7f08006d id/forever
+      () (id)
+    resource 0x7f08006e id/fragment_container_view_tag
+      () (id)
+    resource 0x7f08006f id/ghost_view
+      () (id)
+    resource 0x7f080070 id/ghost_view_holder
+      () (id)
+    resource 0x7f080071 id/group_divider
+      () (id)
+    resource 0x7f080072 id/hide_ime_id
+      () (id)
+    resource 0x7f080073 id/home
+      () (id)
+    resource 0x7f080074 id/homeAsUp
+      () (id)
+    resource 0x7f080075 id/icon
+      () (id)
+    resource 0x7f080076 id/icon_frame
+      () (id)
+    resource 0x7f080077 id/icon_group
+      () (id)
+    resource 0x7f080078 id/icon_only
+      () (id)
+    resource 0x7f080079 id/ifRoom
+      () (id)
+    resource 0x7f08007a id/image
+      () (id)
+    resource 0x7f08007b id/info
+      () (id)
+    resource 0x7f08007c id/italic
+      () (id)
+    resource 0x7f08007d id/item_touch_helper_previous_elevation
+      () (id)
+    resource 0x7f08007e id/left
+      () (id)
+    resource 0x7f08007f id/light
+      () (id)
+    resource 0x7f080080 id/line1
+      () (id)
+    resource 0x7f080081 id/line3
+      () (id)
+    resource 0x7f080082 id/listMode
+      () (id)
+    resource 0x7f080083 id/list_item
+      () (id)
+    resource 0x7f080084 id/locale
+      () (id)
+    resource 0x7f080085 id/ltr
+      () (id)
+    resource 0x7f080086 id/media_actions
+      () (id)
+    resource 0x7f080087 id/message
+      () (id)
+    resource 0x7f080088 id/middle
+      () (id)
+    resource 0x7f080089 id/multiply
+      () (id)
+    resource 0x7f08008a id/never
+      () (id)
+    resource 0x7f08008b id/none
+      () (id)
+    resource 0x7f08008c id/normal
+      () (id)
+    resource 0x7f08008d id/notification_background
+      () (id)
+    resource 0x7f08008e id/notification_main_column
+      () (id)
+    resource 0x7f08008f id/notification_main_column_container
+      () (id)
+    resource 0x7f080090 id/off
+      () (id)
+    resource 0x7f080091 id/on
+      () (id)
+    resource 0x7f080092 id/parentPanel
+      () (id)
+    resource 0x7f080093 id/parent_matrix
+      () (id)
+    resource 0x7f080094 id/preferences_detail
+      () (id)
+    resource 0x7f080095 id/preferences_header
+      () (id)
+    resource 0x7f080096 id/preferences_sliding_pane_layout
+      () (id)
+    resource 0x7f080097 id/progress_circular
+      () (id)
+    resource 0x7f080098 id/progress_horizontal
+      () (id)
+    resource 0x7f080099 id/radio
+      () (id)
+    resource 0x7f08009a id/recycler_view
+      () (id)
+    resource 0x7f08009b id/report_drawn
+      () (id)
+    resource 0x7f08009c id/right
+      () (id)
+    resource 0x7f08009d id/right_icon
+      () (id)
+    resource 0x7f08009e id/right_side
+      () (id)
+    resource 0x7f08009f id/rtl
+      () (id)
+    resource 0x7f0800a0 id/save_non_transition_alpha
+      () (id)
+    resource 0x7f0800a1 id/save_overlay_view
+      () (id)
+    resource 0x7f0800a2 id/screen
+      () (id)
+    resource 0x7f0800a3 id/scrollIndicatorDown
+      () (id)
+    resource 0x7f0800a4 id/scrollIndicatorUp
+      () (id)
+    resource 0x7f0800a5 id/scrollView
+      () (id)
+    resource 0x7f0800a6 id/search_badge
+      () (id)
+    resource 0x7f0800a7 id/search_bar
+      () (id)
+    resource 0x7f0800a8 id/search_button
+      () (id)
+    resource 0x7f0800a9 id/search_close_btn
+      () (id)
+    resource 0x7f0800aa id/search_edit_frame
+      () (id)
+    resource 0x7f0800ab id/search_go_btn
+      () (id)
+    resource 0x7f0800ac id/search_mag_icon
+      () (id)
+    resource 0x7f0800ad id/search_plate
+      () (id)
+    resource 0x7f0800ae id/search_src_text
+      () (id)
+    resource 0x7f0800af id/search_voice_btn
+      () (id)
+    resource 0x7f0800b0 id/seekbar
+      () (id)
+    resource 0x7f0800b1 id/seekbar_value
+      () (id)
+    resource 0x7f0800b2 id/select_dialog_listview
+      () (id)
+    resource 0x7f0800b3 id/shortcut
+      () (id)
+    resource 0x7f0800b4 id/showCustom
+      () (id)
+    resource 0x7f0800b5 id/showHome
+      () (id)
+    resource 0x7f0800b6 id/showTitle
+      () (id)
+    resource 0x7f0800b7 id/spacer
+      () (id)
+    resource 0x7f0800b8 id/special_effects_controller_view_tag
+      () (id)
+    resource 0x7f0800b9 id/spinner
+      () (id)
+    resource 0x7f0800ba id/split_action_bar
+      () (id)
+    resource 0x7f0800bb id/src_atop
+      () (id)
+    resource 0x7f0800bc id/src_in
+      () (id)
+    resource 0x7f0800bd id/src_over
+      () (id)
+    resource 0x7f0800be id/standard
+      () (id)
+    resource 0x7f0800bf id/start
+      () (id)
+    resource 0x7f0800c0 id/status_bar_latest_event_content
+      () (id)
+    resource 0x7f0800c1 id/submenuarrow
+      () (id)
+    resource 0x7f0800c2 id/submit_area
+      () (id)
+    resource 0x7f0800c3 id/switchWidget
+      () (id)
+    resource 0x7f0800c4 id/tabMode
+      () (id)
+    resource 0x7f0800c5 id/tag_accessibility_actions
+      () (id)
+    resource 0x7f0800c6 id/tag_accessibility_clickable_spans
+      () (id)
+    resource 0x7f0800c7 id/tag_accessibility_heading
+      () (id)
+    resource 0x7f0800c8 id/tag_accessibility_pane_title
+      () (id)
+    resource 0x7f0800c9 id/tag_compat_insets_dispatch
+      () (id)
+    resource 0x7f0800ca id/tag_on_apply_window_listener
+      () (id)
+    resource 0x7f0800cb id/tag_on_receive_content_listener
+      () (id)
+    resource 0x7f0800cc id/tag_on_receive_content_mime_types
+      () (id)
+    resource 0x7f0800cd id/tag_screen_reader_focusable
+      () (id)
+    resource 0x7f0800ce id/tag_state_description
+      () (id)
+    resource 0x7f0800cf id/tag_system_bar_state_monitor
+      () (id)
+    resource 0x7f0800d0 id/tag_transition_group
+      () (id)
+    resource 0x7f0800d1 id/tag_unhandled_key_event_manager
+      () (id)
+    resource 0x7f0800d2 id/tag_unhandled_key_listeners
+      () (id)
+    resource 0x7f0800d3 id/tag_window_insets_animation_callback
+      () (id)
+    resource 0x7f0800d4 id/text
+      () (id)
+    resource 0x7f0800d5 id/text2
+      () (id)
+    resource 0x7f0800d6 id/textSpacerNoButtons
+      () (id)
+    resource 0x7f0800d7 id/textSpacerNoTitle
+      () (id)
+    resource 0x7f0800d8 id/time
+      () (id)
+    resource 0x7f0800d9 id/title
+      () (id)
+    resource 0x7f0800da id/titleDividerNoCustom
+      () (id)
+    resource 0x7f0800db id/title_template
+      () (id)
+    resource 0x7f0800dc id/top
+      () (id)
+    resource 0x7f0800dd id/topPanel
+      () (id)
+    resource 0x7f0800de id/topToBottom
+      () (id)
+    resource 0x7f0800df id/transition_current_scene
+      () (id)
+    resource 0x7f0800e0 id/transition_layout_save
+      () (id)
+    resource 0x7f0800e1 id/transition_position
+      () (id)
+    resource 0x7f0800e2 id/transition_scene_layoutid_cache
+      () (id)
+    resource 0x7f0800e3 id/transition_transform
+      () (id)
+    resource 0x7f0800e4 id/unchecked
+      () (id)
+    resource 0x7f0800e5 id/uniform
+      () (id)
+    resource 0x7f0800e6 id/up
+      () (id)
+    resource 0x7f0800e7 id/useLogo
+      () (id)
+    resource 0x7f0800e8 id/view_tree_disjoint_parent
+      () (id)
+    resource 0x7f0800e9 id/view_tree_lifecycle_owner
+      () (id)
+    resource 0x7f0800ea id/view_tree_navigation_event_dispatcher_owner
+      () (id)
+    resource 0x7f0800eb id/view_tree_on_back_pressed_dispatcher_owner
+      () (id)
+    resource 0x7f0800ec id/view_tree_saved_state_registry_owner
+      () (id)
+    resource 0x7f0800ed id/view_tree_view_model_store_owner
+      () (id)
+    resource 0x7f0800ee id/visible_removing_fragment_view_tag
+      () (id)
+    resource 0x7f0800ef id/wide
+      () (id)
+    resource 0x7f0800f0 id/widget_completion
+      () (id)
+    resource 0x7f0800f1 id/widget_completion_progress
+      () (id)
+    resource 0x7f0800f2 id/widget_meal_count
+      () (id)
+    resource 0x7f0800f3 id/widget_next_meal
+      () (id)
+    resource 0x7f0800f4 id/widget_root
+      () (id)
+    resource 0x7f0800f5 id/widget_sprite
+      () (id)
+    resource 0x7f0800f6 id/widget_vitality
+      () (id)
+    resource 0x7f0800f7 id/widget_vitality_state
+      () (id)
+    resource 0x7f0800f8 id/withText
+      () (id)
+    resource 0x7f0800f9 id/wrap_content
+      () (id)
+  type integer id=09 entryCount=2
+    resource 0x7f090003 integer/config_tooltipAnimTime
+      () 150
+    resource 0x7f090004 integer/google_play_services_version
+      () 12451000
+  type interpolator id=0a entryCount=7
+    resource 0x7f0a0000 interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0
+      () (file) res/c5.xml type=XML
+    resource 0x7f0a0001 interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1
+      () (file) res/NF.xml type=XML
+    resource 0x7f0a0002 interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0
+      () (file) res/_o.xml type=XML
+    resource 0x7f0a0003 interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1
+      () (file) res/VM.xml type=XML
+    resource 0x7f0a0004 interpolator/btn_radio_to_off_mtrl_animation_interpolator_0
+      () (file) res/lN.xml type=XML
+    resource 0x7f0a0005 interpolator/btn_radio_to_on_mtrl_animation_interpolator_0
+      () (file) res/DZ.xml type=XML
+    resource 0x7f0a0006 interpolator/fast_out_slow_in
+      () (file) res/sn.xml type=XML
+  type layout id=0b entryCount=6
+    resource 0x7f0b0018 layout/abc_search_dropdown_item_icons_2line
+      () (file) res/2f.xml type=XML
+    resource 0x7f0b0019 layout/abc_search_view
+      () (file) res/dO.xml type=XML
+    resource 0x7f0b001b layout/abc_tooltip
+      () (file) res/3A.xml type=XML
+    resource 0x7f0b0032 layout/preference
+      () (file) res/Iy.xml type=XML
+    resource 0x7f0b0046 layout/widget_medium
+      () (file) res/QH.xml type=XML
+    resource 0x7f0b0047 layout/widget_small
+      () (file) res/_S.xml type=XML
+  type mipmap id=0c entryCount=3
+    resource 0x7f0c0000 mipmap/ic_launcher
+      (mdpi) (file) res/9w.png type=PNG
+      (hdpi) (file) res/yn.png type=PNG
+      (xhdpi) (file) res/FS.png type=PNG
+      (xxhdpi) (file) res/RJ.png type=PNG
+      (xxxhdpi) (file) res/o-.png type=PNG
+      (anydpi-v26) (file) res/BW.xml type=XML
+    resource 0x7f0c0001 mipmap/ic_launcher_foreground
+      (mdpi) (file) res/QZ.png type=PNG
+      (hdpi) (file) res/zr.png type=PNG
+      (xhdpi) (file) res/Em.png type=PNG
+      (xxhdpi) (file) res/Lf.png type=PNG
+      (xxxhdpi) (file) res/as.png type=PNG
+    resource 0x7f0c0002 mipmap/ic_launcher_round
+      (mdpi) (file) res/zR.png type=PNG
+      (hdpi) (file) res/8c.png type=PNG
+      (xhdpi) (file) res/wb.png type=PNG
+      (xxhdpi) (file) res/fO.png type=PNG
+      (xxxhdpi) (file) res/Gc.png type=PNG
+      (anydpi-v26) (file) res/0K.xml type=XML
+  type string id=0d entryCount=31
+    resource 0x7f0d0013 string/abc_searchview_description_clear
+      () "Clear query"
+      (ca) "Esborra la consulta"
+      (da) "Ryd forespørgsel"
+      (fa) "پاک کردن پُرسمان"
+      (ja) "検索キーワードを削除"
+      (ka) "მოთხოვნის გასუფთავება"
+      (pa) "ਪੁੱਛਗਿੱਛ ਕਲੀਅਰ ਕਰੋ"
+      (ta) "வினவலை அழிக்கும்"
+      (nb) "Slett søket"
+      (be) "Выдаліць запыт"
+      (de) "Suchanfrage löschen"
+      (ne) "क्वेरी खाली गर्नुहोस्"
+      (te) "ప్రశ్నను తీసివేస్తుంది"
+      (af) "Vee navraag uit"
+      (bg) "Изчистване на заявката"
+      (th) "ล้างคำค้นหา"
+      (fi) "Tyhjennä kysely"
+      (hi) "क्‍वेरी हटाएं"
+      (si) "විමසුම හිස් කරන්න"
+      (vi) "Xóa truy vấn"
+      (kk) "Сұрауды өшіру"
+      (mk) "Исчисти барање"
+      (sk) "Vymazať dopyt"
+      (uk) "Очистити запит"
+      (el) "Διαγραφή ερωτήματος"
+      (gl) "Borra a consulta"
+      (ml) "ചോദ്യം മായ്‌ക്കുക"
+      (nl) "Zoekopdracht wissen"
+      (pl) "Wyczyść zapytanie"
+      (sl) "Izbris poizvedbe"
+      (tl) "I-clear ang query"
+      (am) "መጠይቅ አጽዳ"
+      (km) "សម្អាត​សំណួរ"
+      (bn) "কোয়েরি মুছে ফেলুন"
+      (in) "Hapus kueri"
+      (kn) "ಪ್ರಶ್ನೆಯನ್ನು ತೆರವುಗೊಳಿಸಿ"
+      (mn) "Асуулга арилгах"
+      (ko) "검색어 삭제"
+      (lo) "ລຶບຂໍ້ຄວາມຊອກຫາ"
+      (ro) "Ștergeți interogarea"
+      (sq) "Pastro pyetjen"
+      (ar) "محو طلب البحث"
+      (fr) "Effacer la requête"
+      (hr) "Izbriši upit"
+      (mr) "क्‍वेरी साफ करा"
+      (or) "କ୍ୱେରୀ ଖାଲି କରନ୍ତୁ"
+      (sr) "Обришите упит"
+      (b+sr+Latn) "Obrišite upit"
+      (tr) "Sorguyu temizle"
+      (ur) "استفسار صاف کریں"
+      (as) "সন্ধান কৰা প্ৰশ্ন মচক"
+      (bs) "Obriši upit"
+      (cs) "Smazat dotaz"
+      (es) "Borrar consulta"
+      (is) "Hreinsa fyrirspurn"
+      (ms) "Kosongkan pertanyaan"
+      (et) "Päringu tühistamine"
+      (it) "Cancella query"
+      (lt) "Išvalyti užklausą"
+      (pt) "Limpar consulta"
+      (eu) "Garbitu kontsulta"
+      (gu) "ક્વેરી સાફ કરો"
+      (hu) "Lekérdezés törlése"
+      (ru) "Удалить запрос"
+      (zu) "Sula inkinga"
+      (lv) "Notīrīt vaicājumu"
+      (sv) "Ta bort frågan"
+      (iw) "מחיקת השאילתה"
+      (sw) "Futa hoja"
+      (hy) "Ջնջել հարցումը"
+      (ky) "Сурамды өчүрүү"
+      (my) "ရှာဖွေမှုကို ဖယ်ရှားရန်"
+      (az) "Sorğunu silin"
+      (uz) "So‘rovni o‘chirish"
+      (en-rCA) "Clear query"
+      (fr-rCA) "Effacer la requête"
+      (en-rGB) "Clear query"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‏‏‏‏‏‎‏‎‏‏‎‏‎‏‎‎‎‏‎‎‏‏‏‏‎‎‎‏‎‏‎‎‎‎‎‏‏‎‏‏‎‎‏‎‏‏‎‎‎‏‎‏‏‏‎‎‏‏‎Clear query‎‏‎‎‏‎"
+      (zh-rHK) "清除查詢"
+      (zh-rCN) "清除查询"
+      (en-rIN) "Clear query"
+      (pt-rBR) "Limpar consulta"
+      (es-rUS) "Borrar consulta"
+      (pt-rPT) "Limpar consulta"
+      (en-rAU) "Clear query"
+      (zh-rTW) "清除查詢"
+    resource 0x7f0d0015 string/abc_searchview_description_search
+      () "Search"
+      (ca) "Cerca"
+      (da) "Søg"
+      (fa) "جستجو"
+      (ja) "検索"
+      (ka) "ძიება"
+      (pa) "ਖੋਜ"
+      (ta) "தேடும்"
+      (nb) "Søk"
+      (be) "Пошук"
+      (de) "Suche"
+      (ne) "खोज"
+      (te) "సెర్చ్"
+      (af) "Soek"
+      (bg) "Търсене"
+      (th) "ค้นหา"
+      (fi) "Haku"
+      (hi) "खोजें"
+      (si) "සෙවීම"
+      (vi) "Tìm kiếm"
+      (kk) "Іздеу"
+      (mk) "Пребарај"
+      (sk) "Hľadať"
+      (uk) "Пошук"
+      (el) "Αναζήτηση"
+      (gl) "Realiza buscas"
+      (ml) "തിരയുക"
+      (nl) "Zoeken"
+      (pl) "Szukaj"
+      (sl) "Iskanje"
+      (tl) "Maghanap"
+      (am) "ፍለጋ"
+      (km) "ស្វែងរក"
+      (bn) "সার্চ করুন"
+      (in) "Telusuri"
+      (kn) "ಹುಡುಕಿ"
+      (mn) "Хайх"
+      (ko) "검색"
+      (lo) "ຊອກຫາ"
+      (ro) "Căutați"
+      (sq) "Kërko"
+      (ar) "البحث"
+      (fr) "Rechercher"
+      (hr) "Pretraži"
+      (mr) "शोधा"
+      (or) "ସନ୍ଧାନ କରନ୍ତୁ"
+      (sr) "Претражите"
+      (b+sr+Latn) "Pretražite"
+      (tr) "Ara"
+      (ur) "تلاش کریں"
+      (as) "সন্ধান কৰক"
+      (bs) "Pretraži"
+      (cs) "Hledat"
+      (es) "Buscar"
+      (is) "Leit"
+      (ms) "Cari"
+      (et) "Otsing"
+      (it) "Cerca"
+      (lt) "Ieškoti"
+      (pt) "Pesquisar"
+      (eu) "Bilatu"
+      (gu) "શોધો"
+      (hu) "Keresés"
+      (ru) "Поиск"
+      (zu) "Sesha"
+      (lv) "Meklēt"
+      (sv) "Sök"
+      (iw) "חיפוש"
+      (sw) "Tafuta"
+      (hy) "Որոնել"
+      (ky) "Издөө"
+      (my) "ရှာရန်"
+      (az) "Axtarın"
+      (uz) "Qidiruv"
+      (en-rCA) "Search"
+      (fr-rCA) "Rechercher"
+      (en-rGB) "Search"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‏‏‏‎‏‏‎‏‏‎‏‏‏‏‏‏‎‏‎‎‏‎‏‎‎‏‏‎‎‎‎‎‎‎‎‎‏‏‎‏‎‏‏‏‎‎‏‏‏‏‏‎‎‏‏‏‎‎‎‎Search‎‏‎‎‏‎"
+      (zh-rHK) "搜尋"
+      (zh-rCN) "搜索"
+      (en-rIN) "Search"
+      (pt-rBR) "Pesquisar"
+      (es-rUS) "Buscar"
+      (pt-rPT) "Pesquisar"
+      (en-rAU) "Search"
+      (zh-rTW) "搜尋"
+    resource 0x7f0d0016 string/abc_searchview_description_submit
+      () "Submit query"
+      (ca) "Envia la consulta"
+      (da) "Indsend forespørgsel"
+      (fa) "ارسال پُرسمان"
+      (ja) "検索キーワードを送信"
+      (ka) "მოთხოვნის გადაგზავნა"
+      (pa) "ਪੁੱਛਗਿੱਛ ਸਪੁਰਦ ਕਰੋ"
+      (ta) "வினவலைச் சமர்ப்பிக்கும்"
+      (nb) "Utfør søket"
+      (be) "Адправіць запыт"
+      (de) "Anfrage senden"
+      (ne) "क्वेरी पेस गर्नुहोस्"
+      (te) "ప్రశ్నని సమర్పిస్తుంది"
+      (af) "Dien navraag in"
+      (bg) "Изпращане на заявката"
+      (th) "ส่งคำค้นหา"
+      (fi) "Lähetä kysely"
+      (hi) "क्वेरी सबमिट करें"
+      (si) "විමසුම යොමු කරන්න"
+      (vi) "Gửi truy vấn"
+      (kk) "Сұрауды жіберу"
+      (mk) "Испрати барање"
+      (sk) "Odoslať dopyt"
+      (uk) "Наіслати запит"
+      (el) "Υποβολή ερωτήματος"
+      (gl) "Envía a consulta"
+      (ml) "ചോദ്യം സമർപ്പിക്കുക"
+      (nl) "Zoekopdracht verzenden"
+      (pl) "Wyślij zapytanie"
+      (sl) "Pošiljanje poizvedbe"
+      (tl) "Isumite ang query"
+      (am) "መጠይቅ አስገባ"
+      (km) "ដាក់បញ្ជូន​សំណួរ"
+      (bn) "কোয়েরি জমা দিন"
+      (in) "Kirim kueri"
+      (kn) "ಪ್ರಶ್ನೆಯನ್ನು ಸಲ್ಲಿಸಿ"
+      (mn) "Асуулга илгээх"
+      (ko) "검색어 보내기"
+      (lo) "ສົ່ງຂໍ້ມູນ"
+      (ro) "Trimiteți interogarea"
+      (sq) "Dërgo pyetjen"
+      (ar) "إرسال طلب البحث"
+      (fr) "Envoyer la requête"
+      (hr) "Pošalji upit"
+      (mr) "क्वेरी सबमिट करा"
+      (or) "କ୍ୱେରୀ ଦାଖଲ କରନ୍ତୁ"
+      (sr) "Пошаљите упит"
+      (b+sr+Latn) "Pošaljite upit"
+      (tr) "Sorguyu gönder"
+      (ur) "استفسار جمع کرائیں"
+      (as) "প্ৰশ্ন দাখিল কৰক"
+      (bs) "Pošalji upit"
+      (cs) "Odeslat dotaz"
+      (es) "Enviar consulta"
+      (is) "Senda fyrirspurn"
+      (ms) "Serah pertanyaan"
+      (et) "Päringu esitamine"
+      (it) "Invia query"
+      (lt) "Pateikti užklausą"
+      (pt) "Enviar consulta"
+      (eu) "Bidali kontsulta"
+      (gu) "ક્વેરી સબમિટ કરો"
+      (hu) "Lekérdezés küldése"
+      (ru) "Отправить запрос"
+      (zu) "Thumela umbuzo"
+      (lv) "Iesniegt vaicājumu"
+      (sv) "Skicka fråga"
+      (iw) "שליחת שאילתה"
+      (sw) "Wasilisha hoja"
+      (hy) "Ուղարկել հարցումը"
+      (ky) "Сурам тапшыруу"
+      (my) "ရှာဖွေစရာ အချက်အလက်ကို ပေးပို့ရန်"
+      (az) "Sorğunu göndərin"
+      (uz) "So‘rov yaratish"
+      (en-rCA) "Submit query"
+      (fr-rCA) "Envoyer la requête"
+      (en-rGB) "Submit query"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‎‎‏‎‏‎‎‎‎‏‎‎‏‏‏‏‎‎‎‎‏‎‏‏‎‏‎‏‎‏‎‏‏‎‏‏‏‎‎‎‏‏‏‏‏‎‏‏‎‎‏‏‎‏‏‏‏‏‎Submit query‎‏‎‎‏‎"
+      (zh-rHK) "提交查詢"
+      (zh-rCN) "提交查询"
+      (en-rIN) "Submit query"
+      (pt-rBR) "Enviar consulta"
+      (es-rUS) "Enviar consulta"
+      (pt-rPT) "Enviar consulta"
+      (en-rAU) "Submit query"
+      (zh-rTW) "提交查詢"
+    resource 0x7f0d0017 string/abc_searchview_description_voice
+      () "Voice search"
+      (ca) "Cerca per veu"
+      (da) "Talesøgning"
+      (fa) "جستجوی گفتاری"
+      (ja) "音声検索"
+      (ka) "ხმოვანი ძიება"
+      (pa) "ਅਵਾਜ਼ੀ ਖੋਜ"
+      (ta) "குரல் தேடல்"
+      (nb) "Talesøk"
+      (be) "Галасавы пошук"
+      (de) "Sprachsuche"
+      (ne) "आवाजमा आधारित खोजी"
+      (te) "వాయిస్ సెర్చ్"
+      (af) "Stemsoektog"
+      (bg) "Гласово търсене"
+      (th) "ค้นหาด้วยเสียง"
+      (fi) "Puhehaku"
+      (hi) "बोलकर खोजें"
+      (si) "හඬ සෙවීම"
+      (vi) "Tìm kiếm bằng giọng nói"
+      (kk) "Дауыспен іздеу"
+      (mk) "Гласовно пребарување"
+      (sk) "Hlasové vyhľadávanie"
+      (uk) "Голосовий пошук"
+      (el) "Φωνητική αναζήτηση"
+      (gl) "Busca por voz"
+      (ml) "സംസാരത്തിലൂടെ തിരയുക"
+      (nl) "Gesproken zoekopdracht"
+      (pl) "Wyszukiwanie głosowe"
+      (sl) "Glasovno iskanje"
+      (tl) "Paghahanap gamit ang boses"
+      (am) "የድምጽ ፍለጋ"
+      (km) "ស្វែងរក​តាម​សំឡេង"
+      (bn) "ভয়েস সার্চ করুন"
+      (in) "Penelusuran suara"
+      (kn) "ಧ್ವನಿ ಹುಡುಕಾಟ"
+      (mn) "Дуут хайлт"
+      (ko) "음성 검색"
+      (lo) "ຊອກຫາດ້ວຍສຽງ"
+      (ro) "Căutare vocală"
+      (sq) "Kërkim me zë"
+      (ar) "بحث صوتي"
+      (fr) "Recherche vocale"
+      (hr) "Glasovno pretraživanje"
+      (mr) "व्हॉइस शोध"
+      (or) "ଭଏସ୍‌ ସର୍ଚ୍ଚ"
+      (sr) "Гласовна претрага"
+      (b+sr+Latn) "Glasovna pretraga"
+      (tr) "Sesli arama"
+      (ur) "صوتی تلاش"
+      (as) "কণ্ঠধ্বনিৰ দ্বাৰা সন্ধান"
+      (bs) "Glasovno pretraživanje"
+      (cs) "Hlasové vyhledávání"
+      (es) "Búsqueda por voz"
+      (is) "Raddleit"
+      (ms) "Carian suara"
+      (et) "Häälotsing"
+      (it) "Ricerca vocale"
+      (lt) "Paieška balsu"
+      (pt) "Pesquisa por voz"
+      (eu) "Ahozko bilaketa"
+      (gu) "વૉઇસ શોધ"
+      (hu) "Hangalapú keresés"
+      (ru) "Голосовой поиск"
+      (zu) "Ukusesha ngezwi"
+      (lv) "Meklēt ar balsi"
+      (sv) "Röstsökning"
+      (iw) "חיפוש קולי"
+      (sw) "Kutafuta kwa kutamka"
+      (hy) "Ձայնային որոնում"
+      (ky) "Айтып издөө"
+      (my) "အသံဖြင့် ရှာရန်"
+      (az) "Səsli axtarış"
+      (uz) "Ovozli qidiruv"
+      (en-rCA) "Voice search"
+      (fr-rCA) "Recherche vocale"
+      (en-rGB) "Voice search"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‏‏‏‏‎‏‎‏‎‎‎‏‏‎‏‏‎‏‏‎‎‎‏‎‏‏‏‏‏‎‏‏‎‎‎‏‏‎‏‏‎‏‎‎‎‎‏‎‎‎‏‎‎‏‎‏‏‏‎Voice search‎‏‎‎‏‎"
+      (zh-rHK) "語音搜尋"
+      (zh-rCN) "语音搜索"
+      (en-rIN) "Voice search"
+      (pt-rBR) "Pesquisa por voz"
+      (es-rUS) "Búsqueda por voz"
+      (pt-rPT) "Pesquisa por voz"
+      (en-rAU) "Voice search"
+      (zh-rTW) "語音搜尋"
+    resource 0x7f0d001b string/androidx_startup
+      () "androidx.startup"
+    resource 0x7f0d001d string/call_notification_answer_action
+      () "Answer"
+      (ca) "Respon"
+      (da) "Besvar"
+      (fa) "جواب"
+      (ja) "応答"
+      (ka) "პასუხი"
+      (pa) "ਜਵਾਬ ਦਿਓ"
+      (ta) "பதிலளி"
+      (nb) "Svar"
+      (be) "Адказаць"
+      (de) "Annehmen"
+      (ne) "उठाउनुहोस्"
+      (te) "పికప్ చేయండి"
+      (af) "Antwoord"
+      (bg) "Отговор"
+      (th) "รับสาย"
+      (fi) "Vastaa"
+      (hi) "जवाब दें"
+      (si) "පිළිතුරු දෙ."
+      (vi) "Trả lời"
+      (kk) "Жауап беру"
+      (mk) "Одговори"
+      (sk) "Prijať"
+      (uk) "Відповісти"
+      (el) "Απάντηση"
+      (gl) "Contestar"
+      (ml) "മറുപടി നൽകുക"
+      (nl) "Beantwoorden"
+      (pl) "Odbierz"
+      (sl) "Sprejmi"
+      (tl) "Sagutin"
+      (am) "መልስ"
+      (km) "ឆ្លើយ"
+      (bn) "উত্তর দিন"
+      (in) "Jawab"
+      (kn) "ಉತ್ತರಿಸಿ"
+      (mn) "Хариулах"
+      (ko) "통화"
+      (lo) "ຮັບສາຍ"
+      (ro) "Răspunde"
+      (sq) "Përgjigju"
+      (ar) "ردّ"
+      (fr) "Répondre"
+      (hr) "Odgovori"
+      (mr) "उत्तर द्या"
+      (or) "ଉତ୍ତର ଦିଅନ୍ତୁ"
+      (sr) "Одговори"
+      (b+sr+Latn) "Odgovori"
+      (tr) "Yanıtla"
+      (ur) "جواب دیں"
+      (as) "উত্তৰ দিয়ক"
+      (bs) "Odgovori"
+      (cs) "Přijmout"
+      (es) "Responder"
+      (is) "Svara"
+      (ms) "Jawab"
+      (et) "Vasta"
+      (it) "Rispondi"
+      (lt) "Atsakyti"
+      (pt) "Atender"
+      (eu) "Erantzun"
+      (gu) "જવાબ આપો"
+      (hu) "Fogadás"
+      (ru) "Ответить"
+      (zu) "Phendula"
+      (lv) "Atbildēt"
+      (sv) "Svara"
+      (iw) "מענה"
+      (sw) "Jibu"
+      (hy) "Պատասխանել"
+      (ky) "Жооп берүү"
+      (my) "ဖုန်းကိုင်ရန်"
+      (az) "Cavab verin"
+      (uz) "Javob berish"
+      (en-rCA) "Answer"
+      (fr-rCA) "Répondre"
+      (en-rGB) "Answer"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‏‎‎‎‎‏‏‏‎‏‏‎‏‏‎‎‏‎‏‏‎‎‎‎‎‏‎‏‎‏‎‏‏‎‎‏‎‎‏‏‏‏‎‎‏‎‏‎‏‎‎‎‎‎‏‎‏‎‎‎Answer‎‏‎‎‏‎"
+      (zh-rHK) "接聽"
+      (zh-rCN) "接听"
+      (en-rIN) "Answer"
+      (pt-rBR) "Atender"
+      (es-rUS) "Responder"
+      (pt-rPT) "Atender"
+      (en-rAU) "Answer"
+      (zh-rTW) "接聽"
+    resource 0x7f0d001e string/call_notification_answer_video_action
+      () "Video"
+      (ca) "Vídeo"
+      (da) "Video"
+      (fa) "ویدیو"
+      (ja) "ビデオ"
+      (ka) "ვიდეო"
+      (pa) "ਵੀਡੀਓ"
+      (ta) "வீடியோ"
+      (nb) "Video"
+      (be) "Відэа"
+      (de) "Video"
+      (ne) "भिडियो"
+      (te) "వీడియో కాల్"
+      (af) "Video"
+      (bg) "Видеообаждане"
+      (th) "วิดีโอ"
+      (fi) "Video"
+      (hi) "वीडियो"
+      (si) "වීඩියෝ"
+      (vi) "Video"
+      (kk) "Бейне"
+      (mk) "Видео"
+      (sk) "Video"
+      (uk) "Відео"
+      (el) "Βίντεο"
+      (gl) "Vídeo"
+      (ml) "വീഡിയോ"
+      (nl) "Video"
+      (pl) "Wideo"
+      (sl) "Video"
+      (tl) "Video"
+      (am) "ቪዲዮ"
+      (km) "វីដេអូ"
+      (bn) "ভিডিও"
+      (in) "Video"
+      (kn) "ವೀಡಿಯೊ"
+      (mn) "Видео"
+      (ko) "동영상"
+      (lo) "ວິດີໂອ"
+      (ro) "Video"
+      (sq) "Video"
+      (ar) "فيديو"
+      (fr) "Vidéo"
+      (hr) "Videozapis"
+      (mr) "व्हिडिओ"
+      (or) "ଭିଡିଓ"
+      (sr) "Видео"
+      (b+sr+Latn) "Video"
+      (tr) "Video"
+      (ur) "ویڈیو"
+      (as) "ভিডিঅ’"
+      (bs) "Video"
+      (cs) "Video"
+      (es) "Vídeo"
+      (is) "Myndsímtal"
+      (ms) "Video"
+      (et) "Video"
+      (it) "Video"
+      (lt) "Vaizdo įrašas"
+      (pt) "Vídeo"
+      (eu) "Bideoa"
+      (gu) "વીડિયો"
+      (hu) "Videó"
+      (ru) "Видео"
+      (zu) "Ividiyo"
+      (lv) "Video"
+      (sv) "Video"
+      (iw) "וידאו"
+      (sw) "Video"
+      (hy) "Տեսազանգ"
+      (ky) "Видео"
+      (my) "ဗီဒီယို"
+      (az) "Video"
+      (uz) "Video"
+      (en-rCA) "Video"
+      (fr-rCA) "Vidéo"
+      (en-rGB) "Video"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‎‎‎‎‎‏‎‎‏‏‏‎‎‎‏‎‎‎‏‎‏‎‏‎‎‏‏‎‎‏‏‎‎‏‎‎‎‎‏‎‏‎‏‎‎‏‏‎‏‎‎‏‎‎‎‎‎‎Video‎‏‎‎‏‎"
+      (zh-rHK) "視像"
+      (zh-rCN) "视频通话"
+      (en-rIN) "Video"
+      (pt-rBR) "Vídeo"
+      (es-rUS) "Video"
+      (pt-rPT) "Vídeo"
+      (en-rAU) "Video"
+      (zh-rTW) "視訊"
+    resource 0x7f0d001f string/call_notification_decline_action
+      () "Decline"
+      (ca) "Rebutja"
+      (da) "Afvis"
+      (fa) "رد کردن"
+      (ja) "拒否"
+      (ka) "უარყოფა"
+      (pa) "ਕਾਲ ਕੱਟੋ"
+      (ta) "நிராகரி"
+      (nb) "Avvis"
+      (be) "Адхіліць"
+      (de) "Ablehnen"
+      (ne) "काट्नुहोस्"
+      (te) "కట్ చేయండి"
+      (af) "Wys af"
+      (bg) "Отхвърляне"
+      (th) "ปฏิเสธ"
+      (fi) "Hylkää"
+      (hi) "अस्वीकार करें"
+      (si) "ප්‍රතික්ෂේප ක"
+      (vi) "Từ chối"
+      (kk) "Қабылдамау"
+      (mk) "Одбиј"
+      (sk) "Odmietnuť"
+      (uk) "Відхилити"
+      (el) "Απόρριψη"
+      (gl) "Rexeitar"
+      (ml) "നിരസിക്കുക"
+      (nl) "Weigeren"
+      (pl) "Odrzuć"
+      (sl) "Zavrni"
+      (tl) "Tanggihan"
+      (am) "አትቀበል"
+      (km) "បដិសេធ"
+      (bn) "বাতিল করুন"
+      (in) "Tolak"
+      (kn) "ನಿರಾಕರಿಸಿ"
+      (mn) "Татгалзах"
+      (ko) "거절"
+      (lo) "ປະຕິເສດ"
+      (ro) "Respinge"
+      (sq) "Refuzo"
+      (ar) "رفض"
+      (fr) "Refuser"
+      (hr) "Odbij"
+      (mr) "नकार द्या"
+      (or) "ଅଗ୍ରାହ୍ୟ କର"
+      (sr) "Одбиј"
+      (b+sr+Latn) "Odbij"
+      (tr) "Reddet"
+      (ur) "مسترد کریں"
+      (as) "প্ৰত্যাখ্যান কৰক"
+      (bs) "Odbaci"
+      (cs) "Odmítnout"
+      (es) "Rechazar"
+      (is) "Hafna"
+      (ms) "Tolak"
+      (et) "Keeldu"
+      (it) "Rifiuta"
+      (lt) "Atmesti"
+      (pt) "Recusar"
+      (eu) "Baztertu"
+      (gu) "નકારો"
+      (hu) "Elutasítás"
+      (ru) "Отклонить"
+      (zu) "Yenqaba"
+      (lv) "Noraidīt"
+      (sv) "Avvisa"
+      (iw) "דחייה"
+      (sw) "Kataa"
+      (hy) "Մերժել"
+      (ky) "Четке кагуу"
+      (my) "ငြင်းပယ်ရန်"
+      (az) "İmtina edin"
+      (uz) "Rad etish"
+      (en-rCA) "Decline"
+      (fr-rCA) "Refuser"
+      (en-rGB) "Decline"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‏‎‎‏‏‎‏‎‎‎‏‏‎‎‎‎‏‎‎‏‏‏‎‏‎‎‏‏‎‎‎‎‏‎‎‏‏‎‎‏‏‏‏‏‎‎‏‎‎‏‎‎‎‎‏‎‎‏‎‎Decline‎‏‎‎‏‎"
+      (zh-rHK) "拒接"
+      (zh-rCN) "拒接"
+      (en-rIN) "Decline"
+      (pt-rBR) "Recusar"
+      (es-rUS) "Rechazar"
+      (pt-rPT) "Recusar"
+      (en-rAU) "Decline"
+      (zh-rTW) "拒接"
+    resource 0x7f0d0020 string/call_notification_hang_up_action
+      () "Hang Up"
+      (ca) "Penja"
+      (da) "Læg på"
+      (fa) "قطع تماس"
+      (ja) "通話終了"
+      (ka) "გათიშვა"
+      (pa) "ਸਮਾਪਤ ਕਰੋ"
+      (ta) "துண்டி"
+      (nb) "Legg på"
+      (be) "Завяршыць"
+      (de) "Auflegen"
+      (ne) "फोन राख्नुहोस्"
+      (te) "ముగించండి"
+      (af) "Lui af"
+      (bg) "Затваряне"
+      (th) "วางสาย"
+      (fi) "Lopeta puhelu"
+      (hi) "कॉल काटें"
+      (si) "විසන්ධි කරන්න"
+      (vi) "Kết thúc"
+      (kk) "Тұтқаны қою"
+      (mk) "Спушти"
+      (sk) "Zložiť"
+      (uk) "Завершити"
+      (el) "Τερματισμός"
+      (gl) "Colgar"
+      (ml) "കോൾ നിർത്തുക"
+      (nl) "Ophangen"
+      (pl) "Rozłącz"
+      (sl) "Prekini klic"
+      (tl) "Ibaba"
+      (am) "ስልኩን ዝጋ"
+      (km) "ដាក់​ចុះ"
+      (bn) "কল কেটে দিন"
+      (in) "Tutup"
+      (kn) "ಕರೆ ಕೊನೆಗೊಳಿಸಿ"
+      (mn) "Таслах"
+      (ko) "전화 끊기"
+      (lo) "ວາງສາຍ"
+      (ro) "Închide"
+      (sq) "Mbyll"
+      (ar) "قطع الاتصال"
+      (fr) "Raccrocher"
+      (hr) "Prekini"
+      (mr) "कॉल बंद करा"
+      (or) "ସମାପ୍ତ କରନ୍ତୁ"
+      (sr) "Прекини везу"
+      (b+sr+Latn) "Prekini vezu"
+      (tr) "Kapat"
+      (ur) "منقطع کر دیں"
+      (as) "কল কাটি দিয়ক"
+      (bs) "Prekini vezu"
+      (cs) "Zavěsit"
+      (es) "Colgar"
+      (is) "Leggja á"
+      (ms) "Tamatkan Panggilan"
+      (et) "Lõpeta kõne"
+      (it) "Riaggancia"
+      (lt) "Baigti pok."
+      (pt) "Desligar"
+      (eu) "Amaitu deia"
+      (gu) "સમાપ્ત કરો"
+      (hu) "Befejezés"
+      (ru) "Завершить"
+      (zu) "Vala Ucingo"
+      (lv) "Pārtraukt"
+      (sv) "Lägg på"
+      (iw) "ניתוק"
+      (sw) "Kata simu"
+      (hy) "Ավարտել"
+      (ky) "Чалууну бүтүрүү"
+      (my) "ဖုန်းချရန်"
+      (az) "Dəstəyi asın"
+      (uz) "Tugatish"
+      (en-rCA) "Hang Up"
+      (fr-rCA) "Raccrocher"
+      (en-rGB) "Hang up"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‎‎‏‏‏‎‏‎‎‎‎‏‎‎‏‎‏‎‏‏‏‎‏‎‎‏‏‎‎‎‎‎‎‏‏‎‏‏‎‎‏‏‏‏‎‎‎‎‎‎‎‎‎‏‎‏‏‏‎Hang Up‎‏‎‎‏‎"
+      (zh-rHK) "掛斷"
+      (zh-rCN) "挂断"
+      (en-rIN) "Hang up"
+      (pt-rBR) "Desligar"
+      (es-rUS) "Colgar"
+      (pt-rPT) "Desligar"
+      (en-rAU) "Hang up"
+      (zh-rTW) "掛斷"
+    resource 0x7f0d0021 string/call_notification_incoming_text
+      () "Incoming call"
+      (ca) "Trucada entrant"
+      (da) "Indgående opkald"
+      (fa) "تماس ورودی"
+      (ja) "着信"
+      (ka) "შემომავალი ზარი"
+      (pa) "ਇਨਕਮਿੰਗ ਕਾਲ"
+      (ta) "உள்வரும் அழைப்பு"
+      (nb) "Innkommende anrop"
+      (be) "Уваходны выклік"
+      (de) "Eingehender Anruf"
+      (ne) "आगमन कल"
+      (te) "ఇన్‌కమింగ్ కాల్"
+      (af) "Inkomende oproep"
+      (bg) "Входящо обаждане"
+      (th) "สายเรียกเข้า"
+      (fi) "Saapuva puhelu"
+      (hi) "आने वाला (इनकमिंग) कॉल"
+      (si) "එන ඇමතුම"
+      (vi) "Cuộc gọi đến"
+      (kk) "Кіріс қоңырау"
+      (mk) "Дојдовен повик"
+      (sk) "Prichádzajúci hovor"
+      (uk) "Вхідний виклик"
+      (el) "Εισερχόμενη κλήση"
+      (gl) "Chamada entrante"
+      (ml) "ഇൻകമിംഗ് കോൾ"
+      (nl) "Inkomend gesprek"
+      (pl) "Połączenie przychodzące"
+      (sl) "Dohodni klic"
+      (tl) "Papasok na tawag"
+      (am) "ገቢ ጥሪ"
+      (km) "ការ​ហៅ​ចូល"
+      (bn) "ইনকামিং কল"
+      (in) "Panggilan masuk"
+      (kn) "ಒಳಬರುವ ಕರೆ"
+      (mn) "Ирсэн дуудлага"
+      (ko) "수신 전화"
+      (lo) "ສາຍໂທເຂົ້າ"
+      (ro) "Apel primit"
+      (sq) "Telefonatë hyrëse"
+      (ar) "مكالمة واردة"
+      (fr) "Appel entrant"
+      (hr) "Dolazni poziv"
+      (mr) "इनकमिंग कॉल"
+      (or) "ଇନକମିଂ କଲ୍"
+      (sr) "Долазни позив"
+      (b+sr+Latn) "Dolazni poziv"
+      (tr) "Gelen arama"
+      (ur) "اِن کمنگ کال"
+      (as) "অন্তৰ্গামী কল"
+      (bs) "Dolazni poziv"
+      (cs) "Příchozí hovor"
+      (es) "Llamada entrante"
+      (is) "Símtal berst"
+      (ms) "Panggilan masuk"
+      (et) "Sissetulev kõne"
+      (it) "Chiamata in arrivo"
+      (lt) "Gaunamasis skambutis"
+      (pt) "Alguém está ligando"
+      (eu) "Sarrerako deia"
+      (gu) "ઇનકમિંગ કૉલ"
+      (hu) "Bejövő hívás"
+      (ru) "Входящий вызов"
+      (zu) "Ikholi engenayo"
+      (lv) "Ienākošais zvans"
+      (sv) "Inkommande samtal"
+      (iw) "שיחה נכנסת"
+      (sw) "Simu uliyopigiwa"
+      (hy) "Մուտքային զանգ"
+      (ky) "Чалып жатат"
+      (my) "အဝင်ခေါ်ဆိုမှု"
+      (az) "Gələn zəng"
+      (uz) "Kiruvchi chaqiruv"
+      (en-rCA) "Incoming call"
+      (fr-rCA) "Appel entrant"
+      (en-rGB) "Incoming call"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‏‎‎‏‏‎‎‎‎‏‎‎‏‎‏‎‎‎‎‏‎‎‎‎‏‎‏‏‎‎‎‏‏‏‎‏‏‎‎‎‏‎‎‎‏‏‎‏‎‎‎‏‎‏‏‎‏‏‏‎Incoming call‎‏‎‎‏‎"
+      (zh-rHK) "來電"
+      (zh-rCN) "来电"
+      (en-rIN) "Incoming call"
+      (pt-rBR) "Alguém está ligando"
+      (es-rUS) "Llamada entrante"
+      (pt-rPT) "Chamada recebida"
+      (en-rAU) "Incoming call"
+      (zh-rTW) "來電"
+    resource 0x7f0d0022 string/call_notification_ongoing_text
+      () "Ongoing call"
+      (ca) "Trucada en curs"
+      (da) "Igangværende opkald"
+      (fa) "تماس درحال انجام"
+      (ja) "通話中"
+      (ka) "მიმდინარე ზარი"
+      (pa) "ਜਾਰੀ ਕਾਲ"
+      (ta) "செயலில் இருக்கும் அழைப்பு"
+      (nb) "Pågående samtale"
+      (be) "Бягучы выклік"
+      (de) "Aktueller Anruf"
+      (ne) "भइरहेको कल"
+      (te) "కాల్ కొనసాగుతోంది"
+      (af) "Oproep aan die gang"
+      (bg) "Текущо обаждане"
+      (th) "สายที่สนทนาอยู่"
+      (fi) "Käynnissä oleva puhelu"
+      (hi) "पहले से जारी कॉल"
+      (si) "කරගෙන යන ඇමතුම"
+      (vi) "Cuộc gọi đang thực hiện"
+      (kk) "Қоңырау"
+      (mk) "Тековен повик"
+      (sk) "Prebiehajúci hovor"
+      (uk) "Активний виклик"
+      (el) "Κλήση σε εξέλιξη"
+      (gl) "Chamada en curso"
+      (ml) "സജീവമായ കോൾ"
+      (nl) "Actief gesprek"
+      (pl) "Trwa połączenie"
+      (sl) "Aktivni klic"
+      (tl) "Kasalukuyang tawag"
+      (am) "እየተካሄደ ያለ ጥሪ"
+      (km) "ការ​ហៅដែលកំពុងដំណើរការ"
+      (bn) "চালু থাকা কল"
+      (in) "Panggilan sedang berlangsung"
+      (kn) "ಚಾಲ್ತಿಯಲ್ಲಿರುವ ಕರೆ"
+      (mn) "Дуудлага хийгдэж байна"
+      (ko) "진행 중인 통화"
+      (lo) "ສາຍໂທອອກ"
+      (ro) "Apel în desfășurare"
+      (sq) "Telefonatë në vazhdim"
+      (ar) "مكالمة جارية"
+      (fr) "Appel en cours"
+      (hr) "Poziv u tijeku"
+      (mr) "सुरू असलेला कॉल"
+      (or) "ଚାଲିଥିବା କଲ୍"
+      (sr) "Позив је у току"
+      (b+sr+Latn) "Poziv je u toku"
+      (tr) "Devam eden arama"
+      (ur) "جاری کال"
+      (as) "চলি থকা কল"
+      (bs) "Poziv u toku"
+      (cs) "Probíhající hovor"
+      (es) "Llamada en curso"
+      (is) "Símtal í gangi"
+      (ms) "Panggilan sedang berlangsung"
+      (et) "Käimasolev kõne"
+      (it) "Chiamata in corso"
+      (lt) "Vykstantis skambutis"
+      (pt) "Chamada em andamento"
+      (eu) "Deia abian da"
+      (gu) "ચાલુ કૉલ"
+      (hu) "Hívás folyamatban"
+      (ru) "Текущий вызов"
+      (zu) "Ikholi eqhubekayo"
+      (lv) "Pašreizējais zvans"
+      (sv) "Pågående samtal"
+      (iw) "שיחה פעילה"
+      (sw) "Simu inayoendelea"
+      (hy) "Ընթացիկ զանգ"
+      (ky) "Учурдагы чалуу"
+      (my) "လက်ရှိခေါ်ဆိုမှု"
+      (az) "Davam edən zəng"
+      (uz) "Joriy chaqiruv"
+      (en-rCA) "Ongoing call"
+      (fr-rCA) "Appel en cours"
+      (en-rGB) "On-going call"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‏‏‏‏‎‏‎‏‏‎‏‏‏‏‏‏‏‎‏‎‎‎‏‎‏‏‎‎‏‏‏‏‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‎‏‎‎‏‎‏‏‏‏‏‎‎Ongoing call‎‏‎‎‏‎"
+      (zh-rHK) "通話中"
+      (zh-rCN) "正在通话"
+      (en-rIN) "On-going call"
+      (pt-rBR) "Chamada em andamento"
+      (es-rUS) "Llamada en curso"
+      (pt-rPT) "Chamada em curso"
+      (en-rAU) "On-going call"
+      (zh-rTW) "通話中"
+    resource 0x7f0d0023 string/call_notification_screening_text
+      () "Screening an incoming call"
+      (ca) "S'està filtrant una trucada entrant"
+      (da) "Et indgående opkald screenes"
+      (fa) "درحال غربال کردن تماس ورودی"
+      (ja) "着信をスクリーニング中"
+      (ka) "შემომავალი ზარების გაცხრილვა"
+      (pa) "ਇਨਕਮਿੰਗ ਕਾਲ ਦੀ ਸਕ੍ਰੀਨਿੰਗ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+      (ta) "உள்வரும் அழைப்பை மதிப்பாய்வு செய்கிறது"
+      (nb) "Filtrerer et innkommende anrop"
+      (be) "Фільтраванне ўваходнага выкліку"
+      (de) "Filter für eingehenden Anruf"
+      (ne) "आगमन कल जाँचिँदै छ"
+      (te) "ఇన్‌కమింగ్ కాల్‌ను స్క్రీన్ చేయండి"
+      (af) "Keur tans 'n inkomende oproep"
+      (bg) "Преглежда се входящо обаждане"
+      (th) "กำลังสกรีนสายเรียกเข้า"
+      (fi) "Seulotaan saapuvaa puhelua"
+      (hi) "इनकमिंग कॉल को स्क्रीन किया जा रहा है"
+      (si) "එන ඇමතුමක් පරීක්ෂා කරන්න"
+      (vi) "Đang sàng lọc cuộc gọi đến"
+      (kk) "Келген қоңырауды сүзу"
+      (mk) "Проверка на дојдовен повик"
+      (sk) "Preveruje sa prichádzajúci hovor"
+      (uk) "Вхідний виклик (Фільтр)"
+      (el) "Διαλογή εισερχόμενης κλήσης"
+      (gl) "Filtrando chamada entrante"
+      (ml) "ഇൻകമിംഗ് കോൾ സ്‌ക്രീൻ ചെയ്യുന്നു"
+      (nl) "Een inkomend gesprek screenen"
+      (pl) "Filtruję połączenie przychodzące"
+      (sl) "Preverjanje dohodnega klica"
+      (tl) "Nagsi-screen ng papasok na tawag"
+      (am) "ገቢ ጥሪ ማጣራት"
+      (km) "កំពុងពិនិត្យការ​ហៅ​ចូល"
+      (bn) "ইনকামিং কল স্ক্রিনিং করা হচ্ছে"
+      (in) "Menyaring panggilan masuk"
+      (kn) "ಒಳಬರುವ ಕರೆಯನ್ನು ಸ್ಕ್ರೀನ್ ಮಾಡಲಾಗುತ್ತಿದೆ"
+      (mn) "Ирсэн дуудлагыг харуулж байна"
+      (ko) "수신 전화 검사 중"
+      (lo) "ກຳລັງກວດສອບສາຍໂທເຂົ້າ"
+      (ro) "Se filtrează un apel primit"
+      (sq) "Po filtron një telefonatë hyrëse"
+      (ar) "يتم فحص المكالمة الواردة"
+      (fr) "Filtrage d'un appel entrant"
+      (hr) "Filtriranje dolaznog poziva"
+      (mr) "इनकमिंग कॉल स्क्रीन करत आहे"
+      (or) "ଏକ ଇନକମିଂ କଲକୁ ସ୍କ୍ରିନ୍ କରୁଛି"
+      (sr) "Проверава се долазни позив"
+      (b+sr+Latn) "Proverava se dolazni poziv"
+      (tr) "Gelen arama süzülüyor"
+      (ur) "اِن کمنگ کال کی اسکریننگ"
+      (as) "এটা অন্তৰ্গামী কলৰ পৰীক্ষা কৰি থকা হৈছে"
+      (bs) "Filtriranje dolaznog poziva"
+      (cs) "Prověřování příchozího hovoru"
+      (es) "Filtrando una llamada entrante"
+      (is) "Síar símtal sem berst"
+      (ms) "Menyaring panggilan masuk"
+      (et) "Sissetuleva kõne filtreerimine"
+      (it) "Applicazione filtro a chiamata in arrivo"
+      (lt) "Gaunamojo skambučio tikrinimas"
+      (pt) "Filtrando uma ligação recebida"
+      (eu) "Sarrerako dei bat bistaratzen"
+      (gu) "ઇનકમિંગ કૉલનું સ્ક્રીનિંગ થાય છે"
+      (hu) "Bejövő hívás szűrése"
+      (ru) "Фильтрация входящего вызова"
+      (zu) "Ukuveza ikholi engenayo"
+      (lv) "Ienākošā zvana filtrēšana"
+      (sv) "Ett inkommande samtal filtreras"
+      (iw) "סינון שיחה נכנסת"
+      (sw) "Inachuja simu unayopigiwa"
+      (hy) "Մուտքային զանգի զտում"
+      (ky) "Кирүүчү чалууну иргөө"
+      (my) "အဝင်ခေါ်ဆိုမှုကို စစ်ဆေးနေသည်"
+      (az) "Gələn zəng göstərilir"
+      (uz) "Kiruvchi chaqiruvni filtrlash"
+      (en-rCA) "Screening an incoming call"
+      (fr-rCA) "Filtrer un appel entrant"
+      (en-rGB) "Screening an incoming call"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‎‎‏‏‎‏‎‎‎‏‏‏‎‎‏‎‎‏‎‏‎‎‎‏‏‎‎‏‎‎‎‏‏‏‎‎‏‎‏‎‏‏‏‏‏‎‏‏‏‏‎‏‎‏‏‏‎‎‎Screening an incoming call‎‏‎‎‏‎"
+      (zh-rHK) "正在過濾來電"
+      (zh-rCN) "正在过滤来电"
+      (en-rIN) "Screening an incoming call"
+      (pt-rBR) "Filtrando uma ligação recebida"
+      (es-rUS) "Filtrando una llamada entrante"
+      (pt-rPT) "A filtrar uma chamada recebida…"
+      (en-rAU) "Screening an incoming call"
+      (zh-rTW) "正在過濾來電"
+    resource 0x7f0d0024 string/common_google_play_services_enable_button
+      () "Enable"
+      (ca) "Activa"
+      (da) "Aktivér"
+      (fa) "فعال کردن"
+      (ja) "有効にする"
+      (ka) "ჩართვა"
+      (pa) "ਚਾਲੂ ਕਰੋ"
+      (ta) "இயக்கு"
+      (nb) "Aktivér"
+      (be) "Уключыць"
+      (de) "Aktivieren"
+      (ne) "अन गर्नुहोस्"
+      (te) "ప్రారంభించండి"
+      (af) "Aktiveer"
+      (bg) "Активиране"
+      (th) "เปิดใช้"
+      (fi) "Ota käyttöön"
+      (hi) "चालू करें"
+      (si) "සබල කරන්න"
+      (vi) "Bật"
+      (kk) "Қосу"
+      (mk) "Овозможи"
+      (sk) "Povoliť"
+      (uk) "Увімкнути"
+      (el) "Ενεργοποίηση"
+      (gl) "Activar"
+      (ml) "പ്രവർത്തനക്ഷമമാക്കുക"
+      (nl) "Aanzetten"
+      (pl) "Włącz"
+      (sl) "Omogoči"
+      (tl) "I-enable"
+      (am) "አንቃ"
+      (km) "បើក"
+      (bn) "সক্ষম করুন"
+      (in) "Aktifkan"
+      (kn) "ಸಕ್ರಿಯಗೊಳಿಸು"
+      (mn) "Идэвхжүүлэх"
+      (ko) "사용 설정"
+      (lo) "ເປີດນຳໃຊ້"
+      (ro) "Activează"
+      (sq) "Aktivizo"
+      (ar) "تفعيل"
+      (fr) "Activer"
+      (hr) "Omogući"
+      (mr) "सुरू करा"
+      (or) "ସକ୍ଷମ କରନ୍ତୁ"
+      (sr) "Омогући"
+      (b+sr+Latn) "Omogući"
+      (tr) "Etkinleştir"
+      (ur) "فعال کریں"
+      (as) "সক্ষম কৰক"
+      (bs) "Omogući"
+      (cs) "Povolit"
+      (es) "Habilitar"
+      (is) "Kveikja"
+      (ms) "Dayakan"
+      (et) "Luba"
+      (it) "Attiva"
+      (lt) "Įgalinti"
+      (eu) "Gaitu"
+      (gu) "સક્ષમ કરો"
+      (hu) "Engedélyezés"
+      (ru) "Включить"
+      (zu) "Nika amandla"
+      (lv) "Iespējot"
+      (sv) "Aktivera"
+      (iw) "הפעל"
+      (sw) "Washa"
+      (hy) "Միացնել"
+      (ky) "Иштетүү"
+      (my) "ဖွင့်ရန်"
+      (az) "Aktiv edin"
+      (uz) "Yoqish"
+      (fr-rCA) "Activer"
+      (en-rGB) "Enable"
+      (zh-rHK) "啟用"
+      (zh-rCN) "启用"
+      (pt-rBR) "Ativar"
+      (es-rUS) "Habilitar"
+      (pt-rPT) "Ativar"
+      (zh-rTW) "啟用"
+    resource 0x7f0d0025 string/common_google_play_services_enable_text
+      () "%1$s won't work unless you enable Google Play services."
+      (ca) "%1$s no funcionarà si no actives Serveis de Google Play."
+      (da) "Du skal aktivere Google Play-tjenester, for at %1$s kan fungere."
+      (fa) "‏تا وقتی «خدمات Google Play» را فعال نکنید، %1$s کار نمی‌کند."
+      (ja) "%1$sの実行には、Google Play開発者サービスの有効化が必要です。"
+      (ka) "%1$s ვერ იმუშავებს Google Play Services-ის ჩართვამდე."
+      (pa) "%1$s ਕੰਮ ਨਹੀਂ ਕਰੇਗਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਚਾਲੂ ਨਹੀਂ ਕਰਦੇ ਹੋ।"
+      (ta) "Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்."
+      (nb) "%1$s fungerer ikke med mindre du slår på Google Play-tjenester."
+      (be) "%1$s не будзе працаваць, пакуль вы не ўключыце службы Google Play."
+      (de) "%1$s funktioniert erst nach der Aktivierung der Google Play-Dienste."
+      (ne) "%1$s ले तपाईँले Google Play सेवाहरू सक्षम नगरेसम्म काम गर्दैन।"
+      (te) "మీరు Google Play సేవలను ప్రారంభిస్తే మినహా %1$s పని చేయదు."
+      (af) "%1$s sal nie werk nie tensy jy Google Play Dienste aktiveer."
+      (bg) "%1$s няма да работи, освен ако не активирате услугите за Google Play."
+      (th) "%1$s จะไม่ทำงานจนกว่าคุณจะเปิดใช้บริการ Google Play"
+      (fi) "%1$s ei toimi, ellet ota Google Play Palveluita käyttöön."
+      (hi) "जब तक आप Google Play सेवाएं चालू नहीं करते, %1$s काम नहीं करेगा."
+      (si) "ඔබ Google Play සේවා සබල කරන්නේ නම් මිස %1$s වැඩ නොකරනු ඇත."
+      (vi) "%1$s sẽ không hoạt động nếu bạn không bật dịch vụ của Google Play."
+      (kk) "Google Play қызметтерін қоспасаңыз, %1$s жұмыс істемейді."
+      (mk) "%1$s нема да се извршува ако не овозможите услуги на Google Play."
+      (sk) "Aplikácia %1$s bude fungovať až po povolení služieb Google Play."
+      (uk) "Додаток %1$s не працюватиме, якщо не ввімкнути сервіси Google Play."
+      (el) "Η εφαρμογή %1$s δεν θα λειτουργήσει εάν δεν έχετε ενεργοποιήσει τις υπηρεσίες Google Play."
+      (gl) "%1$s non funcionará a menos que actives os servizos de Google Play."
+      (ml) "നിങ്ങൾ Google Play സേവനങ്ങൾ പ്രവർത്തനക്ഷമമാക്കുന്നില്ലെങ്കിൽ %1$s പ്രവർത്തിക്കില്ല."
+      (nl) "%1$s werkt niet, tenzij je Google Play-services aanzet."
+      (pl) "Aplikacja %1$s nie będzie działać, jeśli nie włączysz Usług Google Play."
+      (sl) "Aplikacija %1$s ne bo delovala, če ne omogočite storitev Google Play."
+      (tl) "Hindi gagana ang %1$s maliban kung ie-enable mo ang mga serbisyo ng Google Play."
+      (am) "Google Play አገልግሎቶችን ካላነቁ በስተቀር %1$s አይሰራም።"
+      (km) "%1$s នឹងមិនដំណើរការទេ លុះត្រាតែអ្នកបើកសេវាកម្ម Google Play។"
+      (bn) "আপনি Google Play পরিষেবা সক্ষম না করা পর্যন্ত %1$s কাজ করবে না।"
+      (in) "%1$s tidak akan berfungsi jika layanan Google Play tidak diaktifkan."
+      (kn) "Google Play ಸೇವೆಗಳನ್ನು ನೀವು ಸಕ್ರಿಯಗೊಳಿಸದ ಹೊರತು %1$s ಕಾರ್ಯನಿರ್ವಹಿಸುವುದಿಲ್ಲ."
+      (mn) "%1$s нь Google Play үйлчилгээг идэвхжүүлэх хүртэл ажиллахгүй."
+      (ko) "Google Play 서비스를 사용하도록 설정해야 %1$s이(가) 작동합니다."
+      (lo) "%1$s ຈະບໍ່ສາມາດໃຊ້ງານໄດ້ຈົນກວ່າທ່ານຈະເປີດໃຊ້ງານ​ການ​ບໍ​ລິ​ການ Google Play."
+      (ro) "%1$s nu va funcționa decât dacă activezi serviciile Google Play."
+      (sq) "%1$s nuk do të funksionojë nëse nuk aktivizon shërbimet e "Luaj me Google"."
+      (ar) "‏لن يعمل %1$s ما لم يتم تفعيل خدمات Google Play."
+      (fr) "%1$s ne fonctionnera pas tant que vous n'aurez pas activé les services Google Play."
+      (hr) "%1$s neće funkcionirati ako ne omogućite usluge Google Playa."
+      (mr) "तुम्ही Google Play सेवा सक्षम केल्याशिवाय %1$s हा अ‍ॅप कार्य करणार नाही."
+      (or) "ଆପଣ Google Play ସେବା ସକ୍ଷମ ନ କରିବା ପର୍ଯ୍ୟନ୍ତ %1$s କାମ କରିବ ନାହିଁ।"
+      (sr) "%1$s неће функционисати ако не омогућите Google Play услуге."
+      (b+sr+Latn) "%1$s neće funkcionisati ako ne omogućite Google Play usluge."
+      (tr) "Google Play hizmetlerini etkinleştirmezseniz %1$s çalışmaz."
+      (ur) "‏جب تک آپ Google Play سروسز فعال نہیں کر لیتے، %1$s کام نہیں کرے گی۔"
+      (as) "আপুনি Google Play সেৱাবোৰ সক্ষম নকৰালৈকে %1$sএ কাম নকৰিব।"
+      (bs) "Aplikacija %1$s neće raditi ako ne omogućite Google Play usluge."
+      (cs) "Ke spuštění aplikace %1$s je třeba aktivovat služby Google Play."
+      (es) "%1$s no funcionará hasta que no habilites Servicios de Google Play."
+      (is) "%1$s virkar ekki nema þú gerir þjónustu Google Play virka."
+      (ms) "%1$s tidak akan berfungsi melainkan anda mendayakan perkhidmatan Google Play."
+      (et) "Rakendus %1$s töötab ainult siis, kui lubate Google Play teenused."
+      (it) "%1$s non funzionerà se non attivi Google Play Services."
+      (lt) "„%1$s“ neveiks, jei neįgalinsite „Google Play“ paslaugų."
+      (eu) "%1$s aplikazioak ez du funtzionatuko Google Play Services gaitzen ez baduzu."
+      (gu) "તમે Google Play સેવાઓ સક્ષમ કરશો નહીં ત્યાં સુધી %1$s કાર્ય કરશે નહીં."
+      (hu) "A(z) %1$s alkalmazás csak akkor működik, ha engedélyezi a Google Play-szolgáltatásokat."
+      (ru) "Для работы приложения "%1$s" требуется включить сервисы Google Play."
+      (zu) "I-%1$s ngeke isebenze ngaphandle kokuthi unike amandla amasevisi we-Google Play."
+      (lv) "Lai lietotne %1$s darbotos, ir jāiespējo Google Play pakalpojumi."
+      (sv) "%1$s fungerar inte om du inte aktiverar Google Play-tjänster."
+      (iw) "‏האפליקציה %1$s לא תפעל אם לא תפעיל את שירותי Google Play."
+      (sw) "%1$s haitafanya kazi isipokuwa uwashe huduma za Google Play."
+      (hy) "%1$s հավելվածը չի աշխատի մինչև չմիացնեք Google Play ծառայությունները:"
+      (ky) "Google Play кызматтарын иштетмейиңизче %1$s иштебейт."
+      (my) "Google Play ဝန်ဆောင်မှုများကို မဖွင့်သ၍ %1$s သည်အလုပ်လုပ်မည်မဟုတ်ပါ။"
+      (az) "%1$s Google Play xidmətlərini aktiv edənə kimi işləməyəcək."
+      (uz) "Google Play xizmatlari yoqilmaguncha, %1$s ishlamaydi."
+      (fr-rCA) "%1$s ne fonctionnera pas tant que vous n'aurez pas activé les services Google Play."
+      (en-rGB) "%1$s won't work unless you enable Google Play services."
+      (zh-rHK) "你必須啟用 Google Play 服務，方可執行「%1$s」。"
+      (zh-rCN) "您必须先启用 Google Play 服务，然后才能运行%1$s。"
+      (pt-rBR) "%1$s só funciona com o Google Play Services ativado."
+      (es-rUS) "%1$s no funcionará a menos que habilites los servicios de Google Play."
+      (pt-rPT) "O %1$s não funciona enquanto não ativar os serviços do Google Play."
+      (zh-rTW) "您必須啟用 Google Play 服務，才能執行「%1$s」。"
+    resource 0x7f0d0026 string/common_google_play_services_enable_title
+      () "Enable Google Play services"
+      (ca) "Activa Serveis de Google Play"
+      (da) "Aktivér Google Play-tjenester"
+      (fa) "‏‫فعال کردن «خدمات Google Play»"
+      (ja) "Google Play開発者サービスの有効化"
+      (ka) "Google Play Services-ის ჩართვა"
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ"
+      (ta) "Google Play சேவைகளை இயக்கவும்"
+      (nb) "Slå på Google Play-tjenester"
+      (be) "Уключыць службы Google Play"
+      (de) "Google Play-Dienste aktivieren"
+      (ne) "Google Play सेवाहरू सक्षम पार्नुहोस्"
+      (te) "Google Play సేవలను ప్రారంభించండి"
+      (af) "Aktiveer Google Play Dienste"
+      (bg) "Активиране на услугите за Google Play"
+      (th) "เปิดใช้บริการ Google Play"
+      (fi) "Ota Google Play Palvelut käyttöön"
+      (hi) "Google Play सेवाएं चालू करें"
+      (si) "Google Play සේවා සබල කරන්න"
+      (vi) "Bật dịch vụ của Google Play"
+      (kk) "Google Play қызметтерін қосу"
+      (mk) "Овозможи ги услугите на Google Play"
+      (sk) "Povoliť služby Google Play"
+      (uk) "Увімкнути сервіси Google Play"
+      (el) "Ενεργοποίηση υπηρεσιών Google Play"
+      (gl) "Activar servizos de Google Play"
+      (ml) "Google Play സേവനങ്ങൾ പ്രവർത്തനക്ഷമമാക്കുക"
+      (nl) "Google Play-services aanzetten"
+      (pl) "Włącz Usługi Google Play"
+      (sl) "Omogočanje storitev Google Play"
+      (tl) "I-enable ang mga serbisyo ng Google Play"
+      (am) "Google Play አገልግሎቶችን ያንቁ"
+      (km) "បើកសេវាកម្ម Google Play"
+      (bn) "Google Play পরিষেবা সক্ষম করুন"
+      (in) "Aktifkan layanan Google Play"
+      (kn) "Google Play ಸೇವೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      (mn) "Google Play үйлчилгээг идэвхжүүлэх"
+      (ko) "Google Play 서비스 사용"
+      (lo) "ເປີດໃຊ້ການ​ບໍ​ລິ​ການ Google Play"
+      (ro) "Activează serviciile Google Play"
+      (sq) "Aktivizo shërbimet e "Luaj me Google""
+      (ar) "‏تفعيل خدمات Google Play"
+      (fr) "Activer les services Google Play"
+      (hr) "Omogućivanje usluga Google Playa"
+      (mr) "Google Play सेवा सुरू करा"
+      (or) "Google Play ସେବାଗୁଡ଼ିକ ସକ୍ଷମ କରନ୍ତୁ"
+      (sr) "Омогућите Google Play услуге"
+      (b+sr+Latn) "Omogućite Google Play usluge"
+      (tr) "Google Play hizmetlerini etkinleştirin"
+      (ur) "‏Google Play سروسز فعال کریں"
+      (as) "Google প্লে সেৱাসক্ষম কৰক"
+      (bs) "Omogućite Google Play usluge"
+      (cs) "Aktivace služeb Google Play"
+      (es) "Habilita Servicios de Google Play"
+      (is) "Virkja þjónustu Google Play"
+      (ms) "Dayakan perkhidmatan Google Play"
+      (et) "Google Play teenuste lubamine"
+      (it) "Attiva Google Play Services"
+      (lt) "Įgalinkite „Google Play“ paslaugas"
+      (eu) "Gaitu Google Play Services"
+      (gu) "Google Play સેવાઓ સક્ષમ કરો"
+      (hu) "Google Play-szolgáltatások engedélyezése"
+      (ru) "Включите сервисы Google Play"
+      (zu) "Nika amandla amasevisi we-Google Play"
+      (lv) "Google Play pakalpojumu iespējošana"
+      (sv) "Aktivera Google Play-tjänster"
+      (iw) "‏הפעל את שירותי Google Play"
+      (sw) "Washa huduma za Google Play"
+      (hy) "Միացնել Google Play ծառայությունները"
+      (ky) "Google Play кызматтарын иштетүү"
+      (my) "Google Play ဝန်ဆောင်မှုများ ဖွင့်ရန်"
+      (az) "Google Play xidmətlərini aktiv edin"
+      (uz) "Google Play xizmatlarini yoqish"
+      (fr-rCA) "Activer les services Google Play"
+      (en-rGB) "Enable Google Play services"
+      (zh-rHK) "啟用 Google Play 服務"
+      (zh-rCN) "启用 Google Play 服务"
+      (pt-rBR) "Ativar o Google Play Services"
+      (es-rUS) "Habilitar servicios de Google Play"
+      (pt-rPT) "Ativar serviços do Google Play"
+      (zh-rTW) "啟用 Google Play 服務"
+    resource 0x7f0d0027 string/common_google_play_services_install_button
+      () "Install"
+      (ca) "Instal·la"
+      (da) "Installer"
+      (fa) "نصب"
+      (ja) "インストール"
+      (ka) "ინსტალაცია"
+      (pa) "ਸਥਾਪਤ ਕਰੋ"
+      (ta) "நிறுவு"
+      (nb) "Installer"
+      (be) "Усталяваць"
+      (de) "Installieren"
+      (ne) "स्थापना गर्नुहोस्"
+      (te) "ఇన్‌స్టాల్ చేయి"
+      (af) "Installeer"
+      (bg) "Инсталиране"
+      (th) "ติดตั้ง"
+      (fi) "Asenna"
+      (hi) "इंस्टॉल करें"
+      (si) "ස්ථාපනය කරන්න"
+      (vi) "Cài đặt"
+      (kk) "Орнату"
+      (mk) "Инсталирај"
+      (sk) "Inštalovať"
+      (uk) "Установити"
+      (el) "Εγκατάσταση"
+      (gl) "Instalar"
+      (ml) "ഇന്‍സ്റ്റാള്‍ ചെയ്യുക"
+      (nl) "Installeren"
+      (pl) "Zainstaluj"
+      (sl) "Namesti"
+      (tl) "I-install"
+      (am) "ጫን"
+      (km) "ដំឡើង"
+      (bn) "ইনস্টল করুন"
+      (in) "Instal"
+      (kn) "ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"
+      (mn) "Суулгах"
+      (ko) "설치"
+      (lo) "ຕິດຕັ້ງ"
+      (ro) "Instalează"
+      (sq) "Instalo"
+      (ar) "تثبيت"
+      (fr) "Installer"
+      (hr) "Instaliraj"
+      (mr) "स्‍थापित करा"
+      (or) "ଇନ୍‍ଷ୍ଟଲ୍‍ କରନ୍ତୁ"
+      (sr) "Инсталирај"
+      (b+sr+Latn) "Instaliraj"
+      (tr) "Yükle"
+      (ur) "انسٹال کریں"
+      (as) "ইনষ্টল কৰক"
+      (bs) "Instaliraj"
+      (cs) "Instalovat"
+      (es) "Instalar"
+      (is) "Setja upp"
+      (ms) "Pasang"
+      (et) "Installi"
+      (it) "Installa"
+      (lt) "Įdiegti"
+      (eu) "Instalatu"
+      (gu) "ઇન્સ્ટૉલ કરો"
+      (hu) "Telepítés"
+      (ru) "Установить"
+      (zu) "Faka"
+      (lv) "Instalēt"
+      (sv) "Installera"
+      (iw) "התקן"
+      (sw) "Sakinisha"
+      (hy) "Տեղադրել"
+      (ky) "Орнотуу"
+      (my) "ထည့်သွင်းပါ"
+      (az) "Quraşdırın"
+      (uz) "O‘rnatish"
+      (fr-rCA) "Installer"
+      (en-rGB) "Install"
+      (zh-rHK) "安裝"
+      (zh-rCN) "安装"
+      (pt-rBR) "Instalar"
+      (es-rUS) "Instalar"
+      (pt-rPT) "Instalar"
+      (zh-rTW) "安裝"
+    resource 0x7f0d0028 string/common_google_play_services_install_text
+      () "%1$s won't run without Google Play services, which are missing from your device."
+      (ca) "%1$s no s'executarà si Serveis de Google Play no està instal·lat al dispositiu."
+      (da) "Du skal installere Google Play-tjenester, før %1$s kan køre på din enhed."
+      (fa) "‏%1$s بدون خدمات Google Play که در دستگاه شما وجود ندارد اجرا نمی‌شود."
+      (ja) "「%1$s」の実行には Google Play 開発者サービスが必要ですが、お使いのデバイスにはインストールされていません。"
+      (ka) "%1$s ვერ გაეშვება Google Play Services-ის გარეშე, რომელიც აკლია თქვენს მოწყობილობას."
+      (pa) "%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲੇਗੀ, ਜੋ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਤੋਂ ਗੁੰਮ ਹਨ।"
+      (ta) "Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s இயங்கும். அவை உங்கள் சாதனத்தில் இல்லை."
+      (nb) "%1$s kan ikke kjøre uten Google Play-tjenester, som ikke er installert på enheten din."
+      (be) "%1$s не будзе працаваць без службаў Google Play, якія адсутнічаюць на вашай прыладзе."
+      (de) "Zur Nutzung von %1$s sind die Google Play-Dienste erforderlich, die auf deinem Gerät nicht installiert sind."
+      (ne) "%1$s Google Play services बिना सञ्चालन हुने छैन र तपाईँको यन्त्रमा Google Play services उपलब्ध छैनन्।"
+      (te) "%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఆ సేవలు మీ పరికరంలో లేవు."
+      (af) "%1$s sal nie sonder Google Play Dienste werk nie, wat nie op jou toestel is nie."
+      (bg) "%1$s няма да се изпълнява, тъй като услугите за Google Play не са инсталирани на устройството ви."
+      (th) "%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซี่งไม่มีในอุปกรณ์ของคุณ"
+      (fi) "%1$s ei toimi ilman Google Play Palveluita, jotka puuttuvat laitteeltasi."
+      (hi) "%1$s उन Google Play सेवाओं के बिना नहीं चलेगा जो आपके डिवाइस में उपलब्ध नहीं हैं."
+      (si) "ඔබගේ ටැබ්ලට් පරිගණකයේ නැති Google Play සේවා නොමැතිව %1$s ධාවනය නොවනු ඇත."
+      (vi) "%1$s sẽ không chạy nếu không có dịch vụ của Google Play. Thiết bị của bạn bị thiếu dịch vụ này."
+      (kk) "Google Play қызметтері құрылғыда болмағандықтан, %1$s іске қосылмайды."
+      (mk) "%1$s нема да се извршува без услугите на Google Play што ги нема на уредот."
+      (sk) "Na spustenie aplikácie %1$s sa vyžadujú služby Google Play, ktoré na zariadení nemáte."
+      (uk) "Додаток %1$s не працюватиме без сервісів Google Play, яких немає на вашому пристрої."
+      (el) "Η εφαρμογή %1$s δεν μπορεί να εκτελεστεί χωρίς τις υπηρεσίες Google Play, οι οποίες λείπουν από τη συσκευή σας."
+      (gl) "%1$s non se executará se o teu dispositivo non ten instalados os servizos de Google Play."
+      (ml) "Google Play സേവനങ്ങളില്ലാതെ %1$s പ്രവർത്തിക്കില്ല, ഈ സേവനങ്ങളാകട്ടെ നിങ്ങളുടെ ഉപകരണത്തിൽ ഇല്ല."
+      (nl) "%1$s kan niet worden uitgevoerd zonder Google Play-services, die je nog niet op je apparaat hebt."
+      (pl) "%1$s nie będzie działać, jeśli nie zainstalujesz na urządzeniu Usług Google Play."
+      (sl) "Aplikacija %1$s ne deluje brez storitev Google Play, vendar teh ni v napravi."
+      (tl) "Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play na wala sa iyong device."
+      (am) "%1$s ያለ Google Play አገልግሎቶች አይሰራም፣ እነሱ ደግሞ በመሣሪያዎ ላይ የሉም።"
+      (km) "%1$s នឹងមិនដំណើរការទេ ប្រសិនបើមិនមានសេវាកម្មនានារបស់ Google Play ដែលបានបាត់ពីឧបករណ៍របស់អ្នក។"
+      (bn) "Google Play পরিষেবা ছাড়া %1$s চলবে না, যা আপনার ডিভাইসে অনুপস্থিত।"
+      (in) "%1$s tidak akan berjalan tanpa layanan Google Play, yang tidak ada di perangkat Anda."
+      (kn) "ನಿಮ್ಮ ಸಾಧನದಿಂದ ಕಾಣೆಯಾಗಿರುವ %1$s, Google Play ಸೇವೆಗಳಿಲ್ಲದೆ ರನ್ ಆಗುವುದಿಲ್ಲ."
+      (mn) "Таны төхөөрөмжид Google Play үйлчилгээ байхгүй тул %1$s ажиллахгүй."
+      (ko) "기기에 Google Play 서비스가 설치되어 있어야 %1$s이(가) 실행됩니다."
+      (lo) "%1$s ຈະບໍ່ສາມາດເປີດໃຊ້ໄດ້ຫາກບໍ່ມີການບໍລິການ Google Play ເຊິ່ງແທັບເລັດຂອງທ່ານບໍ່ມີ."
+      (ro) "%1$s nu va rula fără serviciile Google Play, care lipsesc de pe dispozitivul tău."
+      (sq) "%1$s nuk do të funksionojë pa shërbimet e Google Play, të cilat mungojnë në pajisjen tënde."
+      (ar) "‏لن يتم تشغيل %1$s بدون خدمات Google Play، والتي لا تتوفر على جهازك."
+      (fr) "%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas installés sur votre appareil."
+      (hr) "%1$s neće funkcionirati bez usluga Google Playa koje nisu instalirane na vašem uređaju."
+      (mr) "Google Play सेवा आपल्या डिव्हाइसवर उपलब्ध नाही, त्याशिवाय %1$s चालणार नाही."
+      (or) "%1$s ଏହି Google Play ସେବାଗୁଡ଼ିକ ବିନା ଚାଲେ ନାହିଁ, ଏବଂ ସେଗୁଡ଼ିକ ଆପଣଙ୍କ ଡିଭାଇସ୍‌ରେ ନାହିଁ।"
+      (sr) "%1$s не може да се покрене без Google Play услуга, које нису инсталиране на уређају."
+      (b+sr+Latn) "%1$s ne može da se pokrene bez Google Play usluga, koje nisu instalirane na uređaju."
+      (tr) "%1$s, şu anda cihazınızda bulunmayan Google Play hizmetleri olmadan çalışmaz."
+      (ur) "‏%1$s Google Play سروسز کے بغیر نہیں چلے گی، جو آپ کے آلہ سے غائب ہیں۔"
+      (as) "%1$s Google প্লে সেৱাৰ অবিহনে নচলে, যিটো আপোনাৰ ডিভাইচত নাই।"
+      (bs) "Aplikacija %1$s neće raditi bez Google Play usluga, kojih na vašem uređaju nema."
+      (cs) "Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v zařízení nemáte."
+      (es) "%1$s no se ejecutará si los Servicios de Google Play no están instalados en tu dispositivo."
+      (is) "%1$s getur ekki keyrt án þjónustu Google Play, sem vantar í tækið þitt."
+      (ms) "%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini tiada pada peranti anda."
+      (et) "Rakendus %1$s töötab ainult koos Google Play teenustega, mida teie seadmes pole."
+      (it) "L'app %1$s non funzionerà senza Google Play Services, non presente sul tuo dispositivo."
+      (lt) "Programa „%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurių nėra įrenginyje."
+      (eu) "%1$s ez da exekutatuko Google Play Services gabe, baina ez dago halakorik gailuan."
+      (gu) "%1$s, Google Play સેવાઓ વગર ચાલશે નહીં, જે તમારા ઉપકરણમાંથી ખૂટે છે."
+      (hu) "A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyek hiányoznak az eszközről."
+      (ru) "Для работы приложения "%1$s" требуется установить сервисы Google Play."
+      (zu) "I-%1$s ngeke ize iqalise ngaphandle kwamasevisi we-Google Play, angekho kusukela kudivayisi yakho."
+      (lv) "Lai lietotne %1$s darbotos, ierīcē ir jāinstalē Google Play pakalpojumi."
+      (sv) "%1$s kan inte köras utan Google Play-tjänsterna, som saknas på enheten."
+      (iw) "‏האפליקציה %1$s לא תפעל ללא שירותי Google Play, שאינם מותקנים במכשיר."
+      (sw) "%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi hazipatikani kwenye kifaa chako."
+      (hy) "%1$s հավելվածը չի աշխատի առանց Google Play ծառայությունների, որոնք չկան ձեր սարքում:"
+      (ky) "Google Play кызматтарысыз %1$s иштебейт. Алар түзмөгүңүздө жок болуп жатат."
+      (my) "သင့်တက်ဘလက်တွင် Google Play ဝန်ဆောင်မှုများမရှိသောကြောင့် %1$s ကိုဖွင့်၍မရပါ။"
+      (az) "%1$s cihazınızda mövcud olmayan Google Play xidmətləri olmadan çalışmayacaq."
+      (uz) "%1$s ishlashi uchun qurilmangizda Google Play xizmatlarini o‘rnatish lozim."
+      (fr-rCA) "%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas installés sur votre appareil."
+      (en-rGB) "%1$s won't run without Google Play services, which are missing from your device."
+      (zh-rHK) "你的裝置尚未安裝 Google Play 服務，因此無法執行「%1$s」。"
+      (zh-rCN) "您的设备没有安装 Google Play 服务，因此无法运行%1$s。"
+      (pt-rBR) "O app %1$s não funciona sem o Google Play Services, o qual não está instalado no seu dispositivo."
+      (es-rUS) "%1$s no se ejecutará si los Servicios de Google Play no están instalados en tu dispositivo."
+      (pt-rPT) "O %1$s não é executado sem os Serviços do Google Play, os quais estão em falta no seu dispositivo."
+      (zh-rTW) "您的裝置並未安裝 Google Play 服務，因此無法執行「%1$s」。"
+    resource 0x7f0d0029 string/common_google_play_services_install_title
+      () "Get Google Play services"
+      (ca) "Obtén Serveis de Google Play"
+      (da) "Hent Google Play-tjenester"
+      (fa) "‏دریافت «خدمات Google Play»"
+      (ja) "Google Play開発者サービスの入手"
+      (ka) "Google Play Services-ის ჩამოტვირთვა"
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰੋ"
+      (ta) "Google Play சேவைகளைப் பெறவும்"
+      (nb) "Installer Google Play-tjenester"
+      (be) "Атрымаць службы Google Play"
+      (de) "Google Play-Dienste installieren"
+      (ne) "Google Play सेवाहरू प्राप्त गर्नुहोस्"
+      (te) "Google Play సేవలను పొందండి"
+      (af) "Kry Google Play Dienste"
+      (bg) "Изтегляне на услугите за Google Play"
+      (th) "ติดตั้งบริการ Google Play"
+      (fi) "Asenna Google Play Palvelut"
+      (hi) "Google Play सेवाएं इंस्टॉल करें"
+      (si) "Google Play සේවා ලබා ගන්න"
+      (vi) "Cài đặt dịch vụ của Google Play"
+      (kk) "Google Play қызметтерін алу"
+      (mk) "Преземи ги услугите на Google Play"
+      (sk) "Inštalovať služby Google Play"
+      (uk) "Установити сервіси Google Play"
+      (el) "Λήψη υπηρεσιών Google Play"
+      (gl) "Descargar servizos de Google Play"
+      (ml) "Google Play സേവനങ്ങൾ നേടുക"
+      (nl) "Google Play-services ophalen"
+      (pl) "Pobierz Usługi Google Play"
+      (sl) "Namestitev storitev Google Play"
+      (tl) "Kunin ang mga serbisyo ng Google Play"
+      (am) "Google Play አገልግሎቶችን ያግኙ"
+      (km) "ទាញយកសេវាកម្ម Google Play"
+      (bn) "Google Play পরিষেবা পান"
+      (in) "Dapatkan layanan Google Play"
+      (kn) "Google Play ಸೇವೆಗಳನ್ನು ಪಡೆಯಿರಿ"
+      (mn) "Google Play үйлчилгээг авах"
+      (ko) "Google Play 서비스 설치"
+      (lo) "ຕິດຕັ້ງບໍລິການ Google Play"
+      (ro) "Descarcă serviciile Google Play"
+      (sq) "Merr shërbimet e "Luaj me Google""
+      (ar) "‏الحصول على خدمات Google Play"
+      (fr) "Installer les services Google Play"
+      (hr) "Preuzimanje usluga Google Playa"
+      (mr) "Google Play सेवा मिळवा"
+      (or) "Google Play ସେବାଗୁଡ଼ିକ ପ୍ରାପ୍ତ କରନ୍ତୁ"
+      (sr) "Преузмите Google Play услуге"
+      (b+sr+Latn) "Preuzmite Google Play usluge"
+      (tr) "Google Play hizmetlerini edinin"
+      (ur) "‏Google Play سروسز حاصل کریں"
+      (as) "Google প্লে সেৱালাভ কৰক"
+      (bs) "Nabavite Google Play usluge"
+      (cs) "Instalace služeb Google Play"
+      (es) "Descargar Servicios de Google Play"
+      (is) "Sækja þjónustu Google Play"
+      (ms) "Dapatkan perkhidmatan Google Play"
+      (et) "Google Play teenuste hankimine"
+      (it) "Installa Google Play Services"
+      (lt) "Gaukite „Google Play“ paslaugas"
+      (eu) "Lortu Google Play Services"
+      (gu) "Google Play સેવાઓ મેળવો"
+      (hu) "A Google Play-szolgáltatások beszerzése"
+      (ru) "Установите сервисы Google Play"
+      (zu) "Thola amasevisi we-Google Play"
+      (lv) "Google Play pakalpojumu iegūšana"
+      (sv) "Hämta Google Play-tjänster"
+      (iw) "‏קבל את שירותי Google Play"
+      (sw) "Pata huduma za Google Play"
+      (hy) "Տեղադրել Google Play ծառայությունները"
+      (ky) "Google Play кызматтарын алуу"
+      (my) "Google Play ဝန်ဆောင်မှုများရယူရန်"
+      (az) "Google Play xidmətlərini əldə edin"
+      (uz) "Google Play xizmatlarini o‘rnatish"
+      (fr-rCA) "Installer les services Google Play"
+      (en-rGB) "Get Google Play services"
+      (zh-rHK) "安裝 Google Play 服務"
+      (zh-rCN) "获取 Google Play 服务"
+      (pt-rBR) "Instalar o Google Play Services"
+      (es-rUS) "Obtener servicios de Google Play"
+      (pt-rPT) "Obter serviços do Google Play"
+      (zh-rTW) "取得 Google Play 服務"
+    resource 0x7f0d002a string/common_google_play_services_notification_channel_name
+      () "Google Play services availability"
+      (ca) "Disponibilitat de serveis de Google Play"
+      (da) "Google Play-tjenesters tilgængelighed"
+      (fa) "‏دردسترس بودن خدمات Google Play"
+      (ja) "Google Play 開発者サービスの利用"
+      (ka) "Google Play services-ის ხელმისაწვდომობა"
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਦੀ ਉਪਲਬਧਤਾ"
+      (ta) "கிடைக்கும் Google Play சேவைகள்"
+      (nb) "Google Play Tjenester-tilgjengelighet"
+      (be) "Даступнасць сэрвісаў Google Play"
+      (de) "Verfügbarkeit von Google Play-Diensten"
+      (ne) "Google Play सेवाको उपलब्धता"
+      (te) "Google Play సేవల లభ్యత"
+      (af) "Beskikbaarheid van Google Play Dienste"
+      (bg) "Наличност на услугите за Google Play"
+      (th) "ความพร้อมใช้งานของบริการ Google Play"
+      (fi) "Google Play Palveluiden saatavuus"
+      (hi) "Google Play सेवाएं उपलब्ध हैं"
+      (si) "Google Play සේවාවල ලබා ගත හැකි බව"
+      (vi) "Phạm vi cung cấp Dịch vụ Google Play"
+      (kk) "Google Play қызметтерінің қолжетімділігі"
+      (mk) "Достапност на услугите на Google Play"
+      (sk) "Dostupnosť služieb Google Play"
+      (uk) "Доступність сервісів Google Play"
+      (el) "Διαθεσιμότητα υπηρεσιών Google Play"
+      (gl) "Dispoñibilidade dos servizos de Play"
+      (ml) "Google Play സേവന ലഭ്യത"
+      (nl) "Beschikbaarheid van Google Play-services"
+      (pl) "Dostępność Usług Google Play"
+      (sl) "Dostopnost storitev Google Play"
+      (tl) "Availability ng serbisyo ng Google Play"
+      (am) "Google Play አገልግሎቶች ተገኝነት"
+      (km) "លទ្ធភាព​ប្រើប្រាស់សេវាកម្ម Google Play"
+      (bn) "Google Play পরিষেবার উপলভ্যতা"
+      (in) "Ketersediaan layanan Google Play"
+      (kn) "Google Play ಸೇವೆಗಳ ಲಭ್ಯತೆ"
+      (mn) "Google Play-н үйлчилгээнүүдийн боломжит байдал"
+      (ko) "Google Play 서비스 사용 가능 여부"
+      (lo) "ສະຖານະບໍລິການ Google Play"
+      (ro) "Disponibilitatea serviciilor Google Play"
+      (sq) "Disponueshmëria e shërbimeve të Google Play"
+      (ar) "‏مدى توفّر خدمات Google Play"
+      (fr) "Disponibilité des services Google Play"
+      (hr) "Dostupnost usluga za Google Play"
+      (mr) "Google Play सेवा उपलब्धता"
+      (or) "Google Play ସେବାଗୁଡ଼ିକର ଉପଲବ୍ଧତା"
+      (sr) "Доступност Google Play услуга"
+      (b+sr+Latn) "Dostupnost Google Play usluga"
+      (tr) "Google Play hizmetlerinin kullanılabilirliği"
+      (ur) "‏Google Play سروسز کی دستیابی"
+      (as) "Google প্লে সেৱাসমূহৰ উপলব্ধতা"
+      (bs) "Dostupnost Google Play usluga"
+      (cs) "Dostupnost služeb Google Play"
+      (es) "Disponibilidad Servicios de Google Play"
+      (is) "Staða þjónustu Google Play"
+      (ms) "Ketersediaan perkhidmatan Google Play"
+      (et) "Google Play teenuste saadavalolek"
+      (it) "Disponibilità di Google Play Services"
+      (lt) "„Google Play“ paslaugų pasiekiamumas"
+      (eu) "Google Play Services-en erabilgarritasuna"
+      (gu) "Google Play સેવાઓની ઉપલબ્ધતા"
+      (hu) "Google Play-szolgáltatások elérhetősége"
+      (ru) "Доступность сервисов Google Play"
+      (zu) "Ukungatholakali kwamasevisi e-Google Play"
+      (lv) "Google Play pakalpojumu pieejamība"
+      (sv) "Tillgänglighet för Google Plays tjänster"
+      (iw) "‏זמינות של שירותי Google Play"
+      (sw) "Upatikanaji wa huduma za Google Play"
+      (hy) "Google Play ծառայությունների հասանելիություն"
+      (ky) "Google Play кызматтарынын иштеши"
+      (my) "Google Play ဝန်ဆောင်မှုများ ရရှိနိုင်သည်"
+      (az) "Google Play xidmətlərinin əlçatanlığı"
+      (uz) "Google Play xizmatlarining mavjudligi"
+      (fr-rCA) "Disponibilité des services Google Play"
+      (en-rGB) "Google Play services availability"
+      (zh-rHK) "Google Play 服務的適用範圍"
+      (zh-rCN) "Google Play 服务的适用范围"
+      (pt-rBR) "Disponibilidade do Google Play Services"
+      (es-rUS) "Disp. de los Servicios de Google‌‌‌ Play"
+      (pt-rPT) "Disponibilidade Serviços do Google Play"
+      (zh-rTW) "Google Play 服務可用性"
+    resource 0x7f0d002b string/common_google_play_services_notification_ticker
+      () "Google Play services error"
+      (ca) "Error de Serveis de Google Play"
+      (da) "Fejl i Google Play-tjenester"
+      (fa) "‏خطا در خدمات Google Play"
+      (ja) "Google Play開発者サービスのエラー"
+      (ka) "Google Play Services-ის შეცდომა"
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਅਸ਼ੁੱਧੀ"
+      (ta) "Google Play சேவைகள் பிழை"
+      (nb) "Google Play Tjenester-feil"
+      (be) "Памылка службаў Google Play"
+      (de) "Fehler bei Zugriff auf Google Play-Dienste"
+      (ne) "Google Play सेवाहरूका त्रुटि"
+      (te) "Google Play సేవల ఎర్రర్"
+      (af) "Google Play Services-fout"
+      (bg) "Грешка в услугите за Google Play"
+      (th) "ข้อผิดพลาดของบริการ Google Play"
+      (fi) "Virhe Google Play -palveluissa"
+      (hi) "Google Play सेवाओं से जुड़ी गड़बड़ी"
+      (si) "Google Play සේවා දෝෂය"
+      (vi) "Lỗi dịch vụ của Google Play"
+      (kk) "Google Play қызметтерінің қатесі"
+      (mk) "Грешка на услугите на Google Play"
+      (sk) "Chyba služieb Google Play"
+      (uk) "Помилка сервісів Google Play"
+      (el) "Σφάλμα Υπηρεσιών Google Play"
+      (gl) "Erro nos servizos de Google Play"
+      (ml) "Google Play സേവനങ്ങളിലെ പിശക്"
+      (nl) "Fout met Google Play-services"
+      (pl) "Błąd Usług Google Play"
+      (sl) "Napaka storitev Google Play"
+      (tl) "Error sa Mga Serbisyo ng Google Play"
+      (am) "የGoogle Play አገልግሎቶች ስህተት"
+      (km) "កំហុស​​សេវាកម្ម​ Google កម្សាន្ត"
+      (bn) "Google Play পরিষেবার ত্রুটি"
+      (in) "Kesalahan layanan Google Play"
+      (kn) "Google Play ಸೇವೆಗಳ ದೋಷ"
+      (mn) "Google Наадаан үйлчилгээний алдаа"
+      (ko) "Google Play 서비스 오류"
+      (lo) "Google Play Services ​ເກີດ​ຄວາມ​ຜິດ​ພາດ"
+      (ro) "Eroare a serviciilor Google Play"
+      (sq) "Gabim në shërbimet e "Luaj me Google""
+      (ar) "‏خطأ في خدمات Google Play"
+      (fr) "Erreur liée aux services Google Play"
+      (hr) "Pogreška Usluga za Google Play"
+      (mr) "Google Play सेवा एरर"
+      (or) "Google Play ସେବା ସମ୍ପର୍କିତ ସମସ୍ୟା"
+      (sr) "Грешка Google Play услуга"
+      (b+sr+Latn) "Greška Google Play usluga"
+      (tr) "Google Play Hizmetleri hatası"
+      (ur) "‏Google Play سروسز کی خرابی"
+      (as) "Google Playৰ সেৱা সম্পৰ্কীয় আসোঁৱাহ"
+      (bs) "Greška Google Play usluge"
+      (cs) "Chyba služeb Google Play"
+      (es) "Error de Servicios de Google Play"
+      (is) "Villa í þjónustu Google Play"
+      (ms) "Ralat perkhidmatan Google Play"
+      (et) "Viga Google Play teenustes"
+      (it) "Errore Google Play Services"
+      (lt) "„Google Play“ paslaugų klaida"
+      (eu) "Google Play Services-en errorea"
+      (gu) "Google Play સેવાઓની ભૂલ"
+      (hu) "Google Play-szolgáltatások – hiba"
+      (ru) "Ошибка сервисов Google Play"
+      (zu) "Iphutha lamasevisi we-Google Play"
+      (lv) "Google Play pakalpojumu kļūda"
+      (sv) "Fel på Google Play-tjänster"
+      (iw) "‏שגיאה בשירותי Google Play"
+      (sw) "Hitilafu kwenye huduma za Google Play"
+      (hy) "Google Play ծառայությունների սխալ կա"
+      (ky) "Google Play кызматтарынын катасы"
+      (my) "Google Play ဝန်ဆောင်မှုများ အမှား"
+      (az) "Google Play xidmətləri xətası"
+      (uz) "Google Play xizmatlari xatosi"
+      (fr-rCA) "Erreur liée aux services Google Play"
+      (en-rGB) "Google Play services error"
+      (zh-rHK) "Google Play 服務錯誤"
+      (zh-rCN) "Google Play服务出错"
+      (pt-rBR) "Erro do Google Play Services"
+      (es-rUS) "Error de Google Play Services"
+      (pt-rPT) "Erro dos Serviços do Google Play"
+      (zh-rTW) "Google Play 服務發生錯誤"
+    resource 0x7f0d002c string/common_google_play_services_unknown_issue
+      () "%1$s is having trouble with Google Play services. Please try again."
+      (ca) "%1$s té problemes amb Serveis de Google Play. Torna-ho a provar."
+      (da) "%1$s har problemer med Google Play-tjenester. Prøv igen."
+      (fa) "‏%1$s برای استفاده از خدمات Google Play با مشکل روبرو است. لطفاً دوباره امتحان کنید."
+      (ja) "「%1$s」で Google Play 開発者サービスに問題が発生しています。もう一度お試しください。"
+      (ka) "%1$s-ს Google Play Services-თან პრობლემა შეექმნა. გთხოვთ, ცადოთ ხელახლა."
+      (pa) "%1$s ਨੂੰ Google Play ਸੇਵਾਵਾਂ ਨਾਲ ਸਮੱਸਿਆ ਆ ਰਹੀ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+      (ta) "Google Play சேவைகளில் சிக்கல் ஏற்பட்டதால், %1$s ஆப்ஸை அணுக முடியவில்லை. மீண்டும் முயலவும்."
+      (nb) "%1$s har problemer med Google Play-tjenester. Prøv på nytt."
+      (be) "У праграмы %1$s узніклі праблемы са службамі Google Play. Паўтарыце спробу."
+      (de) "%1$s hat Probleme mit Google Play-Diensten. Bitte versuche es noch einmal."
+      (ne) "%1$s लाई Google Play services सँग सहकार्य गर्न समस्या भइरहेको छ। कृपया फेरि प्रयास गर्नुहोस्।"
+      (te) "%1$s Google Play సేవలతో సమస్య కలిగి ఉంది. దయచేసి మళ్లీ ట్రై చేయండి."
+      (af) "%1$s ondervind probleme met Google Play Dienste. Probeer asseblief weer."
+      (bg) "%1$s има проблеми с услугите за Google Play. Моля, опитайте отново."
+      (th) "%1$s มีปัญหาเกี่ยวกับบริการของ Google Play โปรดลองอีกครั้ง"
+      (fi) "Sovelluksella %1$s on ongelmia Google Play Palveluiden kanssa. Yritä uudelleen."
+      (hi) "%1$s को Google Play सेवाओं के साथ समस्या आ रही है. कृपया फिर से कोशिश करें."
+      (si) "%1$s හට Google Play සේවා සමගින් ගැටලු ඇත. කරුණාකර නැවත උත්සාහ කරන්න."
+      (vi) "%1$s đang gặp sự cố với Dịch vụ Google Play. Hãy thử lại."
+      (kk) "%1$s қолданбасында Google Play қызметіне байланысты белгісіз қате шықты. Әрекетті қайталаңыз."
+      (mk) "%1$s има проблеми со услугите на Google Play. Обидете се повторно."
+      (sk) "Aplikácia %1$s má problémy so službami Google Play. Skúste to znova."
+      (uk) "У додатку %1$s виникла проблема із сервісами Google Play. Повторіть спробу."
+      (el) "Η εφαρμογή %1$s αντιμετωπίζει κάποιο πρόβλημα με τις υπηρεσίες Google Play. Προσπαθήστε ξανά."
+      (gl) "%1$s ten problemas cos servizos de Google Play. Téntao de novo."
+      (ml) "Google Play സേവനങ്ങളുമായി ബന്ധപ്പെട്ട് %1$s ആപ്പിനെന്തോ പ്രശ്നമുണ്ട്. വീണ്ടും ശ്രമിക്കുക."
+      (nl) "%1$s ondervindt problemen met Google Play-services. Probeer het opnieuw."
+      (pl) "%1$s ma problem z dostępem do Usług Google Play. Spróbuj jeszcze raz."
+      (sl) "Aplikacija %1$s ima težave s storitvami Google Play. Poskusite znova."
+      (tl) "Nagkakaproblema ang %1$s sa mga serbisyo ng Google Play. Pakisubukan ulit."
+      (am) "%1$s በGoogle Play አገልግሎቶች ላይ ችግሮች እያጋጠሙት ነው። እባክዎ እንደገና ይሞክሩ።"
+      (km) "%1$s កំពុងមានបញ្ហាជាមួយសេវាកម្មរបស់ Google Play ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។"
+      (bn) "Google Play পরিষেবাগুলির সাথে %1$s এর সমস্যা হচ্ছে৷ অনুগ্রহ করে আবার চেষ্টা করুন৷"
+      (in) "%1$s mengalami masalah dengan layanan Google Play. Coba lagi."
+      (kn) "Google Play ಸೇವೆಗಳಲ್ಲಿ %1$s ಸಮಸ್ಯೆಯನ್ನು ಹೊಂದಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+      (mn) "%1$s-г Google Play-н үйлчилгээгээр ашиглахад асуудал гарлаа. Дахин оролдоно уу."
+      (ko) "%1$s에서 Google Play 서비스를 사용하는 데 문제가 있습니다. 다시 시도하세요."
+      (lo) "%1$s ກຳລັງມີບັນຫາກັບບໍລິການ Google Play. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
+      (ro) "%1$s întâmpină probleme privind serviciile Google Play. Încearcă din nou."
+      (sq) "%1$s ka probleme me shërbimet e Google Play. Provo sërish."
+      (ar) "‏لدى %1$s مشكلة في خدمات Google Play. يُرجى إعادة المحاولة."
+      (fr) "L'application %1$s rencontre des problèmes avec les services Google Play. Veuillez réessayer."
+      (hr) "%1$s ima poteškoća s uslugama Google Playa. Pokušajte ponovo."
+      (mr) "%1$s ला Google Play सेवांमध्ये समस्या येत आहे. कृपया पुन्हा प्रयत्न करा."
+      (or) "%1$sର Google Play ସେବା ସହ ଏକ ସମସ୍ୟା ରହିଛି। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
+      (sr) "%1$s има проблема са Google Play услугама. Пробајте поново."
+      (b+sr+Latn) "%1$s ima problema sa Google Play uslugama. Probajte ponovo."
+      (tr) "%1$s, Google Play hizmetleriyle ilgili sorun yaşıyor. Lütfen tekrar deneyin."
+      (ur) "‏%1$s کو Google Play سروسز کے ساتھ مسئلہ پیش آ رہا ہے۔ براہ کرم دوبارہ کوشش کریں۔"
+      (as) "Google প্লে সেৱাত %1$s ত সমস্যা হৈ আছে। আকৌ চেষ্টা কৰক।"
+      (bs) "Aplikacija %1$s ima problema s Google Play uslugama. Pokušajte ponovo."
+      (cs) "Aplikace %1$s má potíže se službami Google Play. Zkuste to prosím znovu."
+      (es) "La aplicación %1$s tiene problemas con los Servicios de Google Play. Vuelve a intentarlo."
+      (is) "%1$s á í vandræðum með þjónustu Google Play. Reyndu aftur."
+      (ms) "%1$s menghadapi masalah berhubung perkhidmatan Google Play. Sila cuba lagi."
+      (et) "Rakendusel %1$s on probleeme Google Play teenustega. Proovige uuesti."
+      (it) "%1$s sta riscontrando problemi con Google Play Services. Riprova."
+      (lt) "Naudojant programą „%1$s“ kilo problemų dėl „Google Play“ paslaugų. Bandykite dar kartą."
+      (eu) "%1$s aplikazioak arazoak ditu Google Play Services-ekin. Saiatu berriro."
+      (gu) "%1$s ને Google Play સેવાઓમાં મુશ્કેલી આવી રહી છે. કૃપા કરીને ફરી પ્રયાસ કરો."
+      (hu) "A(z) %1$s alkalmazás problémába ütközött a Google Play-szolgáltatások használata során. Próbálkozzon újra."
+      (ru) "Приложению "%1$s" не удается подключиться к сервисам Google Play. Повторите попытку."
+      (zu) "%1$s inenkinga ngamasevisi e-Google Play. Sicela uzame futhi."
+      (lv) "Lietotnē %1$s ir radusies problēma ar Google Play pakalpojumu darbību. Lūdzu, mēģiniet vēlreiz."
+      (sv) "Det har uppstått ett fel mellan %1$s och Google Play-tjänsterna. Försök igen."
+      (iw) "‏%1$s נתקלה בבעיה בשירותי Google Play. נסה שוב."
+      (sw) "%1$s inakumbwa na hitilafu ya huduma za Google Play. Tafadhali jaribu tena."
+      (hy) "%1$s հավելվածը Google Play ծառայությունների հետ կապված խնդիր ունի: Փորձեք նորից:"
+      (ky) "%1$s колдонмосунун Google Play кызматтары менен иштөөдө көйгөй чыкты. Кайталап көрүңүз."
+      (my) "%1$s သည် Google Play ဝန်ဆောင်မှုများနှင့် ပြဿနာအနည်းငယ် ရှိနေပါသည်။ ထပ်လုပ်ကြည့်ပါ။"
+      (az) "%1$s tətbiqi ilə Google Play xidmətləri arasında problem var. Daha sonra yenidən cəhd edin."
+      (uz) "%1$s ilovasini Google Play xizmatlariga ulab bo‘lmadi. Qaytadan urinib ko‘ring."
+      (fr-rCA) "L'application %1$s éprouve un problème avec les services Google Play. Veuillez réessayer."
+      (en-rGB) "%1$s is having trouble with Google Play services. Please try again."
+      (zh-rHK) "「%1$s」存取 Google Play 服務時發生問題。請稍後再試一次。"
+      (zh-rCN) "%1$s无法访问 Google Play 服务，请重试。"
+      (pt-rBR) "O app %1$s está com problemas com o Google Play Services. Tente novamente."
+      (es-rUS) "%1$s tiene problemas con los servicios de Google Play. Vuelve a intentarlo."
+      (pt-rPT) "%1$s está a ter problemas com os Serviços do Google Play. Tente novamente."
+      (zh-rTW) "「%1$s」無法存取 Google Play 服務，請再試一次。"
+    resource 0x7f0d002d string/common_google_play_services_unsupported_text
+      () "%1$s won't run without Google Play services, which are not supported by your device."
+      (ca) "%1$s no es pot executar sense Serveis de Google Play, que no és compatible amb el teu dispositiu."
+      (da) "%1$s fungerer ikke uden Google Play-tjenester, som ikke understøttes på din enhed."
+      (fa) "‏%1$s بدون خدمات Google Play که در دستگاه شما پشتیبانی نمی‌شود، اجرا نخواهد شد."
+      (ja) "「%1$s」の実行には Google Play 開発者サービスが必要ですが、お使いのデバイスではサポートされていません。"
+      (ka) "%1$s ვერ გაეშვება Google Play Services-ის გარეშე, რომლებიც მხარდაუჭერელია თქვენი მოწყობილობის მიერ."
+      (pa) "%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲ ਸਕੇਗੀ, ਜੋ ਤੁਹਾਡੇ ਡੀਵਾਈਸ 'ਤੇ ਸਮਰਥਿਤ ਨਹੀਂ ਹਨ।"
+      (ta) "Google Play சேவைகள் இருந்தால் மட்டுமே %1$s ஆப்ஸ் இயங்கும். ஆனால், உங்கள் சாதனத்தில் அவை ஆதரிக்கப்படவில்லை."
+      (nb) "%1$s kan ikke kjøre uten Google Play-tjenester, som ikke støttes av enheten din."
+      (be) "%1$s не будзе працаваць без службаў Google Play, якія не падтрымліваюцца вашай прыладай."
+      (de) "Zur Nutzung von %1$s sind Google Play-Dienste erforderlich, die auf deinem Gerät nicht unterstützt werden."
+      (ne) "%1$s Google Play services बिना सञ्चालन हुने छैन र तपाईँको यन्त्रले Google Play services लाई समर्थन गर्दैन।"
+      (te) "%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఈ సేవలకు మీ పరికరంలో మద్దతు లేదు."
+      (af) "%1$s sal nie werk sonder Google Play Dienste nie, wat nie deur jou toestel gesteun word nie."
+      (bg) "%1$s няма да се изпълнява, тъй като услугите за Google Play не се поддържат от устройството ви."
+      (th) "%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งอุปกรณ์ของคุณไม่สนับสนุน"
+      (fi) "%1$s ei toimi ilman Google Play Palveluita, joita laitteesi ei tue."
+      (hi) "%1$s उन Google Play सेवाओं के बिना नहीं चलेगा, जो आपके डिवाइस पर काम नहीं करती हैं."
+      (si) "ඔබගේ උපාංගය මගින් සහාය නොදක්වන, Google Play සේවා නොමැතිව %1$s ධාවනය නොවනු ඇත."
+      (vi) "%1$s sẽ không chạy nếu không có Dịch vụ Google Play. Thiết bị của bạn không hỗ trợ các dịch vụ này."
+      (kk) "%1$s қолданбасы құрылғыңызда қолдау көрсетілмейтін Google Play қызметінсіз жұмыс істемейді."
+      (mk) "%1$s нема да се извршува без услугите на Google Play, што не се подржани од уредов."
+      (sk) "Aplikáciu %1$s nebude možné spustiť bez služieb Google Play, ktoré vaše zariadenie nepodporuje."
+      (uk) "Додаток %1$s не працюватиме без сервісів Google Play, які не підтримуються на вашому пристрої."
+      (el) "Η εφαρμογή %1$s δεν θα εκτελεστεί χωρίς τις υπηρεσίες Google Play, οι οποίες δεν υποστηρίζονται από τη συσκευή σας."
+      (gl) "%1$s non se executará sen os servizos de Google Play, que non son compatibles co teu dispositivo."
+      (ml) "Google Play സേവനങ്ങളില്ലാതെ %1$s പ്രവർത്തിക്കില്ല, സേവനങ്ങളെയാകട്ടെ നിങ്ങളുടെ ഉപകരണം പിന്തുണയ്ക്കുന്നുമില്ല."
+      (nl) "%1$s kan niet worden uitgevoerd zonder Google Play-services, die niet worden ondersteund op je apparaat."
+      (pl) "%1$s nie będzie działać bez Usług Google Play, które nie są obecnie obsługiwane przez urządzenie."
+      (sl) "Aplikacija %1$s ne deluje brez storitev Google Play, ki jih vaša naprava ne podpira."
+      (tl) "Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play, na hindi nasusuportahan ng iyong device."
+      (am) "%1$s ያለGoogle Play አገልግሎቶች አይሄድም፣ እነዚህም በመሣሪያዎ አይደገፉም።"
+      (km) "%1$s នឹងមិនដំណើរការដោយគ្មានសេវាកម្មរបស់ Google Play ដែលឧបករណ៍របស់អ្នកមិនគាំទ្រនោះទេ។"
+      (bn) "Google Play পরিষেবা ছাড়া %1$s চলবে না, যেটি আপনার ডিভাইসে সমর্থিত নয়৷"
+      (in) "%1$s tidak akan berjalan tanpa layanan Google Play, yang tidak didukung oleh perangkat Anda."
+      (kn) "ನಿಮ್ಮ ಸಾಧನದ ಮೂಲಕ ಬೆಂಬಲಿಸದಿರುವ Google Play ಸೇವೆಗಳಿಲ್ಲದೆ %1$s ರನ್‌ ಆಗುವುದಿಲ್ಲ."
+      (mn) "Таны төхөөрөмж Google Play үйлчилгээг дэмждэггүй учир %1$s ажиллахгүй."
+      (ko) "%1$s은(는) Google Play 서비스 없이는 실행되지 않으나, 기기에서 Google Play 서비스를 지원하지 않습니다."
+      (lo) "%1$s ຈະບໍ່ສາມາດໃຊ້ໄດ້ຫາກບໍ່ມີບໍລິການ Google Play ເຊິ່ງອຸປະກອນຂອງທ່ານບໍ່ຮອງຮັບ."
+      (ro) "%1$s nu va rula fără serviciile Google Play, care nu sunt acceptate de dispozitivul tău."
+      (sq) "%1$s nuk do të funksionojë pa shërbimet e Google Play, të cilat nuk mbështeten nga pajisja jote."
+      (ar) "‏لن يتم تشغيل %1$s بدون خدمات Google Play التي لا يوفرها جهازك."
+      (fr) "%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas compatibles avec votre appareil."
+      (hr) "%1$s neće funkcionirati bez usluga Google Playa koje vaš uređaj ne podržava."
+      (mr) "तुमचे डिव्हाइस सपोर्ट करत नसलेल्या, Google Play सेवांशिवाय %1$s चालणार नाही."
+      (or) "%1$s ଏହି Google Play ସେବାଗୁଡ଼ିକ ବିନା ଚାଲେ ନାହିଁ, ଏବଂ ସେଗୁଡ଼ିକ ଆପଣଙ୍କ ଡିଭାଇସ୍‌ରେ କାମ କରେ ନାହିଁ।"
+      (sr) "%1$s не може да се покрене без Google Play услуга, које уређај не подржава."
+      (b+sr+Latn) "%1$s ne može da se pokrene bez Google Play usluga, koje uređaj ne podržava."
+      (tr) "%1$s, Google Play hizmetleri olmadan çalışmaz ve bu hizmetler cihazınız tarafından desteklenmiyor."
+      (ur) "‏%1$s Google Play سروسز کے بغیر نہیں چلے گی، جن کی آپ کا آلہ معاونت نہیں کرتا۔"
+      (as) "%1$s Google প্লে সেৱাৰ অবিহনে নচলে, যিবোৰ আপোনাৰ ডিভাইচত চলিব নোৱাৰে।"
+      (bs) "Aplikacija %1$s neće raditi bez Google Play usluga, koje vaš uređaj ne podržava."
+      (cs) "Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v tomto zařízení nejsou podporovány."
+      (es) "No es posible ejecutar la aplicación %1$s sin los Servicios de Google Play, que no son compatibles con tu dispositivo."
+      (is) "%1$s getur ekki keyrt án þjónustu Google Play, sem er ekki studd af tækinu þínu."
+      (ms) "%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini tidak disokong oleh peranti anda."
+      (et) "Rakendus %1$s töötab ainult koos Google Play teenustega, mida teie seadmes ei toetata."
+      (it) "%1$s non funzionerà senza Google Play Services, non supportati dal tuo dispositivo."
+      (lt) "Programa „%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurių jūsų įrenginys nepalaiko."
+      (eu) "%1$s aplikazioa ezin da erabili Google Play Services gabe, baina zure gailua ez da harekin bateragarria."
+      (gu) "%1$s, Google Play સેવાઓ વગર ચાલશે નહીં, જે તમારા ઉપકરણ દ્વારા સમર્થિત નથી."
+      (hu) "A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyeket eszköze nem támogat."
+      (ru) "Для работы с приложением "%1$s" требуются сервисы Google Play. Они не поддерживаются на вашем устройстве."
+      (zu) "%1$s ngeke isebenze ngaphandle kwamasevisi e-Google Play, angasekelwa idivayisi yakho."
+      (lv) "Lai lietotne %1$s darbotos, ir nepieciešami Google Play pakalpojumi, taču jūsu ierīce tos neatbalsta."
+      (sv) "%1$s fungerar inte utan Google Play-tjänsterna, som inte stöds på enheten."
+      (iw) "‏%1$s לא תפעל ללא שירותי Google Play, שאינם נתמכים במכשיר שלך."
+      (sw) "%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi hazitumiki kwenye kifaa chako."
+      (hy) "%1$s հավելվածը չի աշխատի առանց Google Play ծառայությունների, որոնք ձեր սարքում չեն աջակցվում:"
+      (ky) "%1$s колдонмосу сиздин түзмөгүңүздө колдоого алынбаган Google Play кызматтары болбосо иштебейт."
+      (my) "Google Play ဝန်ဆောင်မှုများကို သင့်စက်ပစ္စည်းတွင် ပံ့ပိုးမထားသည့်အတွက် ၎င်းမရှိဘဲ %1$s ကို ဖွင့်၍မရပါ။"
+      (az) "Cihazınız tərəfindən dəstəklənməyən Google Play xidmətləri olmadan %1$s tətbiqi işləməyəcək."
+      (uz) "%1$s ilovasi Google Play xizmatlarisiz ishlamaydi, biroq qurilmangiz ularni qo‘llab-quvvatlamaydi."
+      (fr-rCA) "L'application %1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas pris en charge par votre appareil."
+      (en-rGB) "%1$s won't run without Google Play services, which are not supported by your device."
+      (zh-rHK) "你的裝置不支援 Google Play 服務，因此無法執行「%1$s」。"
+      (zh-rCN) "您的设备不支持 Google Play 服务，因此无法运行%1$s。"
+      (pt-rBR) "O app %1$s não funciona sem o Google Play Services, o qual não é compatível com seu dispositivo."
+      (es-rUS) "%1$s no se ejecutará sin los servicios de Google Play, que no son compatibles con tu dispositivo."
+      (pt-rPT) "Não é possível executar o %1$s sem os Serviços do Google Play, os quais não são compatíveis com o seu dispositivo."
+      (zh-rTW) "您的裝置不支援 Google Play 服務，因此無法執行「%1$s」。"
+    resource 0x7f0d002e string/common_google_play_services_update_button
+      () "Update"
+      (ca) "Actualitza"
+      (da) "Opdater"
+      (fa) "به‌روزرسانی"
+      (ja) "更新"
+      (ka) "განახლება"
+      (pa) "ਅੱਪਡੇਟ ਕਰੋ"
+      (ta) "புதுப்பி"
+      (nb) "Oppdater"
+      (be) "Абнавіць"
+      (de) "Aktualisieren"
+      (ne) "अपडेट गर्नुहोस्"
+      (te) "అప్‌డేట్ చేయి"
+      (af) "Dateer op"
+      (bg) "Актуализиране"
+      (th) "อัปเดต"
+      (fi) "Päivitä"
+      (hi) "अपडेट करें"
+      (si) "යාවත්කාලීන කරන්න"
+      (vi) "Cập nhật"
+      (kk) "Жаңарту"
+      (mk) "Ажурирај"
+      (sk) "Aktualizovať"
+      (uk) "Оновити"
+      (el) "Ενημέρωση"
+      (gl) "Actualizar"
+      (ml) "അപ്‌ഡേറ്റുചെയ്യുക"
+      (nl) "Updaten"
+      (pl) "Aktualizuj"
+      (sl) "Posodobi"
+      (tl) "I-update"
+      (am) "ያዘምኑ"
+      (km) "ធ្វើបច្ចុប្បន្នភាព"
+      (bn) "আপডেট করুন"
+      (in) "Update"
+      (kn) "ಅಪ್‌ಡೇಟ್‌ ಮಾಡಿ"
+      (mn) "Шинэчлэх"
+      (ko) "업데이트"
+      (lo) "ອັບເດດ"
+      (ro) "Actualizează"
+      (sq) "Përditëso"
+      (ar) "تحديث"
+      (fr) "Mettre à jour"
+      (hr) "Ažuriraj"
+      (mr) "अपडेट करा"
+      (or) "ଅପଡେଟ୍‍ କରନ୍ତୁ"
+      (sr) "Ажурирај"
+      (b+sr+Latn) "Ažuriraj"
+      (tr) "Güncelle"
+      (ur) "اپ ڈیٹ کریں"
+      (as) "আপডে’ট কৰক"
+      (bs) "Ažuriraj"
+      (cs) "Aktualizovat"
+      (es) "Actualizar"
+      (is) "Uppfæra"
+      (ms) "Kemas kini"
+      (et) "Värskenda"
+      (it) "Aggiorna"
+      (lt) "Atnaujinti"
+      (eu) "Eguneratu"
+      (gu) "અપડેટ કરો"
+      (hu) "Frissítés"
+      (ru) "Обновить"
+      (zu) "Isibuyekezo"
+      (lv) "Atjaunināt"
+      (sv) "Uppdatera"
+      (iw) "עדכון"
+      (sw) "Sasisha"
+      (hy) "Թարմացնել"
+      (ky) "Жаңыртуу"
+      (my) "အပ်ဒိတ်"
+      (az) "Güncəlləyin"
+      (uz) "Yangilash"
+      (fr-rCA) "Mettre à jour"
+      (en-rGB) "Update"
+      (zh-rHK) "更新"
+      (zh-rCN) "更新"
+      (pt-rBR) "Atualizar"
+      (es-rUS) "Actualizar"
+      (pt-rPT) "Atualizar"
+      (zh-rTW) "更新"
+    resource 0x7f0d002f string/common_google_play_services_update_text
+      () "%1$s won't run unless you update Google Play services."
+      (ca) "%1$s no s'executarà si no actualitzes Serveis de Google Play."
+      (da) "%1$s kan ikke køre, medmindre du opdaterer Google Play-tjenester."
+      (fa) "‏تاز مانی که «خدمات Google Play» را به‌روزرسانی نکنید، %1$s اجرا نمی‌شود."
+      (ja) "%1$sの実行にはGoogle Play開発者サービスの更新が必要です。"
+      (ka) "%1$s ვერ გაეშვება, თუ Google Play სერვისებს არ განაახლებთ."
+      (pa) "%1$s ਨਹੀਂ ਚੱਲੇਗਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਅੱਪਡੇਟ ਨਹੀਂ ਕਰਦੇ ਹੋ।"
+      (ta) "Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்."
+      (nb) "%1$s kjører ikke med mindre du oppdaterer Google Play Tjenester."
+      (be) "%1$s не будзе працаваць, пакуль вы не абновіце службы Google Play."
+      (de) "%1$s wird nur ausgeführt, wenn du die Google Play-Dienste aktualisierst."
+      (ne) "%1$s तपाईंले Google प्ले सेवाहरू अद्यावधिक नगरेसम्म सञ्चालन हुँदैन।"
+      (te) "మీరు Google Play సేవలను నవీకరిస్తే మినహా %1$s అమలు కాదు."
+      (af) "%1$s sal nie werk nie tensy jy Google Play Dienste opdateer."
+      (bg) "%1$s няма да се изпълнява, освен ако не актуализирате услугите за Google Play."
+      (th) "%1$s จะไม่ทำงานจนกว่าคุณจะอัปเดตบริการ Google Play"
+      (fi) "%1$s ei toimi, ellet päivitä Google Play Palveluita."
+      (hi) "%1$s तब तक नहीं चलेगा जब तक आप Google Play सेवाओं को अपडेट नहीं करते."
+      (si) "Google Play සේවා යාවත්කාලීන කරන්නේ නොමැතිව %1$s ධාවනය නොවේ."
+      (vi) "%1$s sẽ không chạy trừ khi bạn cập nhật Dịch vụ Google Play."
+      (kk) "Google Play қызметтерін жаңартпасаңыз, %1$s іске қосылмайды."
+      (mk) "%1$s нема да се извршува ако не ги ажурирате услугите на Google Play."
+      (sk) "Aplikáciu %1$s bude možné spustiť až po aktualizácii služieb Google Play."
+      (uk) "Додаток %1$s не працюватиме, якщо не оновити сервіси Google Play."
+      (el) "Η εφαρμογή %1$s θα εκτελεστεί αφού ενημερώσετε τις Υπηρεσίες Google Play."
+      (gl) "%1$s non se executará a menos que actualices os servizos de Google Play."
+      (ml) "നിങ്ങൾ Google Play സേവനങ്ങൾ അപ്‌ഡേറ്റുചെയ്‌തില്ലെങ്കിൽ %1$s പ്രവർത്തിക്കില്ല."
+      (nl) "%1$s kan niet worden uitgevoerd, tenzij je Google Play-services updatet."
+      (pl) "Aplikacja %1$s nie będzie działać, jeśli nie zaktualizujesz Usług Google Play."
+      (sl) "Aplikacija %1$s ne bo delovala, če ne posodobite storitev Google Play."
+      (tl) "Hindi gagana ang %1$s maliban kung i-a-update mo ang mga serbisyo ng Google Play."
+      (am) "Google Play አገልግሎቶችን ካላዘመኑ በስተቀር ድረስ %1$s አይሰራም።"
+      (km) "%1$s នឹងមិនដំណើរការទេ លុះត្រាតែអ្នកធ្វើបច្ចុប្បន្នភាពសេវាកម្ម Google Play។"
+      (bn) "আপনি Google Play পরিষেবা আপডেট না করা পর্যন্ত %1$s চলবে না।"
+      (in) "%1$s tidak akan berjalan jika layanan Google Play tidak diperbarui."
+      (kn) "ನೀವು Google Play ಸೇವೆಗಳನ್ನು ಅಪ್‍ಡೇಟ್ ಮಾಡದ ಹೊರತು %1$s ರನ್ ಆಗುವುದಿಲ್ಲ."
+      (mn) "%1$s нь таныг Google Play үйлчилгээнүүдийг шинэчлэхээс нааш ажиллахгүй."
+      (ko) "Google Play 서비스를 업데이트해야 %1$s이(가) 실행됩니다."
+      (lo) "%1$s ຈະບໍ່ສາມາດເຮັດວຽກໄດ້ຈົນກວ່າທ່ານຈະອັບເດດການ​ບໍ​ລິ​ການ Google Play"
+      (ro) "%1$s nu va rula decât dacă actualizezi serviciile Google Play."
+      (sq) "%1$s nuk do të funksionojë nëse nuk përditëson shërbimet e "Luaj me Google"."
+      (ar) "‏لن يتم تشغيل %1$s ما لم يتم تحديث خدمات Google Play."
+      (fr) "%1$s ne fonctionnera pas tant que vous n'aurez pas mis à jour les services Google Play."
+      (hr) "%1$s neće funkcionirati ako ne ažurirate Google Play usluge."
+      (mr) "तुम्ही Google Play सेवा अपडेट करेपर्यंत %1$s चालणार नाही."
+      (or) "ଆପଣ Google Play ସେବା ଅପଡେଟ୍‌ ନ କରିବା ପର୍ଯ୍ୟନ୍ତ %1$s ଚାଲିବ ନାହିଁ।"
+      (sr) "%1$s не може да се покрене ако не ажурирате Google Play услуге."
+      (b+sr+Latn) "%1$s ne može da se pokrene ako ne ažurirate Google Play usluge."
+      (tr) "Google Play hizmetlerini güncellemezseniz %1$s çalışmayacak."
+      (ur) "‏جب تک آپ Google Play سروسز اپ ڈیٹ نہیں کر لیتے ہیں %1$s تب تک نہیں چلے گی۔"
+      (as) "আপুনি Google Play সেৱাবোৰ আপডে’ট নকৰালৈকে %1$s নচলিব।"
+      (bs) "Aplikacija %1$s neće raditi ako ne ažurirate Google Play usluge."
+      (cs) "Ke spuštění aplikace %1$s je třeba aktualizovat služby Google Play."
+      (es) "%1$s no funcionará hasta que no actualices Servicios de Google Play."
+      (is) "%1$s getur ekki keyrt nema þú uppfærir þjónustu Google Play."
+      (ms) "%1$s tidak akan berfungsi kecuali anda mengemas kini perkhidmatan Google Play."
+      (et) "Rakenduse %1$s töötamiseks peate värskendama Google Play teenuseid."
+      (it) "%1$s non funzionerà se non aggiorni Google Play Services."
+      (lt) "„%1$s“ nebus paleidžiama, jei neatnaujinsite „Google Play“ paslaugų."
+      (eu) "%1$s ez da exekutatuko Google Play Services eguneratzen ez baduzu."
+      (gu) "તમે Google Play સેવાઓ અપડેટ કરશો નહીં ત્યાં સુધી %1$s શરૂ થશે નહીં."
+      (hu) "A(z) %1$s alkalmazás csak akkor fog működni, ha frissíti a Google Play-szolgáltatásokat."
+      (ru) "Чтобы запустить приложение "%1$s", обновите сервисы Google Play."
+      (zu) "I-%1$s ngeke ize iqalise ngaphandle kokuthi ubuyekeze i-Google Play."
+      (lv) "Lai lietotne %1$s darbotos, jums ir jāatjaunina Google Play pakalpojumi."
+      (sv) "%1$s kan inte köras om du inte uppdaterar Google Play-tjänsterna."
+      (iw) "‏%1$s לא יפעל אם לא תעדכן את שירותי Google Play."
+      (sw) "%1$s haitafanya kazi hadi usasishe huduma za Google Play."
+      (hy) "%1$s հավելվածը չի աշխատի մինչև չթարմացնեք Google Play ծառայությունները:"
+      (ky) "Google Play кызматтары жаңыртылмайынча %1$s иштебейт."
+      (my) "Google Play ဝန်ဆောင်မှုများအား အပ်ဒိတ်မလုပ်ပါက %1$s အလုပ်လုပ်မည် မဟုတ်ပါ။"
+      (az) "%1$s Google Play xidmətləri yeniləmə halda çalışmaz."
+      (uz) "Google Play xizmatlari yangilanmaguncha, %1$s ishga tushmaydi."
+      (fr-rCA) "%1$s ne fonctionnera pas tant que vous n'aurez pas mis à jour les services Google Play."
+      (en-rGB) "%1$s won't run unless you update Google Play services."
+      (zh-rHK) "你必須更新「Google Play 服務」，才能執行 %1$s。"
+      (zh-rCN) "您必须先更新 Google Play 服务，然后才能运行%1$s。"
+      (pt-rBR) "%1$s só funciona com uma versão atualizada do Google Play Services."
+      (es-rUS) "%1$s no se ejecutará a menos que actualices los servicios de Google Play."
+      (pt-rPT) "O %1$s não é executado enquanto não atualizar os serviços do Google Play."
+      (zh-rTW) "您必須更新 Google Play 服務，才能執行「%1$s」。"
+    resource 0x7f0d0030 string/common_google_play_services_update_title
+      () "Update Google Play services"
+      (ca) "Actualitza Serveis de Google Play"
+      (da) "Opdater Google Play-tjenester"
+      (fa) "‏‫به‌روزرسانی «خدمات Google Play»"
+      (ja) "Google Play開発者サービスの更新"
+      (ka) "განაახლეთ Google Play Services"
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ"
+      (ta) "Google Play சேவைகளைப் புதுப்பிக்கவும்"
+      (nb) "Oppdater Google Play-tjenester"
+      (be) "Абнаўленне службаў Google Play"
+      (de) "Google Play-Dienste aktualisieren"
+      (ne) "Google Play सेवाहरू अपडेट गर्नुहोस्"
+      (te) "Google Play సేవలను అప్‌డేట్ చేయండి"
+      (af) "Dateer Google Play Dienste op"
+      (bg) "Актуализиране на услугите за Google Play"
+      (th) "อัปเดตบริการ Google Play"
+      (fi) "Päivitä Google Play Palvelut"
+      (hi) "Google Play सेवाओं को अपडेट करें"
+      (si) "Google Play සේවා යාවත්කාලීන කරන්න"
+      (vi) "Cập nhật dịch vụ của Google Play"
+      (kk) "Google Play қызметтерін жаңарту"
+      (mk) "Ажурирај ги услугите на Google Play"
+      (sk) "Aktualizácia služieb Google Play"
+      (uk) "Оновіть сервіси Google Play"
+      (el) "Ενημέρωση υπηρεσιών Google Play"
+      (gl) "Actualizar os servizos de Google Play"
+      (ml) "Google Play സേവനങ്ങൾ അപ്‌ഡേറ്റുചെയ്യുക"
+      (nl) "Google Play-services updaten"
+      (pl) "Zaktualizuj Usługi Google Play"
+      (sl) "Posodobitev storitev Google Play"
+      (tl) "I-update ang mga serbisyo ng Google Play"
+      (am) "Google Play አገልግሎቶችን ያዘምኑ"
+      (km) "អាប់ដេតសេវាកម្ម Google Play"
+      (bn) "Google Play পরিষেবা আপডেট করুন"
+      (in) "Perbarui layanan Google Play"
+      (kn) "Google ಪ್ಲೇ ಸೇವೆಗಳನ್ನು ಅಪ್‌ಡೇಟ್‌ ಮಾಡಿ"
+      (mn) "Google Play үйлчилгээг шинэчлэх"
+      (ko) "Google Play 서비스 업데이트"
+      (lo) "ອັບເດດການ​ບໍ​ລິ​ການ Google Play"
+      (ro) "Actualizează serviciile Google Play"
+      (sq) "Përditëso shërbimet e "Luaj me Google""
+      (ar) "‏تحديث خدمات Google Play"
+      (fr) "Mettre à jour les services Google Play"
+      (hr) "Ažuriranje usluga Google Playa"
+      (mr) "Google Play सेवा अपडेट करा"
+      (or) "Google Play ସେବାଗୁଡ଼ିକ ଅପଡେଟ୍ କରନ୍ତୁ"
+      (sr) "Ажурирајте Google Play услуге"
+      (b+sr+Latn) "Ažurirajte Google Play usluge"
+      (tr) "Google Play hizmetlerini güncelleyin"
+      (ur) "‏Google Play سروسز اپ ڈیٹ کریں"
+      (as) "Google Play সেৱা আপডে’ট কৰক"
+      (bs) "Ažuriranje Google Play usluga"
+      (cs) "Aktualizace služeb Google Play"
+      (es) "Actualiza Servicios de Google Play"
+      (is) "Uppfæra þjónustu Google Play"
+      (ms) "Kemaskinikan perkhidmatan Google Play"
+      (et) "Google Play teenuste värskendamine"
+      (it) "Aggiorna Google Play Services"
+      (lt) "Atnaujinkite „Google Play“ paslaugas"
+      (eu) "Eguneratu Google Play Services"
+      (gu) "Google Play સેવાઓ અપડેટ કરો"
+      (hu) "A Google Play-szolgáltatások frissítése"
+      (ru) "Обновите сервисы Google Play"
+      (zu) "Buyekeza amasevisi we-Google Play"
+      (lv) "Google Play pakalpojumu atjaunināšana"
+      (sv) "Uppdatera Google Play-tjänster"
+      (iw) "‏עדכון שירותי Google Play"
+      (sw) "Sasisha huduma za Google Play"
+      (hy) "Թարմացնել Google Play ծառայությունները"
+      (ky) "Google Play кызматтарын жаңыртуу"
+      (my) "Google Play ဝန်ဆောင်မှုများကို အပ်ဒိတ်လုပ်ရန်"
+      (az) "Google Play xidmətlərini güncəlləşdirin"
+      (uz) "Google Play xizmatlarini yangilash"
+      (fr-rCA) "Mettre à jour les services Google Play"
+      (en-rGB) "Update Google Play services"
+      (zh-rHK) "更新 Google Play 服務"
+      (zh-rCN) "更新 Google Play 服务"
+      (pt-rBR) "Atualizar o Google Play Services"
+      (es-rUS) "Actualizar servicios de Google Play"
+      (pt-rPT) "Atualizar serviços do Google Play"
+      (zh-rTW) "更新 Google Play 服務"
+    resource 0x7f0d0031 string/common_google_play_services_updating_text
+      () "%1$s won't run without Google Play services, which are currently updating."
+      (ca) "%1$s no s'executarà sense Serveis de Google Play, que s'està actualitzant en aquest moment."
+      (da) "%1$s kan ikke køre uden Google Play-tjenester, som i øjeblikket opdateres."
+      (fa) "‏%1$s بدون «خدمات Google Play» که درحال حاضر درحال به‌روزرسانی هستند، کار نمی‌کند."
+      (ja) "%1$sの実行にはGoogle Play開発者サービスが必要ですが、このサービスは現在更新中です。"
+      (ka) "%1$s ვერ გაეშვება Google Play Services-ის გარეშე, რომელთა განახლებაც ამჟამად მიმდინარეობს."
+      (pa) "%1$s Google Play ਸੇਵਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਨਹੀਂ ਚੱਲੇਗਾ, ਜੋ ਵਰਤਮਾਨ ਵਿੱਚ ਅੱਪਡੇਟ ਹੋ ਰਹੀਆਂ ਹਨ।"
+      (ta) "தற்போது புதுப்பிக்கப்படும், Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s செயல்படும்."
+      (nb) "%1$s kjører ikke uten Google Play-tjenester, som oppdateres akkurat nå."
+      (be) "%1$s не будзе працаваць без службаў Google Play, якія ў цяперашні час абнаўляюцца."
+      (de) "Zur Nutzung von %1$s sind Google Play-Dienste erforderlich, die gerade aktualisiert werden."
+      (ne) "Google Play सेवाहरू %1$s बिना सञ्‍चालन हुँदैन, जुन हाल अद्यावधिक भइरहेका छन्।"
+      (te) "%1$s Google Play సేవలు లేకుండా అమలు కాదు, ఆ సేవలు ప్రస్తుతం నవీకరించబడుతున్నాయి."
+      (af) "%1$s sal nie sonder Google Play Dienste werk nie, wat tans opdateer."
+      (bg) "%1$s няма да се изпълнява без услугите за Google Play. Понастоящем те се актуализират."
+      (th) "%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งกำลังอัปเดตอยู่ในขณะนี้"
+      (fi) "%1$s ei toimi ilman Google Play Palveluita, joita päivitetään tällä hetkellä."
+      (hi) "%1$s उन Google Play सेवाओं के बिना नहीं चलेगा जो अभी अपडेट हो रही हैं."
+      (si) "දැනට යාවත්කාලීන කරමින් ඇති, Google Play සේවා නොමැතිව %1$s ධාවනය නොවනු ඇත."
+      (vi) "%1$s sẽ không chạy nếu không có dịch vụ của Google Play. Dịch vụ này hiện đang cập nhật."
+      (kk) "Қазіргі уақытта жаңартылып жатқан Google Play қызметтерінсіз %1$s іске қосылмайды."
+      (mk) "%1$s нема да се извршува без услугите на Google Play што се ажурираат во моментов."
+      (sk) "Na spustenie aplikácie %1$s sa vyžadujú služby Google Play, ktoré sa momentálne aktualizujú."
+      (uk) "Додаток %1$s не працюватиме без сервісів Google Play, які зараз оновлюються."
+      (el) "Η εφαρμογή %1$s δεν θα εκτελεστεί χωρίς τις υπηρεσίες Google Play, οι οποίες ενημερώνονται αυτήν τη στιγμή."
+      (gl) "%1$s non se executará sen os servizos de Google Play, que se están actualizando neste momento."
+      (ml) "നിലവിൽ അപ്‌ഡേറ്റുചെയ്യുന്ന Google Play സേവനങ്ങൾ ഇല്ലാതെ %1$s പ്രവർത്തിക്കില്ല."
+      (nl) "%1$s kan niet worden uitgevoerd zonder Google Play-services, die momenteel worden geüpdatet."
+      (pl) "Aplikacja %1$s nie będzie działać bez Usług Google Play, które są obecnie aktualizowane."
+      (sl) "Aplikacija %1$s ne deluje brez storitev Google Play, ki se trenutno posodabljajo."
+      (tl) "Hindi gagana ang %1$s nang wala ang mga serbisyo ng Google Play na kasalukuyang ina-update."
+      (am) "%1$s ያለ Google Play አገልግሎቶች አይሰራም፣ እነሱ ደግሞ በአሁኑ ጊዜ በመዘመን ላይ ናቸው።"
+      (km) "%1$s នឹងមិនដំណើរការទេ បើមិនមានសេវាកម្ម Google Play ដោយសារតែវាកំពុងអាប់ដេត។"
+      (bn) "Google Play পরিষেবা ছাড়া %1$s চলবে না যা বর্তমানে আপডেট হচ্ছে।"
+      (in) "%1$s tidak akan berjalan tanpa layanan Google Play, yang saat ini sedang diperbarui."
+      (kn) "Google Play ಸೇವೆಗಳಿಲ್ಲದೆ ಪ್ರಸ್ತುತ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತಿರುವ %1$s ರನ್ ಆಗುವುದಿಲ್ಲ."
+      (mn) "%1$s нь одоогоор шинэчилж буй Google Play үйлчилгээгүйгээр ажиллахгүй."
+      (ko) "현재 업데이트 중인 Google Play 서비스가 있어야 %1$s이(가) 실행됩니다."
+      (lo) "%1$s ຈະບໍ່ສາມາດໃຊ້ງານໄດ້ໂດຍທີ່ບໍ່ມີການ​ບໍ​ລິ​ການ Google Play, ເຊິ່ງ​ກຳ​ລັງ​ອັບ​ເດດ​ຢູ່​ໃນ​ປະ​ຈຸ​ບັນ."
+      (ro) "%1$s nu va rula fără serviciile Google Play, care momentan se actualizează."
+      (sq) "%1$s nuk do të funksionojë pa shërbimet e Google Play, të cilat po përditësohen aktualisht."
+      (ar) "‏لن يتم تشغيل %1$s بدون خدمات Google Play، والتي يتم تحديثها حاليًا."
+      (fr) "%1$s ne fonctionnera pas sans les services Google Play, qui sont en cours de mise à jour."
+      (hr) "%1$s neće se pokrenuti bez usluga Google Playa koje se trenutačno ažuriraju."
+      (mr) "सध्‍या अपडेट होत असलेल्‍या, Google Play सेवांशिवाय %1$s चालणार नाही."
+      (or) "Google Play ସେବାଗୁଡ଼ିକ ବିନା %1$s ଚାଲିବ ନାହିଁ, ଯେଉଁଗୁଡ଼ିକ ବର୍ତ୍ତମାନ ଅପଡେଟ୍‌ ହେଉଛି।"
+      (sr) "%1$s не може да се покрене без Google Play услуга, које се тренутно ажурирају."
+      (b+sr+Latn) "%1$s ne može da se pokrene bez Google Play usluga, koje se trenutno ažuriraju."
+      (tr) "%1$s, şu anda güncellenmekte olan Google Play hizmetleri olmadan çalışmaz."
+      (ur) "‏%1$s Google Play سروسز کے بغیر نہیں چلے گی، جو فی الحال اپ ڈیٹ ہو رہی ہیں۔"
+      (as) "বৰ্তমান আপডে’ট হৈ থকা Google Play সেৱাসমূহৰ অবিহনে %1$s নচলিব৷"
+      (bs) "Aplikacija %1$s neće raditi bez Google Play usluga, koje se trenutno ažuriraju."
+      (cs) "Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které jsou právě aktualizovány."
+      (es) "%1$s no se ejecutará hasta que finalice la actualización en curso de Servicios de Google Play."
+      (is) "%1$s getur ekki keyrt án þjónustu Google Play, sem verið er að uppfæra."
+      (ms) "%1$s tidak akan berfungsi tanpa perkhidmatan Google Play dan perkhidmatan ini sedang dikemaskinikan."
+      (et) "Rakendus %1$s töötab ainult koos Google Play teenustega, mida praegu värskendatakse."
+      (it) "%1$s non funzionerà senza Google Play Services, attualmente in fase di aggiornamento."
+      (lt) "„%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurios šiuo metu atnaujinamos."
+      (eu) "%1$s ez da exekutatuko Google Play Services gabe; zerbitzu hori eguneratzen ari da."
+      (gu) "%1$s, Google Play સેવાઓ વગર શરૂ થશે નહીં, જે વર્તમાનમાં અપડેટ થઈ રહી છે."
+      (hu) "A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyek frissítése folyamatban van."
+      (ru) "Сервисы Google Play, необходимые для работы приложения "%1$s", в настоящий момент обновляются."
+      (zu) "I-%1$s ngeke ize iqalise ngaphandle kwamasevisi we-Google Play, okwamanje abuyekezwayo."
+      (lv) "Lai lietotne %1$s darbotos, ir jāinstalē Google Play pakalpojumi. Pašlaik notiek to atjaunināšana."
+      (sv) "%1$s kan inte köras utan Google Play-tjänster, och dessa uppdateras för närvarande."
+      (iw) "‏האפליקציה %1$s לא תפעל ללא שירותי Google Play, שמתעדכנים כרגע."
+      (sw) "%1$s haitafanya kazi bila huduma za Google Play. Huduma hizi zinasasishwa sasa."
+      (hy) "%1$s հավելվածը չի աշխատի առանց Google Play ծառայությունների, որոնք այս պահին թարմացվում են:"
+      (ky) "Google Play кызматтарысыз %1$s иштебейт, алар учурда жаңыртылууда."
+      (my) "Google Play ဝန်ဆောင်မှုများကို လက်ရှိအပ်ဒိတ်လုပ်နေသောကြောင့် %1$s ကိုဖွင့်၍ရမည်မဟုတ်ပါ။"
+      (az) "%1$s hal-hazırda güncəllənən Google Play xidmətləri olmadan çalışmayacaq."
+      (uz) "%1$s ilovasining ishlashi uchun zarur Google Play xizmatlari hozirda yangilanmoqda."
+      (fr-rCA) "%1$s ne fonctionnera pas sans les services Google Play, qui sont actuellement mis à jour."
+      (en-rGB) "%1$s won't run without Google Play services, which are currently updating."
+      (zh-rHK) "正在更新 Google Play 服務，更新完成後方可執行「%1$s」。"
+      (zh-rCN) "Google Play 服务当前正在更新，因此您无法运行%1$s。"
+      (pt-rBR) "%1$s não funciona sem o Google Play Services, o qual está sendo atualizado no momento."
+      (es-rUS) "%1$s no se ejecutará sin los servicios de Google Play. La plataforma se está actualizando en este momento."
+      (pt-rPT) "O %1$s não é executado sem os serviços do Google Play, os quais estão a ser atualizados."
+      (zh-rTW) "執行「%1$s」所需的 Google Play 服務正在更新。"
+    resource 0x7f0d0032 string/common_google_play_services_wear_update_text
+      () "New version of Google Play services needed. It will update itself shortly."
+      (ca) "Cal una nova versió de Serveis de Google Play. S'actualitzarà automàticament aviat."
+      (da) "Du skal bruge en ny version af Google Play-tjenester. Opdateringen gennemføres automatisk om et øjeblik."
+      (fa) "‏نسخه جدید «خدمات Google Play» نیاز است. به‌زودی به‌طور خودکار به‌روزرسانی می‌شود."
+      (ja) "Google Play開発者サービスの新しいバージョンが必要です。まもなく自動更新されます。"
+      (ka) "საჭიროა Google Play Services-ის ახალი ვერსია. ის მალე განახლდება."
+      (pa) "Google Play ਸੇਵਾਵਾਂ ਦੇ ਨਵਾਂ ਸੰਸਕਰਨ ਦੀ ਲੋੜ ਹੈ। ਇਹ ਛੇਤੀ ਹੀ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਅੱਪਡੇਟ ਕਰੇਗਾ।"
+      (ta) "Google Play சேவைகளின் புதிய பதிப்பு தேவை. அது விரைவில் தானாகவே புதுப்பிக்கப்படும்."
+      (nb) "Du må installere en ny versjon av Google Play-tjenester. Appen oppdateres automatisk om en kort stund."
+      (be) "Патрабуецца новая версія служб Google Play. Яна абновіцца аўтаматычна ў бліжэйшы час."
+      (de) "Eine neue Version der Google Play-Dienste wird benötigt. Diese wird in Kürze automatisch aktualisiert."
+      (ne) "Google Play सेवाहरूको नयाँ संस्करण आवश्यक छ। यो आफै छिट्टै नै अद्यावधिक हुनेछ।"
+      (te) "కొత్త Google Play సేవల వెర్షన్ అవసరం. అది కొద్ది సేపట్లో దానంతట అదే అప్‌డేట్ చేయబడుతుంది."
+      (af) "Nuwe weergawe van Google Play Dienste is nodig. Dit sal binnekort self opdateer."
+      (bg) "Необходима е нова версия на услугите за Google Play. Скоро тя ще се актуализира автоматично."
+      (th) "จำเป็นต้องใช้บริการ Google Play เวอร์ชันใหม่ ซึ่งจะอัปเดตอัตโนมัติในอีกไม่ช้า"
+      (fi) "Uusi Google Play Palveluiden versio tarvitaan. Se päivittyy pian."
+      (hi) "Google Play सेवाओं के नए वर्शन की ज़रूरत है. यह जल्द ही अपने आप अपडेट हो जाएगा."
+      (si) "Google Play සේවාවල නව අනුවාදයක් අවශ්‍යයි. එය මද වේලාවකින් එය විසින්ම යාවත්කාලීන වනු ඇත."
+      (vi) "Cần phiên bản mới của dịch vụ Google Play. Dịch vụ sẽ sớm tự động cập nhật."
+      (kk) "Google Play қызметтерінің жаңа нұсқасы қажет. Ол қысқа уақыттан кейін өзі жаңарады."
+      (mk) "Потребна е нова верзија на услугите на Google Play. Таа наскоро самата ќе се ажурира."
+      (sk) "Vyžaduje sa nová verzia služieb Google Play. Aktualizujú sa automaticky v najbližšom čase."
+      (uk) "Потрібна нова версія сервісів Google Play. Вони невдовзі оновляться."
+      (el) "Απαιτείται νέα έκδοση των υπηρεσιών Google Play. Θα ενημερωθεί σύντομα."
+      (gl) "Necesítase a nova versión dos servizos de Google Play. Actualizarase en breve."
+      (ml) "Google Play സേവനങ്ങളുടെ പുതിയ പതിപ്പ് ആവശ്യമാണ്. താമസിയാതെ ഇത് സ്വയം അപ്‌ഡേറ്റുചെയ്യും."
+      (nl) "Er is een nieuwe versie van Google Play-services vereist. De update wordt binnenkort automatisch uitgevoerd."
+      (pl) "Wymagana jest nowa wersja Usług Google Play. Wkrótce nastąpi automatyczna aktualizacja."
+      (sl) "Potrebujete novo različico storitev Google Play. V kratkem se bodo posodobile."
+      (tl) "Kailangan ang bagong bersyon ng mga serbisyo ng Google Play. Mag-a-update itong mag-isa sa ilang sandali."
+      (am) "አዲስ የGoogle Play አገልግሎቶች ስሪት ያስፈልጋል። በቅርቡ እራሱን ያዘምናል።"
+      (km) "តម្រូវឲ្យមានកំណែថ្មីនៃសេវាកម្ម Google Play។ វានឹងអាប់ដេតដោយខ្លួនវានៅពេលបន្តិចទៀតនេះ។"
+      (bn) "Google Play পরিষেবার নতুন ভার্সন প্রয়োজন৷ খুব শীঘ্রই এটা নিজেই আপডেট হবে৷"
+      (in) "Perlu versi baru layanan Google Play. Akan segera memperbarui sendiri."
+      (kn) "Google Play ಸೇವೆಗಳ ಹೊಸ ಆವೃತ್ತಿ ಅಗತ್ಯವಿದೆ. ಸದ್ಯದಲ್ಲೇ ಅದು ತಾನಾಗಿಯೇ ಅಪ್‌ಡೇಟ್ ಆಗುತ್ತದೆ."
+      (mn) "Google Play үйлчилгээний шинэ хувилбар хэрэгтэй. Энэ нь удахгүй өөрөө өөрийгөө шинэчлэх болно."
+      (ko) "새 버전의 Google Play 서비스가 필요합니다. 곧 자동으로 업데이트됩니다."
+      (lo) "ຈຳ​ເປັນ​ຕ້ອງ​ມີ​ກາ​ນ​ບໍ​ລິ​ການ Google Play ເວີ​ຊັນ​ໃໝ່. ມັນ​ຈະ​ອັບ​ເດດ​ຕົວ​ເອງ​ໄວໆ​ນີ້."
+      (ro) "Este necesară o nouă versiune a serviciilor Google Play. Se vor actualiza automat în curând."
+      (sq) "Nevojitet një version i ri i shërbimeve të "Luaj me Google". Ai do të përditësohet automatikisht së shpejti."
+      (ar) "‏يجب توفر إصدار جديد من خدمات Google Play. سيتم تحديثها تلقائيًا قريبًا."
+      (fr) "La nouvelle version des services Google Play est nécessaire. Elle sera bientôt installée automatiquement."
+      (hr) "Potrebna je nova verzija usluga Google Playa. Uskoro će se ažurirati."
+      (mr) "Google Play सेवांच्या नवीन आवृत्तीची आवश्यकता आहे. हे स्वत:ला लवकरच अपडेट करेल."
+      (or) "Google Play ସେବାଗୁଡ଼ିକର ନୂତନ ଭର୍ସନ୍‌ ଆବଶ୍ୟକ। ଏହା ନିଜକୁ କିଛି ସମୟ ମଧ୍ୟରେ ଅପଡେଟ୍‌ କରିବ।"
+      (sr) "Потребна је нова верзија Google Play услуга. Ускоро ће се ажурирати."
+      (b+sr+Latn) "Potrebna je nova verzija Google Play usluga. Uskoro će se ažurirati."
+      (tr) "Google Play hizmetlerinin yeni sürümü gerekiyor. Kendisini kısa süre içinde güncelleyecektir."
+      (ur) "‏Google Play سروسز کے نئے ورژن کی ضرورت ہے۔ یہ تھوڑی دیر میں خود ہی اپنے آپ کو اپ ڈیٹ کر لے گا۔"
+      (as) "Google Play সেৱাসমূহৰ নতুন সংস্কৰণৰ প্ৰয়োজন৷ এইটো শীঘ্ৰেই নিজে-নিজে আপডে’ট হ’ব৷"
+      (bs) "Potrebna je nova verzija Google Play usluga. Ubrzo će se samo ažurirati."
+      (cs) "Je vyžadována nová verze služeb Google Play. Nová verze se brzy sama nainstaluje."
+      (es) "Se necesita una nueva versión de Servicios de Google Play. Se actualizará en breve."
+      (is) "Nýja útgáfu af þjónustu Google Play vantar. Hún uppfærir sig sjálf innan skamms."
+      (ms) "Versi baharu perkhidmatan Google Play diperlukan. Kemas kini automatik akan dijalankan sebentar lagi."
+      (et) "Vajalik on Google Play teenuste uus versioon. See värskendab end peagi."
+      (it) "È richiesta una nuova versione di Google Play Services. L'aggiornamento automatico verrà eseguito a breve."
+      (lt) "Reikia naujos versijos „Google Play“ paslaugų. Jos netrukus bus atnaujintos."
+      (eu) "Google Play Services-en bertsio berria behar da. Berehala eguneratuko da automatikoki."
+      (gu) "Google Play સેવાઓના નવા સંસ્કરણની જરૂર છે. તે ટૂંક સમયમાં પોતાને અપડેટ કરશે."
+      (hu) "A Google Play-szolgáltatások új verziójára van szükség. A szolgáltatás hamarosan frissíti önmagát."
+      (ru) "Версия сервисов Google Play устарела. Они автоматически обновятся в ближайшее время."
+      (zu) "Kudingeka inguqulo entsha yamasevisi we-Google Play. Izozibuyekeza ngokwayo maduze."
+      (lv) "Ir nepieciešama jauna Google Play pakalpojumu versija. Drīzumā tā tiks instalēta."
+      (sv) "En ny version av Google Play-tjänster krävs. Den uppdateras automatiskt inom kort."
+      (iw) "‏דרושה גרסה חדשה של שירותי Google Play. הגרסה תתעדכן בעצמה תוך זמן קצר."
+      (sw) "Toleo jipya la huduma za Google Play linahitajika. Litajisasisha baada ya muda mfupi."
+      (hy) "Անհրաժեշտ է Google Play ծառայությունների նոր տարբերակը: Այն շուտով կթարմացվի ավտոմատ կերպով:"
+      (ky) "Google Play кызматтарынын жаңы версиясы талап кылынат. Бир аздан кийин ал өзү эле жаңырат."
+      (my) "Google Play ဝန်ဆောင်မှုဗားရှင်းအသစ်များ လိုအပ်နေသည်။ အချိန်အနည်းငယ်အကြာတွင် ၎င်းကိုယ်တိုင်အပ်ဒိတ်လုပ်ပါ လိမ့်မည်။"
+      (az) "Google Play xidmətlərinin yeni versiyası lazımdır. Qısa müddətə özünü yeniləyəcək."
+      (uz) "Google Play xizmatlarining yangi versiyasi zarur. U o‘zini qisqa vaqt ichida yangilaydi."
+      (fr-rCA) "La nouvelle version des services Google Play est nécessaire. Elle sera bientôt installée automatiquement."
+      (en-rGB) "New version of Google Play services needed. It will update itself shortly."
+      (zh-rHK) "需要使用新版本的 Google Play 服務。更新會即將自動開始。"
+      (zh-rCN) "必须使用新版 Google Play 服务。该服务很快就会自行更新。"
+      (pt-rBR) "É necessária uma nova versão do Google Play Services. Ele será atualizado em breve."
+      (es-rUS) "Se necesita una nueva versión de los servicios de Google Play. Se actualizarán automáticamente en breve."
+      (pt-rPT) "É necessária uma nova versão dos serviços do Google Play. Esta será atualizada automaticamente em breve."
+      (zh-rTW) "必須使用新版 Google Play 服務。該服務稍後就會自動更新。"
+    resource 0x7f0d0033 string/common_open_on_phone
+      () "Open on phone"
+      (ca) "Obre al telèfon"
+      (da) "Åbn på telefonen"
+      (fa) "باز کردن در تلفن"
+      (ja) "スマートフォンで開く"
+      (ka) "ტელეფონში გახსნა"
+      (pa) "ਫ਼ੋਨ 'ਤੇ ਖੋਲ੍ਹੋ"
+      (ta) "மொபைலில் திற"
+      (nb) "Åpne på telefonen"
+      (be) "Адкрыць на тэлефоне"
+      (de) "Auf Smartphone öffnen"
+      (ne) "फोनमा खोल्नुहोस्"
+      (te) "ఫోన్‌లో తెరువు"
+      (af) "Maak oop op foon"
+      (bg) "Отваряне на телефона"
+      (th) "เปิดบนโทรศัพท์"
+      (fi) "Avaa puhelimessa"
+      (hi) "फ़ोन पर खोलें"
+      (si) "දුරකථනය තුළ විවෘත කරන්න"
+      (vi) "Mở trên điện thoại"
+      (kk) "Телефонда ашу"
+      (mk) "Отвори на телефонот"
+      (sk) "Otvoriť v telefóne"
+      (uk) "Відкрити на телефоні"
+      (el) "Άνοιγμα σε τηλέφωνο"
+      (gl) "Abrir no teléfono"
+      (ml) "ഫോണിൽ തുറക്കുക"
+      (nl) "Openen op telefoon"
+      (pl) "Otwórz na telefonie"
+      (sl) "Odpiranje v telefonu"
+      (tl) "Buksan sa telepono"
+      (am) "ስልክ ላይ ክፈት"
+      (km) "បើកតាមទូរស័ព្ទ"
+      (bn) "ফোনে খুলুন"
+      (in) "Buka di ponsel"
+      (kn) "ಫೋನ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ"
+      (mn) "Утсаар нээх"
+      (ko) "스마트폰에서 열기"
+      (lo) "​ເປີດ​ໃນ​ໂທ​ລະ​ສັບ"
+      (ro) "Deschide pe telefon"
+      (sq) "Hape në telefon"
+      (ar) "فتح على الهاتف"
+      (fr) "Ouvrir sur le téléphone"
+      (hr) "Otvori na telefonu"
+      (mr) "फोनवर उघडा"
+      (or) "ଫୋନ୍‌ରେ ଖୋଲନ୍ତୁ"
+      (sr) "Отвори на телефону"
+      (b+sr+Latn) "Otvori na telefonu"
+      (tr) "Telefonda aç"
+      (ur) "فون پر کھولیں"
+      (as) "ফ'নত খোলক"
+      (bs) "Otvori na telefonu"
+      (cs) "Otevřít v telefonu"
+      (es) "Abrir en teléfono"
+      (is) "Opna í símanum"
+      (ms) "Buka pada telefon"
+      (et) "Ava telefonis"
+      (it) "Apri sul telefono"
+      (lt) "Atidaryti telefone"
+      (eu) "Ireki telefonoan"
+      (gu) "ફોનમાં ખોલો"
+      (hu) "Megnyitás a telefonon"
+      (ru) "Открыть на телефоне"
+      (zu) "Vula kufoni"
+      (lv) "Atvērt tālrunī"
+      (sv) "Öppna på mobilen"
+      (iw) "פתח בטלפון"
+      (sw) "Fungua kwenye simu"
+      (hy) "Բացել հեռախոսով"
+      (ky) "Телефондо ачык"
+      (my) "ဖုန်းပေါ်မှာ ဖွင့်ပါ"
+      (az) "Telefonda açın"
+      (uz) "Telefonda ochish"
+      (fr-rCA) "Ouvrir sur le téléphone"
+      (en-rGB) "Open on phone"
+      (zh-rHK) "在手機開啟"
+      (zh-rCN) "在手机上打开"
+      (pt-rBR) "Abrir no smartphone"
+      (es-rUS) "Abrir en el teléfono"
+      (pt-rPT) "Abrir no telemóvel"
+      (zh-rTW) "在手機上開啟"
+    resource 0x7f0d003c string/not_set
+      () "Not set"
+      (ca) "No definit"
+      (da) "Ikke angivet"
+      (fa) "تنظیم نشده"
+      (ja) "未設定"
+      (ka) "არ არის დაყენებული"
+      (pa) "ਸੈੱਟ ਨਹੀਂ ਹੈ"
+      (ta) "அமைக்கப்படவில்லை"
+      (nb) "Ikke angitt"
+      (be) "Не зададзена"
+      (de) "Nicht festgelegt"
+      (ne) "सेट गरिएको छैन"
+      (te) "సెట్ చేయలేదు"
+      (af) "Nie gestel nie"
+      (bg) "Не е зададено"
+      (th) "ไม่ได้ตั้งค่า"
+      (fi) "Ei asetettu"
+      (hi) "सेट नहीं है"
+      (si) "සකසා නැත"
+      (vi) "Chưa đặt"
+      (kk) "Орнатылмаған"
+      (mk) "Не е поставено"
+      (sk) "Nenastavené"
+      (uk) "Не налаштовано"
+      (el) "Δεν έχει οριστεί"
+      (gl) "Sen configurar"
+      (ml) "സജ്ജീകരിച്ചിട്ടില്ല"
+      (nl) "Niet ingesteld"
+      (pl) "Nie ustawiono"
+      (sl) "Ni nastavljeno"
+      (tl) "Hindi nakatakda"
+      (am) "አልተዘጋጀም"
+      (km) "មិនបានកំណត់"
+      (bn) "সেট করা হয়নি"
+      (in) "Belum disetel"
+      (kn) "ಹೊಂದಿಸಿಲ್ಲ"
+      (mn) "Тохируулаагүй"
+      (ko) "설정되지 않음"
+      (lo) "ບໍ່ໄດ້ຕັ້ງຄ່າ"
+      (ro) "Nesetată"
+      (sq) "Nuk është caktuar"
+      (ar) "لم يتمّ تحديد قيمة."
+      (fr) "Non définie"
+      (hr) "Nije postavljeno"
+      (mr) "सेट केलेले नाही"
+      (or) "ସେଟ୍ ହୋଇନାହିଁ"
+      (sr) "Није подешено"
+      (b+sr+Latn) "Nije podešeno"
+      (tr) "Ayarlanmadı"
+      (ur) "سیٹ نہیں ہے"
+      (as) "ছেট কৰা হোৱা নাই"
+      (bs) "Nije postavljeno"
+      (cs) "Nenastaveno"
+      (es) "Sin establecer"
+      (is) "Ekki stillt"
+      (ms) "Tidak ditetapkan"
+      (et) "Määramata"
+      (it) "Non impostato"
+      (lt) "Nenustatyta"
+      (pt) "Não definido"
+      (eu) "Ez da ezarri"
+      (gu) "સેટ કર્યું નથી"
+      (hu) "Nincs beállítva"
+      (ru) "Не указано"
+      (zu) "Ayisethiwe"
+      (lv) "Nav iestatīts"
+      (sv) "Inte angett"
+      (iw) "לא מוגדרת"
+      (sw) "Haijawekwa"
+      (hy) "Կարգավորված չէ"
+      (ky) "Коюлган эмес"
+      (my) "သတ်မှတ်မထားပါ"
+      (az) "Ayarlanmayıb"
+      (uz) "Tayinlanmagan"
+      (en-rCA) "Not set"
+      (fr-rCA) "Non défini"
+      (en-rGB) "Not set"
+      (en-rXC) "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‎‏‏‎‎‏‏‏‎‎‎‎‎‎‏‏‎‎‎‏‏‏‏‏‏‏‎‎‎‎‎‏‏‎‏‏‏‏‏‏‏‎‎‎‏‎‏‎‏‏‎‎‎‏‎‎‎‎‏‎Not set‎‏‎‎‏‎"
+      (zh-rHK) "未設定"
+      (zh-rCN) "未设置"
+      (en-rIN) "Not set"
+      (pt-rBR) "Não definido"
+      (es-rUS) "Sin definir"
+      (pt-rPT) "Não definido"
+      (en-rAU) "Not set"
+      (zh-rTW) "未設定"
+    resource 0x7f0d0043 string/widget_description
+      () "查看伙伴活力和下一餐建议"
+    resource 0x7f0d0044 string/widget_pet_sprite
+      () "伙伴状态图"
+  type style id=0e entryCount=13
+    resource 0x7f0e0004 style/Animation.AppCompat.Tooltip
+      () (style) size=0 parent=style/Base.Animation.AppCompat.Tooltip (0x7f0e0009)
+    resource 0x7f0e0009 style/Base.Animation.AppCompat.Tooltip
+      () (style) size=2 parent=0x01030000
+        0x010100b4=@anim/abc_tooltip_enter
+        0x010100b5=@anim/abc_tooltip_exit
+    resource 0x7f0e000c style/Base.TextAppearance.AppCompat
+      () (style) size=0 parent=0x010301ed
+    resource 0x7f0e00a2 style/LaunchTheme
+      () (style) size=1 parent=0x0103000d
+        0x01010054=@drawable/launch_background
+      (night) (style) size=1 parent=0x01030009
+        0x01010054=@drawable/launch_background
+    resource 0x7f0e00a3 style/NormalTheme
+      () (style) size=1 parent=0x0103000d
+        0x01010054=?0x01010031
+      (night) (style) size=1 parent=0x01030009
+        0x01010054=?0x01010031
+    resource 0x7f0e00d6 style/RtlOverlay.Widget.AppCompat.Search.DropDown
+      () (style) size=2 parent=0x01030012
+        0x010103b3=@dimen/abc_dropdownitem_text_padding_left
+        0x010103b4=4.000000dp
+    resource 0x7f0e00d7 style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon1
+      () (style) size=1 parent=0x01030012
+        0x010103bb=true
+    resource 0x7f0e00d8 style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon2
+      () (style) size=1 parent=0x01030012
+        0x010103b7=@id/edit_query
+    resource 0x7f0e00d9 style/RtlOverlay.Widget.AppCompat.Search.DropDown.Query
+      () (style) size=1 parent=0x01030012
+        0x010103bc=true
+    resource 0x7f0e00db style/RtlOverlay.Widget.AppCompat.SearchView.MagIcon
+      () (style) size=1 parent=0x01030012
+        0x010103b5=@dimen/abc_dropdownitem_text_padding_left
+    resource 0x7f0e00de style/TextAppearance.AppCompat
+      () (style) size=0 parent=style/Base.TextAppearance.AppCompat (0x7f0e000c)
+    resource 0x7f0e00fa style/TextAppearance.AppCompat.Tooltip
+      () (style) size=2 parent=style/TextAppearance.AppCompat (0x7f0e00de)
+        0x01010095=14.000000sp
+        0x010103ac="sans-serif"
+    resource 0x7f0e013a style/TransparentTheme
+      () (style) size=4 parent=0x01030010
+        0x01010054=@0x0106000d
+        0x01010056=true
+        0x01010058=true
+        0x0101021f=false
+  type xml id=10 entryCount=5
+    resource 0x7f100000 xml/backup_rules
+      () (file) res/Qq.xml type=XML
+    resource 0x7f100001 xml/data_extraction_rules
+      () (file) res/4j.xml type=XML
+    resource 0x7f100002 xml/file_paths
+      () (file) res/8K.xml type=XML
+    resource 0x7f100003 xml/flutter_image_picker_file_paths
+      () (file) res/gX.xml type=XML
+    resource 0x7f100005 xml/pet_widget_info
+      () (file) res/__.xml type=XML

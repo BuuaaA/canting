@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:/flutter/bin/cache/dart-sdk/bin/dart.exe",
+    "format",
+    "lib/state/app_state.dart",
+    "test/state/p6a_widget_date_test.dart",
+    "lib/data/food_database.dart",
+    "lib/data/database_helper.dart",
+    "lib/data/custom_dish_repository.dart",
+    "lib/core/models/portions.dart",
+    "lib/ui/about/about_page.dart",
+    "test/data/ponytail_regression_test.dart"
+  ],
+  "cwd": "D:\\dev\\canting",
+  "started_at": "2026-09-05T16:10:07.589767+00:00",
+  "ended_at": "2026-09-05T16:10:08.061264+00:00",
+  "exit_code": 0,
+  "log": "format.txt"
+}

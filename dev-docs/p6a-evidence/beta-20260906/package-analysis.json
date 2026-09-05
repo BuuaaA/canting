@@ -1,0 +1,152 @@
+[
+  {
+    "path": "D:\\dev\\canting\\canting_v0.1.0-beta.apk",
+    "bytes": 88805734,
+    "sha256": "27a0ef8380a57a82b7266bff3a1798f232080d3c1df4074239faf39b1805987a",
+    "built_file_mtime": "2026-09-03T10:37:58.030082+00:00",
+    "application_id": "com.canting.canting",
+    "version_code": 1,
+    "version_name": "1.0.0",
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86_64"
+    ]
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+    "bytes": 35438713,
+    "sha256": "316ee514478f16750839f32697e9c5689bbf8ceeca72a9f2a4202a8921f6f0d2",
+    "built_file_mtime": "2026-09-05T15:27:49.302419+00:00",
+    "application_id": "com.canting.canting",
+    "version_code": 2001,
+    "version_name": "1.0.0",
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true,
+    "abis": [
+      "arm64-v8a"
+    ]
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk",
+    "bytes": 92935480,
+    "sha256": "1b71753060f62a2d1b67c0620caa8d8b678965b00fb3d8d7b64cc556463d5c34",
+    "built_file_mtime": "2026-09-05T15:26:27.804759+00:00",
+    "application_id": "com.canting.canting",
+    "version_code": 1,
+    "version_name": "1.0.0",
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86_64"
+    ]
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p6a-artifacts\\beta-20260906\\split\\app-arm64-v8a-release.apk",
+    "bytes": 35839129,
+    "sha256": "1fb4a88e9331e45939c6abc46e8a318466688f77f242c00f6fa8ee223fe0e807",
+    "built_file_mtime": "2026-09-05T16:17:30.156387+00:00",
+    "application_id": "com.canting.canting",
+    "version_code": 5003,
+    "version_name": "0.9.0-beta",
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true,
+    "abis": [
+      "arm64-v8a"
+    ],
+    "icon_entries": [
+      "res/9w.png",
+      "res/yn.png",
+      "res/FS.png",
+      "res/RJ.png",
+      "res/o-.png",
+      "res/BW.xml",
+      "res/QZ.png",
+      "res/zr.png",
+      "res/Em.png",
+      "res/Lf.png",
+      "res/as.png",
+      "res/zR.png",
+      "res/8c.png",
+      "res/wb.png",
+      "res/fO.png",
+      "res/Gc.png",
+      "res/0K.xml"
+    ],
+    "icon_pixels_match_source": true,
+    "packaged_icon_hashes": {
+      "res/9w.png": "6f629678e120e47cf1bb9aa23494e4809a795e547ef5e5bac5414cc13a1d1ed6",
+      "res/yn.png": "211089db4dd809eed9ec4c28312384b12ef9d058280ff4009c95aa026d6138f6",
+      "res/FS.png": "8431014f6f5207f2143c2e2d452445adb5a881b4fc9213fcd53b27e253d111a0",
+      "res/RJ.png": "d5b0613594e2f05aeb4f1eb869dda191cf2613cf1f4f7985b73ef29fd521144e",
+      "res/o-.png": "a492cecd60a4530a23555656f2e5c17271cfde8c25fe0ec36c29cd01cdb1182f",
+      "res/QZ.png": "c9be97ed048d8482fae4e4e4a712aa588222b0c0ca7e25b42b82628b1b286608",
+      "res/zr.png": "23d6e32470e47acfe4bf18e0e64930194ea461efd1c6874ec8befd5e92c2e554",
+      "res/Em.png": "319485b59b6c472ffeb9a6f6ace73c97c61ed94f336bf39db4ebeb292071c4fe",
+      "res/Lf.png": "dc69b31e358da1815e3b07a298c66dd294f6ed6955e54b1e1f932beead822a59",
+      "res/as.png": "52e4800746e89e01d0c3ac9560ca9807c8f4febe5a49535342b70d36daee4ee8",
+      "res/zR.png": "49253fda53b54f765e2f7625e2eedef284cbc5edff849981c77064ce9d7117a4",
+      "res/8c.png": "d4186fe48f2bb169dda7f28f80c85aed488bc5cf59abdc4a090f607a969d4981",
+      "res/wb.png": "bebf262c02b201fdd65eaf9499296dce9b4883cec15b0dea64c4aaf39aee9012",
+      "res/fO.png": "1cb6aa86ab8d0d585c6b79c5d2a04776289c60da93c8a41e9bbf7d96a1fb0cc4",
+      "res/Gc.png": "c54b1893840b72a9b65035dd248ce065c332031312b30015b6a3f7581b089cf7"
+    }
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p6a-artifacts\\beta-20260906\\universal\\app-release.apk",
+    "bytes": 93335900,
+    "sha256": "ed16e84934aabb6b7caef418c9ed3d2995d512aca03c5882aab8318fe3ae9c2f",
+    "built_file_mtime": "2026-09-05T16:15:56.133212+00:00",
+    "application_id": "com.canting.canting",
+    "version_code": 5003,
+    "version_name": "0.9.0-beta",
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86_64"
+    ],
+    "icon_entries": [
+      "res/9w.png",
+      "res/yn.png",
+      "res/FS.png",
+      "res/RJ.png",
+      "res/o-.png",
+      "res/BW.xml",
+      "res/QZ.png",
+      "res/zr.png",
+      "res/Em.png",
+      "res/Lf.png",
+      "res/as.png",
+      "res/zR.png",
+      "res/8c.png",
+      "res/wb.png",
+      "res/fO.png",
+      "res/Gc.png",
+      "res/0K.xml"
+    ],
+    "icon_pixels_match_source": true,
+    "packaged_icon_hashes": {
+      "res/9w.png": "6f629678e120e47cf1bb9aa23494e4809a795e547ef5e5bac5414cc13a1d1ed6",
+      "res/yn.png": "211089db4dd809eed9ec4c28312384b12ef9d058280ff4009c95aa026d6138f6",
+      "res/FS.png": "8431014f6f5207f2143c2e2d452445adb5a881b4fc9213fcd53b27e253d111a0",
+      "res/RJ.png": "d5b0613594e2f05aeb4f1eb869dda191cf2613cf1f4f7985b73ef29fd521144e",
+      "res/o-.png": "a492cecd60a4530a23555656f2e5c17271cfde8c25fe0ec36c29cd01cdb1182f",
+      "res/QZ.png": "c9be97ed048d8482fae4e4e4a712aa588222b0c0ca7e25b42b82628b1b286608",
+      "res/zr.png": "23d6e32470e47acfe4bf18e0e64930194ea461efd1c6874ec8befd5e92c2e554",
+      "res/Em.png": "319485b59b6c472ffeb9a6f6ace73c97c61ed94f336bf39db4ebeb292071c4fe",
+      "res/Lf.png": "dc69b31e358da1815e3b07a298c66dd294f6ed6955e54b1e1f932beead822a59",
+      "res/as.png": "52e4800746e89e01d0c3ac9560ca9807c8f4febe5a49535342b70d36daee4ee8",
+      "res/zR.png": "49253fda53b54f765e2f7625e2eedef284cbc5edff849981c77064ce9d7117a4",
+      "res/8c.png": "d4186fe48f2bb169dda7f28f80c85aed488bc5cf59abdc4a090f607a969d4981",
+      "res/wb.png": "bebf262c02b201fdd65eaf9499296dce9b4883cec15b0dea64c4aaf39aee9012",
+      "res/fO.png": "1cb6aa86ab8d0d585c6b79c5d2a04776289c60da93c8a41e9bbf7d96a1fb0cc4",
+      "res/Gc.png": "c54b1893840b72a9b65035dd248ce065c332031312b30015b6a3f7581b089cf7"
+    }
+  }
+]

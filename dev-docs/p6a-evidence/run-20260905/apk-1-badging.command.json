@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "badging",
+    "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk"
+  ],
+  "started_at": "2026-09-05T16:08:48.309458+00:00",
+  "ended_at": "2026-09-05T16:08:48.336418+00:00",
+  "exit_code": 0
+}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// 关于页（模块 10）：版本号、产品简介、开源许可与数据来源。
 class AboutPage extends StatelessWidget {
-  const AboutPage({super.key, this.version = '1.0.0'});
+  const AboutPage({super.key, this.version = '0.9.0-beta'});
 
   final String version;
 
@@ -27,15 +27,20 @@ class AboutPage extends StatelessWidget {
                       size: 56,
                     ),
                     const SizedBox(height: 12),
-                    Text('餐盘', style: Theme.of(context).textTheme.headlineSmall),
+                    Text(
+                      '餐盘',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
                     const SizedBox(height: 4),
-                    Text('v$version', style: Theme.of(context).textTheme.bodyMedium),
+                    Text(
+                      'v$version',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                     const SizedBox(height: 8),
                     Text(
                       '记录每一餐，看看吃得均不均衡',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: scheme.onSurfaceVariant,
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(color: scheme.onSurfaceVariant),
                     ),
                   ],
                 ),
@@ -89,7 +94,7 @@ class AboutPage extends StatelessWidget {
                     ListTile(
                       leading: const Icon(Icons.feedback_outlined),
                       title: const Text('意见反馈'),
-                      subtitle: const Text('当前为 UI 开发版，反馈入口后续开放'),
+                      subtitle: const Text('当前为内部测试版，请通过项目 GitHub Issue 反馈'),
                     ),
                   ],
                 ),

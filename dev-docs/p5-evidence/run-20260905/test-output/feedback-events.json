@@ -1,0 +1,16 @@
+{
+  "exposure_evaluated": {
+    "mealId": "second",
+    "counts": {
+      "sugary_drink": 2
+    }
+  },
+  "prompt_presented": {
+    "source": "AppState save result; UI presentation separately asserted in production page test",
+    "mealId": "second"
+  },
+  "prompt_suppressed": {
+    "backdated_first_save": true
+  },
+  "scope": "synthetic SQLite test only"
+}

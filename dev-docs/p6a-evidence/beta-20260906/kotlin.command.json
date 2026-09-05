@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\dev\\canting\\android\\gradlew.bat",
+    ":app:testDebugUnitTest",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx2G -XX:MaxMetaspaceSize=1G"
+  ],
+  "cwd": "D:\\dev\\canting\\android",
+  "started_at": "2026-09-05T16:11:40.048498+00:00",
+  "ended_at": "2026-09-05T16:12:35.074586+00:00",
+  "exit_code": 0,
+  "log": "kotlin.txt"
+}

@@ -1,0 +1,6 @@
+Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!
+00:00 +0: loading D:/dev/canting/test/state/p6a_widget_date_test.dart
+00:00 +0: D:/dev/canting/test/state/p6a_widget_date_test.dart: save edit delete resume and reopen publish current local business date
+00:00 +1: loading D:/dev/canting/test/state/p5_widget_sync_test.dart
+00:00 +1: D:/dev/canting/test/state/p5_widget_sync_test.dart: unknown meal stays unknown in Android widget payload after save and database reopen
+00:01 +2: All tests passed!

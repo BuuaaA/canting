@@ -1,0 +1,8 @@
+{
+  "command": [
+    "C:/Program Files/Android/Android Studio/jbr/bin/java.exe",
+    "-version"
+  ],
+  "exit_code": 0,
+  "log": "java-version.txt"
+}

@@ -1,0 +1,43 @@
+{
+  "stage": "P6-A",
+  "created_at": "2026-09-05T16:09:12.217314+00:00",
+  "flutter_passed": 497,
+  "kotlin": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_match": true,
+  "pet_files_unchanged": [
+    "android/app/src/main/kotlin/com/canting/canting/PetSpritePainter.kt",
+    "assets/sprites/README.md",
+    "assets/sprites/pet_cat_adult_good_0.png",
+    "assets/sprites/pet_dog_adult_good_0.png",
+    "assets/sprites/pet_hamster_adult_good_0.png",
+    "lib/pet/pet_daily_dialogue.dart",
+    "lib/pet/pet_data.dart",
+    "lib/pet/pet_dialogues.dart",
+    "lib/pet/pet_engine.dart",
+    "lib/pet/pet_update_result.dart",
+    "lib/pet/vitality_calculator.dart",
+    "lib/pet/vitality_log.dart",
+    "lib/pet/widgets/evolution_animation_widget.dart",
+    "lib/pet/widgets/pet_dialog_widget.dart",
+    "lib/pet/widgets/pet_sprite_widget.dart"
+  ],
+  "device_checks": "not_run",
+  "delivery": "D:\\dev\\canting\\build\\p6a-delivery\\run-20260905",
+  "files": {
+    "canting-1.0.0-p6a-arm64-internal.apk": "5f93b42b14d5ef95d5ae1994ae180d6ce899bf26bf20668d4a435566290aba65",
+    "canting-1.0.0-p6a-universal-internal.apk": "6902b87aa754f78e07244e8f13ff224a98c7cf76a68cdfc8a1308e9066fcb050",
+    "feedback-template.md": "8ed5153c40e3c34d9f61b246d409dfccf3d9012645e7c0260eeecbf2936f3134",
+    "icon-previews.png": "0d27645ce2055143101d3811a540c24bd90f28171049937828d6fa7d531e952d",
+    "known-limitations.md": "dbd31ee62b3f1b44e1f9c719af98278aa0a3f1c9e0854886455c6d1ab8f56af2",
+    "p5-device-checklist.md": "2d19b36728fd13b9e8ed3adc0a1db3a2541b7292b0ede20adad357f3828ff231",
+    "package-analysis.json": "b8fda0cea8d2db5498e74c11bc4cd2464e5cc7cb08d20d7d481ac03d92ef8222",
+    "package-info.md": "f5f2ed98c5ed7e1c91bc406dbe6c1d81a6d4ec98f93fcbf22defde36d6a03f93",
+    "SHA256SUMS.txt": "2ae976d9c282f79905f0f5de5ac166ea2bdb820d874fdb32ac6f7b4248e99ac4",
+    "START-HERE.md": "b8e260c69ed49d8e0ea57c7d5851c947e4a9e0ed5b4190a7b629138c21b7c4c6"
+  }
+}

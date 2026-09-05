@@ -1,0 +1,2 @@
+1fb4a88e9331e45939c6abc46e8a318466688f77f242c00f6fa8ee223fe0e807  canting-0.9.0-beta-arm64.apk
+ed16e84934aabb6b7caef418c9ed3d2995d512aca03c5882aab8318fe3ae9c2f  canting-0.9.0-beta-universal.apk

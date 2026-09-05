@@ -146,21 +146,7 @@ class DatabaseHelper {
     if (normalizedQuery.isEmpty) {
       return const [];
     }
-    final dishes = await getAllDishes();
-    return dishes
-        .where((dish) {
-          final terms = [
-            dish.name,
-            ...dish.aliases,
-            ...dish.searchKeywords,
-          ].map(FoodDatabase.normalizeDishName);
-          return terms.any(
-            (term) =>
-                term.contains(normalizedQuery) ||
-                normalizedQuery.contains(term),
-          );
-        })
-        .toList(growable: false);
+    return FoodDatabase.searchCatalog(await getAllDishes(), normalizedQuery);
   }
 
   Future<void> replaceAll(FoodDatabase data) async {

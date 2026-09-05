@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="活力 60"
+            android:text="记录待更新"
             android:textColor="#173C2A"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -40,8 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:text="状态不错"
+            android:maxLines="2"
+            android:text="打开餐盘更新今日记录"
             android:textColor="#53635A"
             android:textSize="10sp" />
 
@@ -52,7 +52,7 @@
             android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="今天吃了 0 餐"
+            android:text="记录待更新"
             android:textColor="#29332E"
             android:textSize="11sp" />
     </LinearLayout>
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="今日完成度 0%"
+            android:text="等待更新"
             android:textColor="#29332E"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -90,6 +90,7 @@
             android:layout_marginTop="5dp"
             android:max="100"
             android:progress="0"
+            android:visibility="gone"
             android:progressTint="#4D9A70" />
 
         <TextView
@@ -99,7 +100,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="下一餐 暂无建议"
+            android:text="打开餐盘更新今日记录"
             android:textColor="#53635A"
             android:textSize="10sp" />
     </LinearLayout>

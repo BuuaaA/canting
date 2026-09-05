@@ -1,0 +1,33 @@
+{
+  "split_sources": {
+    "count": 145,
+    "mismatches": []
+  },
+  "universal_sources": {
+    "count": 145,
+    "mismatches": []
+  },
+  "artifacts": [
+    {
+      "name": "canting-0.9.0-beta-arm64.apk",
+      "bytes": 35839129,
+      "sha256": "1fb4a88e9331e45939c6abc46e8a318466688f77f242c00f6fa8ee223fe0e807",
+      "abis": [
+        "arm64-v8a"
+      ],
+      "icon_variants_verified": 15
+    },
+    {
+      "name": "canting-0.9.0-beta-universal.apk",
+      "bytes": 93335900,
+      "sha256": "ed16e84934aabb6b7caef418c9ed3d2995d512aca03c5882aab8318fe3ae9c2f",
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "icon_variants_verified": 15
+    }
+  ],
+  "icon_master_matches_supplied": true
+}

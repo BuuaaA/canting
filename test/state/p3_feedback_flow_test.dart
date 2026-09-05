@@ -1,3 +1,5 @@
+import '../support/evidence.dart';
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -81,21 +83,20 @@ void main() {
     );
     final prompt = await state.saveMeal(riskMeal('second', now, rows: 2));
     expect(prompt!.counts, {'sugary_drink': 2});
-    File('dev-docs/p4-evidence/repair-20260905/feedback-events.json')
-        .writeAsStringSync(
-          const JsonEncoder.withIndent('  ').convert({
-            'exposure_evaluated': {
-              'mealId': prompt.mealId,
-              'counts': prompt.counts,
-            },
-            'prompt_presented': {
-              'source': 'AppState save result; UI presentation separately asserted in production page test',
-              'mealId': prompt.mealId,
-            },
-            'prompt_suppressed': {'backdated_first_save': true},
-            'scope': 'synthetic SQLite test only',
-          }),
-        );
+    File(evidencePath('feedback-events.json')).writeAsStringSync(
+      const JsonEncoder.withIndent('  ').convert({
+        'exposure_evaluated': {
+          'mealId': prompt.mealId,
+          'counts': prompt.counts,
+        },
+        'prompt_presented': {
+          'source': 'AppState save result; UI presentation separately asserted in production page test',
+          'mealId': prompt.mealId,
+        },
+        'prompt_suppressed': {'backdated_first_save': true},
+        'scope': 'synthetic SQLite test only',
+      }),
+    );
     expect(state.windowFor(now, 7)!.partialDays, 2);
     expect(state.balanceReport!.isEmpty, true);
     expect(state.recommendationFor(now)!.primary.single.servings, isNull);

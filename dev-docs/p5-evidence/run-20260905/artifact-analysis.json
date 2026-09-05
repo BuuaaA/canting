@@ -1,0 +1,2103 @@
+[
+  {
+    "path": "D:\\dev\\canting\\canting_v0.1.0-beta.apk",
+    "bytes": 88805734,
+    "sha256": "27a0ef8380a57a82b7266bff3a1798f232080d3c1df4074239faf39b1805987a",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 7701064,
+        "uncompressed_bytes": 7701064,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 7144328,
+        "uncompressed_bytes": 7144328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 6947720,
+        "uncompressed_bytes": 6947720,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 646565,
+        "uncompressed_bytes": 1468832,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 211468,
+        "uncompressed_bytes": 211468,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 7701064,
+        "uncompressed_bytes": 7701064,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 7144328,
+        "uncompressed_bytes": 7144328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 6947720,
+        "uncompressed_bytes": 6947720,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 646565,
+        "uncompressed_bytes": 1468832,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 211468,
+        "uncompressed_bytes": 211468,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 332075,
+        "uncompressed_bytes": 437346
+      },
+      "DEX": {
+        "compressed_bytes": 646565,
+        "uncompressed_bytes": 1468832
+      },
+      "Dart AOT": {
+        "compressed_bytes": 21793112,
+        "uncompressed_bytes": 21793112
+      },
+      "Flutter engine": {
+        "compressed_bytes": 33415188,
+        "uncompressed_bytes": 33415188
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 29472612,
+        "uncompressed_bytes": 29472612
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1030913,
+        "uncompressed_bytes": 1083066
+      },
+      "Fonts": {
+        "compressed_bytes": 48498,
+        "uncompressed_bytes": 131624
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "arm64-v8a": 29760128,
+      "armeabi-v7a": 23098904,
+      "x86_64": 31821880
+    },
+    "duplicate_entries": [],
+    "signature_log": "old-beta-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "1",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": true
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\baseline-offline\\app-release.apk",
+    "bytes": 92934376,
+    "sha256": "d078b0086fc1f3c185f9eb9255eecf72106283d84aac25f9020fed4e92e36cc0",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851291,
+        "uncompressed_bytes": 1902384,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 250984,
+        "uncompressed_bytes": 250984,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79848,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851291,
+        "uncompressed_bytes": 1902384,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 250984,
+        "uncompressed_bytes": 250984,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "lib/arm64-v8a/libdartjni.so",
+        "compressed_bytes": 131400,
+        "uncompressed_bytes": 131400,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 375020,
+        "uncompressed_bytes": 485699
+      },
+      "DEX": {
+        "compressed_bytes": 931139,
+        "uncompressed_bytes": 2092528
+      },
+      "Dart AOT": {
+        "compressed_bytes": 25119064,
+        "uncompressed_bytes": 25119064
+      },
+      "Other native libraries": {
+        "compressed_bytes": 347544,
+        "uncompressed_bytes": 347544
+      },
+      "Flutter engine": {
+        "compressed_bytes": 33415188,
+        "uncompressed_bytes": 33415188
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 29472612,
+        "uncompressed_bytes": 29472612
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1091789,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "arm64-v8a": 30947216,
+      "armeabi-v7a": 24348184,
+      "x86_64": 33059008
+    },
+    "duplicate_entries": [],
+    "signature_log": "baseline-offline-app-release-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "1",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": true
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+    "bytes": 35438713,
+    "sha256": "316ee514478f16750839f32697e9c5689bbf8ceeca72a9f2a4202a8921f6f0d2",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "lib/arm64-v8a/libdartjni.so",
+        "compressed_bytes": 131400,
+        "uncompressed_bytes": 131400,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "lib/arm64-v8a/libdartjni.so",
+        "compressed_bytes": 131400,
+        "uncompressed_bytes": 131400,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 376025,
+        "uncompressed_bytes": 489311
+      },
+      "DEX": {
+        "compressed_bytes": 931304,
+        "uncompressed_bytes": 2092772
+      },
+      "Dart AOT": {
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296
+      },
+      "Other native libraries": {
+        "compressed_bytes": 138512,
+        "uncompressed_bytes": 138512
+      },
+      "Flutter engine": {
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1091789,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "arm64-v8a": 30947216
+    },
+    "duplicate_entries": [],
+    "signature_log": "split-app-arm64-v8a-release-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "2001",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": false
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk",
+    "bytes": 28813207,
+    "sha256": "0a5430db8eef535addec2b9329ef7bccf98d312afde6425a90249fa1ba4baa82",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "lib/armeabi-v7a/libdartjni.so",
+        "compressed_bytes": 81600,
+        "uncompressed_bytes": 81600,
+        "category": "Other native libraries"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "lib/armeabi-v7a/libdartjni.so",
+        "compressed_bytes": 81600,
+        "uncompressed_bytes": 81600,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 376025,
+        "uncompressed_bytes": 489311
+      },
+      "DEX": {
+        "compressed_bytes": 931304,
+        "uncompressed_bytes": 2092772
+      },
+      "Dart AOT": {
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328
+      },
+      "Other native libraries": {
+        "compressed_bytes": 86016,
+        "uncompressed_bytes": 86016
+      },
+      "Flutter engine": {
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1091789,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "armeabi-v7a": 24348184
+    },
+    "duplicate_entries": [],
+    "signature_log": "split-app-armeabi-v7a-release-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "1001",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": false
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk",
+    "bytes": 37540378,
+    "sha256": "517ae1aed65c9778da93a7b61fb48795da152c27ba3973166b6c09fbc45c19c2",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      },
+      {
+        "path": "lib/x86_64/libdartjni.so",
+        "compressed_bytes": 116792,
+        "uncompressed_bytes": 116792,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/segmenter/tflite_script_detector_0.3.lstm_model",
+        "compressed_bytes": 119566,
+        "uncompressed_bytes": 161448,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "lib/x86_64/libdartjni.so",
+        "compressed_bytes": 116792,
+        "uncompressed_bytes": 116792,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite",
+        "compressed_bytes": 114384,
+        "uncompressed_bytes": 114384,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/NOTICES.Z",
+        "compressed_bytes": 104301,
+        "uncompressed_bytes": 106037,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/fonts/PressStart2P-Regular.ttf",
+        "compressed_bytes": 40120,
+        "uncompressed_bytes": 118204,
+        "category": "Fonts"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 376025,
+        "uncompressed_bytes": 489311
+      },
+      "DEX": {
+        "compressed_bytes": 931304,
+        "uncompressed_bytes": 2092772
+      },
+      "Dart AOT": {
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440
+      },
+      "Other native libraries": {
+        "compressed_bytes": 123016,
+        "uncompressed_bytes": 123016
+      },
+      "Flutter engine": {
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1091789,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "x86_64": 33059008
+    },
+    "duplicate_entries": [],
+    "signature_log": "split-app-x86_64-release-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "4001",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": false
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\universal\\app-release.apk",
+    "bytes": 92935480,
+    "sha256": "1b71753060f62a2d1b67c0620caa8d8b678965b00fb3d8d7b64cc556463d5c34",
+    "top20_by_uncompressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "classes2.dex",
+        "compressed_bytes": 79847,
+        "uncompressed_bytes": 190144,
+        "category": "DEX"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "lib/x86_64/libflutter.so",
+        "compressed_bytes": 13051424,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 11747864,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11626128,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 11064544,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 8864328,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 8615900,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "lib/x86_64/libapp.so",
+        "compressed_bytes": 8258440,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 7996296,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 6781940,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 340760,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 338767,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 315520,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_cat_adult_good_0.png",
+        "compressed_bytes": 302015,
+        "uncompressed_bytes": 302015,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "assets/flutter_assets/assets/sprites/pet_dog_adult_good_0.png",
+        "compressed_bytes": 278365,
+        "uncompressed_bytes": 278365,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "resources.arsc",
+        "compressed_bytes": 251112,
+        "uncompressed_bytes": 251112,
+        "category": "Android resources/metadata"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 181609,
+        "uncompressed_bytes": 309568,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "lib/arm64-v8a/libdartjni.so",
+        "compressed_bytes": 131400,
+        "uncompressed_bytes": 131400,
+        "category": "Other native libraries"
+      },
+      {
+        "path": "assets/mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite",
+        "compressed_bytes": 129612,
+        "uncompressed_bytes": 129612,
+        "category": "OCR models/resources"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 376021,
+        "uncompressed_bytes": 489311
+      },
+      "DEX": {
+        "compressed_bytes": 931304,
+        "uncompressed_bytes": 2092772
+      },
+      "Dart AOT": {
+        "compressed_bytes": 25119064,
+        "uncompressed_bytes": 25119064
+      },
+      "Other native libraries": {
+        "compressed_bytes": 347544,
+        "uncompressed_bytes": 347544
+      },
+      "Flutter engine": {
+        "compressed_bytes": 33415188,
+        "uncompressed_bytes": 33415188
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 29472612,
+        "uncompressed_bytes": 29472612
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1091789,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1924291,
+        "uncompressed_bytes": 2490560
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "arm64-v8a": 30947216,
+      "armeabi-v7a": 24348184,
+      "x86_64": 33059008
+    },
+    "duplicate_entries": [],
+    "signature_log": "universal-app-release-signature.txt",
+    "debug_signed": true,
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "package_identity": {
+      "application_id": "com.canting.canting",
+      "version_code": "1",
+      "version_name": "1.0.0"
+    },
+    "network_permission_present": false
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab",
+    "bytes": 74044411,
+    "sha256": "cd38d39e77edf5a6e935a988e2c218ea992c20a35aedad7dcdc2e8b561f59464",
+    "top20_by_uncompressed": [
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/arm64-v8a/libflutter.so.sym",
+        "compressed_bytes": 6804035,
+        "uncompressed_bytes": 18776976,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.obfuscation/proguard.map",
+        "compressed_bytes": 1383382,
+        "uncompressed_bytes": 18301500,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/x86_64/libflutter.so.sym",
+        "compressed_bytes": 6618439,
+        "uncompressed_bytes": 17853568,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/armeabi-v7a/libflutter.so.sym",
+        "compressed_bytes": 5866018,
+        "uncompressed_bytes": 13859184,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/x86_64/libflutter.so",
+        "compressed_bytes": 5628539,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 5478898,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 4470678,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 4405669,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/armeabi-v7a/libapp.so.sym",
+        "compressed_bytes": 3846382,
+        "uncompressed_bytes": 9912492,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/x86_64/libapp.so.sym",
+        "compressed_bytes": 3547587,
+        "uncompressed_bytes": 9491120,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/arm64-v8a/libapp.so.sym",
+        "compressed_bytes": 3496625,
+        "uncompressed_bytes": 9229112,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 3560632,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 4741191,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/x86_64/libapp.so",
+        "compressed_bytes": 3256843,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 3208466,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 3513116,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "base/dex/classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "base/assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "base/assets/flutter_assets/assets/data/dishes.json",
+        "compressed_bytes": 52875,
+        "uncompressed_bytes": 639757,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "base/assets/mlkit-google-ocr-models/taser/detector/rpn_text_detector_mobile_space_to_depth_quantized_mbv2_v1.tflite",
+        "compressed_bytes": 227160,
+        "uncompressed_bytes": 340760,
+        "category": "OCR models/resources"
+      }
+    ],
+    "top20_by_compressed": [
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/arm64-v8a/libflutter.so.sym",
+        "compressed_bytes": 6804035,
+        "uncompressed_bytes": 18776976,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/x86_64/libflutter.so.sym",
+        "compressed_bytes": 6618439,
+        "uncompressed_bytes": 17853568,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/armeabi-v7a/libflutter.so.sym",
+        "compressed_bytes": 5866018,
+        "uncompressed_bytes": 13859184,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/x86_64/libflutter.so",
+        "compressed_bytes": 5628539,
+        "uncompressed_bytes": 13051424,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libflutter.so",
+        "compressed_bytes": 5478898,
+        "uncompressed_bytes": 11747864,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libflutter.so",
+        "compressed_bytes": 4741191,
+        "uncompressed_bytes": 8615900,
+        "category": "Flutter engine"
+      },
+      {
+        "path": "base/lib/x86_64/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 4470678,
+        "uncompressed_bytes": 11626128,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 4405669,
+        "uncompressed_bytes": 11064544,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/armeabi-v7a/libapp.so.sym",
+        "compressed_bytes": 3846382,
+        "uncompressed_bytes": 9912492,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libapp.so",
+        "compressed_bytes": 3560632,
+        "uncompressed_bytes": 8864328,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/x86_64/libapp.so.sym",
+        "compressed_bytes": 3547587,
+        "uncompressed_bytes": 9491120,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/armeabi-v7a/libmlkit_google_ocr_pipeline.so",
+        "compressed_bytes": 3513116,
+        "uncompressed_bytes": 6781940,
+        "category": "OCR native libraries"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.debugsymbols/arm64-v8a/libapp.so.sym",
+        "compressed_bytes": 3496625,
+        "uncompressed_bytes": 9229112,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/lib/x86_64/libapp.so",
+        "compressed_bytes": 3256843,
+        "uncompressed_bytes": 8258440,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "base/lib/arm64-v8a/libapp.so",
+        "compressed_bytes": 3208466,
+        "uncompressed_bytes": 7996296,
+        "category": "Dart AOT"
+      },
+      {
+        "path": "BUNDLE-METADATA/com.android.tools.build.obfuscation/proguard.map",
+        "compressed_bytes": 1383382,
+        "uncompressed_bytes": 18301500,
+        "category": "Debug symbols and mapping"
+      },
+      {
+        "path": "base/dex/classes.dex",
+        "compressed_bytes": 851457,
+        "uncompressed_bytes": 1902628,
+        "category": "DEX"
+      },
+      {
+        "path": "base/assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Hani_ctc/optical/lstm_model.fb",
+        "compressed_bytes": 599499,
+        "uncompressed_bytes": 891872,
+        "category": "OCR models/resources"
+      },
+      {
+        "path": "base/assets/flutter_assets/assets/sprites/pet_hamster_adult_good_0.png",
+        "compressed_bytes": 311345,
+        "uncompressed_bytes": 338767,
+        "category": "Flutter assets/data"
+      },
+      {
+        "path": "base/assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/tflite_langid.tflite",
+        "compressed_bytes": 292329,
+        "uncompressed_bytes": 315520,
+        "category": "OCR models/resources"
+      }
+    ],
+    "categories": {
+      "Android resources/metadata": {
+        "compressed_bytes": 261520,
+        "uncompressed_bytes": 734017
+      },
+      "Flutter assets/data": {
+        "compressed_bytes": 1007865,
+        "uncompressed_bytes": 1728541
+      },
+      "Fonts": {
+        "compressed_bytes": 49435,
+        "uncompressed_bytes": 133308
+      },
+      "OCR models/resources": {
+        "compressed_bytes": 1705706,
+        "uncompressed_bytes": 2490560
+      },
+      "DEX": {
+        "compressed_bytes": 931304,
+        "uncompressed_bytes": 2092772
+      },
+      "Dart AOT": {
+        "compressed_bytes": 10025941,
+        "uncompressed_bytes": 25119064
+      },
+      "Other native libraries": {
+        "compressed_bytes": 86084,
+        "uncompressed_bytes": 347544
+      },
+      "Flutter engine": {
+        "compressed_bytes": 15848628,
+        "uncompressed_bytes": 33415188
+      },
+      "OCR native libraries": {
+        "compressed_bytes": 12389463,
+        "uncompressed_bytes": 29472612
+      },
+      "Debug symbols and mapping": {
+        "compressed_bytes": 31662161,
+        "uncompressed_bytes": 97827372
+      }
+    },
+    "native_uncompressed_by_abi": {
+      "arm64-v8a": 30947216,
+      "armeabi-v7a": 24348184,
+      "x86_64": 33059008
+    },
+    "duplicate_entries": [],
+    "certificate_sha256": "336e3f94c188e3a5452475abaf0db1c2bd56a0d1986b5cf36cbdb3cbb6b2bd03",
+    "debug_signed": true
+  }
+]

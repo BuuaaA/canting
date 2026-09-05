@@ -1,0 +1,984 @@
+{
+  "baseline": "6f1286daafa6d9e4d282bb0dabaf0a9db59cb317",
+  "current_head": "6f1286daafa6d9e4d282bb0dabaf0a9db59cb317",
+  "manifest_excludes_itself": true,
+  "created_at": "2026-09-05T15:32:00.317415+00:00",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "status": "modified",
+      "old_path": ".gitattributes",
+      "new_path": ".gitattributes",
+      "sha256": "40af2fa26e4d207c42d81cbc16393ea586ec854ad9fa75124897bbdd29754527",
+      "bytes": 350
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "status": "modified",
+      "old_path": "android/app/src/main/AndroidManifest.xml",
+      "new_path": "android/app/src/main/AndroidManifest.xml",
+      "sha256": "f0592bf74231b6614a115f378480678947f34d4074638734db4d8608ab5d3fbc",
+      "bytes": 5272
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/PetWidgetCompletion.kt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/PetWidgetCompletion.kt",
+      "sha256": "03bbf6ca3ea14c43f1a7e02d4bc1973d66f0959bb53093350537c83d1347b7ea",
+      "bytes": 657
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/canting/canting/PetWidgetViews.kt",
+      "status": "modified",
+      "old_path": "android/app/src/main/kotlin/com/canting/canting/PetWidgetViews.kt",
+      "new_path": "android/app/src/main/kotlin/com/canting/canting/PetWidgetViews.kt",
+      "sha256": "a83b313da874455bbe358bbae60e1866dab538eceb6035174e8caac384861759",
+      "bytes": 5198
+    },
+    {
+      "path": "android/app/src/main/res/layout/widget_medium.xml",
+      "status": "modified",
+      "old_path": "android/app/src/main/res/layout/widget_medium.xml",
+      "new_path": "android/app/src/main/res/layout/widget_medium.xml",
+      "sha256": "30bcdce740252250362dc08c42213ab61940e7b1badf7379e50215d1fe7a5c24",
+      "bytes": 3748
+    },
+    {
+      "path": "android/app/src/main/res/xml/backup_rules.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/main/res/xml/backup_rules.xml",
+      "sha256": "80be325e44eb49bec54794399e7de6b4d274513a3ebce30584889d06372f1a0a",
+      "bytes": 523
+    },
+    {
+      "path": "android/app/src/main/res/xml/data_extraction_rules.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842",
+      "bytes": 1050
+    },
+    {
+      "path": "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+      "status": "modified",
+      "old_path": "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+      "new_path": "android/app/src/test/kotlin/com/canting/canting/P4ReplayTest.kt",
+      "sha256": "eb212d6b217192b0e772bd6523fbda6890e80f0af56a9e1cc87e278e4db8f8c1",
+      "bytes": 1682
+    },
+    {
+      "path": "android/app/src/test/kotlin/com/canting/canting/PetWidgetCompletionTest.kt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "android/app/src/test/kotlin/com/canting/canting/PetWidgetCompletionTest.kt",
+      "sha256": "4ca1b0f4c9b6c1efb9e1fb1edb1a83a03bf97e9baf879278f152601c85e11a35",
+      "bytes": 1414
+    },
+    {
+      "path": "dev-docs/android-release-candidate-report.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/android-release-candidate-report.md",
+      "sha256": "1351ee5a1aa7d849b2cbbe858bb6d7a4ebf1cbaf91cb21af5b43f7155f959ade",
+      "bytes": 11726
+    },
+    {
+      "path": "dev-docs/p5-device-checklist.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-device-checklist.md",
+      "sha256": "2d19b36728fd13b9e8ed3adc0a1db3a2541b7292b0ede20adad357f3828ff231",
+      "bytes": 5085
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.DishNameExtractorTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.DishNameExtractorTest.xml",
+      "sha256": "65fcb7acd1b75bd69c105065c9970d86eaf98cbae35cdc2b8ddf65a8f476d1aa",
+      "bytes": 2697
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.P4ParserTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.P4ParserTest.xml",
+      "sha256": "6a12dfdb996db750dbdf298f477fc50327a70f696726fbac060543460bc5a374",
+      "bytes": 890
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.P4ReplayTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.P4ReplayTest.xml",
+      "sha256": "8709d6a7bd4b64a806a3d44aa01a9c0a7ff18215310f05d7258e18c6203e299b",
+      "bytes": 424
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.PetWidgetCompletionTest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/TEST-com.canting.canting.PetWidgetCompletionTest.xml",
+      "sha256": "d6bb306bec5eb6340ce4bf9f00a57c7bc6d3f064d919d86465f52c267aac71d5",
+      "bytes": 1044
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/aab-certificate.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/aab-certificate.command.json",
+      "sha256": "c2d199e7496093666ac9f0324340b490b4f861fb66849c2f9c9ac94c83fb5f61",
+      "bytes": 316
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/aab-certificate.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/aab-certificate.txt",
+      "sha256": "dff494e1bddcfd73b0a8abdd54ec1af57fb2ad804c3004af45e60fe0e461840c",
+      "bytes": 509
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/aab-signature-english.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/aab-signature-english.command.json",
+      "sha256": "6fbaaf6730a705476fdd23bd3ea8800f75d754d309d477d8ceea37abe54e8869",
+      "bytes": 319
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/aab-signature-english.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/aab-signature-english.txt",
+      "sha256": "bafb3070d8e2c75e9f5b893ec4bd3cc33a11430f60684f283f1e212a8931c05f",
+      "bytes": 50271
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/analyze-2.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/analyze-2.command.json",
+      "sha256": "53d9270a7572416b8a296171dd597637dc7d9536eddbcc64d21df94abcf798ac",
+      "bytes": 369
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/analyze-2.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/analyze-2.txt",
+      "sha256": "e9199d6e2afaee94ac2bc8bfb06a6067dea501f2e08b599b69350fc83f4ee51a",
+      "bytes": 199
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/analyze.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/analyze.command.json",
+      "sha256": "b26b6a06c7ff510969bfced3339b5117aa6d5c9475813dca76208f860c2c3d5d",
+      "bytes": 367
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/analyze.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/analyze.txt",
+      "sha256": "e290fe7b00dd89c1b2c3479150914b829a4b0460dd86b0bf066ee1a74c1099b3",
+      "bytes": 2017
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/artifact-analysis.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/artifact-analysis.json",
+      "sha256": "ae67fb2c9d73dc153cd0510c8aecff7d9b09e6d4245f189ccd28235ab7003ffa",
+      "bytes": 72277
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/artifact-validation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/artifact-validation.json",
+      "sha256": "65194b789e50ffebfb1ecaf356621350bc33ec34588016d5d75d5fff96ae8e63",
+      "bytes": 224
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-manifest-merger.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-manifest-merger.txt",
+      "sha256": "a6f5bbf996fcd480f84cac9418af4c03f34526cda633581eeb19423f88f24273",
+      "bytes": 95673
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-merged-manifest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-merged-manifest.xml",
+      "sha256": "e5994c141808d52243dc5edcec8d5e3c4650893c093ed67b2ccd1d6b4b24509f",
+      "bytes": 11500
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-badging.command.json",
+      "sha256": "06eb7816195355e73b7b4eb71e451213aa444cab258e0294f5929906271d84f9",
+      "bytes": 296
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-badging.txt",
+      "sha256": "cf999fd723480f4dabe8acc196ae36550c33cfd24bd85a26e97ae8f16eceaf05",
+      "bytes": 4672
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-manifest.command.json",
+      "sha256": "3a2752ad1feef97164363eb3d5d9e75648170666dde203ea6c506665b3ace960",
+      "bytes": 340
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-manifest.txt",
+      "sha256": "e7c8a1c1c57c09a7f5f4966dff8fcec6e8e58d99385aecb0a38bf489e2c930a6",
+      "bytes": 20503
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-signature.command.json",
+      "sha256": "bbb7288aa77f4cd991b88210a7ec782f945a121845153ca9e919b8cfa4b54b6e",
+      "bytes": 328
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-app-release-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-artifacts.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-artifacts.json",
+      "sha256": "4834c21548c0ed4c193b1bc181e94afd3a69a76fabd270e9aea3ae3a4b476d7a",
+      "bytes": 211
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline-sources.json",
+      "sha256": "68e138f85a7cd51e2006a6b7de83bbc6456ea3f5d8649b3228608304a5b13cfc",
+      "bytes": 14819
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline.command.json",
+      "sha256": "434639cae3ed644bc82f9a923a5a7e73a8313d209e419eccf12e1415f9834022",
+      "bytes": 543
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-offline.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-offline.txt",
+      "sha256": "3677397d83e3cf43374752e514f23258dbffa47919f7e4d34eb1317621acc0a9",
+      "bytes": 33979
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline-sources.json",
+      "sha256": "f99e5e0328851e467f191db63f4524700ce6bb090448e63cbc6db4ce3cb6cfc8",
+      "bytes": 14772
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline.command.json",
+      "sha256": "913f18ac9cd8050d7b97d0835b5eca6312169c8845609cdf76cd77a6f5a4942f",
+      "bytes": 435
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/baseline.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/baseline.txt",
+      "sha256": "37176ecc2c38a18d4460fe0ad3e94cb1a1b360fdaaac424f43b59a7ac7762826",
+      "bytes": 7487
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle-app-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle-app-release-signature.command.json",
+      "sha256": "67b26bf0d5690add9fac67b9df6048128dbeaa2e9fce90babc4aa7fbbc201c37",
+      "bytes": 280
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle-app-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle-app-release-signature.txt",
+      "sha256": "2d82006d981ade5c5f528d15c9f21a0a41dd4eca0a1d0a7cd430e5de9f449b81",
+      "bytes": 223661
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle-artifacts.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle-artifacts.json",
+      "sha256": "adc175349cd537642872dff9739f58e97211ae676ea122623fdfd4e0105d62eb",
+      "bytes": 201
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle-sources.json",
+      "sha256": "17453fb101d386e17ce3ff0aafb69486bb112e4457c1943b682a73fdface21df",
+      "bytes": 16049
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle.command.json",
+      "sha256": "3d9e537b891e5fe4ed5db264894255d3779532917cb62dc4cfaa2dc1e47deefc",
+      "bytes": 531
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/bundle.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/bundle.txt",
+      "sha256": "5af416f7fd694f6af951b917c3776cbcbfb03e712ebd27299722cab6c28adb19",
+      "bytes": 33579
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/candidate-manifest-merger.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/candidate-manifest-merger.txt",
+      "sha256": "5883c373ab4bd2d99a46c71a33b3470dc2f410b8a2f4afd666fb1f86817f267e",
+      "bytes": 95905
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/candidate-merged-manifest.xml",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/candidate-merged-manifest.xml",
+      "sha256": "855b32f7f84c244c0e38bf5668927c4690c61687d84cb7ede0d48139bb38b3e9",
+      "bytes": 11348
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/configuration-validation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/configuration-validation.json",
+      "sha256": "9e0f198a80c294c8c5e91830abb1b04d0a5932bcc13485bab65c9774622cd91f",
+      "bytes": 2030
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/devices.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/devices.command.json",
+      "sha256": "8e4f87bc65f98441354ca12ee48b1d1ea9a3fbebd8711081f9dfb82de56cc37d",
+      "bytes": 177
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/devices.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/devices.txt",
+      "sha256": "bbfcc7239a6f1be3544814ebdc6bcc9b66bf5b1f0b03baa3340808f19265a630",
+      "bytes": 28
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/environment.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/environment.json",
+      "sha256": "c3cfc7c8a82a275de5fd9c625fec376c6c7cccd85db8e676aee46b95555bbcfc",
+      "bytes": 1128
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/flutter-version.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/flutter-version.command.json",
+      "sha256": "4f656eea1b96df83a4eecaf7de69fbc0a78d0db2b1763898b50fc701c5be0571",
+      "bytes": 244
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/flutter-version.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/flutter-version.txt",
+      "sha256": "52bd797d1c55ab2d854a9ddcb877865cfe064254f65c58b985732904be6576e7",
+      "bytes": 592
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/full.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/full.command.json",
+      "sha256": "09453cf9b0aa8f31e04d599c2eb15c2dbd48bc7ce3a05cf6f2619ad7c3972673",
+      "bytes": 421
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/full.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/full.txt",
+      "sha256": "1d7d1d1433e19293ce7c972f1faed79a2838f1a3d034a99ab55d454bdd9b4432",
+      "bytes": 157619
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/java-version.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/java-version.command.json",
+      "sha256": "ef94dafa61920b427b8ea97e04c1964c9074bc1c0f4afcdb8ad17ae66bff389b",
+      "bytes": 157
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/java-version.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/java-version.txt",
+      "sha256": "6b9fc32c25618839e79bdf76785715903d1312f84a74ce909184c580b03d0857",
+      "bytes": 170
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/kotlin.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/kotlin.command.json",
+      "sha256": "f2e439bd000e22771c32ede2ac4529efcec2a97c9b3ca861a9e66543fa8dc2bd",
+      "bytes": 408
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/kotlin.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/kotlin.txt",
+      "sha256": "7d6af99f136b168f668aef7f4e64f4909d922b783427d535cc4da9282a8eb8c9",
+      "bytes": 18943
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-badging.command.json",
+      "sha256": "28aa736511eb00c10f1b71860811970b4d7680789911f97d645677f11cacaddc",
+      "bytes": 245
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-badging.txt",
+      "sha256": "f6f739b2cc81083d25c1c08d3e1c91e9658c26e53ca8f64f3d02443e27398df7",
+      "bytes": 4557
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-manifest.command.json",
+      "sha256": "d094b0f87f58c578eeb7e46acde63ac06fb584adbbeb61d290d406a646056959",
+      "bytes": 289
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-manifest.txt",
+      "sha256": "8c86efc2fd5f55e656482b4d058c9f6f19c28395f34351eb0b68b06473da96ed",
+      "bytes": 16845
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-signature.command.json",
+      "sha256": "a6db254a04d0a64d861f471e50029f035b7cabf3cb552b2a2214d94aab7ff1a6",
+      "bytes": 277
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/old-beta-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/old-beta-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-badging.command.json",
+      "sha256": "bcb6a3f2968a936088353659ce690d00ae24b4fe2d6647c3a9d5faaad7de40bc",
+      "bytes": 294
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-badging.txt",
+      "sha256": "3582ae7ed5d364f7eb956443e7d1e4ef1aa2342fc5edd7157df1a6d639e4814b",
+      "bytes": 4447
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-manifest.command.json",
+      "sha256": "a1ea87b3903416ad75af66af61f63a35e07da57d05b7fe4cc726b29a036589e0",
+      "bytes": 338
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-manifest.txt",
+      "sha256": "95b48844aee13aacae1b615d0228e6feddca07113b98889a4a344890f04e3c72",
+      "bytes": 20411
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-signature.command.json",
+      "sha256": "bf70b46d2c88ad51e241f8daef390539be22e585167be404031554efe9e27e83",
+      "bytes": 326
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-arm64-v8a-release-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-badging.command.json",
+      "sha256": "0f026b3fdb89ff766af24521c184771f5759f8ffb0b7aeea9c9b2da405ad1b19",
+      "bytes": 298
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-badging.txt",
+      "sha256": "4cdf8fdc1c3361704f3b707ec7c1ab63bf897040c1f2861cac729009b4363dd4",
+      "bytes": 4449
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-manifest.command.json",
+      "sha256": "b870752c8c809a81fd67266648398ca7749b7f2f414c41142547b8ad17f0806c",
+      "bytes": 342
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-manifest.txt",
+      "sha256": "c2060d670a0cd65df04868d5ca36988c0e5debb5a19bf6faac86de53d39a0f5c",
+      "bytes": 20411
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-signature.command.json",
+      "sha256": "8ff432f620adff7497742ce7db0904d932c3194435c44eb6d3c36a44ec008c58",
+      "bytes": 330
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-armeabi-v7a-release-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-badging.command.json",
+      "sha256": "1bebe7be349ba09227f56b39f9c36ec13eed7966b9d6444b76173b78f5eda624",
+      "bytes": 288
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-badging.txt",
+      "sha256": "c38c71c92c277fa37518fe59b1ca1718ee381f63b9a300a5342e5d1af4782b0a",
+      "bytes": 4444
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-manifest.command.json",
+      "sha256": "3629ce36923f26507e8df33e7c46f0dc80c257029fbd09d70d973f5126420943",
+      "bytes": 332
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-manifest.txt",
+      "sha256": "9c6b14a6bd3f47486287a704303ed6931c3a732751b5c839fc59aa2306bcb95a",
+      "bytes": 20411
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-signature.command.json",
+      "sha256": "24490d5b4641c1e14a283eefa68ce509b11f46ce5e9beb69b78aa60a933100fe",
+      "bytes": 320
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-app-x86_64-release-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-artifacts.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-artifacts.json",
+      "sha256": "860ea79ce729f00528a224cdb90670fe8fe3ee296d182b9baa7a5a35990ebc21",
+      "bytes": 619
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split-sources.json",
+      "sha256": "17453fb101d386e17ce3ff0aafb69486bb112e4457c1943b682a73fdface21df",
+      "bytes": 16049
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split.command.json",
+      "sha256": "db3b80bcabd7a29c019505f5af960d01bba47ae78cdf5af2dadb53f4e6f27410",
+      "bytes": 561
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/split.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/split.txt",
+      "sha256": "f6f05870fb30227df85eb796b065db7141f5fca179524830d4025c60ce25b5c8",
+      "bytes": 33705
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/candidate-audit.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/candidate-audit.json",
+      "sha256": "937fd59c3fc87d79b229150cf80de8d0e023b23d8fa7429a5d628debc27b5c84",
+      "bytes": 702857
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/component-recommendation-28d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/component-recommendation-28d.png",
+      "sha256": "64e9192f9af652957a7c9316f80afd0e966de7cb3838358698bad332f7945a70",
+      "bytes": 118529
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/component-recommendation-7d.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/component-recommendation-7d.png",
+      "sha256": "31b49073263ad08a5c662378c8fff7dca7bc211ae931d3dfdc10e7148def3a1b",
+      "bytes": 104316
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/component-save-prompt.png",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/component-save-prompt.png",
+      "sha256": "1d0aeb8670c57d0cbb8f5fe29e700a9095c8589c6e023a9619da7f026260002f",
+      "bytes": 77593
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/feedback-events.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/feedback-events.json",
+      "sha256": "3cfd43626905ebed16670be81da096c761d9a2f7d0ac9d3e4bde77378666dfdd",
+      "bytes": 358
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/legacy-convergence-diagnostic.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/legacy-convergence-diagnostic.json",
+      "sha256": "d374215ddda05a7915f41a1c52ca907408298fc5ca99f8fb73b34d23728a36c5",
+      "bytes": 6580
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/parser-actual.tsv",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/parser-actual.tsv",
+      "sha256": "f40789e19a8448d6357e758fcb3333af09b911217b71017bd74ab5a24bf3ac05",
+      "bytes": 2164
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/semantic-actual.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/semantic-actual.json",
+      "sha256": "edd428ec3b73187be195642ec297ca7259dd8a9da8ea9a3055d149cb76601ae8",
+      "bytes": 162320
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/test-output/simulation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/test-output/simulation.json",
+      "sha256": "fec7445b91cd2b5ff9c3382dab6f4e5cac5ec77f4983d9d947abe9718823ea6a",
+      "bytes": 135246
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-badging.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-badging.command.json",
+      "sha256": "3b5b947a3eded378a3fbbeca43ff56d4c25b7af62acd065ba32498dffed269f8",
+      "bytes": 282
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-badging.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-badging.txt",
+      "sha256": "69696378b63352080f2a9c5bb129b408d4f17f580a5046210f4efc1a32e1cbbd",
+      "bytes": 4467
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-manifest.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-manifest.command.json",
+      "sha256": "4b04c41f2fe51825cba223ecc50a88120bd1b3947df7eed9d43398642726cc90",
+      "bytes": 326
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-manifest.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-manifest.txt",
+      "sha256": "b3699ab79519b289fc63a04da46241127f1cc76b69e4f1a4b30364e283ebe076",
+      "bytes": 20408
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-signature.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-signature.command.json",
+      "sha256": "748244c365dc0d5eff71d96407a993090da46733b80c1206b4ff07839491f8b1",
+      "bytes": 314
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-app-release-signature.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-app-release-signature.txt",
+      "sha256": "3450a4e5fc38544a48ad025ae0133f9918455636358cd28f1de201082883f30a",
+      "bytes": 1438
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-artifacts.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-artifacts.json",
+      "sha256": "3ddc8ad6f1ad73eabf2d1adc6b27b0bf1001d0c25ac9054a7df5b13ec28d74f3",
+      "bytes": 204
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal-sources.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal-sources.json",
+      "sha256": "17453fb101d386e17ce3ff0aafb69486bb112e4457c1943b682a73fdface21df",
+      "bytes": 16049
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal.command.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal.command.json",
+      "sha256": "c0b081c488411247cbe2728b3462e81090b63a6d226e9a4395a32fcb3d7b4f7d",
+      "bytes": 536
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/universal.txt",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/universal.txt",
+      "sha256": "f3acb66c40b4df81914f800e7ac226e2f8ecfa67430032ac1de705268fae73fe",
+      "bytes": 33902
+    },
+    {
+      "path": "dev-docs/p5-evidence/run-20260905/validation.json",
+      "status": "added",
+      "old_path": null,
+      "new_path": "dev-docs/p5-evidence/run-20260905/validation.json",
+      "sha256": "e3834c6cd1806c4dc8fd67fa5febdec19dfc19f5afe3bd10299007e9ea1c3f09",
+      "bytes": 18358
+    },
+    {
+      "path": "lib/main.dart",
+      "status": "modified",
+      "old_path": "lib/main.dart",
+      "new_path": "lib/main.dart",
+      "sha256": "ac6425e144c2d93870efbd431d514c7803ac72aa1c804b724d67d49ff253d8df",
+      "bytes": 7797
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "status": "modified",
+      "old_path": "lib/state/app_state.dart",
+      "new_path": "lib/state/app_state.dart",
+      "sha256": "3704202e78da5bdd9ea6f640322e58334cdc34e07589ad5a177e25acf5c593b7",
+      "bytes": 48494
+    },
+    {
+      "path": "lib/ui/settings/settings_page.dart",
+      "status": "modified",
+      "old_path": "lib/ui/settings/settings_page.dart",
+      "new_path": "lib/ui/settings/settings_page.dart",
+      "sha256": "2e36f1e481c2cd56b861d83213b5db99e87f719da90d106b48621c43896667a2",
+      "bytes": 20674
+    },
+    {
+      "path": "scripts/p5/README.md",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p5/README.md",
+      "sha256": "1b65244e09327c0bbafd768d5cafcc79d59472d0db933d8baed4a57ac7d24d24",
+      "bytes": 2122
+    },
+    {
+      "path": "scripts/p5/inspect_artifacts.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p5/inspect_artifacts.py",
+      "sha256": "06fd981f0af4854062a7ce490b4fc9ba787673a2be5c1129a351c1062e3b849a",
+      "bytes": 4788
+    },
+    {
+      "path": "scripts/p5/run.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p5/run.py",
+      "sha256": "2543cb2d929cff331a246372e485af6c3ba12f012912558f703256ea811ffcd2",
+      "bytes": 4189
+    },
+    {
+      "path": "scripts/p5/validate_configuration.py",
+      "status": "added",
+      "old_path": null,
+      "new_path": "scripts/p5/validate_configuration.py",
+      "sha256": "8a9dc1efbe6866cf981212df8853ef53b9d5bfecce71946e6d7f7a67c820d4e5",
+      "bytes": 3769
+    },
+    {
+      "path": "test/core/p3_audit_test.dart",
+      "status": "modified",
+      "old_path": "test/core/p3_audit_test.dart",
+      "new_path": "test/core/p3_audit_test.dart",
+      "sha256": "10ec28c6bd78ee9409439f0b0025789ed9217f7bdfacf38013edf8fbd4ee8ec5",
+      "bytes": 9497
+    },
+    {
+      "path": "test/core/recommendation_engine_test.dart",
+      "status": "modified",
+      "old_path": "test/core/recommendation_engine_test.dart",
+      "new_path": "test/core/recommendation_engine_test.dart",
+      "sha256": "c9052840fb7a91ed262bf26f748a18d078e0333caa401b50cc34dbed46c1e2ed",
+      "bytes": 37345
+    },
+    {
+      "path": "test/state/p3_feedback_flow_test.dart",
+      "status": "modified",
+      "old_path": "test/state/p3_feedback_flow_test.dart",
+      "new_path": "test/state/p3_feedback_flow_test.dart",
+      "sha256": "7c0c3bd978c08a373b832940ea8bcd9a3f15e8740efa8c7b9388d338d8c57dbf",
+      "bytes": 11582
+    },
+    {
+      "path": "test/state/p4_semantic_replay_test.dart",
+      "status": "modified",
+      "old_path": "test/state/p4_semantic_replay_test.dart",
+      "new_path": "test/state/p4_semantic_replay_test.dart",
+      "sha256": "9ea7a16395b5dfd8e2a24a24a93ab946beac48ad283e9e5b7031592161ebf9d4",
+      "bytes": 3135
+    },
+    {
+      "path": "test/state/p5_widget_sync_test.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/state/p5_widget_sync_test.dart",
+      "sha256": "9b13bda245cab672d70871a7b7f0ee20f35cec106372203c44860c809124fb3c",
+      "bytes": 2580
+    },
+    {
+      "path": "test/support/evidence.dart",
+      "status": "added",
+      "old_path": null,
+      "new_path": "test/support/evidence.dart",
+      "sha256": "b49cbc2fcba59f39a8996f916a7f8caa94471c2bb106a7b42afcf56389708be1",
+      "bytes": 539
+    },
+    {
+      "path": "test/ui/p3_production_pages_test.dart",
+      "status": "modified",
+      "old_path": "test/ui/p3_production_pages_test.dart",
+      "new_path": "test/ui/p3_production_pages_test.dart",
+      "sha256": "d74d35fad33032f13a8304177dfb88a0d037de8d5982fd9f6e29686caf449ff4",
+      "bytes": 13038
+    }
+  ]
+}

@@ -18,7 +18,6 @@ import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/pet.dart';
 import 'package:canting/platform/android_native_bridge.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RecognitionDraft {
@@ -110,6 +109,7 @@ class AppState extends ChangeNotifier {
   Future<void> resumeRecords() async {
     _mealsByDay.clear();
     await refreshBalanceLedger();
+    _scheduleWidgetSync();
   }
 
   final PetEngine _petEngine;
@@ -286,7 +286,9 @@ class AppState extends ChangeNotifier {
       _scheduleWidgetSync();
       notifyListeners();
     } catch (error) {
-      debugPrint('Unable to refresh pet vitality: $error');
+      if (kDebugMode) {
+        debugPrint('Unable to refresh pet vitality: $error');
+      }
     }
   }
 
@@ -344,7 +346,9 @@ class AppState extends ChangeNotifier {
       _foodDatabase = foodDatabase;
     } catch (error) {
       // 匹配引擎装配失败不影响主流程；记录后保持 null。
-      debugPrint('Failed to assemble DishMatcher: $error');
+      if (kDebugMode) {
+        debugPrint('Failed to assemble DishMatcher: $error');
+      }
     }
   }
 
@@ -391,7 +395,9 @@ class AppState extends ChangeNotifier {
         notifyListeners();
       }
     } catch (error) {
-      debugPrint('Unable to load meals for $key: $error');
+      if (kDebugMode) {
+        debugPrint('Unable to load meals for $key: $error');
+      }
     }
   }
 
@@ -989,7 +995,9 @@ class AppState extends ChangeNotifier {
     try {
       await _petRepo.savePet(_pet);
     } catch (error) {
-      debugPrint('Unable to persist pet state: $error');
+      if (kDebugMode) {
+        debugPrint('Unable to persist pet state: $error');
+      }
     }
   }
 
@@ -1355,8 +1363,12 @@ class AppState extends ChangeNotifier {
   }
 
   void _scheduleWidgetSync() {
-    final now = DateTime.now();
+    final now = clock();
     final todayMeals = mealsFor(now);
+    final structureComplete = todayMeals.every(
+      (meal) => meal.structureComplete,
+    );
+    final recordWindow = windowFor(now, 7);
     final averageCompletion = todayMeals.isEmpty
         ? 0.0
         : todayMeals
@@ -1366,14 +1378,15 @@ class AppState extends ChangeNotifier {
     final dinnerTime = profile?.dinnerTime ?? '18:30';
     final status = <String, Object?>{
       ..._pet.toWidgetJson(),
+      // A missing/failed record window must never certify an empty current day.
+      'record_date': recordWindow == null || recordWindow.dataStatus == 'error'
+          ? null
+          : '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}',
+      'record_utc_offset_minutes': now.timeZoneOffset.inMinutes,
       'today_meal_count': todayMeals.length,
-      'today_completion_rate': todayMeals.every((m) => m.structureComplete)
-          ? averageCompletion
-          : null,
-      'structure_complete': todayMeals.every((m) => m.structureComplete),
-      'next_meal_summary':
-          !todayMeals.isNotEmpty ||
-              !todayMeals.every((m) => m.structureComplete)
+      'today_completion_rate': structureComplete ? averageCompletion : null,
+      'structure_complete': structureComplete,
+      'next_meal_summary': todayMeals.isEmpty || !structureComplete
           ? '$dinnerTime 常规搭配，记录不足'
           : '$dinnerTime 基于已记录餐食估算建议',
     };
@@ -1382,16 +1395,24 @@ class AppState extends ChangeNotifier {
       try {
         await IOSNativeBridge.instance.savePetStatus(status);
       } on PlatformException catch (error) {
-        debugPrint('Unable to update iOS widget: ${error.message}');
+        if (kDebugMode) {
+          debugPrint('Unable to update iOS widget: ${error.message}');
+        }
       } catch (error) {
-        debugPrint('Unable to update iOS widget: $error');
+        if (kDebugMode) {
+          debugPrint('Unable to update iOS widget: $error');
+        }
       }
       try {
         await _androidNativeBridge.savePetStatus(status);
       } on PlatformException catch (error) {
-        debugPrint('Unable to update Android widget: ${error.message}');
+        if (kDebugMode) {
+          debugPrint('Unable to update Android widget: ${error.message}');
+        }
       } on MissingPluginException catch (error) {
-        debugPrint('Android widget channel is unavailable: $error');
+        if (kDebugMode) {
+          debugPrint('Android widget channel is unavailable: $error');
+        }
       }
     });
   }
@@ -1421,9 +1442,13 @@ class AppState extends ChangeNotifier {
       try {
         await _androidNativeBridge.saveMealRecord(record);
       } on PlatformException catch (error) {
-        debugPrint('Unable to save Android shared meal: ${error.message}');
+        if (kDebugMode) {
+          debugPrint('Unable to save Android shared meal: ${error.message}');
+        }
       } on MissingPluginException catch (error) {
-        debugPrint('Android shared data channel is unavailable: $error');
+        if (kDebugMode) {
+          debugPrint('Android shared data channel is unavailable: $error');
+        }
       }
     });
   }

@@ -1,0 +1,46 @@
+{
+  "master": "D:\\dev\\canting\\branding\\canting-icon-v1.png",
+  "sha256": "4c54e7cc0fb08e951c3a9ec372f630d3985dcc9539dd8379388ed43d461a6d1a",
+  "size": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "background_pixel": [
+    252,
+    246,
+    215,
+    255
+  ],
+  "foreground_tile_dp": 76,
+  "adaptive_canvas_dp": 108,
+  "subject_bounds_approx_pixels": [
+    257,
+    189,
+    1000,
+    1081
+  ],
+  "resources": {
+    "android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png": "5a70d445cd5a29ef76218c3643e7db15f711d34f4d16cf8c76f4755fee51085d",
+    "android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png": "1237dd2af70e453d1dc66cecd3e5b7a4ff58fb4ca758f363bcede187914a9e0a",
+    "android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png": "e2b8b281aef7767411825fe1ca695e8fe0bd00b9b298d202edd1637d1bec77c1",
+    "android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png": "ece66efccbbb46df50afb83f0360197ea187894dcb9d5ca751aebbd08aa46851",
+    "android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png": "66863580fc8c3699ee2eec48e792114d4b24b7168901b923b0a496c61ee1e2de",
+    "android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png": "a11152fbb46293a0000aadbfead40c8c4994fe1560781c3fe2c1db320b9410b1",
+    "android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png": "beaebd7c06ad063b39167da7152d12515c9c7520c0336db7792bbbcdd2a1bf9b",
+    "android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png": "ddd0e8921188b5c1b7786d808bead23822d2714ec19646a35ceec747ec579a44",
+    "android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png": "50b3bea8c55d756166df1f81cf80987487578260c62be66a701617aa1d532c83",
+    "android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png": "3a31aa9554c9aa935d8702930b721a7c214785e2a3f96f907a1be8e4cda70454",
+    "android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png": "8e4805660dabbcedbd63c656903c16e975ecca97711a9a64720fe79adc435a64",
+    "android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png": "4e5cda4b09c313a05b73c22684ee86ab8473c0fc70e1bc9b76ab2015bdefabce",
+    "android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png": "3ec03d9b368bd12584a10d27c8b1fec8cbe24c19ec002f7afcf9c1f4bdb91ba3",
+    "android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png": "e0f6b4f39f460d421410e275ab3dfbcae5f0c5256fd6e2c33b68a0144ea7c73c",
+    "android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png": "cafaab9bd3a523edb90e192bdd896aa5554d56272eff2896f33e2c137b9b8e6e",
+    "android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml": "9a7cd2b248ab41939ce973a5cf5b0527fab6fdd9c1c41fc85a3c1a34c8aaa76e",
+    "android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml": "9a7cd2b248ab41939ce973a5cf5b0527fab6fdd9c1c41fc85a3c1a34c8aaa76e",
+    "android\\app\\src\\main\\res\\values\\canting_icon_colors.xml": "b51a66747dbcc7e68e67bfea3ec2ec4d4e69c5041891805bbcb215dce3b3dc3f"
+  }
+}

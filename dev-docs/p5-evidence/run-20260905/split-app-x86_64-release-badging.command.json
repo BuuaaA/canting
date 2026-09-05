@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\build-tools\\36.0.0\\aapt2.exe",
+    "dump",
+    "badging",
+    "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk"
+  ],
+  "exit_code": 0,
+  "log": "split-app-x86_64-release-badging.txt"
+}

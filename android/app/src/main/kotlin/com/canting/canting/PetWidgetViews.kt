@@ -7,13 +7,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.RemoteViews
 import org.json.JSONObject
-import kotlin.math.roundToInt
+import android.view.View
+import java.time.ZonedDateTime
 
 data class PetWidgetStatus(
+    val recordDate: String? = null,
+    val recordOffsetMinutes: Int? = null,
     val vitality: Int = 60,
     val vitalityState: String = "good",
     val todayMealCount: Int = 0,
-    val todayCompletionPercent: Int = 0,
+    val todayCompletionPercent: Int? = null,
     val nextMealSummary: String = "暂无建议",
     val petSpriteName: String? = null,
 )
@@ -27,14 +30,22 @@ object PetWidgetViews {
         options: Bundle?,
     ): RemoteViews {
         val status = parseStatus(SharedDataManager.getPetStatus(context))
+        val now = ZonedDateTime.now()
+        val current = PetWidgetFreshness.isCurrent(
+            status.recordDate, status.recordOffsetMinutes,
+            now.toLocalDate(), now.offset.totalSeconds / 60,
+        )
+        val dateLabel = status.recordDate ?: "日期未知"
+        val updatePrompt = "打开餐盘更新今日记录"
         val minWidth = options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH) ?: 0
         val isMedium = minWidth >= MEDIUM_MIN_WIDTH_DP
         val layoutId = if (isMedium) R.layout.widget_medium else R.layout.widget_small
 
         return RemoteViews(context.packageName, layoutId).apply {
             bindSprite(this, status.petSpriteName)
-            setTextViewText(R.id.widget_vitality, "活力 ${status.vitality}")
-            setTextViewText(R.id.widget_vitality_state, vitalityLabel(status.vitalityState))
+            setTextViewText(R.id.widget_vitality, if (current) "活力 ${status.vitality}" else "记录待更新")
+            setTextViewText(R.id.widget_vitality_state,
+                if (current) "$dateLabel · ${vitalityLabel(status.vitalityState)}" else updatePrompt)
             setOnClickPendingIntent(
                 R.id.widget_root,
                 widgetTapIntent(context, appWidgetId),
@@ -43,21 +54,25 @@ object PetWidgetViews {
             if (isMedium) {
                 setTextViewText(
                     R.id.widget_meal_count,
-                    "今天吃了 ${status.todayMealCount} 餐",
+                    if (current) "$dateLabel · ${status.todayMealCount} 餐" else "记录已过期",
                 )
                 setTextViewText(
                     R.id.widget_completion,
-                    "完成度 ${status.todayCompletionPercent}%",
+                    if (current) PetWidgetCompletion.label(status.todayCompletionPercent, status.todayMealCount) else "等待更新",
                 )
                 setProgressBar(
                     R.id.widget_completion_progress,
                     100,
-                    status.todayCompletionPercent,
+                    status.todayCompletionPercent ?: 0,
                     false,
+                )
+                setViewVisibility(
+                    R.id.widget_completion_progress,
+                    if (!current || status.todayCompletionPercent == null) View.GONE else View.VISIBLE,
                 )
                 setTextViewText(
                     R.id.widget_next_meal,
-                    "下一餐 ${status.nextMealSummary}",
+                    if (current) "记录时建议 ${status.nextMealSummary}" else updatePrompt,
                 )
             }
         }
@@ -67,14 +82,22 @@ object PetWidgetViews {
         if (json.isNullOrBlank()) return PetWidgetStatus()
         return runCatching {
             val value = JSONObject(json)
-            val completion = value.optDouble("today_completion_rate", 0.0)
+            val completion = value.optDouble("today_completion_rate", Double.NaN)
+            val mealCount = value.optInt("today_meal_count", 0).coerceAtLeast(0)
             PetWidgetStatus(
+                recordDate = value.optString("record_date", "").takeIf {
+                    runCatching { java.time.LocalDate.parse(it).toString() == it }.getOrDefault(false)
+                },
+                recordOffsetMinutes = if (value.has("record_utc_offset_minutes") && !value.isNull("record_utc_offset_minutes"))
+                    value.optInt("record_utc_offset_minutes", Int.MIN_VALUE) else null,
                 vitality = value.optInt("vitality", 60).coerceIn(0, 100),
                 vitalityState = value.optString("vitality_state", "good"),
-                todayMealCount = value.optInt("today_meal_count", 0).coerceAtLeast(0),
-                todayCompletionPercent = (
-                    if (completion <= 1.0) completion * 100 else completion
-                    ).roundToInt().coerceIn(0, 100),
+                todayMealCount = mealCount,
+                todayCompletionPercent = PetWidgetCompletion.percent(
+                    completion,
+                    value.optBoolean("structure_complete", true),
+                    mealCount,
+                ),
                 nextMealSummary = value
                     .optString("next_meal_summary", "暂无建议")
                     .trim()

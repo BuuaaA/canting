@@ -1,0 +1,9 @@
+{
+  "command": [
+    "C:\\Users\\gxy20\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+    "devices",
+    "-l"
+  ],
+  "exit_code": 0,
+  "log": "devices.txt"
+}

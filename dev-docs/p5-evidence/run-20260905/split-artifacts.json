@@ -1,0 +1,17 @@
+[
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-arm64-v8a-release.apk",
+    "bytes": 35438713,
+    "sha256": "316ee514478f16750839f32697e9c5689bbf8ceeca72a9f2a4202a8921f6f0d2"
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-armeabi-v7a-release.apk",
+    "bytes": 28813207,
+    "sha256": "0a5430db8eef535addec2b9329ef7bccf98d312afde6425a90249fa1ba4baa82"
+  },
+  {
+    "path": "D:\\dev\\canting\\build\\p5-artifacts\\split\\app-x86_64-release.apk",
+    "bytes": 37540378,
+    "sha256": "517ae1aed65c9778da93a7b61fb48795da152c27ba3973166b6c09fbc45c19c2"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\jarsigner.exe",
+    "-J-Duser.language=en",
+    "-J-Duser.country=US",
+    "-verify",
+    "-certs",
+    "D:\\dev\\canting\\build\\p5-artifacts\\bundle\\app-release.aab"
+  ],
+  "exit_code": 0,
+  "log": "aab-signature-english.txt"
+}
