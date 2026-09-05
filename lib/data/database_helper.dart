@@ -4,6 +4,7 @@ import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart';
 
 import '../core/models/food_data.dart';
+import '../core/models/food_knowledge.dart';
 import 'food_database.dart';
 
 /// Owns all SQLite operations for the local food catalog and user data.
@@ -30,13 +31,9 @@ class DatabaseHelper {
   /// The open database. Throws if [initialize] has not completed.
   Database get database => _requireDatabase();
 
-  /// Opens the database and imports [seedData]:
-  /// - empty dish table (fresh install) → full seed via [replaceAll];
-  /// - stored seed schema_version differs from [FoodDatabase.schemaVersion]
-  ///   (app update shipped a new catalog) → incremental upsert via
-  ///   [syncSeedCatalog]; existing rows unknown to the seed are kept and
-  ///   user-data tables are never touched;
-  /// - otherwise → no-op, so per-user edits survive restarts.
+  /// Opens local storage, atomically syncs legacy seeds if their version changed,
+  /// then imports an optional independently versioned knowledge package.
+  /// Knowledge never rewrites legacy scalar dishes or historical snapshots.
   Future<void> initialize({FoodDatabase? seedData}) async {
     if (isOpen) {
       return;
@@ -55,23 +52,68 @@ class DatabaseHelper {
     );
     _database = database;
 
-    if (seedData != null) {
-      final storedVersion = await _metaGet(database, seedSchemaVersionKey);
-      final seedVersion = seedData.schemaVersion.toString();
-      if (await _dishCount(database) == 0) {
-        await replaceAll(seedData);
-        await _metaSet(database, seedSchemaVersionKey, seedVersion);
-      } else if (storedVersion != seedVersion) {
-        await syncSeedCatalog(seedData);
-        await _metaSet(database, seedSchemaVersionKey, seedVersion);
+    try {
+      if (seedData != null) {
+        await database.transaction((txn) async {
+          await _syncSeedCatalog(txn, seedData);
+          if (seedData.knowledgePackage != null) {
+            await _syncKnowledgePackage(txn, seedData.knowledgePackage!);
+          }
+        });
       }
+    } catch (_) {
+      await close();
+      rethrow;
     }
   }
 
   Future<FoodDatabase> loadFoodDatabase() async => FoodDatabase(
     dishes: await getAllDishes(),
     categories: await getAllCategories(),
+    schemaVersion:
+        int.tryParse(
+          await _metaGet(_requireDatabase(), seedSchemaVersionKey) ?? '',
+        ) ??
+        1,
+    knowledgePackage: await loadKnowledgePackage(),
   );
+
+  static const knowledgePackageKey = 'food_knowledge_package';
+  static const knowledgeVersionPrefix = 'food_knowledge_digest:';
+
+  Future<FoodKnowledgePackage?> loadKnowledgePackage() async {
+    final encoded = await _metaGet(_requireDatabase(), knowledgePackageKey);
+    return encoded == null
+        ? null
+        : FoodKnowledgePackage.fromJson(
+            (jsonDecode(encoded) as Map).cast<String, dynamic>(),
+          );
+  }
+
+  /// The package and immutable version-to-digest ledger commit together.
+  /// User tables and historical meal snapshots are never read or rewritten.
+  Future<int> syncKnowledgePackage(FoodKnowledgePackage package) async {
+    return _requireDatabase().transaction(
+      (txn) => _syncKnowledgePackage(txn, package),
+    );
+  }
+
+  static Future<int> _syncKnowledgePackage(
+    DatabaseExecutor txn,
+    FoodKnowledgePackage package,
+  ) async {
+    final key = '$knowledgeVersionPrefix${package.contentVersion}';
+    final previousDigest = await _metaGet(txn, key);
+    if (previousDigest != null) {
+      if (previousDigest != package.digest) {
+        throw StateError('Content version reused with a different digest');
+      }
+      return 0; // Replaying an older accepted version cannot downgrade active data.
+    }
+    await _metaSet(txn, knowledgePackageKey, jsonEncode(package.toJson()));
+    await _metaSet(txn, key, package.digest);
+    return package.records.length;
+  }
 
   Future<List<StandardDish>> getAllDishes() async {
     final rows = await _requireDatabase().query(
@@ -153,45 +195,50 @@ class DatabaseHelper {
   /// - user_custom_dishes and other user tables are never touched.
   /// Seed categories are upserted first so foreign-key references resolve.
   Future<int> syncSeedCatalog(FoodDatabase data) async {
-    final database = _requireDatabase();
+    return _requireDatabase().transaction((txn) => _syncSeedCatalog(txn, data));
+  }
+
+  static Future<int> _syncSeedCatalog(
+    DatabaseExecutor transaction,
+    FoodDatabase data,
+  ) async {
     var changed = 0;
-    await database.transaction((transaction) async {
-      final batch = transaction.batch();
-      for (final category in data.categories) {
-        batch.insert(
-          'categories',
-          _categoryRow(category),
-          conflictAlgorithm: ConflictAlgorithm.replace,
-        );
-      }
-
-      final existingRows = await transaction.query(
-        'dishes',
-        columns: ['dish_id', 'json_data'],
+    final version = data.schemaVersion.toString();
+    if (await _metaGet(transaction, seedSchemaVersionKey) == version &&
+        await _dishCount(transaction) > 0) {
+      return 0;
+    }
+    final batch = transaction.batch();
+    for (final category in data.categories) {
+      batch.insert(
+        'categories',
+        _categoryRow(category),
+        conflictAlgorithm: ConflictAlgorithm.replace,
       );
-      final existingJsonById = <String, String>{
-        for (final row in existingRows)
-          row['dish_id']! as String: row['json_data']! as String,
-      };
+    }
 
-      for (final dish in data.dishes) {
-        final row = _dishRow(dish);
-        final existingJson = existingJsonById[dish.id];
-        if (existingJson == null) {
-          batch.insert('dishes', row);
-          changed++;
-        } else if (existingJson != row['json_data']) {
-          batch.update(
-            'dishes',
-            row,
-            where: 'dish_id = ?',
-            whereArgs: [dish.id],
-          );
-          changed++;
-        }
+    final existingRows = await transaction.query(
+      'dishes',
+      columns: ['dish_id', 'json_data'],
+    );
+    final existingJsonById = <String, String>{
+      for (final row in existingRows)
+        row['dish_id']! as String: row['json_data']! as String,
+    };
+
+    for (final dish in data.dishes) {
+      final row = _dishRow(dish);
+      final existingJson = existingJsonById[dish.id];
+      if (existingJson == null) {
+        batch.insert('dishes', row);
+        changed++;
+      } else if (existingJson != row['json_data']) {
+        batch.update('dishes', row, where: 'dish_id = ?', whereArgs: [dish.id]);
+        changed++;
       }
-      await batch.commit(noResult: true);
-    });
+    }
+    await batch.commit(noResult: true);
+    await _metaSet(transaction, seedSchemaVersionKey, version);
     return changed;
   }
 
@@ -367,14 +414,14 @@ class DatabaseHelper {
     );
   }
 
-  static Future<int> _dishCount(Database database) async {
+  static Future<int> _dishCount(DatabaseExecutor database) async {
     final rows = await database.rawQuery(
       'SELECT COUNT(*) AS count FROM dishes',
     );
     return (rows.single['count'] as num).toInt();
   }
 
-  static Future<String?> _metaGet(Database database, String key) async {
+  static Future<String?> _metaGet(DatabaseExecutor database, String key) async {
     final rows = await database.query(
       'app_meta',
       columns: ['value'],
@@ -386,15 +433,14 @@ class DatabaseHelper {
   }
 
   static Future<void> _metaSet(
-    Database database,
+    DatabaseExecutor database,
     String key,
     String value,
   ) async {
-    await database.insert(
-      'app_meta',
-      {'key': key, 'value': value},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await database.insert('app_meta', {
+      'key': key,
+      'value': value,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Database _requireDatabase() {

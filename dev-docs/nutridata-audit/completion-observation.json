@@ -1,0 +1,54 @@
+{
+  "crawler_pid_observed_initially": 197928,
+  "crawler_pid_exited": true,
+  "same_hashes_across_observations": true,
+  "interval_seconds": 60,
+  "first": {
+    "observed_at": "2026-09-05T11:53:29.4832880+08:00",
+    "files": [
+      {
+        "name": "dishes.jsonl",
+        "bytes": 31428987,
+        "mtime": "2026-09-05T02:56:00.5984481Z",
+        "sha256": "5b3676f0ee163e0fd64ecffb1ebae7b887db41e4097673db25cfadb3a79a6913"
+      },
+      {
+        "name": "failed.jsonl",
+        "bytes": 131068,
+        "mtime": "2026-09-05T03:53:00.1096921Z",
+        "sha256": "1dcb7d646508be0fae878ce29f8d84e7697d028c0180dadab573fa54972defb1"
+      },
+      {
+        "name": "progress.log",
+        "bytes": 37788,
+        "mtime": "2026-09-05T03:53:06.2146878Z",
+        "sha256": "2846a18015e2a5f7be21d1832f171c42360b4d710235b000ce21173d45c568f6"
+      }
+    ],
+    "crawler_processes": []
+  },
+  "second": {
+    "observed_at": "2026-09-05T11:54:29.8773604+08:00",
+    "files": [
+      {
+        "name": "dishes.jsonl",
+        "bytes": 31428987,
+        "mtime": "2026-09-05T02:56:00.5984481Z",
+        "sha256": "5b3676f0ee163e0fd64ecffb1ebae7b887db41e4097673db25cfadb3a79a6913"
+      },
+      {
+        "name": "failed.jsonl",
+        "bytes": 131068,
+        "mtime": "2026-09-05T03:53:00.1096921Z",
+        "sha256": "1dcb7d646508be0fae878ce29f8d84e7697d028c0180dadab573fa54972defb1"
+      },
+      {
+        "name": "progress.log",
+        "bytes": 37788,
+        "mtime": "2026-09-05T03:53:06.2146878Z",
+        "sha256": "2846a18015e2a5f7be21d1832f171c42360b4d710235b000ce21173d45c568f6"
+      }
+    ],
+    "crawler_processes": []
+  }
+}

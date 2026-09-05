@@ -1,0 +1,141 @@
+{
+  "started_at": "2026-09-05T04:28:24.680430+00:00",
+  "commands": [
+    {
+      "argv": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/nutridata",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "started_at": "2026-09-05T04:28:24.680430+00:00",
+      "finished_at": "2026-09-05T04:28:24.831163+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "a6d19fa45fea47443ac5422f534239ceb3663c5494dae1275eb33ad46705599b",
+      "tail": [
+        "test_risk_wins_even_reviewed (test_contract.ContractTests.test_risk_wins_even_reviewed) ... ok",
+        "test_unknown_is_valid_and_explicit (test_contract.ContractTests.test_unknown_is_valid_and_explicit) ... ok",
+        "test_zero_not_unknown (test_contract.ContractTests.test_zero_not_unknown) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 30 tests in 0.009s",
+        "",
+        "OK"
+      ],
+      "tests_passed": 30
+    },
+    {
+      "argv": [
+        "C:\\flutter\\bin\\dart.BAT",
+        "format",
+        "--output=none",
+        "--set-exit-if-changed",
+        "lib/core/models/food_knowledge.dart",
+        "lib/core/models/food_data.dart",
+        "lib/core/models/portions.dart",
+        "lib/data/food_database.dart",
+        "lib/data/database_helper.dart",
+        "test/data/food_knowledge_test.dart",
+        "test/data/food_knowledge_sync_test.dart"
+      ],
+      "started_at": "2026-09-05T04:28:24.832165+00:00",
+      "finished_at": "2026-09-05T04:28:26.527961+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "76058124c18f8e86477b45f27761ce404f446ca3c08e1ebee878daaa42ebc9b7",
+      "tail": [
+        "Formatted 7 files (0 changed) in 0.03 seconds."
+      ]
+    },
+    {
+      "argv": [
+        "C:\\flutter\\bin\\flutter.BAT",
+        "test",
+        "--no-pub",
+        "test/data/food_knowledge_test.dart",
+        "test/data/food_knowledge_sync_test.dart",
+        "test/data/seed_migration_test.dart",
+        "test/data/database_migration_test.dart"
+      ],
+      "started_at": "2026-09-05T04:28:26.527961+00:00",
+      "finished_at": "2026-09-05T04:28:32.737224+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "969a32e9ba5b0e71489e246b15a0e850f586d249bba1e5df47d0d0609e00b3f8",
+      "tail": [
+        "00:00 +44: D:/dev/canting/test/data/seed_migration_test.dart: 旧版 29 道库升级：菜数变为新库数量，用户数据无损",
+        "00:00 +45: D:/dev/canting/test/data/food_knowledge_sync_test.dart: failure after package write rolls back active package and ledger",
+        "00:00 +46: D:/dev/canting/test/data/seed_migration_test.dart: 旧库独有的菜不删除；再次 initialize 不覆盖同版本数据",
+        "00:00 +47: D:/dev/canting/test/data/seed_migration_test.dart: 旧库独有的菜不删除；再次 initialize 不覆盖同版本数据",
+        "00:00 +48: D:/dev/canting/test/data/seed_migration_test.dart: 全新安装：空库走 replaceAll 并记录种子版本",
+        "00:00 +49: D:/dev/canting/test/data/seed_migration_test.dart: meta 版本被清（模拟更老客户端）→ 触发重新同步且幂等",
+        "00:00 +50: D:/dev/canting/test/data/seed_migration_test.dart: (tearDownAll)",
+        "00:01 +50: All tests passed!"
+      ],
+      "tests_passed": 50
+    },
+    {
+      "argv": [
+        "C:\\flutter\\bin\\flutter.BAT",
+        "analyze",
+        "--no-pub"
+      ],
+      "started_at": "2026-09-05T04:28:32.737736+00:00",
+      "finished_at": "2026-09-05T04:28:41.724352+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "8e2b8786f5cfd0990f0179f26ebca3a0e7de947f55e9a05a09e03fe3e8bd3217",
+      "tail": [
+        "Flutter assets will be downloaded from https://storage.flutter-io.cn. Make sure you trust this source!",
+        "Analyzing canting...                                            ",
+        "No issues found! (ran in 4.9s)"
+      ]
+    },
+    {
+      "argv": [
+        "C:\\flutter\\bin\\flutter.BAT",
+        "test",
+        "--no-pub"
+      ],
+      "started_at": "2026-09-05T04:28:41.724352+00:00",
+      "finished_at": "2026-09-05T04:28:58.732208+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "6f472cbeee9e038c68b4b27e16771d5bdd7d250d0fc5659a0a1a35a7279358a3",
+      "tail": [
+        "00:10 +379: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别结果为空 → 页面提示手动添加",
+        "00:10 +380: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别结果为空 → 页面提示手动添加",
+        "00:10 +381: D:/dev/canting/test/widget_test.dart: all onboarding steps fit a 375px-wide viewport",
+        "00:10 +382: D:/dev/canting/test/ui/ocr/in_app_ocr_launcher_test.dart: 识别超时（5 秒）→ 提示太慢并给手动添加建议",
+        "00:11 +383: D:/dev/canting/test/widget_test.dart: main pages fit an iPhone SE-sized viewport",
+        "00:11 +384: D:/dev/canting/test/widget_test.dart: main pages fit an iPhone SE-sized viewport",
+        "00:11 +385: D:/dev/canting/test/widget_test.dart: saving a recognized meal returns to home",
+        "00:12 +386: All tests passed!"
+      ],
+      "tests_passed": 386
+    }
+  ],
+  "scope": "synthetic contract and temporary SQLite fixtures; original 1004 asset unchanged",
+  "sha256": {
+    "lib/core/models/food_knowledge.dart": "1e3e294f44d7507c754d9ff528814a7478ce97c7b900ce298aa20a3b35d843f4",
+    "lib/core/models/food_data.dart": "75dab943209f41f53f1469e80a6896e3b6852b9d36583e2858b4910696df60b5",
+    "lib/core/models/portions.dart": "1e658c9cdebc154bdda21ae1858d79ac004415c95fab6dfc33e06201c56409fe",
+    "lib/data/food_database.dart": "ab9193dd38caa317d0be33a776710fc4a55144a0dacd3121acea97c73abe4cdc",
+    "lib/data/database_helper.dart": "f46285ba308409f5dd9a74f98c907bcaf36c5c59b4c5b685bd8ad324ad0bb4ed",
+    "test/data/food_knowledge_test.dart": "1140d90780df99d84d019e250ab01b2a0df514ac99d018e04b89edc3699b8244",
+    "test/data/food_knowledge_sync_test.dart": "8f77accd2a1e8dbaf89f39351780f87069606972bbcf56ea654aa7ef08138577",
+    "pubspec.yaml": "047d2a50d5895b7fd49387d1128c15cf91156be544fd59fd1bede5260f5eb55a",
+    "pubspec.lock": "66768e2aab0093b4fb16fc8301e2a980e936196c679f198078164678093abda9",
+    "scripts/nutridata/contract.py": "2ce965408e4f2af2bc4c47a9313de0a37db7e655a756e8e30fec8e2127c65725",
+    "scripts/nutridata/test_contract.py": "3a60411b46fd99666d21677c8391d2607e960f7d961775dea7f6aabfb1d0e1ba",
+    "scripts/nutridata/test_adapter_contract.py": "000294f884658d733f1281c5e7fb9ac087028f33daa52c1c118b9d7c64b1a540",
+    "scripts/nutridata/food-knowledge-draft.schema.json": "8a103ca0ab825a340a2aceebc822319a9ccfb8493d19ff42f8660793c234bfdf",
+    "scripts/nutridata/build_synthetic_fixtures.py": "6e826738a7f064a84999ef6b510fbdb8bdca7da26296852e9785c3f48338d5b2",
+    "scripts/nutridata/verify_adapter.py": "0097d445a7c9e9a01a02e2d7d355d9dad58934b486759c096715de86e11865d4",
+    "test/fixtures/food_knowledge_contract_cases.json": "a52bc83b8e40fa4d745fa49ded48e04ffb9303119d3793fc1dbb5462c0d2d4e7",
+    "assets/data/dishes.json": "7cdef0bd03f4df72270020b0b42a67be4aa119049ebdfb3b88eec5acc368079a"
+  },
+  "finished_at": "2026-09-05T04:28:58.737834+00:00",
+  "passed": true
+}

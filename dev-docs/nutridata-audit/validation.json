@@ -1,0 +1,136 @@
+{
+  "scope": "P1 raw acceptance and pipeline design only",
+  "baseline_functional_commit": "2814db0",
+  "baseline_documentation_commit": "22952a9",
+  "initial_git_status": "main...origin/main [ahead 5]; clean",
+  "checks": [
+    {
+      "command": "flutter analyze --no-pub",
+      "cwd": "D:/dev/canting",
+      "exit_code": 0,
+      "result": "No issues found!",
+      "reported_duration_seconds": 55.1
+    },
+    {
+      "command": "flutter test --no-pub --reporter compact",
+      "cwd": "D:/dev/canting",
+      "exit_code": 0,
+      "passed": 343,
+      "result": "All tests passed!",
+      "reported_duration_seconds": 23,
+      "includes_existing_seed_migration_tests": true,
+      "proves_future_schema_migration": false
+    },
+    {
+      "command": "python -m unittest discover -s scripts/nutridata -p test_*.py -v",
+      "cwd_note": "First executed from workspace staging p1-delivery; identical files will be delivered to D:/dev/canting",
+      "exit_code": 0,
+      "passed": 27,
+      "fixtures": "synthetic only"
+    },
+    {
+      "command": "git diff --stat; git diff --check",
+      "cwd": "D:/dev/canting",
+      "exit_code": 0,
+      "phase": "before delivery",
+      "result": "empty output; no tracked changes"
+    },
+    {
+      "command": "acceptance.py with active inputs, without --provisional, --settle-seconds 2",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "result": "Input still active or latest crawl lacks end marker; no final audit output written",
+      "passed": true
+    },
+    {
+      "command": "acceptance.py twice with final stable inputs; compare statistics excluding snapshot and byte-compare ID outputs",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "semantic_sha256": "06956a247bad2953ec3f56b94ece0377ead5ef178f7684d8119b84f758a92f5f",
+      "statistics_semantically_identical": true,
+      "byte_identical_files": {
+        "all_id_disposition.jsonl": true,
+        "missing_id_disposition.jsonl": true,
+        "quarantine.jsonl": true
+      },
+      "first_observed_at": "2026-09-05T03:55:48.404614+00:00",
+      "second_observed_at": "2026-09-05T03:56:07.441155+00:00"
+    },
+    {
+      "check": "crawler completed without intervention; no crawler process; two observations 60 seconds apart match audit input SHA-256",
+      "passed": true,
+      "evidence_file": "completion-observation.json",
+      "latest_log_end_time_local": "2026-09-05T11:53:06+08:00"
+    },
+    {
+      "command": "python -B -m unittest discover -s scripts/nutridata -p test_*.py -q",
+      "cwd": "D:/dev/canting",
+      "exit_code": 0,
+      "passed": 27,
+      "phase": "after delivery"
+    },
+    {
+      "check": "copy byte verification",
+      "files": 15,
+      "passed": true
+    },
+    {
+      "check": "all target IDs partitioned exactly once; 1057 missing IDs each have two ambiguous failure attempts",
+      "passed": true
+    },
+    {
+      "check": "trailing whitespace in all delivered text files",
+      "issues": 0
+    },
+    {
+      "command": "git status --short --branch; git diff --check; git diff --cached --stat; git rev-parse --short HEAD",
+      "cwd": "D:/dev/canting",
+      "exit_code": 0,
+      "head": "22952a9",
+      "tracked_changes": false,
+      "staged_changes": false,
+      "only_new_paths": [
+        "dev-docs/food-knowledge-distillation.md",
+        "dev-docs/nutridata-raw-acceptance.md",
+        "dev-docs/nutridata-audit/",
+        "scripts/nutridata/"
+      ]
+    },
+    {
+      "check": "baseline dishes.json SHA-256 unchanged",
+      "passed": true,
+      "sha256": "7cdef0bd03f4df72270020b0b42a67be4aa119049ebdfb3b88eec5acc368079a"
+    }
+  ],
+  "pending_verification": [],
+  "not_executed": [
+    "new FoodKnowledge to App migration: design only, not authorized at this stage",
+    "new curated catalog generation: redistribution permission unresolved",
+    "new-versus-old SQLite import benchmark and Android cold start: no approved new data or device measurement",
+    "generic JSON Schema engine: not installed; declarative schema syntax/field parity checked; executable contract tests passed"
+  ],
+  "development_regressions_resolved": [
+    "Deep JSON fixture initially exceeded unittest pretty-print recursion after parsing on this Python runtime; added explicit audit nesting limit 64. Subsequent full synthetic suite: 27 passed."
+  ],
+  "python_version": "3.12.5",
+  "delivery_files": [
+    "dev-docs/food-knowledge-distillation.md",
+    "dev-docs/nutridata-audit/all_id_disposition.jsonl",
+    "dev-docs/nutridata-audit/completion-observation.json",
+    "dev-docs/nutridata-audit/missing_id_disposition.jsonl",
+    "dev-docs/nutridata-audit/quarantine.jsonl",
+    "dev-docs/nutridata-audit/statistics.json",
+    "dev-docs/nutridata-audit/validation.json",
+    "dev-docs/nutridata-raw-acceptance.md",
+    "scripts/nutridata/acceptance.py",
+    "scripts/nutridata/contract.py",
+    "scripts/nutridata/food-knowledge-draft.schema.json",
+    "scripts/nutridata/README.md",
+    "scripts/nutridata/render_report.py",
+    "scripts/nutridata/test_acceptance.py",
+    "scripts/nutridata/test_contract.py"
+  ],
+  "delivery_status": "complete_for_raw_acceptance_and_design; waiting_for_product_review"
+}

@@ -1,0 +1,3330 @@
+[
+  {
+    "name": "unknown remains null",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "unreviewed",
+      "license_status": "unknown",
+      "license_evidence": null,
+      "review_evidence": null,
+      "semantic_category": "unknown",
+      "beverage_type": "unknown",
+      "recipe_known": null,
+      "preparation": "unknown",
+      "sugar_level": "unknown",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": null,
+      "risk_tags": [
+        "unknown_preparation"
+      ],
+      "eligibility": "conditional",
+      "eligibility_reasons": [
+        "unknown_preparation"
+      ],
+      "facts_complete": false,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "beverage_type": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "recipe_known": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "preparation": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "sugar_level": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "cup_size": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "size_bucket": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "portion_range": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "category_contributions": {
+          "kind": "unknown",
+          "evidence": null
+        }
+      }
+    }
+  },
+  {
+    "name": "burger separate mixed contributions",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "drink rejects low",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "low",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "drink rejects regular",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "regular",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "drink rejects high",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "high",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "drink rejects unknown",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "unknown",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "drink rejects notApplicable",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unsweetened unknown recipe None",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": null,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unsweetened unknown recipe False",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": false,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "known unsweetened coffee still requires all gates",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "coffee",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unsweetened unreviewed milk tea",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "unreviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unknown drink subtype",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "unknown",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "fried fact empty tags",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "fried",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "fried tag grilled fact",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [
+        "fried"
+      ],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unknown preparation",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "unknown",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "portion g",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 120,
+        "max": 240,
+        "unit": "g",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "portion ml",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 120,
+        "max": 240,
+        "unit": "ml",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "large cup no volume",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "beverage",
+      "beverage_type": "milk_tea",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "none",
+      "cup_size": "large",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "cake size no portion",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "dessert",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "large",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "invalid portion (240, 120, 'g', 'consumed')",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 240,
+        "max": 120,
+        "unit": "g",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "invalid portion (-1, 1, 'g', 'consumed')",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": -1,
+        "max": 1,
+        "unit": "g",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "invalid portion (True, 1, 'g', 'consumed')",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": true,
+        "max": 1,
+        "unit": "g",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "invalid portion (1, 2, 'cm', 'consumed')",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 1,
+        "max": 2,
+        "unit": "cm",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "invalid portion (1, 2, 'g', 'whole_product')",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 1,
+        "max": 2,
+        "unit": "g",
+        "scope": "whole_product"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "explicit zero consumed",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": {
+        "min": 0,
+        "max": 0,
+        "unit": "g",
+        "scope": "consumed"
+      },
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "real zero contributions",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          0,
+          0
+        ],
+        "vegetables": [
+          0,
+          0
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          0,
+          0
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "unknown is not zero",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "unreviewed",
+      "license_status": "unknown",
+      "license_evidence": null,
+      "review_evidence": null,
+      "semantic_category": "unknown",
+      "beverage_type": "unknown",
+      "recipe_known": null,
+      "preparation": "unknown",
+      "sugar_level": "unknown",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          0,
+          0
+        ],
+        "vegetables": [
+          0,
+          0
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          0,
+          0
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [
+        "unknown_preparation"
+      ],
+      "eligibility": "conditional",
+      "eligibility_reasons": [
+        "unknown_preparation"
+      ],
+      "facts_complete": false,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "beverage_type": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "recipe_known": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "preparation": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "sugar_level": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "cup_size": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "size_bucket": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "portion_range": {
+          "kind": "unknown",
+          "evidence": null
+        },
+        "category_contributions": {
+          "kind": "unknown",
+          "evidence": null
+        }
+      }
+    }
+  },
+  {
+    "name": "partial unknown conditional",
+    "valid": true,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": null
+      },
+      "risk_tags": [],
+      "eligibility": "conditional",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "partial unknown eligible",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": null
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "missing contribution key",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "numeric confidence without evidence",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": 0.9,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "wrong schema",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 1,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "approved",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  },
+  {
+    "name": "license unknown eligible",
+    "valid": false,
+    "record": {
+      "canonical_id": "synthetic:1",
+      "canonical_name": "测试混合菜",
+      "aliases": [],
+      "source_type": "editorial",
+      "source_id": "1",
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "schema_version": 2,
+      "data_version": "test-only",
+      "transform_version": "1.0.0",
+      "policy_version": "draft",
+      "estimated": true,
+      "confidence": null,
+      "confidence_evidence": null,
+      "review_status": "reviewed",
+      "license_status": "unknown",
+      "license_evidence": "synthetic:authored",
+      "review_evidence": "synthetic:review",
+      "semantic_category": "burger",
+      "beverage_type": "notApplicable",
+      "recipe_known": true,
+      "preparation": "grilled",
+      "sugar_level": "notApplicable",
+      "cup_size": "unknown",
+      "size_bucket": "unknown",
+      "portion_range": null,
+      "category_contributions": {
+        "grains": [
+          1,
+          1
+        ],
+        "vegetables": [
+          0.5,
+          1
+        ],
+        "fruits": [
+          0,
+          0
+        ],
+        "protein": [
+          1,
+          1
+        ],
+        "protein_soy": [
+          0,
+          0
+        ],
+        "oil": [
+          0,
+          0
+        ]
+      },
+      "risk_tags": [],
+      "eligibility": "eligible",
+      "eligibility_reasons": [
+        "synthetic:qualified"
+      ],
+      "facts_complete": true,
+      "field_provenance": {
+        "semantic_category": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "beverage_type": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "recipe_known": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "preparation": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "sugar_level": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "cup_size": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "size_bucket": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "portion_range": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        },
+        "category_contributions": {
+          "kind": "source",
+          "evidence": "synthetic:fact"
+        }
+      }
+    }
+  }
+]

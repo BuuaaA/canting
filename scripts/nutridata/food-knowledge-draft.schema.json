@@ -1,0 +1,605 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:canting:food-knowledge:2",
+  "title": "FoodKnowledge schema 2 (synthetic validation; no distribution permission implied)",
+  "description": "No real dataset emitted. Also run contract.validate for ordered intervals, evidence for known contributions, calibrated confidence and cross-field provenance/safety checks.",
+  "type": "object",
+  "required": [
+    "aliases",
+    "canonical_id",
+    "canonical_name",
+    "category_contributions",
+    "confidence",
+    "confidence_evidence",
+    "cup_size",
+    "data_version",
+    "eligibility",
+    "eligibility_reasons",
+    "estimated",
+    "facts_complete",
+    "field_provenance",
+    "license_evidence",
+    "license_status",
+    "policy_version",
+    "portion_range",
+    "preparation",
+    "review_evidence",
+    "review_status",
+    "risk_tags",
+    "schema_version",
+    "semantic_category",
+    "size_bucket",
+    "source_id",
+    "source_sha256",
+    "source_type",
+    "sugar_level",
+    "transform_version",
+    "beverage_type",
+    "recipe_known"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "canonical_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category_contributions": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "fruits",
+            "grains",
+            "oil",
+            "protein",
+            "protein_soy",
+            "vegetables"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fruits": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            },
+            "grains": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            },
+            "oil": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            },
+            "protein": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            },
+            "protein_soy": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            },
+            "vegetables": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/interval"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence_evidence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "cup_size": {
+      "enum": [
+        "small",
+        "regular",
+        "large",
+        "unknown",
+        "notApplicable"
+      ]
+    },
+    "data_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eligibility": {
+      "enum": [
+        "eligible",
+        "conditional",
+        "ineligible"
+      ]
+    },
+    "eligibility_reasons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "estimated": {
+      "type": "boolean"
+    },
+    "facts_complete": {
+      "type": "boolean"
+    },
+    "field_provenance": {
+      "type": "object",
+      "required": [
+        "semantic_category",
+        "beverage_type",
+        "recipe_known",
+        "preparation",
+        "sugar_level",
+        "cup_size",
+        "size_bucket",
+        "portion_range",
+        "category_contributions"
+      ],
+      "properties": {
+        "semantic_category": {
+          "$ref": "#/$defs/origin"
+        },
+        "beverage_type": {
+          "$ref": "#/$defs/origin"
+        },
+        "recipe_known": {
+          "$ref": "#/$defs/origin"
+        },
+        "preparation": {
+          "$ref": "#/$defs/origin"
+        },
+        "sugar_level": {
+          "$ref": "#/$defs/origin"
+        },
+        "cup_size": {
+          "$ref": "#/$defs/origin"
+        },
+        "size_bucket": {
+          "$ref": "#/$defs/origin"
+        },
+        "portion_range": {
+          "$ref": "#/$defs/origin"
+        },
+        "category_contributions": {
+          "$ref": "#/$defs/origin"
+        }
+      }
+    },
+    "license_evidence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "license_status": {
+      "enum": [
+        "unknown",
+        "restricted",
+        "approved"
+      ]
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preparation": {
+      "enum": [
+        "steamed",
+        "boiled",
+        "stewed",
+        "stir_fried",
+        "fried",
+        "pan_fried",
+        "grilled",
+        "raw",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "review_evidence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "review_status": {
+      "enum": [
+        "unreviewed",
+        "needs_review",
+        "reviewed",
+        "rejected"
+      ]
+    },
+    "risk_tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "alcohol",
+          "fried",
+          "high_oil",
+          "high_sodium",
+          "high_sugar",
+          "source_conflict",
+          "sugary_drink",
+          "unknown_ingredients",
+          "unknown_preparation"
+        ]
+      }
+    },
+    "schema_version": {
+      "const": 2,
+      "type": "integer"
+    },
+    "semantic_category": {
+      "enum": [
+        "beverage",
+        "condiment",
+        "dairy",
+        "dessert",
+        "fruits",
+        "grains",
+        "mixed",
+        "nuts",
+        "protein",
+        "protein_soy",
+        "unknown",
+        "vegetables",
+        "water",
+        "burger"
+      ]
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_type": {
+      "enum": [
+        "nutridata",
+        "editorial",
+        "user_confirmed"
+      ]
+    },
+    "sugar_level": {
+      "enum": [
+        "none",
+        "low",
+        "regular",
+        "high",
+        "unknown",
+        "notApplicable"
+      ]
+    },
+    "transform_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "size_bucket": {
+      "enum": [
+        "small",
+        "regular",
+        "large",
+        "unknown"
+      ]
+    },
+    "beverage_type": {
+      "enum": [
+        "milk_tea",
+        "coffee",
+        "tea",
+        "milk",
+        "water",
+        "other",
+        "unknown",
+        "notApplicable"
+      ]
+    },
+    "recipe_known": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "portion_range": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max",
+            "unit",
+            "scope"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "enum": [
+                "g",
+                "ml"
+              ]
+            },
+            "scope": {
+              "const": "consumed"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "interval": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "kind",
+        "evidence"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "source",
+            "calculated",
+            "inferred",
+            "estimated",
+            "user_confirmed",
+            "unknown"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "not": {
+                  "const": "unknown"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "license_status": {
+            "const": "approved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "license_evidence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "review_status": {
+            "const": "reviewed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "review_evidence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "eligibility": {
+            "const": "eligible"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "facts_complete": {
+            "const": true
+          },
+          "review_status": {
+            "const": "reviewed"
+          },
+          "license_status": {
+            "const": "approved"
+          },
+          "risk_tags": {
+            "maxItems": 0
+          },
+          "eligibility_reasons": {
+            "minItems": 1
+          },
+          "preparation": {
+            "not": {
+              "enum": [
+                "unknown",
+                "fried"
+              ]
+            }
+          },
+          "sugar_level": {
+            "not": {
+              "enum": [
+                "low",
+                "regular",
+                "high"
+              ]
+            }
+          },
+          "semantic_category": {
+            "not": {
+              "const": "unknown"
+            }
+          },
+          "category_contributions": {
+            "type": "object",
+            "properties": {
+              "grains": {
+                "$ref": "#/$defs/interval"
+              },
+              "vegetables": {
+                "$ref": "#/$defs/interval"
+              },
+              "fruits": {
+                "$ref": "#/$defs/interval"
+              },
+              "protein": {
+                "$ref": "#/$defs/interval"
+              },
+              "protein_soy": {
+                "$ref": "#/$defs/interval"
+              },
+              "oil": {
+                "$ref": "#/$defs/interval"
+              }
+            }
+          },
+          "recipe_known": {
+            "const": true
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "semantic_category": {
+                  "const": "beverage"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "sugar_level": {
+                  "const": "none"
+                },
+                "beverage_type": {
+                  "not": {
+                    "enum": [
+                      "unknown",
+                      "notApplicable"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

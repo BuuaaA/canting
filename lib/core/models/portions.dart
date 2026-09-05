@@ -18,6 +18,24 @@ class Portions {
   final double proteinSoy;
   final double oil;
 
+  /// Strict bridge for new knowledge. Missing/null is not a real zero.
+  factory Portions.fromKnownJson(Map<String, dynamic> json) {
+    const keys = {
+      'grains',
+      'vegetables',
+      'fruits',
+      'protein',
+      'protein_soy',
+      'oil',
+    };
+    if (json.length != keys.length ||
+        !keys.containsAll(json.keys) ||
+        json.values.any((v) => v is! num || !v.isFinite || v < 0)) {
+      throw const FormatException('Exact contributions must all be known');
+    }
+    return Portions.fromJson(json);
+  }
+
   factory Portions.fromJson(Map<String, dynamic> json) {
     double readNumber(String key) => (json[key] as num?)?.toDouble() ?? 0;
 

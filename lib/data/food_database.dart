@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../core/models/food_data.dart';
+import '../core/models/food_knowledge.dart';
 
 /// Immutable in-memory catalog of level-1 categories and level-2 dishes.
 class FoodDatabase {
@@ -8,6 +9,7 @@ class FoodDatabase {
     required Iterable<StandardDish> dishes,
     required Iterable<FoodCategory> categories,
     this.schemaVersion = 1,
+    this.knowledgePackage,
   }) : _dishes = List.unmodifiable(dishes),
        _categories = List.unmodifiable(categories) {
     _validate();
@@ -26,6 +28,18 @@ class FoodDatabase {
   /// Seed catalog schema version from dishes.json ("schema_version", default
   /// 1 for the legacy bare-array format). Drives database re-seeding.
   final int schemaVersion;
+  final FoodKnowledgePackage? knowledgePackage;
+
+  FoodKnowledge? findKnowledgeById(String id) => knowledgePackage?.findById(id);
+
+  /// Knowledge remains separate from legacy point estimates and engine inputs.
+  FoodDatabase withKnowledgePackage(FoodKnowledgePackage package) =>
+      FoodDatabase(
+        dishes: dishes,
+        categories: categories,
+        schemaVersion: schemaVersion,
+        knowledgePackage: package,
+      );
 
   factory FoodDatabase.fromJson({
     required String dishesJson,

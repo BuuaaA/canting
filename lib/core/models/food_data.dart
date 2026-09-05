@@ -1,3 +1,4 @@
+import 'food_knowledge.dart';
 import 'portions.dart';
 
 /// A level-1 takeaway-food category.
@@ -57,6 +58,7 @@ class StandardDish {
     this.recommendable = true,
     this.qualityTags = const [],
     this.estimated = false,
+    this.knowledge,
   });
 
   final String id;
@@ -83,6 +85,14 @@ class StandardDish {
   /// true = nutridata 无此菜，按配料/菜谱常识估算（AI gap-fill 标注）。
   final bool estimated;
 
+  /// Null means legacy/unavailable, never implicitly reviewed or sourced.
+  final FoodKnowledge? knowledge;
+  String get knowledgeSource => knowledge?.sourceType ?? 'unknown';
+  String get knowledgeReviewStatus => knowledge?.reviewStatus ?? 'unknown';
+  String get sugarLevel => knowledge?.sugarLevel ?? 'unknown';
+  String get productCategory => knowledge?.productCategory ?? 'unknown';
+  ConsumedPortion? get consumedPortion => knowledge?.portion;
+
   /// Corrects only cooking oil; intrinsic fat remains unchanged.
   Portions get correctedPortions {
     final correctedOil =
@@ -98,6 +108,32 @@ class StandardDish {
   }
 
   factory StandardDish.fromJson(Map<String, dynamic> json) {
+    if (json.containsKey('canonical_id') ||
+        json.containsKey('category_contributions')) {
+      throw const FormatException(
+        'Knowledge records require FoodKnowledge.fromJson',
+      );
+    }
+    final knowledgeJson = json['knowledge'];
+    final knowledge = knowledgeJson == null
+        ? null
+        : FoodKnowledge.fromJson(
+            (knowledgeJson as Map).cast<String, dynamic>(),
+          );
+    if (knowledge != null && knowledge.id != json['dish_id']) {
+      throw const FormatException('Knowledge identity mismatch');
+    }
+    if (knowledge != null) {
+      final exact = knowledge.exactPortions;
+      final legacy = json['portions_normal'];
+      if (exact == null ||
+          legacy is! Map ||
+          exact.toDishJson().entries.any((e) => legacy[e.key] != e.value)) {
+        throw const FormatException(
+          'Knowledge cannot be reduced to inconsistent legacy portions',
+        );
+      }
+    }
     final cookingOilRatio = (json['cooking_oil_ratio'] as num).toDouble();
     if (cookingOilRatio < 0 || cookingOilRatio > 1) {
       throw FormatException(
@@ -106,6 +142,7 @@ class StandardDish {
     }
 
     return StandardDish(
+      knowledge: knowledge,
       id: json['dish_id'] as String,
       name: json['dish_name'] as String,
       aliases: List<String>.from(json['aliases'] as List),
@@ -119,14 +156,13 @@ class StandardDish {
       searchKeywords: List<String>.from(json['search_keywords'] as List),
       tags: List<String>.from(json['tags'] as List? ?? const []),
       recommendable: json['recommendable'] as bool? ?? true,
-      qualityTags: List<String>.from(
-        json['quality_tags'] as List? ?? const [],
-      ),
+      qualityTags: List<String>.from(json['quality_tags'] as List? ?? const []),
       estimated: json['estimated'] as bool? ?? false,
     );
   }
 
   Map<String, dynamic> toJson() => {
+    if (knowledge != null) 'knowledge': knowledge!.toJson(),
     'dish_id': id,
     'dish_name': name,
     'aliases': aliases,

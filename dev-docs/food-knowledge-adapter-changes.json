@@ -1,0 +1,183 @@
+{
+  "generated_at": "2026-09-05T04:31:46.146346+00:00",
+  "git_head_at_start": "22952a9",
+  "prior_P1": [
+    {
+      "path": "dev-docs/food-knowledge-distillation.md",
+      "before_sha256": "46884e66f8c60f0b10ef156479d4d3f70565b27f6e91e28e577b45d20d9c8413",
+      "after_sha256": "cad0ebf56b7351321eacda55a93dda3f3cc0a2cd9ada3a20fb48fa60740fa70f",
+      "phase": "prior_P1",
+      "disposition": "updated_this_phase"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/all_id_disposition.jsonl",
+      "before_sha256": "388205cfa93f5a1b7b8b6c34b67406caabf3c2ec694e277ea1a784a4a0898465",
+      "after_sha256": "388205cfa93f5a1b7b8b6c34b67406caabf3c2ec694e277ea1a784a4a0898465",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/completion-observation.json",
+      "before_sha256": "fb3eeca22db3fc7dbe3d39078a4d8b0f5841c9515615f535adb9fe4af85c2d22",
+      "after_sha256": "fb3eeca22db3fc7dbe3d39078a4d8b0f5841c9515615f535adb9fe4af85c2d22",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/missing_id_disposition.jsonl",
+      "before_sha256": "1b846b725a1bd0dede4440050fd5c40e800e617bb21b5bdae42e3dfc4283dc44",
+      "after_sha256": "1b846b725a1bd0dede4440050fd5c40e800e617bb21b5bdae42e3dfc4283dc44",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/quarantine.jsonl",
+      "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/statistics.json",
+      "before_sha256": "1889ec24ac1b5918c78ff8dd840034b06e00aa9c8d2a679f19a0ebeced3b4032",
+      "after_sha256": "1889ec24ac1b5918c78ff8dd840034b06e00aa9c8d2a679f19a0ebeced3b4032",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-audit/validation.json",
+      "before_sha256": "07afd30a95a2bbbddf6bf3cf4230cb34d6bfce924cc5030ef5f726aacce47bed",
+      "after_sha256": "07afd30a95a2bbbddf6bf3cf4230cb34d6bfce924cc5030ef5f726aacce47bed",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "dev-docs/nutridata-raw-acceptance.md",
+      "before_sha256": "e851044f542b1d060505f1f520c4410b0c1dc0b9a85c2fb28f836d791f2d1edb",
+      "after_sha256": "e851044f542b1d060505f1f520c4410b0c1dc0b9a85c2fb28f836d791f2d1edb",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "scripts/nutridata/acceptance.py",
+      "before_sha256": "9d93e7d00a078b5d8f8ed2e4f4d8fd71bfb7ecef04a2aea1b0e826fe2b80b45c",
+      "after_sha256": "9d93e7d00a078b5d8f8ed2e4f4d8fd71bfb7ecef04a2aea1b0e826fe2b80b45c",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "scripts/nutridata/contract.py",
+      "before_sha256": "3f527ba1197a4c2ecb0b62556cc1e5374899dfb247f5f108eb76b7da6f34f559",
+      "after_sha256": "2ce965408e4f2af2bc4c47a9313de0a37db7e655a756e8e30fec8e2127c65725",
+      "phase": "prior_P1",
+      "disposition": "updated_this_phase"
+    },
+    {
+      "path": "scripts/nutridata/food-knowledge-draft.schema.json",
+      "before_sha256": "c4c670991735f7f92940b24649424d4171315b0a73bc45abba5093adf799556c",
+      "after_sha256": "8a103ca0ab825a340a2aceebc822319a9ccfb8493d19ff42f8660793c234bfdf",
+      "phase": "prior_P1",
+      "disposition": "updated_this_phase"
+    },
+    {
+      "path": "scripts/nutridata/README.md",
+      "before_sha256": "07570181fcee6e18ae6858a16f9017b0c4b77219686d22f912fcf86dab96e6ad",
+      "after_sha256": "b16bd75340e06d233c7eec8d9141451d58fa9ede045c3a33adf2a1ffc9f8817a",
+      "phase": "prior_P1",
+      "disposition": "updated_this_phase"
+    },
+    {
+      "path": "scripts/nutridata/render_report.py",
+      "before_sha256": "3a8c0046fea692e150b356cd0badf1b6a03c309e82916fc369f6729c38ab7b98",
+      "after_sha256": "3a8c0046fea692e150b356cd0badf1b6a03c309e82916fc369f6729c38ab7b98",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "scripts/nutridata/test_acceptance.py",
+      "before_sha256": "53e929af6a25799c829d9c5309e660557feaa2909043f3174927b6e0f43bf95b",
+      "after_sha256": "53e929af6a25799c829d9c5309e660557feaa2909043f3174927b6e0f43bf95b",
+      "phase": "prior_P1",
+      "disposition": "preserved_byte_for_byte"
+    },
+    {
+      "path": "scripts/nutridata/test_contract.py",
+      "before_sha256": "fc3be15b25bfd5dd52fe012f9eeda0b54011d5766f310377c10ad85e064b1c3e",
+      "after_sha256": "3a60411b46fd99666d21677c8391d2607e960f7d961775dea7f6aabfb1d0e1ba",
+      "phase": "prior_P1",
+      "disposition": "updated_this_phase"
+    }
+  ],
+  "modified_tracked_files": [
+    {
+      "path": "lib/core/models/food_data.dart",
+      "before_sha256": "261a7a5e4b42fd72e703993806af72541c9251a40741a8e326a75ef2e5af379e",
+      "after_sha256": "75dab943209f41f53f1469e80a6896e3b6852b9d36583e2858b4910696df60b5"
+    },
+    {
+      "path": "lib/core/models/portions.dart",
+      "before_sha256": "bf3e25e43c53138b405b71d2763a082b5e96ad03a18e5dfd00059d939fd623b6",
+      "after_sha256": "1e658c9cdebc154bdda21ae1858d79ac004415c95fab6dfc33e06201c56409fe"
+    },
+    {
+      "path": "lib/data/food_database.dart",
+      "before_sha256": "827373439e5abadd0a80c28e229796662418d57ab9f949cce5801b69e4f6f400",
+      "after_sha256": "ab9193dd38caa317d0be33a776710fc4a55144a0dacd3121acea97c73abe4cdc"
+    },
+    {
+      "path": "lib/data/database_helper.dart",
+      "before_sha256": "e36ad59b7166c3746ed437dbdecfe0978365546d29443d0ec9f9cc5e8ff6eacf",
+      "after_sha256": "f46285ba308409f5dd9a74f98c907bcaf36c5c59b4c5b685bd8ad324ad0bb4ed"
+    },
+    {
+      "path": "pubspec.yaml",
+      "before_sha256": "4fa1be70ea22460e35a9a94d989a0fe24a47111aa402ab166ae5114e68465a98",
+      "after_sha256": "047d2a50d5895b7fd49387d1128c15cf91156be544fd59fd1bede5260f5eb55a"
+    },
+    {
+      "path": "pubspec.lock",
+      "before_sha256": "e464edafe10023fcb35446fafad3cf17b179d064f838096ae04d7bf66c18763a",
+      "after_sha256": "66768e2aab0093b4fb16fc8301e2a980e936196c679f198078164678093abda9"
+    }
+  ],
+  "new_files": [
+    {
+      "path": "lib/core/models/food_knowledge.dart",
+      "sha256": "1e3e294f44d7507c754d9ff528814a7478ce97c7b900ce298aa20a3b35d843f4"
+    },
+    {
+      "path": "test/data/food_knowledge_test.dart",
+      "sha256": "1140d90780df99d84d019e250ab01b2a0df514ac99d018e04b89edc3699b8244"
+    },
+    {
+      "path": "test/data/food_knowledge_sync_test.dart",
+      "sha256": "8f77accd2a1e8dbaf89f39351780f87069606972bbcf56ea654aa7ef08138577"
+    },
+    {
+      "path": "test/fixtures/food_knowledge_contract_cases.json",
+      "sha256": "a52bc83b8e40fa4d745fa49ded48e04ffb9303119d3793fc1dbb5462c0d2d4e7"
+    },
+    {
+      "path": "scripts/nutridata/test_adapter_contract.py",
+      "sha256": "000294f884658d733f1281c5e7fb9ac087028f33daa52c1c118b9d7c64b1a540"
+    },
+    {
+      "path": "scripts/nutridata/build_synthetic_fixtures.py",
+      "sha256": "6e826738a7f064a84999ef6b510fbdb8bdca7da26296852e9785c3f48338d5b2"
+    },
+    {
+      "path": "scripts/nutridata/verify_adapter.py",
+      "sha256": "0097d445a7c9e9a01a02e2d7d355d9dad58934b486759c096715de86e11865d4"
+    },
+    {
+      "path": "dev-docs/food-knowledge-adapter-validation.json",
+      "sha256": "30a1586a5076151aee65a0eb8c032f623bb701308efc9ec1f7d0dd9719627821"
+    },
+    {
+      "path": "dev-docs/food-knowledge-adapter-acceptance.md",
+      "sha256": "db0fd8b2800eea773b13d132a1690e2aafb02a3bfa8a3128684ce31f67505f52"
+    }
+  ],
+  "unchanged_asset_sha256": "7cdef0bd03f4df72270020b0b42a67be4aa119049ebdfb3b88eec5acc368079a",
+  "note": "This manifest excludes its own hash; no raw recipes, configs or credentials."
+}
