@@ -16,6 +16,7 @@ import 'package:canting/data/meal_repository.dart';
 import 'package:canting/data/pet_repository.dart';
 import 'package:canting/data/user_repository.dart';
 import 'package:canting/services/intake_statistics.dart';
+import 'package:canting/ui/intake/intake_view_events.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/pet.dart';
 import 'package:canting/platform/android_native_bridge.dart';
@@ -102,7 +103,12 @@ class AppState extends ChangeNotifier {
   final Map<String, Completer<void>> _windowWaiters = {};
   int dataRevision = 0;
   final List<String> intakeViewEvents = <String>[];
-  void recordIntakeViewEvent(String name) => intakeViewEvents.add(name);
+  void recordIntakeViewEvent(String name) {
+    if (intakeViewEvents.length >= 100) intakeViewEvents.removeAt(0);
+    intakeViewEvents.add(name);
+    unawaited(IntakeViewEvents.persist(name));
+  }
+
   int _windowRevision = 0;
   bool _disposed = false;
   @override

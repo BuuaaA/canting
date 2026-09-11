@@ -4,6 +4,7 @@ import 'package:canting/ui/intake/rolling_7d_page.dart';
 import 'package:canting/ui/intake/today_plate_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -132,6 +133,10 @@ void main() {
     state.notifyListeners();
     await tester.pumpAndSettle();
     expect(state._stats.todayCalls, greaterThan(calls));
+    expect(
+      state.intakeViewEvents.where((event) => event == 'today_plate_view'),
+      hasLength(1),
+    );
     await tester.binding.setSurfaceSize(null);
     state.dispose();
   });
@@ -144,7 +149,19 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider<AppState>.value(
         value: state,
-        child: const MaterialApp(home: Rolling7dPage()),
+        child: MaterialApp.router(
+          routerConfig: GoRouter(
+            routes: [
+              GoRoute(path: '/', builder: (_, __) => const Rolling7dPage()),
+              GoRoute(
+                path: '/rolling_7d/day',
+                builder: (_, route) => Rolling7dDayDetailPage(
+                  date: DateTime.parse(route.uri.queryParameters['date']!),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -154,6 +171,10 @@ void main() {
     expect(find.text('每日明细'), findsOneWidget);
     expect(find.text('2026-09-06'), findsOneWidget);
     expect(state.intakeViewEvents, contains('rolling_7d_view'));
+    expect(tester.takeException(), isNull);
+    await tester.tap(find.text('2026-09-06'));
+    await tester.pumpAndSettle();
+    expect(state.intakeViewEvents, contains('rolling_7d_day_detail_view'));
     await tester.binding.setSurfaceSize(null);
     state.dispose();
   });
