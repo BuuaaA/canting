@@ -281,17 +281,52 @@ class DeliveryJumpService {
 
   Future<Map<String, DeliveryPlatformState>> detectPlatforms() async {
     final now = DateTime.now();
+    final cached = await loadCachedStates();
     final states = <String, DeliveryPlatformState>{};
     for (final id in _candidateOrder) {
       final uri = id == 'meituan_waimai' ? buildAppUri(id, '餐盘') : null;
-      states[id] = DeliveryPlatformState(
-        platformId: id,
-        installation: uri == null
-            ? DeliveryInstallation.unknown
-            : await _detect(uri),
-        source: 'device',
-        checkedAt: now,
-      );
+      DeliveryPlatformState state;
+      if (uri == null) {
+        state =
+            cached[id] ??
+            const DeliveryPlatformState(
+              platformId: '',
+              installation: DeliveryInstallation.unknown,
+              source: 'unknown_unverified_entry',
+            );
+        state = DeliveryPlatformState(
+          platformId: id,
+          installation: state.installation,
+          source: state.source,
+          checkedAt: state.checkedAt,
+        );
+      } else {
+        try {
+          state = DeliveryPlatformState(
+            platformId: id,
+            installation: await _detect(uri),
+            source: 'device',
+            checkedAt: now,
+          );
+        } catch (_) {
+          state =
+              cached[id] ??
+              DeliveryPlatformState(
+                platformId: id,
+                installation: DeliveryInstallation.unknown,
+                source: 'device_check_failed',
+              );
+          if (cached[id] != null) {
+            state = DeliveryPlatformState(
+              platformId: id,
+              installation: state.installation,
+              source: 'cache_after_device_failure',
+              checkedAt: state.checkedAt,
+            );
+          }
+        }
+      }
+      states[id] = state;
     }
     await _saveStates(states);
     await _recordEvent('delivery_platform_detect', {
@@ -329,12 +364,17 @@ class DeliveryJumpService {
     final actualStates = states ?? await loadCachedStates();
     final preferred =
         preferredPlatformId ?? await configStore.loadPreferredPlatformId();
-    final candidates = _orderedTargets(preferred, actualStates, keyword);
+    final enabledIds = (await configStore.loadOrderedPlatformIds()).toSet();
+    final candidates = _orderedTargets(
+      preferred,
+      actualStates,
+      keyword,
+      enabledIds,
+    );
     if (candidates.isEmpty) {
-      final fallback = _webTarget(platforms.first, keyword);
       return DeliveryLinkResolution(
         platformId: null,
-        target: fallback,
+        target: null,
         fallbackTargets: const [],
         reason: 'NO_VERIFIED_APP_LINK',
       );
@@ -358,6 +398,7 @@ class DeliveryJumpService {
     final attempts = <Uri>[];
     final targets = [
       if (platform.scheme != null &&
+          (await configStore.loadOrderedPlatformIds()).contains(platform.id) &&
           !resolution.allTargets.any(
             (target) =>
                 target.kind == 'app' && target.platformId == platform.id,
@@ -368,10 +409,18 @@ class DeliveryJumpService {
     for (var index = 0; index < targets.length; index++) {
       final target = targets[index];
       attempts.add(target.uri);
-      final accepted = target.kind == 'app'
-          ? await _canLaunch(target.uri) &&
-                await _launch(target.uri, mode: LaunchMode.externalApplication)
-          : await _launch(target.uri, mode: LaunchMode.externalApplication);
+      var accepted = false;
+      try {
+        accepted = target.kind == 'app'
+            ? await _canLaunch(target.uri) &&
+                  await _launch(
+                    target.uri,
+                    mode: LaunchMode.externalApplication,
+                  )
+            : await _launch(target.uri, mode: LaunchMode.externalApplication);
+      } catch (_) {
+        accepted = false;
+      }
       await _recordEvent('delivery_platform_open', {
         'platformId': target.platformId,
         'target': target.uri.toString(),
@@ -414,22 +463,46 @@ class DeliveryJumpService {
     String? preferred,
     Map<String, DeliveryPlatformState> states,
     String keyword,
+    Set<String> enabledIds,
   ) {
     final ids = <String>[];
-    if (preferred != null && allPlatformIds.contains(preferred)) {
-      ids.add(preferred);
-    }
     for (final candidate in _candidateOrder) {
       final id = _visiblePlatformId(candidate);
-      if (id != null && !ids.contains(id)) {
+      if (id != null && enabledIds.contains(id) && !ids.contains(id)) {
         ids.add(id);
       }
+    }
+    void append(String id, List<DeliveryLinkTarget> output) {
+      final platform = platformById(id);
+      if (platform == null) {
+        return;
+      }
+      final state = states[id];
+      if (platform.scheme != null &&
+          state?.installation == DeliveryInstallation.installed) {
+        final uri = buildAppUri(id, keyword);
+        if (uri != null) output.add(_appTarget(platform, uri));
+      }
+      output.add(_webTarget(platform, keyword));
+    }
+
+    if (preferred != null && ids.contains(preferred)) {
+      final preferredTargets = <DeliveryLinkTarget>[];
+      append(preferred, preferredTargets);
+      final rest = <DeliveryLinkTarget>[];
+      final remaining = ids.where((id) => id != preferred);
+      for (final id in remaining) {
+        append(id, rest);
+      }
+      return [...preferredTargets, ...rest];
     }
     final appTargets = <DeliveryLinkTarget>[];
     final webTargets = <DeliveryLinkTarget>[];
     for (final id in ids) {
       final platform = platformById(id);
-      if (platform == null) continue;
+      if (platform == null) {
+        continue;
+      }
       final state = states[id];
       if (platform.scheme != null &&
           state?.installation == DeliveryInstallation.installed) {
@@ -465,13 +538,9 @@ class DeliveryJumpService {
       );
 
   Future<DeliveryInstallation> _detect(Uri uri) async {
-    try {
-      return await _canLaunch(uri)
-          ? DeliveryInstallation.installed
-          : DeliveryInstallation.notInstalled;
-    } catch (_) {
-      return DeliveryInstallation.unknown;
-    }
+    return await _canLaunch(uri)
+        ? DeliveryInstallation.installed
+        : DeliveryInstallation.notInstalled;
   }
 
   static const _statesKey = 'delivery_platform_states';
@@ -510,8 +579,11 @@ class DeliveryJumpService {
     try {
       final prefs = await SharedPreferences.getInstance();
       final events = prefs.getStringList(_eventsKey) ?? const [];
+      final retained = events.length > 100
+          ? events.sublist(events.length - 100)
+          : events;
       await prefs.setStringList(_eventsKey, [
-        ...events,
+        ...retained,
         jsonEncode({
           'event': name,
           'occurredAt': DateTime.now().toIso8601String(),
