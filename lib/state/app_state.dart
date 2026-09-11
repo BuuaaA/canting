@@ -1418,6 +1418,7 @@ class AppState extends ChangeNotifier {
     profile = null;
     _balanceReport = null;
     _windows.clear();
+    _windowRevision++;
     dataRevision++;
     mealReminder = false;
     gapReminder = false;

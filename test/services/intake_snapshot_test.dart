@@ -76,11 +76,12 @@ void main() {
     expect(items.every((item) => item['grams'] == null), isTrue);
     expect(items.every((item) => item['amountBasis'] == 'unknown'), isTrue);
 
-    final fixturePath = File(
-      '${Directory.current.parent.parent.path}/handoffs/01/fixtures/flutter_intake_snapshot.json',
-    );
-    fixturePath.parent.createSync(recursive: true);
-    fixturePath.writeAsStringSync(jsonEncode(json));
+    final fixtureOutput = Platform.environment['INTAKE_FIXTURE_OUTPUT'];
+    if (fixtureOutput != null) {
+      final fixturePath = File(fixtureOutput);
+      fixturePath.parent.createSync(recursive: true);
+      fixturePath.writeAsStringSync(jsonEncode(json));
+    }
   });
 
   test(
