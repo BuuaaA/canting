@@ -9,6 +9,8 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class _FakeStatistics extends IntakeStatisticsService {
   _FakeStatistics(super.state);
+  int todayCalls = 0;
+  int rollingCalls = 0;
   static const _target = IntakeTarget(min: 200, max: 300);
   IntakeCategoryStat _category(String key) => IntakeCategoryStat(
     category: key,
@@ -42,52 +44,58 @@ class _FakeStatistics extends IntakeStatisticsService {
     fishCountCompleteness: 'unknown',
   );
   @override
-  Future<TodayIntakeStats> today({DateTime? date}) async => TodayIntakeStats(
-    date: '2026-09-12',
-    revision: 0,
-    categories: {
-      for (final key in const [
-        'grain',
-        'tuber',
-        'vegetable',
-        'fruit',
-        'animal_food',
-        'dairy',
-        'soy',
-        'nut',
-        'cooking_oil',
-        'salt',
-      ])
-        key: _category(key),
-    },
-    completeness: 'missing',
-  );
+  Future<TodayIntakeStats> today({DateTime? date}) async {
+    todayCalls++;
+    return TodayIntakeStats(
+      date: '2026-09-12',
+      revision: 0,
+      categories: {
+        for (final key in const [
+          'grain',
+          'tuber',
+          'vegetable',
+          'fruit',
+          'animal_food',
+          'dairy',
+          'soy',
+          'nut',
+          'cooking_oil',
+          'salt',
+        ])
+          key: _category(key),
+      },
+      completeness: 'missing',
+    );
+  }
+
   @override
-  Future<Rolling7dIntakeStats> rolling7d({DateTime? date}) async =>
-      Rolling7dIntakeStats(
-        startDate: '2026-09-06',
-        endDate: '2026-09-12',
-        revision: 0,
-        days: [
-          for (var i = 0; i < 7; i++)
-            _day('2026-09-${(i + 6).toString().padLeft(2, '0')}'),
-        ],
-        averages: const {},
-        foodVarietyAverage: null,
-        foodVarietyDenominator: 0,
-        fishCount: null,
-        fishGrams: null,
-        nutGrams: null,
-        dairyMetDays: 0,
-        dairyKnownDays: 0,
-        dairyUnknownDays: 7,
-        soyMetDays: 0,
-        soyKnownDays: 0,
-        soyUnknownDays: 7,
-        fishCompleteness: 'unknown',
-        fishCountCompleteness: 'unknown',
-        nutCompleteness: 'unknown',
-      );
+  Future<Rolling7dIntakeStats> rolling7d({DateTime? date}) async {
+    rollingCalls++;
+    return Rolling7dIntakeStats(
+      startDate: '2026-09-06',
+      endDate: '2026-09-12',
+      revision: 0,
+      days: [
+        for (var i = 0; i < 7; i++)
+          _day('2026-09-${(i + 6).toString().padLeft(2, '0')}'),
+      ],
+      averages: const {},
+      foodVarietyAverage: null,
+      foodVarietyDenominator: 0,
+      fishCount: null,
+      fishGrams: null,
+      nutGrams: null,
+      dairyMetDays: 0,
+      dairyKnownDays: 0,
+      dairyUnknownDays: 7,
+      soyMetDays: 0,
+      soyKnownDays: 0,
+      soyUnknownDays: 7,
+      fishCompleteness: 'unknown',
+      fishCountCompleteness: 'unknown',
+      nutCompleteness: 'unknown',
+    );
+  }
 }
 
 class _FakeState extends AppState {
@@ -118,6 +126,12 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('查看本周进度'), findsOneWidget);
     expect(tester.takeException(), isNull);
+    expect(state.intakeViewEvents, contains('today_plate_view'));
+    final calls = state._stats.todayCalls;
+    state.dataRevision = 1;
+    state.notifyListeners();
+    await tester.pumpAndSettle();
+    expect(state._stats.todayCalls, greaterThan(calls));
     await tester.binding.setSurfaceSize(null);
     state.dispose();
   });
@@ -126,6 +140,7 @@ void main() {
     tester,
   ) async {
     final state = _FakeState();
+    await tester.binding.setSurfaceSize(const Size(320, 700));
     await tester.pumpWidget(
       ChangeNotifierProvider<AppState>.value(
         value: state,
@@ -138,6 +153,8 @@ void main() {
     await tester.pump();
     expect(find.text('每日明细'), findsOneWidget);
     expect(find.text('2026-09-06'), findsOneWidget);
+    expect(state.intakeViewEvents, contains('rolling_7d_view'));
+    await tester.binding.setSurfaceSize(null);
     state.dispose();
   });
 }

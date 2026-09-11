@@ -101,6 +101,8 @@ class AppState extends ChangeNotifier {
   final Set<String> _windowLoads = {};
   final Map<String, Completer<void>> _windowWaiters = {};
   int dataRevision = 0;
+  final List<String> intakeViewEvents = <String>[];
+  void recordIntakeViewEvent(String name) => intakeViewEvents.add(name);
   int _windowRevision = 0;
   bool _disposed = false;
   @override

@@ -15,24 +15,35 @@ class TodayPlateView extends StatefulWidget {
 class _TodayPlateViewState extends State<TodayPlateView> {
   late Future<TodayIntakeStats> _future;
   late int _revision;
+  late AppState _state;
   @override
   void initState() {
     super.initState();
-    _revision = context.read<AppState>().dataRevision;
+    _state = context.read<AppState>();
+    _revision = _state.dataRevision;
+    _state.addListener(_onStateChange);
     _load();
-    IntakeViewEvents.emit('today_plate_view');
+    IntakeViewEvents.emit(
+      'today_plate_view',
+      fallback: _state.recordIntakeViewEvent,
+    );
   }
 
-  void _load() => _future = context.read<AppState>().intakeStatistics.today();
+  void _load() {
+    _future = context.read<AppState>().intakeStatistics.today();
+  }
+
   void _retry() => setState(_load);
+  void _onStateChange() {
+    if (!mounted || _state.dataRevision == _revision) return;
+    _revision = _state.dataRevision;
+    setState(_load);
+  }
+
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final revision = context.read<AppState>().dataRevision;
-    if (revision != _revision) {
-      _revision = revision;
-      _future = context.read<AppState>().intakeStatistics.today();
-    }
+  void dispose() {
+    _state.removeListener(_onStateChange);
+    super.dispose();
   }
 
   @override

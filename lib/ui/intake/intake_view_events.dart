@@ -2,5 +2,6 @@ typedef IntakeViewEventSink = void Function(String eventName);
 
 abstract final class IntakeViewEvents {
   static IntakeViewEventSink? sink;
-  static void emit(String eventName) => sink?.call(eventName);
+  static void emit(String eventName, {required IntakeViewEventSink fallback}) =>
+      (sink ?? fallback)(eventName);
 }

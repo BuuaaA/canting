@@ -15,25 +15,35 @@ class Rolling7dPage extends StatefulWidget {
 class _Rolling7dPageState extends State<Rolling7dPage> {
   late Future<Rolling7dIntakeStats> _future;
   late int _revision;
+  late AppState _state;
   @override
   void initState() {
     super.initState();
-    _revision = context.read<AppState>().dataRevision;
+    _state = context.read<AppState>();
+    _revision = _state.dataRevision;
+    _state.addListener(_onStateChange);
     _load();
-    IntakeViewEvents.emit('rolling_7d_view');
+    IntakeViewEvents.emit(
+      'rolling_7d_view',
+      fallback: _state.recordIntakeViewEvent,
+    );
   }
 
-  void _load() =>
-      _future = context.read<AppState>().intakeStatistics.rolling7d();
+  void _load() {
+    _future = context.read<AppState>().intakeStatistics.rolling7d();
+  }
+
   void _retry() => setState(_load);
+  void _onStateChange() {
+    if (!mounted || _state.dataRevision == _revision) return;
+    _revision = _state.dataRevision;
+    setState(_load);
+  }
+
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final revision = context.read<AppState>().dataRevision;
-    if (revision != _revision) {
-      _revision = revision;
-      _load();
-    }
+  void dispose() {
+    _state.removeListener(_onStateChange);
+    super.dispose();
   }
 
   @override
@@ -142,11 +152,16 @@ class _WeeklyMetrics extends StatelessWidget {
       child: Column(
         children: [
           for (final item in items)
-            ListTile(
-              dense: true,
-              contentPadding: EdgeInsets.zero,
-              title: Text(item.$1),
-              trailing: Text(item.$2, textAlign: TextAlign.end),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: 86, child: Text(item.$1)),
+                  const SizedBox(width: 8),
+                  Expanded(child: Text(item.$2, textAlign: TextAlign.end)),
+                ],
+              ),
             ),
         ],
       ),
@@ -191,12 +206,18 @@ class Rolling7dDayDetailPage extends StatefulWidget {
 class _Rolling7dDayDetailPageState extends State<Rolling7dDayDetailPage> {
   late Future<({IntakeDayStat day, bool stale})> _future;
   late int _revision;
+  late AppState _state;
   @override
   void initState() {
     super.initState();
-    _revision = context.read<AppState>().dataRevision;
+    _state = context.read<AppState>();
+    _revision = _state.dataRevision;
+    _state.addListener(_onStateChange);
     _load();
-    IntakeViewEvents.emit('rolling_7d_day_detail_view');
+    IntakeViewEvents.emit(
+      'rolling_7d_day_detail_view',
+      fallback: _state.recordIntakeViewEvent,
+    );
   }
 
   void _load() {
@@ -215,14 +236,16 @@ class _Rolling7dDayDetailPageState extends State<Rolling7dDayDetailPage> {
 
   String _key(DateTime d) =>
       '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+  void _onStateChange() {
+    if (!mounted || _state.dataRevision == _revision) return;
+    _revision = _state.dataRevision;
+    setState(_load);
+  }
+
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final revision = context.read<AppState>().dataRevision;
-    if (revision != _revision) {
-      _revision = revision;
-      _load();
-    }
+  void dispose() {
+    _state.removeListener(_onStateChange);
+    super.dispose();
   }
 
   @override
