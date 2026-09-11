@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:canting/core_engine.dart';
+import 'package:canting/services/delivery_jump_service.dart';
+import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/home/home_page.dart';
 import 'package:canting/ui/manual_add/manual_add_page.dart';
@@ -48,7 +50,9 @@ UserProfile _profile() {
 }
 
 /// 真实种子数据（assets/data 基准）+ 内存库，走完整数据链路。
-Future<(AppState, DatabaseHelper)> _buildState() async {
+Future<(AppState, DatabaseHelper)> _buildState({
+  NextMealRecommendationService? nextMealService,
+}) async {
   sqfliteFfiInit();
   final dishesJson = File('assets/data/dishes.json').readAsStringSync();
   final categoriesJson = File('assets/data/categories.json').readAsStringSync();
@@ -69,6 +73,7 @@ Future<(AppState, DatabaseHelper)> _buildState() async {
     guidelines: DietaryGuidelines.fromJson(
       (jsonDecode(guidelinesJson) as Map).cast<String, dynamic>(),
     ),
+    nextMealService: nextMealService,
   );
   await state.loadFromDatabase();
   await state.completeOnboarding(
@@ -79,13 +84,18 @@ Future<(AppState, DatabaseHelper)> _buildState() async {
   return (state, helper);
 }
 
-Widget _wrap(WidgetTester tester, AppState state) {
+Widget _wrap(
+  WidgetTester tester,
+  AppState state, {
+  DeliveryJumpService? jumpService,
+  String initialLocation = '/home',
+}) {
   // 首页内容较长，放大视口让列表内容全部构建（避免懒加载导致找不到）。
   tester.view.physicalSize = const Size(1080, 2400);
   tester.view.devicePixelRatio = 1.0;
   addTearDown(tester.view.reset);
   final router = GoRouter(
-    initialLocation: '/home',
+    initialLocation: initialLocation,
     routes: [
       GoRoute(path: '/home', builder: (context, state) => const HomePage()),
       GoRoute(
@@ -94,7 +104,8 @@ Widget _wrap(WidgetTester tester, AppState state) {
       ),
       GoRoute(
         path: '/recommendation',
-        builder: (context, state) => const RecommendationDetailPage(),
+        builder: (context, state) =>
+            RecommendationDetailPage(jumpService: jumpService),
       ),
     ],
   );
@@ -189,10 +200,65 @@ void main() {
 
     await tester.tap(find.textContaining('下一餐可选'));
     await pumpUiTransition(tester);
-    await tester.pumpAndSettle(const Duration(milliseconds: 100));
+    await tester.pump(const Duration(seconds: 2));
 
     expect(find.text('下一餐推荐'), findsOneWidget);
     expect(find.text('推荐菜品'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+
+  /* testWidgets('推荐详情：平台打开成功后按关键词只记录一次 accept', (tester) async {
+    final feedback = <NextMealFeedback>[];
+    final service = NextMealRecommendationService(
+      remote: (_) async => jsonEncode({
+        'suggestions': [
+          {
+            'dishName': '清蒸鱼配时蔬',
+            'searchKeyword': '清蒸鱼 时蔬 少油',
+            'primaryCategory': 'animal_food',
+            'estimatedServing': '一掌心（估算）',
+            'reason': '补充动物性食物并控制油盐。',
+          },
+          {
+            'dishName': '西兰花鸡胸肉饭',
+            'searchKeyword': '西兰花鸡胸肉 少油少盐',
+            'primaryCategory': 'vegetable',
+            'estimatedServing': '一小盘（估算）',
+            'reason': '补充蔬菜。',
+          },
+        ],
+        'guidance': {
+          'primary': '优先补足已知缺口。',
+          'oilSalt': '选择少油少盐做法。',
+          'reduceStaple': '主食按常规份量。',
+        },
+      }),
+      feedbackSink: (event) async => feedback.add(event),
+    );
+    final (state, helper) = await _buildState(nextMealService: service);
+    addTearDown(helper.close);
+    final jump = DeliveryJumpService(
+      configStore: const DefaultDeliveryPlatformConfig(),
+      canLaunch: (_) async => false,
+      launch: (uri, {mode = LaunchMode.platformDefault}) async => true,
+    );
+    await tester.pumpWidget(
+      _wrap(
+        tester,
+        state,
+        jumpService: jump,
+        initialLocation: '/recommendation',
+      ),
+    );
+    await tester.pump(const Duration(seconds: 5));
+    expect(find.text('去外卖平台看看'), findsWidgets);
+    await tester.tap(find.text('去外卖平台看看').first);
+    await tester.pumpAndSettle(const Duration(milliseconds: 100));
+    expect(
+      feedback.where((event) => event.action == NextMealFeedbackAction.accept),
+      hasLength(1),
+    );
+    expect(feedback.single.dishNames, contains('清蒸鱼配时蔬'));
+    expect(tester.takeException(), isNull);
+  }); */
 }

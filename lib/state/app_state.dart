@@ -17,6 +17,7 @@ import 'package:canting/data/pet_repository.dart';
 import 'package:canting/data/user_repository.dart';
 import 'package:canting/services/intake_statistics.dart';
 import 'package:canting/services/next_meal_recommendation.dart';
+import 'package:canting/services/delivery_jump_service.dart';
 import 'package:canting/ui/intake/intake_view_events.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/pet.dart';
@@ -109,6 +110,8 @@ class AppState extends ChangeNotifier {
   late final NextMealRecommendationService _nextMealService;
   NextMealResult? _nextMealResult;
   Future<NextMealResult>? _nextMealFuture;
+  String? _nextMealFutureKey;
+  String? _nextMealResultKey;
   int _nextMealRequestSerial = 0;
   NextMealResult? get nextMealResult => _nextMealResult;
   NextMealRecommendationService get nextMealService => _nextMealService;
@@ -129,6 +132,7 @@ class AppState extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
+    _nextMealRequestSerial++;
     super.dispose();
   }
 
@@ -278,13 +282,19 @@ class AppState extends ChangeNotifier {
     bool force = false,
   }) {
     final current = clock();
+    final requestedDate = date ?? current;
+    final mealType = _nextMealType(current);
+    final key =
+        '$dataRevision|${profile?.dietGoal}|${_dayKey(requestedDate)}|$mealType|'
+        '${[...excludeDishNames]..sort()}';
     if (!force &&
         _nextMealResult != null &&
         _nextMealResult!.dataRevision == dataRevision &&
-        excludeDishNames.isEmpty) {
+        excludeDishNames.isEmpty &&
+        _nextMealResultKey == key) {
       return Future.value(_nextMealResult);
     }
-    if (!force && _nextMealFuture != null && excludeDishNames.isEmpty) {
+    if (!force && _nextMealFuture != null && _nextMealFutureKey == key) {
       return _nextMealFuture!;
     }
     final serial = ++_nextMealRequestSerial;
@@ -299,20 +309,47 @@ class AppState extends ChangeNotifier {
         requestId: 'next-${current.microsecondsSinceEpoch}-$serial',
         today: today,
         rolling7d: rolling,
-        nextMealType: _nextMealType(current),
+        nextMealType: mealType,
+        dietaryExclusions: await _storedDietaryExclusions(),
+        availablePlatforms: (await DeliveryJumpService().loadEnabledPlatforms())
+            .map((platform) => platform.id)
+            .toList(growable: false),
         excludeDishNames: excludeDishNames.toList(growable: false),
       );
-      final result = await _nextMealService.nextMeal(request);
-      if (serial == _nextMealRequestSerial &&
-          result.dataRevision == dataRevision) {
-        _nextMealResult = result;
-        _nextMealFuture = null;
-        notifyListeners();
+      try {
+        final result = await _nextMealService.nextMeal(request);
+        if (serial == _nextMealRequestSerial &&
+            result.dataRevision == dataRevision) {
+          _nextMealResult = result;
+          _nextMealResultKey = key;
+          notifyListeners();
+        }
+        return result;
+      } finally {
+        if (serial == _nextMealRequestSerial && _nextMealFutureKey == key) {
+          _nextMealFuture = null;
+          _nextMealFutureKey = null;
+        }
       }
-      return result;
     }();
-    if (excludeDishNames.isEmpty) _nextMealFuture = future;
+    _nextMealFuture = future;
+    _nextMealFutureKey = key;
     return future;
+  }
+
+  Future<List<String>> _storedDietaryExclusions() async {
+    try {
+      final raw = (await exposurePreferences())['dietary_exclusions'];
+      return raw is List
+          ? raw
+                .whereType<String>()
+                .map((v) => v.trim())
+                .where((v) => v.isNotEmpty)
+                .toList(growable: false)
+          : const [];
+    } catch (_) {
+      return const [];
+    }
   }
 
   String _nextMealType(DateTime now) {
@@ -336,8 +373,11 @@ class AppState extends ChangeNotifier {
       'lunch': parse(profile.lunchTime),
       'dinner': parse(profile.dinnerTime),
     };
-    return meals.entries
-        .reduce((a, b) => (b.value >= minutes && b.value < a.value) ? b : a)
+    final upcoming = meals.entries
+        .where((entry) => entry.value >= minutes)
+        .toList();
+    return (upcoming.isEmpty ? meals.entries.toList() : upcoming)
+        .reduce((a, b) => a.value <= b.value ? a : b)
         .key;
   }
 

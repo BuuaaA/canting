@@ -71,9 +71,7 @@ class RecommendationCard extends StatelessWidget {
                     ),
                     if (result?.source == 'local_rule')
                       Text(
-                        result?.reasonCode == 'unconfigured'
-                            ? '当前使用本地推荐'
-                            : '网络恢复后可重试',
+                        _hint(result!.reasonCode),
                         style: theme.textTheme.bodySmall,
                       ),
                   ],
@@ -95,4 +93,12 @@ class RecommendationCard extends StatelessWidget {
       },
     );
   }
+
+  String _hint(String reasonCode) => switch (reasonCode) {
+    'unconfigured' => '当前使用本地推荐；网络恢复后可生成更具体推荐',
+    'timeout' || 'remote_unavailable' || 'invalid_json' => '远端推荐暂不可用，可稍后重试',
+    'no_safe_candidate' => '当前没有可靠的安全候选，可稍后重试',
+    'stale_input' => '统计已更新，请重新生成建议',
+    _ => '推荐暂不可用，可稍后重试',
+  };
 }

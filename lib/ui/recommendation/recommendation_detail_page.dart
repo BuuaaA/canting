@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RecommendationDetailPage extends StatefulWidget {
-  const RecommendationDetailPage({super.key});
+  const RecommendationDetailPage({super.key, this.jumpService});
+
+  final DeliveryJumpService? jumpService;
 
   @override
   State<RecommendationDetailPage> createState() =>
@@ -17,13 +19,21 @@ class RecommendationDetailPage extends StatefulWidget {
 }
 
 class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
-  final DeliveryJumpService _jumpService = DeliveryJumpService();
+  late final DeliveryJumpService _jumpService =
+      widget.jumpService ?? DeliveryJumpService();
   final Set<String> _shownDishNames = <String>{};
   List<DeliveryPlatform> _platforms = DeliveryJumpService.platforms;
   Future<NextMealResult>? _future;
   NextMealResult? _lastUsable;
+  int _loadSerial = 0;
   bool _platformsLoaded = false;
   bool _busy = false;
+
+  @override
+  void dispose() {
+    _loadSerial++;
+    super.dispose();
+  }
 
   @override
   void didChangeDependencies() {
@@ -37,29 +47,41 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     }
   }
 
-  void _startLoad({bool force = false}) {
+  Future<NextMealResult> _startLoad({bool force = false}) {
     final state = context.read<AppState>();
+    final serial = ++_loadSerial;
     final future = state.loadNextMealRecommendation(
       excludeDishNames: _shownDishNames,
       force: force,
     );
     _future = future;
-    future.then((result) {
-      if (!mounted) return;
-      if (result.isUsable) _lastUsable = result;
-      setState(() {});
-    });
+    future.then(
+      (result) {
+        if (!mounted) return;
+        if (serial == _loadSerial &&
+            result.isUsable &&
+            result.dataRevision == state.dataRevision) {
+          _lastUsable = result;
+        }
+        setState(() {});
+      },
+      onError: (Object _, StackTrace _) {
+        if (mounted && serial == _loadSerial) setState(() {});
+      },
+    );
+    return future;
   }
 
   NextMealResult? _result(
     AsyncSnapshot<NextMealResult> snapshot,
     AppState state,
   ) {
-    final candidate = snapshot.data ?? _lastUsable ?? state.nextMealResult;
-    if (candidate != null && candidate.dataRevision != state.dataRevision) {
-      return null;
+    final usable = _lastUsable ?? state.nextMealResult;
+    if (usable != null && usable.dataRevision == state.dataRevision) {
+      return usable;
     }
-    return candidate;
+    final candidate = snapshot.data;
+    return candidate?.dataRevision == state.dataRevision ? candidate : null;
   }
 
   Future<void> _changeBatch(NextMealFeedbackAction action) async {
@@ -71,20 +93,29 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
       return;
     }
     _busy = true;
-    await state.nextMealService.recordFeedback(result: current, action: action);
-    _shownDishNames.addAll(current.suggestions.map((s) => s.dishName));
-    if (mounted) setState(() {});
-    _startLoad(force: true);
-    _busy = false;
+    try {
+      await state.nextMealService.recordFeedback(
+        result: current,
+        action: action,
+      );
+      _shownDishNames
+        ..clear()
+        ..addAll(current.suggestions.map((s) => s.dishName));
+      if (mounted) setState(() {});
+      await _startLoad(force: true);
+    } finally {
+      _busy = false;
+      if (mounted) setState(() {});
+    }
   }
 
   Future<void> _jump(DeliveryPlatform platform, String keyword) async {
     final messenger = ScaffoldMessenger.of(context);
+    final recommendation =
+        _lastUsable ?? context.read<AppState>().nextMealResult;
     final result = await _jumpService.jumpToSearch(platform, keyword);
     if (!mounted) return;
     if (result.success) {
-      final recommendation =
-          _lastUsable ?? context.read<AppState>().nextMealResult;
       if (recommendation != null) {
         // The service de-duplicates accept by requestId; opening remains non-blocking.
         unawaited(
@@ -208,7 +239,14 @@ class _GuidancePanel extends StatelessWidget {
         Text(result.guidance.primary),
         Text(result.guidance.oilSalt),
         Text(result.guidance.reduceStaple),
-        if (result.reasonCode == 'unconfigured') const Text('网络恢复后可生成更具体推荐'),
+        if (result.reasonCode == 'unconfigured')
+          const Text('当前使用本地推荐；网络恢复后可生成更具体推荐'),
+        if (result.reasonCode == 'timeout' ||
+            result.reasonCode == 'remote_unavailable' ||
+            result.reasonCode == 'invalid_json')
+          const Text('远端推荐暂不可用，可稍后重试'),
+        if (result.reasonCode == 'no_safe_candidate')
+          const Text('当前没有可靠的安全候选，可稍后重试'),
       ],
     ),
   );
@@ -225,25 +263,28 @@ class _MessagePanel extends StatelessWidget {
   final VoidCallback? onRetry;
 
   @override
-  Widget build(BuildContext context) => ListView(
+  Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.all(16),
-    children: [
-      const Text('推荐菜品'),
-      const SizedBox(height: 10),
-      PixelPanel(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          children: [
-            Text(title),
-            const SizedBox(height: 8),
-            Text(message),
-            if (onRetry != null) ...[
-              const SizedBox(height: 12),
-              OutlinedButton(onPressed: onRetry, child: const Text('重试')),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('推荐菜品'),
+        const SizedBox(height: 10),
+        PixelPanel(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            children: [
+              Text(title),
+              const SizedBox(height: 8),
+              Text(message),
+              if (onRetry != null) ...[
+                const SizedBox(height: 12),
+                OutlinedButton(onPressed: onRetry, child: const Text('重试')),
+              ],
             ],
-          ],
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
