@@ -5,7 +5,6 @@ import 'package:canting/core/record_window.dart';
 import 'package:canting/core/models/local_food.dart';
 import 'package:canting/core/local_food_matcher.dart';
 import 'package:canting/data/local_food_repository.dart';
-import 'package:canting/services/intake_snapshot.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -21,6 +20,7 @@ import 'package:canting/pet.dart';
 import 'package:canting/platform/android_native_bridge.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:sqflite/sqflite.dart';
 
 class RecognitionDraft {
   const RecognitionDraft({
@@ -65,9 +65,6 @@ class AppState extends ChangeNotifier {
     this.guidelines,
     DateTime Function()? clock,
     this.persistNotificationSwitches,
-    this.intakeSnapshotClient,
-    this.intakeSnapshotEndpoint,
-    this.installationId,
   }) : clock = clock ?? DateTime.now,
        _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
@@ -98,14 +95,12 @@ class AppState extends ChangeNotifier {
       _exposureRepo.savePreferences(prefs);
   Future<void> clearExposurePreferences() => _exposureRepo.clearPreferences();
   final DateTime Function() clock;
-  final IntakeSnapshotClient? intakeSnapshotClient;
-  final Uri? intakeSnapshotEndpoint;
-  final String? installationId;
-  bool intakeSnapshotPending = false;
+  static const _dataRevisionKey = 'local.data_revision';
   final Map<String, RecordWindow> _windows = {};
   final Set<String> _windowLoads = {};
   final Map<String, Completer<void>> _windowWaiters = {};
   int dataRevision = 0;
+  int _windowRevision = 0;
   bool _disposed = false;
   @override
   void dispose() {
@@ -250,6 +245,9 @@ class AppState extends ChangeNotifier {
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.
   Future<void> loadFromDatabase() async {
+    dataRevision =
+        int.tryParse(await _databaseHelper.getMeta(_dataRevisionKey) ?? '') ??
+        0;
     _localFoods = await _localFoodRepo.all();
     profile = await _userRepo.getProfile();
     final persistedPet = await _petRepo.getPet();
@@ -509,7 +507,7 @@ class AppState extends ChangeNotifier {
   Future<void> refreshBalanceLedger({DateTime? reference}) async {
     _windows.clear();
     _balanceReport = null;
-    dataRevision++;
+    _windowRevision++;
     await loadRecordWindows(reference ?? clock());
   }
 
@@ -523,14 +521,14 @@ class AppState extends ChangeNotifier {
     }
     _windowLoads.add(key);
     _windowWaiters[key] = Completer<void>();
-    final revision = dataRevision;
+    final revision = _windowRevision;
     final today = localDay(reference);
     try {
       final meals = await _mealRepo.getMealsByDateRange(
         DateTime(today.year, today.month, today.day - 27),
         DateTime(today.year, today.month, today.day + 1),
       );
-      if (revision != dataRevision) return;
+      if (revision != _windowRevision) return;
       for (final days in [7, 28]) {
         _windows['$key:$days'] = RecordWindow.build(
           meals,
@@ -549,7 +547,7 @@ class AppState extends ChangeNotifier {
         );
       }
     } catch (_) {
-      if (revision != dataRevision) return;
+      if (revision != _windowRevision) return;
       for (final days in [7, 28]) {
         _windows['$key:$days'] = RecordWindow.build(
           [],
@@ -1269,7 +1267,12 @@ class AppState extends ChangeNotifier {
         }
       }
       if (isNew) await PetRepository(database: () => txn).savePet(nextPet);
+      await txn.insert('app_meta', {
+        'key': _dataRevisionKey,
+        'value': '${dataRevision + 1}',
+      }, conflictAlgorithm: ConflictAlgorithm.replace);
     });
+    dataRevision++;
     _pet = nextPet;
     _dialogue = nextDialogue;
     _pendingEvolutionFrom = nextEvolution;
@@ -1326,9 +1329,14 @@ class AppState extends ChangeNotifier {
         }
       }
       await pets.savePet(next);
+      await txn.insert('app_meta', {
+        'key': _dataRevisionKey,
+        'value': '${dataRevision + 1}',
+      }, conflictAlgorithm: ConflictAlgorithm.replace);
       return next;
     });
     if (updatedPet == null) return;
+    dataRevision++;
     _pet = updatedPet;
     for (final key in _mealsByDay.keys.toList()) {
       _mealsByDay[key] = _mealsByDay[key]!
@@ -1353,7 +1361,14 @@ class AppState extends ChangeNotifier {
 
   Future<void> clearData() async {
     await _databaseHelper.clearMigrationBackup();
-    await _mealRepo.deleteAllMeals();
+    await _databaseHelper.database.transaction((txn) async {
+      await txn.delete('meal_records');
+      await txn.insert('app_meta', {
+        'key': _dataRevisionKey,
+        'value': '${dataRevision + 1}',
+      }, conflictAlgorithm: ConflictAlgorithm.replace);
+    });
+    dataRevision++;
     _mealsByDay.clear();
     await refreshBalanceLedger();
     mealReminder = false;
@@ -1392,6 +1407,10 @@ class AppState extends ChangeNotifier {
       ]) {
         await txn.delete(table);
       }
+      await txn.insert('app_meta', {
+        'key': _dataRevisionKey,
+        'value': '${dataRevision + 1}',
+      }, conflictAlgorithm: ConflictAlgorithm.replace);
     });
     _localFoods = [];
     _recognitionDraft = null;

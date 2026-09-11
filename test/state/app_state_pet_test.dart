@@ -71,6 +71,44 @@ Future<(AppState, DatabaseHelper)> _buildState() async {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test(
+    'local meal writes persist a revision across save edit delete and clear',
+    () async {
+      final (state, helper) = await _buildState();
+      addTearDown(helper.close);
+      final meal = _meal(
+        'stable-meal',
+        DateTime(2026, 9, 11, 12),
+        Portions.zero,
+      );
+      final initialRevision = state.dataRevision;
+
+      await state.saveMeal(meal);
+      expect(state.dataRevision, initialRevision + 1);
+      await state.saveMeal(
+        MealRecord(
+          mealId: meal.mealId,
+          mealType: meal.mealType,
+          timestamp: meal.timestamp,
+          dishes: meal.dishes,
+          portionsTotal: const Portions(grains: 1),
+        ),
+      );
+      expect(state.dataRevision, initialRevision + 2);
+      await state.deleteMeal(meal.mealId);
+      expect(state.dataRevision, initialRevision + 3);
+      await state.clearData();
+      expect(state.dataRevision, initialRevision + 4);
+
+      final reloaded = AppState(
+        databaseHelper: helper,
+        guidelines: _guidelines(),
+      );
+      await reloaded.loadFromDatabase();
+      expect(reloaded.dataRevision, initialRevision + 4);
+    },
+  );
+
   group('AppState.refreshPetVitality（模块 7 活力值）', () {
     test('最近 3 天吃得均衡 → 活力值按饮食质量重算', () async {
       final (state, helper) = await _buildState();
