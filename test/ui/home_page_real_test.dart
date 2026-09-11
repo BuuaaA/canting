@@ -114,7 +114,7 @@ void main() {
 
     expect(find.text('今天还没记录哦'), findsOneWidget);
     expect(find.text('0%'), findsWidgets);
-    expect(find.text('0/5份'), findsOneWidget);
+    expect(find.text('未记录'), findsWidgets);
     // 推荐卡片显示真实引擎的时间行。
     expect(find.textContaining('下一餐'), findsWidgets);
     expect(tester.takeException(), isNull);
@@ -138,10 +138,9 @@ void main() {
     // 日志出现新记录（按菜名展示）。
     expect(find.text('黄焖鸡米饭'), findsWidgets);
     expect(state.mealsFor(DateTime.now()), hasLength(1));
-    // 主食进度条是真实摄入 2/5 份，完成度 40%（不再是 0/5）。
-    expect(find.text('0/5份'), findsNothing);
-    expect(find.text('2/5份'), findsOneWidget);
-    expect(find.text('40%'), findsWidgets);
+    // 新首页使用十类统计；旧 MealDish 没有可验证的克重换算，不伪造份数。
+    expect(find.textContaining('/5份'), findsNothing);
+    expect(find.text('2/5份'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
