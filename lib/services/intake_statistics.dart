@@ -72,18 +72,21 @@ class IntakeDayStat {
     required this.categories,
     required this.foodVariety,
     required this.fishCount,
+    required this.fishCountCompleteness,
   });
   final String date;
   final String completeness;
   final Map<String, IntakeCategoryStat> categories;
   final int? foodVariety;
   final int? fishCount;
+  final String fishCountCompleteness;
   Map<String, dynamic> toJson() => {
     'date': date,
     'completeness': completeness,
     'categories': categories.values.map((v) => v.toJson()).toList(),
     'foodVariety': foodVariety,
     'fishCount': fishCount,
+    'fishCountCompleteness': fishCountCompleteness,
   };
 }
 
@@ -147,6 +150,7 @@ class Rolling7dIntakeStats {
     required this.soyKnownDays,
     required this.soyUnknownDays,
     required this.fishCompleteness,
+    required this.fishCountCompleteness,
     required this.nutCompleteness,
     this.stale = false,
   });
@@ -161,6 +165,7 @@ class Rolling7dIntakeStats {
   final int dairyMetDays, dairyKnownDays, dairyUnknownDays;
   final int soyMetDays, soyKnownDays, soyUnknownDays;
   final String fishCompleteness, nutCompleteness;
+  final String fishCountCompleteness;
   final bool stale;
   Map<String, dynamic> toJson() => {
     'startDate': startDate,
@@ -169,6 +174,7 @@ class Rolling7dIntakeStats {
     'stale': stale,
     'fish': {
       'count': fishCount,
+      'countCompleteness': fishCountCompleteness,
       'grams': fishGrams,
       'completeness': fishCompleteness,
       'targetCount': 2,
@@ -228,8 +234,12 @@ class IntakeStatisticsService {
     final records = read.meals;
     final items = records.expand(_items).toList();
     final fish = _fishSummary(records);
-    final fishGrams = <Map<String, dynamic>>[];
-    final nut = _actualSummary(items.where((i) => i['category'] == 'nut'));
+    // Current local facts do not provide a verifiable fish-specific weight.
+    const double? fishGrams = null;
+    final nut = _actualSummary(
+      items.where((i) => i['category'] == 'nut'),
+      structureUnknown: records.any((meal) => !meal.structureComplete),
+    );
     final varietyValues = days
         .map((d) => d.foodVariety)
         .whereType<int>()
@@ -263,7 +273,7 @@ class IntakeStatisticsService {
       foodVarietyAverage: _average(varietyValues),
       foodVarietyDenominator: varietyValues.length,
       fishCount: fish.count,
-      fishGrams: _sumComparable(fishGrams, 'animal_food'),
+      fishGrams: fishGrams,
       nutGrams: nut.amount,
       dairyMetDays: dairy.met,
       dairyKnownDays: dairy.known,
@@ -271,10 +281,13 @@ class IntakeStatisticsService {
       soyMetDays: soy.met,
       soyKnownDays: soy.known,
       soyUnknownDays: 7 - soy.known,
-      fishCompleteness: fish.completeness == 'complete' && fishGrams.isEmpty
+      fishCompleteness: fish.completeness == 'complete' && fishGrams == null
           ? 'partial'
           : fish.completeness,
-      nutCompleteness: nut.completeness,
+      fishCountCompleteness: fish.completeness,
+      // Actual grams are retained, but no reviewed nut conversion currently
+      // proves the weekly comparison basis, so the summary stays partial.
+      nutCompleteness: nut.amount == null ? nut.completeness : 'partial',
       stale: read.stale,
     );
   }
@@ -378,6 +391,7 @@ class IntakeStatisticsService {
       categories: categories,
       foodVariety: variety,
       fishCount: _fishSummary(records).count,
+      fishCountCompleteness: _fishSummary(records).completeness,
     );
   }
 
@@ -420,15 +434,6 @@ class IntakeStatisticsService {
     return null;
   }
 
-  static double? _sumComparable(
-    Iterable<Map<String, dynamic>> items,
-    String category,
-  ) {
-    final values = items.map((i) => _comparableAmount(i, category)).toList();
-    if (values.isEmpty || values.any((v) => v == null || v <= 0)) return null;
-    return values.fold<double>(0, (a, b) => a + b!);
-  }
-
   static Map<String, double> _sumActualByUnit(
     List<Map<String, dynamic>> items,
   ) {
@@ -463,13 +468,25 @@ class IntakeStatisticsService {
     return _FishSummary(count, uncertain ? 'partial' : 'complete');
   }
 
-  static _AmountSummary _actualSummary(Iterable<Map<String, dynamic>> items) {
-    final values = items.map((i) => (i['amount'] as num?)?.toDouble()).toList();
-    final known = values.whereType<double>().where((v) => v > 0).toList();
+  static _AmountSummary _actualSummary(
+    Iterable<Map<String, dynamic>> items, {
+    bool structureUnknown = false,
+  }) {
+    final values = items.toList();
+    final known = <double>[];
+    var unknown = structureUnknown;
+    for (final item in values) {
+      final amount = (item['amount'] as num?)?.toDouble();
+      if (item['unit'] == 'g' && amount != null && amount > 0) {
+        known.add(amount);
+      } else {
+        unknown = true;
+      }
+    }
     if (values.isEmpty) return const _AmountSummary(null, 'unknown');
     return _AmountSummary(
       known.isEmpty ? null : known.fold<double>(0, (a, b) => a + b),
-      known.length == values.length ? 'complete' : 'partial',
+      unknown ? 'partial' : 'complete',
     );
   }
 

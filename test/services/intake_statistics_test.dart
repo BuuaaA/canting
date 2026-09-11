@@ -51,7 +51,8 @@ MealRecord _mealWithName(
   ServingEstimator estimator,
   DietaryGuidelines guidelines, {
   required String name,
-  required double grams,
+  required double? grams,
+  String unit = 'g',
   String? category,
 }) {
   final contract = RecognitionContract(_read('recognition.schema'));
@@ -60,6 +61,7 @@ MealRecord _mealWithName(
   example['draftId'] = switch (id) {
     'sweet' => '00000000-0000-4000-8000-000000000004',
     'noodle' => '00000000-0000-4000-8000-000000000005',
+    'nut-ml' => '00000000-0000-4000-8000-000000000006',
     _ => '00000000-0000-4000-8000-000000000001',
   };
   final component =
@@ -78,7 +80,7 @@ MealRecord _mealWithName(
     ..setIntake(
       'c-rice',
       basis: 'personal_consumed',
-      portion: {'value': grams, 'unit': 'g', 'band': 'unknown'},
+      portion: {'value': grams, 'unit': unit, 'band': 'unknown'},
     );
   return draft.toMeal(
     mealType: 'lunch',
@@ -126,9 +128,21 @@ void main() {
           category: 'nut',
         ),
       );
+      await state.saveMeal(
+        _mealWithName(
+          'nut-ml',
+          day,
+          estimator,
+          guidelines,
+          name: '坚果',
+          grams: 200,
+          unit: 'ml',
+          category: 'nut',
+        ),
+      );
       final result = await IntakeStatisticsService(state).rolling7d(date: day);
       expect(result.nutGrams, 30);
-      expect(result.nutCompleteness, 'complete');
+      expect(result.nutCompleteness, 'partial');
     },
   );
 
@@ -290,8 +304,10 @@ void main() {
       final result = await IntakeStatisticsService(state).rolling7d(date: day);
       expect(result.fishCount, 1);
       expect(result.days.last.fishCount, 1);
+      expect(result.days.last.fishCountCompleteness, 'partial');
       expect(result.fishGrams, isNull);
       expect(result.fishCompleteness, 'partial');
+      expect(result.fishCountCompleteness, 'partial');
     },
   );
 
