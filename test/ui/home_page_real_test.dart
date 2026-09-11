@@ -141,6 +141,7 @@ void main() {
     // 新首页使用十类统计；旧 MealDish 没有可验证的克重换算，不伪造份数。
     expect(find.textContaining('/5份'), findsNothing);
     expect(find.text('2/5份'), findsNothing);
+    expect(find.text('40%'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 
