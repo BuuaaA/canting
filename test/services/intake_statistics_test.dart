@@ -42,9 +42,29 @@ MealRecord _riceMeal(
   DietaryGuidelines guidelines, {
   double grams = 150,
 }) {
+  return _mealWithName(id, at, estimator, guidelines, name: '米饭', grams: grams);
+}
+
+MealRecord _mealWithName(
+  String id,
+  DateTime at,
+  ServingEstimator estimator,
+  DietaryGuidelines guidelines, {
+  required String name,
+  required double grams,
+}) {
   final contract = RecognitionContract(_read('recognition.schema'));
   final example =
       _read('examples')['personal_half_bowl'] as Map<String, dynamic>;
+  example['draftId'] = switch (id) {
+    'sweet' => '00000000-0000-4000-8000-000000000004',
+    'noodle' => '00000000-0000-4000-8000-000000000005',
+    _ => '00000000-0000-4000-8000-000000000001',
+  };
+  final component =
+      (example['products'] as List).first['components'][0]
+          as Map<String, dynamic>;
+  component['name']['value'] = name;
   final draft = MealDraftV2(contract, example, simulated: true)
     ..setIntake(
       'c-rice',
@@ -77,6 +97,41 @@ void main() {
       expect(grain.actualKnownByUnit['g'], 150);
       expect(grain.toJson(), isNot(contains('actualKnownSubtotal')));
       expect(result.toJson()['dataRevision'], state.dataRevision);
+    },
+  );
+
+  test(
+    'ambiguous sweet potato and dry noodle units keep comparison unknown',
+    () async {
+      final (state, helper, guidelines, estimator) = await _state();
+      addTearDown(helper.close);
+      final day = DateTime(2026, 9, 11);
+      await state.saveMeal(
+        _mealWithName(
+          'sweet',
+          day,
+          estimator,
+          guidelines,
+          name: '红薯',
+          grams: 125,
+        ),
+      );
+      await state.saveMeal(
+        _mealWithName(
+          'noodle',
+          day,
+          estimator,
+          guidelines,
+          name: '面条',
+          grams: 75,
+        ),
+      );
+
+      final result = await IntakeStatisticsService(state).today(date: day);
+      expect(result.categories['tuber']!.amount, isNull);
+      expect(result.categories['tuber']!.actualKnownByUnit['g'], 125);
+      expect(result.categories['grain']!.amount, isNull);
+      expect(result.categories['grain']!.actualKnownByUnit['g'], 75);
     },
   );
 

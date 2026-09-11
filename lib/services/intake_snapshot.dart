@@ -206,12 +206,15 @@ class IntakeSnapshot {
       unit,
       guidelines,
     );
+    final displayCategory =
+        category ??
+        _displayCategory(nameFact?['value'] as String?, unit, guidelines);
     return {
       'mealId': mealId,
       'name': nameFact?['value'],
       'foodKey': conversion?.foodKey,
       'fishKind': null,
-      'category': conversion?.category ?? category,
+      'category': conversion?.category ?? displayCategory,
       'grams': unit == 'g' ? amount : null,
       'amount': unit == 'ml'
           ? amount
@@ -227,8 +230,29 @@ class IntakeSnapshot {
       'source': source,
       'estimateSource': null,
       'conversionVersion': conversion?.version,
-      'complete': amount != null && (conversion?.category ?? category) != null,
+      'complete': conversion != null && amount != null,
     };
+  }
+
+  static String? _displayCategory(
+    String? name,
+    String unit,
+    DietaryGuidelines? guidelines,
+  ) {
+    if (name == '红薯' || name == '地瓜') return 'tuber';
+    if (name == '面条' || name == '挂面' || name == '煮面') return 'grain';
+    if (name == null || guidelines == null) return null;
+    for (final portion in guidelines.conventionalPortions) {
+      if (portion.reviewStatus != PortionReviewStatus.reviewed ||
+          portion.unit != unit ||
+          (portion.canonicalName != name && !portion.aliases.contains(name))) {
+        continue;
+      }
+      return portion.exchangeKey == 'sweet_potato'
+          ? 'tuber'
+          : _category(portion.categoryId);
+    }
+    return null;
   }
 
   static String _source(Map node, Map calculation) {
@@ -273,6 +297,21 @@ class IntakeSnapshot {
     if (key == null) {
       return null;
     }
+    const supportedKeys = {
+      'cooked_rice',
+      'steamed_bun',
+      'firm_tofu',
+      'soft_tofu',
+      'tofu_silk',
+      'silken_tofu',
+      'dried_tofu',
+      'soy_milk',
+      'milk_100ml',
+      'yogurt',
+      'cheese',
+      'milk_powder',
+    };
+    if (!supportedKeys.contains(key)) return null;
     final portion = guidelines.conventionalPortions
         .where(
           (p) =>
