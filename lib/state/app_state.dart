@@ -16,6 +16,7 @@ import 'package:canting/data/meal_repository.dart';
 import 'package:canting/data/pet_repository.dart';
 import 'package:canting/data/user_repository.dart';
 import 'package:canting/services/intake_statistics.dart';
+import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:canting/ui/intake/intake_view_events.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/pet.dart';
@@ -23,6 +24,7 @@ import 'package:canting/platform/android_native_bridge.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RecognitionDraft {
   const RecognitionDraft({
@@ -67,11 +69,18 @@ class AppState extends ChangeNotifier {
     this.guidelines,
     DateTime Function()? clock,
     this.persistNotificationSwitches,
+    NextMealRecommendationService? nextMealService,
   }) : clock = clock ?? DateTime.now,
        _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
        _databaseHelper = databaseHelper ?? DatabaseHelper.instance {
     _pet = _petEngine.createPet(petType: 'cat', petName: '小挑食');
+    _nextMealService =
+        nextMealService ??
+        NextMealRecommendationService(
+          eventSink: persistNextMealEvent,
+          feedbackSink: persistNextMealFeedback,
+        );
     _dialogue = _dailyDialogue();
     _selectedDate = DateTime.now();
     _scheduleWidgetSync();
@@ -97,6 +106,12 @@ class AppState extends ChangeNotifier {
       _exposureRepo.savePreferences(prefs);
   Future<void> clearExposurePreferences() => _exposureRepo.clearPreferences();
   final DateTime Function() clock;
+  late final NextMealRecommendationService _nextMealService;
+  NextMealResult? _nextMealResult;
+  Future<NextMealResult>? _nextMealFuture;
+  int _nextMealRequestSerial = 0;
+  NextMealResult? get nextMealResult => _nextMealResult;
+  NextMealRecommendationService get nextMealService => _nextMealService;
   static const _dataRevisionKey = 'local.data_revision';
   final Map<String, RecordWindow> _windows = {};
   final Set<String> _windowLoads = {};
@@ -254,6 +269,98 @@ class AppState extends ChangeNotifier {
   /// UI-facing local statistics facade. Pages consume task 02 results and do
   /// not duplicate nutrition formulas.
   IntakeStatisticsService get intakeStatistics => IntakeStatisticsService(this);
+
+  /// Loads the recommendation using one consistent local-statistics revision.
+  /// The future is cached so widgets do not issue requests from build().
+  Future<NextMealResult> loadNextMealRecommendation({
+    DateTime? date,
+    Set<String> excludeDishNames = const {},
+    bool force = false,
+  }) {
+    final current = clock();
+    if (!force &&
+        _nextMealResult != null &&
+        _nextMealResult!.dataRevision == dataRevision &&
+        excludeDishNames.isEmpty) {
+      return Future.value(_nextMealResult);
+    }
+    if (!force && _nextMealFuture != null && excludeDishNames.isEmpty) {
+      return _nextMealFuture!;
+    }
+    final serial = ++_nextMealRequestSerial;
+    final future = () async {
+      var today = await intakeStatistics.today(date: date ?? current);
+      var rolling = await intakeStatistics.rolling7d(date: date ?? current);
+      if (today.revision != rolling.revision) {
+        today = await intakeStatistics.today(date: date ?? current);
+        rolling = await intakeStatistics.rolling7d(date: date ?? current);
+      }
+      final request = NextMealRequest(
+        requestId: 'next-${current.microsecondsSinceEpoch}-$serial',
+        today: today,
+        rolling7d: rolling,
+        nextMealType: _nextMealType(current),
+        excludeDishNames: excludeDishNames.toList(growable: false),
+      );
+      final result = await _nextMealService.nextMeal(request);
+      if (serial == _nextMealRequestSerial &&
+          result.dataRevision == dataRevision) {
+        _nextMealResult = result;
+        _nextMealFuture = null;
+        notifyListeners();
+      }
+      return result;
+    }();
+    if (excludeDishNames.isEmpty) _nextMealFuture = future;
+    return future;
+  }
+
+  String _nextMealType(DateTime now) {
+    final profile = this.profile;
+    if (profile == null) {
+      return now.hour < 11
+          ? 'breakfast'
+          : now.hour < 16
+          ? 'lunch'
+          : 'dinner';
+    }
+    final minutes = now.hour * 60 + now.minute;
+    int parse(String value) {
+      final parts = value.split(':');
+      return (int.tryParse(parts.first) ?? 0) * 60 +
+          (int.tryParse(parts.last) ?? 0);
+    }
+
+    final meals = <String, int>{
+      'breakfast': parse(profile.breakfastTime),
+      'lunch': parse(profile.lunchTime),
+      'dinner': parse(profile.dinnerTime),
+    };
+    return meals.entries
+        .reduce((a, b) => (b.value >= minutes && b.value < a.value) ? b : a)
+        .key;
+  }
+
+  Future<void> persistNextMealEvent(Map<String, dynamic> event) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final events = prefs.getStringList('next_meal_events') ?? const [];
+      final retained = events.length > 100
+          ? events.sublist(events.length - 100)
+          : events;
+      await prefs.setStringList('next_meal_events', [
+        ...retained,
+        jsonEncode({...event, 'occurredAt': DateTime.now().toIso8601String()}),
+      ]);
+    } catch (_) {}
+  }
+
+  Future<void> persistNextMealFeedback(NextMealFeedback feedback) async {
+    await persistNextMealEvent({
+      'event': 'next_meal_${feedback.action.name}',
+      ...feedback.toJson(),
+    });
+  }
 
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.

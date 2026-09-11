@@ -1,15 +1,13 @@
-import 'package:canting/ui/history/record_summary_panel.dart';
-import 'package:canting/core_engine.dart';
+import 'dart:async';
+
 import 'package:canting/services/delivery_jump_service.dart';
+import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/recommendation/recommended_dish_card.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/// 下一餐推荐详情页：推荐时间 + 餐次 + 理由 + 主推/备选菜 + 外卖跳转。
-/// 数据来自 RecommendationEngine（经 AppState.recommendationFor），
-/// 「换一批」把已展示的菜排除后再取一批。
 class RecommendationDetailPage extends StatefulWidget {
   const RecommendationDetailPage({super.key});
 
@@ -20,42 +18,87 @@ class RecommendationDetailPage extends StatefulWidget {
 
 class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   final DeliveryJumpService _jumpService = DeliveryJumpService();
+  final Set<String> _shownDishNames = <String>{};
   List<DeliveryPlatform> _platforms = DeliveryJumpService.platforms;
+  Future<NextMealResult>? _future;
+  NextMealResult? _lastUsable;
   bool _platformsLoaded = false;
-
-  /// 「换一批」已展示过的菜名：从下一批结果里排除。
-  final Set<String> _shownDishNames = {};
+  bool _busy = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!_platformsLoaded) {
       _platformsLoaded = true;
-      // 平台启用集合与顺序来自用户配置（设置页可改，SharedPreferences 落盘）。
-      _jumpService.loadEnabledPlatforms().then((platforms) {
-        if (mounted) {
-          setState(() => _platforms = platforms);
-        }
+      _startLoad();
+      _jumpService.loadEnabledPlatforms().then((value) {
+        if (mounted) setState(() => _platforms = value);
       });
     }
   }
 
-  void _refreshBatch(List<DishSuggestion> currentSuggestions) {
-    setState(() {
-      for (final suggestion in currentSuggestions) {
-        _shownDishNames.add(suggestion.dishName);
-      }
+  void _startLoad({bool force = false}) {
+    final state = context.read<AppState>();
+    final future = state.loadNextMealRecommendation(
+      excludeDishNames: _shownDishNames,
+      force: force,
+    );
+    _future = future;
+    future.then((result) {
+      if (!mounted) return;
+      if (result.isUsable) _lastUsable = result;
+      setState(() {});
     });
+  }
+
+  NextMealResult? _result(
+    AsyncSnapshot<NextMealResult> snapshot,
+    AppState state,
+  ) {
+    final candidate = snapshot.data ?? _lastUsable ?? state.nextMealResult;
+    if (candidate != null && candidate.dataRevision != state.dataRevision) {
+      return null;
+    }
+    return candidate;
+  }
+
+  Future<void> _changeBatch(NextMealFeedbackAction action) async {
+    if (_busy) return;
+    final state = context.read<AppState>();
+    final current = _lastUsable ?? state.nextMealResult;
+    if (current == null || !current.isUsable) {
+      _startLoad(force: true);
+      return;
+    }
+    _busy = true;
+    await state.nextMealService.recordFeedback(result: current, action: action);
+    _shownDishNames.addAll(current.suggestions.map((s) => s.dishName));
+    if (mounted) setState(() {});
+    _startLoad(force: true);
+    _busy = false;
   }
 
   Future<void> _jump(DeliveryPlatform platform, String keyword) async {
     final messenger = ScaffoldMessenger.of(context);
     final result = await _jumpService.jumpToSearch(platform, keyword);
-    if (result.success && result.usedFallback) {
-      messenger.showSnackBar(
-        SnackBar(content: Text('没有找到${platform.label}，已打开网页版')),
-      );
-    } else if (!result.success) {
+    if (!mounted) return;
+    if (result.success) {
+      final recommendation =
+          _lastUsable ?? context.read<AppState>().nextMealResult;
+      if (recommendation != null) {
+        // The service de-duplicates accept by requestId; opening remains non-blocking.
+        unawaited(
+          context.read<AppState>().nextMealService.recordFeedback(
+            result: recommendation,
+            action: NextMealFeedbackAction.accept,
+            acceptanceBasis: 'platform_open_accepted',
+          ),
+        );
+      }
+      if (result.usedFallback) {
+        messenger.showSnackBar(const SnackBar(content: Text('已打开外卖网页版')));
+      }
+    } else {
       messenger.showSnackBar(
         SnackBar(content: Text('没能打开${platform.label}，可以稍后再试')),
       );
@@ -65,196 +108,142 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    final theme = Theme.of(context);
-    final now = DateTime.now();
-    final recommendation = state.recommendationFor(
-      now,
-      excludeDishNames: _shownDishNames,
-    );
-
     return Scaffold(
       appBar: const PixelAppBar(title: '下一餐推荐', leading: BackButton()),
       body: PixelBackdrop(
         child: PixelContentWidth(
-          child: recommendation == null
-              ? ListView(
-                  padding: const EdgeInsets.all(16),
-                  children: const [
-                    PixelPanel(
-                      padding: EdgeInsets.all(24),
-                      child: Column(
-                        children: [
-                          Icon(Icons.restaurant_menu, size: 44),
-                          SizedBox(height: 12),
-                          Text('推荐引擎还没准备好，稍后再来看看'),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              : ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-                  children: [
-                    const RecordSummaryPanel(),
-                    _HeaderPanel(
-                      recommendation: recommendation,
-                      shortfallText: _shortfallText(state, now),
-                    ),
-                    const SizedBox(height: 22),
-                    Text('推荐菜品', style: theme.textTheme.titleLarge),
+          child: FutureBuilder<NextMealResult>(
+            future: _future,
+            builder: (context, snapshot) {
+              final result = _result(snapshot, state);
+              final loading =
+                  snapshot.connectionState == ConnectionState.waiting;
+              if (result == null) {
+                return _MessagePanel(
+                  title: loading ? '正在生成下一餐建议' : '暂时没有可展示的推荐',
+                  message: loading ? '依据本地今日和最近 7 日记录计算中' : '可重试；未知数据不会被当作零摄入。',
+                  onRetry: loading ? null : () => _startLoad(force: true),
+                );
+              }
+              final all = result.suggestions;
+              return ListView(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+                children: [
+                  _GuidancePanel(result: result),
+                  if (loading) const LinearProgressIndicator(),
+                  const SizedBox(height: 18),
+                  if (all.isEmpty)
+                    _MessagePanel(
+                      title: '当前没有可靠的安全候选',
+                      message: '可稍后重试。',
+                      onRetry: () => _startLoad(force: true),
+                    )
+                  else ...[
+                    Text('推荐菜品', style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 10),
-                    ..._dishCards(recommendation),
-                    if (recommendation.primary.isEmpty &&
-                        recommendation.alternatives.isEmpty)
-                      PixelPanel(
-                        padding: const EdgeInsets.all(22),
-                        child: Column(
-                          children: [
-                            const Text('可推荐候选不足，暂不提供具体商品'),
-                            const SizedBox(height: 10),
-                            if (_shownDishNames.isNotEmpty)
-                              OutlinedButton(
-                                onPressed: () =>
-                                    setState(_shownDishNames.clear),
-                                child: const Text('重新开始推荐'),
-                              ),
-                          ],
+                    ...all.asMap().entries.map(
+                      (entry) => Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: RecommendedDishCard(
+                          suggestion: entry.value,
+                          platforms: _platforms,
+                          onJump: _jump,
+                          isPrimary: entry.key == 0,
                         ),
-                      )
-                    else ...[
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: OutlinedButton.icon(
-                              onPressed: () => _refreshBatch([
-                                ...recommendation.primary,
-                                ...recommendation.alternatives,
-                              ]),
-                              icon: const Icon(Icons.refresh),
-                              label: const Text('换一批推荐'),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: TextButton.icon(
-                              onPressed: () => _refreshBatch([
-                                ...recommendation.primary,
-                                ...recommendation.alternatives,
-                              ]),
-                              icon: const Icon(Icons.thumb_down_outlined),
-                              label: const Text('不感兴趣'),
-                            ),
-                          ),
-                        ],
                       ),
-                    ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: _busy
+                                ? null
+                                : () => _changeBatch(
+                                    NextMealFeedbackAction.refresh,
+                                  ),
+                            icon: const Icon(Icons.refresh),
+                            label: const Text('换一批'),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: TextButton.icon(
+                            onPressed: _busy
+                                ? null
+                                : () => _changeBatch(
+                                    NextMealFeedbackAction.ignore,
+                                  ),
+                            icon: const Icon(Icons.thumb_down_outlined),
+                            label: const Text('不感兴趣'),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
-                ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
   }
-
-  /// 顶部缺口说明：「今天蔬菜还差 1.5 份」。
-  String? _shortfallText(AppState state, DateTime now) {
-    return '仅基于已记录餐食估算，不代表全天摄入；候选先通过安全过滤。';
-  }
-
-  List<Widget> _dishCards(Recommendation recommendation) {
-    final cards = <Widget>[];
-    var index = 0;
-    for (final suggestion in [
-      ...recommendation.primary,
-      ...recommendation.alternatives,
-    ]) {
-      cards
-        ..add(
-          RecommendedDishCard(
-            suggestion: suggestion,
-            platforms: _platforms,
-            onJump: _jump,
-            isPrimary: index == 0,
-          ),
-        )
-        ..add(const SizedBox(height: 10));
-      index++;
-    }
-    return cards;
-  }
 }
 
-class _HeaderPanel extends StatelessWidget {
-  const _HeaderPanel({required this.recommendation, this.shortfallText});
-
-  final Recommendation recommendation;
-  final String? shortfallText;
-
-  static String _timeLabel(DateTime time) =>
-      '${time.hour.toString().padLeft(2, '0')}:'
-      '${time.minute.toString().padLeft(2, '0')}';
-
-  static const _mealTypeLabels = {
-    'breakfast': '早餐',
-    'lunch': '午餐',
-    'dinner': '晚餐',
-    'snack': '加餐',
-  };
+class _GuidancePanel extends StatelessWidget {
+  const _GuidancePanel({required this.result});
+  final NextMealResult result;
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
-    return PixelPanel(
-      color: scheme.primaryContainer,
-      borderColor: scheme.primary,
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              PixelIconTile(
-                icon: Icons.schedule,
-                size: 44,
-                color: scheme.secondaryContainer,
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('建议时间', style: theme.textTheme.labelLarge),
-                    const SizedBox(height: 3),
-                    Text(
-                      '${_timeLabel(recommendation.suggestedTime)} · '
-                      '${_mealTypeLabels[recommendation.suggestedMealType] ?? "加餐"}',
-                      style: theme.textTheme.titleLarge,
-                    ),
-                  ],
-                ),
-              ),
+  Widget build(BuildContext context) => PixelPanel(
+    padding: const EdgeInsets.all(16),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          result.source == 'local_rule' ? '当前使用本地推荐' : '下一餐建议',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: 8),
+        Text(result.guidance.primary),
+        Text(result.guidance.oilSalt),
+        Text(result.guidance.reduceStaple),
+        if (result.reasonCode == 'unconfigured') const Text('网络恢复后可生成更具体推荐'),
+      ],
+    ),
+  );
+}
+
+class _MessagePanel extends StatelessWidget {
+  const _MessagePanel({
+    required this.title,
+    required this.message,
+    this.onRetry,
+  });
+  final String title;
+  final String message;
+  final VoidCallback? onRetry;
+
+  @override
+  Widget build(BuildContext context) => ListView(
+    padding: const EdgeInsets.all(16),
+    children: [
+      const Text('推荐菜品'),
+      const SizedBox(height: 10),
+      PixelPanel(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            Text(title),
+            const SizedBox(height: 8),
+            Text(message),
+            if (onRetry != null) ...[
+              const SizedBox(height: 12),
+              OutlinedButton(onPressed: onRetry, child: const Text('重试')),
             ],
-          ),
-          if (shortfallText != null) ...[
-            const SizedBox(height: 12),
-            Text(
-              shortfallText!,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: scheme.onPrimaryContainer,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
           ],
-          const SizedBox(height: 6),
-          Text(
-            recommendation.reason,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: scheme.onPrimaryContainer.withValues(alpha: 0.85),
-            ),
-          ),
-        ],
+        ),
       ),
-    );
-  }
+    ],
+  );
 }

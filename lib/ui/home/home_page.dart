@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
     final now = DateTime.now();
     final todayMeals = state.mealsFor(now);
     final completion = state.completionFor(now);
-    final recommendation = state.recommendationFor(now);
     final disableAnimations = MediaQuery.disableAnimationsOf(context);
     final pendingFrom = state.pendingEvolutionFrom;
 
@@ -67,10 +66,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 26),
             const PixelSectionHeader(title: '下一餐', icon: Icons.restaurant_menu),
             const SizedBox(height: 10),
-            RecommendationCard(
-              recommendation: recommendation,
-              onTap: () => context.push('/recommendation'),
-            ),
+            RecommendationCard(onTap: () => context.push('/recommendation')),
             const SizedBox(height: 26),
             PixelSectionHeader(
               title: '饮食日志',

@@ -189,6 +189,7 @@ void main() {
 
     await tester.tap(find.textContaining('下一餐可选'));
     await pumpUiTransition(tester);
+    await tester.pumpAndSettle(const Duration(milliseconds: 100));
 
     expect(find.text('下一餐推荐'), findsOneWidget);
     expect(find.text('推荐菜品'), findsOneWidget);
