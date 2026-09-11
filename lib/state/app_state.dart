@@ -5,6 +5,7 @@ import 'package:canting/core/record_window.dart';
 import 'package:canting/core/models/local_food.dart';
 import 'package:canting/core/local_food_matcher.dart';
 import 'package:canting/data/local_food_repository.dart';
+import 'package:canting/services/intake_snapshot.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -64,6 +65,9 @@ class AppState extends ChangeNotifier {
     this.guidelines,
     DateTime Function()? clock,
     this.persistNotificationSwitches,
+    this.intakeSnapshotClient,
+    this.intakeSnapshotEndpoint,
+    this.installationId,
   }) : clock = clock ?? DateTime.now,
        _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
@@ -94,6 +98,11 @@ class AppState extends ChangeNotifier {
       _exposureRepo.savePreferences(prefs);
   Future<void> clearExposurePreferences() => _exposureRepo.clearPreferences();
   final DateTime Function() clock;
+  final IntakeSnapshotClient? intakeSnapshotClient;
+  final Uri? intakeSnapshotEndpoint;
+  final String? installationId;
+  bool intakeSnapshotPending = false;
+  int _intakeSnapshotRevision = 0;
   final Map<String, RecordWindow> _windows = {};
   final Set<String> _windowLoads = {};
   final Map<String, Completer<void>> _windowWaiters = {};
@@ -242,6 +251,10 @@ class AppState extends ChangeNotifier {
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.
   Future<void> loadFromDatabase() async {
+    _intakeSnapshotRevision = int.tryParse(
+          await _databaseHelper.getMeta('intake_snapshot_revision') ?? '',
+        ) ??
+        0;
     _localFoods = await _localFoodRepo.all();
     profile = await _userRepo.getProfile();
     final persistedPet = await _petRepo.getPet();

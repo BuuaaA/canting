@@ -495,6 +495,11 @@ class DatabaseHelper {
     return rows.isEmpty ? null : rows.single['value'] as String?;
   }
 
+  Future<String?> getMeta(String key) => _metaGet(_requireDatabase(), key);
+
+  Future<void> setMeta(String key, String value) =>
+      _metaSet(_requireDatabase(), key, value);
+
   static Future<void> _metaSet(
     DatabaseExecutor database,
     String key,
