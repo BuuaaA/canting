@@ -48,17 +48,20 @@ class IntakeSnapshot {
     final anchor = DateTime(today.year, today.month, today.day);
     final byDay = <String, List<MealRecord>>{};
     for (final meal in meals) {
-      final key = dateKey(meal.timestamp);
+      final key = dateKey(meal.timestamp.toLocal());
       byDay.putIfAbsent(key, () => []).add(meal);
     }
     final days = <Map<String, dynamic>>[];
     for (var offset = -6; offset <= 0; offset++) {
-      final day = anchor.add(Duration(days: offset));
+      final day = DateTime(anchor.year, anchor.month, anchor.day + offset);
       final key = dateKey(day);
       final records = byDay[key] ?? const <MealRecord>[];
+      final complete = records.isNotEmpty && records.every(
+        (meal) => meal.structureComplete && _items(meal).isNotEmpty,
+      );
       days.add({
         'date': key,
-        'status': records.isEmpty ? 'missing' : 'known',
+        'status': records.isEmpty ? 'missing' : complete ? 'known' : 'partial',
         'mealIds': records.map((meal) => meal.mealId).toList(growable: false),
         'meals': records.map(_mealRef).toList(growable: false),
         'intakeItems': records.expand(_items).toList(growable: false),
@@ -89,7 +92,7 @@ class IntakeSnapshot {
             : const [];
         for (final node in nodes) {
           if (node is Map && node['selected'] == true) {
-            final item = _v2Item(meal.mealId, node);
+            final item = _v2Item(meal.mealId, node, parent: product);
             if (item != null) yield item;
           }
         }
@@ -118,16 +121,34 @@ class IntakeSnapshot {
     }
   }
 
-  static Map<String, dynamic>? _v2Item(String mealId, Map node) {
+  static Map<String, dynamic>? _v2Item(
+    String mealId,
+    Map node, {
+    Map? parent,
+  }) {
     final calculation = node['calculation'];
     if (calculation is! Map || calculation['active'] != true) return null;
     final notEaten = (calculation['notEaten'] as Map?)?['value'] == true;
     if (notEaten) return null;
     final portion = calculation['portion'];
     final value = (portion is Map ? portion['value'] : null) as Map?;
-    final amount = (value?['value'] as num?)?.toDouble();
+    var amount = (value?['value'] as num?)?.toDouble();
     final unit = value?['unit'] as String? ?? 'unknown';
-    final nameFact = node['name'] as Map?;
+    final basis = calculation['portionBasis'] as String? ?? 'unknown';
+    if (basis != 'personal_consumed') {
+      final factors = <num?>[
+        _acceptedNumber(calculation['allocationRatio']),
+        _acceptedNumber(calculation['consumedRatio']),
+      ];
+      if (basis == 'per_product_unit') {
+        factors.add(_acceptedNumber(parent?['purchaseQuantity']));
+      }
+      for (final factor in factors) {
+        amount = amount == null || factor == null ? null : amount * factor;
+      }
+    }
+    if (amount == null || amount <= 0) return null;
+    final nameFact = (node['displayName'] ?? node['name']) as Map?;
     final categoryFact = node['categoryId'] as Map?;
     final category = _category(categoryFact?['value'] as String? ?? '');
     final source = _source(node, calculation);
@@ -138,7 +159,7 @@ class IntakeSnapshot {
       'category': category,
       'grams': unit == 'g' ? amount : null,
       'unit': unit == 'g' || unit == 'ml' ? unit : 'unknown',
-      'amountBasis': _basis(calculation['portionBasis'] as String?),
+      'amountBasis': 'unknown',
       'equivalentAmount': null,
       'equivalentUnit': null,
       'cookingMethod': null,
@@ -156,11 +177,11 @@ class IntakeSnapshot {
         : 'ai';
   }
 
-  static String _basis(String? value) => switch (value) {
-    'personal_consumed' => 'as_sold',
-    'served_total' || 'per_product_unit' => 'cooked',
-    _ => 'unknown',
-  };
+  static num? _acceptedNumber(dynamic fact) {
+    if (fact is! Map || fact['reviewStatus'] != 'accepted') return null;
+    final value = fact['value'];
+    return value is num ? value : null;
+  }
 
   static Map<String, dynamic> _mealRef(MealRecord meal) => {
     'mealId': meal.mealId,
