@@ -1,0 +1,143 @@
+import 'package:canting/services/intake_statistics.dart';
+import 'package:canting/state/app_state.dart';
+import 'package:canting/ui/intake/rolling_7d_page.dart';
+import 'package:canting/ui/intake/today_plate_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+
+class _FakeStatistics extends IntakeStatisticsService {
+  _FakeStatistics(super.state);
+  static const _target = IntakeTarget(min: 200, max: 300);
+  IntakeCategoryStat _category(String key) => IntakeCategoryStat(
+    category: key,
+    amount: null,
+    knownSubtotal: 0,
+    completeness: 'missing',
+    target: _target,
+    status: null,
+    gap: null,
+  );
+  IntakeDayStat _day(String date) => IntakeDayStat(
+    date: date,
+    completeness: 'missing',
+    categories: {
+      for (final key in const [
+        'grain',
+        'tuber',
+        'vegetable',
+        'fruit',
+        'animal_food',
+        'dairy',
+        'soy',
+        'nut',
+        'cooking_oil',
+        'salt',
+      ])
+        key: _category(key),
+    },
+    foodVariety: null,
+    fishCount: null,
+    fishCountCompleteness: 'unknown',
+  );
+  @override
+  Future<TodayIntakeStats> today({DateTime? date}) async => TodayIntakeStats(
+    date: '2026-09-12',
+    revision: 0,
+    categories: {
+      for (final key in const [
+        'grain',
+        'tuber',
+        'vegetable',
+        'fruit',
+        'animal_food',
+        'dairy',
+        'soy',
+        'nut',
+        'cooking_oil',
+        'salt',
+      ])
+        key: _category(key),
+    },
+    completeness: 'missing',
+  );
+  @override
+  Future<Rolling7dIntakeStats> rolling7d({DateTime? date}) async =>
+      Rolling7dIntakeStats(
+        startDate: '2026-09-06',
+        endDate: '2026-09-12',
+        revision: 0,
+        days: [
+          for (var i = 0; i < 7; i++)
+            _day('2026-09-${(i + 6).toString().padLeft(2, '0')}'),
+        ],
+        averages: const {},
+        foodVarietyAverage: null,
+        foodVarietyDenominator: 0,
+        fishCount: null,
+        fishGrams: null,
+        nutGrams: null,
+        dairyMetDays: 0,
+        dairyKnownDays: 0,
+        dairyUnknownDays: 7,
+        soyMetDays: 0,
+        soyKnownDays: 0,
+        soyUnknownDays: 7,
+        fishCompleteness: 'unknown',
+        fishCountCompleteness: 'unknown',
+        nutCompleteness: 'unknown',
+      );
+}
+
+class _FakeState extends AppState {
+  _FakeState() : super() {
+    _stats = _FakeStatistics(this);
+  }
+  late final _FakeStatistics _stats;
+  @override
+  IntakeStatisticsService get intakeStatistics => _stats;
+}
+
+void main() {
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfiNoIsolate;
+  testWidgets('today plate keeps ten categories readable at 320px', (
+    tester,
+  ) async {
+    final state = _FakeState();
+    await tester.binding.setSurfaceSize(const Size(320, 700));
+    await tester.pumpWidget(
+      ChangeNotifierProvider<AppState>.value(
+        value: state,
+        child: const MaterialApp(
+          home: Scaffold(body: SingleChildScrollView(child: TodayPlateView())),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('查看本周进度'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.binding.setSurfaceSize(null);
+    state.dispose();
+  });
+
+  testWidgets('rolling page shows window and daily detail entries', (
+    tester,
+  ) async {
+    final state = _FakeState();
+    await tester.pumpWidget(
+      ChangeNotifierProvider<AppState>.value(
+        value: state,
+        child: const MaterialApp(home: Rolling7dPage()),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('2026-09-06 ～ 2026-09-12'), findsOneWidget);
+    await tester.drag(find.byType(ListView), const Offset(0, -500));
+    await tester.pump();
+    expect(find.text('每日明细'), findsOneWidget);
+    expect(find.text('2026-09-06'), findsOneWidget);
+    state.dispose();
+  });
+}
