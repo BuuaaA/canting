@@ -1,0 +1,472 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'intake_statistics.dart';
+
+typedef NextMealRemoteCall = Future<String> Function(NextMealRequest request);
+typedef NextMealFeedbackSink = Future<void> Function(NextMealFeedback event);
+
+const _mealTypes = {'breakfast', 'lunch', 'dinner', 'snack'};
+const _categories = {
+  'grain',
+  'tuber',
+  'vegetable',
+  'fruit',
+  'animal_food',
+  'dairy',
+  'soy',
+  'nut',
+  'cooking_oil',
+  'salt',
+};
+
+/// The only data sent to a future recommendation gateway.
+/// It deliberately contains summary statistics, never MealRecord or OCR data.
+class NextMealRequest {
+  const NextMealRequest({
+    required this.requestId,
+    required this.today,
+    required this.rolling7d,
+    required this.nextMealType,
+    this.dietaryExclusions = const [],
+    this.budget,
+    this.city,
+    this.availablePlatforms = const [],
+    this.excludeDishNames = const [],
+  });
+
+  final String requestId;
+  final TodayIntakeStats today;
+  final Rolling7dIntakeStats rolling7d;
+  final String nextMealType;
+  final List<String> dietaryExclusions;
+  final double? budget;
+  final String? city;
+  final List<String> availablePlatforms;
+  final List<String> excludeDishNames;
+
+  int get dataRevision => today.revision;
+
+  Map<String, dynamic> toJson() => {
+    'requestId': requestId,
+    'dataRevision': dataRevision,
+    'nextMealType': nextMealType,
+    'today': today.toJson(),
+    'rolling7d': rolling7d.toJson(),
+    'dietaryExclusions': dietaryExclusions,
+    'budget': budget,
+    'city': city,
+    'availablePlatforms': availablePlatforms,
+    'excludeDishNames': excludeDishNames.take(3).toList(),
+  };
+}
+
+class NextMealSuggestion {
+  const NextMealSuggestion({
+    required this.dishName,
+    required this.searchKeyword,
+    required this.primaryCategory,
+    required this.estimatedServing,
+    required this.reason,
+  });
+
+  final String dishName;
+  final String searchKeyword;
+  final String primaryCategory;
+  final String estimatedServing;
+  final String reason;
+
+  Map<String, dynamic> toJson() => {
+    'dishName': dishName,
+    'searchKeyword': searchKeyword,
+    'primaryCategory': primaryCategory,
+    'estimatedServing': estimatedServing,
+    'reason': reason,
+  };
+
+  factory NextMealSuggestion.fromJson(Map<String, dynamic> json) {
+    String text(String key) {
+      final value = json[key];
+      if (value is! String || value.trim().isEmpty) {
+        throw const FormatException('suggestion field is missing');
+      }
+      return value.trim();
+    }
+
+    final category = text('primaryCategory');
+    if (!_categories.contains(category)) {
+      throw FormatException('unknown recommendation category: $category');
+    }
+    return NextMealSuggestion(
+      dishName: text('dishName'),
+      searchKeyword: text('searchKeyword'),
+      primaryCategory: category,
+      estimatedServing: text('estimatedServing'),
+      reason: text('reason'),
+    );
+  }
+}
+
+class NextMealGuidance {
+  const NextMealGuidance({
+    required this.primary,
+    required this.oilSalt,
+    required this.reduceStaple,
+  });
+
+  final String primary;
+  final String oilSalt;
+  final String reduceStaple;
+
+  Map<String, dynamic> toJson() => {
+    'primary': primary,
+    'oilSalt': oilSalt,
+    'reduceStaple': reduceStaple,
+  };
+
+  factory NextMealGuidance.fromJson(Map<String, dynamic> json) {
+    String text(String key) {
+      final value = json[key];
+      if (value is! String || value.trim().isEmpty) {
+        throw const FormatException('guidance field is missing');
+      }
+      return value.trim();
+    }
+
+    return NextMealGuidance(
+      primary: text('primary'),
+      oilSalt: text('oilSalt'),
+      reduceStaple: text('reduceStaple'),
+    );
+  }
+}
+
+class NextMealResult {
+  const NextMealResult({
+    required this.requestId,
+    required this.dataRevision,
+    required this.source,
+    required this.status,
+    required this.reasonCode,
+    required this.suggestions,
+    required this.guidance,
+  });
+
+  final String requestId;
+  final int dataRevision;
+  final String source; // ai or local_rule
+  final String status; // success, degraded, failed
+  final String reasonCode;
+  final List<NextMealSuggestion> suggestions;
+  final NextMealGuidance guidance;
+
+  bool get isUsable => status != 'failed' && suggestions.isNotEmpty;
+
+  Map<String, dynamic> toJson() => {
+    'requestId': requestId,
+    'dataRevision': dataRevision,
+    'source': source,
+    'status': status,
+    'reasonCode': reasonCode,
+    'suggestions': suggestions.map((s) => s.toJson()).toList(),
+    'guidance': guidance.toJson(),
+  };
+
+  static NextMealResult failed(NextMealRequest request, String reasonCode) =>
+      NextMealResult(
+        requestId: request.requestId,
+        dataRevision: request.dataRevision,
+        source: 'local_rule',
+        status: 'failed',
+        reasonCode: reasonCode,
+        suggestions: const [],
+        guidance: const NextMealGuidance(
+          primary: '当前统计不是最新，暂不展示下一餐建议。',
+          oilSalt: '请先刷新本地统计。',
+          reduceStaple: '不根据未知数据推断份量。',
+        ),
+      );
+}
+
+enum NextMealFeedbackAction { accept, ignore, refresh }
+
+class NextMealFeedback {
+  const NextMealFeedback({
+    required this.requestId,
+    required this.action,
+    required this.dishNames,
+    this.acceptanceBasis,
+  });
+
+  final String requestId;
+  final NextMealFeedbackAction action;
+  final List<String> dishNames;
+  final String? acceptanceBasis;
+
+  Map<String, dynamic> toJson() => {
+    'requestId': requestId,
+    'action': action.name,
+    'dishNames': dishNames.take(3).toList(),
+    if (acceptanceBasis != null) 'acceptanceBasis': acceptanceBasis,
+  };
+}
+
+/// Validates an optional remote response and falls back to deterministic rules.
+/// The remote callback is never called unless [remote] is explicitly supplied.
+class NextMealRecommendationService {
+  NextMealRecommendationService({
+    this.remote,
+    this.timeout = const Duration(seconds: 8),
+    this.feedbackSink,
+  });
+
+  final NextMealRemoteCall? remote;
+  final Duration timeout;
+  final NextMealFeedbackSink? feedbackSink;
+  final Set<String> _acceptedRequestIds = {};
+
+  Future<NextMealResult> nextMeal(NextMealRequest request) async {
+    _validateRequest(request);
+    if (request.today.stale || request.rolling7d.stale) {
+      return NextMealResult.failed(request, 'stale_input');
+    }
+    if (request.today.revision != request.rolling7d.revision) {
+      return NextMealResult.failed(request, 'revision_mismatch');
+    }
+    if (remote == null) {
+      return _local(request, 'unconfigured');
+    }
+
+    try {
+      var raw = await remote!(request).timeout(timeout);
+      for (var attempt = 0; attempt < 2; attempt++) {
+        try {
+          final result = _parseRemote(request, raw);
+          return result;
+        } on FormatException {
+          if (attempt == 1) rethrow;
+          raw = await remote!(request).timeout(timeout);
+        }
+      }
+    } on TimeoutException {
+      return _local(request, 'timeout');
+    } on FormatException {
+      return _local(request, 'invalid_json');
+    } catch (_) {
+      return _local(request, 'remote_unavailable');
+    }
+    return _local(request, 'remote_unavailable');
+  }
+
+  Future<void> recordFeedback({
+    required NextMealResult result,
+    required NextMealFeedbackAction action,
+    String? acceptanceBasis,
+  }) async {
+    if (feedbackSink == null || !result.isUsable) return;
+    if (action == NextMealFeedbackAction.accept &&
+        acceptanceBasis != 'platform_open_accepted') {
+      throw ArgumentError.value(
+        acceptanceBasis,
+        'acceptanceBasis',
+        'accept requires platform_open_accepted',
+      );
+    }
+    if (action == NextMealFeedbackAction.accept &&
+        !_acceptedRequestIds.add(result.requestId)) {
+      return;
+    }
+    await feedbackSink!(
+      NextMealFeedback(
+        requestId: result.requestId,
+        action: action,
+        dishNames: result.suggestions.map((s) => s.dishName).toList(),
+        acceptanceBasis: acceptanceBasis,
+      ),
+    );
+  }
+
+  NextMealResult _parseRemote(NextMealRequest request, String raw) {
+    final decoded = jsonDecode(raw);
+    if (decoded is! Map) {
+      throw const FormatException('response is not an object');
+    }
+    final map = decoded.cast<String, dynamic>();
+    final rawSuggestions = map['suggestions'];
+    final rawGuidance = map['guidance'];
+    if (rawSuggestions is! List || rawGuidance is! Map) {
+      throw const FormatException('response fields are missing');
+    }
+    final suggestions = rawSuggestions
+        .map((item) {
+          if (item is! Map) {
+            throw const FormatException('invalid suggestion');
+          }
+          return NextMealSuggestion.fromJson(item.cast<String, dynamic>());
+        })
+        .toList(growable: false);
+    _validateSuggestions(request, suggestions);
+    final guidance = NextMealGuidance.fromJson(
+      rawGuidance.cast<String, dynamic>(),
+    );
+    return NextMealResult(
+      requestId: request.requestId,
+      dataRevision: request.dataRevision,
+      source: 'ai',
+      status: 'success',
+      reasonCode: 'ai_validated',
+      suggestions: suggestions,
+      guidance: guidance,
+    );
+  }
+
+  NextMealResult _local(NextMealRequest request, String reasonCode) {
+    final priorities = _deficitCategories(request);
+    final candidates = <_LocalCandidate>[
+      const _LocalCandidate(
+        '西兰花鸡胸肉饭',
+        '西兰花鸡胸肉 少油少盐',
+        'vegetable',
+        '蔬菜约一小盘，鸡胸肉约一掌心（估算）',
+        '优先补足蔬菜，搭配明确的非油炸蛋白。',
+      ),
+      const _LocalCandidate(
+        '清蒸鱼配时蔬',
+        '清蒸鱼 时蔬 少油',
+        'animal_food',
+        '鱼肉约一掌心、时蔬约一小盘（估算）',
+        '用清蒸做法补充动物性食物，减少油盐。',
+      ),
+      const _LocalCandidate(
+        '番茄鸡蛋荞麦面',
+        '番茄鸡蛋荞麦面 少油',
+        'grain',
+        '荞麦面小份、番茄鸡蛋适量（估算）',
+        '主食采用小份并加入蔬菜，适合下一餐平衡结构。',
+      ),
+      const _LocalCandidate(
+        '原味酸奶配苹果',
+        '原味酸奶 苹果 无糖',
+        'fruit',
+        '原味酸奶一杯、苹果一小个（估算）',
+        '补充水果；选择无糖原味，避免含糖饮料。',
+      ),
+    ];
+    candidates.sort((a, b) {
+      final ai = priorities.indexOf(a.category);
+      final bi = priorities.indexOf(b.category);
+      return (ai < 0 ? 99 : ai).compareTo(bi < 0 ? 99 : bi);
+    });
+    final selected = candidates
+        .where((candidate) {
+          final haystack = '${candidate.dishName} ${candidate.searchKeyword}'
+              .toLowerCase();
+          return !request.excludeDishNames.any(
+                (name) =>
+                    name.trim().isNotEmpty &&
+                    haystack.contains(name.toLowerCase()),
+              ) &&
+              !request.dietaryExclusions.any(
+                (name) =>
+                    name.trim().isNotEmpty &&
+                    haystack.contains(name.toLowerCase()),
+              );
+        })
+        .take(3)
+        .map((candidate) => candidate.toSuggestion())
+        .toList();
+    final result = NextMealResult(
+      requestId: request.requestId,
+      dataRevision: request.dataRevision,
+      source: 'local_rule',
+      status: selected.isEmpty ? 'failed' : 'degraded',
+      reasonCode: reasonCode,
+      suggestions: selected,
+      guidance: const NextMealGuidance(
+        primary: '根据已知缺口排序；未知类别不按零摄入处理。',
+        oilSalt: '优先清蒸、白灼或少油少盐做法。',
+        reduceStaple: '若主食已知偏多，下一餐选择小份；未知时不强行减量。',
+      ),
+    );
+    return result;
+  }
+
+  List<String> _deficitCategories(NextMealRequest request) {
+    final known = <String, double>{};
+    for (final entry in request.today.categories.entries) {
+      final gap = entry.value.gap;
+      if (gap != null && gap > 0) known[entry.key] = gap;
+    }
+    for (final entry in request.rolling7d.averages.entries) {
+      final average = entry.value.average;
+      final min = entry.value.target.min;
+      if (average != null && min != null && average < min) {
+        known[entry.key] = (known[entry.key] ?? 0) + (min - average);
+      }
+    }
+    final result = known.keys.toList()
+      ..sort((a, b) => known[b]!.compareTo(known[a]!));
+    return result;
+  }
+
+  static void _validateRequest(NextMealRequest request) {
+    if (request.requestId.trim().isEmpty) {
+      throw ArgumentError('requestId is required');
+    }
+    if (!_mealTypes.contains(request.nextMealType)) {
+      throw ArgumentError.value(request.nextMealType, 'nextMealType');
+    }
+    if (request.dataRevision < 0) {
+      throw ArgumentError('dataRevision must be non-negative');
+    }
+  }
+
+  static void _validateSuggestions(
+    NextMealRequest request,
+    List<NextMealSuggestion> suggestions,
+  ) {
+    if (suggestions.length < 2 || suggestions.length > 3) {
+      throw const FormatException('recommendations must contain 2 or 3 items');
+    }
+    final names = <String>{};
+    for (final suggestion in suggestions) {
+      if (!names.add(suggestion.dishName)) {
+        throw const FormatException('duplicate dish');
+      }
+      final text = '${suggestion.dishName} ${suggestion.searchKeyword}'
+          .toLowerCase();
+      if (text.contains('多吃蔬菜') ||
+          text.contains('¥') ||
+          text.contains('价格') ||
+          text.contains('库存') ||
+          text.contains('商家')) {
+        throw const FormatException('unsafe or non-dish output');
+      }
+      if (request.dietaryExclusions.any(
+        (excluded) =>
+            excluded.trim().isNotEmpty && text.contains(excluded.toLowerCase()),
+      )) {
+        throw const FormatException('recommendation violates exclusion');
+      }
+    }
+  }
+}
+
+class _LocalCandidate {
+  const _LocalCandidate(
+    this.dishName,
+    this.searchKeyword,
+    this.category,
+    this.serving,
+    this.reason,
+  );
+  final String dishName, searchKeyword, category, serving, reason;
+
+  NextMealSuggestion toSuggestion() => NextMealSuggestion(
+    dishName: dishName,
+    searchKeyword: searchKeyword,
+    primaryCategory: category,
+    estimatedServing: serving,
+    reason: reason,
+  );
+}
