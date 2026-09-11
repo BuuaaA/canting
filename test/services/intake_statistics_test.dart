@@ -101,12 +101,25 @@ void main() {
       final (state, helper) = await _state();
       addTearDown(helper.close);
       final day = DateTime(2026, 9, 11);
-      await state.saveMeal(
-        _v2Meal('fish-meal', day, 'protein_meat_egg', 120, foodKey: 'fish'),
+      Future<void> saveFish(String id) => state.saveMeal(
+        MealRecord(
+          mealId: id,
+          mealType: 'lunch',
+          timestamp: day,
+          dishes: [
+            MealDish(
+              name: '鱼',
+              quantity: 1,
+              food: const FoodObservation(
+                facts: FoodFacts(name: '鱼', category: 'fish'),
+                confirmed: true,
+              ),
+            ),
+          ],
+        ),
       );
-      await state.saveMeal(
-        _v2Meal('fish-meal-2', day, 'protein_meat_egg', 80, foodKey: 'fish'),
-      );
+      await saveFish('fish-meal');
+      await saveFish('fish-meal-2');
       final unknown = MealRecord(
         mealId: 'unknown',
         mealType: 'dinner',
@@ -124,7 +137,7 @@ void main() {
 
       final result = await IntakeStatisticsService(state).rolling7d(date: day);
       expect(result.fishCount, 2);
-      expect(result.fishGrams, 200);
+      expect(result.fishGrams, isNull);
       expect(result.days.last.fishCount, 2);
       expect(
         result.days.last.categories['animal_food']!.completeness,

@@ -40,6 +40,7 @@ class IntakeCategoryStat {
     required this.status,
     required this.gap,
     this.actualKnownSubtotal = 0,
+    this.actualKnownByUnit = const {},
     this.unit = 'g',
   });
   final String category;
@@ -50,6 +51,7 @@ class IntakeCategoryStat {
   final String? status;
   final double? gap;
   final double actualKnownSubtotal;
+  final Map<String, double> actualKnownByUnit;
   final String unit;
   Map<String, dynamic> toJson() => {
     'category': category,
@@ -57,6 +59,7 @@ class IntakeCategoryStat {
     'comparisonAmount': amount,
     'knownSubtotal': knownSubtotal,
     'actualKnownSubtotal': actualKnownSubtotal,
+    'actualKnownByUnit': actualKnownByUnit,
     'unit': unit,
     'completeness': completeness,
     ...target.toJson(),
@@ -228,6 +231,7 @@ class IntakeStatisticsService {
     final records = read.meals;
     final items = records.expand(IntakeSnapshot.itemsForMeal).toList();
     final knownFish = items.where((i) => i['fishKind'] == 'fish');
+    final fishCount = _fishMealsFromRecords(records);
     final fishGrams = _sumComparable(knownFish, 'animal_food');
     final nutGrams = _sumComparable(
       items.where((i) => i['category'] == 'nut'),
@@ -265,7 +269,7 @@ class IntakeStatisticsService {
       averages: averages,
       foodVarietyAverage: _average(varietyValues),
       foodVarietyDenominator: varietyValues.length,
-      fishCount: _fishMeals(knownFish),
+      fishCount: fishCount,
       fishGrams: fishGrams,
       nutGrams: nutGrams,
       dairyMetDays: dairy.met,
@@ -274,7 +278,9 @@ class IntakeStatisticsService {
       soyMetDays: soy.met,
       soyKnownDays: soy.known,
       soyUnknownDays: 7 - soy.known,
-      fishCompleteness: _summaryCompleteness(knownFish, items),
+      fishCompleteness: fishCount == null
+          ? 'unknown'
+          : _summaryCompleteness(knownFish, items),
       nutCompleteness: _summaryCompleteness(
         items.where((i) => i['category'] == 'nut'),
         items,
@@ -335,7 +341,7 @@ class IntakeStatisticsService {
       final complete = list.isNotEmpty && !hasUnknown;
       categories[category] = IntakeCategoryStat(
         category: category,
-        amount: complete ? known : null,
+        amount: complete && !globallyIncomplete ? known : null,
         knownSubtotal: known,
         completeness: records.isEmpty
             ? 'missing'
@@ -353,6 +359,7 @@ class IntakeStatisticsService {
             : null,
         unit: category == 'dairy' ? 'ml' : 'g',
         actualKnownSubtotal: _sumActual(list),
+        actualKnownByUnit: _sumActualByUnit(list),
       );
     }
     final foodKeys = items
@@ -365,7 +372,6 @@ class IntakeStatisticsService {
         : items.any((i) => i['foodKey'] == null)
         ? null
         : foodKeys.length;
-    final fishItems = items.where((i) => i['fishKind'] == 'fish');
     return IntakeDayStat(
       date: _key(date),
       completeness: records.isEmpty
@@ -375,7 +381,7 @@ class IntakeStatisticsService {
           : 'complete',
       categories: categories,
       foodVariety: variety,
-      fishCount: fishItems.isEmpty ? null : _fishMeals(fishItems),
+      fishCount: _fishMealsFromRecords(records),
     );
   }
 
@@ -436,23 +442,48 @@ class IntakeStatisticsService {
     return values.fold<double>(0, (a, b) => a + b!);
   }
 
-  static int _fishMeals(Iterable<Map<String, dynamic>> items) => items
-      .where((i) => (_comparableAmount(i, 'animal_food') ?? 0) > 0)
-      .map((i) => i['mealId'])
-      .whereType<String>()
-      .toSet()
-      .length;
   static double _sumActual(List<Map<String, dynamic>> items) => items
       .map((i) => (i['amount'] as num?)?.toDouble())
       .whereType<double>()
       .fold(0, (a, b) => a + b);
+  static Map<String, double> _sumActualByUnit(
+    List<Map<String, dynamic>> items,
+  ) {
+    final result = <String, double>{};
+    for (final item in items) {
+      final unit = item['unit'];
+      final amount = (item['amount'] as num?)?.toDouble();
+      if (unit is String && amount != null) {
+        result[unit] = (result[unit] ?? 0) + amount;
+      }
+    }
+    return result;
+  }
+
+  static int? _fishMealsFromRecords(List<MealRecord> records) {
+    if (records.isEmpty) return null;
+    final ids = records
+        .where(
+          (meal) => meal.dishes.any(
+            (dish) => dish.food?.facts.category == 'fish' && dish.quantity > 0,
+          ),
+        )
+        .map((meal) => meal.mealId)
+        .toSet();
+    return ids.isEmpty ? 0 : ids.length;
+  }
+
   static String _summaryCompleteness(
     Iterable<Map<String, dynamic>> selected,
     List<Map<String, dynamic>> all,
   ) {
     if (all.isEmpty) return 'missing';
     final values = selected.toList();
-    if (values.isEmpty) return 'unknown';
+    if (values.isEmpty) {
+      return all.any((i) => i['category'] == 'animal_food')
+          ? 'partial'
+          : 'unknown';
+    }
     return values.every(
           (i) =>
               _comparableAmount(i, i['category'] as String? ?? 'animal_food') !=
