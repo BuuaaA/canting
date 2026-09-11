@@ -26,7 +26,7 @@ void main() {
     expect(snapshot.days.last['intakeItems'], hasLength(1));
     expect(snapshot.days.last['intakeItems'].single['grams'], isNull);
     final encoded = snapshot.toJson();
-    expect(encoded.containsKey('meals'), isTrue);
+    expect(encoded['days'].toString(), contains('mealId'));
     expect(encoded['days'].toString(), isNot(contains('merchant')));
     expect(encoded['days'].toString(), isNot(contains('recognition_v2')));
     expect(encoded['days'].toString(), isNot(contains('imageUri')));

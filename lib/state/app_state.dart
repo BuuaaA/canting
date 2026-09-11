@@ -102,7 +102,6 @@ class AppState extends ChangeNotifier {
   final Uri? intakeSnapshotEndpoint;
   final String? installationId;
   bool intakeSnapshotPending = false;
-  int _intakeSnapshotRevision = 0;
   final Map<String, RecordWindow> _windows = {};
   final Set<String> _windowLoads = {};
   final Map<String, Completer<void>> _windowWaiters = {};
@@ -251,10 +250,6 @@ class AppState extends ChangeNotifier {
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.
   Future<void> loadFromDatabase() async {
-    _intakeSnapshotRevision = int.tryParse(
-          await _databaseHelper.getMeta('intake_snapshot_revision') ?? '',
-        ) ??
-        0;
     _localFoods = await _localFoodRepo.all();
     profile = await _userRepo.getProfile();
     final persistedPet = await _petRepo.getPet();
