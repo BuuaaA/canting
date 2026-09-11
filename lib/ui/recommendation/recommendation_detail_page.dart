@@ -9,9 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RecommendationDetailPage extends StatefulWidget {
-  const RecommendationDetailPage({super.key, this.jumpService});
+  const RecommendationDetailPage({
+    super.key,
+    this.jumpService,
+    this.recommendationLoader,
+  });
 
   final DeliveryJumpService? jumpService;
+  final Future<NextMealResult> Function(Set<String> excluded)?
+  recommendationLoader;
 
   @override
   State<RecommendationDetailPage> createState() =>
@@ -25,9 +31,11 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   List<DeliveryPlatform> _platforms = DeliveryJumpService.platforms;
   Future<NextMealResult>? _future;
   NextMealResult? _lastUsable;
+  NextMealResult? _displayedResult;
   int _loadSerial = 0;
   bool _platformsLoaded = false;
   bool _busy = false;
+  bool _loading = false;
 
   @override
   void dispose() {
@@ -50,10 +58,13 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   Future<NextMealResult> _startLoad({bool force = false}) {
     final state = context.read<AppState>();
     final serial = ++_loadSerial;
-    final future = state.loadNextMealRecommendation(
-      excludeDishNames: _shownDishNames,
-      force: force,
-    );
+    if (mounted) setState(() => _loading = true);
+    final future =
+        widget.recommendationLoader?.call(_shownDishNames) ??
+        state.loadNextMealRecommendation(
+          excludeDishNames: _shownDishNames,
+          force: force,
+        );
     _future = future;
     future.then(
       (result) {
@@ -63,10 +74,10 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
             result.dataRevision == state.dataRevision) {
           _lastUsable = result;
         }
-        setState(() {});
+        setState(() => _loading = false);
       },
       onError: (Object _, StackTrace _) {
-        if (mounted && serial == _loadSerial) setState(() {});
+        if (mounted && serial == _loadSerial) setState(() => _loading = false);
       },
     );
     return future;
@@ -94,10 +105,15 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     }
     _busy = true;
     try {
-      await state.nextMealService.recordFeedback(
-        result: current,
-        action: action,
-      );
+      try {
+        await state.nextMealService.recordFeedback(
+          result: current,
+          action: action,
+        );
+      } catch (_) {
+        // Feedback failure must not block requesting the next batch.
+      }
+      if (!mounted) return;
       _shownDishNames
         ..clear()
         ..addAll(current.suggestions.map((s) => s.dishName));
@@ -112,7 +128,9 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   Future<void> _jump(DeliveryPlatform platform, String keyword) async {
     final messenger = ScaffoldMessenger.of(context);
     final recommendation =
-        _lastUsable ?? context.read<AppState>().nextMealResult;
+        _displayedResult ??
+        _lastUsable ??
+        context.read<AppState>().nextMealResult;
     final result = await _jumpService.jumpToSearch(platform, keyword);
     if (!mounted) return;
     if (result.success) {
@@ -147,6 +165,13 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
             future: _future,
             builder: (context, snapshot) {
               final result = _result(snapshot, state);
+              if (result?.isUsable == true) {
+                _displayedResult = result;
+              }
+              if (result?.isUsable == true &&
+                  result!.dataRevision == state.dataRevision) {
+                _lastUsable = result;
+              }
               final loading =
                   snapshot.connectionState == ConnectionState.waiting;
               if (result == null) {
@@ -161,7 +186,7 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                 children: [
                   _GuidancePanel(result: result),
-                  if (loading) const LinearProgressIndicator(),
+                  if (loading || _loading) const LinearProgressIndicator(),
                   const SizedBox(height: 18),
                   if (all.isEmpty)
                     _MessagePanel(

@@ -89,9 +89,11 @@ class RecommendedDishCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: FilledButton.icon(
-              onPressed: platforms.isEmpty
-                  ? null
-                  : () => onJump(platforms.first, suggestion.searchKeyword),
+            onPressed: () => onJump(
+              (platforms.isEmpty ? DeliveryJumpService.platforms : platforms)
+                  .first,
+              suggestion.searchKeyword,
+            ),
               icon: const Icon(Icons.open_in_new),
               label: const Text('去外卖平台看看'),
             ),

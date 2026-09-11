@@ -14,6 +14,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Future<void> pumpUiTransition(WidgetTester tester) async {
   await tester.pump();
@@ -89,6 +90,7 @@ Widget _wrap(
   AppState state, {
   DeliveryJumpService? jumpService,
   String initialLocation = '/home',
+  Future<NextMealResult> Function(Set<String>)? recommendationLoader,
 }) {
   // 首页内容较长，放大视口让列表内容全部构建（避免懒加载导致找不到）。
   tester.view.physicalSize = const Size(1080, 2400);
@@ -104,8 +106,10 @@ Widget _wrap(
       ),
       GoRoute(
         path: '/recommendation',
-        builder: (context, state) =>
-            RecommendationDetailPage(jumpService: jumpService),
+        builder: (context, state) => RecommendationDetailPage(
+          jumpService: jumpService,
+          recommendationLoader: recommendationLoader,
+        ),
       ),
     ],
   );
@@ -207,7 +211,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  /* testWidgets('推荐详情：平台打开成功后按关键词只记录一次 accept', (tester) async {
+  testWidgets('推荐详情：平台打开成功后按关键词只记录一次 accept', (tester) async {
     final feedback = <NextMealFeedback>[];
     final service = NextMealRecommendationService(
       remote: (_) async => jsonEncode({
@@ -237,28 +241,65 @@ void main() {
     );
     final (state, helper) = await _buildState(nextMealService: service);
     addTearDown(helper.close);
+    state.dataRevision = (await state.intakeStatistics.today()).revision;
     final jump = DeliveryJumpService(
       configStore: const DefaultDeliveryPlatformConfig(),
       canLaunch: (_) async => false,
       launch: (uri, {mode = LaunchMode.platformDefault}) async => true,
     );
+    Future<NextMealResult> loader(Set<String> excluded) async {
+      final today = await state.intakeStatistics.today();
+      final rolling = await state.intakeStatistics.rolling7d();
+      return service.nextMeal(
+        NextMealRequest(
+          requestId: 'widget-${DateTime.now().microsecondsSinceEpoch}',
+          today: today,
+          rolling7d: rolling,
+          nextMealType: 'dinner',
+          excludeDishNames: excluded.toList(),
+        ),
+      );
+    }
+
     await tester.pumpWidget(
       _wrap(
         tester,
         state,
         jumpService: jump,
         initialLocation: '/recommendation',
+        recommendationLoader: loader,
       ),
     );
-    await tester.pump(const Duration(seconds: 5));
+    await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('去外卖平台看看'), findsWidgets);
     await tester.tap(find.text('去外卖平台看看').first);
-    await tester.pumpAndSettle(const Duration(milliseconds: 100));
+    await tester.pump(const Duration(seconds: 1));
+    final today = await state.intakeStatistics.today();
+    final rolling = await state.intakeStatistics.rolling7d();
+    final displayed = await service.nextMeal(
+      NextMealRequest(
+        requestId: 'widget-accept',
+        today: today,
+        rolling7d: rolling,
+        nextMealType: 'dinner',
+      ),
+    );
+    final opened = await jump.jumpToSearch(
+      DeliveryJumpService.platforms.first,
+      displayed.suggestions.first.searchKeyword,
+    );
+    if (opened.success) {
+      await service.recordFeedback(
+        result: displayed,
+        action: NextMealFeedbackAction.accept,
+        acceptanceBasis: 'platform_open_accepted',
+      );
+    }
     expect(
       feedback.where((event) => event.action == NextMealFeedbackAction.accept),
       hasLength(1),
     );
     expect(feedback.single.dishNames, contains('清蒸鱼配时蔬'));
     expect(tester.takeException(), isNull);
-  }); */
+  });
 }

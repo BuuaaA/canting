@@ -310,7 +310,7 @@ class AppState extends ChangeNotifier {
         today: today,
         rolling7d: rolling,
         nextMealType: mealType,
-        dietaryExclusions: await _storedDietaryExclusions(),
+        // 当前用户资料 schema 没有忌口字段；不虚构或推导忌口。
         availablePlatforms: (await DeliveryJumpService().loadEnabledPlatforms())
             .map((platform) => platform.id)
             .toList(growable: false),
@@ -335,21 +335,6 @@ class AppState extends ChangeNotifier {
     _nextMealFuture = future;
     _nextMealFutureKey = key;
     return future;
-  }
-
-  Future<List<String>> _storedDietaryExclusions() async {
-    try {
-      final raw = (await exposurePreferences())['dietary_exclusions'];
-      return raw is List
-          ? raw
-                .whereType<String>()
-                .map((v) => v.trim())
-                .where((v) => v.isNotEmpty)
-                .toList(growable: false)
-          : const [];
-    } catch (_) {
-      return const [];
-    }
   }
 
   String _nextMealType(DateTime now) {
