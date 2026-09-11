@@ -62,6 +62,10 @@ MealRecord _mealWithName(
     'sweet' => '00000000-0000-4000-8000-000000000004',
     'noodle' => '00000000-0000-4000-8000-000000000005',
     'nut-ml' => '00000000-0000-4000-8000-000000000006',
+    'day-1' => '00000000-0000-4000-8000-000000000007',
+    'day-2' => '00000000-0000-4000-8000-000000000008',
+    'day-8' => '00000000-0000-4000-8000-000000000009',
+    'soy' => '00000000-0000-4000-8000-000000000010',
     _ => '00000000-0000-4000-8000-000000000001',
   };
   final component =
@@ -93,6 +97,132 @@ MealRecord _mealWithName(
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  test('seven local days average valid days and excludes day eight', () async {
+    final (state, helper, guidelines, estimator) = await _state();
+    addTearDown(helper.close);
+    final day = DateTime(2026, 9, 11);
+    await state.saveMeal(
+      _riceMeal(
+        'day-1',
+        DateTime(2026, 9, 6),
+        estimator,
+        guidelines,
+        grams: 150,
+      ),
+    );
+    await state.saveMeal(
+      _riceMeal(
+        'day-2',
+        DateTime(2026, 9, 7),
+        estimator,
+        guidelines,
+        grams: 300,
+      ),
+    );
+    await state.saveMeal(
+      _riceMeal(
+        'day-8',
+        DateTime(2026, 9, 4),
+        estimator,
+        guidelines,
+        grams: 3000,
+      ),
+    );
+    final result = await IntakeStatisticsService(state).rolling7d(date: day);
+    expect(result.averages['grain']!.average, 75);
+    expect(result.averages['grain']!.denominator, 2);
+    expect(result.days.first.date, '2026-09-05');
+  });
+
+  test(
+    'grain thresholds use 90 percent boundary and oil/soy targets',
+    () async {
+      for (final entry in const [
+        (179.9, 'below', 20.1),
+        (180.0, 'near', 20.0),
+        (199.9, 'near', 0.1),
+        (200.0, 'met', 0.0),
+        (300.0, 'met', 0.0),
+        (300.1, 'high', 0.0),
+      ]) {
+        final (state, helper, guidelines, estimator) = await _state();
+        addTearDown(helper.close);
+        await state.saveMeal(
+          _riceMeal(
+            'threshold',
+            DateTime(2026, 9, 11),
+            estimator,
+            guidelines,
+            grams: entry.$1 * 3,
+          ),
+        );
+        final after = await IntakeStatisticsService(state)
+            .today(date: DateTime(2026, 9, 11));
+        expect(after.categories['grain']!.status, entry.$2);
+        expect(after.categories['grain']!.gap, closeTo(entry.$3, 0.0001));
+        final oil = after.categories['cooking_oil']!;
+        expect(oil.target.min, 25);
+        expect(oil.target.max, 30);
+        expect(oil.target.kind, 'maximum');
+        expect(oil.gap, isNull);
+      }
+      final (state, helper, guidelines, estimator) = await _state();
+      addTearDown(helper.close);
+      await state.saveMeal(
+        _mealWithName(
+          'soy',
+          DateTime(2026, 9, 11),
+          estimator,
+          guidelines,
+          name: '豆腐',
+          grams: 210,
+          category: 'soy',
+        ),
+      );
+      final week = await IntakeStatisticsService(state)
+          .rolling7d(date: DateTime(2026, 9, 11));
+      expect(week.soyMetDays, 1);
+    },
+  );
+
+  test(
+    'revision change retries once, and persistent change is stale',
+    () async {
+      final (state, helper, _, _) = await _state();
+      addTearDown(helper.close);
+      var revision = 1;
+      var calls = 0;
+      final once = IntakeStatisticsService(
+        state,
+        revision: () => revision,
+        queryMeals: (start, end) async {
+          calls++;
+          if (calls == 1) revision = 2;
+          return [];
+        },
+      );
+      final stable = await once.today(date: DateTime(2026, 9, 11));
+      expect(calls, 2);
+      expect(stable.stale, isFalse);
+      expect(stable.revision, 2);
+
+      calls = 0;
+      revision = 1;
+      final persistent = IntakeStatisticsService(
+        state,
+        revision: () => revision,
+        queryMeals: (start, end) async {
+          calls++;
+          revision++;
+          return [];
+        },
+      );
+      final stale = await persistent.today(date: DateTime(2026, 9, 11));
+      expect(calls, 2);
+      expect(stale.stale, isTrue);
+    },
+  );
 
   test(
     'real MealDraftV2 input is converted using reviewed guidelines',

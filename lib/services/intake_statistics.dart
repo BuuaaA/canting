@@ -210,8 +210,10 @@ class Rolling7dIntakeStats {
 
 /// Local, query-time statistics over the same SQLite facts as AppState.
 class IntakeStatisticsService {
-  IntakeStatisticsService(this._state);
+  IntakeStatisticsService(this._state, {this._queryMeals, this._revision});
   final AppState _state;
+  final Future<List<MealRecord>> Function(DateTime, DateTime)? _queryMeals;
+  final int Function()? _revision;
 
   Future<TodayIntakeStats> today({DateTime? date}) async {
     final end = _day(date ?? _state.clock());
@@ -293,19 +295,20 @@ class IntakeStatisticsService {
   }
 
   Future<_Read> _read(DateTime end) async {
-    final before = _state.dataRevision;
-    final records = await _state.queryMealsInRange(
+    final before = _revision?.call() ?? _state.dataRevision;
+    final query = _queryMeals ?? _state.queryMealsInRange;
+    final records = await query(
       DateTime(end.year, end.month, end.day - 6),
       DateTime(end.year, end.month, end.day + 1),
     );
-    final after = _state.dataRevision;
+    final after = _revision?.call() ?? _state.dataRevision;
     if (before == after) return _Read(records, after, false);
     final retryBefore = after;
-    final retry = await _state.queryMealsInRange(
+    final retry = await query(
       DateTime(end.year, end.month, end.day - 6),
       DateTime(end.year, end.month, end.day + 1),
     );
-    final retryAfter = _state.dataRevision;
+    final retryAfter = _revision?.call() ?? _state.dataRevision;
     return _Read(retry, retryAfter, retryBefore != retryAfter);
   }
 
@@ -404,7 +407,7 @@ class IntakeStatisticsService {
     'dairy' => const IntakeTarget(min: 300, kind: 'minimum'),
     'soy' => const IntakeTarget(min: 20, max: 25),
     'nut' => const IntakeTarget(min: 50 / 7, max: 70 / 7),
-    'cooking_oil' => const IntakeTarget(max: 30, kind: 'maximum'),
+    'cooking_oil' => const IntakeTarget(min: 25, max: 30, kind: 'maximum'),
     'salt' => const IntakeTarget(max: 5, kind: 'maximum'),
     _ => const IntakeTarget(),
   };
