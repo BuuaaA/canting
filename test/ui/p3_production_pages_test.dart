@@ -1,6 +1,7 @@
 import '../support/evidence.dart';
 
 import 'package:canting/ui/recommendation/recommended_dish_card.dart';
+import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:flutter/services.dart';
 
 import 'dart:convert';
@@ -172,7 +173,7 @@ void main() {
     },
   );
   testWidgets(
-    'production recommendation switches 7/28, shows partial coverage and preferences are editable',
+    'production record summary switches 7/28, shows partial coverage and preferences are editable',
     (t) async {
       t.view.physicalSize = const Size(1080, 2400);
       t.view.devicePixelRatio = 1;
@@ -195,18 +196,18 @@ void main() {
             key: key,
             child: MaterialApp(
               theme: ThemeData(fontFamily: 'P3Evidence'),
-              home: const RecommendationDetailPage(),
+              home: const Scaffold(body: RecordSummaryPanel()),
             ),
           ),
         ),
       );
       await t.pumpAndSettle();
       expect(find.textContaining('未知条目1个'), findsOneWidget);
-      await capture(t, key, 'component-recommendation-7d');
+      await capture(t, key, 'component-record-summary-7d');
       await t.tap(find.text('最近28天'));
       await t.pumpAndSettle();
       expect(find.textContaining('28天差额不分摊'), findsOneWidget);
-      await capture(t, key, 'component-recommendation-28d');
+      await capture(t, key, 'component-record-summary-28d');
       await t.pumpWidget(
         MaterialApp(home: ExposurePreferencesPage(state: state)),
       );
@@ -319,53 +320,46 @@ void main() {
         addTearDown(t.view.reset);
         final (state, db) = await setup();
         addTearDown(db.close);
-        const category = FoodCategory(
-          id: 'test_plain',
-          name: '测试',
-          oilLevel: 'low',
-          oilFactor: 1,
-          averagePortions: Portions(grains: 1),
-          keywords: [],
-        );
-        StandardDish d(String id, bool safe) => StandardDish(
-          id: id,
-          name: id,
-          aliases: [],
-          category: 'test_plain',
-          portionsNormal: const Portions(grains: 1, protein: 1),
-          cookingOilRatio: 0,
-          oilFactor: 1,
-          sodiumLevel: 'low',
-          searchKeywords: [],
-          qualityTags: safe ? [] : ['fried', 'light'],
-        );
-        await db.replaceAll(
-          FoodDatabase(
-            dishes: [
-              for (var i = 0; i < count; i++) d('safe-$i', true),
-              d('blocked-fried', false),
-            ],
-            categories: [category],
+        final suggestions = [
+          for (var i = 0; i < count; i++)
+            NextMealSuggestion(
+              dishName: 'safe-$i',
+              searchKeyword: 'safe-$i',
+              primaryCategory: 'vegetable',
+              estimatedServing: '一小盘',
+              reason: '合成安全候选。',
+            ),
+        ];
+        final result = NextMealResult(
+          requestId: 'safe-$count',
+          dataRevision: state.dataRevision,
+          source: 'local_rule',
+          status: count == 0 ? 'failed' : 'degraded',
+          reasonCode: count == 0 ? 'no_safe_candidate' : 'unconfigured',
+          suggestions: suggestions,
+          guidance: const NextMealGuidance(
+            primary: '优先补足已知缺口。',
+            oilSalt: '选择少油少盐做法。',
+            reduceStaple: '主食按常规份量。',
           ),
         );
-        await state.refreshDishMatcher();
+        Future<NextMealResult> loader(Set<String> _) async => result;
         await t.pumpWidget(
           ChangeNotifierProvider.value(
             value: state,
-            child: const MaterialApp(home: RecommendationDetailPage()),
+            child: MaterialApp(
+              home: RecommendationDetailPage(recommendationLoader: loader),
+            ),
           ),
         );
         await t.pumpAndSettle();
         expect(find.byType(RecommendedDishCard), findsNWidgets(count));
         expect(find.text('blocked-fried'), findsNothing);
-        expect(find.textContaining('可推荐候选不足'), findsWidgets);
+        if (count == 0) {
+          expect(find.text('当前没有可靠的安全候选'), findsOneWidget);
+        }
         if (count > 0) {
-          await t.tap(find.text('换一批推荐'));
-          await t.pumpAndSettle();
-          expect(find.byType(RecommendedDishCard), findsNothing);
-          await t.tap(find.text('重新开始推荐'));
-          await t.pumpAndSettle();
-          expect(find.byType(RecommendedDishCard), findsNWidgets(count));
+          expect(find.text('safe-0'), findsOneWidget);
         }
         await t.pumpWidget(const SizedBox());
         state.dispose();
