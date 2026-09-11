@@ -138,16 +138,17 @@ void main() {
     expect(staleResult.reasonCode, 'stale_input');
     expect(staleResult.isUsable, isFalse);
 
-    final mismatch = await NextMealRecommendationService().nextMeal(
-      NextMealRequest(
-        requestId: 'request-1',
-        today: today(revision: 5),
-        rolling7d: rolling(revision: 4),
-        nextMealType: 'dinner',
+    await expectLater(
+      NextMealRecommendationService().nextMeal(
+        NextMealRequest(
+          requestId: 'request-1',
+          today: today(revision: 5),
+          rolling7d: rolling(revision: 4),
+          nextMealType: 'dinner',
+        ),
       ),
+      throwsArgumentError,
     );
-    expect(mismatch.reasonCode, 'revision_mismatch');
-    expect(mismatch.isUsable, isFalse);
   });
 
   test('缺字段、禁忌和泛化文案均拒绝为正常AI结果', () async {
@@ -170,6 +171,123 @@ void main() {
           ),
         );
     expect(excluded.source, 'local_rule');
+
+    final repeated =
+        await NextMealRecommendationService(
+          remote: (_) async => jsonEncode(aiJson()),
+        ).nextMeal(
+          NextMealRequest(
+            requestId: 'request-1',
+            today: today(),
+            rolling7d: rolling(),
+            nextMealType: 'dinner',
+            excludeDishNames: const ['清蒸鲈鱼配时蔬'],
+          ),
+        );
+    expect(repeated.source, 'local_rule');
+  });
+
+  test('语义忌口同时过滤本地和远端候选，全部不安全时不强保数量', () async {
+    final local = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        dietaryExclusions: const ['不吃鱼'],
+      ),
+    );
+    expect(local.suggestions.every((s) => !s.dishName.contains('鱼')), isTrue);
+
+    final dairy = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        dietaryExclusions: const ['乳制品'],
+      ),
+    );
+    expect(dairy.suggestions.every((s) => !s.dishName.contains('酸奶')), isTrue);
+
+    final vegetarian = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        dietaryExclusions: const ['素食', '乳制品'],
+      ),
+    );
+    expect(vegetarian.suggestions, isEmpty);
+    expect(vegetarian.status, 'failed');
+  });
+
+  test('request/result 事件仅记录脱敏元信息，事件失败不阻塞主流程', () async {
+    final events = <Map<String, dynamic>>[];
+    final result = await NextMealRecommendationService(
+      eventSink: (event) async => events.add(event),
+    ).nextMeal(request());
+    expect(result.isUsable, isTrue);
+    expect(events.map((e) => e['event']), [
+      'next_meal_request',
+      'next_meal_result',
+    ]);
+    expect(
+      events.every(
+        (e) => !e.containsKey('today') && !e.containsKey('rolling7d'),
+      ),
+      isTrue,
+    );
+
+    final stillWorks = await NextMealRecommendationService(
+      eventSink: (_) async => throw StateError('storage unavailable'),
+    ).nextMeal(request());
+    expect(stillWorks.isUsable, isTrue);
+  });
+
+  test('反馈保存失败不阻塞，成功后accept去重且缓存有界', () async {
+    var calls = 0;
+    final result = await NextMealRecommendationService().nextMeal(request());
+    final failing = NextMealRecommendationService(
+      feedbackSink: (_) async {
+        calls++;
+        throw StateError('db unavailable');
+      },
+    );
+    await failing.recordFeedback(
+      result: result,
+      action: NextMealFeedbackAction.accept,
+      acceptanceBasis: 'platform_open_accepted',
+    );
+    expect(calls, 1);
+  });
+
+  test('校验日期和预算边界', () async {
+    await expectLater(
+      NextMealRecommendationService().nextMeal(
+        NextMealRequest(
+          requestId: 'request-1',
+          today: today(),
+          rolling7d: rolling(),
+          nextMealType: 'dinner',
+          budget: -1,
+        ),
+      ),
+      throwsArgumentError,
+    );
+    await expectLater(
+      NextMealRecommendationService().nextMeal(
+        NextMealRequest(
+          requestId: 'request-1',
+          today: today(),
+          rolling7d: rolling(),
+          nextMealType: 'dinner',
+          budget: double.infinity,
+        ),
+      ),
+      throwsArgumentError,
+    );
   });
 
   test('反馈按request关联，accept一次且必须有平台打开依据', () async {

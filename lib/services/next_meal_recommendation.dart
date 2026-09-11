@@ -5,6 +5,7 @@ import 'intake_statistics.dart';
 
 typedef NextMealRemoteCall = Future<String> Function(NextMealRequest request);
 typedef NextMealFeedbackSink = Future<void> Function(NextMealFeedback event);
+typedef NextMealEventSink = Future<void> Function(Map<String, dynamic> event);
 
 const _mealTypes = {'breakfast', 'lunch', 'dinner', 'snack'};
 const _categories = {
@@ -218,31 +219,52 @@ class NextMealRecommendationService {
     this.remote,
     this.timeout = const Duration(seconds: 8),
     this.feedbackSink,
+    this.eventSink,
   });
 
   final NextMealRemoteCall? remote;
   final Duration timeout;
   final NextMealFeedbackSink? feedbackSink;
+  final NextMealEventSink? eventSink;
   final Set<String> _acceptedRequestIds = {};
+  final Set<String> _acceptingRequestIds = {};
 
   Future<NextMealResult> nextMeal(NextMealRequest request) async {
     _validateRequest(request);
+    await _emit({
+      'event': 'next_meal_request',
+      'requestId': request.requestId,
+      'dataRevision': request.dataRevision,
+      'nextMealType': request.nextMealType,
+    });
+    late final NextMealResult result;
     if (request.today.stale || request.rolling7d.stale) {
-      return NextMealResult.failed(request, 'stale_input');
+      result = NextMealResult.failed(request, 'stale_input');
+    } else if (request.today.revision != request.rolling7d.revision) {
+      result = NextMealResult.failed(request, 'revision_mismatch');
+    } else if (remote == null) {
+      result = _local(request, 'unconfigured');
+    } else {
+      result = await _remoteOrLocal(request);
     }
-    if (request.today.revision != request.rolling7d.revision) {
-      return NextMealResult.failed(request, 'revision_mismatch');
-    }
-    if (remote == null) {
-      return _local(request, 'unconfigured');
-    }
+    await _emit({
+      'event': 'next_meal_result',
+      'requestId': result.requestId,
+      'dataRevision': result.dataRevision,
+      'source': result.source,
+      'status': result.status,
+      'reasonCode': result.reasonCode,
+      'suggestionCount': result.suggestions.length,
+    });
+    return result;
+  }
 
+  Future<NextMealResult> _remoteOrLocal(NextMealRequest request) async {
     try {
       var raw = await remote!(request).timeout(timeout);
       for (var attempt = 0; attempt < 2; attempt++) {
         try {
-          final result = _parseRemote(request, raw);
-          return result;
+          return _parseRemote(request, raw);
         } on FormatException {
           if (attempt == 1) rethrow;
           raw = await remote!(request).timeout(timeout);
@@ -256,6 +278,14 @@ class NextMealRecommendationService {
       return _local(request, 'remote_unavailable');
     }
     return _local(request, 'remote_unavailable');
+  }
+
+  Future<void> _emit(Map<String, dynamic> event) async {
+    try {
+      await eventSink?.call(Map.unmodifiable(event));
+    } catch (_) {
+      // Audit persistence is best effort and must never block recommendations.
+    }
   }
 
   Future<void> recordFeedback({
@@ -272,18 +302,32 @@ class NextMealRecommendationService {
         'accept requires platform_open_accepted',
       );
     }
-    if (action == NextMealFeedbackAction.accept &&
-        !_acceptedRequestIds.add(result.requestId)) {
-      return;
+    if (action == NextMealFeedbackAction.accept) {
+      if (_acceptedRequestIds.contains(result.requestId) ||
+          !_acceptingRequestIds.add(result.requestId)) {
+        return;
+      }
     }
-    await feedbackSink!(
-      NextMealFeedback(
-        requestId: result.requestId,
-        action: action,
-        dishNames: result.suggestions.map((s) => s.dishName).toList(),
-        acceptanceBasis: acceptanceBasis,
-      ),
-    );
+    try {
+      await feedbackSink!(
+        NextMealFeedback(
+          requestId: result.requestId,
+          action: action,
+          dishNames: result.suggestions.map((s) => s.dishName).toList(),
+          acceptanceBasis: acceptanceBasis,
+        ),
+      );
+      if (action == NextMealFeedbackAction.accept) {
+        if (_acceptedRequestIds.length >= 128) {
+          _acceptedRequestIds.remove(_acceptedRequestIds.first);
+        }
+        _acceptedRequestIds.add(result.requestId);
+      }
+    } catch (_) {
+      // A failed local write must not block opening the platform.
+    } finally {
+      _acceptingRequestIds.remove(result.requestId);
+    }
   }
 
   NextMealResult _parseRemote(NextMealRequest request, String raw) {
@@ -357,23 +401,28 @@ class NextMealRecommendationService {
       final bi = priorities.indexOf(b.category);
       return (ai < 0 ? 99 : ai).compareTo(bi < 0 ? 99 : bi);
     });
+    final knownVegetableGap = priorities.contains('vegetable');
     final selected = candidates
         .where((candidate) {
           final haystack = '${candidate.dishName} ${candidate.searchKeyword}'
               .toLowerCase();
-          return !request.excludeDishNames.any(
-                (name) =>
-                    name.trim().isNotEmpty &&
-                    haystack.contains(name.toLowerCase()),
-              ) &&
-              !request.dietaryExclusions.any(
-                (name) =>
-                    name.trim().isNotEmpty &&
-                    haystack.contains(name.toLowerCase()),
-              );
+          return !_matchesAny(haystack, request.excludeDishNames) &&
+              !_matchesAny(haystack, request.dietaryExclusions);
         })
         .take(3)
-        .map((candidate) => candidate.toSuggestion())
+        .map((candidate) {
+          final suggestion = candidate.toSuggestion();
+          if (knownVegetableGap || suggestion.primaryCategory != 'vegetable') {
+            return suggestion;
+          }
+          return NextMealSuggestion(
+            dishName: suggestion.dishName,
+            searchKeyword: suggestion.searchKeyword,
+            primaryCategory: suggestion.primaryCategory,
+            estimatedServing: suggestion.estimatedServing,
+            reason: '普通搭配建议；当前没有可确认的蔬菜缺口。',
+          );
+        })
         .toList();
     final result = NextMealResult(
       requestId: request.requestId,
@@ -382,8 +431,8 @@ class NextMealRecommendationService {
       status: selected.isEmpty ? 'failed' : 'degraded',
       reasonCode: reasonCode,
       suggestions: selected,
-      guidance: const NextMealGuidance(
-        primary: '根据已知缺口排序；未知类别不按零摄入处理。',
+      guidance: NextMealGuidance(
+        primary: knownVegetableGap ? '优先补足已知蔬菜缺口。' : '按已知记录提供普通搭配；未知类别不按零摄入处理。',
         oilSalt: '优先清蒸、白灼或少油少盐做法。',
         reduceStaple: '若主食已知偏多，下一餐选择小份；未知时不强行减量。',
       ),
@@ -419,6 +468,16 @@ class NextMealRecommendationService {
     if (request.dataRevision < 0) {
       throw ArgumentError('dataRevision must be non-negative');
     }
+    if (request.today.revision != request.rolling7d.revision) {
+      throw ArgumentError('today and rolling7d revisions must match');
+    }
+    if (request.today.date != request.rolling7d.endDate) {
+      throw ArgumentError('today and rolling7d dates must match');
+    }
+    if (request.budget != null &&
+        (!request.budget!.isFinite || request.budget! < 0)) {
+      throw ArgumentError('budget must be finite and non-negative');
+    }
   }
 
   static void _validateSuggestions(
@@ -443,12 +502,53 @@ class NextMealRecommendationService {
         throw const FormatException('unsafe or non-dish output');
       }
       if (request.dietaryExclusions.any(
-        (excluded) =>
-            excluded.trim().isNotEmpty && text.contains(excluded.toLowerCase()),
+        (excluded) => _matchesAny(text, [excluded]),
       )) {
         throw const FormatException('recommendation violates exclusion');
       }
+      if (request.excludeDishNames.any(
+        (excluded) => _matchesAny(text, [excluded]),
+      )) {
+        throw const FormatException('recommendation repeats excluded dish');
+      }
     }
+  }
+
+  static bool _matchesAny(String text, Iterable<String> exclusions) {
+    final lower = text.toLowerCase();
+    for (final exclusion in exclusions) {
+      final value = exclusion.trim().toLowerCase();
+      if (value.isEmpty) continue;
+      final tokens = <String>{value};
+      if (value.contains('素食') ||
+          value.contains('vegan') ||
+          value.contains('vegetarian')) {
+        tokens.addAll(const [
+          '鱼',
+          '鸡',
+          '牛',
+          '猪',
+          '肉',
+          '蛋',
+          'fish',
+          'chicken',
+          'beef',
+          'pork',
+        ]);
+      }
+      if (value.contains('鱼') || value.contains('fish')) {
+        tokens.addAll(const ['鱼', '鲈', '虾', '蟹', 'fish', 'shrimp', 'crab']);
+      }
+      if (value.contains('牛奶') ||
+          value.contains('乳制品') ||
+          value.contains('奶制品') ||
+          value.contains('dairy') ||
+          value.contains('milk')) {
+        tokens.addAll(const ['奶', '酸奶', '牛奶', '乳', 'yogurt', 'milk', 'dairy']);
+      }
+      if (tokens.any(lower.contains)) return true;
+    }
+    return false;
   }
 }
 
