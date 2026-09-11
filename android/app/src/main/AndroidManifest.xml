@@ -87,25 +87,10 @@
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
         </intent>
-        <!-- 外卖平台跳转（Android 11+ 包可见性）：缺少这些声明时
-             canLaunchUrl 对对应 scheme 恒为 false，导致美团等跳转失效。 -->
+        <!-- 仅声明已在源码中有公开入口依据的 scheme；未知平台入口不猜测。 -->
         <intent>
             <action android:name="android.intent.action.VIEW"/>
             <data android:scheme="meituanwaimai"/>
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW"/>
-            <data android:scheme="imeituan"/>
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW"/>
-            <data android:scheme="eleme"/>
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW"/>
-            <!-- Dart Uri 会把 scheme 归一化为小写，且 Android 的 scheme
-                 匹配区分大小写，因此必须用小写形式。 -->
-            <data android:scheme="openapp.jdmobile"/>
         </intent>
     </queries>
 </manifest>

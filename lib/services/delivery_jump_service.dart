@@ -3,55 +3,100 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/// 外卖平台定义：URL scheme + H5 兜底链接 + 品牌色。
 class DeliveryPlatform {
   const DeliveryPlatform({
     required this.id,
     required this.label,
     required this.brandColor,
     required this.fallbackUrl,
+    this.scheme,
+    this.supportsKeyword = false,
   });
 
-  /// 稳定代码：meituan_waimai / meituan / eleme / jd_waimai。
   final String id;
   final String label;
-
-  /// 品牌色（ARGB 值），按钮背景用。
   final int brandColor;
-
-  /// 未安装 APP 时的 H5 兜底链接。
   final String fallbackUrl;
+  final String? scheme;
+  final bool supportsKeyword;
 }
 
-/// 外卖跳转结果：实际拉起了哪个链接、是否成功。
+enum DeliveryInstallation { installed, notInstalled, unknown }
+
+class DeliveryPlatformState {
+  const DeliveryPlatformState({
+    required this.platformId,
+    required this.installation,
+    required this.source,
+    this.checkedAt,
+  });
+
+  final String platformId;
+  final DeliveryInstallation installation;
+  final String source;
+  final DateTime? checkedAt;
+
+  String get wireInstallation => switch (installation) {
+    DeliveryInstallation.installed => 'installed',
+    DeliveryInstallation.notInstalled => 'not_installed',
+    DeliveryInstallation.unknown => 'unknown',
+  };
+}
+
+class DeliveryLinkTarget {
+  const DeliveryLinkTarget({
+    required this.kind,
+    required this.uri,
+    required this.platformId,
+    required this.supportsKeyword,
+  });
+
+  final String kind;
+  final Uri uri;
+  final String platformId;
+  final bool supportsKeyword;
+}
+
+class DeliveryLinkResolution {
+  const DeliveryLinkResolution({
+    required this.platformId,
+    required this.target,
+    required this.fallbackTargets,
+    required this.reason,
+  });
+
+  final String? platformId;
+  final DeliveryLinkTarget? target;
+  final List<DeliveryLinkTarget> fallbackTargets;
+  final String reason;
+
+  List<DeliveryLinkTarget> get allTargets => [
+    ...(target == null ? const <DeliveryLinkTarget>[] : [target!]),
+    ...fallbackTargets,
+  ];
+}
+
 class DeliveryJumpResult {
   const DeliveryJumpResult({
     required this.success,
     required this.usedUri,
     required this.usedFallback,
+    required this.attempts,
   });
 
   final bool success;
-  final Uri usedUri;
-
-  /// true = 走了 H5 兜底（APP 未安装或 scheme 拉起失败）。
+  final Uri? usedUri;
   final bool usedFallback;
+  final List<Uri> attempts;
 }
 
-/// 平台启用状态与顺序的持久化接口。
-///
-/// V1.0 今晚使用 [DefaultDeliveryPlatformConfig]（全部启用、固定优先级）；
-/// SharedPreferences 持久化与设置页 UI 为遗留项，接口签名已留好，
-/// 后续实现只需替换注入的 store，不改调用方。
 abstract class DeliveryPlatformConfigStore {
-  /// 按展示顺序返回启用的平台 id 列表。
   Future<List<String>> loadOrderedPlatformIds();
-
-  /// 保存启用平台及顺序。
   Future<void> saveOrderedPlatformIds(List<String> ids);
+  Future<String?> loadPreferredPlatformId() async => null;
+  Future<void> savePreferredPlatformId(String? id) async {}
 }
 
-/// 默认配置：四个平台全启用，固定优先级（美团外卖 > 美团 > 饿了么 > 京东）。
 class DefaultDeliveryPlatformConfig implements DeliveryPlatformConfigStore {
   const DefaultDeliveryPlatformConfig();
 
@@ -60,12 +105,15 @@ class DefaultDeliveryPlatformConfig implements DeliveryPlatformConfigStore {
       DeliveryJumpService.platforms.map((platform) => platform.id).toList();
 
   @override
-  Future<void> saveOrderedPlatformIds(List<String> ids) async {
-    // 默认实现不持久化（遗留项：SharedPreferences）。
-  }
+  Future<void> saveOrderedPlatformIds(List<String> ids) async {}
+
+  @override
+  Future<String?> loadPreferredPlatformId() async => null;
+
+  @override
+  Future<void> savePreferredPlatformId(String? id) async {}
 }
 
-/// 设置页用的单个平台配置项：平台 id + 启用状态；列表顺序即展示/跳转顺序。
 class DeliveryPlatformSetting {
   const DeliveryPlatformSetting({required this.id, required this.enabled});
 
@@ -73,37 +121,29 @@ class DeliveryPlatformSetting {
   final bool enabled;
 }
 
-/// 基于 SharedPreferences 的平台配置持久化（设置页 + 跳转共用）。
-///
-/// 落盘两个键：完整展示顺序（含停用项）与停用集合。[loadOrderedPlatformIds]
-/// 返回其中启用的平台（保持顺序），即 [DeliveryJumpService.loadEnabledPlatforms]
-/// 跳转时实际使用的配置。读取失败（如测试环境无插件）时回退默认配置。
 class DeliveryPlatformPrefsStore implements DeliveryPlatformConfigStore {
   const DeliveryPlatformPrefsStore();
 
   static const _orderKey = 'delivery_platform_order';
   static const _disabledKey = 'delivery_platform_disabled';
+  static const _preferredKey = 'delivery_platform_preferred';
 
   static List<DeliveryPlatformSetting> _defaultSettings() => [
     for (final platform in DeliveryJumpService.platforms)
       DeliveryPlatformSetting(id: platform.id, enabled: true),
   ];
 
-  /// 完整配置（含停用平台），按用户排序；新平台（App 更新新增）追加在末尾。
   Future<List<DeliveryPlatformSetting>> loadSettings() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final order = prefs.getStringList(_orderKey) ?? const [];
-      final disabled =
-          (prefs.getStringList(_disabledKey) ?? const []).toSet();
+      final disabled = (prefs.getStringList(_disabledKey) ?? const []).toSet();
       final knownIds = DeliveryJumpService.allPlatformIds;
       final orderedIds = [
         ...order.where(knownIds.contains),
         ...knownIds.where((id) => !order.contains(id)),
       ];
-      if (orderedIds.isEmpty) {
-        return _defaultSettings();
-      }
+      if (orderedIds.isEmpty) return _defaultSettings();
       return [
         for (final id in orderedIds)
           DeliveryPlatformSetting(id: id, enabled: !disabled.contains(id)),
@@ -113,99 +153,110 @@ class DeliveryPlatformPrefsStore implements DeliveryPlatformConfigStore {
     }
   }
 
-  /// 保存完整配置（顺序 + 启用状态）。
   Future<void> saveSettings(List<DeliveryPlatformSetting> settings) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(_orderKey, [
-      for (final setting in settings) setting.id,
+      for (final item in settings) item.id,
     ]);
     await prefs.setStringList(_disabledKey, [
-      for (final setting in settings)
-        if (!setting.enabled) setting.id,
+      for (final item in settings)
+        if (!item.enabled) item.id,
     ]);
   }
 
   @override
   Future<List<String>> loadOrderedPlatformIds() async => [
-    for (final setting in await loadSettings())
-      if (setting.enabled) setting.id,
+    for (final item in await loadSettings())
+      if (item.enabled) item.id,
   ];
 
   @override
   Future<void> saveOrderedPlatformIds(List<String> ids) async {
-    // 传入列表决定启用集合与启用顺序；未列出的平台视为停用，
-    // 保持原有相对顺序排在末尾。
-    final enabled = ids.toSet();
     final settings = await loadSettings();
-    final byId = {
-      for (final setting in settings) setting.id: setting,
-    };
+    final known = {for (final item in settings) item.id: item};
+    final enabled = ids.toSet();
     await saveSettings([
       for (final id in ids)
-        if (byId.containsKey(id)) DeliveryPlatformSetting(id: id, enabled: true),
-      for (final setting in settings)
-        if (!enabled.contains(setting.id))
-          DeliveryPlatformSetting(id: setting.id, enabled: false),
+        if (known.containsKey(id))
+          DeliveryPlatformSetting(id: id, enabled: true),
+      for (final item in settings)
+        if (!enabled.contains(item.id)) item,
     ]);
+  }
+
+  @override
+  Future<String?> loadPreferredPlatformId() async {
+    try {
+      return (await SharedPreferences.getInstance()).getString(_preferredKey);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  @override
+  Future<void> savePreferredPlatformId(String? id) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (id == null) {
+      await prefs.remove(_preferredKey);
+    } else {
+      await prefs.setString(_preferredKey, id);
+    }
   }
 }
 
-typedef _UriCanLaunch = Future<bool> Function(Uri uri);
-typedef _UriLaunch = Future<bool> Function(Uri uri, {LaunchMode mode});
+typedef UriCanLaunch = Future<bool> Function(Uri uri);
+typedef UriLaunch = Future<bool> Function(Uri uri, {LaunchMode mode});
 
-/// 外卖平台搜索跳转：已安装走 URL scheme 拉起，失败或未安装回落 H5。
-///
-/// MVP 时期美团跳转失效的根因有两个，本次均已修复：
-/// 1. scheme 用错（`meituan://`），实际应为 `meituanwaimai://`（美团外卖）
-///    与 `imeituan://`（美团 APP）；
-/// 2. Android 11+ 包可见性限制：manifest 缺少对应 scheme 的 `<queries>`
-///    声明时 canLaunchUrl 恒为 false（已在 AndroidManifest.xml 补上）。
 class DeliveryJumpService {
   DeliveryJumpService({
-    this.configStore = const DefaultDeliveryPlatformConfig(),
-    Future<bool> Function(Uri uri)? canLaunch,
-    Future<bool> Function(Uri uri, {LaunchMode mode})? launch,
-  }) : _canLaunch = canLaunch ?? _defaultCanLaunch,
-       _launch = launch ?? _defaultLaunch;
+    this.configStore = const DeliveryPlatformPrefsStore(),
+    UriCanLaunch? canLaunch,
+    UriLaunch? launch,
+  }) : _canLaunch = canLaunch ?? canLaunchUrl,
+       _launch = launch ?? launchUrl;
 
   final DeliveryPlatformConfigStore configStore;
+  final UriCanLaunch _canLaunch;
+  final UriLaunch _launch;
 
-  final _UriCanLaunch _canLaunch;
-  final _UriLaunch _launch;
-
-  /// 支持的平台，数组顺序即默认优先级。
+  /// Only these three are shown to users. Other ids are internal candidates.
   static const List<DeliveryPlatform> platforms = [
-    DeliveryPlatform(
-      id: 'meituan_waimai',
-      label: '美团外卖',
-      brandColor: 0xFFFFC300,
-      fallbackUrl: 'https://waimai.meituan.com',
-    ),
-    DeliveryPlatform(
-      id: 'meituan',
-      label: '美团',
-      brandColor: 0xFFFF6633,
-      fallbackUrl: 'https://www.meituan.com',
-    ),
-    DeliveryPlatform(
-      id: 'eleme',
-      label: '饿了么',
-      brandColor: 0xFF0097FF,
-      fallbackUrl: 'https://h5.ele.me',
-    ),
     DeliveryPlatform(
       id: 'jd_waimai',
       label: '京东外卖',
       brandColor: 0xFFE1251B,
       fallbackUrl: 'https://www.jd.com',
     ),
+    DeliveryPlatform(
+      id: 'taobao_shangou',
+      label: '淘宝闪购',
+      brandColor: 0xFFFF6200,
+      fallbackUrl: 'https://www.taobao.com',
+    ),
+    DeliveryPlatform(
+      id: 'meituan_waimai',
+      label: '美团外卖',
+      brandColor: 0xFFFFC300,
+      fallbackUrl: 'https://waimai.meituan.com/mobile/download/',
+      scheme: 'meituanwaimai',
+      supportsKeyword: true,
+    ),
   ];
 
-  /// 全部平台 id（供配置接口的默认实现使用）。
+  static const _candidateOrder = [
+    'jd_waimai_app',
+    'taobao_shangou_app',
+    'meituan_waimai',
+    'jd',
+    'taobao',
+  ];
+
   static List<String> get allPlatformIds =>
       platforms.map((platform) => platform.id).toList();
 
-  /// 当前启用的平台（按配置顺序）；调用方注入的 [configStore] 决定来源。
+  static DeliveryPlatform? platformById(String id) =>
+      platforms.where((platform) => platform.id == id).firstOrNull;
+
   Future<List<DeliveryPlatform>> loadEnabledPlatforms() async {
     final ids = await configStore.loadOrderedPlatformIds();
     final byId = {for (final platform in platforms) platform.id: platform};
@@ -215,81 +266,258 @@ class DeliveryJumpService {
     ];
   }
 
-  /// 构造拉起外卖 APP 的 scheme 链接。
-  static Uri buildSchemeUri(DeliveryPlatform platform, String keyword) =>
-      switch (platform.id) {
-        'meituan_waimai' => Uri(
-          scheme: 'meituanwaimai',
-          host: 'waimai.meituan.com',
-          path: '/search',
-          queryParameters: {'query': keyword},
-        ),
-        'meituan' => Uri(
-          scheme: 'imeituan',
-          host: 'www.meituan.com',
-          path: '/search',
-          queryParameters: {'q': keyword},
-        ),
-        'eleme' => Uri(
-          scheme: 'eleme',
-          host: 'search',
-          queryParameters: {'keyword': keyword},
-        ),
-        'jd_waimai' => Uri(
-          // Dart Uri 会把 scheme 归一化为小写（RFC 3986 scheme 不分大小写），
-          // 京东外卖实际拉起时使用小写 openapp.jdmobile://，与 manifest
-          // <queries> 声明保持一致。
-          scheme: 'openapp.jdmobile',
-          host: 'virtual',
-          queryParameters: {
-            'params': jsonEncode({
-              'category': 'jump',
-              'des': 'searchMall',
-              'keyword': keyword,
-            }),
-          },
-        ),
-        _ => throw ArgumentError.value(
-          platform.id,
-          'platform.id',
-          'unknown delivery platform',
-        ),
-      };
+  Uri? buildAppUri(String platformId, String keyword) {
+    if (platformId != 'meituan_waimai') return null;
+    return Uri(
+      scheme: 'meituanwaimai',
+      host: 'waimai.meituan.com',
+      path: '/search',
+      queryParameters: {'query': keyword},
+    );
+  }
 
-  /// 构造 H5 兜底链接。
-  static Uri buildFallbackUri(DeliveryPlatform platform) =>
+  static Uri buildFallbackUri(DeliveryPlatform platform, [String? keyword]) =>
       Uri.parse(platform.fallbackUrl);
 
-  /// 跳转到平台内搜索 [keyword]。返回实际使用的链接与是否成功。
+  Future<Map<String, DeliveryPlatformState>> detectPlatforms() async {
+    final now = DateTime.now();
+    final states = <String, DeliveryPlatformState>{};
+    for (final id in _candidateOrder) {
+      final uri = id == 'meituan_waimai' ? buildAppUri(id, '餐盘') : null;
+      states[id] = DeliveryPlatformState(
+        platformId: id,
+        installation: uri == null
+            ? DeliveryInstallation.unknown
+            : await _detect(uri),
+        source: 'device',
+        checkedAt: now,
+      );
+    }
+    await _saveStates(states);
+    await _recordEvent('delivery_platform_detect', {
+      'states': {
+        for (final e in states.entries) e.key: e.value.wireInstallation,
+      },
+      'source': 'device',
+    });
+    return states;
+  }
+
+  Future<Map<String, DeliveryPlatformState>> loadCachedStates() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_statesKey);
+      if (raw == null) return {};
+      final map = jsonDecode(raw) as Map;
+      return {
+        for (final e in map.entries)
+          e.key as String: _stateFromJson(
+            e.key as String,
+            (e.value as Map).cast<String, dynamic>(),
+          ),
+      };
+    } catch (_) {
+      return {};
+    }
+  }
+
+  Future<DeliveryLinkResolution> resolveLink({
+    required String keyword,
+    String? preferredPlatformId,
+    Map<String, DeliveryPlatformState>? states,
+  }) async {
+    final actualStates = states ?? await loadCachedStates();
+    final preferred =
+        preferredPlatformId ?? await configStore.loadPreferredPlatformId();
+    final candidates = _orderedTargets(preferred, actualStates, keyword);
+    if (candidates.isEmpty) {
+      final fallback = _webTarget(platforms.first, keyword);
+      return DeliveryLinkResolution(
+        platformId: null,
+        target: fallback,
+        fallbackTargets: const [],
+        reason: 'NO_VERIFIED_APP_LINK',
+      );
+    }
+    return DeliveryLinkResolution(
+      platformId: candidates.first.platformId,
+      target: candidates.first,
+      fallbackTargets: candidates.skip(1).toList(growable: false),
+      reason: candidates.first.kind == 'app' ? 'APP_AVAILABLE' : 'WEB_FALLBACK',
+    );
+  }
+
   Future<DeliveryJumpResult> jumpToSearch(
     DeliveryPlatform platform,
     String keyword,
   ) async {
-    final schemeUri = buildSchemeUri(platform, keyword);
-    var launched = false;
-    if (await _canLaunch(schemeUri)) {
-      launched = await _launch(schemeUri, mode: LaunchMode.externalApplication);
+    final resolution = await resolveLink(
+      keyword: keyword,
+      preferredPlatformId: platform.id,
+    );
+    final attempts = <Uri>[];
+    final targets = [
+      if (platform.scheme != null &&
+          !resolution.allTargets.any(
+            (target) =>
+                target.kind == 'app' && target.platformId == platform.id,
+          ))
+        _appTarget(platform, buildAppUri(platform.id, keyword)!),
+      ...resolution.allTargets,
+    ];
+    for (var index = 0; index < targets.length; index++) {
+      final target = targets[index];
+      attempts.add(target.uri);
+      final accepted = target.kind == 'app'
+          ? await _canLaunch(target.uri) &&
+                await _launch(target.uri, mode: LaunchMode.externalApplication)
+          : await _launch(target.uri, mode: LaunchMode.externalApplication);
+      await _recordEvent('delivery_platform_open', {
+        'platformId': target.platformId,
+        'target': target.uri.toString(),
+        'kind': target.kind,
+        'result': accepted ? 'accepted' : 'failed',
+        'acceptanceBasis': accepted ? 'platform_open_accepted' : null,
+      });
+      if (accepted) {
+        if (index > 0) {
+          await _recordEvent('delivery_platform_fallback', {
+            'platformId': target.platformId,
+            'result': 'accepted',
+            'attempts': attempts.length,
+          });
+        }
+        return DeliveryJumpResult(
+          success: true,
+          usedUri: target.uri,
+          usedFallback: target.kind != 'app',
+          attempts: attempts,
+        );
+      }
+      if (index < targets.length - 1) {
+        await _recordEvent('delivery_platform_fallback', {
+          'platformId': target.platformId,
+          'result': 'failed',
+          'target': target.uri.toString(),
+        });
+      }
     }
-    if (launched) {
-      return DeliveryJumpResult(
-        success: true,
-        usedUri: schemeUri,
-        usedFallback: false,
-      );
-    }
-
-    // 未安装 APP 或 scheme 拉起失败 → H5 兜底。
-    final fallbackUri = buildFallbackUri(platform);
-    launched = await _launch(fallbackUri, mode: LaunchMode.externalApplication);
     return DeliveryJumpResult(
-      success: launched,
-      usedUri: fallbackUri,
-      usedFallback: true,
+      success: false,
+      usedUri: attempts.isEmpty ? null : attempts.last,
+      usedFallback: attempts.length > 1,
+      attempts: attempts,
     );
   }
 
-  static Future<bool> _defaultCanLaunch(Uri uri) => canLaunchUrl(uri);
+  List<DeliveryLinkTarget> _orderedTargets(
+    String? preferred,
+    Map<String, DeliveryPlatformState> states,
+    String keyword,
+  ) {
+    final ids = <String>[];
+    if (preferred != null && allPlatformIds.contains(preferred)) {
+      ids.add(preferred);
+    }
+    for (final candidate in _candidateOrder) {
+      final id = _visiblePlatformId(candidate);
+      if (id != null && !ids.contains(id)) {
+        ids.add(id);
+      }
+    }
+    final appTargets = <DeliveryLinkTarget>[];
+    final webTargets = <DeliveryLinkTarget>[];
+    for (final id in ids) {
+      final platform = platformById(id);
+      if (platform == null) continue;
+      final state = states[id];
+      if (platform.scheme != null &&
+          state?.installation == DeliveryInstallation.installed) {
+        final uri = buildAppUri(id, keyword);
+        if (uri != null) appTargets.add(_appTarget(platform, uri));
+      }
+      webTargets.add(_webTarget(platform, keyword));
+    }
+    return [...appTargets, ...webTargets];
+  }
 
-  static Future<bool> _defaultLaunch(Uri uri, {LaunchMode mode = LaunchMode.platformDefault}) =>
-      launchUrl(uri, mode: mode);
+  String? _visiblePlatformId(String candidate) => switch (candidate) {
+    'jd_waimai_app' || 'jd' => 'jd_waimai',
+    'taobao_shangou_app' || 'taobao' => 'taobao_shangou',
+    'meituan_waimai' => 'meituan_waimai',
+    _ => null,
+  };
+
+  DeliveryLinkTarget _appTarget(DeliveryPlatform p, Uri uri) =>
+      DeliveryLinkTarget(
+        kind: 'app',
+        uri: uri,
+        platformId: p.id,
+        supportsKeyword: p.supportsKeyword,
+      );
+
+  DeliveryLinkTarget _webTarget(DeliveryPlatform p, String keyword) =>
+      DeliveryLinkTarget(
+        kind: 'web',
+        uri: buildFallbackUri(p, keyword),
+        platformId: p.id,
+        supportsKeyword: false,
+      );
+
+  Future<DeliveryInstallation> _detect(Uri uri) async {
+    try {
+      return await _canLaunch(uri)
+          ? DeliveryInstallation.installed
+          : DeliveryInstallation.notInstalled;
+    } catch (_) {
+      return DeliveryInstallation.unknown;
+    }
+  }
+
+  static const _statesKey = 'delivery_platform_states';
+  static const _eventsKey = 'delivery_platform_events';
+
+  Future<void> _saveStates(Map<String, DeliveryPlatformState> states) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(
+        _statesKey,
+        jsonEncode({
+          for (final e in states.entries)
+            e.key: {
+              'installation': e.value.wireInstallation,
+              'source': e.value.source,
+              'checkedAt': e.value.checkedAt?.toIso8601String(),
+            },
+        }),
+      );
+    } catch (_) {}
+  }
+
+  DeliveryPlatformState _stateFromJson(String id, Map<String, dynamic> value) =>
+      DeliveryPlatformState(
+        platformId: id,
+        installation: switch (value['installation']) {
+          'installed' => DeliveryInstallation.installed,
+          'not_installed' => DeliveryInstallation.notInstalled,
+          _ => DeliveryInstallation.unknown,
+        },
+        source: value['source'] as String? ?? 'cache',
+        checkedAt: DateTime.tryParse(value['checkedAt'] as String? ?? ''),
+      );
+
+  Future<void> _recordEvent(String name, Map<String, Object?> data) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final events = prefs.getStringList(_eventsKey) ?? const [];
+      await prefs.setStringList(_eventsKey, [
+        ...events,
+        jsonEncode({
+          'event': name,
+          'occurredAt': DateTime.now().toIso8601String(),
+          ...data,
+        }),
+      ]);
+    } catch (_) {}
+  }
 }

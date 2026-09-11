@@ -486,15 +486,46 @@ class _DeliveryPlatformSectionState extends State<_DeliveryPlatformSection> {
   };
 
   List<DeliveryPlatformSetting>? _settings;
+  String? _preferredPlatformId;
+  bool _detecting = false;
+  Map<String, DeliveryPlatformState> _platformStates = const {};
 
   @override
   void initState() {
     super.initState();
-    _store.loadSettings().then((settings) {
+    Future.wait<Object?>([
+      _store.loadSettings(),
+      _store.loadPreferredPlatformId(),
+    ]).then((values) {
       if (mounted) {
-        setState(() => _settings = settings);
+        setState(() {
+          _settings = values[0] as List<DeliveryPlatformSetting>;
+          _preferredPlatformId = values[1] as String?;
+        });
       }
     });
+  }
+
+  Future<void> _redetect() async {
+    if (_detecting) return;
+    setState(() => _detecting = true);
+    try {
+      final states = await DeliveryJumpService().detectPlatforms();
+      if (mounted) setState(() => _platformStates = states);
+    } finally {
+      if (mounted) setState(() => _detecting = false);
+    }
+  }
+
+  Future<void> _setPreferred(String? id) async {
+    setState(() => _preferredPlatformId = id);
+    try {
+      await _store.savePreferredPlatformId(id);
+    } catch (error) {
+      if (kDebugMode) {
+        debugPrint('Unable to save preferred delivery platform: $error');
+      }
+    }
   }
 
   Future<void> _update(List<DeliveryPlatformSetting> settings) async {
@@ -539,40 +570,68 @@ class _DeliveryPlatformSectionState extends State<_DeliveryPlatformSection> {
     }
     return PixelPanel(
       padding: EdgeInsets.zero,
-      child: Column(
-        children: [
-          for (var index = 0; index < settings.length; index++) ...[
-            if (index > 0) const Divider(indent: 58),
+      child: RadioGroup<String>(
+        groupValue: _preferredPlatformId,
+        onChanged: _setPreferred,
+        child: Column(
+          children: [
             ListTile(
-              leading: const Icon(Icons.moped_outlined),
-              title: Text(_labelOf[settings[index].id] ?? settings[index].id),
-              subtitle: settings[index].enabled
-                  ? const Text('推荐跳转会优先用它')
-                  : const Text('已停用，不在推荐页展示'),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    tooltip: '上移',
-                    onPressed: index == 0 ? null : () => _move(index, -1),
-                    icon: const Icon(Icons.arrow_upward_outlined),
-                  ),
-                  IconButton(
-                    tooltip: '下移',
-                    onPressed: index == settings.length - 1
-                        ? null
-                        : () => _move(index, 1),
-                    icon: const Icon(Icons.arrow_downward_outlined),
-                  ),
-                  Switch(
-                    value: settings[index].enabled,
-                    onChanged: (value) => _toggle(index, value),
-                  ),
-                ],
+              leading: const Icon(Icons.refresh),
+              title: const Text('重新检测可用平台'),
+              subtitle: Text(
+                _detecting
+                    ? '检测中，不影响页面使用'
+                    : _platformStates.isEmpty
+                    ? '首次使用时可按需检测'
+                    : '已保存本机检测结果',
+              ),
+              trailing: IconButton(
+                tooltip: '重新检测',
+                onPressed: _detecting ? null : _redetect,
+                icon: _detecting
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.sync),
               ),
             ),
+            const Divider(indent: 58),
+            for (var index = 0; index < settings.length; index++) ...[
+              if (index > 0) const Divider(indent: 58),
+              ListTile(
+                leading: const Icon(Icons.moped_outlined),
+                title: Text(_labelOf[settings[index].id] ?? settings[index].id),
+                subtitle: settings[index].enabled
+                    ? const Text('推荐跳转会优先用它')
+                    : const Text('已停用，不在推荐页展示'),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Radio<String>(value: settings[index].id),
+                    IconButton(
+                      tooltip: '上移',
+                      onPressed: index == 0 ? null : () => _move(index, -1),
+                      icon: const Icon(Icons.arrow_upward_outlined),
+                    ),
+                    IconButton(
+                      tooltip: '下移',
+                      onPressed: index == settings.length - 1
+                          ? null
+                          : () => _move(index, 1),
+                      icon: const Icon(Icons.arrow_downward_outlined),
+                    ),
+                    Switch(
+                      value: settings[index].enabled,
+                      onChanged: (value) => _toggle(index, value),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

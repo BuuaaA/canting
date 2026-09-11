@@ -45,7 +45,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
   });
 
-  testWidgets('设置页展示四个外卖平台，默认全启用、固定顺序', (tester) async {
+  testWidgets('设置页只展示三个外卖平台，默认全启用、固定顺序', (tester) async {
     final (state, helper) = await _buildState();
     addTearDown(helper.close);
 
@@ -58,18 +58,18 @@ void main() {
     await tester.pump();
     await tester.pump();
 
-    for (final label in ['美团外卖', '美团', '饿了么', '京东外卖']) {
+    for (final label in ['京东外卖', '淘宝闪购', '美团外卖']) {
       expect(find.text(label), findsOneWidget);
       final sw = tester.widget<Switch>(_switchOf(label));
       expect(sw.value, isTrue, reason: '$label 默认启用');
     }
     // 默认顺序下第一行的「上移」和最后一行的「下移」不可用。
     expect(
-      tester.widget<IconButton>(_moveButtonOf('美团外卖', '上移')).onPressed,
+      tester.widget<IconButton>(_moveButtonOf('京东外卖', '上移')).onPressed,
       isNull,
     );
     expect(
-      tester.widget<IconButton>(_moveButtonOf('京东外卖', '下移')).onPressed,
+      tester.widget<IconButton>(_moveButtonOf('美团外卖', '下移')).onPressed,
       isNull,
     );
   });
@@ -98,13 +98,12 @@ void main() {
       configStore: const DeliveryPlatformPrefsStore(),
     ).loadEnabledPlatforms();
     expect(platforms.map((platform) => platform.id).toList(), [
+      'taobao_shangou',
       'meituan_waimai',
-      'meituan',
-      'eleme',
     ]);
   });
 
-  testWidgets('上移京东外卖后落盘新顺序，跳转顺序随之变化', (tester) async {
+  testWidgets('上移美团外卖后落盘新顺序，跳转顺序随之变化', (tester) async {
     final (state, helper) = await _buildState();
     addTearDown(helper.close);
 
@@ -116,26 +115,24 @@ void main() {
     await tester.pump();
     await tester.pump();
 
-    await tester.tap(_moveButtonOf('京东外卖', '上移'));
+    await tester.tap(_moveButtonOf('美团外卖', '上移'));
     await tester.pump();
     await tester.pump();
 
     final settings = await const DeliveryPlatformPrefsStore().loadSettings();
     expect(settings.map((item) => item.id).toList(), [
-      'meituan_waimai',
-      'meituan',
       'jd_waimai',
-      'eleme',
+      'meituan_waimai',
+      'taobao_shangou',
     ]);
 
     final platforms = await DeliveryJumpService(
       configStore: const DeliveryPlatformPrefsStore(),
     ).loadEnabledPlatforms();
     expect(platforms.map((platform) => platform.id).toList(), [
-      'meituan_waimai',
-      'meituan',
       'jd_waimai',
-      'eleme',
+      'meituan_waimai',
+      'taobao_shangou',
     ]);
   });
 }
