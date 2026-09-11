@@ -14,6 +14,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> pumpUiTransition(WidgetTester tester) async {
@@ -211,56 +212,50 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('推荐详情：平台打开成功后按关键词只记录一次 accept', (tester) async {
+  testWidgets('推荐详情：页面点击平台按钮按关键词 accept 去重，失败不 accept', (tester) async {
     final feedback = <NextMealFeedback>[];
     final service = NextMealRecommendationService(
-      remote: (_) async => jsonEncode({
-        'suggestions': [
-          {
-            'dishName': '清蒸鱼配时蔬',
-            'searchKeyword': '清蒸鱼 时蔬 少油',
-            'primaryCategory': 'animal_food',
-            'estimatedServing': '一掌心（估算）',
-            'reason': '补充动物性食物并控制油盐。',
-          },
-          {
-            'dishName': '西兰花鸡胸肉饭',
-            'searchKeyword': '西兰花鸡胸肉 少油少盐',
-            'primaryCategory': 'vegetable',
-            'estimatedServing': '一小盘（估算）',
-            'reason': '补充蔬菜。',
-          },
-        ],
-        'guidance': {
-          'primary': '优先补足已知缺口。',
-          'oilSalt': '选择少油少盐做法。',
-          'reduceStaple': '主食按常规份量。',
-        },
-      }),
       feedbackSink: (event) async => feedback.add(event),
     );
     final (state, helper) = await _buildState(nextMealService: service);
     addTearDown(helper.close);
-    state.dataRevision = (await state.intakeStatistics.today()).revision;
-    final jump = DeliveryJumpService(
-      configStore: const DefaultDeliveryPlatformConfig(),
-      canLaunch: (_) async => false,
-      launch: (uri, {mode = LaunchMode.platformDefault}) async => true,
+    final suggestion = const NextMealSuggestion(
+      dishName: '清蒸鱼配时蔬',
+      searchKeyword: '清蒸鱼 时蔬 少油',
+      primaryCategory: 'animal_food',
+      estimatedServing: '一掌心（估算）',
+      reason: '补充动物性食物并控制油盐。',
     );
-    Future<NextMealResult> loader(Set<String> excluded) async {
-      final today = await state.intakeStatistics.today();
-      final rolling = await state.intakeStatistics.rolling7d();
-      return service.nextMeal(
-        NextMealRequest(
-          requestId: 'widget-${DateTime.now().microsecondsSinceEpoch}',
-          today: today,
-          rolling7d: rolling,
-          nextMealType: 'dinner',
-          excludeDishNames: excluded.toList(),
-        ),
-      );
-    }
-
+    NextMealResult result(String requestId) => NextMealResult(
+      requestId: requestId,
+      dataRevision: state.dataRevision,
+      source: 'local_rule',
+      status: 'degraded',
+      reasonCode: 'unconfigured',
+      suggestions: [suggestion],
+      guidance: const NextMealGuidance(
+        primary: '优先补足已知缺口。',
+        oilSalt: '选择少油少盐做法。',
+        reduceStaple: '主食按常规份量。',
+      ),
+    );
+    var launchSucceeds = true;
+    Uri? openedUri;
+    SharedPreferences.setMockInitialValues({
+      'delivery_platform_states': jsonEncode({
+        'meituan_waimai': {'installation': 'installed', 'source': 'test'},
+      }),
+    });
+    final jump = DeliveryJumpService(
+      configStore: const _MeituanOnlyConfig(),
+      canLaunch: (_) async => true,
+      launch: (uri, {mode = LaunchMode.platformDefault}) async {
+        openedUri = uri;
+        return launchSucceeds;
+      },
+    );
+    Future<NextMealResult> loader(Set<String> _) async =>
+        result(launchSucceeds ? 'widget-success' : 'widget-failure');
     await tester.pumpWidget(
       _wrap(
         tester,
@@ -270,36 +265,58 @@ void main() {
         recommendationLoader: loader,
       ),
     );
-    await tester.pump(const Duration(milliseconds: 500));
-    expect(find.text('去外卖平台看看'), findsWidgets);
-    await tester.tap(find.text('去外卖平台看看').first);
-    await tester.pump(const Duration(seconds: 1));
-    final today = await state.intakeStatistics.today();
-    final rolling = await state.intakeStatistics.rolling7d();
-    final displayed = await service.nextMeal(
-      NextMealRequest(
-        requestId: 'widget-accept',
-        today: today,
-        rolling7d: rolling,
-        nextMealType: 'dinner',
+    await tester.pump();
+    expect(find.text('去外卖平台看看'), findsOneWidget);
+    await tester.tap(find.text('去外卖平台看看'));
+    await tester.pump();
+    expect(openedUri?.queryParameters['query'], suggestion.searchKeyword);
+    expect(
+      feedback.where((e) => e.action == NextMealFeedbackAction.accept),
+      hasLength(1),
+    );
+    expect(feedback.single.requestId, 'widget-success');
+    await tester.tap(find.text('去外卖平台看看'));
+    await tester.pump();
+    expect(
+      feedback.where((e) => e.action == NextMealFeedbackAction.accept),
+      hasLength(1),
+    );
+
+    launchSucceeds = false;
+    await tester.pumpWidget(
+      _wrap(
+        tester,
+        state,
+        jumpService: jump,
+        initialLocation: '/recommendation',
+        recommendationLoader: loader,
       ),
     );
-    final opened = await jump.jumpToSearch(
-      DeliveryJumpService.platforms.first,
-      displayed.suggestions.first.searchKeyword,
-    );
-    if (opened.success) {
-      await service.recordFeedback(
-        result: displayed,
-        action: NextMealFeedbackAction.accept,
-        acceptanceBasis: 'platform_open_accepted',
-      );
-    }
+    await tester.pump();
+    await tester.tap(find.text('去外卖平台看看'));
+    await tester.pump();
     expect(
       feedback.where((event) => event.action == NextMealFeedbackAction.accept),
       hasLength(1),
     );
-    expect(feedback.single.dishNames, contains('清蒸鱼配时蔬'));
     expect(tester.takeException(), isNull);
   });
+}
+
+class _MeituanOnlyConfig implements DeliveryPlatformConfigStore {
+  const _MeituanOnlyConfig();
+
+  @override
+  Future<List<String>> loadOrderedPlatformIds() async => const [
+    'meituan_waimai',
+  ];
+
+  @override
+  Future<void> saveOrderedPlatformIds(List<String> ids) async {}
+
+  @override
+  Future<String?> loadPreferredPlatformId() async => null;
+
+  @override
+  Future<void> savePreferredPlatformId(String? id) async {}
 }
