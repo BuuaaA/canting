@@ -152,7 +152,10 @@ void main() {
         child: MaterialApp.router(
           routerConfig: GoRouter(
             routes: [
-              GoRoute(path: '/', builder: (_, __) => const Rolling7dPage()),
+              GoRoute(
+                path: '/',
+                builder: (context, state) => const Rolling7dPage(),
+              ),
               GoRoute(
                 path: '/rolling_7d/day',
                 builder: (_, route) => Rolling7dDayDetailPage(
