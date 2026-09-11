@@ -15,6 +15,8 @@ class DietaryGuidelines {
     this.addedSugar,
     this.weeklyBalance,
     this.oilSaltLimits,
+    this.conventionalPortionsVersion = '',
+    this.conventionalPortions = const [],
   });
 
   final String version;
@@ -49,6 +51,8 @@ class DietaryGuidelines {
 
   /// 油盐上限（油日目标份数上界；盐用 high_sodium 标签代理）。
   final OilSaltLimits? oilSaltLimits;
+  final String conventionalPortionsVersion;
+  final List<ConventionalPortion> conventionalPortions;
 
   factory DietaryGuidelines.fromJson(Map<String, dynamic> json) {
     final categoryRoot = json['food_categories'];
@@ -65,8 +69,7 @@ class DietaryGuidelines {
       );
     }
 
-    final energyRoot =
-        json['daily_intake_recommendation']?['by_energy_level'];
+    final energyRoot = json['daily_intake_recommendation']?['by_energy_level'];
     if (energyRoot is! Map) {
       throw const FormatException(
         'dietary guidelines: by_energy_level must be an object',
@@ -112,18 +115,13 @@ class DietaryGuidelines {
         (key, value) => key is String && value is Map
             ? MapEntry(
                 key,
-                FoodExchangeGroup.fromJson(
-                  key,
-                  value.cast<String, dynamic>(),
-                ),
+                FoodExchangeGroup.fromJson(key, value.cast<String, dynamic>()),
               )
             : throw FormatException('invalid food_exchange group for $key'),
       ),
       // 以下为指南重蒸馏新增区块（2026-09）：缺区块时保持空/ null，
       // 旧版 JSON 仍可解析。
-      weeklyTargetsByEnergyLevel: _parseWeeklyTargets(
-        json['weekly_targets'],
-      ),
+      weeklyTargetsByEnergyLevel: _parseWeeklyTargets(json['weekly_targets']),
       wholeGrain: json['whole_grain'] is Map
           ? WholeGrainRequirement.fromJson(
               (json['whole_grain'] as Map).cast<String, dynamic>(),
@@ -144,6 +142,17 @@ class DietaryGuidelines {
               (json['oil_salt_limits'] as Map).cast<String, dynamic>(),
             )
           : null,
+      conventionalPortionsVersion:
+          (json['conventional_portions'] as Map?)?['version'] as String? ?? '',
+      conventionalPortions: List.unmodifiable(
+        ((json['conventional_portions'] as Map?)?['records'] as List? ??
+                const [])
+            .map(
+              (value) => ConventionalPortion.fromJson(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      ),
     );
   }
 
@@ -213,6 +222,81 @@ class DietaryGuidelines {
       }
     }
     return null;
+  }
+}
+
+enum PortionReviewStatus { reviewed, unreviewed }
+
+enum NutritionAvailability { basicAvailable, basicUnknown }
+
+class ConventionalPortion {
+  ConventionalPortion.fromJson(Map<String, dynamic> json)
+    : canonicalName = json['canonical_name'] as String,
+      aliases = List.unmodifiable(List<String>.from(json['aliases'] as List)),
+      categoryId = json['category_id'] as String,
+      usualMin = (json['usual_range'][0] as num).toDouble(),
+      usualMax = (json['usual_range'][1] as num).toDouble(),
+      unit = json['unit'] as String,
+      smallFactor = (json['size_factors']['small'] as num).toDouble(),
+      regularFactor = (json['size_factors']['regular'] as num).toDouble(),
+      largeFactor = (json['size_factors']['large'] as num).toDouble(),
+      containers = Map.unmodifiable(
+        (json['containers'] as Map).map(
+          (key, value) => MapEntry(key as String, (value as num).toDouble()),
+        ),
+      ),
+      exchangeKey = json['exchange_key'] as String?,
+      nutritionStatus = NutritionAvailability.values.byName(
+        json['nutrition_status'] as String,
+      ),
+      source = json['source'] as String,
+      version = json['version'] as String,
+      reviewStatus = PortionReviewStatus.values.byName(
+        json['review_status'] as String,
+      ),
+      components = List.unmodifiable(
+        List<String>.from(json['components'] as List? ?? const []),
+      ),
+      oilGrams = _optionalRange(json['oil_grams']),
+      saltGrams = _optionalRange(json['salt_grams']) {
+    if (canonicalName.trim().isEmpty ||
+        categoryId.trim().isEmpty ||
+        source.trim().isEmpty ||
+        version.trim().isEmpty ||
+        usualMin < 0 ||
+        usualMax < usualMin ||
+        !{'g', 'ml'}.contains(unit) ||
+        [smallFactor, regularFactor, largeFactor].any((v) => v <= 0)) {
+      throw const FormatException('invalid conventional portion');
+    }
+  }
+
+  final String canonicalName;
+  final List<String> aliases;
+  final String categoryId;
+  final double usualMin;
+  final double usualMax;
+  final String unit;
+  final double smallFactor;
+  final double regularFactor;
+  final double largeFactor;
+  final Map<String, double> containers;
+  final String? exchangeKey;
+  final NutritionAvailability nutritionStatus;
+  final String source;
+  final String version;
+  final PortionReviewStatus reviewStatus;
+  final List<String> components;
+  final List<double>? oilGrams;
+  final List<double>? saltGrams;
+
+  static List<double>? _optionalRange(Object? value) {
+    if (value == null) return null;
+    final list = (value as List).map((v) => (v as num).toDouble()).toList();
+    if (list.length != 2 || list[0] < 0 || list[1] < list[0]) {
+      throw const FormatException('invalid nutrient range');
+    }
+    return List.unmodifiable(list);
   }
 }
 
@@ -333,21 +417,19 @@ class FoodExchangeGroup {
   /// 基准食物 → 交换表。基准键如 soy_25g、rice_50g_raw、milk_100ml。
   final Map<String, FoodExchangeBase> bases;
 
-  factory FoodExchangeGroup.fromJson(
-    String id,
-    Map<String, dynamic> json,
-  ) => FoodExchangeGroup(
-    id: id,
-    bases: json.map(
-      (key, value) => MapEntry(
-        key,
-        FoodExchangeBase.fromJson(
-          key,
-          (value! as Map).cast<String, dynamic>(),
+  factory FoodExchangeGroup.fromJson(String id, Map<String, dynamic> json) =>
+      FoodExchangeGroup(
+        id: id,
+        bases: json.map(
+          (key, value) => MapEntry(
+            key,
+            FoodExchangeBase.fromJson(
+              key,
+              (value! as Map).cast<String, dynamic>(),
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 }
 
 /// 以某基准食物为 1 份的交换表。
@@ -366,10 +448,7 @@ class FoodExchangeBase {
   /// 可交换食物 → 等价克重。例：cooked_rice → 150。
   final Map<String, double> exchangeGrams;
 
-  factory FoodExchangeBase.fromJson(
-    String baseKey,
-    Map<String, dynamic> json,
-  ) {
+  factory FoodExchangeBase.fromJson(String baseKey, Map<String, dynamic> json) {
     final match = RegExp(r'(\d+(?:\.\d+)?)').firstMatch(baseKey);
     if (match == null) {
       throw FormatException(
@@ -412,10 +491,7 @@ class WeeklyTargets {
   /// → 7 天目标份数。奶（dairy）、坚果（nut）与日目标口径一致地不计入。
   final Map<String, double> servings;
 
-  factory WeeklyTargets.fromJson(
-    String energyKey,
-    Map<String, dynamic> json,
-  ) {
+  factory WeeklyTargets.fromJson(String energyKey, Map<String, dynamic> json) {
     final level = int.tryParse(energyKey);
     if (level == null) {
       throw FormatException(
@@ -501,8 +577,8 @@ class WeeklyBalanceConfig {
         windowDays: (json['window_days'] as num).toInt(),
         surplusDecay: (json['surplus_decay'] as num).toDouble(),
         deficitDecay: (json['deficit_decay'] as num).toDouble(),
-        singleMealCorrectionLimit:
-            (json['single_meal_correction_limit'] as num).toDouble(),
+        singleMealCorrectionLimit: (json['single_meal_correction_limit'] as num)
+            .toDouble(),
       );
 }
 
@@ -521,10 +597,9 @@ class OilSaltLimits {
   /// 固定为 high_sodium_tag_proxy。
   final String saltTracking;
 
-  factory OilSaltLimits.fromJson(Map<String, dynamic> json) =>
-      OilSaltLimits(
-        oilDailyServingsMax: (json['oil_daily_servings_max'] as num).toDouble(),
-        saltDailyGramsMax: (json['salt_daily_grams_max'] as num).toDouble(),
-        saltTracking: json['salt_tracking'] as String? ?? '',
-      );
+  factory OilSaltLimits.fromJson(Map<String, dynamic> json) => OilSaltLimits(
+    oilDailyServingsMax: (json['oil_daily_servings_max'] as num).toDouble(),
+    saltDailyGramsMax: (json['salt_daily_grams_max'] as num).toDouble(),
+    saltTracking: json['salt_tracking'] as String? ?? '',
+  );
 }

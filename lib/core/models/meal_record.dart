@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'local_food.dart';
 import 'portions.dart';
 
@@ -140,7 +142,31 @@ class MealRecord {
     this.completionRate = 0,
     this.sodiumLevel = 'mid',
     this.petEffect,
-  }) : portionsTotal = portionsTotal ?? _sumDishes(dishes);
+    Map<String, dynamic>? recognitionSnapshot,
+  }) : _recognitionJson = recognitionSnapshot == null
+           ? null
+           : jsonEncode(recognitionSnapshot),
+       portionsTotal = portionsTotal ?? _sumDishes(dishes);
+
+  final String? _recognitionJson;
+  Map<String, dynamic>? get recognitionSnapshot => _recognitionJson == null
+      ? null
+      : (jsonDecode(_recognitionJson) as Map).cast<String, dynamic>();
+  int get recordVersion => _recognitionJson == null ? 1 : 2;
+  String get nutritionMode =>
+      recordVersion == 1 ? 'legacy_aggregate' : 'versioned_graph';
+  bool get simulated => recognitionSnapshot?['simulated'] == true;
+  List<String> get displayProductNames {
+    final products = recognitionSnapshot?['draft']?['products'];
+    if (products is! List) return dishes.map((dish) => dish.name).toList();
+    return products
+        .whereType<Map>()
+        .where((product) => product['selected'] == true)
+        .map((product) => product['displayName']?['value'] as String? ?? '未知商品')
+        .toList(growable: false);
+  }
+
+  int get productCount => displayProductNames.length;
 
   final String mealId;
   final String mealType;
@@ -164,14 +190,26 @@ class MealRecord {
     completionRate: completionRate,
     sodiumLevel: sodiumLevel,
     petEffect: effect,
+    recognitionSnapshot: recognitionSnapshot,
   );
 
   factory MealRecord.fromJson(Map<String, dynamic> json) {
+    final version = json['record_version'] ?? 1;
+    final snapshot = json['recognition_v2'];
+    if (![1, 2].contains(version) ||
+        (version == 2 &&
+            (snapshot is! Map || snapshot['schemaVersion'] != 'meal-v2.2')) ||
+        (version == 1 && snapshot != null)) {
+      throw const FormatException('Unsupported meal snapshot version');
+    }
     final dishes = (json['dishes'] as List? ?? const [])
         .map((item) => MealDish.fromJson((item as Map).cast<String, dynamic>()))
         .toList(growable: false);
 
     return MealRecord(
+      recognitionSnapshot: snapshot == null
+          ? null
+          : Map<String, dynamic>.from(snapshot as Map),
       mealId: json['meal_id'] as String,
       mealType: json['meal_type'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
@@ -193,6 +231,10 @@ class MealRecord {
   }
 
   Map<String, dynamic> toJson() => {
+    'record_version': recordVersion,
+    'nutrition_mode': nutritionMode,
+    if (recordVersion == 1) 'components': const [],
+    if (recognitionSnapshot != null) 'recognition_v2': recognitionSnapshot,
     'meal_id': mealId,
     'meal_type': mealType,
     'timestamp': timestamp.toIso8601String(),

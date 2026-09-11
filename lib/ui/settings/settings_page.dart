@@ -129,6 +129,18 @@ class SettingsPage extends StatelessWidget {
               const SizedBox(height: 9),
               const _DeliveryPlatformSection(),
               const SizedBox(height: 26),
+              const _SectionTitle('识别能力'),
+              const SizedBox(height: 9),
+              PixelPanel(
+                padding: EdgeInsets.zero,
+                child: _SettingsTile(
+                  icon: Icons.image_search,
+                  title: '图片识别设置',
+                  value: kDebugMode ? '开发模拟可用' : '真实识别未接入',
+                  onTap: () => context.push('/settings/recognition'),
+                ),
+              ),
+              const SizedBox(height: 26),
               const _SectionTitle('快捷记录'),
               const SizedBox(height: 9),
               PixelPanel(

@@ -264,11 +264,17 @@ void main() {
     await save(confirmed(), 'old');
     final before = await db.database.query('meal_records');
     await db.database.execute('DROP TABLE user_food_profiles');
+    // Recreate the historical table shape, not only PRAGMA user_version.
+    await db.database.execute('DROP INDEX idx_meal_draft');
+    await db.database.execute('ALTER TABLE meal_records DROP COLUMN draft_id');
+    await db.database.execute(
+      'ALTER TABLE meal_records DROP COLUMN record_version',
+    );
     await db.database.setVersion(3);
     state.dispose();
     await db.close();
     await open();
-    expect(await db.database.getVersion(), 4);
+    expect(await db.database.getVersion(), DatabaseHelper.databaseVersion);
     expect(await db.database.query('meal_records'), before);
     expect(await LocalFoodRepository(() => db.database).all(), isEmpty);
   });

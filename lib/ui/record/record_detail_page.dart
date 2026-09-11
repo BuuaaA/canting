@@ -528,7 +528,7 @@ class _RecordDetailPageState extends State<RecordDetailPage> {
                                         recognitionDraft?.warning ??
                                         (_dishes.isEmpty
                                             ? '没有识别出菜品，请手动添加'
-                                            : '找到 ${_dishes.length} 道菜，请核对菜名和分量'),
+                                            : '找到 ${_dishes.length} 项商品，请核对名称和分量'),
                             ),
                           ],
                         ),

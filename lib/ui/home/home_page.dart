@@ -8,11 +8,9 @@ import 'package:canting/ui/home/widgets/pet_area.dart';
 import 'package:canting/ui/home/widgets/recommendation_card.dart';
 import 'package:canting/ui/home/widgets/summary_card.dart';
 import 'package:canting/ui/home/widgets/today_records.dart';
-import 'package:canting/ui/ocr/in_app_ocr_launcher.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -161,14 +159,11 @@ class HomePage extends StatelessWidget {
                     icon: Icons.photo_camera_outlined,
                     size: 42,
                   ),
-                  title: const Text('拍照识别'),
-                  subtitle: const Text('拍下这餐，自动记菜品'),
+                  title: const Text('拍照记餐'),
+                  subtitle: const Text('拍摄实物，先预览再确认'),
                   onTap: () {
                     Navigator.pop(sheetContext);
-                    InAppOcrLauncher.pickAndRecognize(
-                      context,
-                      ImageSource.camera,
-                    );
+                    context.push('/recognition?kind=food_photo');
                   },
                 ),
                 ListTile(
@@ -176,14 +171,11 @@ class HomePage extends StatelessWidget {
                     icon: Icons.photo_outlined,
                     size: 42,
                   ),
-                  title: const Text('相册选择'),
-                  subtitle: const Text('外卖订单截图自动记账'),
+                  title: const Text('识别订单截图'),
+                  subtitle: const Text('相册可选截图，也可改为实拍'),
                   onTap: () {
                     Navigator.pop(sheetContext);
-                    InAppOcrLauncher.pickAndRecognize(
-                      context,
-                      ImageSource.gallery,
-                    );
+                    context.push('/recognition?kind=screenshot');
                   },
                 ),
                 ListTile(

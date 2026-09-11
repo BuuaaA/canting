@@ -180,7 +180,7 @@ class DayDetail extends StatelessWidget {
                         onTap: () => onMealTap(meal),
                         leading: const Icon(Icons.restaurant_outlined),
                         title: Text(
-                          meal.dishes.map((dish) => dish.name).join('、'),
+                          meal.displayProductNames.join('、'),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

@@ -115,7 +115,7 @@ class _MealRow extends StatelessWidget {
           color: scheme.primaryContainer,
         ),
         title: Text(
-          meal.dishes.map((dish) => dish.name).join('、'),
+          meal.displayProductNames.join('、'),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

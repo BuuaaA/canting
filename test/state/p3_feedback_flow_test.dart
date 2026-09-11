@@ -314,6 +314,12 @@ void main() {
   test('v4 existing rows and receipts unchanged on load; risk snapshots survive serialization', () async {
     await state.saveMeal(riskMeal('snapshot', now));
     final raw = (await db.database.query('meal_records')).single['record_json'];
+    // Recreate the historical table shape, not only PRAGMA user_version.
+    await db.database.execute('DROP INDEX idx_meal_draft');
+    await db.database.execute('ALTER TABLE meal_records DROP COLUMN draft_id');
+    await db.database.execute(
+      'ALTER TABLE meal_records DROP COLUMN record_version',
+    );
     await db.database.setVersion(4);
     state.dispose();
     await db.close();

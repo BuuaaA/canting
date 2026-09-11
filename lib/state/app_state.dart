@@ -1,3 +1,4 @@
+import 'package:canting/core/models/meal_draft_v2.dart';
 import 'package:canting/core/exposure.dart';
 import 'package:canting/data/exposure_repository.dart';
 import 'package:canting/core/record_window.dart';
@@ -162,7 +163,8 @@ class AppState extends ChangeNotifier {
     final db = _databaseHelper.database;
     return db.transaction(
       (txn) async => const JsonEncoder.withIndent('  ').convert({
-        'schema_version': 2,
+        'schema_version': 3,
+        'database_version': DatabaseHelper.databaseVersion,
         'p3_exposure_state': await txn.query(
           'app_meta',
           where: 'key LIKE ?',
@@ -1119,6 +1121,33 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// N1 real local persistence entry; N3 UI calls this only after explicit save.
+  /// draftId is also the record ID, so retries (including after restart) cannot
+  /// create a second meal. History editing uses the separate saveMeal API.
+  Future<ExposurePrompt?> saveRecognitionMeal(
+    MealDraftV2 draft, {
+    required String mealType,
+    required DateTime timestamp,
+  }) async {
+    if (draft.simulated && kReleaseMode) {
+      throw StateError('Simulated meals are development-only');
+    }
+    final meal = draft.toMeal(
+      mealType: mealType,
+      timestamp: timestamp,
+      estimator: _servingEstimator,
+      dailyIntake: dailyIntake,
+      policyVersion: guidelines?.version,
+      knowledgeVersion: guidelines == null
+          ? null
+          : 'guidelines-${guidelines!.version}:food_exchange',
+    );
+    return saveMeal(
+      meal,
+      source: draft.simulated ? 'simulated' : 'recognition_v2',
+    );
+  }
+
   final Map<String, Future<ExposurePrompt?>> _savingMeals = {};
   Future<ExposurePrompt?> saveMeal(
     MealRecord meal, {
@@ -1149,6 +1178,14 @@ class AppState extends ChangeNotifier {
     final dayMeals = [...(_mealsByDay[key] ?? const <MealRecord>[])];
     final index = dayMeals.indexWhere((item) => item.mealId == meal.mealId);
     final existing = await _mealRepo.getMealById(meal.mealId);
+    if (existing != null &&
+        source != null &&
+        ['simulated', 'recognition_v2'].contains(source)) {
+      return null;
+    }
+    if (existing?.recordVersion == 2 && meal.recordVersion != 2) {
+      throw StateError('V2 history requires a version-aware edit');
+    }
     final isNew = existing == null;
     // Caller-supplied snapshots cannot manufacture or replace reward receipts.
     var effect = existing?.petEffect;
@@ -1253,6 +1290,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> deleteMeal(String id) async {
+    await _databaseHelper.clearMigrationBackup();
     // Authoritative read and all writes share a transaction. A second delete is a no-op.
     final updatedPet = await _databaseHelper.database.transaction((txn) async {
       final meals = MealRepository(database: () => txn);
@@ -1306,6 +1344,7 @@ class AppState extends ChangeNotifier {
   });
 
   Future<void> clearData() async {
+    await _databaseHelper.clearMigrationBackup();
     await _mealRepo.deleteAllMeals();
     _mealsByDay.clear();
     await refreshBalanceLedger();
@@ -1329,6 +1368,7 @@ class AppState extends ChangeNotifier {
   /// 清除全部数据（模块 10 数据管理）：餐食记录、宠物、个人档案、
   /// 自定义菜品全部删除，回到 onboarding 首页重新设置。
   Future<void> clearAllData() async {
+    await _databaseHelper.clearMigrationBackup();
     await _databaseHelper.database.transaction((txn) async {
       await txn.delete(
         'app_meta',

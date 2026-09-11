@@ -113,6 +113,8 @@ class MealRepository {
         ? jsonEncode(meal.toJson())
         : jsonEncode({...meal.toJson(), 'source': source});
     return {
+      'record_version': meal.recordVersion,
+      'draft_id': meal.recognitionSnapshot?['draft']['draftId'],
       'id': meal.mealId,
       'meal_time': meal.timestamp.millisecondsSinceEpoch,
       'meal_type': meal.mealType,

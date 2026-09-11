@@ -55,4 +55,7 @@ app.*.map.json
 /ui*.xml
 
 # PDF analysis scratch (large binaries)
-/tools/
+/tools/*
+
+# Keep the offline M0 benchmark reviewable.
+!/tools/recognition_benchmark/

@@ -5,6 +5,8 @@ import 'package:canting/ui/manual_add/manual_add_page.dart';
 import 'package:canting/ui/onboarding/onboarding_page.dart';
 import 'package:canting/ui/recommendation/recommendation_detail_page.dart';
 import 'package:canting/ui/record/record_detail_page.dart';
+import 'package:canting/ui/recognition/recognition_page.dart';
+import 'package:canting/ui/settings/recognition_settings_page.dart';
 import 'package:canting/ui/settings/pet_settings.dart';
 import 'package:canting/ui/settings/settings_page.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
@@ -60,17 +62,41 @@ abstract final class AppRouter {
       ),
       GoRoute(
         path: '/record_detail',
-        builder: (context, state) => RecordDetailPage(
-          mealId: state.uri.queryParameters['mealId'],
-          initialDate: DateTime.tryParse(
-            state.uri.queryParameters['date'] ?? '',
-          ),
-          isSharedRecognition: state.uri.queryParameters['source'] == 'share',
-        ),
+        builder: (context, state) {
+          final mealId = state.uri.queryParameters['mealId'];
+          final meal = mealId == null ? null : appState.mealById(mealId);
+          if (meal?.recordVersion == 2) {
+            return RecognitionPage(
+              initialSourceKind:
+                  meal!.recognitionSnapshot?['draft']?['sourceKind']
+                      as String? ??
+                  'screenshot',
+              mealId: mealId,
+            );
+          }
+          return RecordDetailPage(
+            mealId: mealId,
+            initialDate: DateTime.tryParse(
+              state.uri.queryParameters['date'] ?? '',
+            ),
+            isSharedRecognition: state.uri.queryParameters['source'] == 'share',
+          );
+        },
       ),
       GoRoute(
         path: '/manual_add',
         builder: (context, state) => const ManualAddPage(),
+      ),
+      GoRoute(
+        path: '/recognition',
+        builder: (context, state) => RecognitionPage(
+          initialSourceKind: state.uri.queryParameters['kind'] ?? 'screenshot',
+          mealId: state.uri.queryParameters['mealId'],
+        ),
+      ),
+      GoRoute(
+        path: '/settings/recognition',
+        builder: (context, state) => const RecognitionSettingsPage(),
       ),
       GoRoute(
         path: '/recommendation',

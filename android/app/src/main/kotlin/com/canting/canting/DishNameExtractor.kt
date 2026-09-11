@@ -21,6 +21,10 @@ object DishNameExtractor {
     private val surroundingSymbols = Regex("""^[\s·•●▪■□✓✔★☆_\-—:：]+|[\s·•●▪■□✓✔★☆_\-—:：]+$""")
     private val whitespacePattern = Regex("""\s+""")
     private val meaningfulTextPattern = Regex("""[\p{L}]""")
+    private val marketingPrefix = Regex("""^(?:【(?:超值|优惠|招牌|推荐|热销|新品|限时特价)】)+""")
+    private val uiPattern = Regex("""^(?:预估价|预计到手|月售|已售|近期\d+人|商品描述|商品详情|搭配[推淮]荐|加入购物车|加入购物袋|立即支付|另需配送|返红包|选择时间|预[约約]配送|商家自配送|立即送出|图片仅供|片仅供|共\d+件|(?:自)?\d+人份|优.{0,2}后[¥￥]|已优|超.{0,2}换购|限时.*换购|超级吃货卡)""")
+    private val uiOnlyPattern = Regex("""^(?:[|丨]?闪购|全部[>〉]?|现炒|新鲜现炒|\d+(?:\.\d+)?[gG]|[kKmM][bB]/[sS]|[yY¥￥][\d\s.,、yY¥￥]+[a-zA-Z]?|\d+\s*[件份个])$""")
+    private val promotionPattern = Regex("""^\d+.*(?:减|減|折|红包|加购)|^.*起送$""")
 
     private val excludedTerms = listOf(
         "合计",
@@ -63,7 +67,7 @@ object DishNameExtractor {
             .filter(String::isNotEmpty)
         val merchant = normalizedLines
             .firstOrNull { line ->
-                merchantTerms.any(line::contains) &&
+                isMerchantLine(line) &&
                     excludedTerms.none(line::contains) &&
                     !phonePattern.containsMatchIn(line)
             }
@@ -97,7 +101,7 @@ object DishNameExtractor {
             val name = if (invalid) line.replace(pricePattern, "").replace(whitespacePattern, "") else cleaned
             if (isLikelyDishName(name)) {
                 // Text alone cannot establish ownership for add-ons or combo children.
-                val ambiguous = line.contains("套餐") || line.startsWith("加料") || line.startsWith("+") || specOnly.matches(cleaned)
+                val ambiguous = line.contains("套餐") || line.contains("+") || line.contains("＋") || line.startsWith("加料") || specOnly.matches(cleaned)
                 if (ambiguous) warnings.add("套餐或加料归属不确定，请核对并删除重复项")
                 units.add(ExtractedDish(name, if (invalid) 1 else parsed ?: 1, invalid || ambiguous))
                 parentIndex = units.lastIndex
@@ -119,7 +123,12 @@ object DishNameExtractor {
         }, warnings.toList())
     }
 
-    private fun shouldExclude(line: String): Boolean {
+    internal fun isMerchantLine(line: String): Boolean = merchantTerms.any(line::contains) ||
+        Regex("""[（(][^（）()]*店[）)]$""").containsMatchIn(line.trim())
+
+    internal fun shouldExclude(line: String): Boolean {
+        val compact = line.replace(whitespacePattern, "")
+        if (uiPattern.containsMatchIn(compact) || uiOnlyPattern.matches(compact) || promotionPattern.containsMatchIn(compact)) return true
         if (excludedTerms.any(line::contains)) return true
         if (purePricePattern.matches(line)) return true
         if (phonePattern.containsMatchIn(line)) return true
@@ -129,6 +138,7 @@ object DishNameExtractor {
 
     private fun cleanDishName(line: String): String {
         return line
+            .replace(marketingPrefix, "")
             .replace(quantityPattern, "")
             .replace(pricePattern, "")
             .replace(surroundingSymbols, "")
@@ -147,7 +157,7 @@ object DishNameExtractor {
     private fun isLikelyDishName(name: String): Boolean {
         if (name.length !in 2..30) return false
         if (!meaningfulTextPattern.containsMatchIn(name)) return false
-        if (merchantTerms.any(name::contains)) return false
+        if (isMerchantLine(name)) return false
         if (excludedTerms.any(name::contains)) return false
         return true
     }

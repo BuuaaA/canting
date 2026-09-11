@@ -1,0 +1,505 @@
+{
+  "request": {
+    "schemaVersion": "recognition-n0.2",
+    "draftId": "00000000-0000-4000-8000-000000000001",
+    "requestId": "00000000-0000-4000-8000-000000000002",
+    "draftRevision": 0,
+    "sourceKind": "screenshot",
+    "assets": [
+      {
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "capturePhase": "unknown"
+      }
+    ],
+    "cloudConsent": false,
+    "consentVersion": "mock-only-n0.1",
+    "parameterHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "requestTicket": null
+  },
+  "provider": {
+    "mode": "unconfigured",
+    "endpoint": null,
+    "model": null,
+    "credentialRef": null,
+    "delivery": "undecided",
+    "region": null,
+    "thinking": false,
+    "inputTokenLimit": 6000,
+    "outputTokenLimit": 1200
+  },
+  "screenshot": {
+    "schemaVersion": "meal-v2.1",
+    "draftId": "00000000-0000-4000-8000-000000000001",
+    "requestId": "00000000-0000-4000-8000-000000000002",
+    "draftRevision": 0,
+    "sourceKind": "screenshot",
+    "assets": [
+      {
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "capturePhase": "unknown"
+      }
+    ],
+    "evidence": [
+      {
+        "evidenceId": "e-title",
+        "type": "text_observed",
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "bbox": [
+          0.1,
+          0.1,
+          0.9,
+          0.2
+        ],
+        "textSpan": "盖浇饭套餐"
+      }
+    ],
+    "products": [
+      {
+        "productId": "p-meal",
+        "selected": false,
+        "displayName": {
+          "value": "盖浇饭套餐",
+          "provenance": "text_observed",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": [
+            "e-title"
+          ]
+        },
+        "rawName": {
+          "value": "盖浇饭套餐",
+          "provenance": "text_observed",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": [
+            "e-title"
+          ]
+        },
+        "purchaseQuantity": {
+          "value": null,
+          "provenance": "unknown",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": []
+        },
+        "purchaseState": "not_evidenced",
+        "nutritionMode": "unknown",
+        "components": [
+          {
+            "componentId": "c-rice",
+            "selected": false,
+            "name": {
+              "value": "米饭",
+              "provenance": "name_inference",
+              "reviewStatus": "unreviewed",
+              "evidenceRefs": [
+                "e-title"
+              ]
+            },
+            "categoryId": {
+              "value": null,
+              "provenance": "unknown",
+              "reviewStatus": "unreviewed",
+              "evidenceRefs": []
+            },
+            "calculation": {
+              "active": false,
+              "portionBasis": "unknown",
+              "portion": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "allocationRatio": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "consumedRatio": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "estimateRange": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "notEaten": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              }
+            },
+            "completeness": "unknown",
+            "confidence": {
+              "raw": null,
+              "calibrated": null,
+              "grade": "candidate"
+            }
+          }
+        ],
+        "calculation": {
+          "active": false,
+          "portionBasis": "unknown",
+          "portion": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "allocationRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "consumedRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "estimateRange": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "notEaten": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          }
+        },
+        "completeness": "unknown",
+        "confidence": {
+          "raw": null,
+          "calibrated": null,
+          "grade": "candidate"
+        },
+        "specifications": []
+      }
+    ],
+    "modelVersion": "mock-n0.1",
+    "promptVersion": "recognition-prompt-n0.1"
+  },
+  "food_photo": {
+    "schemaVersion": "meal-v2.1",
+    "draftId": "00000000-0000-4000-8000-000000000001",
+    "requestId": "00000000-0000-4000-8000-000000000002",
+    "draftRevision": 0,
+    "sourceKind": "food_photo",
+    "assets": [
+      {
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "capturePhase": "unknown"
+      }
+    ],
+    "evidence": [
+      {
+        "evidenceId": "e-title",
+        "type": "photo_observed",
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "bbox": [
+          0.1,
+          0.1,
+          0.9,
+          0.2
+        ],
+        "textSpan": null
+      }
+    ],
+    "products": [
+      {
+        "productId": "p-meal",
+        "selected": false,
+        "displayName": {
+          "value": "米饭",
+          "provenance": "photo_observed",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": [
+            "e-title"
+          ]
+        },
+        "rawName": {
+          "value": null,
+          "provenance": "unknown",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": []
+        },
+        "purchaseQuantity": {
+          "value": null,
+          "provenance": "unknown",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": []
+        },
+        "purchaseState": "unknown",
+        "nutritionMode": "unknown",
+        "components": [],
+        "calculation": {
+          "active": false,
+          "portionBasis": "unknown",
+          "portion": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "allocationRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "consumedRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "estimateRange": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "notEaten": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          }
+        },
+        "completeness": "unknown",
+        "confidence": {
+          "raw": null,
+          "calibrated": null,
+          "grade": "candidate"
+        },
+        "specifications": []
+      }
+    ],
+    "modelVersion": "mock-n0.1",
+    "promptVersion": "recognition-prompt-n0.1"
+  },
+  "personal_half_bowl": {
+    "schemaVersion": "meal-v2.1",
+    "draftId": "00000000-0000-4000-8000-000000000001",
+    "requestId": "00000000-0000-4000-8000-000000000002",
+    "draftRevision": 0,
+    "sourceKind": "screenshot",
+    "assets": [
+      {
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "capturePhase": "unknown"
+      }
+    ],
+    "evidence": [
+      {
+        "evidenceId": "e-title",
+        "type": "text_observed",
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "bbox": [
+          0.1,
+          0.1,
+          0.9,
+          0.2
+        ],
+        "textSpan": "盖浇饭套餐"
+      }
+    ],
+    "products": [
+      {
+        "productId": "p-meal",
+        "selected": true,
+        "displayName": {
+          "value": "盖浇饭套餐",
+          "provenance": "text_observed",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": [
+            "e-title"
+          ]
+        },
+        "rawName": {
+          "value": "盖浇饭套餐",
+          "provenance": "text_observed",
+          "reviewStatus": "unreviewed",
+          "evidenceRefs": [
+            "e-title"
+          ]
+        },
+        "purchaseQuantity": {
+          "value": 2,
+          "provenance": "user_input",
+          "reviewStatus": "accepted",
+          "evidenceRefs": []
+        },
+        "purchaseState": "not_evidenced",
+        "nutritionMode": "children",
+        "components": [
+          {
+            "componentId": "c-rice",
+            "selected": true,
+            "name": {
+              "value": "米饭",
+              "provenance": "name_inference",
+              "reviewStatus": "accepted",
+              "evidenceRefs": [
+                "e-title"
+              ]
+            },
+            "categoryId": {
+              "value": null,
+              "provenance": "unknown",
+              "reviewStatus": "unreviewed",
+              "evidenceRefs": []
+            },
+            "calculation": {
+              "active": true,
+              "portionBasis": "personal_consumed",
+              "portion": {
+                "value": {
+                  "value": 0.5,
+                  "unit": "bowl",
+                  "band": "unknown"
+                },
+                "provenance": "user_input",
+                "reviewStatus": "accepted",
+                "evidenceRefs": []
+              },
+              "allocationRatio": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "consumedRatio": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "estimateRange": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              },
+              "notEaten": {
+                "value": null,
+                "provenance": "unknown",
+                "reviewStatus": "unreviewed",
+                "evidenceRefs": []
+              }
+            },
+            "completeness": "unknown",
+            "confidence": {
+              "raw": null,
+              "calibrated": null,
+              "grade": "candidate"
+            }
+          }
+        ],
+        "calculation": {
+          "active": false,
+          "portionBasis": "unknown",
+          "portion": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "allocationRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "consumedRatio": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "estimateRange": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          },
+          "notEaten": {
+            "value": null,
+            "provenance": "unknown",
+            "reviewStatus": "unreviewed",
+            "evidenceRefs": []
+          }
+        },
+        "completeness": "partial",
+        "confidence": {
+          "raw": null,
+          "calibrated": null,
+          "grade": "candidate"
+        },
+        "specifications": []
+      }
+    ],
+    "modelVersion": "mock-n0.1",
+    "promptVersion": "recognition-prompt-n0.1"
+  },
+  "empty_food": {
+    "schemaVersion": "meal-v2.1",
+    "draftId": "00000000-0000-4000-8000-000000000001",
+    "requestId": "00000000-0000-4000-8000-000000000002",
+    "draftRevision": 0,
+    "sourceKind": "food_photo",
+    "assets": [
+      {
+        "assetId": "00000000-0000-4000-8000-000000000003",
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "capturePhase": "unknown"
+      }
+    ],
+    "evidence": [],
+    "products": [],
+    "modelVersion": "mock-n0.1",
+    "promptVersion": "recognition-prompt-n0.1"
+  }
+}

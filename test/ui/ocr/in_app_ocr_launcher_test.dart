@@ -244,7 +244,7 @@ void main() {
     });
   });
 
-  testWidgets('FAB 弹层展示三项：拍照识别 / 相册选择 / 手动添加', (tester) async {
+  testWidgets('FAB 弹层展示截图 / 实拍 / 手动添加', (tester) async {
     final (state, helper) = await _buildState();
     addTearDown(helper.close);
     _installPlatformFakes(tempDirPath: _tempCacheDir().path, pickedPath: null);
@@ -256,8 +256,8 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
 
-    expect(find.text('拍照识别'), findsOneWidget);
-    expect(find.text('相册选择'), findsOneWidget);
+    expect(find.text('拍照记餐'), findsOneWidget);
+    expect(find.text('识别订单截图'), findsOneWidget);
     expect(find.text('手动添加'), findsOneWidget);
     expect(find.text('截图识别'), findsNothing);
   });
@@ -274,11 +274,8 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump(const Duration(milliseconds: 300));
 
-    await tester.tap(find.byTooltip('记一餐'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('拍照识别'));
-    await tester.pump();
+    final context = tester.element(find.byTooltip('记一餐'));
+    unawaited(InAppOcrLauncher.pickAndRecognize(context, ImageSource.camera));
     // File copying now uses real asynchronous IO outside the fake clock.
     for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
       await tester.runAsync(
@@ -318,11 +315,8 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump(const Duration(milliseconds: 300));
 
-    await tester.tap(find.byTooltip('记一餐'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('相册选择'));
-    await tester.pump();
+    final context = tester.element(find.byTooltip('记一餐'));
+    unawaited(InAppOcrLauncher.pickAndRecognize(context, ImageSource.gallery));
     // File copying now uses real asynchronous IO outside the fake clock.
     for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
       await tester.runAsync(
@@ -392,11 +386,8 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump(const Duration(milliseconds: 300));
 
-    await tester.tap(find.byTooltip('记一餐'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('相册选择'));
-    await tester.pump();
+    final context = tester.element(find.byTooltip('记一餐'));
+    unawaited(InAppOcrLauncher.pickAndRecognize(context, ImageSource.gallery));
     // File copying now uses real asynchronous IO outside the fake clock.
     for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
       await tester.runAsync(
@@ -424,10 +415,8 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump(const Duration(milliseconds: 300));
 
-    await tester.tap(find.byTooltip('记一餐'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('拍照识别'));
+    final context = tester.element(find.byTooltip('记一餐'));
+    unawaited(InAppOcrLauncher.pickAndRecognize(context, ImageSource.camera));
     await tester.pump();
     // File copying now uses real asynchronous IO outside the fake clock.
     for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
@@ -477,11 +466,8 @@ void main() {
     await tester.pumpWidget(CantingApp(appState: state));
     await tester.pump(const Duration(milliseconds: 300));
 
-    await tester.tap(find.byTooltip('记一餐'));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('相册选择'));
-    await tester.pump();
+    final context = tester.element(find.byTooltip('记一餐'));
+    unawaited(InAppOcrLauncher.pickAndRecognize(context, ImageSource.gallery));
     // File copying now uses real asynchronous IO outside the fake clock.
     for (var i = 0; i < 80 && state.recognitionDraft == null; i++) {
       await tester.runAsync(

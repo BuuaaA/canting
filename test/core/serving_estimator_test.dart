@@ -17,10 +17,8 @@ void main() {
     );
     final guidelines = DietaryGuidelines.fromJson(
       (jsonDecode(
-            File('assets/data/dietary_guidelines.json').readAsStringSync(),
-          )
-          as Map)
-          .cast<String, dynamic>(),
+        File('assets/data/dietary_guidelines.json').readAsStringSync(),
+      ) as Map).cast<String, dynamic>(),
     );
     estimator = ServingEstimator(DishMatcher(database), guidelines);
   });
@@ -81,14 +79,8 @@ void main() {
     });
 
     test('rejects non-positive weights', () {
-      expect(
-        () => estimator.estimateServings('米饭', 0),
-        throwsArgumentError,
-      );
-      expect(
-        () => estimator.estimateServings('米饭', -50),
-        throwsArgumentError,
-      );
+      expect(() => estimator.estimateServings('米饭', 0), throwsArgumentError);
+      expect(() => estimator.estimateServings('米饭', -50), throwsArgumentError);
     });
   });
 
@@ -99,10 +91,7 @@ void main() {
     });
 
     test('reverses whole-dish estimation', () {
-      expect(
-        estimator.estimateGrams('黄焖鸡米饭', 2)!,
-        closeTo(424.08, 0.0001),
-      );
+      expect(estimator.estimateGrams('黄焖鸡米饭', 2)!, closeTo(424.08, 0.0001));
     });
 
     test('returns null when nothing matches', () {
@@ -130,6 +119,106 @@ void main() {
         final back = estimator.estimateGrams(name, estimate.servings)!;
         expect(back, closeTo(grams, 0.0001), reason: '$name 往返换算不一致');
       }
+    });
+  });
+
+  group('W5 conventional portion knowledge', () {
+    test('150g rice and half reviewed bowl produce review candidates', () {
+      final grams = estimator.convertIntake(
+        '米饭',
+        amount: 150,
+        unit: PortionMeasureUnit.g,
+      )!;
+      expect(grams.effectiveAmount!.min, 150);
+      expect(grams.servings!.min, 1);
+
+      final halfBowl = estimator.convertIntake(
+        '熟米饭',
+        amount: .5,
+        unit: PortionMeasureUnit.bowl,
+      )!;
+      expect(halfBowl.effectiveAmount!.min, 75);
+      expect(halfBowl.effectiveAmount!.max, 75);
+      expect(halfBowl.servings!.min, .5);
+      expect(halfBowl.mapping, 'container:bowl');
+    });
+
+    test(
+      'known 473ml beverage remains ml and unknown container stays unknown',
+      () {
+        final drink = estimator.convertIntake(
+          '可乐',
+          amount: 473,
+          unit: PortionMeasureUnit.ml,
+        )!;
+        expect(drink.effectiveAmount!.min, 473);
+        expect(drink.effectiveUnit, PortionMeasureUnit.ml);
+        expect(drink.servings, isNull);
+
+        expect(
+          estimator.convertIntake(
+            '鸡胸肉',
+            amount: 1,
+            unit: PortionMeasureUnit.bowl,
+          ),
+          isNull,
+        );
+      },
+    );
+
+    test('size, allocation, consumption and not-eaten remain separate', () {
+      final result = estimator.convertIntake(
+        '馒头',
+        amount: 1,
+        unit: PortionMeasureUnit.serving,
+        size: PortionSize.large,
+        allocationRatio: .5,
+        consumedRatio: .75,
+      )!;
+      expect(result.suppliedAmount.min, 97.5);
+      expect(result.effectiveAmount!.min, closeTo(36.5625, .0001));
+
+      final none = estimator.convertIntake(
+        '馒头',
+        amount: 1,
+        unit: PortionMeasureUnit.serving,
+        notEaten: true,
+      )!;
+      expect(none.effectiveAmount!.min, 0);
+      expect(none.notEaten, isTrue);
+
+      expect(ConsumptionChoice.values.map((choice) => choice.ratio), [
+        1,
+        .75,
+        .5,
+        .25,
+        0,
+        null,
+      ]);
+      final uncertain = estimator.convertIntake(
+        '馒头',
+        amount: 1,
+        unit: PortionMeasureUnit.serving,
+        consumedRatio: ConsumptionChoice.uncertain.ratio,
+      )!;
+      expect(uncertain.effectiveAmount, isNull);
+      expect(uncertain.servings, isNull);
+    });
+
+    test('oil and salt stay unknown without recipe evidence', () {
+      final meal = estimator.knowledgeFor('盖浇饭')!;
+      expect(meal.oilGrams, isNull);
+      expect(meal.saltGrams, isNull);
+      expect(meal.components, isNotEmpty);
+      expect(meal.nutritionStatus, NutritionAvailability.basicUnknown);
+    });
+
+    test('knowledge version and reviewed facts are frozen', () {
+      final rice = estimator.knowledgeFor('米饭')!;
+      expect(estimator.knowledgeVersion, 'conventional-portions-2026.09-v1');
+      expect(rice.reviewStatus, PortionReviewStatus.reviewed);
+      expect(() => rice.aliases.add('篡改'), throwsUnsupportedError);
+      expect(() => estimator.knowledge.add(rice), throwsUnsupportedError);
     });
   });
 }

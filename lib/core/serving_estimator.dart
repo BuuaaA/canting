@@ -13,10 +13,101 @@ import 'models/portions.dart';
 ///
 /// 数据全部来自膳食指南 JSON，不做营养素级别的精确计算。
 class ServingEstimator {
-  ServingEstimator(this._dishMatcher, this._guidelines);
+  ServingEstimator(this._dishMatcher, this._guidelines)
+    : knowledge = List.unmodifiable(_guidelines.conventionalPortions);
 
   final DishMatcher _dishMatcher;
   final DietaryGuidelines _guidelines;
+  final List<ConventionalPortion> knowledge;
+  String get knowledgeVersion => _guidelines.conventionalPortionsVersion;
+
+  ConventionalPortion? knowledgeFor(String name) {
+    final normalized = FoodDatabase.normalizeDishName(name);
+    for (final record in knowledge) {
+      if ([
+        record.canonicalName,
+        ...record.aliases,
+      ].map(FoodDatabase.normalizeDishName).contains(normalized)) {
+        return record;
+      }
+    }
+    return null;
+  }
+
+  /// Pure W5 review candidate. It never persists or mutates meal history.
+  IntakeConversionCandidate? convertIntake(
+    String name, {
+    required double amount,
+    required PortionMeasureUnit unit,
+    PortionSize size = PortionSize.regular,
+    double allocationRatio = 1,
+    double? consumedRatio = 1,
+    bool notEaten = false,
+  }) {
+    if (amount <= 0 ||
+        allocationRatio < 0 ||
+        allocationRatio > 1 ||
+        (consumedRatio != null && (consumedRatio < 0 || consumedRatio > 1))) {
+      throw const FormatException('invalid intake factors');
+    }
+    final record = knowledgeFor(name);
+    if (record == null || record.reviewStatus != PortionReviewStatus.reviewed) {
+      return null;
+    }
+    final factor = switch (size) {
+      PortionSize.small => record.smallFactor,
+      PortionSize.regular => record.regularFactor,
+      PortionSize.large => record.largeFactor,
+    };
+    final multiplier = switch (unit) {
+      PortionMeasureUnit.g when record.unit == 'g' => 1.0,
+      PortionMeasureUnit.ml when record.unit == 'ml' => 1.0,
+      PortionMeasureUnit.bowl => record.containers['bowl'],
+      PortionMeasureUnit.cup => record.containers['cup'],
+      PortionMeasureUnit.serving => record.containers['serving'],
+      _ => null,
+    };
+    if (multiplier == null) return null;
+    final explicit =
+        unit == PortionMeasureUnit.g || unit == PortionMeasureUnit.ml;
+    final supplied = explicit
+        ? IntakeRangeValue(amount, amount)
+        : IntakeRangeValue(
+            record.usualMin * amount * multiplier * factor,
+            record.usualMax * amount * multiplier * factor,
+          );
+    final effective = notEaten
+        ? supplied.scale(0)
+        : consumedRatio == null
+        ? null
+        : supplied.scale(allocationRatio * consumedRatio);
+    IntakeRangeValue? servings;
+    final exchange = record.exchangeKey == null
+        ? null
+        : _guidelines.findExchangeEntry(record.exchangeKey!) ??
+              _guidelines.findExchangeBase(record.exchangeKey!);
+    if (exchange != null && effective != null) {
+      servings = IntakeRangeValue(
+        effective.min / exchange.gramsPerServing,
+        effective.max / exchange.gramsPerServing,
+      );
+    }
+    return IntakeConversionCandidate(
+      knowledge: record,
+      suppliedAmount: supplied,
+      effectiveAmount: effective,
+      effectiveUnit: record.unit == 'g'
+          ? PortionMeasureUnit.g
+          : PortionMeasureUnit.ml,
+      servings: servings,
+      mapping: unit.name == record.unit
+          ? 'explicit:${unit.name}'
+          : 'container:${unit.name}',
+      allocationRatio: allocationRatio,
+      consumedRatio: consumedRatio,
+      notEaten: notEaten,
+    );
+  }
 
   /// 食物交换表中英文键 → 常用中文名。JSON 里键是英文（cooked_rice 等），
   /// 用户输入是中文，这里做一层固定映射。
@@ -190,9 +281,9 @@ class ServingEstimator {
   static const _oilFallbackEnergyLevel = 1800;
 
   double get _oilGramsPerServing {
-    final recommendation =
-        _guidelines.recommendationsByEnergyLevel['$_oilFallbackEnergyLevel']
-            ?.intakeRanges['oil'];
+    final recommendation = _guidelines
+        .recommendationsByEnergyLevel['$_oilFallbackEnergyLevel']
+        ?.intakeRanges['oil'];
     if (recommendation == null ||
         recommendation.min == null ||
         recommendation.servings == null ||
@@ -201,6 +292,53 @@ class ServingEstimator {
     }
     return recommendation.min! / recommendation.servings!;
   }
+}
+
+enum PortionMeasureUnit { g, ml, bowl, cup, serving }
+
+enum PortionSize { small, regular, large }
+
+enum ConsumptionChoice {
+  all(1),
+  threeQuarters(.75),
+  half(.5),
+  quarter(.25),
+  notEaten(0),
+  uncertain(null);
+
+  const ConsumptionChoice(this.ratio);
+  final double? ratio;
+}
+
+class IntakeRangeValue {
+  const IntakeRangeValue(this.min, this.max);
+  final double min;
+  final double max;
+  IntakeRangeValue scale(double factor) =>
+      IntakeRangeValue(min * factor, max * factor);
+}
+
+class IntakeConversionCandidate {
+  const IntakeConversionCandidate({
+    required this.knowledge,
+    required this.suppliedAmount,
+    required this.effectiveAmount,
+    required this.effectiveUnit,
+    required this.servings,
+    required this.mapping,
+    required this.allocationRatio,
+    required this.consumedRatio,
+    required this.notEaten,
+  });
+  final ConventionalPortion knowledge;
+  final IntakeRangeValue suppliedAmount;
+  final IntakeRangeValue? effectiveAmount;
+  final PortionMeasureUnit effectiveUnit;
+  final IntakeRangeValue? servings;
+  final String mapping;
+  final double allocationRatio;
+  final double? consumedRatio;
+  final bool notEaten;
 }
 
 /// 份量换算依据。

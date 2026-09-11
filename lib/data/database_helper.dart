@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart';
@@ -16,7 +17,7 @@ class DatabaseHelper {
   /// Shared instance for the running app; tests build isolated copies instead.
   static final DatabaseHelper instance = DatabaseHelper();
 
-  static const databaseVersion = 4;
+  static const databaseVersion = 5;
   static const defaultDatabaseName = 'canting_food.db';
 
   /// app_meta key storing the seed catalog schema_version last imported.
@@ -42,6 +43,7 @@ class DatabaseHelper {
     final resolvedPath =
         databasePath ??
         path.join(await _factory.getDatabasesPath(), defaultDatabaseName);
+    await _backupBeforeV5(resolvedPath);
     final database = await _factory.openDatabase(
       resolvedPath,
       options: OpenDatabaseOptions(
@@ -298,6 +300,7 @@ class DatabaseHelper {
     await database.execute('CREATE INDEX dishes_name_idx ON dishes(dish_name)');
     await _createUserDataTables(database);
     await _createLocalFoodProfiles(database);
+    await _migrateV4ToV5(database);
   }
 
   /// Incremental schema changes keyed by the version they migrate TO.
@@ -306,7 +309,73 @@ class DatabaseHelper {
     2: _migrateV1ToV2,
     3: _migrateV2ToV3,
     4: _createLocalFoodProfiles,
+    5: _migrateV4ToV5,
   };
+
+  /// SQLite onUpgrade is transactional. The pre-upgrade copy is a standalone
+  /// consistent SQLite snapshot; a failed upgrade rolls back to the old version.
+  Future<void> _backupBeforeV5(String resolvedPath) async {
+    if (resolvedPath == inMemoryDatabasePath ||
+        !await _factory.databaseExists(resolvedPath)) {
+      return;
+    }
+    final old = await _factory.openDatabase(
+      resolvedPath,
+      options: OpenDatabaseOptions(singleInstance: false),
+    );
+    var needsBackup = false;
+    try {
+      final version = await old.getVersion();
+      needsBackup = version > 0 && version < 5;
+      if (needsBackup) {
+        final checkpoint = await old.rawQuery(
+          'PRAGMA wal_checkpoint(TRUNCATE)',
+        );
+        if (checkpoint.isNotEmpty && checkpoint.first.values.first != 0) {
+          throw StateError('Database busy; migration not started');
+        }
+      }
+    } finally {
+      await old.close();
+    }
+    if (needsBackup) {
+      final backup = File('$resolvedPath.pre-v5.db');
+      if (!await backup.exists()) {
+        // ponytail: startup owns the only writer. Checkpoint + close + atomic
+        // file copy also works on older Android SQLite without VACUUM INTO.
+        final pending = File('$resolvedPath.pre-v5.db.pending');
+        try {
+          await File(resolvedPath).copy(pending.path);
+          await pending.rename(backup.path);
+        } finally {
+          if (await pending.exists()) await pending.delete();
+        }
+      }
+    }
+  }
+
+  /// A user's delete must not leave their meals in the upgrade safety copy.
+  Future<void> clearMigrationBackup() async {
+    final resolvedPath =
+        databasePath ??
+        path.join(await _factory.getDatabasesPath(), defaultDatabaseName);
+    if (resolvedPath == inMemoryDatabasePath) return;
+    for (final suffix in ['.pre-v5.db', '.pre-v5.db.pending']) {
+      final backup = File('$resolvedPath$suffix');
+      if (await backup.exists()) await backup.delete();
+    }
+  }
+
+  static Future<void> _migrateV4ToV5(Database database) async {
+    await database.execute(
+      'ALTER TABLE meal_records ADD COLUMN record_version INTEGER NOT NULL DEFAULT 1',
+    );
+    await database.execute('ALTER TABLE meal_records ADD COLUMN draft_id TEXT');
+    await database.execute(
+      'CREATE UNIQUE INDEX idx_meal_draft ON meal_records(draft_id)',
+    );
+    // record_json is deliberately not rewritten: legacy totals and facts stay byte-identical.
+  }
 
   static Future<void> _createLocalFoodProfiles(Database database) async {
     await database.execute(

@@ -114,6 +114,14 @@ void main() {
     final before = await userSnapshot();
     // Reconstruct the actual pre-app_meta schema in this disposable fixture DB.
     await helper.database.execute('DROP TABLE app_meta');
+    // Recreate the historical table shape, not only PRAGMA user_version.
+    await helper.database.execute('DROP INDEX idx_meal_draft');
+    await helper.database.execute(
+      'ALTER TABLE meal_records DROP COLUMN draft_id',
+    );
+    await helper.database.execute(
+      'ALTER TABLE meal_records DROP COLUMN record_version',
+    );
     await helper.database.setVersion(2);
     await helper.close();
     await helper.initialize(

@@ -8,14 +8,6 @@ import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.chinese.ChineseTextRecognizerOptions
 
-data class OcrLine(
-    val text: String,
-    val left: Int?,
-    val top: Int?,
-    val right: Int?,
-    val bottom: Int?,
-)
-
 data class OcrRecognitionResult(
     val fullText: String,
     val lines: List<OcrLine>,
@@ -107,7 +99,7 @@ class OCRService(private val context: Context) {
                 )
             }
             .filter { it.text.isNotEmpty() }
-        val extracted = DishNameExtractor.extract(lines.map(OcrLine::text))
+        val extracted = ScreenshotDishParser.extract(lines)
         return OcrRecognitionResult(
             fullText = recognizedText.text,
             lines = lines,

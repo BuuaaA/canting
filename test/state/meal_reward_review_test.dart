@@ -260,7 +260,7 @@ void main() {
       final before = await rows('meal_records');
       await restart();
       expect(await rows('meal_records'), before);
-      expect(await db.database.getVersion(), 4);
+      expect(await db.database.getVersion(), DatabaseHelper.databaseVersion);
       await unchangedDelete('legacy', 60);
     },
   );
