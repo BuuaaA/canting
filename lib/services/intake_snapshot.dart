@@ -345,7 +345,7 @@ class IntakeSnapshot {
           };
     if (category == null) return null;
     return _KnownConversion(
-      key,
+      null,
       category,
       key == 'cooked_rice' ? 'cooked' : 'as_sold',
       amount * baseReference / exchange.gramsPerServing,
@@ -394,7 +394,8 @@ class _KnownConversion {
     this.equivalentUnit,
     this.version,
   );
-  final String foodKey, category, actualBasis, equivalentUnit;
+  final String? foodKey;
+  final String category, actualBasis, equivalentUnit;
   final double equivalent;
   final String version;
 }

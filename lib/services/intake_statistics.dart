@@ -365,16 +365,19 @@ class IntakeStatisticsService {
         .where((k) => k.isNotEmpty)
         .toSet();
     final variety =
-        records.isEmpty || records.any((meal) => !meal.structureComplete)
-        ? null
-        : items.any((i) => i['foodKey'] == null)
+        records.isEmpty ||
+            records.any((meal) => !meal.structureComplete) ||
+            items.any((i) => i['complete'] != true) ||
+            items.any((i) => i['foodKey'] == null)
         ? null
         : foodKeys.length;
     return IntakeDayStat(
       date: _key(date),
       completeness: records.isEmpty
           ? 'missing'
-          : items.isEmpty || items.any((i) => i['complete'] != true)
+          : records.any((meal) => !meal.structureComplete) ||
+                items.isEmpty ||
+                items.any((i) => i['complete'] != true)
           ? 'partial'
           : 'complete',
       categories: categories,

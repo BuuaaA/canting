@@ -116,6 +116,9 @@ void main() {
           grams: 400,
         ),
       );
+      final compositeOnly = await IntakeStatisticsService(state)
+          .rolling7d(date: day);
+      expect(compositeOnly.days.last.foodVariety, isNull);
       await state.saveMeal(
         _mealWithName(
           'sweet',
@@ -176,6 +179,26 @@ void main() {
     },
   );
 
+  test('structure incomplete blocks complete day and variety despite convertible item', () async {
+    final (state, helper, guidelines, estimator) = await _state();
+    addTearDown(helper.close);
+    final day = DateTime(2026, 9, 11);
+    final base = _riceMeal('incomplete', day, estimator, guidelines);
+    await state.saveMeal(
+      MealRecord(
+        mealId: base.mealId,
+        mealType: base.mealType,
+        timestamp: base.timestamp,
+        dishes: [...base.dishes, const MealDish(contributionsKnown: false)],
+        recognitionSnapshot: base.recognitionSnapshot,
+      ),
+    );
+
+    final result = await IntakeStatisticsService(state).rolling7d(date: day);
+    expect(result.days.last.completeness, 'partial');
+    expect(result.days.last.foodVariety, isNull);
+  });
+
   test(
     'rolling window keeps missing days and uses zero empty denominator',
     () async {
@@ -190,7 +213,7 @@ void main() {
       expect(result.days.first.completeness, 'missing');
       expect(result.averages['vegetable']!.average, isNull);
       expect(result.averages['vegetable']!.denominator, 0);
-      expect(result.foodVarietyDenominator, 1);
+      expect(result.foodVarietyDenominator, 0);
     },
   );
 
