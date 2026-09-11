@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../core/models/meal_record.dart';
+import '../core/models/dietary_guidelines.dart';
 
 /// The device-owned, image-free fact sent to the optional backend snapshot API.
 /// The caller persists and increments [revision] locally before uploading.
@@ -100,7 +101,15 @@ class IntakeSnapshot {
   static List<Map<String, dynamic>> itemsForMeal(MealRecord meal) =>
       _items(meal).toList(growable: false);
 
-  static Iterable<Map<String, dynamic>> _items(MealRecord meal) sync* {
+  static List<Map<String, dynamic>> itemsForMealWithGuidelines(
+    MealRecord meal,
+    DietaryGuidelines? guidelines,
+  ) => _items(meal, guidelines: guidelines).toList(growable: false);
+
+  static Iterable<Map<String, dynamic>> _items(
+    MealRecord meal, {
+    DietaryGuidelines? guidelines,
+  }) sync* {
     final snapshot = meal.recognitionSnapshot;
     final draft = snapshot?['draft'];
     if (draft is Map) {
@@ -119,6 +128,7 @@ class IntakeSnapshot {
               node,
               parent: product,
               contributions: snapshot?['contributions'],
+              guidelines: guidelines,
             );
             if (item != null) yield item;
           }
@@ -156,6 +166,7 @@ class IntakeSnapshot {
     Map node, {
     Map? parent,
     Map? contributions,
+    DietaryGuidelines? guidelines,
   }) {
     final calculation = node['calculation'];
     if (calculation is! Map || calculation['active'] != true) return null;
@@ -186,12 +197,18 @@ class IntakeSnapshot {
     final id = (node['componentId'] ?? node['productId']) as String;
     final contribution = contributions?[id] as Map?;
     final mapping = contribution?['mapping'] as String?;
-    final conversion = _knownConversion(mapping, amount, unit);
+    final conversion = _knownConversion(
+      mapping,
+      nameFact?['value'] as String?,
+      amount,
+      unit,
+      guidelines,
+    );
     return {
       'mealId': mealId,
       'name': nameFact?['value'],
       'foodKey': conversion?.foodKey,
-      'fishKind': _acceptedString(node['fishKind']),
+      'fishKind': null,
       'category': conversion?.category ?? category,
       'grams': unit == 'g' ? amount : null,
       'amount': unit == 'ml'
@@ -200,20 +217,15 @@ class IntakeSnapshot {
           ? amount
           : null,
       'unit': unit == 'g' || unit == 'ml' ? unit : 'unknown',
-      'amountBasis': node['amountBasis'] is String
-          ? node['amountBasis'] as String
-          : conversion?.actualBasis ?? 'unknown',
-      'equivalentAmount':
-          (node['equivalentAmount'] as num?)?.toDouble() ??
-          conversion?.equivalent,
-      'equivalentUnit':
-          node['equivalentUnit'] as String? ?? conversion?.equivalentUnit,
+      'amountBasis': conversion?.actualBasis ?? 'unknown',
+      'equivalentAmount': conversion?.equivalent,
+      'equivalentUnit': conversion?.equivalentUnit,
       'cookingMethod': null,
       'confidence': ((node['confidence'] as Map?)?['raw'] as num?)?.toDouble(),
       'source': source,
       'estimateSource': null,
-      'conversionVersion': null,
-      'complete': amount != null && category != null,
+      'conversionVersion': conversion?.version,
+      'complete': amount != null && (conversion?.category ?? category) != null,
     };
   }
 
@@ -232,71 +244,72 @@ class IntakeSnapshot {
     return value is num ? value : null;
   }
 
-  static String? _acceptedString(dynamic fact) {
-    if (fact is! Map || fact['reviewStatus'] != 'accepted') return null;
-    return fact['value'] is String ? fact['value'] as String : null;
-  }
-
   static _KnownConversion? _knownConversion(
     String? mapping,
+    String? name,
     double? amount,
     String unit,
+    DietaryGuidelines? guidelines,
   ) {
-    final key = mapping?.startsWith('food_exchange:') == true
-        ? mapping!.substring('food_exchange:'.length)
-        : null;
-    final entry = const <String, _KnownConversion>{
-      'cooked_rice': _KnownConversion(
-        'cooked_rice',
-        'grain',
-        'cooked',
-        50,
-        'g',
-      ),
-      'steamed_bun': _KnownConversion(
-        'steamed_bun',
-        'grain',
-        'as_sold',
-        50,
-        'g',
-      ),
-      'firm_tofu': _KnownConversion('firm_tofu', 'soy', 'as_sold', 25, 'g'),
-      'soy_milk': _KnownConversion('soy_milk', 'soy', 'as_sold', 25, 'g'),
-      'milk_100ml': _KnownConversion(
-        'milk_100ml',
-        'dairy',
-        'as_sold',
-        100,
-        'ml',
-      ),
-      'yogurt': _KnownConversion('yogurt', 'dairy', 'as_sold', 100, 'ml'),
-      'cheese': _KnownConversion('cheese', 'dairy', 'as_sold', 100, 'ml'),
-      'milk_powder': _KnownConversion(
-        'milk_powder',
-        'dairy',
-        'as_sold',
-        100,
-        'ml',
-      ),
-    };
-    final base = key == null ? null : entry[key];
-    if (base == null || amount == null || unit != 'g' && unit != 'ml') {
+    if (guidelines == null || amount == null || (unit != 'g' && unit != 'ml')) {
       return null;
     }
-    final source = switch (key) {
-      'cooked_rice' => 150,
-      'steamed_bun' => 75,
-      'firm_tofu' => 105,
-      'soy_milk' => 350,
-      'milk_100ml' => 100,
-      'yogurt' => 100,
-      'cheese' => 10,
-      'milk_powder' => 15,
-      _ => null,
-    };
-    return source == null
+    var key = mapping?.startsWith('food_exchange:') == true
+        ? mapping!.substring('food_exchange:'.length)
+        : null;
+    if (key == null && name != null) {
+      for (final candidate in guidelines.conventionalPortions) {
+        if (candidate.reviewStatus == PortionReviewStatus.reviewed &&
+            candidate.exchangeKey != null &&
+            (candidate.canonicalName == name ||
+                candidate.aliases.contains(name))) {
+          key = candidate.exchangeKey;
+          break;
+        }
+      }
+    }
+    if (key == null) {
+      return null;
+    }
+    final portion = guidelines.conventionalPortions
+        .where(
+          (p) =>
+              p.exchangeKey == key &&
+              p.unit == unit &&
+              p.reviewStatus == PortionReviewStatus.reviewed,
+        )
+        .firstOrNull;
+    final exchange =
+        guidelines.findExchangeEntry(key) ?? guidelines.findExchangeBase(key);
+    final baseReference = exchange == null
         ? null
-        : base.copyWith(equivalent: amount * base.equivalent / source);
+        : double.tryParse(
+            RegExp(r'(\d+(?:\.\d+)?)').firstMatch(exchange.baseKey)?.group(1) ??
+                '',
+          );
+    if (portion == null ||
+        exchange == null ||
+        baseReference == null ||
+        exchange.gramsPerServing <= 0) {
+      return null;
+    }
+    final category = key == 'sweet_potato'
+        ? 'tuber'
+        : switch (exchange.groupId) {
+            'grain_tuber' => 'grain',
+            'soy_products' => 'soy',
+            'dairy' => 'dairy',
+            _ => null,
+          };
+    if (category == null) return null;
+    return _KnownConversion(
+      key,
+      category,
+      key == 'cooked_rice' ? 'cooked' : 'as_sold',
+      amount * baseReference / exchange.gramsPerServing,
+      exchange.baseKey.contains('ml') ? 'ml' : 'g',
+      guidelines.conventionalPortionsVersion,
+    );
   }
 
   static bool _isComplete(Map<String, dynamic> item) =>
@@ -337,16 +350,11 @@ class _KnownConversion {
     this.actualBasis,
     this.equivalent,
     this.equivalentUnit,
+    this.version,
   );
   final String foodKey, category, actualBasis, equivalentUnit;
   final double equivalent;
-  _KnownConversion copyWith({double? equivalent}) => _KnownConversion(
-    foodKey,
-    category,
-    actualBasis,
-    equivalent ?? this.equivalent,
-    equivalentUnit,
-  );
+  final String version;
 }
 
 class IntakeSnapshotClient {

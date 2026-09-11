@@ -39,7 +39,6 @@ class IntakeCategoryStat {
     required this.target,
     required this.status,
     required this.gap,
-    this.actualKnownSubtotal = 0,
     this.actualKnownByUnit = const {},
     this.unit = 'g',
   });
@@ -50,7 +49,6 @@ class IntakeCategoryStat {
   final IntakeTarget target;
   final String? status;
   final double? gap;
-  final double actualKnownSubtotal;
   final Map<String, double> actualKnownByUnit;
   final String unit;
   Map<String, dynamic> toJson() => {
@@ -58,7 +56,6 @@ class IntakeCategoryStat {
     'amount': amount,
     'comparisonAmount': amount,
     'knownSubtotal': knownSubtotal,
-    'actualKnownSubtotal': actualKnownSubtotal,
     'actualKnownByUnit': actualKnownByUnit,
     'unit': unit,
     'completeness': completeness,
@@ -229,9 +226,23 @@ class IntakeStatisticsService {
     final read = await _read(end);
     final days = _buildDays(end, read.meals);
     final records = read.meals;
-    final items = records.expand(IntakeSnapshot.itemsForMeal).toList();
-    final knownFish = items.where((i) => i['fishKind'] == 'fish');
+    final items = records.expand(_items).toList();
     final fishCount = _fishMealsFromRecords(records);
+    final fishMealIds = records
+        .where(
+          (meal) => meal.dishes.any(
+            (dish) =>
+                dish.food?.confirmed == true &&
+                dish.food?.facts.category == 'fish' &&
+                dish.quantity > 0,
+          ),
+        )
+        .map((meal) => meal.mealId)
+        .toSet();
+    final knownFish = items.where(
+      (i) =>
+          fishMealIds.contains(i['mealId']) && i['category'] == 'animal_food',
+    );
     final fishGrams = _sumComparable(knownFish, 'animal_food');
     final nutGrams = _sumComparable(
       items.where((i) => i['category'] == 'nut'),
@@ -255,7 +266,7 @@ class IntakeStatisticsService {
       averages[category] = IntakeAverageStat(
         category: category,
         average: _average(values),
-        denominator: values.isEmpty ? null : values.length,
+        denominator: values.length,
         target: _target(category),
       );
     }
@@ -306,6 +317,9 @@ class IntakeStatisticsService {
     return _Read(retry, retryAfter, retryBefore != retryAfter);
   }
 
+  Iterable<Map<String, dynamic>> _items(MealRecord meal) =>
+      IntakeSnapshot.itemsForMealWithGuidelines(meal, _state.guidelines);
+
   List<IntakeDayStat> _buildDays(DateTime end, List<MealRecord> records) {
     final byDay = <String, List<MealRecord>>{};
     for (final meal in records) {
@@ -319,11 +333,11 @@ class IntakeStatisticsService {
 
   IntakeDayStat _dayStat(DateTime date, Map<String, List<MealRecord>> byDay) {
     final records = byDay[_key(date)] ?? const [];
-    final items = records.expand(IntakeSnapshot.itemsForMeal).toList();
+    final items = records.expand(_items).toList();
     final globallyIncomplete = records.any(
       (meal) =>
           !meal.structureComplete ||
-          IntakeSnapshot.itemsForMeal(meal).any((i) => i['complete'] != true),
+          _items(meal).any((i) => i['complete'] != true),
     );
     final categories = <String, IntakeCategoryStat>{};
     for (final category in _categories) {
@@ -345,7 +359,7 @@ class IntakeStatisticsService {
         knownSubtotal: known,
         completeness: records.isEmpty
             ? 'missing'
-            : complete
+            : complete && !globallyIncomplete
             ? 'complete'
             : 'partial',
         target: target,
@@ -358,7 +372,6 @@ class IntakeStatisticsService {
             ? (target.min! - known).clamp(0, double.infinity)
             : null,
         unit: category == 'dairy' ? 'ml' : 'g',
-        actualKnownSubtotal: _sumActual(list),
         actualKnownByUnit: _sumActualByUnit(list),
       );
     }
@@ -442,10 +455,6 @@ class IntakeStatisticsService {
     return values.fold<double>(0, (a, b) => a + b!);
   }
 
-  static double _sumActual(List<Map<String, dynamic>> items) => items
-      .map((i) => (i['amount'] as num?)?.toDouble())
-      .whereType<double>()
-      .fold(0, (a, b) => a + b);
   static Map<String, double> _sumActualByUnit(
     List<Map<String, dynamic>> items,
   ) {
@@ -465,7 +474,10 @@ class IntakeStatisticsService {
     final ids = records
         .where(
           (meal) => meal.dishes.any(
-            (dish) => dish.food?.facts.category == 'fish' && dish.quantity > 0,
+            (dish) =>
+                dish.food?.confirmed == true &&
+                dish.food?.facts.category == 'fish' &&
+                dish.quantity > 0,
           ),
         )
         .map((meal) => meal.mealId)
