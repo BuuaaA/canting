@@ -56,12 +56,18 @@ class IntakeSnapshot {
       final day = DateTime(anchor.year, anchor.month, anchor.day + offset);
       final key = dateKey(day);
       final records = byDay[key] ?? const <MealRecord>[];
-      final complete = records.isNotEmpty && records.every(
-        (meal) => meal.structureComplete && _items(meal).isNotEmpty,
-      );
+      final complete =
+          records.isNotEmpty &&
+          records.every(
+            (meal) => meal.structureComplete && _items(meal).isNotEmpty,
+          );
       days.add({
         'date': key,
-        'status': records.isEmpty ? 'missing' : complete ? 'known' : 'partial',
+        'status': records.isEmpty
+            ? 'missing'
+            : complete
+            ? 'known'
+            : 'partial',
         'mealIds': records.map((meal) => meal.mealId).toList(growable: false),
         'meals': records.map(_mealRef).toList(growable: false),
         'intakeItems': records.expand(_items).toList(growable: false),
@@ -111,21 +117,19 @@ class IntakeSnapshot {
         'name': dish.name,
         if (category != null) 'category': _category(category),
         'grams': grams,
+        'amount': null,
         'unit': grams == null ? 'unknown' : 'g',
         'amountBasis': 'unknown',
         'confidence': dish.matchConfidence == 0 ? null : dish.matchConfidence,
         'source': dish.matchConfidence > 0 ? 'local_rule' : 'manual',
         'estimateSource': dish.matchedDishId,
         'conversionVersion': null,
+        'complete': false,
       };
     }
   }
 
-  static Map<String, dynamic>? _v2Item(
-    String mealId,
-    Map node, {
-    Map? parent,
-  }) {
+  static Map<String, dynamic>? _v2Item(String mealId, Map node, {Map? parent}) {
     final calculation = node['calculation'];
     if (calculation is! Map || calculation['active'] != true) return null;
     final notEaten = (calculation['notEaten'] as Map?)?['value'] == true;
@@ -147,7 +151,7 @@ class IntakeSnapshot {
         amount = amount == null || factor == null ? null : amount * factor;
       }
     }
-    if (amount == null || amount <= 0) return null;
+    if (amount != null && amount <= 0) return null;
     final nameFact = (node['displayName'] ?? node['name']) as Map?;
     final categoryFact = node['categoryId'] as Map?;
     final category = _category(categoryFact?['value'] as String? ?? '');
@@ -158,6 +162,11 @@ class IntakeSnapshot {
       'foodKey': null,
       'category': category,
       'grams': unit == 'g' ? amount : null,
+      'amount': unit == 'ml'
+          ? amount
+          : unit == 'g'
+          ? amount
+          : null,
       'unit': unit == 'g' || unit == 'ml' ? unit : 'unknown',
       'amountBasis': 'unknown',
       'equivalentAmount': null,
@@ -167,12 +176,15 @@ class IntakeSnapshot {
       'source': source,
       'estimateSource': null,
       'conversionVersion': null,
+      'complete': amount != null && category != null,
     };
   }
 
   static String _source(Map node, Map calculation) {
     final fields = [node['name'], node['categoryId'], calculation['portion']];
-    return fields.any((value) => value is Map && value['provenance'] == 'user_input')
+    return fields.any(
+          (value) => value is Map && value['provenance'] == 'user_input',
+        )
         ? 'user_edit'
         : 'ai';
   }
@@ -217,12 +229,17 @@ class IntakeSnapshotClient {
   }) async {
     final http = client ?? HttpClient();
     try {
-      final request = await http.putUrl(endpoint.resolve('/v1/intake/snapshot'));
+      final request = await http.putUrl(
+        endpoint.resolve('/v1/intake/snapshot'),
+      );
       request.headers
         ..contentType = ContentType.json
         ..set('X-Device-Id', deviceId);
       if (bearerToken?.isNotEmpty == true) {
-        request.headers.set(HttpHeaders.authorizationHeader, 'Bearer $bearerToken');
+        request.headers.set(
+          HttpHeaders.authorizationHeader,
+          'Bearer $bearerToken',
+        );
       }
       request.add(utf8.encode(jsonEncode(snapshot.toJson())));
       final response = await request.close();
@@ -231,10 +248,14 @@ class IntakeSnapshotClient {
         throw IntakeSnapshotException(response.statusCode, body);
       }
       final revision = (body as Map)['sourceRevision'];
-      if (revision is! int) throw const FormatException('Missing sourceRevision');
+      if (revision is! int) {
+        throw const FormatException('Missing sourceRevision');
+      }
       return revision;
     } finally {
-      if (client == null) http.close(force: true);
+      if (client == null) {
+        http.close(force: true);
+      }
     }
   }
 }
