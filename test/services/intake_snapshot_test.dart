@@ -9,6 +9,7 @@ void main() {
       installationId: 'device-123',
       revision: 4,
       today: today,
+      timezone: 'Asia/Shanghai',
       meals: [
         MealRecord(
           mealId: 'meal-1',
@@ -24,6 +25,11 @@ void main() {
     expect(snapshot.days.last['mealIds'], ['meal-1']);
     expect(snapshot.days.last['intakeItems'], hasLength(1));
     expect(snapshot.days.last['intakeItems'].single['grams'], isNull);
-    expect(snapshot.toJson().toString(), isNot(contains('image')));
+    final encoded = snapshot.toJson();
+    expect(encoded.containsKey('meals'), isTrue);
+    expect(encoded['days'].toString(), isNot(contains('merchant')));
+    expect(encoded['days'].toString(), isNot(contains('recognition_v2')));
+    expect(encoded['days'].toString(), isNot(contains('imageUri')));
+    expect(encoded['days'].toString(), isNot(contains('ocr')));
   });
 }
