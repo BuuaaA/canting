@@ -52,6 +52,7 @@ MealRecord _mealWithName(
   DietaryGuidelines guidelines, {
   required String name,
   required double grams,
+  String? category,
 }) {
   final contract = RecognitionContract(_read('recognition.schema'));
   final example =
@@ -65,6 +66,14 @@ MealRecord _mealWithName(
       (example['products'] as List).first['components'][0]
           as Map<String, dynamic>;
   component['name']['value'] = name;
+  if (category != null) {
+    component['categoryId'] = {
+      'value': category,
+      'provenance': 'user_input',
+      'reviewStatus': 'accepted',
+      'evidenceRefs': <String>[],
+    };
+  }
   final draft = MealDraftV2(contract, example, simulated: true)
     ..setIntake(
       'c-rice',
@@ -97,6 +106,29 @@ void main() {
       expect(grain.actualKnownByUnit['g'], 150);
       expect(grain.toJson(), isNot(contains('actualKnownSubtotal')));
       expect(result.toJson()['dataRevision'], state.dataRevision);
+    },
+  );
+
+  test(
+    'V2 nut actual grams remain known when exchange comparison is unavailable',
+    () async {
+      final (state, helper, guidelines, estimator) = await _state();
+      addTearDown(helper.close);
+      final day = DateTime(2026, 9, 11);
+      await state.saveMeal(
+        _mealWithName(
+          'nut',
+          day,
+          estimator,
+          guidelines,
+          name: '坚果',
+          grams: 30,
+          category: 'nut',
+        ),
+      );
+      final result = await IntakeStatisticsService(state).rolling7d(date: day);
+      expect(result.nutGrams, 30);
+      expect(result.nutCompleteness, 'complete');
     },
   );
 
