@@ -230,7 +230,7 @@ class NextMealRecommendationService {
   final Set<String> _acceptingRequestIds = {};
 
   Future<NextMealResult> nextMeal(NextMealRequest request) async {
-    _validateRequest(request);
+    final validationIssue = _validateRequest(request);
     await _emit({
       'event': 'next_meal_request',
       'requestId': request.requestId,
@@ -238,10 +238,10 @@ class NextMealRecommendationService {
       'nextMealType': request.nextMealType,
     });
     late final NextMealResult result;
-    if (request.today.stale || request.rolling7d.stale) {
+    if (validationIssue != null) {
+      result = NextMealResult.failed(request, validationIssue);
+    } else if (request.today.stale || request.rolling7d.stale) {
       result = NextMealResult.failed(request, 'stale_input');
-    } else if (request.today.revision != request.rolling7d.revision) {
-      result = NextMealResult.failed(request, 'revision_mismatch');
     } else if (remote == null) {
       result = _local(request, 'unconfigured');
     } else {
@@ -401,7 +401,7 @@ class NextMealRecommendationService {
       final bi = priorities.indexOf(b.category);
       return (ai < 0 ? 99 : ai).compareTo(bi < 0 ? 99 : bi);
     });
-    final knownVegetableGap = priorities.contains('vegetable');
+    final knownGapCategories = priorities.toSet();
     final selected = candidates
         .where((candidate) {
           final haystack = '${candidate.dishName} ${candidate.searchKeyword}'
@@ -412,7 +412,7 @@ class NextMealRecommendationService {
         .take(3)
         .map((candidate) {
           final suggestion = candidate.toSuggestion();
-          if (knownVegetableGap || suggestion.primaryCategory != 'vegetable') {
+          if (knownGapCategories.contains(suggestion.primaryCategory)) {
             return suggestion;
           }
           return NextMealSuggestion(
@@ -432,9 +432,13 @@ class NextMealRecommendationService {
       reasonCode: reasonCode,
       suggestions: selected,
       guidance: NextMealGuidance(
-        primary: knownVegetableGap ? '优先补足已知蔬菜缺口。' : '按已知记录提供普通搭配；未知类别不按零摄入处理。',
+        primary: knownGapCategories.contains('vegetable')
+            ? '优先补足已知蔬菜缺口。'
+            : '按已知记录提供普通搭配；未知类别不按零摄入处理。',
         oilSalt: '优先清蒸、白灼或少油少盐做法。',
-        reduceStaple: '若主食已知偏多，下一餐选择小份；未知时不强行减量。',
+        reduceStaple: knownGapCategories.contains('grain')
+            ? '根据已知主食记录选择合适份量；未知时不强行减量。'
+            : '当前没有可靠的主食缺口或偏多信息，不额外调整主食。',
       ),
     );
     return result;
@@ -458,26 +462,27 @@ class NextMealRecommendationService {
     return result;
   }
 
-  static void _validateRequest(NextMealRequest request) {
+  static String? _validateRequest(NextMealRequest request) {
     if (request.requestId.trim().isEmpty) {
-      throw ArgumentError('requestId is required');
+      return 'invalid_input';
     }
     if (!_mealTypes.contains(request.nextMealType)) {
-      throw ArgumentError.value(request.nextMealType, 'nextMealType');
+      return 'invalid_input';
     }
     if (request.dataRevision < 0) {
-      throw ArgumentError('dataRevision must be non-negative');
+      return 'invalid_input';
     }
     if (request.today.revision != request.rolling7d.revision) {
-      throw ArgumentError('today and rolling7d revisions must match');
+      return 'revision_mismatch';
     }
     if (request.today.date != request.rolling7d.endDate) {
-      throw ArgumentError('today and rolling7d dates must match');
+      return 'date_mismatch';
     }
     if (request.budget != null &&
         (!request.budget!.isFinite || request.budget! < 0)) {
-      throw ArgumentError('budget must be finite and non-negative');
+      return 'invalid_input';
     }
+    return null;
   }
 
   static void _validateSuggestions(
@@ -520,9 +525,22 @@ class NextMealRecommendationService {
       final value = exclusion.trim().toLowerCase();
       if (value.isEmpty) continue;
       final tokens = <String>{value};
-      if (value.contains('素食') ||
+      if (value.contains('素食') || value.contains('vegetarian')) {
+        tokens.addAll(const [
+          '鱼',
+          '鸡',
+          '牛',
+          '猪',
+          '肉',
+          'fish',
+          'chicken',
+          'beef',
+          'pork',
+        ]);
+      }
+      if (value.contains('纯素') ||
           value.contains('vegan') ||
-          value.contains('vegetarian')) {
+          value.contains('plant-based')) {
         tokens.addAll(const [
           '鱼',
           '鸡',
@@ -530,10 +548,17 @@ class NextMealRecommendationService {
           '猪',
           '肉',
           '蛋',
+          '奶',
+          '酸奶',
+          '乳',
           'fish',
           'chicken',
           'beef',
           'pork',
+          'egg',
+          'milk',
+          'yogurt',
+          'dairy',
         ]);
       }
       if (value.contains('鱼') || value.contains('fish')) {

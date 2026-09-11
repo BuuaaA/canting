@@ -138,17 +138,16 @@ void main() {
     expect(staleResult.reasonCode, 'stale_input');
     expect(staleResult.isUsable, isFalse);
 
-    await expectLater(
-      NextMealRecommendationService().nextMeal(
-        NextMealRequest(
-          requestId: 'request-1',
-          today: today(revision: 5),
-          rolling7d: rolling(revision: 4),
-          nextMealType: 'dinner',
-        ),
+    final mismatch = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(revision: 5),
+        rolling7d: rolling(revision: 4),
+        nextMealType: 'dinner',
       ),
-      throwsArgumentError,
     );
+    expect(mismatch.reasonCode, 'revision_mismatch');
+    expect(mismatch.isUsable, isFalse);
   });
 
   test('缺字段、禁忌和泛化文案均拒绝为正常AI结果', () async {
@@ -221,6 +220,18 @@ void main() {
     );
     expect(vegetarian.suggestions, isEmpty);
     expect(vegetarian.status, 'failed');
+
+    final vegan = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        dietaryExclusions: const ['纯素'],
+      ),
+    );
+    expect(vegan.suggestions, isEmpty);
+    expect(vegan.status, 'failed');
   });
 
   test('request/result 事件仅记录脱敏元信息，事件失败不阻塞主流程', () async {
@@ -239,6 +250,20 @@ void main() {
       ),
       isTrue,
     );
+    final mismatch =
+        await NextMealRecommendationService(
+          eventSink: (event) async => events.add(event),
+        ).nextMeal(
+          NextMealRequest(
+            requestId: 'request-2',
+            today: today(revision: 5),
+            rolling7d: rolling(revision: 4),
+            nextMealType: 'dinner',
+          ),
+        );
+    expect(mismatch.reasonCode, 'revision_mismatch');
+    expect(events.last['event'], 'next_meal_result');
+    expect(events.last['status'], 'failed');
 
     final stillWorks = await NextMealRecommendationService(
       eventSink: (_) async => throw StateError('storage unavailable'),
@@ -264,30 +289,55 @@ void main() {
   });
 
   test('校验日期和预算边界', () async {
-    await expectLater(
-      NextMealRecommendationService().nextMeal(
-        NextMealRequest(
-          requestId: 'request-1',
-          today: today(),
-          rolling7d: rolling(),
-          nextMealType: 'dinner',
-          budget: -1,
-        ),
+    final invalidBudget = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        budget: -1,
       ),
-      throwsArgumentError,
     );
-    await expectLater(
-      NextMealRecommendationService().nextMeal(
-        NextMealRequest(
-          requestId: 'request-1',
-          today: today(),
-          rolling7d: rolling(),
-          nextMealType: 'dinner',
-          budget: double.infinity,
-        ),
+    expect(invalidBudget.reasonCode, 'invalid_input');
+    final infiniteBudget = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: rolling(),
+        nextMealType: 'dinner',
+        budget: double.infinity,
       ),
-      throwsArgumentError,
     );
+    expect(infiniteBudget.reasonCode, 'invalid_input');
+    final dateMismatch = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'request-1',
+        today: today(),
+        rolling7d: Rolling7dIntakeStats(
+          startDate: '2026-09-05',
+          endDate: '2026-09-11',
+          revision: 4,
+          days: const [],
+          averages: const {},
+          foodVarietyAverage: null,
+          foodVarietyDenominator: null,
+          fishCount: null,
+          fishGrams: null,
+          nutGrams: null,
+          dairyMetDays: 0,
+          dairyKnownDays: 0,
+          dairyUnknownDays: 7,
+          soyMetDays: 0,
+          soyKnownDays: 0,
+          soyUnknownDays: 7,
+          fishCompleteness: 'unknown',
+          fishCountCompleteness: 'unknown',
+          nutCompleteness: 'unknown',
+        ),
+        nextMealType: 'dinner',
+      ),
+    );
+    expect(dateMismatch.reasonCode, 'date_mismatch');
   });
 
   test('反馈按request关联，accept一次且必须有平台打开依据', () async {
