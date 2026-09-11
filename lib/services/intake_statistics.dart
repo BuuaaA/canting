@@ -39,6 +39,7 @@ class IntakeCategoryStat {
     required this.target,
     required this.status,
     required this.gap,
+    this.actualKnownSubtotal = 0,
     this.unit = 'g',
   });
   final String category;
@@ -48,11 +49,14 @@ class IntakeCategoryStat {
   final IntakeTarget target;
   final String? status;
   final double? gap;
+  final double actualKnownSubtotal;
   final String unit;
   Map<String, dynamic> toJson() => {
     'category': category,
     'amount': amount,
+    'comparisonAmount': amount,
     'knownSubtotal': knownSubtotal,
+    'actualKnownSubtotal': actualKnownSubtotal,
     'unit': unit,
     'completeness': completeness,
     ...target.toJson(),
@@ -108,14 +112,17 @@ class TodayIntakeStats {
     required this.revision,
     required this.categories,
     required this.completeness,
+    this.stale = false,
   });
   final String date;
   final int revision;
   final Map<String, IntakeCategoryStat> categories;
   final String completeness;
+  final bool stale;
   Map<String, dynamic> toJson() => {
     'date': date,
     'dataRevision': revision,
+    'stale': stale,
     'completeness': completeness,
     'categories': categories.values.map((v) => v.toJson()).toList(),
   };
@@ -139,6 +146,9 @@ class Rolling7dIntakeStats {
     required this.soyMetDays,
     required this.soyKnownDays,
     required this.soyUnknownDays,
+    required this.fishCompleteness,
+    required this.nutCompleteness,
+    this.stale = false,
   });
   final String startDate, endDate;
   final int revision;
@@ -150,18 +160,27 @@ class Rolling7dIntakeStats {
   final double? fishGrams, nutGrams;
   final int dairyMetDays, dairyKnownDays, dairyUnknownDays;
   final int soyMetDays, soyKnownDays, soyUnknownDays;
+  final String fishCompleteness, nutCompleteness;
+  final bool stale;
   Map<String, dynamic> toJson() => {
     'startDate': startDate,
     'endDate': endDate,
     'dataRevision': revision,
+    'stale': stale,
     'fish': {
       'count': fishCount,
       'grams': fishGrams,
+      'completeness': fishCompleteness,
       'targetCount': 2,
       'targetMinGrams': 300,
       'targetMaxGrams': 500,
     },
-    'nut': {'grams': nutGrams, 'targetMinGrams': 50, 'targetMaxGrams': 70},
+    'nut': {
+      'grams': nutGrams,
+      'completeness': nutCompleteness,
+      'targetMinGrams': 50,
+      'targetMaxGrams': 70,
+    },
     'dairy': {
       'metDays': dairyMetDays,
       'knownDays': dairyKnownDays,
@@ -190,27 +209,30 @@ class IntakeStatisticsService {
 
   Future<TodayIntakeStats> today({DateTime? date}) async {
     final end = _day(date ?? _state.clock());
-    final days = await _buildDays(end);
+    final read = await _read(end);
+    final days = _buildDays(end, read.meals);
     final day = days.last;
     return TodayIntakeStats(
       date: day.date,
-      revision: _state.dataRevision,
+      revision: read.revision,
       categories: day.categories,
       completeness: day.completeness,
+      stale: read.stale,
     );
   }
 
   Future<Rolling7dIntakeStats> rolling7d({DateTime? date}) async {
     final end = _day(date ?? _state.clock());
-    final days = await _buildDays(end);
-    final records = await _state.queryMealsInRange(
-      DateTime(end.year, end.month, end.day - 6),
-      DateTime(end.year, end.month, end.day + 1),
-    );
+    final read = await _read(end);
+    final days = _buildDays(end, read.meals);
+    final records = read.meals;
     final items = records.expand(IntakeSnapshot.itemsForMeal).toList();
-    final knownFish = items.where((i) => i['animalSubtype'] == 'fish');
-    final fishGrams = _sumUnit(knownFish, 'g');
-    final nutGrams = _sumCategory(items, 'nut', 'g');
+    final knownFish = items.where((i) => i['fishKind'] == 'fish');
+    final fishGrams = _sumComparable(knownFish, 'animal_food');
+    final nutGrams = _sumComparable(
+      items.where((i) => i['category'] == 'nut'),
+      'nut',
+    );
     final varietyValues = days
         .map((d) => d.foodVariety)
         .whereType<int>()
@@ -238,14 +260,12 @@ class IntakeStatisticsService {
     return Rolling7dIntakeStats(
       startDate: days.first.date,
       endDate: days.last.date,
-      revision: _state.dataRevision,
+      revision: read.revision,
       days: days,
       averages: averages,
       foodVarietyAverage: _average(varietyValues),
-      foodVarietyDenominator: varietyValues.isEmpty
-          ? null
-          : varietyValues.length,
-      fishCount: knownFish.isEmpty ? null : _fishMeals(knownFish),
+      foodVarietyDenominator: varietyValues.length,
+      fishCount: _fishMeals(knownFish),
       fishGrams: fishGrams,
       nutGrams: nutGrams,
       dairyMetDays: dairy.met,
@@ -254,14 +274,33 @@ class IntakeStatisticsService {
       soyMetDays: soy.met,
       soyKnownDays: soy.known,
       soyUnknownDays: 7 - soy.known,
+      fishCompleteness: _summaryCompleteness(knownFish, items),
+      nutCompleteness: _summaryCompleteness(
+        items.where((i) => i['category'] == 'nut'),
+        items,
+      ),
+      stale: read.stale,
     );
   }
 
-  Future<List<IntakeDayStat>> _buildDays(DateTime end) async {
+  Future<_Read> _read(DateTime end) async {
+    final before = _state.dataRevision;
     final records = await _state.queryMealsInRange(
       DateTime(end.year, end.month, end.day - 6),
       DateTime(end.year, end.month, end.day + 1),
     );
+    final after = _state.dataRevision;
+    if (before == after) return _Read(records, after, false);
+    final retryBefore = after;
+    final retry = await _state.queryMealsInRange(
+      DateTime(end.year, end.month, end.day - 6),
+      DateTime(end.year, end.month, end.day + 1),
+    );
+    final retryAfter = _state.dataRevision;
+    return _Read(retry, retryAfter, retryBefore != retryAfter);
+  }
+
+  List<IntakeDayStat> _buildDays(DateTime end, List<MealRecord> records) {
     final byDay = <String, List<MealRecord>>{};
     for (final meal in records) {
       byDay.putIfAbsent(_key(meal.timestamp.toLocal()), () => []).add(meal);
@@ -275,6 +314,11 @@ class IntakeStatisticsService {
   IntakeDayStat _dayStat(DateTime date, Map<String, List<MealRecord>> byDay) {
     final records = byDay[_key(date)] ?? const [];
     final items = records.expand(IntakeSnapshot.itemsForMeal).toList();
+    final globallyIncomplete = records.any(
+      (meal) =>
+          !meal.structureComplete ||
+          IntakeSnapshot.itemsForMeal(meal).any((i) => i['complete'] != true),
+    );
     final categories = <String, IntakeCategoryStat>{};
     for (final category in _categories) {
       final categoryItems = items.where((i) => i['category'] == category);
@@ -299,11 +343,16 @@ class IntakeStatisticsService {
             ? 'complete'
             : 'partial',
         target: target,
-        status: complete ? _status(known, target) : null,
-        gap: complete && target.min != null && known < target.min!
-            ? target.min! - known
+        status: complete && !globallyIncomplete ? _status(known, target) : null,
+        gap:
+            complete &&
+                !globallyIncomplete &&
+                target.kind != 'maximum' &&
+                target.min != null
+            ? (target.min! - known).clamp(0, double.infinity)
             : null,
         unit: category == 'dairy' ? 'ml' : 'g',
+        actualKnownSubtotal: _sumActual(list),
       );
     }
     final foodKeys = items
@@ -316,7 +365,7 @@ class IntakeStatisticsService {
         : items.any((i) => i['foodKey'] == null)
         ? null
         : foodKeys.length;
-    final fishItems = items.where((i) => i['animalSubtype'] == 'fish');
+    final fishItems = items.where((i) => i['fishKind'] == 'fish');
     return IntakeDayStat(
       date: _key(date),
       completeness: records.isEmpty
@@ -326,9 +375,7 @@ class IntakeStatisticsService {
           : 'complete',
       categories: categories,
       foodVariety: variety,
-      fishCount: fishItems.isEmpty
-          ? (items.any((i) => i['category'] == 'animal_food') ? null : 0)
-          : _fishMeals(fishItems),
+      fishCount: fishItems.isEmpty ? null : _fishMeals(fishItems),
     );
   }
 
@@ -361,31 +408,60 @@ class IntakeStatisticsService {
   }
 
   static double? _comparableAmount(Map<String, dynamic> i, String category) {
+    if (i['complete'] != true) return null;
+    final equivalent = (i['equivalentAmount'] as num?)?.toDouble();
+    final equivalentUnit = i['equivalentUnit'];
+    if (equivalent != null &&
+        equivalentUnit == (category == 'dairy' ? 'ml' : 'g')) {
+      return equivalent;
+    }
     final unit = i['unit'];
     final amount = (i['amount'] as num?)?.toDouble();
     if (amount == null) return null;
-    if (category == 'dairy') return unit == 'ml' ? amount : null;
-    return unit == 'g' ? amount : null;
+    final basis = i['amountBasis'];
+    if (category == 'dairy') {
+      return unit == 'ml' && basis == 'as_sold' ? amount : null;
+    }
+    return unit == 'g' && (basis == 'raw' || basis == 'as_sold')
+        ? amount
+        : null;
   }
 
-  static double? _sumUnit(Iterable<Map<String, dynamic>> items, String unit) {
-    final values = items
-        .map(
-          (i) => i['unit'] == unit ? (i['amount'] as num?)?.toDouble() : null,
-        )
-        .toList();
-    return values.any((v) => v == null)
-        ? null
-        : values.fold<double>(0, (a, b) => a + b!);
-  }
-
-  static double? _sumCategory(
-    List<Map<String, dynamic>> items,
+  static double? _sumComparable(
+    Iterable<Map<String, dynamic>> items,
     String category,
-    String unit,
-  ) => _sumUnit(items.where((i) => i['category'] == category), unit);
-  static int _fishMeals(Iterable<Map<String, dynamic>> items) =>
-      items.map((i) => i['mealId']).whereType<String>().toSet().length;
+  ) {
+    final values = items.map((i) => _comparableAmount(i, category)).toList();
+    if (values.isEmpty || values.any((v) => v == null || v <= 0)) return null;
+    return values.fold<double>(0, (a, b) => a + b!);
+  }
+
+  static int _fishMeals(Iterable<Map<String, dynamic>> items) => items
+      .where((i) => (_comparableAmount(i, 'animal_food') ?? 0) > 0)
+      .map((i) => i['mealId'])
+      .whereType<String>()
+      .toSet()
+      .length;
+  static double _sumActual(List<Map<String, dynamic>> items) => items
+      .map((i) => (i['amount'] as num?)?.toDouble())
+      .whereType<double>()
+      .fold(0, (a, b) => a + b);
+  static String _summaryCompleteness(
+    Iterable<Map<String, dynamic>> selected,
+    List<Map<String, dynamic>> all,
+  ) {
+    if (all.isEmpty) return 'missing';
+    final values = selected.toList();
+    if (values.isEmpty) return 'unknown';
+    return values.every(
+          (i) =>
+              _comparableAmount(i, i['category'] as String? ?? 'animal_food') !=
+              null,
+        )
+        ? 'complete'
+        : 'partial';
+  }
+
   static double? _average(Iterable<num> values) {
     final v = values.toList();
     return v.isEmpty
@@ -396,6 +472,13 @@ class IntakeStatisticsService {
   static String _key(DateTime d) =>
       '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
   static DateTime _day(DateTime d) => DateTime(d.year, d.month, d.day);
+}
+
+class _Read {
+  const _Read(this.meals, this.revision, this.stale);
+  final List<MealRecord> meals;
+  final int revision;
+  final bool stale;
 }
 
 class _DayCounts {
@@ -409,7 +492,7 @@ _DayCounts _metDayCounts(List<IntakeDayStat> days, String category) {
     final stat = day.categories[category]!;
     if (stat.completeness == 'complete') {
       known++;
-      if (stat.status == 'met') met++;
+      if (stat.status == 'met' || stat.status == 'high') met++;
     }
   }
   return _DayCounts(met, known);

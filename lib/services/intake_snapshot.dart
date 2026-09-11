@@ -133,7 +133,7 @@ class IntakeSnapshot {
         'name': dish.name,
         if (category != null) 'category': _category(category),
         'grams': grams,
-        'animalSubtype': food?.facts.category == 'fish' ? 'fish' : null,
+        'fishKind': food?.facts.category == 'fish' ? 'fish' : null,
         'amount': null,
         'unit': grams == null ? 'unknown' : 'g',
         'amountBasis': 'unknown',
@@ -177,7 +177,7 @@ class IntakeSnapshot {
       'mealId': mealId,
       'name': nameFact?['value'],
       'foodKey': null,
-      'animalSubtype': _acceptedString(node['animalSubtype']),
+      'fishKind': _acceptedString(node['fishKind']),
       'category': category,
       'grams': unit == 'g' ? amount : null,
       'amount': unit == 'ml'
@@ -186,9 +186,11 @@ class IntakeSnapshot {
           ? amount
           : null,
       'unit': unit == 'g' || unit == 'ml' ? unit : 'unknown',
-      'amountBasis': 'unknown',
-      'equivalentAmount': null,
-      'equivalentUnit': null,
+      'amountBasis': node['amountBasis'] is String
+          ? node['amountBasis'] as String
+          : 'unknown',
+      'equivalentAmount': (node['equivalentAmount'] as num?)?.toDouble(),
+      'equivalentUnit': node['equivalentUnit'] as String?,
       'cookingMethod': null,
       'confidence': ((node['confidence'] as Map?)?['raw'] as num?)?.toDouble(),
       'source': source,

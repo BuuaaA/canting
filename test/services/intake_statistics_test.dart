@@ -15,6 +15,7 @@ MealRecord _v2Meal(
   double amount, {
   String unit = 'g',
   String foodKey = 'food-key',
+  String amountBasis = 'raw',
 }) => MealRecord(
   mealId: id,
   mealType: 'lunch',
@@ -32,7 +33,8 @@ MealRecord _v2Meal(
           'nutritionMode': 'aggregate',
           'displayName': {'value': foodKey, 'reviewStatus': 'accepted'},
           'categoryId': {'value': category, 'reviewStatus': 'accepted'},
-          'animalSubtype': {
+          'amountBasis': amountBasis,
+          'fishKind': {
             'value': foodKey == 'fish' ? 'fish' : null,
             'reviewStatus': foodKey == 'fish' ? 'accepted' : 'unreviewed',
           },
