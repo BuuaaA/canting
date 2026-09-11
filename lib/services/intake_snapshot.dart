@@ -143,7 +143,8 @@ class IntakeSnapshot {
       // gram value. Keep grams unknown instead of inventing a conversion.
       const double? grams = null;
       yield {
-        'foodKey': food?.facts.key,
+        // Legacy facts have no reviewed standard-food mapping.
+        'foodKey': null,
         'mealId': meal.mealId,
         'name': dish.name,
         if (category != null) 'category': _category(category),

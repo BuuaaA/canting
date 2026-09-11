@@ -108,6 +108,16 @@ void main() {
       final day = DateTime(2026, 9, 11);
       await state.saveMeal(
         _mealWithName(
+          'composite',
+          day,
+          estimator,
+          guidelines,
+          name: '盖浇饭',
+          grams: 400,
+        ),
+      );
+      await state.saveMeal(
+        _mealWithName(
           'sweet',
           day,
           estimator,
@@ -132,6 +142,37 @@ void main() {
       expect(result.categories['tuber']!.actualKnownByUnit['g'], 125);
       expect(result.categories['grain']!.amount, isNull);
       expect(result.categories['grain']!.actualKnownByUnit['g'], 75);
+    },
+  );
+
+  test(
+    'variety requires traceable complete food facts and excludes legacy keys',
+    () async {
+      final (state, helper, guidelines, estimator) = await _state();
+      addTearDown(helper.close);
+      final day = DateTime(2026, 9, 11);
+      await state.saveMeal(
+        MealRecord(
+          mealId: 'legacy-variety',
+          mealType: 'dinner',
+          timestamp: day,
+          dishes: [
+            MealDish(
+              name: '旧菜',
+              food: const FoodObservation(facts: FoodFacts(name: '旧菜')),
+            ),
+          ],
+        ),
+      );
+
+      final result = await IntakeStatisticsService(state).rolling7d(date: day);
+      expect(
+        result.days.last.categories.values.any(
+          (c) => c.completeness == 'partial',
+        ),
+        isTrue,
+      );
+      expect(result.days.last.foodVariety, isNull);
     },
   );
 

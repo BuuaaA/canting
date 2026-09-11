@@ -364,7 +364,8 @@ class IntakeStatisticsService {
         .whereType<String>()
         .where((k) => k.isNotEmpty)
         .toSet();
-    final variety = records.isEmpty
+    final variety =
+        records.isEmpty || records.any((meal) => !meal.structureComplete)
         ? null
         : items.any((i) => i['foodKey'] == null)
         ? null
