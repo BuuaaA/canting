@@ -94,6 +94,12 @@ class IntakeSnapshot {
     );
   }
 
+  /// Returns the same image-free, persisted intake facts used by the optional
+  /// snapshot adapter. Statistics must consume these facts rather than the
+  /// legacy six-group serving totals.
+  static List<Map<String, dynamic>> itemsForMeal(MealRecord meal) =>
+      _items(meal).toList(growable: false);
+
   static Iterable<Map<String, dynamic>> _items(MealRecord meal) sync* {
     final snapshot = meal.recognitionSnapshot;
     final draft = snapshot?['draft'];
@@ -127,6 +133,7 @@ class IntakeSnapshot {
         'name': dish.name,
         if (category != null) 'category': _category(category),
         'grams': grams,
+        'animalSubtype': food?.facts.category == 'fish' ? 'fish' : null,
         'amount': null,
         'unit': grams == null ? 'unknown' : 'g',
         'amountBasis': 'unknown',
@@ -170,6 +177,7 @@ class IntakeSnapshot {
       'mealId': mealId,
       'name': nameFact?['value'],
       'foodKey': null,
+      'animalSubtype': _acceptedString(node['animalSubtype']),
       'category': category,
       'grams': unit == 'g' ? amount : null,
       'amount': unit == 'ml'
@@ -203,6 +211,11 @@ class IntakeSnapshot {
     if (fact is! Map || fact['reviewStatus'] != 'accepted') return null;
     final value = fact['value'];
     return value is num ? value : null;
+  }
+
+  static String? _acceptedString(dynamic fact) {
+    if (fact is! Map || fact['reviewStatus'] != 'accepted') return null;
+    return fact['value'] is String ? fact['value'] as String : null;
   }
 
   static bool _isComplete(Map<String, dynamic> item) =>
