@@ -140,6 +140,7 @@ void main() {
       expect(result.fishCount, 1);
       expect(result.days.last.fishCount, 1);
       expect(result.fishGrams, isNull);
+      expect(result.fishCompleteness, 'partial');
     },
   );
 

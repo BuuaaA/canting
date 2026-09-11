@@ -227,22 +227,8 @@ class IntakeStatisticsService {
     final days = _buildDays(end, read.meals);
     final records = read.meals;
     final items = records.expand(_items).toList();
-    final fishCount = _fishMealsFromRecords(records);
-    final fishMealIds = records
-        .where(
-          (meal) => meal.dishes.any(
-            (dish) =>
-                dish.food?.confirmed == true &&
-                dish.food?.facts.category == 'fish' &&
-                dish.quantity > 0,
-          ),
-        )
-        .map((meal) => meal.mealId)
-        .toSet();
-    final knownFish = items.where(
-      (i) =>
-          fishMealIds.contains(i['mealId']) && i['category'] == 'animal_food',
-    );
+    final fish = _fishSummary(records);
+    final knownFish = items.where((i) => i['fishConfirmed'] == true);
     final fishGrams = _sumComparable(knownFish, 'animal_food');
     final nutGrams = _sumComparable(
       items.where((i) => i['category'] == 'nut'),
@@ -280,7 +266,7 @@ class IntakeStatisticsService {
       averages: averages,
       foodVarietyAverage: _average(varietyValues),
       foodVarietyDenominator: varietyValues.length,
-      fishCount: fishCount,
+      fishCount: fish.count,
       fishGrams: fishGrams,
       nutGrams: nutGrams,
       dairyMetDays: dairy.met,
@@ -289,9 +275,7 @@ class IntakeStatisticsService {
       soyMetDays: soy.met,
       soyKnownDays: soy.known,
       soyUnknownDays: 7 - soy.known,
-      fishCompleteness: fishCount == null
-          ? 'unknown'
-          : _summaryCompleteness(knownFish, items),
+      fishCompleteness: fish.completeness,
       nutCompleteness: _summaryCompleteness(
         items.where((i) => i['category'] == 'nut'),
         items,
@@ -394,7 +378,7 @@ class IntakeStatisticsService {
           : 'complete',
       categories: categories,
       foodVariety: variety,
-      fishCount: _fishMealsFromRecords(records),
+      fishCount: _fishSummary(records).count,
     );
   }
 
@@ -434,16 +418,7 @@ class IntakeStatisticsService {
         equivalentUnit == (category == 'dairy' ? 'ml' : 'g')) {
       return equivalent;
     }
-    final unit = i['unit'];
-    final amount = (i['amount'] as num?)?.toDouble();
-    if (amount == null) return null;
-    final basis = i['amountBasis'];
-    if (category == 'dairy') {
-      return unit == 'ml' && basis == 'as_sold' ? amount : null;
-    }
-    return unit == 'g' && (basis == 'raw' || basis == 'as_sold')
-        ? amount
-        : null;
+    return null;
   }
 
   static double? _sumComparable(
@@ -469,20 +444,23 @@ class IntakeStatisticsService {
     return result;
   }
 
-  static int? _fishMealsFromRecords(List<MealRecord> records) {
-    if (records.isEmpty) return null;
-    final ids = records
-        .where(
-          (meal) => meal.dishes.any(
-            (dish) =>
-                dish.food?.confirmed == true &&
-                dish.food?.facts.category == 'fish' &&
-                dish.quantity > 0,
-          ),
-        )
-        .map((meal) => meal.mealId)
-        .toSet();
-    return ids.isEmpty ? 0 : ids.length;
+  static _FishSummary _fishSummary(List<MealRecord> records) {
+    if (records.isEmpty) return const _FishSummary(null, 'unknown');
+    var count = 0;
+    var uncertain = false;
+    for (final meal in records) {
+      var confirmedConsumed = false;
+      for (final dish in meal.dishes) {
+        if (dish.food?.facts.category != 'fish') continue;
+        if (dish.food?.confirmed == true) {
+          confirmedConsumed |= dish.quantity > 0;
+        } else {
+          uncertain = true;
+        }
+      }
+      if (confirmedConsumed) count++;
+    }
+    return _FishSummary(count, uncertain ? 'partial' : 'complete');
   }
 
   static String _summaryCompleteness(
@@ -491,11 +469,7 @@ class IntakeStatisticsService {
   ) {
     if (all.isEmpty) return 'missing';
     final values = selected.toList();
-    if (values.isEmpty) {
-      return all.any((i) => i['category'] == 'animal_food')
-          ? 'partial'
-          : 'unknown';
-    }
+    if (values.isEmpty) return 'unknown';
     return values.every(
           (i) =>
               _comparableAmount(i, i['category'] as String? ?? 'animal_food') !=
@@ -522,6 +496,12 @@ class _Read {
   final List<MealRecord> meals;
   final int revision;
   final bool stale;
+}
+
+class _FishSummary {
+  const _FishSummary(this.count, this.completeness);
+  final int? count;
+  final String completeness;
 }
 
 class _DayCounts {

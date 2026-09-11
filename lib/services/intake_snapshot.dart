@@ -149,6 +149,8 @@ class IntakeSnapshot {
         if (category != null) 'category': _category(category),
         'grams': grams,
         'fishKind': food?.facts.category == 'fish' ? 'fish' : null,
+        'fishConfirmed':
+            food?.confirmed == true && food?.facts.category == 'fish',
         'amount': null,
         'unit': grams == null ? 'unknown' : 'g',
         'amountBasis': 'unknown',
