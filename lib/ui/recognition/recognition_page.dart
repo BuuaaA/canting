@@ -390,6 +390,7 @@ class _RecognitionPageState extends State<RecognitionPage> {
   void _mutate(void Function(MealDraftV2) action) {
     try {
       action(_draft!);
+      context.read<AppState>().markRecognitionEdited();
       setState(() {});
     } catch (_) {
       setState(() => _message = '这项修改不符合份量或结构规则，已保留原内容。');

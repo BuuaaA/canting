@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:canting/core/models/meal_draft_v2.dart';
 import 'package:canting/core_engine.dart';
 import 'package:canting/services/recognition_contract.dart';
+import 'package:canting/services/intake_statistics.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/intake/today_plate_view.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -106,4 +108,104 @@ void main() {
     state.dispose();
     await helper.close();
   });
+
+  testWidgets('慢刷新期间保留上一版今日统计并提示正在刷新', (tester) async {
+    final helper = DatabaseHelper(
+      factory: databaseFactoryFfiNoIsolate,
+      databasePath: inMemoryDatabasePath,
+    );
+    await helper.initialize();
+    final state = _SlowStatsState(helper);
+    addTearDown(() async {
+      state.dispose();
+      await helper.close();
+    });
+
+    await tester.pumpWidget(
+      ChangeNotifierProvider<AppState>.value(
+        value: state,
+        child: const MaterialApp(home: Scaffold(body: TodayPlateView())),
+      ),
+    );
+    await tester.pump();
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+    state.statistics.initial.complete(_sampleStats(0, '旧统计'));
+    await tester.pumpAndSettle();
+    expect(find.text('旧统计'), findsOneWidget);
+
+    state.dataRevision++;
+    state.notifyListeners();
+    await tester.pump();
+    expect(find.text('旧统计'), findsOneWidget);
+    expect(find.text('正在刷新今日统计，先显示上一次结果'), findsOneWidget);
+
+    state.dataRevision++;
+    state.notifyListeners();
+    await tester.pump();
+    expect(find.text('旧统计'), findsOneWidget);
+
+    state.statistics.newRefresh.complete(
+      _sampleStats(2, 'stale统计', stale: true),
+    );
+    await tester.pump();
+    expect(find.text('记录刚发生变化，请刷新统计'), findsOneWidget);
+    expect(find.text('stale统计'), findsNothing);
+
+    state.statistics.oldRefresh.complete(_sampleStats(1, '旧晚到'));
+    await tester.pumpAndSettle();
+    expect(find.text('记录刚发生变化，请刷新统计'), findsOneWidget);
+    expect(find.text('旧晚到'), findsNothing);
+  });
+}
+
+TodayIntakeStats _sampleStats(
+  int revision,
+  String label, {
+  bool stale = false,
+}) => TodayIntakeStats(
+  date: '2026-09-12',
+  revision: revision,
+  completeness: 'complete',
+  stale: stale,
+  categories: {
+    label: IntakeCategoryStat(
+      category: label,
+      amount: 1,
+      knownSubtotal: 1,
+      completeness: 'complete',
+      target: const IntakeTarget(),
+      status: 'met',
+      gap: null,
+    ),
+  },
+);
+
+class _SlowStatsState extends AppState {
+  _SlowStatsState(DatabaseHelper helper)
+    : super(
+        databaseHelper: helper,
+        clock: () => DateTime(2026, 9, 12, 12),
+      );
+
+  late final _SlowStatistics statistics = _SlowStatistics(this);
+
+  @override
+  IntakeStatisticsService get intakeStatistics => statistics;
+}
+
+class _SlowStatistics extends IntakeStatisticsService {
+  _SlowStatistics(super.state);
+  final initial = Completer<TodayIntakeStats>();
+  final oldRefresh = Completer<TodayIntakeStats>();
+  final newRefresh = Completer<TodayIntakeStats>();
+  var calls = 0;
+
+  @override
+  Future<TodayIntakeStats> today({DateTime? date}) =>
+      switch (calls++) {
+        0 => initial.future,
+        1 => oldRefresh.future,
+        _ => newRefresh.future,
+      };
 }

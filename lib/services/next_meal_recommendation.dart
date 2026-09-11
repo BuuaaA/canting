@@ -151,6 +151,7 @@ class NextMealResult {
     required this.reasonCode,
     required this.suggestions,
     required this.guidance,
+    this.contextKey,
   });
 
   final String requestId;
@@ -160,6 +161,9 @@ class NextMealResult {
   final String reasonCode;
   final List<NextMealSuggestion> suggestions;
   final NextMealGuidance guidance;
+  /// Date/meal-slot identity used by UI caches; null is allowed for old test
+  /// and adapter results that predate the context guard.
+  final String? contextKey;
 
   bool get isUsable => status != 'failed' && suggestions.isNotEmpty;
 
@@ -192,8 +196,12 @@ class NextMealResult {
         oilSalt: inputIssue ? '请先检查本地统计输入。' : '请先刷新本地统计。',
         reduceStaple: '不根据未知数据推断份量。',
       ),
+      contextKey: _contextKey(request),
     );
   }
+
+  static String _contextKey(NextMealRequest request) =>
+      '${request.today.date}|${request.nextMealType}';
 }
 
 enum NextMealFeedbackAction { accept, ignore, refresh }
@@ -368,6 +376,7 @@ class NextMealRecommendationService {
       reasonCode: 'ai_validated',
       suggestions: suggestions,
       guidance: guidance,
+      contextKey: '${request.today.date}|${request.nextMealType}',
     );
   }
 
@@ -458,6 +467,7 @@ class NextMealRecommendationService {
             ? '根据已知主食记录选择合适份量；未知时不强行减量。'
             : '当前没有可靠的主食缺口或偏多信息，不额外调整主食。',
       ),
+      contextKey: '${request.today.date}|${request.nextMealType}',
     );
     return result;
   }

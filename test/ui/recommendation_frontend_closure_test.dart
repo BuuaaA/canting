@@ -5,6 +5,7 @@ import 'package:canting/services/intake_statistics.dart';
 import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/recommendation/recommendation_detail_page.dart';
+import 'package:canting/ui/home/widgets/recommendation_card.dart';
 import 'package:canting/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -76,6 +77,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('候选 A'), findsOneWidget);
 
+    await tester.scrollUntilVisible(find.text('不感兴趣'), 400);
     await tester.tap(find.text('不感兴趣'));
     await tester.pump();
     expect(
@@ -118,6 +120,143 @@ void main() {
     expect(freshResult.suggestions.first.dishName, '新结果');
     expect(raceState.nextMealResult?.suggestions.first.dishName, '新结果');
   });
+
+  testWidgets('跨日或餐次变化时不显示同 revision 的旧推荐', (tester) async {
+    var now = DateTime(2026, 9, 12, 10);
+    final state = _TestAppState(clock: () => now);
+    addTearDown(state.dispose);
+    final first = Completer<NextMealResult>();
+    final second = Completer<NextMealResult>();
+    var calls = 0;
+    Future<NextMealResult> loader(Set<String> _) =>
+        ++calls == 1 ? first.future : second.future;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: ChangeNotifierProvider<AppState>.value(
+          value: state,
+          child: RecommendationDetailPage(recommendationLoader: loader),
+        ),
+      ),
+    );
+    first.complete(_result(state, requestId: 'day-1', dishName: '昨日推荐'));
+    await tester.pumpAndSettle();
+    expect(find.text('昨日推荐'), findsOneWidget);
+
+    now = DateTime(2026, 9, 13, 10);
+    state.notifyListeners();
+    await tester.pump();
+    expect(find.text('昨日推荐'), findsNothing);
+    second.complete(NextMealResult.failed(
+      NextMealRequest(
+        requestId: 'day-2',
+        today: _today(),
+        rolling7d: _rolling(),
+        nextMealType: 'breakfast',
+      ),
+      'remote_unavailable',
+    ));
+    await tester.pumpAndSettle();
+    expect(find.text('昨日推荐'), findsNothing);
+  });
+
+  testWidgets('详情页跨餐次时不显示同 revision 的旧推荐', (tester) async {
+    var now = DateTime(2026, 9, 12, 10);
+    final state = _TestAppState(clock: () => now);
+    addTearDown(state.dispose);
+    final first = Completer<NextMealResult>();
+    final second = Completer<NextMealResult>();
+    var calls = 0;
+    Future<NextMealResult> loader(Set<String> _) =>
+        ++calls == 1 ? first.future : second.future;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: ChangeNotifierProvider<AppState>.value(
+          value: state,
+          child: RecommendationDetailPage(recommendationLoader: loader),
+        ),
+      ),
+    );
+    first.complete(_result(state, requestId: 'meal-1', dishName: '早餐推荐'));
+    await tester.pumpAndSettle();
+    expect(find.text('早餐推荐'), findsOneWidget);
+
+    now = DateTime(2026, 9, 12, 12);
+    state.notifyListeners();
+    await tester.pump();
+    expect(find.text('早餐推荐'), findsNothing);
+    expect(calls, 2);
+    second.complete(
+      NextMealResult.failed(
+        NextMealRequest(
+          requestId: 'meal-2',
+          today: _today(),
+          rolling7d: _rolling(),
+          nextMealType: 'lunch',
+        ),
+        'remote_unavailable',
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('早餐推荐'), findsNothing);
+  });
+
+  testWidgets('首页推荐卡片在无 state 通知时按渲染瞬间的餐次过滤旧结果', (tester) async {
+    var now = DateTime(2026, 9, 12, 10);
+    final first = Completer<NextMealResult>();
+    final second = Completer<NextMealResult>();
+    var calls = 0;
+    final state = _TestAppState(
+      clock: () => now,
+      recommendationLoader: () => ++calls == 1 ? first.future : second.future,
+    );
+    addTearDown(state.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: ChangeNotifierProvider<AppState>.value(
+          value: state,
+          child: StatefulBuilder(
+            builder: (context, setState) => Column(
+              children: [
+                RecommendationCard(onTap: () {}),
+                TextButton(
+                  onPressed: () => setState(() {}),
+                  child: const Text('重绘卡片'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    first.complete(_result(state, requestId: 'home-1', dishName: '早餐推荐'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('早餐推荐'), findsOneWidget);
+
+    now = DateTime(2026, 9, 12, 12);
+    await tester.tap(find.text('重绘卡片'));
+    await tester.pump();
+    expect(find.textContaining('早餐推荐'), findsNothing);
+    expect(calls, 2);
+    second.complete(
+      NextMealResult.failed(
+        NextMealRequest(
+          requestId: 'home-2',
+          today: _today(),
+          rolling7d: _rolling(),
+          nextMealType: 'lunch',
+        ),
+        'remote_unavailable',
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('早餐推荐'), findsNothing);
+  });
 }
 
 NextMealResult _result(
@@ -144,6 +283,7 @@ NextMealResult _result(
     oilSalt: '少油少盐。',
     reduceStaple: '主食按常规份量。',
   ),
+  contextKey: state.recommendationContextKey(),
 );
 
 TodayIntakeStats _today() => TodayIntakeStats(
@@ -178,13 +318,31 @@ Rolling7dIntakeStats _rolling() => Rolling7dIntakeStats(
 );
 
 class _TestAppState extends AppState {
-  _TestAppState({super.nextMealService})
+  _TestAppState({
+    super.nextMealService,
+    DateTime Function()? clock,
+    this.recommendationLoader,
+  })
     : super(
         databaseHelper: DatabaseHelper(
           factory: databaseFactoryFfiNoIsolate,
           databasePath: inMemoryDatabasePath,
         ),
-        clock: () => DateTime(2026, 9, 12, 18),
+        clock: clock ?? (() => DateTime(2026, 9, 12, 18)),
+      );
+
+  final Future<NextMealResult> Function()? recommendationLoader;
+
+  @override
+  Future<NextMealResult> loadNextMealRecommendation({
+    DateTime? date,
+    Set<String> excludeDishNames = const {},
+    bool force = false,
+  }) => recommendationLoader?.call() ??
+      super.loadNextMealRecommendation(
+        date: date,
+        excludeDishNames: excludeDishNames,
+        force: force,
       );
 
   late final _FakeStatistics stats = _FakeStatistics(this);

@@ -31,11 +31,15 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   List<DeliveryPlatform> _platforms = DeliveryJumpService.platforms;
   Future<NextMealResult>? _future;
   NextMealResult? _lastUsable;
+  String? _lastUsableContextKey;
   NextMealResult? _displayedResult;
   int _loadSerial = 0;
   bool _platformsLoaded = false;
   bool _busy = false;
   bool _loading = false;
+  String? _loadedContextKey;
+  String? _futureContextKey;
+  NextMealResult? _lastFailure;
 
   @override
   void dispose() {
@@ -57,6 +61,10 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
 
   Future<NextMealResult> _startLoad({bool force = false}) {
     final state = context.read<AppState>();
+    final contextKey = state.recommendationContextKey();
+    _loadedContextKey = contextKey;
+    _futureContextKey = contextKey;
+    _lastFailure = null;
     final serial = ++_loadSerial;
     if (mounted) setState(() => _loading = true);
     final future =
@@ -71,8 +79,15 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
         if (!mounted) return;
         if (serial == _loadSerial &&
             result.isUsable &&
-            result.dataRevision == state.dataRevision) {
+            result.dataRevision == state.dataRevision &&
+            (result.contextKey == null || result.contextKey == contextKey) &&
+            state.recommendationContextKey() == contextKey) {
           _lastUsable = result;
+          _lastUsableContextKey = contextKey;
+        } else if (serial == _loadSerial &&
+            !result.isUsable &&
+            state.recommendationContextKey() == contextKey) {
+          _lastFailure = result;
         }
         setState(() => _loading = false);
       },
@@ -87,18 +102,29 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     AsyncSnapshot<NextMealResult> snapshot,
     AppState state,
   ) {
+    final contextKey = state.recommendationContextKey();
     final usable = [_lastUsable, state.nextMealResult]
         .whereType<NextMealResult>()
         .where(
           (result) =>
-              result.isUsable && result.dataRevision == state.dataRevision,
+          result.isUsable &&
+              result.dataRevision == state.dataRevision &&
+              (result.contextKey == null || result.contextKey == contextKey) &&
+              (identical(result, _lastUsable)
+                  ? _lastUsableContextKey == contextKey
+                  : result.contextKey != null),
         )
         .firstOrNull;
     if (usable != null && usable.dataRevision == state.dataRevision) {
       return usable;
     }
     final candidate = snapshot.data;
-    return candidate?.dataRevision == state.dataRevision ? candidate : null;
+    return snapshot.connectionState == ConnectionState.done &&
+            candidate?.dataRevision == state.dataRevision &&
+            (candidate?.contextKey == null || candidate?.contextKey == contextKey) &&
+            (_futureContextKey == contextKey || candidate?.contextKey != null)
+        ? candidate
+        : null;
   }
 
   Future<void> _changeBatch(NextMealFeedbackAction action) async {
@@ -163,6 +189,17 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
+    final contextKey = state.recommendationContextKey();
+    if (_loadedContextKey != null && _loadedContextKey != contextKey) {
+      _loadedContextKey = contextKey;
+      _lastUsable = null;
+      _lastUsableContextKey = null;
+      _displayedResult = null;
+      _lastFailure = null;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _startLoad(force: true);
+      });
+    }
     return Scaffold(
       appBar: const PixelAppBar(title: '下一餐推荐', leading: BackButton()),
       body: PixelBackdrop(
@@ -177,9 +214,11 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
               if (result?.isUsable == true &&
                   result!.dataRevision == state.dataRevision) {
                 _lastUsable = result;
+                _lastUsableContextKey = contextKey;
               }
               final loading =
-                  snapshot.connectionState == ConnectionState.waiting;
+                snapshot.connectionState == ConnectionState.waiting;
+              final failure = _lastFailure;
               if (result == null) {
                 return _MessagePanel(
                   title: loading ? '正在生成下一餐建议' : '暂时没有可展示的推荐',
@@ -191,6 +230,12 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
               return ListView(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                 children: [
+                  if (failure != null)
+                    _MessagePanel(
+                      title: '本次推荐暂不可用',
+                      message: _failureMessage(failure.reasonCode),
+                      onRetry: () => _startLoad(force: true),
+                    ),
                   _GuidancePanel(result: result),
                   if (loading || _loading) const LinearProgressIndicator(),
                   const SizedBox(height: 18),
@@ -250,6 +295,13 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
       ),
     );
   }
+
+  String _failureMessage(String reasonCode) => switch (reasonCode) {
+    'stale_input' => '统计已更新，旧推荐未继续展示。',
+    'timeout' || 'remote_unavailable' || 'invalid_json' =>
+      '远端推荐暂不可用，当前保留上一批结果。',
+    _ => '当前推荐暂不可用，当前保留上一批结果。',
+  };
 }
 
 class _GuidancePanel extends StatelessWidget {

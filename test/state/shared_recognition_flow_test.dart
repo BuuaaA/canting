@@ -7,6 +7,7 @@ import 'package:canting/state/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 DietaryGuidelines _guidelines() => DietaryGuidelines.fromJson(
@@ -86,6 +87,23 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('分享识别状态机（start/complete/fail/clear）', () {
+    test('用户编辑识别结果持久化 ai_recognition_user_edit 事件', () async {
+      SharedPreferences.setMockInitialValues({
+        'recognition_events': List<String>.generate(100, (i) => 'old-$i'),
+      });
+      final state = _stateMachineState();
+      state.markRecognitionEdited();
+      await Future<void>.delayed(const Duration(milliseconds: 20));
+      final events =
+          (await SharedPreferences.getInstance()).getStringList(
+            'recognition_events',
+          ) ??
+          const [];
+      expect(events, hasLength(100));
+      expect(events.last, contains('ai_recognition_user_edit'));
+      state.dispose();
+    });
+
     test('start 后处于加载中，无菜无商家', () {
       final state = _stateMachineState();
       state.startSharedRecognition('content://test/1');

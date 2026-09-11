@@ -16,6 +16,7 @@ class _TodayPlateViewState extends State<TodayPlateView> {
   late Future<TodayIntakeStats> _future;
   late int _revision;
   late AppState _state;
+  TodayIntakeStats? _lastStats;
   @override
   void initState() {
     super.initState();
@@ -51,6 +52,16 @@ class _TodayPlateViewState extends State<TodayPlateView> {
     future: _future,
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
+        if (_lastStats != null) {
+          return Column(
+            children: [
+              const LinearProgressIndicator(),
+              const SizedBox(height: 8),
+              const Text('正在刷新今日统计，先显示上一次结果'),
+              _statsContent(_lastStats!),
+            ],
+          );
+        }
         return const PixelPanel(
           child: Padding(
             padding: EdgeInsets.all(24),
@@ -69,7 +80,12 @@ class _TodayPlateViewState extends State<TodayPlateView> {
           child: _MessageState(message: '记录刚发生变化，请刷新统计', action: _retry),
         );
       }
-      return Column(
+      _lastStats = stats;
+      return _statsContent(stats);
+    },
+  );
+
+  Widget _statsContent(TodayIntakeStats stats) => Column(
         children: [
           PixelPanel(
             padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
@@ -90,8 +106,6 @@ class _TodayPlateViewState extends State<TodayPlateView> {
           ),
         ],
       );
-    },
-  );
 }
 
 class _CategoryRow extends StatelessWidget {

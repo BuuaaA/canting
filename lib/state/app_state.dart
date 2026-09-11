@@ -345,6 +345,11 @@ class AppState extends ChangeNotifier {
     return future;
   }
 
+  String recommendationContextKey([DateTime? date]) {
+    final current = date ?? clock();
+    return '${_dayKey(current)}|${_nextMealType(current)}';
+  }
+
   String _nextMealType(DateTime now) {
     final profile = this.profile;
     if (profile == null) {
@@ -1201,11 +1206,27 @@ class AppState extends ChangeNotifier {
   Future<bool> Function()? confirmRecognitionReplacement;
   void markRecognitionEdited() {
     recognitionEdited = true;
+    unawaited(persistRecognitionEditEvent());
     // Manual editing invalidates in-flight callbacks without discarding the page.
     if (_recognitionDraft?.isLoading == true) {
       _recognitionDraft = _recognitionDraft!.copyWith(isLoading: false);
       notifyListeners();
     }
+  }
+
+  Future<void> persistRecognitionEditEvent() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final events = prefs.getStringList('recognition_events') ?? const [];
+      final start = events.length >= 100 ? events.length - 99 : 0;
+      await prefs.setStringList('recognition_events', [
+        ...events.skip(start),
+        jsonEncode({
+          'event': 'ai_recognition_user_edit',
+          'occurredAt': DateTime.now().toIso8601String(),
+        }),
+      ]);
+    } catch (_) {}
   }
 
   Future<bool> mayReplaceRecognition() async {

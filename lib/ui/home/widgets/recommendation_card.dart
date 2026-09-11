@@ -14,14 +14,21 @@ class RecommendationCard extends StatelessWidget {
     final state = context.watch<AppState>();
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    final cached = state.nextMealResult;
     return FutureBuilder<NextMealResult>(
       future: state.loadNextMealRecommendation(),
       builder: (context, snapshot) {
-        final result = (snapshot.data?.dataRevision == state.dataRevision
+        final contextKey = state.recommendationContextKey();
+        final cached = state.nextMealResult;
+        final result = (snapshot.data?.dataRevision == state.dataRevision &&
+                (snapshot.data?.contextKey == null ||
+                    snapshot.data?.contextKey == contextKey)
                 ? snapshot.data
                 : null) ??
-            (cached?.dataRevision == state.dataRevision ? cached : null);
+            (cached?.dataRevision == state.dataRevision &&
+                    (cached?.contextKey == null ||
+                        cached?.contextKey == contextKey)
+                ? cached
+                : null);
         final suggestion = result?.suggestions.firstOrNull;
         final reason =
             suggestion?.reason ??
