@@ -87,7 +87,13 @@ class _RecommendationDetailPageState extends State<RecommendationDetailPage> {
     AsyncSnapshot<NextMealResult> snapshot,
     AppState state,
   ) {
-    final usable = _lastUsable ?? state.nextMealResult;
+    final usable = [_lastUsable, state.nextMealResult]
+        .whereType<NextMealResult>()
+        .where(
+          (result) =>
+              result.isUsable && result.dataRevision == state.dataRevision,
+        )
+        .firstOrNull;
     if (usable != null && usable.dataRevision == state.dataRevision) {
       return usable;
     }

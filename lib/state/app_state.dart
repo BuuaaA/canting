@@ -132,8 +132,16 @@ class AppState extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
-    _nextMealRequestSerial++;
+    _invalidateNextMealRecommendationCache();
     super.dispose();
+  }
+
+  void _invalidateNextMealRecommendationCache() {
+    _nextMealRequestSerial++;
+    _nextMealResult = null;
+    _nextMealResultKey = null;
+    _nextMealFuture = null;
+    _nextMealFutureKey = null;
   }
 
   RecordWindow? windowFor(DateTime date, int days) =>
@@ -299,27 +307,27 @@ class AppState extends ChangeNotifier {
     }
     final serial = ++_nextMealRequestSerial;
     final future = () async {
-      var today = await intakeStatistics.today(date: date ?? current);
-      var rolling = await intakeStatistics.rolling7d(date: date ?? current);
-      if (today.revision != rolling.revision) {
-        today = await intakeStatistics.today(date: date ?? current);
-        rolling = await intakeStatistics.rolling7d(date: date ?? current);
-      }
-      final request = NextMealRequest(
-        requestId: 'next-${current.microsecondsSinceEpoch}-$serial',
-        today: today,
-        rolling7d: rolling,
-        nextMealType: mealType,
-        // 当前用户资料 schema 没有忌口字段；不虚构或推导忌口。
-        availablePlatforms: (await DeliveryJumpService().loadEnabledPlatforms())
-            .map((platform) => platform.id)
-            .toList(growable: false),
-        excludeDishNames: excludeDishNames.toList(growable: false),
-      );
       try {
+        var today = await intakeStatistics.today(date: date ?? current);
+        var rolling = await intakeStatistics.rolling7d(date: date ?? current);
+        if (today.revision != rolling.revision) {
+          today = await intakeStatistics.today(date: date ?? current);
+          rolling = await intakeStatistics.rolling7d(date: date ?? current);
+        }
+        final request = NextMealRequest(
+          requestId: 'next-${current.microsecondsSinceEpoch}-$serial',
+          today: today,
+          rolling7d: rolling,
+          nextMealType: mealType,
+          // 当前用户资料 schema 没有忌口字段；不虚构或推导忌口。
+          availablePlatforms: (await DeliveryJumpService().loadEnabledPlatforms())
+              .map((platform) => platform.id)
+              .toList(growable: false),
+          excludeDishNames: excludeDishNames.toList(growable: false),
+        );
         final result = await _nextMealService.nextMeal(request);
         if (serial == _nextMealRequestSerial &&
-            result.dataRevision == dataRevision) {
+            result.dataRevision == dataRevision && result.isUsable) {
           _nextMealResult = result;
           _nextMealResultKey = key;
           notifyListeners();
@@ -1514,6 +1522,7 @@ class AppState extends ChangeNotifier {
       }, conflictAlgorithm: ConflictAlgorithm.replace);
     });
     dataRevision++;
+    _invalidateNextMealRecommendationCache();
     _mealsByDay.clear();
     await refreshBalanceLedger();
     mealReminder = false;
@@ -1565,6 +1574,7 @@ class AppState extends ChangeNotifier {
     _windows.clear();
     _windowRevision++;
     dataRevision++;
+    _invalidateNextMealRecommendationCache();
     mealReminder = false;
     gapReminder = false;
     persistNotificationSwitches?.call(mealReminder: false, gapReminder: false);

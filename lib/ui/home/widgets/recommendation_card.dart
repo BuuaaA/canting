@@ -18,7 +18,10 @@ class RecommendationCard extends StatelessWidget {
     return FutureBuilder<NextMealResult>(
       future: state.loadNextMealRecommendation(),
       builder: (context, snapshot) {
-        final result = snapshot.data ?? cached;
+        final result = (snapshot.data?.dataRevision == state.dataRevision
+                ? snapshot.data
+                : null) ??
+            (cached?.dataRevision == state.dataRevision ? cached : null);
         final suggestion = result?.suggestions.firstOrNull;
         final reason =
             suggestion?.reason ??
