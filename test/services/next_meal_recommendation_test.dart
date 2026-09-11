@@ -271,6 +271,81 @@ void main() {
     expect(stillWorks.isUsable, isTrue);
   });
 
+  test('无可靠类别缺口时使用中性理由，只有主食真实偏多才减量', () async {
+    final neutralToday = TodayIntakeStats(
+      date: '2026-09-12',
+      revision: 4,
+      completeness: 'partial',
+      categories: const {},
+    );
+    final neutralRequest = NextMealRequest(
+      requestId: 'neutral-1',
+      today: neutralToday,
+      rolling7d: Rolling7dIntakeStats(
+        startDate: '2026-09-06',
+        endDate: '2026-09-12',
+        revision: 4,
+        days: const [],
+        averages: const {},
+        foodVarietyAverage: null,
+        foodVarietyDenominator: null,
+        fishCount: null,
+        fishGrams: null,
+        nutGrams: null,
+        dairyMetDays: 0,
+        dairyKnownDays: 0,
+        dairyUnknownDays: 7,
+        soyMetDays: 0,
+        soyKnownDays: 0,
+        soyUnknownDays: 7,
+        fishCompleteness: 'unknown',
+        fishCountCompleteness: 'unknown',
+        nutCompleteness: 'unknown',
+      ),
+      nextMealType: 'dinner',
+    );
+    final neutral = await NextMealRecommendationService().nextMeal(
+      neutralRequest,
+    );
+    expect(neutral.suggestions, hasLength(3));
+    expect(
+      neutral.suggestions.every(
+        (suggestion) => suggestion.reason.contains('当前没有该类别的可靠缺口'),
+      ),
+      isTrue,
+    );
+    expect(neutral.suggestions.first.estimatedServing, isNot(contains('小份')));
+
+    final grainHigh = TodayIntakeStats(
+      date: '2026-09-12',
+      revision: 4,
+      completeness: 'complete',
+      categories: {
+        'grain': const IntakeCategoryStat(
+          category: 'grain',
+          amount: 400,
+          knownSubtotal: 400,
+          completeness: 'complete',
+          target: IntakeTarget(min: 200, max: 300),
+          status: 'high',
+          gap: null,
+        ),
+      },
+    );
+    final reduced = await NextMealRecommendationService().nextMeal(
+      NextMealRequest(
+        requestId: 'grain-high',
+        today: grainHigh,
+        rolling7d: neutralRequest.rolling7d,
+        nextMealType: 'dinner',
+      ),
+    );
+    final grain = reduced.suggestions.firstWhere(
+      (s) => s.primaryCategory == 'grain',
+    );
+    expect(grain.estimatedServing, contains('小份'));
+  });
+
   test('反馈保存失败不阻塞，成功后accept去重且缓存有界', () async {
     var calls = 0;
     final result = await NextMealRecommendationService().nextMeal(request());

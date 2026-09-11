@@ -173,20 +173,27 @@ class NextMealResult {
     'guidance': guidance.toJson(),
   };
 
-  static NextMealResult failed(NextMealRequest request, String reasonCode) =>
-      NextMealResult(
-        requestId: request.requestId,
-        dataRevision: request.dataRevision,
-        source: 'local_rule',
-        status: 'failed',
-        reasonCode: reasonCode,
-        suggestions: const [],
-        guidance: const NextMealGuidance(
-          primary: '当前统计不是最新，暂不展示下一餐建议。',
-          oilSalt: '请先刷新本地统计。',
-          reduceStaple: '不根据未知数据推断份量。',
-        ),
-      );
+  static NextMealResult failed(NextMealRequest request, String reasonCode) {
+    final inputIssue =
+        reasonCode == 'invalid_input' ||
+        reasonCode == 'date_mismatch' ||
+        reasonCode == 'revision_mismatch';
+    return NextMealResult(
+      requestId: request.requestId,
+      dataRevision: request.dataRevision,
+      source: 'local_rule',
+      status: 'failed',
+      reasonCode: reasonCode,
+      suggestions: const [],
+      guidance: NextMealGuidance(
+        primary: inputIssue
+            ? '推荐输入不完整或前后不一致，暂不展示下一餐建议。'
+            : '当前统计不是最新，暂不展示下一餐建议。',
+        oilSalt: inputIssue ? '请先检查本地统计输入。' : '请先刷新本地统计。',
+        reduceStaple: '不根据未知数据推断份量。',
+      ),
+    );
+  }
 }
 
 enum NextMealFeedbackAction { accept, ignore, refresh }
@@ -366,6 +373,7 @@ class NextMealRecommendationService {
 
   NextMealResult _local(NextMealRequest request, String reasonCode) {
     final priorities = _deficitCategories(request);
+    final grainHigh = request.today.categories['grain']?.status == 'high';
     final candidates = <_LocalCandidate>[
       const _LocalCandidate(
         '西兰花鸡胸肉饭',
@@ -385,8 +393,8 @@ class NextMealRecommendationService {
         '番茄鸡蛋荞麦面',
         '番茄鸡蛋荞麦面 少油',
         'grain',
-        '荞麦面小份、番茄鸡蛋适量（估算）',
-        '主食采用小份并加入蔬菜，适合下一餐平衡结构。',
+        '荞麦面一份、番茄鸡蛋适量（估算）',
+        '普通搭配建议；份量按常规估算。',
       ),
       const _LocalCandidate(
         '原味酸奶配苹果',
@@ -412,7 +420,17 @@ class NextMealRecommendationService {
         .take(3)
         .map((candidate) {
           final suggestion = candidate.toSuggestion();
-          if (knownGapCategories.contains(suggestion.primaryCategory)) {
+          if (knownGapCategories.contains(suggestion.primaryCategory) ||
+              (grainHigh && suggestion.primaryCategory == 'grain')) {
+            if (grainHigh && suggestion.primaryCategory == 'grain') {
+              return NextMealSuggestion(
+                dishName: suggestion.dishName,
+                searchKeyword: suggestion.searchKeyword,
+                primaryCategory: suggestion.primaryCategory,
+                estimatedServing: '荞麦面小份、番茄鸡蛋适量（估算）',
+                reason: '已记录主食偏多，下一餐建议选择小份。',
+              );
+            }
             return suggestion;
           }
           return NextMealSuggestion(
@@ -420,7 +438,7 @@ class NextMealRecommendationService {
             searchKeyword: suggestion.searchKeyword,
             primaryCategory: suggestion.primaryCategory,
             estimatedServing: suggestion.estimatedServing,
-            reason: '普通搭配建议；当前没有可确认的蔬菜缺口。',
+            reason: '当前没有该类别的可靠缺口，按普通搭配提供。',
           );
         })
         .toList();
@@ -429,7 +447,7 @@ class NextMealRecommendationService {
       dataRevision: request.dataRevision,
       source: 'local_rule',
       status: selected.isEmpty ? 'failed' : 'degraded',
-      reasonCode: reasonCode,
+      reasonCode: selected.isEmpty ? 'no_safe_candidate' : reasonCode,
       suggestions: selected,
       guidance: NextMealGuidance(
         primary: knownGapCategories.contains('vegetable')
