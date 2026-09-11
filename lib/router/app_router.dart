@@ -1,6 +1,7 @@
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/history/history_page.dart';
 import 'package:canting/ui/home/home_page.dart';
+import 'package:canting/ui/intake/rolling_7d_page.dart';
 import 'package:canting/ui/manual_add/manual_add_page.dart';
 import 'package:canting/ui/onboarding/onboarding_page.dart';
 import 'package:canting/ui/recommendation/recommendation_detail_page.dart';
@@ -54,6 +55,10 @@ abstract final class AppRouter {
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: SettingsPage()),
           ),
+          GoRoute(
+            path: '/rolling_7d',
+            builder: (context, state) => const Rolling7dPage(),
+          ),
         ],
       ),
       GoRoute(
@@ -101,6 +106,12 @@ abstract final class AppRouter {
       GoRoute(
         path: '/recommendation',
         builder: (context, state) => const RecommendationDetailPage(),
+      ),
+      GoRoute(
+        path: '/rolling_7d/day',
+        builder: (context, state) => Rolling7dDayDetailPage(
+          date: DateTime.tryParse(state.uri.queryParameters['date'] ?? '') ?? DateTime.now(),
+        ),
       ),
     ],
   );

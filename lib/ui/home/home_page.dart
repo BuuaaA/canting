@@ -1,13 +1,12 @@
-import 'package:canting/core_engine.dart';
 import 'package:canting/pet/widgets/evolution_animation_widget.dart';
 import 'package:canting/state/app_state.dart';
-import 'package:canting/ui/home/widgets/food_progress_list.dart';
 import 'package:canting/ui/home/widgets/greeting_text.dart';
 import 'package:canting/ui/home/widgets/nutrition_ring_chart.dart';
 import 'package:canting/ui/home/widgets/pet_area.dart';
 import 'package:canting/ui/home/widgets/recommendation_card.dart';
 import 'package:canting/ui/home/widgets/summary_card.dart';
 import 'package:canting/ui/home/widgets/today_records.dart';
+import 'package:canting/ui/intake/today_plate_view.dart';
 import 'package:canting/ui/theme/pixel_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,11 +22,6 @@ class HomePage extends StatelessWidget {
     final todayMeals = state.mealsFor(now);
     final completion = state.completionFor(now);
     final recommendation = state.recommendationFor(now);
-    final eaten = todayMeals.fold(
-      Portions.zero,
-      (total, meal) => total + meal.portionsTotal,
-    );
-    final target = state.dailyIntake.portions;
     final disableAnimations = MediaQuery.disableAnimationsOf(context);
     final pendingFrom = state.pendingEvolutionFrom;
 
@@ -69,11 +63,7 @@ class HomePage extends StatelessWidget {
               icon: Icons.checklist,
             ),
             const SizedBox(height: 12),
-            FoodProgressList(
-              values: completion.byCategory,
-              current: eaten,
-              target: target,
-            ),
+            const TodayPlateView(),
             const SizedBox(height: 26),
             const PixelSectionHeader(title: '下一餐', icon: Icons.restaurant_menu),
             const SizedBox(height: 10),
