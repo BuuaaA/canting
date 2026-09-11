@@ -208,6 +208,15 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               const SizedBox(height: 14),
               const _QualityLegend(),
+              const SizedBox(height: 14),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: () => context.push('/rolling_7d'),
+                  icon: const Icon(Icons.insights_outlined),
+                  label: const Text('7日进度'),
+                ),
+              ),
               const SizedBox(height: 26),
               RecordSummaryPanel(date: selected),
               const SizedBox(height: 26),

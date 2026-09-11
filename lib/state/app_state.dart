@@ -15,6 +15,8 @@ import 'package:canting/data/custom_dish_repository.dart';
 import 'package:canting/data/meal_repository.dart';
 import 'package:canting/data/pet_repository.dart';
 import 'package:canting/data/user_repository.dart';
+import 'package:canting/services/intake_statistics.dart';
+import 'package:canting/ui/intake/intake_view_events.dart';
 import 'package:canting/native/ios_native_bridge.dart';
 import 'package:canting/pet.dart';
 import 'package:canting/platform/android_native_bridge.dart';
@@ -100,6 +102,13 @@ class AppState extends ChangeNotifier {
   final Set<String> _windowLoads = {};
   final Map<String, Completer<void>> _windowWaiters = {};
   int dataRevision = 0;
+  final List<String> intakeViewEvents = <String>[];
+  void recordIntakeViewEvent(String name) {
+    if (intakeViewEvents.length >= 100) intakeViewEvents.removeAt(0);
+    intakeViewEvents.add(name);
+    unawaited(IntakeViewEvents.persist(name));
+  }
+
   int _windowRevision = 0;
   bool _disposed = false;
   @override
@@ -241,6 +250,10 @@ class AppState extends ChangeNotifier {
   bool get onboardingComplete => profile?.onboardingCompleted ?? false;
 
   DailyIntake get dailyIntake => profile?.dailyIntake ?? _dailyIntakeFallback;
+
+  /// UI-facing local statistics facade. Pages consume task 02 results and do
+  /// not duplicate nutrition formulas.
+  IntakeStatisticsService get intakeStatistics => IntakeStatisticsService(this);
 
   /// Loads profile, pet, and today's meals from the database. Called once
   /// from main() before runApp.
