@@ -56,10 +56,16 @@ class IntakeSnapshot {
       final day = DateTime(anchor.year, anchor.month, anchor.day + offset);
       final key = dateKey(day);
       final records = byDay[key] ?? const <MealRecord>[];
+      final recordItems = {
+        for (final meal in records) meal.mealId: _items(meal).toList(),
+      };
       final complete =
           records.isNotEmpty &&
           records.every(
-            (meal) => meal.structureComplete && _items(meal).isNotEmpty,
+            (meal) =>
+                meal.structureComplete &&
+                recordItems[meal.mealId]!.isNotEmpty &&
+                recordItems[meal.mealId]!.every(_isComplete),
           );
       days.add({
         'date': key,
@@ -69,8 +75,12 @@ class IntakeSnapshot {
             ? 'known'
             : 'partial',
         'mealIds': records.map((meal) => meal.mealId).toList(growable: false),
-        'meals': records.map(_mealRef).toList(growable: false),
-        'intakeItems': records.expand(_items).toList(growable: false),
+        'meals': records
+            .map((meal) => _mealRef(meal, recordItems[meal.mealId]!))
+            .toList(growable: false),
+        'intakeItems': recordItems.values
+            .expand((items) => items)
+            .toList(growable: false),
       });
     }
     return IntakeSnapshot(
@@ -195,11 +205,20 @@ class IntakeSnapshot {
     return value is num ? value : null;
   }
 
-  static Map<String, dynamic> _mealRef(MealRecord meal) => {
+  static bool _isComplete(Map<String, dynamic> item) =>
+      item['complete'] == true;
+
+  static Map<String, dynamic> _mealRef(
+    MealRecord meal,
+    List<Map<String, dynamic>> items,
+  ) => {
     'mealId': meal.mealId,
     'occurredAt': meal.timestamp.toIso8601String(),
-    'intakeItems': _items(meal).toList(growable: false),
-    'completeness': meal.structureComplete ? 'known' : 'partial',
+    'intakeItems': items,
+    'completeness':
+        meal.structureComplete && items.isNotEmpty && items.every(_isComplete)
+        ? 'known'
+        : 'partial',
   };
 
   static String? _category(String value) => switch (value) {

@@ -75,5 +75,103 @@ void main() {
     );
     expect(items.every((item) => item['grams'] == null), isTrue);
     expect(items.every((item) => item['amountBasis'] == 'unknown'), isTrue);
+
+    final fixturePath = File(
+      '${Directory.current.parent.parent.path}/handoffs/01/fixtures/flutter_intake_snapshot.json',
+    );
+    fixturePath.parent.createSync(recursive: true);
+    fixturePath.writeAsStringSync(jsonEncode(json));
   });
+
+  test(
+    'V2 modes preserve effective amounts, unknown ml, exclusions, and paths',
+    () {
+      final schema = jsonDecode(
+        File('dev-docs/recognition-v2/recognition.schema.json')
+            .readAsStringSync(),
+      ) as Map<String, dynamic>;
+      final examples = jsonDecode(
+        File('dev-docs/recognition-v2/examples.json').readAsStringSync(),
+      ) as Map<String, dynamic>;
+
+      MealRecord exportFor({
+        required String basis,
+        Map<String, dynamic>? portion,
+        double? allocation,
+        double? consumed,
+        bool notEaten = false,
+      }) {
+        final draft = MealDraftV2(
+          RecognitionContract(schema),
+          examples['personal_half_bowl'] as Map<String, dynamic>,
+          simulated: true,
+        );
+        if (basis == 'per_product_unit') {
+          draft.editFact('p-meal', 'purchaseQuantity', 2);
+        }
+        draft.setIntake(
+          'c-rice',
+          basis: basis,
+          portion: portion ?? {'value': 1, 'unit': 'g', 'band': 'unknown'},
+          allocation: allocation,
+          consumed: consumed,
+          notEaten: notEaten,
+        );
+        return draft.toMeal(
+          mealType: 'lunch',
+          timestamp: DateTime(2026, 9, 11),
+        );
+      }
+
+      Map<String, dynamic> onlyItem(MealRecord meal) {
+        final json = IntakeSnapshot.fromMeals(
+          installationId: 'device-123',
+          revision: 1,
+          today: DateTime(2026, 9, 11),
+          timezone: 'Asia/Shanghai',
+          meals: [meal],
+        ).toJson();
+        return ((json['days'] as List).last['intakeItems'] as List).single
+            as Map<String, dynamic>;
+      }
+
+      final personal = onlyItem(
+        exportFor(
+          basis: 'personal_consumed',
+          portion: {'value': 1, 'unit': 'g', 'band': 'unknown'},
+        ),
+      );
+      expect(personal['amount'], 1);
+      expect(personal['complete'], isFalse);
+
+      final served = onlyItem(
+        exportFor(basis: 'served_total', allocation: .5, consumed: .5),
+      );
+      expect(served['amount'], .25);
+
+      final perUnit = onlyItem(
+        exportFor(basis: 'per_product_unit', allocation: 1, consumed: .5),
+      );
+      expect(perUnit['amount'], 1);
+
+      final unknownMl = onlyItem(
+        exportFor(
+          basis: 'served_total',
+          portion: {'value': 300, 'unit': 'ml', 'band': 'unknown'},
+        ),
+      );
+      expect(unknownMl['unit'], 'ml');
+      expect(unknownMl['amount'], isNull);
+      expect(unknownMl['complete'], isFalse);
+
+      final excluded = IntakeSnapshot.fromMeals(
+        installationId: 'device-123',
+        revision: 1,
+        today: DateTime(2026, 9, 11),
+        timezone: 'Asia/Shanghai',
+        meals: [exportFor(basis: 'personal_consumed', notEaten: true)],
+      ).toJson();
+      expect((excluded['days'] as List).last['intakeItems'], isEmpty);
+    },
+  );
 }
