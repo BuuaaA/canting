@@ -429,6 +429,14 @@ void main() {
       await state.saveMeal(fish('fish-confirmed', confirmed: true));
       await state.saveMeal(fish('fish-unconfirmed', confirmed: false));
       await state.saveMeal(fish('fish-zero', confirmed: true, quantity: 0));
+      await state.saveMeal(
+        MealRecord(
+          mealId: 'unknown-legacy-fish',
+          mealType: 'dinner',
+          timestamp: day,
+          dishes: [const MealDish(contributionsKnown: false)],
+        ),
+      );
       await state.saveMeal(_riceMeal('rice', day, estimator, guidelines));
 
       final result = await IntakeStatisticsService(state).rolling7d(date: day);

@@ -453,11 +453,18 @@ class IntakeStatisticsService {
 
   static _FishSummary _fishSummary(List<MealRecord> records) {
     if (records.isEmpty) return const _FishSummary(null, 'unknown');
-    var count = 0;
+    final fishMealIds = <String>{};
     var uncertain = false;
     for (final meal in records) {
+      if (!meal.structureComplete) uncertain = true;
       var confirmedConsumed = false;
       for (final dish in meal.dishes) {
+        if (meal.recordVersion < 2 &&
+            (dish.food == null ||
+                dish.food!.facts.category == 'unknown' ||
+                !dish.contributionsKnown)) {
+          uncertain = true;
+        }
         if (dish.food?.facts.category != 'fish') continue;
         if (dish.food?.confirmed == true) {
           confirmedConsumed |= dish.quantity > 0;
@@ -465,10 +472,13 @@ class IntakeStatisticsService {
           uncertain = true;
         }
       }
-      if (confirmedConsumed) count++;
+      if (confirmedConsumed) fishMealIds.add(meal.mealId);
     }
     if (records.any((meal) => meal.recordVersion >= 2)) uncertain = true;
-    return _FishSummary(count, uncertain ? 'partial' : 'complete');
+    return _FishSummary(
+      fishMealIds.isEmpty ? 0 : fishMealIds.length,
+      uncertain ? 'partial' : 'complete',
+    );
   }
 
   static _AmountSummary _actualSummary(
