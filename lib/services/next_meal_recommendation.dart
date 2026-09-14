@@ -7,6 +7,12 @@ typedef NextMealRemoteCall = Future<String> Function(NextMealRequest request);
 typedef NextMealFeedbackSink = Future<void> Function(NextMealFeedback event);
 typedef NextMealEventSink = Future<void> Function(Map<String, dynamic> event);
 
+class NextMealRemoteException implements Exception {
+  const NextMealRemoteException(this.reasonCode, [this.statusCode]);
+  final String reasonCode;
+  final int? statusCode;
+}
+
 const _mealTypes = {'breakfast', 'lunch', 'dinner', 'snack'};
 const _categories = {
   'grain',
@@ -161,6 +167,7 @@ class NextMealResult {
   final String reasonCode;
   final List<NextMealSuggestion> suggestions;
   final NextMealGuidance guidance;
+
   /// Date/meal-slot identity used by UI caches; null is allowed for old test
   /// and adapter results that predate the context guard.
   final String? contextKey;
@@ -289,6 +296,8 @@ class NextMealRecommendationService {
       return _local(request, 'timeout');
     } on FormatException {
       return _local(request, 'invalid_json');
+    } on NextMealRemoteException catch (error) {
+      return _local(request, error.reasonCode);
     } catch (_) {
       return _local(request, 'remote_unavailable');
     }
