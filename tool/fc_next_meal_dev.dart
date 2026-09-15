@@ -30,9 +30,11 @@ class _FcNextMealDevPageState extends State<FcNextMealDevPage> {
   final _tokenController = TextEditingController();
   String _status = '输入短期 FC Bearer 后点击联调';
   bool _busy = false;
+  bool _disposed = false;
 
   @override
   void dispose() {
+    _disposed = true;
     _tokenController.clear();
     _tokenController.dispose();
     super.dispose();
@@ -70,8 +72,10 @@ class _FcNextMealDevPageState extends State<FcNextMealDevPage> {
     } catch (_) {
       if (mounted) setState(() => _status = '联调异常，已结束');
     } finally {
-      _tokenController.clear();
-      if (mounted) setState(() => _busy = false);
+      if (!_disposed) {
+        _tokenController.clear();
+        if (mounted) setState(() => _busy = false);
+      }
     }
   }
 
