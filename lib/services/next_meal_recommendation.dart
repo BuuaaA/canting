@@ -67,7 +67,10 @@ class NextMealRequest {
     'dataRevision': dataRevision,
     'nextMealType': nextMealType,
     'today': today.toJson(),
-    'rolling7d': rolling7d.toJson(),
+    // Daily breakdowns remain local. The gateway needs the window aggregates;
+    // serializing all seven days repeats category rows and exceeds its prompt
+    // limit even when the user has no complete meal records.
+    'rolling7d': rolling7d.toJson()..remove('days'),
     'dietaryExclusions': dietaryExclusions,
     'budget': budget,
     'city': city,

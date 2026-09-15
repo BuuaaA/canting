@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:canting/core_engine.dart';
 import 'package:canting/services/intake_statistics.dart';
@@ -16,6 +17,58 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 void main() {
   setUp(() {
     SharedPreferences.setMockInitialValues({});
+  });
+
+  test('推荐上下文日期与统计结果使用相同的补零格式', () {
+    for (final date in [DateTime(2026, 9, 5, 18), DateTime(2026, 11, 5, 18)]) {
+      final state = _TestAppState(clock: () => date);
+      addTearDown(state.dispose);
+      expect(
+        state.recommendationContextKey(),
+        '${date.toIso8601String().substring(0, 10)}|dinner',
+      );
+    }
+  });
+
+  testWidgets('真实推荐服务返回的 AI 菜品在单数字月份显示到详情页', (tester) async {
+    final state = _TestAppState(
+      nextMealService: NextMealRecommendationService(
+        remote: (_) async => jsonEncode({
+          'suggestions': [
+            for (final name in ['清炒西兰花', '番茄炒鸡蛋'])
+              {
+                'dishName': name,
+                'searchKeyword': '$name 少油少盐',
+                'primaryCategory': 'vegetable',
+                'estimatedServing': '一小盘（估算）',
+                'reason': '搭配蔬菜，份量为估算。',
+              },
+          ],
+          'guidance': {
+            'primary': '按常规搭配，未知摄入不作确定推断。',
+            'oilSalt': '少油少盐。',
+            'reduceStaple': '主食按常规份量。',
+          },
+        }),
+      ),
+    );
+    addTearDown(state.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: ChangeNotifierProvider<AppState>.value(
+          value: state,
+          child: const RecommendationDetailPage(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(state.nextMealResult?.source, 'ai');
+    expect(state.nextMealResult?.reasonCode, 'ai_validated');
+    expect(find.text('清炒西兰花'), findsOneWidget);
+    expect(find.text('暂时没有可展示的推荐'), findsNothing);
+    expect(state.nextMealResult?.contextKey, state.recommendationContextKey());
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('详情页换批和不感兴趣：pending锁、失败保留旧候选并关联反馈', (tester) async {

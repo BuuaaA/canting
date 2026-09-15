@@ -23,36 +23,39 @@ TodayIntakeStats today({bool stale = false, int revision = 4}) =>
       },
     );
 
-Rolling7dIntakeStats rolling({bool stale = false, int revision = 4}) =>
-    Rolling7dIntakeStats(
-      startDate: '2026-09-06',
-      endDate: '2026-09-12',
-      revision: revision,
-      stale: stale,
-      days: const [],
-      averages: {
-        'vegetable': const IntakeAverageStat(
-          category: 'vegetable',
-          average: 100,
-          denominator: 3,
-          target: IntakeTarget(min: 300, max: 500),
-        ),
-      },
-      foodVarietyAverage: null,
-      foodVarietyDenominator: null,
-      fishCount: null,
-      fishGrams: null,
-      nutGrams: null,
-      dairyMetDays: 0,
-      dairyKnownDays: 0,
-      dairyUnknownDays: 7,
-      soyMetDays: 0,
-      soyKnownDays: 0,
-      soyUnknownDays: 7,
-      fishCompleteness: 'unknown',
-      fishCountCompleteness: 'unknown',
-      nutCompleteness: 'unknown',
-    );
+Rolling7dIntakeStats rolling({
+  bool stale = false,
+  int revision = 4,
+  List<IntakeDayStat> days = const [],
+}) => Rolling7dIntakeStats(
+  startDate: '2026-09-06',
+  endDate: '2026-09-12',
+  revision: revision,
+  stale: stale,
+  days: days,
+  averages: {
+    'vegetable': const IntakeAverageStat(
+      category: 'vegetable',
+      average: 100,
+      denominator: 3,
+      target: IntakeTarget(min: 300, max: 500),
+    ),
+  },
+  foodVarietyAverage: null,
+  foodVarietyDenominator: null,
+  fishCount: null,
+  fishGrams: null,
+  nutGrams: null,
+  dairyMetDays: 0,
+  dairyKnownDays: 0,
+  dairyUnknownDays: 7,
+  soyMetDays: 0,
+  soyKnownDays: 0,
+  soyUnknownDays: 7,
+  fishCompleteness: 'unknown',
+  fishCountCompleteness: 'unknown',
+  nutCompleteness: 'unknown',
+);
 
 NextMealRequest request({bool stale = false}) => NextMealRequest(
   requestId: 'request-1',
@@ -89,6 +92,36 @@ Map<String, dynamic> aiJson({String dish = '清蒸鲈鱼配时蔬'}) => {
 };
 
 void main() {
+  test('远端只发送七天汇总，保留本地逐日统计及unknown语义', () {
+    final days = <IntakeDayStat>[
+      for (var day = 6; day <= 12; day++)
+        IntakeDayStat(
+          date: '2026-09-${day.toString().padLeft(2, '0')}',
+          completeness: 'partial',
+          categories: today().categories,
+          foodVariety: null,
+          fishCount: null,
+          fishCountCompleteness: 'unknown',
+        ),
+    ];
+    final window = rolling(days: days);
+    final input = NextMealRequest(
+      requestId: 'summary-regression',
+      today: today(),
+      rolling7d: window,
+      nextMealType: 'dinner',
+    );
+    final serialized = input.toJson();
+    final summary = serialized['rolling7d'] as Map;
+    expect(summary, isNot(contains('days')));
+    expect(summary['averages'], window.toJson()['averages']);
+    expect((summary['fish'] as Map)['grams'], isNull);
+    expect((summary['fish'] as Map)['completeness'], 'unknown');
+    expect(window.days, hasLength(7));
+    expect(window.toJson()['days'], hasLength(7));
+    expect(serialized['today'], today().toJson());
+  });
+
   test('未配置安全AI通道时不发请求并返回具体本地候选', () async {
     // null is the production default: no transport exists to call.
     final service = NextMealRecommendationService();

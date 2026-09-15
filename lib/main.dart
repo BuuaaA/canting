@@ -21,6 +21,38 @@ import 'package:provider/provider.dart';
 
 Future<void> main() => runCantingApp();
 
+class DevCredentialSession extends ChangeNotifier {
+  String? _token;
+  bool _armed = false;
+
+  bool get armed => _armed;
+
+  void arm(String token) {
+    final value = token.trim();
+    if (value.isEmpty) return;
+    if (kDebugMode) {
+      debugPrint(
+        '[FC CRED] inputLen=${value.length} '
+        'leadingBearer=${value.startsWith('Bearer ')} '
+        'quotes=${value.contains('"') || value.contains("'")} '
+        'edgeWhitespace=${value != token} '
+        'plusSlashPadding=${value.contains('+') && value.contains('/') && value.endsWith('=')}',
+      );
+    }
+    _token = value;
+    _armed = true;
+    notifyListeners();
+  }
+
+  CredentialAccess get access => (ref, use) async {
+    final token = _token;
+    _token = null;
+    _armed = false;
+    notifyListeners();
+    await use(token ?? '');
+  };
+}
+
 /// Starts the app with an optional development-only runtime credential hook.
 ///
 /// The normal Flutter entrypoint supplies no hook, so production remains local
@@ -34,17 +66,47 @@ Future<void> runCantingApp({CredentialAccess? nextMealCredentialAccess}) async {
   // 通知开关启动恢复（识别结果 / 用餐提醒 / 缺口提醒统一落盘 shared_preferences）。
   final switches = await NotificationSwitchPrefs.load();
   NotificationService.recognitionEnabled = switches.recognitionEnabled;
+  final devCredentialSession =
+      kDebugMode &&
+          const bool.fromEnvironment(
+            'CANTING_ENABLE_DEV_FC',
+            defaultValue: false,
+          ) &&
+          nextMealCredentialAccess == null
+      ? DevCredentialSession()
+      : null;
   // 只从编译配置读取非敏感开关和端点；Bearer 凭据必须由宿主运行时注入，
   // 不提供 dart-define、资源、SharedPreferences 或 APK 内的密钥通道。
   final nextMealRemoteConfiguration = FcNextMealConfiguration(
     endpoint: Uri.tryParse(
       const String.fromEnvironment('CANTING_RECOMMEND_ENDPOINT'),
     ),
-    enabled: const bool.fromEnvironment(
-      'CANTING_RECOMMEND_ENABLED',
-      defaultValue: false,
-    ),
-    credentialAccess: nextMealCredentialAccess,
+    enabled:
+        const bool.fromEnvironment(
+          'CANTING_RECOMMEND_ENABLED',
+          defaultValue: false,
+        ) ||
+        devCredentialSession != null,
+    credentialAccess: nextMealCredentialAccess ?? devCredentialSession?.access,
+    httpObserver: kDebugMode
+        ? (event) => debugPrint(
+            '[FC HTTP] ${event.method} ${event.host}${event.path} '
+            'status=${event.statusCode} '
+            'credLen=${event.callbackLength}/${event.headerLength} '
+            'credSame=${event.credentialConsistent} '
+            'leadingBearer=${event.hasLeadingBearer} '
+            'quotes=${event.hasQuotes} '
+            'edgeWhitespace=${event.hasEdgeWhitespace} '
+            'plusSlashPadding=${event.hasPlusSlashPadding} '
+            'layer=${event.responseLayer ?? 'unknown'} '
+            'requestId=${event.requestId ?? 'none'} '
+            'errorCode=${event.errorCode ?? 'none'} '
+            'contentType=${event.contentType ?? 'none'} '
+            'responseLen=${event.responseLength ?? -1} '
+            'errorType=${event.errorType ?? 'none'} '
+            'errorMessage=${event.errorMessage ?? 'none'}',
+          )
+        : null,
   );
   final appState = AppState(
     databaseHelper: databaseHelper,
@@ -72,7 +134,9 @@ Future<void> runCantingApp({CredentialAccess? nextMealCredentialAccess}) async {
       debugPrint('Notification init failed: $error');
     }
   }
-  runApp(CantingApp(appState: appState));
+  runApp(
+    CantingApp(appState: appState, devCredentialSession: devCredentialSession),
+  );
 }
 
 Future<FoodDatabase> _loadSeedFoodDatabase() async {
@@ -96,9 +160,14 @@ Future<DietaryGuidelines> _loadDietaryGuidelines() async {
 }
 
 class CantingApp extends StatefulWidget {
-  const CantingApp({super.key, required this.appState});
+  const CantingApp({
+    super.key,
+    required this.appState,
+    this.devCredentialSession,
+  });
 
   final AppState appState;
+  final DevCredentialSession? devCredentialSession;
 
   @override
   State<CantingApp> createState() => _CantingAppState();
@@ -250,8 +319,78 @@ class _CantingAppState extends State<CantingApp> with WidgetsBindingObserver {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        builder: (context, child) => Stack(
+          children: [
+            child ?? const SizedBox.shrink(),
+            if (widget.devCredentialSession != null)
+              Positioned(
+                left: 12,
+                right: 12,
+                bottom: 12,
+                child: _DevCredentialPanel(
+                  session: widget.devCredentialSession!,
+                ),
+              ),
+          ],
+        ),
         routerConfig: _router,
       ),
     );
   }
+}
+
+class _DevCredentialPanel extends StatefulWidget {
+  const _DevCredentialPanel({required this.session});
+
+  final DevCredentialSession session;
+
+  @override
+  State<_DevCredentialPanel> createState() => _DevCredentialPanelState();
+}
+
+class _DevCredentialPanelState extends State<_DevCredentialPanel> {
+  final _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _arm() {
+    widget.session.arm(_controller.text);
+    _controller.clear();
+  }
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Theme.of(context).colorScheme.surface.withValues(alpha: .96),
+    elevation: 8,
+    borderRadius: BorderRadius.circular(12),
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _controller,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              decoration: const InputDecoration(
+                isDense: true,
+                labelText: '开发联调口令（仅本次请求）',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          FilledButton(
+            onPressed: _arm,
+            child: Text(widget.session.armed ? '已就绪' : '启用联调'),
+          ),
+        ],
+      ),
+    ),
+  );
 }

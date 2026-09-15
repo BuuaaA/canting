@@ -355,7 +355,12 @@ class AppState extends ChangeNotifier {
 
   String recommendationContextKey([DateTime? date]) {
     final current = date ?? clock();
-    return '${_dayKey(current)}|${_nextMealType(current)}';
+    // Match the YYYY-MM-DD dates used by intake statistics and remote results.
+    // Keep _dayKey unchanged: unrelated local caches already use its format.
+    final day = '${current.year.toString().padLeft(4, '0')}-'
+        '${current.month.toString().padLeft(2, '0')}-'
+        '${current.day.toString().padLeft(2, '0')}';
+    return '$day|${_nextMealType(current)}';
   }
 
   String _nextMealType(DateTime now) {
