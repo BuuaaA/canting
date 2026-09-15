@@ -4,6 +4,10 @@ import 'dart:convert';
 import 'intake_statistics.dart';
 
 typedef NextMealRemoteCall = Future<String> Function(NextMealRequest request);
+typedef NextMealRemoteCallWithBudget = Future<String> Function(
+  NextMealRequest request,
+  Duration budget,
+);
 typedef NextMealFeedbackSink = Future<void> Function(NextMealFeedback event);
 typedef NextMealEventSink = Future<void> Function(Map<String, dynamic> event);
 
@@ -243,12 +247,14 @@ class NextMealFeedback {
 class NextMealRecommendationService {
   NextMealRecommendationService({
     this.remote,
+    this.remoteWithBudget,
     this.timeout = nextMealCallBudget,
     this.feedbackSink,
     this.eventSink,
   });
 
   final NextMealRemoteCall? remote;
+  final NextMealRemoteCallWithBudget? remoteWithBudget;
   final Duration timeout;
   final NextMealFeedbackSink? feedbackSink;
   final NextMealEventSink? eventSink;
@@ -268,7 +274,7 @@ class NextMealRecommendationService {
       result = NextMealResult.failed(request, validationIssue);
     } else if (request.today.stale || request.rolling7d.stale) {
       result = NextMealResult.failed(request, 'stale_input');
-    } else if (remote == null) {
+    } else if (remote == null && remoteWithBudget == null) {
       result = _local(request, 'unconfigured');
     } else {
       result = await _remoteOrLocal(request);
@@ -295,7 +301,9 @@ class NextMealRecommendationService {
     try {
       for (var attempt = 0; attempt < 2; attempt++) {
         try {
-          final raw = await remote!(request).timeout(remaining());
+          final raw = remoteWithBudget != null
+              ? await remoteWithBudget!(request, remaining())
+              : await remote!(request).timeout(remaining());
           return _parseRemote(request, raw);
         } on FormatException {
           if (attempt == 1) rethrow;

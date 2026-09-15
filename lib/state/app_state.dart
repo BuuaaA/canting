@@ -81,11 +81,11 @@ class AppState extends ChangeNotifier {
     _nextMealService =
         nextMealService ??
         NextMealRecommendationService(
-          remote: nextMealRemoteConfiguration?.isUsable == true
+          remoteWithBudget: nextMealRemoteConfiguration?.isUsable == true
               ? FcNextMealRemote(
                   configuration: nextMealRemoteConfiguration!,
                   transport: nextMealRemoteConfiguration.transport,
-                ).call
+                ).callWithBudget
               : null,
           eventSink: persistNextMealEvent,
           feedbackSink: persistNextMealFeedback,

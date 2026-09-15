@@ -203,6 +203,33 @@ void main() {
     expect(timeoutResult.reasonCode, 'timeout');
   });
 
+  test('凭据慢于共享截止时间时不再发起请求', () async {
+    var transportCalls = 0;
+    final remote = FcNextMealRemote(
+      configuration: FcNextMealConfiguration(
+        endpoint: Uri.parse('https://fc.example.test'),
+        enabled: true,
+        credentialAccess: (ref, use) async {
+          await Future<void>.delayed(const Duration(milliseconds: 30));
+          await use('runtime-token');
+        },
+        transport: (endpoint, headers, body) async {
+          transportCalls++;
+          return FcNextMealResponse(200, jsonEncode(fixtures.aiJson()));
+        },
+      ),
+    );
+
+    final result = await NextMealRecommendationService(
+      remoteWithBudget: remote.callWithBudget,
+      timeout: const Duration(milliseconds: 10),
+    ).nextMeal(fixtures.request());
+
+    expect(result.source, 'local_rule');
+    expect(result.reasonCode, 'timeout');
+    expect(transportCalls, 0);
+  });
+
   test('AppState配置接线可到达远端，缺凭据配置保持本地', () async {
     var calls = 0;
     final helper = DatabaseHelper(

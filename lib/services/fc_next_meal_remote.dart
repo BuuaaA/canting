@@ -63,15 +63,37 @@ class FcNextMealRemote {
   final Duration timeout;
 
   Future<String> call(NextMealRequest request) async {
+    return callWithBudget(request, timeout);
+  }
+
+  /// Executes with a caller-owned remaining budget. This is used by AppState
+  /// so a retry cannot silently restart a fresh adapter timeout window.
+  Future<String> callWithBudget(
+    NextMealRequest request,
+    Duration budget,
+  ) async {
+    final stopwatch = Stopwatch()..start();
+    Duration remaining() {
+      final left = budget - stopwatch.elapsed;
+      return left.isNegative ? Duration.zero : left;
+    }
+
     if (!configuration.isUsable) {
       throw const NextMealRemoteException('unconfigured');
     }
     String? token;
-    await configuration.credentialAccess!(configuration.credentialRef, (
-      secret,
-    ) async {
-      token = secret;
-    });
+    try {
+      await configuration
+          .credentialAccess!(configuration.credentialRef, (secret) async {
+            token = secret;
+          })
+          .timeout(remaining());
+    } on TimeoutException {
+      throw const NextMealRemoteException('timeout');
+    }
+    if (remaining() <= Duration.zero) {
+      throw const NextMealRemoteException('timeout');
+    }
     if (token == null || token!.isEmpty) {
       throw const NextMealRemoteException('unauthorized', 401);
     }
@@ -88,7 +110,7 @@ class FcNextMealRemote {
         endpoint,
         headers,
         requestBody,
-      ).timeout(timeout);
+      ).timeout(remaining());
       _throwForStatus(response.statusCode);
       if (response.body.trim().isEmpty) {
         throw const NextMealRemoteException('invalid_json');
@@ -100,7 +122,7 @@ class FcNextMealRemote {
     final http = client ?? HttpClient();
     HttpClientRequest? httpRequest;
     try {
-      httpRequest = await http.postUrl(endpoint).timeout(timeout);
+      httpRequest = await http.postUrl(endpoint).timeout(remaining());
       httpRequest.headers
         ..set(
           HttpHeaders.contentTypeHeader,
@@ -111,8 +133,11 @@ class FcNextMealRemote {
           headers[HttpHeaders.authorizationHeader]!,
         );
       httpRequest.add(utf8.encode(requestBody));
-      final response = await httpRequest.close().timeout(timeout);
-      final body = await utf8.decoder.bind(response).join().timeout(timeout);
+      final response = await httpRequest.close().timeout(remaining());
+      final body = await utf8.decoder
+          .bind(response)
+          .join()
+          .timeout(remaining());
       _throwForStatus(response.statusCode);
       if (body.trim().isEmpty) {
         throw const NextMealRemoteException('invalid_json');
