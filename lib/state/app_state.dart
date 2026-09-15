@@ -16,6 +16,7 @@ import 'package:canting/data/meal_repository.dart';
 import 'package:canting/data/pet_repository.dart';
 import 'package:canting/data/user_repository.dart';
 import 'package:canting/services/intake_statistics.dart';
+import 'package:canting/services/fc_next_meal_remote.dart';
 import 'package:canting/services/next_meal_recommendation.dart';
 import 'package:canting/services/delivery_jump_service.dart';
 import 'package:canting/ui/intake/intake_view_events.dart';
@@ -71,6 +72,7 @@ class AppState extends ChangeNotifier {
     DateTime Function()? clock,
     this.persistNotificationSwitches,
     NextMealRecommendationService? nextMealService,
+    FcNextMealConfiguration? nextMealRemoteConfiguration,
   }) : clock = clock ?? DateTime.now,
        _petEngine = petEngine ?? PetEngine(),
        _androidNativeBridge = androidNativeBridge ?? AndroidNativeBridge(),
@@ -79,6 +81,10 @@ class AppState extends ChangeNotifier {
     _nextMealService =
         nextMealService ??
         NextMealRecommendationService(
+          remote: nextMealRemoteConfiguration?.isUsable == true
+              ? FcNextMealRemote(configuration: nextMealRemoteConfiguration!)
+                    .call
+              : null,
           eventSink: persistNextMealEvent,
           feedbackSink: persistNextMealFeedback,
         );

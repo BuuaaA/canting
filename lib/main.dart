@@ -9,6 +9,8 @@ import 'package:canting/platform/android_native_bridge.dart';
 import 'package:canting/router/app_router.dart';
 import 'package:canting/services/notification_service.dart';
 import 'package:canting/services/ocr_pipeline.dart';
+import 'package:canting/services/fc_next_meal_remote.dart';
+import 'package:canting/services/recognition_adapter.dart';
 import 'package:canting/state/app_state.dart';
 import 'package:canting/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +19,33 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-Future<void> main() async {
+Future<void> main() => runCantingApp();
+
+/// Starts the app with an optional development-only runtime credential hook.
+///
+/// The normal Flutter entrypoint supplies no hook, so production remains local
+/// by default. A development host may call this function with a
+/// [CredentialAccess] backed by its secure credential broker; the secret is
+/// held only for the request and is never part of dart-define or the APK.
+Future<void> runCantingApp({CredentialAccess? nextMealCredentialAccess}) async {
   WidgetsFlutterBinding.ensureInitialized();
   final databaseHelper = DatabaseHelper.instance;
   await databaseHelper.initialize(seedData: await _loadSeedFoodDatabase());
   // 通知开关启动恢复（识别结果 / 用餐提醒 / 缺口提醒统一落盘 shared_preferences）。
   final switches = await NotificationSwitchPrefs.load();
   NotificationService.recognitionEnabled = switches.recognitionEnabled;
+  // 只从编译配置读取非敏感开关和端点；Bearer 凭据必须由宿主运行时注入，
+  // 不提供 dart-define、资源、SharedPreferences 或 APK 内的密钥通道。
+  final nextMealRemoteConfiguration = FcNextMealConfiguration(
+    endpoint: Uri.tryParse(
+      const String.fromEnvironment('CANTING_RECOMMEND_ENDPOINT'),
+    ),
+    enabled: const bool.fromEnvironment(
+      'CANTING_RECOMMEND_ENABLED',
+      defaultValue: false,
+    ),
+    credentialAccess: nextMealCredentialAccess,
+  );
   final appState = AppState(
     databaseHelper: databaseHelper,
     guidelines: await _loadDietaryGuidelines(),
@@ -35,6 +57,7 @@ Future<void> main() async {
         ),
       );
     },
+    nextMealRemoteConfiguration: nextMealRemoteConfiguration,
   );
   await appState.loadFromDatabase();
   // 提醒开关在 runApp 前直接恢复（main 里已按持久化值初始化 pet 等）。
