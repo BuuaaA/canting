@@ -1,47 +1,55 @@
-# 餐盘 Canting · 0.9.0-beta
+# 餐盘 Canting
 
-Android 优先、离线优先的饮食记录与宠物陪伴 App。用户主动分享订单截图或选择/拍摄图片，在本地识别、确认并保存；通过最近7天与28天的饮食结构获得温和的下一餐建议。
+餐盘是一款帮助记录饮食、识别餐食并获得下一餐建议的移动应用。它把餐食记录、饮食结构和轻量化的陪伴体验放在一个简单的流程里，帮助用户逐步形成更适合自己的饮食习惯。
 
-## 当前功能
+## 当前版本
 
-- 本地中文 OCR、候选确认、未知项手动归类，纠正结果在本机复用。
-- SQLite 持久化餐食、历史、用户设置和宠物状态；可编辑、删除与导出。
-- 确定性膳食规则、7/28天记录覆盖说明和推荐安全过滤；不精确计算热量，不替代医疗建议。
-- 猫/狗/仓鼠伙伴、成长及动画，桌面 Widget；本版新增橘猫餐盘 App 图标。
-- Widget 快照标注记录日期；刷新时发现跨日或时区偏移变化，会隐藏旧数值并提示打开 App 更新。
+**V1.0.1 试用版**
 
-## 安装前请读
+本版本面向个人体验和小范围试用，后续会持续完善界面、交互和产品功能。
 
-这是测试版，不代表 V1 正式封版或真机验收完成。GitHub Release 提供 arm64 主 APK 和 universal 备用 APK；ABI 不确定时先核对设备。两包 versionCode 均为5003，包名 com.canting.canting，沿用旧 beta 的 Android Debug 测试签名。
+## 主要功能
 
-手机已有重要数据时，**先暂停覆盖升级**：当前有 JSON 导出，但没有经过验证的完整导入/恢复流程，系统自动备份也已禁用。由开发协助验证备份恢复后再升级，不卸载、不清数据、不强制降级。相同包名/签名与更高版本码只证明静态相容条件。
+- 通过拍照、相册或分享内容记录餐食
+- 识别餐食信息并支持用户确认、修改
+- 保存餐食记录、历史数据、个人设置和饮食偏好
+- 根据近期饮食结构生成下一餐建议
+- 提供饮食趋势、宠物陪伴和轻量化的日常反馈
+- 支持本地数据管理，用户可以查看和维护自己的记录
 
-从 [GitHub Releases](https://github.com/BuuaaA/canting/releases) 获取最终审核后的测试包，先阅读随包 START-HERE.md、package-info.md、known-limitations.md，并核对 SHA256SUMS.txt。
+## 开始使用
 
-## 隐私与测试边界
+### 直接安装
 
-release Manifest 无 INTERNET / ACCESS_NETWORK_STATE；无遥测和云同步。截图只用于本次识别；临时副本处理及系统备份行为仍需设备核验。反馈前请去除姓名、地址、电话等信息。
+从 [Releases](https://github.com/BuuaaA/canting/releases) 获取试用版安装包，安装后按照应用内提示完成初始设置即可。
 
-小米安装、桌面图标、Widget刷新/缩放/重启、旧包真实升级、原生首次离线/无GMS OCR：not_run。自动化结果不能替代真机证据。真实截图、独立留出和危险场景仍需按 dev-docs/p5-device-checklist.md 补验。
+### 从源码运行
 
-## 开发与证据
+项目使用 Flutter 开发。准备好 Flutter、Dart 和 Android 开发环境后，在仓库根目录执行：
 
-Flutter / Dart + Provider + SQLite；Android 原生内置中文 ML Kit。沿用现有依赖，不新增运行时依赖。先读 AGENTS.md。
-
-设置新的 CANTING_P6A_RUN_ID 后，从仓库根目录依次运行：
-
-```powershell
-$env:CANTING_P6A_RUN_ID='my-new-run'
-python scripts/p6a/run.py analyze
-python scripts/p6a/run.py full
-python scripts/p6a/run.py kotlin
-python scripts/p6a/run.py universal
-python scripts/p6a/run.py split
-python scripts/p6a/validate_configuration.py
+```bash
+flutter pub get
+flutter run
 ```
 
-工具使用本机已安装的 Flutter、Android SDK 和 JBR；换机器先配置工具路径与依赖缓存，不自动升级依赖。Gradle使用离线模式，避免并行构建。构建前确保 android/local.properties 中 flutter.versionCode/Name 与 pubspec.yaml 一致；实际身份由 APK 核验。
+## 项目结构
 
-P6-A报告：dev-docs/p6a-test-package-report.md。精简说明：dev-docs/ponytail-simplification-report.md。最终beta交接：dev-docs/beta-0.9.0-review-handoff.md。
+```text
+lib/          应用代码
+assets/       图片、图标和内置数据
+android/      Android 工程
+ios/          iOS 工程
+test/         自动化测试
+docs/         项目文档与历史资料
+dev-docs/     开发过程、验收和交接资料
+```
 
-宠物美术更新延后 V1.1。后续先完成 Owner 小米验证，再按既定路线组织5–10人、7个自然日封闭试用；正式签名和V1发布另行验收。
+开发协作前请先阅读 [AGENTS.md](AGENTS.md)。文档目录说明见 [docs/README.md](docs/README.md)。
+
+## 隐私说明
+
+餐食记录和个人设置以本地使用为主。上传、分享或反馈截图时，请先移除姓名、地址、电话等个人信息。
+
+## 许可证
+
+本项目当前用于个人体验和小范围试用。开源许可与正式发布方式将在后续版本中另行说明。
