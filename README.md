@@ -40,11 +40,7 @@ assets/       图片、图标和内置数据
 android/      Android 工程
 ios/          iOS 工程
 test/         自动化测试
-docs/         项目文档与历史资料
-dev-docs/     开发过程、验收和交接资料
 ```
-
-开发协作前请先阅读 [AGENTS.md](AGENTS.md)。文档目录说明见 [docs/README.md](docs/README.md)。
 
 ## 隐私说明
 

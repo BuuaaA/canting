@@ -59,3 +59,13 @@ app.*.map.json
 
 # Keep the offline M0 benchmark reviewable.
 !/tools/recognition_benchmark/
+
+# Private development notes, AI prompts and acceptance records stay outside GitHub.
+/AGENTS.md
+/docs/**/*.md
+/dev-docs/**/*.md
+/design-system/**/*.md
+/assets/sprites/README.md
+/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+/scripts/*/README.md
+/test/fixtures/recognition_acceptance/README.md
