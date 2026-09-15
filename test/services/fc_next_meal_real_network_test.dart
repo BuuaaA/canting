@@ -55,5 +55,5 @@ void main() {
 
     expect(result.source, 'local_rule');
     expect(result.reasonCode, 'unauthorized');
-  });
+  }, skip: !const bool.fromEnvironment('CANTING_RUN_FC_NETWORK_TEST'));
 }
