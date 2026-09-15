@@ -7,6 +7,10 @@ typedef NextMealRemoteCall = Future<String> Function(NextMealRequest request);
 typedef NextMealFeedbackSink = Future<void> Function(NextMealFeedback event);
 typedef NextMealEventSink = Future<void> Function(Map<String, dynamic> event);
 
+/// Shared upper bound for one recommendation attempt, including one bounded
+/// invalid-JSON retry. The adapter and service use the same budget.
+const nextMealCallBudget = Duration(seconds: 25);
+
 class NextMealRemoteException implements Exception {
   const NextMealRemoteException(this.reasonCode, [this.statusCode]);
   final String reasonCode;
@@ -239,7 +243,7 @@ class NextMealFeedback {
 class NextMealRecommendationService {
   NextMealRecommendationService({
     this.remote,
-    this.timeout = const Duration(seconds: 8),
+    this.timeout = nextMealCallBudget,
     this.feedbackSink,
     this.eventSink,
   });
@@ -282,14 +286,19 @@ class NextMealRecommendationService {
   }
 
   Future<NextMealResult> _remoteOrLocal(NextMealRequest request) async {
+    final stopwatch = Stopwatch()..start();
+    Duration remaining() {
+      final left = timeout - stopwatch.elapsed;
+      return left.isNegative ? Duration.zero : left;
+    }
+
     try {
-      var raw = await remote!(request).timeout(timeout);
       for (var attempt = 0; attempt < 2; attempt++) {
         try {
+          final raw = await remote!(request).timeout(remaining());
           return _parseRemote(request, raw);
         } on FormatException {
           if (attempt == 1) rethrow;
-          raw = await remote!(request).timeout(timeout);
         }
       }
     } on TimeoutException {
